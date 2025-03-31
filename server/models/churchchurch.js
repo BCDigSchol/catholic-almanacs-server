@@ -30,6 +30,13 @@ module.exports = (sequelize, DataTypes) => {
       {
         unique: true,
         fields: ['uniqueInstID', 'uniqueAttendingInstID']
+      },
+      {
+        fields: ['uniqueInstID'],
+        unique: true,
+      },
+      {
+        fields: ['uniqueAttendingInstID'],
       }
     ]
   });

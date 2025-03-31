@@ -17,8 +17,13 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addIndex('churches', ['instID'], {
+      name: 'churches_instID_index',
+    })
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeIndex('churches', 'churches_instID_index');
     await queryInterface.dropTable('churches');
   }
 };

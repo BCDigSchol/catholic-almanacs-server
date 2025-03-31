@@ -25,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'church',
+    indexes: [
+      {
+        fields:['instID'],
+        unique: true
+      }
+    ]
   });
   return church;
 };

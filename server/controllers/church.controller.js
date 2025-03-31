@@ -69,6 +69,7 @@ exports.findAll = async (req, res) => {
                 model: churchInYear,
                 as: 'churchInYear',
                 where: where,
+                required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0,
                 attributes: ['instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese'],
                 include: [{
                     model: churchInYear,
@@ -87,6 +88,7 @@ exports.findAll = async (req, res) => {
                     model: personInYear,
                     as: 'personInfo',
                     where: persWhere,
+                    required: Object.keys(persWhere).length > 0,
                     attributes: ['persID', 'persName', 'persYear', 'persTitle', 'persSuffix', 'persNote'],
                     through: {
                         model: churchPerson,

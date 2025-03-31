@@ -44,7 +44,27 @@ module.exports = (sequelize, DataTypes) => {
     uniqueAttendingInstID: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'churchInYear'
+    modelName: 'churchInYear',
+    indexes:[
+      {
+        fields: ['instID'],
+      },
+      {
+        fields: ['instName'],
+      },
+      {
+        fields: ['instYear'],
+      },
+      {
+        fields: ['instYear', 'instID'],
+      },
+      {
+        fields: ['uniqueInstID'],
+      },
+      {
+        fields: ['uniqueAttendingInstID'],
+      }
+    ]
   });
   return churchInYear;
 };

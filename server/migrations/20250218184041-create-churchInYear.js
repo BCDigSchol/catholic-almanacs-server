@@ -86,8 +86,33 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addIndex('churchInYears', ['instID'], {
+      name: 'churchInYears_instID_index',
+    });
+    await queryInterface.addIndex('churchInYears', ['instName'], {
+      name: 'churchInYears_instName_index',
+    });
+    await queryInterface.addIndex('churchInYears', ['instYear'], {
+      name: 'churchInYears_instYear_index',
+    });
+    await queryInterface.addIndex('churchInYears', ['instYear', 'instID'], {
+      name: 'churchInYears_instYear_instID_index',
+    });
+    await queryInterface.addIndex('churchInYears', ['uniqueInstID'], {
+      name: 'churchInYears_uniqueInstID_index',
+    });
+    await queryInterface.addIndex('churchInYears', ['uniqueAttendingInstID'], {
+      name: 'churchInYears_uniqueAttendingInstID_index',
+    });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeIndex('churchInYears', 'churchInYears_instID_index');
+    await queryInterface.removeIndex('churchInYears', 'churchInYears_instName_index');
+    await queryInterface.removeIndex('churchInYears', 'churchInYears_instYear_index');
+    await queryInterface.removeIndex('churchInYears', 'churchInYears_instYear_instID_index');
+    await queryInterface.removeIndex('churchInYears', 'churchInYears_uniqueInstID_index');
+    await queryInterface.removeIndex('churchInYears', 'churchInYears_uniqueAttendingInstID_index');
     await queryInterface.dropTable('churchInYears');
   }
 };
