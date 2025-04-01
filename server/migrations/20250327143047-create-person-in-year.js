@@ -35,8 +35,25 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addIndex('personInYears', ['persID'], {
+      name: 'idx_personInYears_persID'
+    });
+    await queryInterface.addIndex('personInYears', ['uniquePersID'], {
+      name: 'idx_personInYears_uniquePersID'
+    });
+    await queryInterface.addIndex('personInYears', ['persName'], {
+      name: 'idx_personInYears_persName'
+    });
+    await queryInterface.addIndex('personInYears', ['persYear'], {
+      name: 'idx_personInYears_persYear'
+    });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeIndex('personInYears', 'idx_personInYears_persID');
+    await queryInterface.removeIndex('personInYears', 'idx_personInYears_uniquePersID');
+    await queryInterface.removeIndex('personInYears', 'idx_personInYears_persName');
+    await queryInterface.removeIndex('personInYears', 'idx_personInYears_persYear');
     await queryInterface.dropTable('personInYears');
   }
 };

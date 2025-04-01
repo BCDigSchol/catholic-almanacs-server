@@ -19,6 +19,7 @@ module.exports = {
     });
 
     await queryInterface.addIndex('churches', ['instID'], {
+      unique: true,
       name: 'churches_instID_index',
     })
   },

@@ -1,6 +1,9 @@
-<p>{{ message }}</p>
+<div class="h-full flex flex-col justify-start items-center">
+<p class="text-red-500">{{ message }}</p>
 
-<button (click)="changeMessage()">Click me</button>
+<button mat-fab (click)="changeMessage()">
+    <mat-icon>water_ph</mat-icon>
+</button>
 
 <p *ngIf="isLoaded">
     Page has been loaded!
@@ -11,3 +14,5 @@
     >
     </app-test>
 </p>
+
+</div>

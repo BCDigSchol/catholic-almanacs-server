@@ -17,8 +17,14 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addIndex('people', ['persID'], {
+      unique: true,
+      name: 'idx_people_persID'
+    });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeIndex('people', 'idx_people_persID');
     await queryInterface.dropTable('people');
   }
 };

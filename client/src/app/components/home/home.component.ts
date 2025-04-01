@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import {TestComponent} from '../common/test/test.component';
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, TestComponent],
+  imports: [CommonModule, TestComponent, MatButtonModule, MatIconModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

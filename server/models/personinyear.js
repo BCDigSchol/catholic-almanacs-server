@@ -30,6 +30,20 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'personInYear',
+    indexes: [
+      {
+        fields: ['persID'],
+      },
+      {
+        fields: ['uniquePersID'],
+      },
+      {
+        fields: ['persName'],
+      },
+      {
+        fields: ['persYear']
+      }
+    ]
   });
   return personInYear;
 };

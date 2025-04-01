@@ -43,7 +43,7 @@ exports.findAll = (req, res) => {
     let instWhere = {};
     let { persName, instName, diocese } = req.query;
     if (persName) {
-        where.persName = { [Op.like]: `%${persName}%` };
+        persWhere.persName = { [Op.like]: `%${persName}%` };
     };
     if (instName) {
         instWhere.instName = { [Op.like]: `%${instName}%` };
