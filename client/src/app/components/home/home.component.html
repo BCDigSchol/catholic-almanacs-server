@@ -1,18 +1,8 @@
-<div class="h-full flex flex-col justify-start items-center">
-<p class="text-red-500">{{ message }}</p>
-
-<button mat-fab (click)="changeMessage()">
-    <mat-icon>water_ph</mat-icon>
-</button>
-
-<p *ngIf="isLoaded">
-    Page has been loaded!
-
-    <app-test 
-        message="TEST INPUT"
-        (itemClicked)="handleEmittedData($event)"
-    >
-    </app-test>
-</p>
-
+<div *ngIf="!loading">
+    <div *ngFor="let item of data" class="flex flex-row">
+        <div>{{item.instID}}</div>
+        <div *ngFor="let year of item.churchInYear">
+            {{year.instName}}
+        </div>
+    </div>
 </div>

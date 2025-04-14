@@ -1,32 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {TestComponent} from '../common/test/test.component';
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { ApiService } from '../../services/api.service'; 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, TestComponent, MatButtonModule, MatIconModule],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  message = 'Hello from HomeComponent!';
-  data = null;
-  isLoaded = false;
+  loading = true;
+  data: any[] = [];
 
-  ngOnInit(): void {
-    //this.message = 'Message is initialized!';
-    this.isLoaded = true;
-  };
+  constructor(public apiService: ApiService) {
 
-  changeMessage() {
-    this.message = 'Hello from changed message!';
-  };
+  }
+  
+  ngOnInit() {
+    this.apiService.getTypeRequest('church').subscribe((response: any) => {
+      this.data = response.rows;
+      this.loading = false;
+    })
+  }
 
-  handleEmittedData(data: any) {
-    this.message = data.testMessage;
-  };
+
 }

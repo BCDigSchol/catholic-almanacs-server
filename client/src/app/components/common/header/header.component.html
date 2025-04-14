@@ -1,0 +1,11 @@
+<mat-toolbar>
+    <div class="w-full">{{ title }}</div>
+    <div class="text-blue-500">
+        <button mat-button [matMenuTriggerFor]="navmenu">
+            <mat-icon fontIcon="menu"></mat-icon>
+        </button>
+        <mat-menu #navmenu="matMenu">
+            <button *ngFor="let item of navItems" mat-menu-item [routerLink]="item.route">{{ item.name }}</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>
