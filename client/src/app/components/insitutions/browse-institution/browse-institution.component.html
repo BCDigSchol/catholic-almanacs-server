@@ -1,0 +1,60 @@
+<div *ngIf="!loading">
+
+    <div class="flex flex-row justify-start items-center">
+        <mat-card class="w-full">
+            <mat-card-content>
+                <div class="flex flex-col justify-start w-full">
+                    <div class="flex flex-row justify-start items-center">
+                        <mat-form-field class="mx-2">
+                            <mat-label>Filter by Institution Name</mat-label>
+                            <input matInput [(ngModel)]="filterBy.instName" (input)="getData()">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Filter by Person Name</mat-label>
+                            <input matInput [(ngModel)]="filterBy.persName" (input)="getData()">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-paginator (page)="changePage($event)"
+                        [length]="totalItems"
+                        [pageSize]="itemsPerPage"
+                        [pageIndex]="currentPage"
+                        [showFirstLastButtons]="true"
+                        [pageSizeOptions]="[5, 10, 25, 50]">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <mat-card *ngFor="let item of data" class="my-5 ml-3 mr-3" [routerLink]="'/institutions/' + item.instID">
+        <mat-card-header>
+            <mat-card-title>
+                {{ item.churchInYear[0].instName }}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>description</mat-icon>
+                    <div matListItemTitle>
+                        ID: {{ item.instID }}
+                    </div>
+                    <div matListItemLine>
+                        Years In Records:
+                        <span *ngFor="let c of item.churchInYear">
+                            {{ c.instYear }} 
+                        </span>
+                    </div>
+                    <div matListItemLine>
+                        Institution Type: {{ item.churchInYear[0].church_type }}
+                    </div>
+                    <div matListItemLine>
+                        Diocese (original): {{ item.churchInYear[0].diocese }}
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

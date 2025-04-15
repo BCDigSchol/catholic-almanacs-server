@@ -1,28 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
-import { ApiService } from '../../services/api.service'; 
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [MatTabsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
-  loading = true;
-  data: any[] = [];
-
-  constructor(public apiService: ApiService) {
-
-  }
+export class HomeComponent {
   
-  ngOnInit() {
-    this.apiService.getTypeRequest('church').subscribe((response: any) => {
-      this.data = response.rows;
-      this.loading = false;
-    })
-  }
-
-
 }

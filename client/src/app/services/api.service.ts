@@ -12,7 +12,7 @@ export class ApiService {
 
   baseUrl = Settings.apiUrl;
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) {} // HttpClient can be accessed using this._http
 
   /**
    * Returns the http response of a desired url.
