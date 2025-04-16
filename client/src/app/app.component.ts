@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/common/header/header.component'; // CommonModule is a module that provides common directives and pipes for Angular applications
+import { HeaderComponent } from './components/common/header/header.component';
 
 @Component({
   selector: 'app-root',

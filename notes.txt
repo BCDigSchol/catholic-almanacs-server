@@ -1,9 +1,16 @@
-same persID: af_ciampi_001 (Baltimore 1867 & Boston 1870) same person?
-
 persID and persName cannot start with a hyphen (-)? (not even a hyphen)
 
 year (e.g., Detroit 1866, Erie 1867)
 
 special characters encoding?
 
-cannot filter with the through table
+paginator (difference?? is it parseInt?)
+
+for components: parent/child structure?
+
+(page)="changePage($event)" event binding?
+
+filter by a year range (how to change the back end?)
+
+should I have two separate pages for institutions and people?
+should I have a separate page (or section) for find by instID?

@@ -1,5 +1,5 @@
 module.exports = (page, size) => {
-    const limit = size ? +size : 3;
-    const offset = page ? page * limit : 0;
+    const limit = size ? parseInt(size, 10) : 10;
+    const offset = page && page > 0 ? page * limit : 0;
     return { limit, offset };
   };

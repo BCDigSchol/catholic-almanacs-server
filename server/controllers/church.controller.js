@@ -43,7 +43,7 @@ exports.findAll = async (req, res) => {
         let {limit, offset} = getPagination(page, size);
         let where = {};
         let persWhere = {};
-        let { instName, city_reg, diocese, instYear, persName } = req.query;
+        let { instName, city_reg, diocese, instYear, language, church_type, persName, instID } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
@@ -56,9 +56,18 @@ exports.findAll = async (req, res) => {
         if (city_reg) {
             where.city_reg = { [Op.like]: `%${city_reg}%` };
         };
+        if (language) {
+            where.language = { [Op.like]: `%${language}%` };
+        };
+        if (church_type) {
+            where.church_type = { [Op.like]: `%${church_type}%` };
+        };
         if (persName) {
             persWhere.persName = { [Op.like]: `%${persName}%` };
-        }
+        };
+        if (instID) {
+            where.instID = { [Op.like]: `%${instID}%` };
+        };
         //console.log('-----------where', where);
         const data = await church.findAndCountAll({
             limit: limit,

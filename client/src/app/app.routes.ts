@@ -8,7 +8,7 @@ import { InstitutionDetailsComponent } from './components/insitutions/institutio
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path:'', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'about', component: AboutComponent },
     { path: 'institutions', component: BrowseInstitutionComponent },
     { path: 'institutions/:id', component: InstitutionDetailsComponent },
