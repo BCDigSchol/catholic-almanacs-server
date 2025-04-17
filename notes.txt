@@ -2,7 +2,7 @@ persID and persName cannot start with a hyphen (-)? (not even a hyphen)
 
 year (e.g., Detroit 1866, Erie 1867)
 
-special characters encoding?
+special characters encoding? (Lamy)
 
 paginator (difference?? is it parseInt?)
 
@@ -10,7 +10,14 @@ for components: parent/child structure?
 
 (page)="changePage($event)" event binding?
 
-filter by a year range (how to change the back end?)
+filter by a year range (how to change the backend?)
 
-should I have two separate pages for institutions and people?
+should I have two separate pages for institutions and people? -- also, should I display people in the institution page
 should I have a separate page (or section) for find by instID?
+
+better mobility for filter bars
+
+name: the latest name of an institution (not necessarily 1870 for those that didn't exist in 1870)
+
+create tables for the institution-detail page?
+HELP ME the institution-detail page looks so ugly (well, not super ugly, but can definitely look better lol)
