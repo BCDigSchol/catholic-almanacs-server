@@ -6,59 +6,72 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <mat-list>
-                <mat-list-item>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px;">Institution ID</strong>
-                        <span class="ml-17.5">{{data.instID}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px;">Years</strong>
-                        <span class="ml-30">{{processedData.instYear}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px">Institution Type</strong>
-                        <span class="ml-13">{{processedData.church_type}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px">Language</strong>
-                        <span class="ml-23.5">{{processedData.language}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px">Diocese (in 1870)</strong>
-                        <span class="ml-10">{{processedData.diocese}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px">State</strong>
-                        <span class="ml-31.5">{{processedData.state_orig}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px">City</strong>
-                        <span class="ml-34">{{processedData.city_reg}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px; flex-shrink: 0;">Notes</strong>
-                        <span class="ml-50" style="word-wrap: break-word; overflow-wrap: break-word; flex: 1;">{{processedData.instNote}}</span>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px;">Relevant People</strong>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-left: 10px;">
-                            <button mat-button class="custom-button" *ngFor="let item of processedData.personInfo">
-                                {{item.persTitle + ' ' + item.persName}}
-                            </button>
-                        </div>
-                    </div>
-                    <div matListItemLine class="mx-2 my-4" style="display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center;">
-                        <strong style="font-size: 15px;">Attending Institutions</strong>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-left: 10px;">
-                            <button mat-button class="custom-button" *ngFor="let item of processedData.attendingChurches">
-                                <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </mat-list-item>
-            </mat-list>
+            <table>
+                <tbody>
+                    <app-select-year [years]="processedData.instYear"></app-select-year>
+                    <tr>
+                        <td class="custom-td">Institution ID</td>
+                        <td>{{data.instID}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Institution Type</td>
+                        <td>{{processedData.church_type}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Language</td>
+                        <td>{{processedData.language}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Diocese (in 1870)</td>
+                        <td>{{processedData.diocese}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">State</td>
+                        <td>{{processedData.state_orig}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">City</td>
+                        <td>{{processedData.city_reg}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Notes</td>
+                        <td style="word-wrap: break-word; overflow-wrap: break-word;">{{processedData.instNote}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Relevant People</td>
+                        <td>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.personInfo">
+                                    <div [routerLink]="'/people' + item.persID">{{item.persTitle + ' ' + item.persName}}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.personInfo.length === 0">None</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Attending Institutions</td>
+                        <td>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.attendingChurches" (click)="onInstitutionClick(item)">
+                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.attendingChurches.length === 0">None</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Attended By</td>
+                        <td>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.attendedBy" (click)="onInstitutionClick(item)">
+                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.attendedBy.length === 0">None</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </mat-card-content>
     </mat-card>
 </div>

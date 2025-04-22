@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { SelectYearComponent } from '../../common/select-year/select-year.component';
 
 import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-institution-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-            RouterLink
+            RouterLink, SelectYearComponent
   ],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
@@ -24,11 +26,10 @@ export class InstitutionDetailsComponent implements OnInit {
   data: any = [];
   processedData: any = {};
 
-  displayedColumns: string[] = ['instName', 'instYear', 'diocese', 'language', 'church_type', 'city_reg', 'state_orig'];
-
   constructor(
     private _route: ActivatedRoute,
-    private _api: ApiService
+    private _api: ApiService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit () {
@@ -43,6 +44,19 @@ export class InstitutionDetailsComponent implements OnInit {
       this.processData();
     }
     );
+  }
+
+  /**
+   * display the details of an institution in a specific year
+   * @param item - the year that was clicked on the list of years
+   */
+  onYearClick(year: number): void{
+    this.loading = true;
+    this._api.getTypeRequest('church/' + this.itemId + '/' + year).subscribe((res: any) => {
+      this.processedData = res;
+      this.loading = false;
+      this.cdr.detectChanges();
+    });
   }
 
   /**
@@ -80,5 +94,22 @@ export class InstitutionDetailsComponent implements OnInit {
           }
         }
       }
+
+      for (let i of this.data.churchInYear) {
+        for (let inst of i.attendedBy) {
+          if (!this.processedData.attendedBy.some((exisitingInst: any) => exisitingInst.instID === inst.instID)) {
+            this.processedData.attendedBy.push(inst);
+          }
+        }
+      }
+  }
+
+  onInstitutionClick(item: any): void{
+    this.loading = true;
+    this._api.getTypeRequest('church/' + item.instID).subscribe((res: any) => {
+      this.data = res;
+      this.loading = false;
+      this.processData();
+    });
   }
 }

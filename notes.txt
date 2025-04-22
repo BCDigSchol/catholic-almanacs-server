@@ -8,7 +8,7 @@ paginator (difference?? is it parseInt?)
 
 for components: parent/child structure?
 
-(page)="changePage($event)" event binding?
+(page)="changePage($event)" event binding? (click attending inst, click "back" -- need to refresh the page)
 
 filter by a year range (how to change the backend?)
 
@@ -19,5 +19,6 @@ better mobility for filter bars
 
 name: the latest name of an institution (not necessarily 1870 for those that didn't exist in 1870)
 
-create tables for the institution-detail page?
-HELP ME the institution-detail page looks so ugly (well, not super ugly, but can definitely look better lol)
+tables of inst details (in different years) -- child component?
+
+child component select years (@output)
