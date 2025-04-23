@@ -6,8 +6,6 @@ special characters encoding? (Lamy)
 
 paginator (difference?? is it parseInt?)
 
-for components: parent/child structure?
-
 (page)="changePage($event)" event binding? (click attending inst, click "back" -- need to refresh the page)
 
 filter by a year range (how to change the backend?)
@@ -19,8 +17,10 @@ better mobility for filter bars
 
 name: the latest name of an institution (not necessarily 1870 for those that didn't exist in 1870)
 
-tables of inst details (in different years) -- child component?
-
-child component select years (@output)
-
 what if a church's name changed (e.g. alt.il.0007) filter: instYear = 1864 (mat-card); inst-detail name - 1870
+
+the space between columns appears different on different pages
+
+error (inst detail line 53)
+
+querying person with a page number is slower than expected

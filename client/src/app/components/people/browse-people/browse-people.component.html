@@ -6,37 +6,29 @@
                 <div class="flex flex-col justify-start w-full">
                     <div class="flex flex-wrap md:flex-nowrap justify-start items-center">
                         <mat-form-field class="mx-2 w-full sm:w-auto">
-                            <mat-label>Filter by Inst Name</mat-label>
-                            <input matInput [(ngModel)]="filterBy.instName" (input)="getData()">
-                        </mat-form-field>
-                        <mat-form-field class="mx-2 w-full sm:w-auto">
-                            <mat-label>Filter by Inst Type</mat-label>
-                            <input matInput [(ngModel)]="filterBy.church_type" (input)="getData()">
-                        </mat-form-field>
-                        <mat-form-field class="mx-2 w-full sm:w-auto">
-                            <mat-label>Filter by Language</mat-label>
-                            <input matInput [(ngModel)]="filterBy.language" (input)="getData()">
-                        </mat-form-field>
-                        <mat-form-field class="mx-2 w-full sm:w-auto">
-                            <mat-label>Filter by Diocese</mat-label>
-                            <input matInput [(ngModel)]="filterBy.diocese" (input)="getData()">
+                            <mat-label>Filter by Person Name</mat-label>
+                            <input matInput [(ngModel)]="filterBy.persName" (input)="getData()">
                         </mat-form-field>
                         <mat-form-field class="mx-2 w-full sm:w-auto">
                             <mat-label>Filter by City</mat-label>
                             <input matInput [(ngModel)]="filterBy.city_reg" (input)="getData()">
                         </mat-form-field>
                         <mat-form-field class="mx-2 w-full sm:w-auto">
-                            <mat-label>Filter by Person Name</mat-label>
-                            <input matInput [(ngModel)]="filterBy.persName" (input)="getData()">
+                            <mat-label>Filter by Diocese</mat-label>
+                            <input matInput [(ngModel)]="filterBy.diocese" (input)="getData()">
+                        </mat-form-field>
+                        <mat-form-field class="mx-2 w-full sm:w-auto">
+                            <mat-label>Filter by Inst Name</mat-label>
+                            <input matInput [(ngModel)]="filterBy.instName" (input)="getData()">
                         </mat-form-field>
                     </div>
                     <div class="flex justify-between max-w-[250px]">
                         <label id="example-name-label" class="example-name-label">Year</label>
-                        <label class="example-value-label">{{filterBy.instYear || 'All Years'}}</label>
+                        <label class="example-value-label">{{filterBy.persYear || 'All Years'}}</label>
                     </div>
                     <div class="flex flex-row justify-start items-center">
                         <mat-slider class="mx-2" style="width:230px" min="1864" max="1870" step="1" [discrete]="true">
-                            <input matSliderThumb [(ngModel)]="filterBy.instYear" (input)="getData()">
+                            <input matSliderThumb [(ngModel)]="filterBy.persYear" (input)="getData()">
                         </mat-slider>
                         <div>
                             <button mat-button class="mx-2" (click)="resetYear()" color="primary">Reset Year</button>
@@ -57,9 +49,9 @@
     </div>
 
     <mat-card *ngFor="let item of data" class="my-5">
-        <mat-card-header [routerLink]="'/institutions/' + item.instID" style="cursor: pointer;">
+        <mat-card-header [routerLink]="'/people/' + item.persID" style="cursor: pointer;">
             <mat-card-title>
-                {{ item.churchInYear[item.churchInYear.length - 1]?.instName }}
+                {{ item.personInYear[item.personInYear.length - 1].persTitle + ' ' + item.personInYear[item.personInYear.length - 1]?.persName }}
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -67,19 +59,19 @@
                 <mat-list-item>
                     <mat-icon matListItemIcon>description</mat-icon>
                     <div matListItemTitle>
-                        ID: {{ item.instID }}
+                        ID: {{ item.persID }}
                     </div>
                     <div matListItemLine>
                         Years In Records:
-                        <span *ngFor="let c of item.churchInYear">
-                            {{ c.instYear }} 
+                        <span *ngFor="let c of item.personInYear">
+                            {{ c.persYear }} 
                         </span>
                     </div>
                     <div matListItemLine>
-                        Institution Type: {{ item.churchInYear[item.churchInYear.length - 1]?.church_type }}
-                    </div>
-                    <div matListItemLine>
-                        Diocese (in {{item.churchInYear[item.churchInYear.length - 1].instYear}}): {{ item.churchInYear[item.churchInYear.length - 1]?.diocese }}
+                        Diocese (in {{item.personInYear[item.personInYear.length - 1].persYear}}):
+                        <span *ngFor="let c of getUniqueDioceses(item.personInYear[item.personInYear.length - 1]?.churches)">
+                            {{ c.diocese }}
+                        </span>
                     </div>
                 </mat-list-item>
             </mat-list>

@@ -49,7 +49,9 @@ export class InstitutionDetailsComponent implements OnInit {
    * @param year 
    */
   onYearSelected (year: number) {
-    this._api.getTypeRequest('church/' + this.itemId + '/' + year).subscribe((res: any) => {
+    //this.loading = true;
+    this._api.getTypeRequest('church/' + this.processedData.instID + '/' + year).subscribe((res: any) => {
+      console.log(this.processedData.instID);
       this.loading = false;
       this.processedData = res;
     });
@@ -60,6 +62,7 @@ export class InstitutionDetailsComponent implements OnInit {
    * for attending institutions and people, display all the relevant institutions/people and their years
    */
   processData () {
+    this.processedData.instID = this.data.instID;
     this.processedData.instName = this.data.churchInYear[this.data.churchInYear.length - 1].instName || '(Not Recorded)';
       this.processedData.instYear = []
       for (let i of this.data.churchInYear) {

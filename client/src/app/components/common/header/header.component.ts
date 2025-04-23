@@ -26,6 +26,9 @@ export class HeaderComponent {
     name: 'Institutions',
     route: 'institutions'
   },{
+    name: 'People',
+    route: 'people'
+  },{
     name: 'About',
     route: 'about'
   }];

@@ -14,7 +14,7 @@ export class SelectYearComponent implements OnInit {
   @Output() yearSelected = new EventEmitter<number>();
   
   ngOnInit() {
-    console.log(this.years);
+    //console.log(this.years);
   }
 
   onYearClick(year: number) {

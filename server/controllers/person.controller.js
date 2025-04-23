@@ -41,7 +41,7 @@ exports.findAll = (req, res) => {
     let {limit, offset} = getPagination(page, size);
     let persWhere = {};
     let instWhere = {};
-    let { persName, instName, diocese } = req.query;
+    let { persName, instName, diocese, persYear } = req.query;
     if (persName) {
         persWhere.persName = { [Op.like]: `%${persName}%` };
     };
@@ -50,6 +50,9 @@ exports.findAll = (req, res) => {
     };
     if (diocese) {
         instWhere.diocese = { [Op.like]: `%${diocese}%` };
+    };
+    if (persYear) {
+        persWhere.persYear = { [Op.like]: `%${persYear}%` };
     }
     person.findAndCountAll({
         limit: limit,
