@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
-import { ChangeDetectorRef } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -29,7 +28,6 @@ export class InstitutionDetailsComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _api: ApiService,
-    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit () {
@@ -47,15 +45,13 @@ export class InstitutionDetailsComponent implements OnInit {
   }
 
   /**
-   * display the details of an institution in a specific year
-   * @param item - the year that was clicked on the list of years
+   * when a user clicks the year button, the child component emits the variable year and the yearSelected event
+   * @param year 
    */
-  onYearClick(year: number): void{
-    this.loading = true;
+  onYearSelected (year: number) {
     this._api.getTypeRequest('church/' + this.itemId + '/' + year).subscribe((res: any) => {
-      this.processedData = res;
       this.loading = false;
-      this.cdr.detectChanges();
+      this.processedData = res;
     });
   }
 
@@ -64,6 +60,7 @@ export class InstitutionDetailsComponent implements OnInit {
    * for attending institutions and people, display all the relevant institutions/people and their years
    */
   processData () {
+    this.processedData.instName = this.data.churchInYear[this.data.churchInYear.length - 1].instName || '(Not Recorded)';
       this.processedData.instYear = []
       for (let i of this.data.churchInYear) {
         this.processedData.instYear.push(i.instYear);

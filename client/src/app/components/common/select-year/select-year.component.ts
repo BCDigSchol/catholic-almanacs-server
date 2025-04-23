@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -11,8 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class SelectYearComponent implements OnInit {
   @Input() years: number[] = [];
+  @Output() yearSelected = new EventEmitter<number>();
   
   ngOnInit() {
     console.log(this.years);
+  }
+
+  onYearClick(year: number) {
+    this.yearSelected.emit(year);
   }
 }

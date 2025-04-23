@@ -3,7 +3,7 @@
     <td><strong>Year</strong></td>
     <td>
         <div style="display: flex; flex-wrap: nowrap; gap: 8px;">
-            <button mat-button *ngFor="let year of years" class="custom-button">
+            <button mat-button *ngFor="let year of years" class="custom-button" (click)="onYearClick(year)">
             {{ year }}
             </button>
         </div>

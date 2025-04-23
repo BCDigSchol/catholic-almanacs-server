@@ -2,13 +2,13 @@
     <mat-card class="mx-2">
         <mat-card-header>
             <mat-card-title>
-                {{data.churchInYear[data.churchInYear.length - 1].instName}}
+                {{processedData.instName}}
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <table>
                 <tbody>
-                    <app-select-year [years]="processedData.instYear"></app-select-year>
+                    <app-select-year [years]="processedData.instYear" (yearSelected)="onYearSelected($event)"></app-select-year>
                     <tr>
                         <td class="custom-td">Institution ID</td>
                         <td>{{data.instID}}</td>
