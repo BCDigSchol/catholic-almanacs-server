@@ -40,7 +40,9 @@ export class BrowseInstitutionComponent implements OnInit {
     diocese: '',
     language: '',
     church_type: '',
-    instYear: null,
+    instStartYear: 1820,
+    instEndYear: 1880,
+    instYear: false,
     city_reg: '',
     persName: ''
   }
@@ -63,13 +65,24 @@ export class BrowseInstitutionComponent implements OnInit {
     queryString += this.filterBy.language ? `&language=${this.filterBy.language}` : '';
     queryString += this.filterBy.church_type ? `&church_type=${this.filterBy.church_type}` : '';
     queryString += this.filterBy.city_reg ? `&city_reg=${this.filterBy.city_reg}` : '';
-    queryString += this.filterBy.instYear ? `&instYear=${this.filterBy.instYear}` : '';
+    if (this.filterBy.instYear) {
+      queryString += this.filterBy.instStartYear ? `&instStartYear=${this.filterBy.instStartYear}` : '';
+      queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
+    }
 
     this.apiService.getTypeRequest('church'+ queryString).subscribe((res:any) => {
       this.data  = res.rows;
       this.totalItems = res.count;
       this.loading = false;
     })
+  }
+
+  /**
+   * runs when the slider is changed
+   */
+  getYearData () {
+    this.filterBy.instYear = true;
+    this.getData();
   }
 
   /**
@@ -86,7 +99,9 @@ export class BrowseInstitutionComponent implements OnInit {
    * reset year filter
    */
   resetYear () {
-    this.filterBy.instYear = null;
+    this.filterBy.instStartYear = 1820;
+    this.filterBy.instEndYear = 1880;
+    this.filterBy.instYear = false;
     this.getData();
   }
 }

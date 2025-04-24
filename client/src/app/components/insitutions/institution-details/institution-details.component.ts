@@ -51,7 +51,7 @@ export class InstitutionDetailsComponent implements OnInit {
   onYearSelected (year: number) {
     //this.loading = true;
     this._api.getTypeRequest('church/' + this.processedData.instID + '/' + year).subscribe((res: any) => {
-      console.log(this.processedData.instID);
+      //console.log(this.processedData.instID);
       this.loading = false;
       this.processedData = res;
     });

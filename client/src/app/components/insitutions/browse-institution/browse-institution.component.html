@@ -32,11 +32,12 @@
                     </div>
                     <div class="flex justify-between max-w-[250px]">
                         <label id="example-name-label" class="example-name-label">Year</label>
-                        <label class="example-value-label">{{filterBy.instYear || 'All Years'}}</label>
+                        <label class="example-value-label">{{filterBy.instStartYear + ' - ' + filterBy.instEndYear || 'All Years'}}</label>
                     </div>
                     <div class="flex flex-row justify-start items-center">
-                        <mat-slider class="mx-2" style="width:230px" min="1864" max="1870" step="1" [discrete]="true">
-                            <input matSliderThumb [(ngModel)]="filterBy.instYear" (input)="getData()">
+                        <mat-slider class="mx-2" style="width:230px" min="1820" max="1880" step="1">
+                            <input [(ngModel)]="filterBy.instStartYear" (input)="getYearData()" matSliderStartThumb>
+                            <input [(ngModel)]="filterBy.instEndYear" (input)="getYearData()" matSliderEndThumb>
                         </mat-slider>
                         <div>
                             <button mat-button class="mx-2" (click)="resetYear()" color="primary">Reset Year</button>
