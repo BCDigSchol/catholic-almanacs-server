@@ -2,8 +2,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('churches', {
-      instID: {
+    await queryInterface.createTable('institutions', {
+      ID: {
         type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true
@@ -18,13 +18,13 @@ module.exports = {
       }
     });
 
-    await queryInterface.addIndex('churches', ['instID'], {
+    await queryInterface.addIndex('institutions', ['ID'], {
       unique: true,
-      name: 'churches_instID_index',
+      name: 'institutions_ID_index',
     })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeIndex('churches', 'churches_instID_index');
-    await queryInterface.dropTable('churches');
+    await queryInterface.removeIndex('institutions', 'institutions_ID_index');
+    await queryInterface.dropTable('institutions');
   }
 };

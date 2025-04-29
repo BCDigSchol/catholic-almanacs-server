@@ -1,11 +1,11 @@
-// The "ground truth" (immutable property) of a church: instID
+// The "ground truth" (immutable property) of a institution: instID
 
 'use strict';
 const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class church extends Model {
+  class institution extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,24 +13,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      church.hasMany(models.churchInYear, { foreignKey: 'instID', as: 'churchInYear' });
+      institution.hasMany(models.almanacRecord, { foreignKey: 'ID', as: 'almanacRecord' });
     }
   }
-  church.init({
-    instID: {
+  institution.init({
+    ID: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     }
   }, {
     sequelize,
-    modelName: 'church',
+    modelName: 'institution',
     indexes: [
       {
-        fields:['instID'],
+        fields:['ID'],
         unique: true
       }
     ]
   });
-  return church;
+  return institution;
 };

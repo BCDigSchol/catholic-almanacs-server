@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('people', {
-      persID: {
+      ID: {
         type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true
@@ -18,13 +18,13 @@ module.exports = {
       }
     });
 
-    await queryInterface.addIndex('people', ['persID'], {
+    await queryInterface.addIndex('people', ['ID'], {
       unique: true,
-      name: 'idx_people_persID'
+      name: 'idx_people_ID'
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeIndex('people', 'idx_people_persID');
+    await queryInterface.removeIndex('people', 'idx_people_ID');
     await queryInterface.dropTable('people');
   }
 };

@@ -1,5 +1,3 @@
-// The unique identifier for a person across all churches: persID
-
 'use strict';
 const {
   Model
@@ -12,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      person.hasMany(models.personInYear, { foreignKey: 'persID', as: 'personInYear'});
+      person.hasMany(models.almanacRecord, { foreignKey: 'ID', as: 'almanacRecord' });
   }
 }
   person.init({
-    persID: {
+    ID: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
@@ -26,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'person',
     indexes: [
       {
-        fields: ['persID'],
+        fields: ['ID'],
         unique: true
       }
     ]

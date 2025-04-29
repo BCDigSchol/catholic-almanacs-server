@@ -1,10 +1,10 @@
 module.exports = app => {
-    const controller = require('../controllers/church.controller');
+    const controller = require('../controllers/institution.controller');
     var router = require('express').Router();
     //router.post('/', controller.create);
     router.get('/', controller.findAll);
     router.get('/:instID', controller.findByID);
     router.get('/:instID/:instYear', controller.findOne);
     router.delete('/:instID', controller.delete);
-    app.use('/api/church', router);
+    app.use('/api/institution', router);
 }

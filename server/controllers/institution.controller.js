@@ -2,31 +2,30 @@ const db = require("../models");
 const getPagination = require("../utils/get-pagination");
 const Op = db.Sequelize.Op;
 
-const churchInYear = db.churchInYear;
+const almanacRecord = db.almanacRecord;
 const person = db.person;
-const churchPerson = db.churchPerson;
-const church = db.church;
-const personInYear = db.personInYear;
+const personInAlmanacRecord = db.personInAlmanacRecord;
+const institution = db.institution;
 
 /*exports.create = (req, res) => {
     const churches = req.body;
 
-    const processedChurches = churches.map(church => {
-        const uniqueInstID = `${church.instYear}-${church.instID}`;
-        const uniqueAttendingInstID = church.uniqueAttendingInstID ? `${church.instYear}-${church.attendingInstID}` : null;
+    const processedChurches = churches.map(institution => {
+        const uniqueInstID = `${institution.year}-${institution.instID}`;
+        const uniqueAttendingInstID = institution.uniqueAttendingInstID ? `${institution.year}-${institution.attendingInstID}` : null;
         return {
-            ...church,
+            ...institution,
             uniqueInstID: uniqueInstID,
             uniqueAttendingInstID: uniqueAttendingInstID
         }});
 
-    churchInYear.bulkCreate(processedChurches)
+    almanacRecord.bulkCreate(processedChurches)
     .then(data => {
         res.send(data);
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || "An error occurred while creating the churchInYear."
+            message: err.message || "An error occurred while creating the almanacRecord."
         });
     });
 };*/
@@ -43,7 +42,7 @@ exports.findAll = async (req, res) => {
         let {limit, offset} = getPagination(page, size);
         let where = {};
         let persWhere = {};
-        let { instName, city_reg, diocese, instStartYear, instEndYear, language, church_type, persName, instID } = req.query;
+        let { instName, cityReg, diocese, instStartYear, instEndYear, language, instType, persName, instID } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
@@ -51,26 +50,26 @@ exports.findAll = async (req, res) => {
             where.diocese = { [Op.like]: `%${diocese}%` };
         };
         if (instStartYear && instEndYear) {
-            where.instYear = {
+            where.year = {
               [Op.between]: [instStartYear, instEndYear]
             };
           } else if (instStartYear) {
-            where.instYear = {
+            where.year = {
               [Op.gte]: instStartYear
             };
           } else if (instEndYear) {
-            where.instYear = {
+            where.year = {
               [Op.lte]: instEndYear
             };
         };
-        if (city_reg) {
-            where.city_reg = { [Op.like]: `%${city_reg}%` };
+        if (cityReg) {
+            where.cityReg = { [Op.like]: `%${cityReg}%` };
         };
         if (language) {
             where.language = { [Op.like]: `%${language}%` };
         };
-        if (church_type) {
-            where.church_type = { [Op.like]: `%${church_type}%` };
+        if (instType) {
+            where.instType = { [Op.like]: `%${instType}%` };
         };
         if (persName) {
             persWhere.persName = { [Op.like]: `%${persName}%` };
@@ -79,39 +78,39 @@ exports.findAll = async (req, res) => {
             where.instID = { [Op.like]: `%${instID}%` };
         };
         //console.log('-----------where', where);
-        const data = await church.findAndCountAll({
+        const data = await institution.findAndCountAll({
             limit: limit,
             offset: offset,
             distinct: true,
             attributes: ['instID'],
             include: [{
-                model: churchInYear,
-                as: 'churchInYear',
+                model: almanacRecord,
+                as: 'almanacRecord',
                 where: where,
                 required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0,
-                attributes: ['instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese'],
+                attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
                 include: [{
-                    model: churchInYear,
-                    as: 'attendingChurches',
-                    attributes: ['instID', 'instName', 'instYear'],
+                    model: almanacRecord,
+                    as: 'attendingInstitutions',
+                    attributes: ['instID', 'instName', 'year'],
                     through: {
-                        attributes: ['attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote']
+                        attributes: ['attendingFrequency', 'note']
                     }}, {
-                    model: churchInYear,
+                    model: almanacRecord,
                     as: 'attendedBy',
-                    attributes: ['instID', 'instName', 'instYear'],
+                    attributes: ['instID', 'instName', 'year'],
                     through: {
-                        attributes: ['attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote']
+                        attributes: ['attendingFrequency', 'note']
                     }}
                     ,{
-                    model: personInYear,
+                    model: person,
                     as: 'personInfo',
-                    where: persWhere,
                     required: Object.keys(persWhere).length > 0,
-                    attributes: ['persID', 'persName', 'persYear', 'persTitle', 'persSuffix', 'persNote'],
+                    attributes: ['persID'],
                     through: {
-                        model: churchPerson,
-                        attributes: []
+                        model: personInAlmanacRecord,
+                        where: persWhere,
+                        attributes: ['name','title', 'suffix', 'note'],
                     }
                 }
     ]}]});
@@ -119,12 +118,12 @@ exports.findAll = async (req, res) => {
             const personData = await person.findAll({
                 attributes: ['persID'],
                 include: [{
-                    model: churchInYear,
+                    model: almanacRecord,
                     where: where,
-                    as: 'church',
+                    as: 'institution',
                     attributes: ['uniqueInstID'], // one more redundant field
                     through:{
-                        model: churchPerson,
+                        model: personInAlmanacRecord,
                         where: persWhere,
                         attributes: ['persYear', 'persName', 'persTitle', 'persSuffix', 'persNote']
                     }
@@ -145,75 +144,75 @@ exports.findAll = async (req, res) => {
 
 exports.findByID = (req, res) => {
     const id = req.params.instID;
-    church.findOne({
+    institution.findOne({
         where: { instID: id },
         attributes: ['instID'],
         include: [{
-                model: churchInYear,
-                as: 'churchInYear',
-                attributes: ['instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese'],
+                model: almanacRecord,
+                as: 'almanacRecord',
+                attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
                 include: [{
-                    model: churchInYear,
+                    model: almanacRecord,
                     as: 'attendingChurches',
-                    attributes: ['instID', 'instName', 'instYear'],
+                    attributes: ['instID', 'instName', 'year'],
                     through: {
-                        attributes: []
+                        attributes: ['attendingFrequency', 'note']
                 }},{
-                    model: churchInYear,
+                    model: almanacRecord,
                     as: 'attendedBy',
-                    attributes: ['instID', 'instName', 'instYear', 'attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote'],
+                    attributes: ['instID', 'instName', 'year'],
                     through: {
-                        attributes: []
+                        attributes: ['attendingFrequency', 'note']
                 }},{
-                    model: personInYear,
+                    model: person,
                     as: 'personInfo',
-                    attributes: ['persID', 'persName', 'persYear', 'persTitle', 'persSuffix', 'persNote'],
+                    attributes: ['persID'],
                     through: {
-                        attributes: []
+                        attributes: ['name','title', 'suffix', 'note'],
                 }}]
         }]
     }).then(data => {
         if (!data) {
             res.status(404).send({
-                message: `Cannot find churchInYear with id=${id}.`
+                message: `Cannot find almanacRecord with id=${id}.`
             });
         } else {
             res.send(data);
         }
     }).catch(err => {
         res.status(500).send({
-            message: "Error retrieving churchInYear with id=" + id
+            message: "Error retrieving almanacRecord with id=" + id
         });
     });
 };
 
 exports.findOne = async (req, res) => {
     try {
-        const data = await churchInYear.findOne({
-            where: { instID: req.params.instID, instYear: req.params.instYear },
-            attributes: ['instID', 'instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese', 'attendingInstID', 'attendingChurch', 'attendingChurchFrequency'],
+        const data = await almanacRecord.findOne({
+            where: { instID: req.params.instID, year: req.params.year },
+            attributes: ['instID', 'instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
             include: [{
-                    model: churchInYear,
+                    model: almanacRecord,
                     as: 'attendingChurches',
-                    attributes: ['instID', 'instName', 'instYear'],
+                    attributes: ['instID', 'instName', 'year'],
                     through: {
-                        attributes: ['attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote']
+                        attributes: ['attendingFrequency', 'note']
                 }},{
-                    model: churchInYear,
+                    model: almanacRecord,
                     as: 'attendedBy',
-                    attributes: ['instID', 'instName', 'instYear', 'attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote'],
+                    attributes: ['instID', 'instName', 'year'],
                     through: {
-                        attributes: ['attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote']
+                        attributes: ['attendingFrequency', 'note']
                 }},]
             });
         if (data) {
-            const personData = await personInYear.findAll({
-                attributes: ['persID', 'persName', 'persYear', 'persTitle', 'persSuffix', 'persNote'],
+            const personData = await personInAlmanacRecord.findAll({
+                attributes: ['persID', 'name', 'title', 'suffix', 'note'],
                 include: [{
-                    model: churchInYear,
-                    where: { instID: req.params.instID, instYear: req.params.instYear },
+                    model: almanacRecord,
+                    where: { instID: req.params.instID, year: req.params.year },
                     attributes: [],
-                    as: 'churches',
+                    as: 'institution',
                     through: {
                         attributes:[]
                     }}]
@@ -228,22 +227,22 @@ exports.findOne = async (req, res) => {
 
 exports.delete = (req, res) => {
     const id = req.params.instID;
-    church.destroy({
+    institution.destroy({
         where: { instID: id }
     })
     .then(data => {
         if (!data) {
             res.status(404).send({
-                message: `Cannot delete churchInYear with id=${id}. Maybe churchInYear was not found!`
+                message: `Cannot delete almanacRecord with id=${id}. Maybe almanacRecord was not found!`
             });
         } else {
             res.send({
-                message: "churchInYear was deleted successfully!"
+                message: "almanacRecord was deleted successfully!"
             });
         }
     }).catch(err => {
         res.status(500).send({
-            message: "Could not delete churchInYear with id=" + id
+            message: "Could not delete almanacRecord with id=" + id
         });
     });
 };
