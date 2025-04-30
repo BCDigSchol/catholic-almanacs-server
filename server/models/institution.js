@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      institution.hasMany(models.almanacRecord, { foreignKey: 'ID', as: 'almanacRecord' });
+      institution.hasMany(models.almanacRecord, { foreignKey: 'instID', as: 'almanacRecord' });
     }
   }
   institution.init({

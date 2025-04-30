@@ -72,7 +72,7 @@ exports.findAll = async (req, res) => {
             where.instType = { [Op.like]: `%${instType}%` };
         };
         if (persName) {
-            persWhere.persName = { [Op.like]: `%${persName}%` };
+            persWhere.name = { [Op.like]: `%${persName}%` };
         };
         if (instID) {
             where.instID = { [Op.like]: `%${instID}%` };
@@ -82,7 +82,7 @@ exports.findAll = async (req, res) => {
             limit: limit,
             offset: offset,
             distinct: true,
-            attributes: ['instID'],
+            attributes: ['ID'],
             include: [{
                 model: almanacRecord,
                 as: 'almanacRecord',
@@ -106,7 +106,7 @@ exports.findAll = async (req, res) => {
                     model: person,
                     as: 'personInfo',
                     required: Object.keys(persWhere).length > 0,
-                    attributes: ['persID'],
+                    attributes: ['ID'],
                     through: {
                         model: personInAlmanacRecord,
                         where: persWhere,
@@ -143,33 +143,35 @@ exports.findAll = async (req, res) => {
 };
 
 exports.findByID = (req, res) => {
-    const id = req.params.instID;
+    const id = req.params.id;
     institution.findOne({
-        where: { instID: id },
-        attributes: ['instID'],
+        where: { ID: id },
+        attributes: ['ID'],
         include: [{
                 model: almanacRecord,
                 as: 'almanacRecord',
                 attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
                 include: [{
                     model: almanacRecord,
-                    as: 'attendingChurches',
+                    as: 'attendingInstitutions',
                     attributes: ['instID', 'instName', 'year'],
                     through: {
                         attributes: ['attendingFrequency', 'note']
-                }},{
+                    }}, {
                     model: almanacRecord,
                     as: 'attendedBy',
                     attributes: ['instID', 'instName', 'year'],
                     through: {
                         attributes: ['attendingFrequency', 'note']
-                }},{
+                    }}
+                    ,{
                     model: person,
                     as: 'personInfo',
-                    attributes: ['persID'],
+                    attributes: ['ID'],
                     through: {
+                        model: personInAlmanacRecord,
                         attributes: ['name','title', 'suffix', 'note'],
-                }}]
+                    }}]
         }]
     }).then(data => {
         if (!data) {
@@ -189,36 +191,30 @@ exports.findByID = (req, res) => {
 exports.findOne = async (req, res) => {
     try {
         const data = await almanacRecord.findOne({
-            where: { instID: req.params.instID, year: req.params.year },
-            attributes: ['instID', 'instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
-            include: [{
+            where: { instID: req.params.id, year: req.params.year },
+            attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
+                include: [{
                     model: almanacRecord,
-                    as: 'attendingChurches',
+                    as: 'attendingInstitutions',
                     attributes: ['instID', 'instName', 'year'],
                     through: {
                         attributes: ['attendingFrequency', 'note']
-                }},{
+                    }}, {
                     model: almanacRecord,
                     as: 'attendedBy',
                     attributes: ['instID', 'instName', 'year'],
                     through: {
                         attributes: ['attendingFrequency', 'note']
-                }},]
-            });
-        if (data) {
-            const personData = await personInAlmanacRecord.findAll({
-                attributes: ['persID', 'name', 'title', 'suffix', 'note'],
-                include: [{
-                    model: almanacRecord,
-                    where: { instID: req.params.instID, year: req.params.year },
-                    attributes: [],
-                    as: 'institution',
+                    }}
+                    ,{
+                    model: person,
+                    as: 'personInfo',
+                    attributes: ['ID'],
                     through: {
-                        attributes:[]
-                    }}]
-            });
-            data.dataValues.personInfo = personData;
-        };
+                        model: personInAlmanacRecord,
+                        attributes: ['name','title', 'suffix', 'note'],
+                    }
+                }]});
         res.send(data);
     } catch (error) {
         return res.status(500).json({ message: error.message });

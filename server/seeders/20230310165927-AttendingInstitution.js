@@ -16,20 +16,21 @@ module.exports = {
     }},
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('attendingInstitutiones', null, {});
+    await queryInterface.bulkDelete('attendingInstitutions', null, {});
   }
 };
 
 async function importData(data) {
+  //console.log('Data input:', data[0]);
 
   const attendingInstitutionKeys = ['uniqueInstID', 'uniqueAttendingInstID', 'attendingChurch', 'attendingChurchFrequency', 'attendingChurchNote'];
 
   const keyMapping = {
-    attendedInstRecordID: 'uniqueInstID',
-    attendingInstRecordID: 'uniqueAttendingInstID',
-    attendingInstName: 'attendingChurch',
-    attendingFrequency: 'attendingChurchFrequency',
-    note: 'attendingChurchNote'
+    uniqueInstID: 'attendedInstRecordID',
+    uniqueAttendingInstID: 'attendingInstRecordID',
+    attendingChurch: 'attendingInstName',
+    attendingChurchFrequency: 'attendingFrequency',
+    attendingChurchNote: 'note'
   };
 
   const attendingInstitutionInfo = data
@@ -42,10 +43,10 @@ async function importData(data) {
       });
       return filteredRow;
     });
+  
+  //console.log(attendingInstitutionInfo[0]);
 
   const uniqueAttendingInstitutionInfo = Array.from(new Map(attendingInstitutionInfo.map(item => [`${item.attendedInstRecordID}-${item.attendingInstRecordID}`, item])).values());
-
-  //console.log(uniqueattendingInstitutionInfo[0]);
   
   for (const item of uniqueAttendingInstitutionInfo) {
     if (item.attendedInstRecordID && item.attendingInstRecordID) {
@@ -61,6 +62,6 @@ async function importData(data) {
     }
   };
 
-  console.log(`Finished processing attendingInstitutiones`);
+  console.log(`Finished processing attendingInstitutions`);
 
 };

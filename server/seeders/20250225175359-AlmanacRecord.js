@@ -77,7 +77,7 @@ async function importData(data) {
     if (item.instID) {
       try{
         await institution.findOrCreate({
-          where: { ID: item.ID }
+          where: { ID: item.instID }
         });
       } catch (error) {
         console.log(`Error creating institution: ${item.instID}`, error);

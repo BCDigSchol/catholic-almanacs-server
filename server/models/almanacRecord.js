@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      almanacRecord.belongsToMany(models.person, { through: models.personInAlmanacRecord, foreignKey: 'ID', as: 'personInfo' });
-      almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'ID', as: 'attendingInstitutions'});
-      almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'ID', as: 'attendedBy'});
+      almanacRecord.belongsToMany(models.person, { through: models.personInAlmanacRecord, foreignKey: 'almanacRecordID', as: 'personInfo' });
+      almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'attendedInstRecordID', as: 'attendedBy'});
+      almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'attendingInstRecordID', as: 'attendingInstitutions'});
       almanacRecord.belongsTo(models.institution, { foreignKey: 'instID', as: 'institution' });
     }
   }

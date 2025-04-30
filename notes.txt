@@ -23,3 +23,5 @@ querying person with a page number is slower than expected
 improvements to be made:
 1. tables (personInYear unnecessary)
 2. improve controllers (an additional field of all the relevant people to an institution, attending institions and attended institutions)
+
+improve the search result json structure
