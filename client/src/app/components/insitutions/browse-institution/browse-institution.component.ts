@@ -39,11 +39,11 @@ export class BrowseInstitutionComponent implements OnInit {
     instName: '',
     diocese: '',
     language: '',
-    church_type: '',
-    instStartYear: 1820,
-    instEndYear: 1880,
+    instType: '',
+    instStartYear: 1860,
+    instEndYear: 1870,
     instYear: false,
-    city_reg: '',
+    cityReg: '',
     persName: ''
   }
 
@@ -63,14 +63,14 @@ export class BrowseInstitutionComponent implements OnInit {
     queryString += this.filterBy.persName ? `&persName=${this.filterBy.persName}` : '';
     queryString += this.filterBy.diocese ? `&diocese=${this.filterBy.diocese}` : '';
     queryString += this.filterBy.language ? `&language=${this.filterBy.language}` : '';
-    queryString += this.filterBy.church_type ? `&church_type=${this.filterBy.church_type}` : '';
-    queryString += this.filterBy.city_reg ? `&city_reg=${this.filterBy.city_reg}` : '';
+    queryString += this.filterBy.instType ? `&instType=${this.filterBy.instType}` : '';
+    queryString += this.filterBy.cityReg ? `&cityReg=${this.filterBy.cityReg}` : '';
     if (this.filterBy.instYear) {
       queryString += this.filterBy.instStartYear ? `&instStartYear=${this.filterBy.instStartYear}` : '';
       queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
     }
 
-    this.apiService.getTypeRequest('church'+ queryString).subscribe((res:any) => {
+    this.apiService.getTypeRequest('institution'+ queryString).subscribe((res:any) => {
       this.data  = res.rows;
       this.totalItems = res.count;
       this.loading = false;
@@ -99,8 +99,8 @@ export class BrowseInstitutionComponent implements OnInit {
    * reset year filter
    */
   resetYear () {
-    this.filterBy.instStartYear = 1820;
-    this.filterBy.instEndYear = 1880;
+    this.filterBy.instStartYear = 1860;
+    this.filterBy.instEndYear = 1870;
     this.filterBy.instYear = false;
     this.getData();
   }

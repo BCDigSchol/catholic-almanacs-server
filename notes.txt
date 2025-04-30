@@ -25,3 +25,7 @@ improvements to be made:
 2. improve controllers (an additional field of all the relevant people to an institution, attending institions and attended institutions)
 
 improve the search result json structure
+
+pagination when searching
+
+how to change the color of the slider

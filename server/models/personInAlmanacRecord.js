@@ -29,6 +29,12 @@ module.exports = (sequelize, DataTypes) => {
       {
         unique: true,
         fields: ['almanacRecordID', 'persID'],
+      },
+      {
+        fields: ['name'],
+      },
+      {
+        fields: ['persID'],
       }
     ]
     }

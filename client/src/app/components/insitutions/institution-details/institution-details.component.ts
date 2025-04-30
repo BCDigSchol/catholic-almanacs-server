@@ -36,7 +36,7 @@ export class InstitutionDetailsComponent implements OnInit {
   }
 
   getData () {
-    this._api.getTypeRequest('church/' + this.itemId).subscribe((res: any) => {
+    this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
       this.processData();
@@ -50,10 +50,12 @@ export class InstitutionDetailsComponent implements OnInit {
    */
   onYearSelected (year: number) {
     //this.loading = true;
-    this._api.getTypeRequest('church/' + this.processedData.instID + '/' + year).subscribe((res: any) => {
-      //console.log(this.processedData.instID);
+    this._api.getTypeRequest('institution/' + this.processedData.instID + '/' + year).subscribe((res: any) => {
       this.loading = false;
-      this.processedData = res;
+      const yearTemp = this.processedData.year;
+      this.processedData = res.almanacRecord[0];
+      this.processedData.instID = res.ID;
+      this.processedData.year = yearTemp;
     });
   }
 
@@ -62,51 +64,55 @@ export class InstitutionDetailsComponent implements OnInit {
    * for attending institutions and people, display all the relevant institutions/people and their years
    */
   processData () {
-    this.processedData.instID = this.data.instID;
-    this.processedData.instName = this.data.churchInYear[this.data.churchInYear.length - 1].instName || '(Not Recorded)';
-      this.processedData.instYear = []
-      for (let i of this.data.churchInYear) {
-        this.processedData.instYear.push(i.instYear);
-      }
-      this.processedData.church_type = this.data.churchInYear[this.data.churchInYear.length - 1].church_type || '(Not Recorded)';
-      this.processedData.language = this.data.churchInYear[this.data.churchInYear.length - 1].language || '(Not Recorded)';
-      this.processedData.diocese = this.data.churchInYear[this.data.churchInYear.length - 1].diocese || '(Not Recorded)';
-      this.processedData.city_reg = this.data.churchInYear[this.data.churchInYear.length - 1].city_reg || '(Not Recorded)';
-      this.processedData.state_orig = this.data.churchInYear[this.data.churchInYear.length - 1].state_orig || '(Not Recorded)';
-      this.processedData.instNote = this.data.churchInYear[this.data.churchInYear.length - 1].instNote || '(Not Recorded)';
-      this.processedData.attendingChurches = this.data.churchInYear[this.data.churchInYear.length - 1].attendingChurches || '(Not Recorded)';
-      this.processedData.attendedBy = this.data.churchInYear[this.data.churchInYear.length - 1].attendedBy || '(Not Recorded)';
-      this.processedData.personInfo = this.data.churchInYear[this.data.churchInYear.length - 1].personInfo || '(Not Recorded)';
+    this.processedData.instID = this.data.ID;
+    this.processedData.instName = this.data.almanacRecord[this.data.almanacRecord.length - 1].instName || '(Not Recorded)';
+    this.processedData.year = [];
+    for (let i of this.data.almanacRecord) {
+      this.processedData.year.push(i.year);
+    };
+    this.processedData.instType = this.data.almanacRecord[this.data.almanacRecord.length - 1].instType || '(Not Recorded)';
+    this.processedData.language = this.data.almanacRecord[this.data.almanacRecord.length - 1].language || '(Not Recorded)';
+    this.processedData.diocese = this.data.almanacRecord[this.data.almanacRecord.length - 1].diocese || '(Not Recorded)';
+    this.processedData.cityReg = this.data.almanacRecord[this.data.almanacRecord.length - 1].cityReg || '(Not Recorded)';
+    this.processedData.stateOrig = this.data.almanacRecord[this.data.almanacRecord.length - 1].stateOrig || '(Not Recorded)';
+    this.processedData.instNote = this.data.almanacRecord[this.data.almanacRecord.length - 1].instNote || '(Not Recorded)';
+    this.processedData.attendingInstitutions = this.data.almanacRecord[this.data.almanacRecord.length - 1].attendingInstitutions || '(Not Recorded)';
+    this.processedData.attendedBy = this.data.almanacRecord[this.data.almanacRecord.length - 1].attendedBy || '(Not Recorded)';
+    this.processedData.personInfo = this.data.almanacRecord[this.data.almanacRecord.length - 1].personInfo || '(Not Recorded)';
   
 
-      for (let i of this.data.churchInYear) {
-        for (let pers of i.personInfo) {
-          if (!this.processedData.personInfo.some((exisitingPers: any) => exisitingPers.persID === pers.persID)) {
-            this.processedData.personInfo.push(pers);
-          }
+    for (let i of this.data.almanacRecord) {
+      for (let pers of i.personInfo) {
+        if (!this.processedData.personInfo.some((exisitingPers: any) => exisitingPers.ID === pers.ID)) {
+          this.processedData.personInfo.push(pers);
         }
       }
+    }
+  
+    //console.log(this.processedData.personInfo);
 
-      for (let i of this.data.churchInYear) {
-        for (let inst of i.attendingChurches) {
-          if (!this.processedData.attendingChurches.some((exisitingInst: any) => exisitingInst.instID === inst.instID)) {
-            this.processedData.attendingChurches.push(inst);
-          }
+    for (let i of this.data.almanacRecord) {
+      for (let inst of i.attendingInstitutions) {
+        if (!this.processedData.attendingInstitutions.some((exisitingInst: any) => exisitingInst.instID === inst.instID)) {
+          this.processedData.attendingInstitutions.push(inst);
         }
       }
+    }
 
-      for (let i of this.data.churchInYear) {
-        for (let inst of i.attendedBy) {
-          if (!this.processedData.attendedBy.some((exisitingInst: any) => exisitingInst.instID === inst.instID)) {
-            this.processedData.attendedBy.push(inst);
-          }
+    //console.log(this.processedData.attendingInstitutions);
+
+    for (let i of this.data.almanacRecord) {
+      for (let inst of i.attendedBy) {
+        if (!this.processedData.attendedBy.some((exisitingInst: any) => exisitingInst.instID === inst.instID)) {
+          this.processedData.attendedBy.push(inst);
         }
       }
+    }
   }
 
   onInstitutionClick(item: any): void{
     this.loading = true;
-    this._api.getTypeRequest('church/' + item.instID).subscribe((res: any) => {
+    this._api.getTypeRequest('institution/' + item.instID).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
       this.processData();

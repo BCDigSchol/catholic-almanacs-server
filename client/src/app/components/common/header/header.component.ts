@@ -17,7 +17,7 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  title = "Catholic Almanacs";
+  title = "Catholic Almanacs Database";
 
   navItems = [{
     name: 'Home',

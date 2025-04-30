@@ -49,6 +49,17 @@ module.exports = {
       type: 'unique',
       name: 'unique_personInAlmanacRecord_constraint'
     });
+    await queryInterface.addIndex('personInAlmanacRecords', ['almanacRecordID', 'persID'], {
+      unique: true,
+      name: 'idx_personInAlmanacRecords_almanacRecordID_persID'
+    });
+    await queryInterface.addIndex('personInAlmanacRecords', ['name'], {
+      name: 'idx_personInAlmanacRecords_name'
+    });
+    await queryInterface.addIndex('personInAlmanacRecords', ['persID'], {
+      name: 'idx_personInAlmanacRecords_persID'
+    });
+
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('personInAlmanacRecords');

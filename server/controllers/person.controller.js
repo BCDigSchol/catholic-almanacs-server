@@ -4,10 +4,9 @@ const Op = db.Sequelize.Op;
 
 const getPagination = require("../utils/get-pagination");
 
-const churchInYear = db.churchInYear;
-const churchPerson = db.churchPerson;
+const almanacRecord = db.almanacRecord;
+const personInAlmanac = db.personInAlmanac;
 const person = db.person;
-const personInYear = db.personInYear;
 
 /*exports.create = (req, res) => {
     const persons = req.body;
@@ -41,9 +40,9 @@ exports.findAll = (req, res) => {
     let {limit, offset} = getPagination(page, size);
     let persWhere = {};
     let instWhere = {};
-    let { persName, instName, diocese, persYear } = req.query;
+    let { persName, instName, diocese, year } = req.query;
     if (persName) {
-        persWhere.persName = { [Op.like]: `%${persName}%` };
+        persWhere.name = { [Op.like]: `%${persName}%` };
     };
     if (instName) {
         instWhere.instName = { [Op.like]: `%${instName}%` };
@@ -51,32 +50,25 @@ exports.findAll = (req, res) => {
     if (diocese) {
         instWhere.diocese = { [Op.like]: `%${diocese}%` };
     };
-    if (persYear) {
-        persWhere.persYear = { [Op.like]: `%${persYear}%` };
+    if (year) {
+        instWhere.year = { [Op.like]: `%${year}%` };
     }
     person.findAndCountAll({
         limit: limit,
         offset: offset,
         distinct: true,
-        attributes: ['persID'],
+        attributes: ['ID'],
         include: [
             {
-                model: personInYear,
-                where: persWhere,
-                as: 'personInYear',
-                attributes: ['persYear', 'persName', 'persTitle', 'persSuffix', 'persNote'],
-                include: [
-                    {
-                        model: churchInYear,
-                        where: instWhere,
-                        as: 'churches',
-                        attributes: ['instID', 'instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese'],
-                        through: {
-                            model: churchPerson,
-                            attributes: []
-                        }
-                    }
-                ]
+                model: almanacRecord,
+                where: instWhere,
+                as: 'almanacRecords',
+                attributes: ['instID','instName','year','diocese'],
+                through: {
+                    model: personInAlmanac,
+                    where: persWhere,
+                    attributes: ['name', 'title', 'suffix', 'note']
+                }
             }
         ]
     }).then(data => {
@@ -89,25 +81,20 @@ exports.findAll = (req, res) => {
 };
 
 exports.findByID = (req, res) => {
-    const id = req.params.persID;
+    const id = req.params.id;
     person.findAll({
-        where: { persID: id },
-        attributes: ['persID'],
+        where: { ID: id },
+        attributes: ['ID'],
         include: [
             {
-                model: personInYear,
-                as: 'personInYear',
-                attributes: ['persYear', 'persName', 'persTitle', 'persSuffix', 'persNote'],
-                include: [{
-                    model: churchInYear,
-                    as: 'churches',
-                    attributes: ['instID', 'instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese'],
-                    through: {
-                        model: churchPerson,
-                        attributes: []
-                    }}]
-            }]
-            }
+                model: almanacRecord,
+                as: 'almanacRecords',
+                attributes: ['instID','instName','year','diocese'],
+                through: {
+                    model: personInAlmanac,
+                    attributes: ['name', 'title', 'suffix', 'note']
+                }
+            }]}
     ).then(data => {
         if (!data) {
             res.status(404).send({
@@ -124,19 +111,20 @@ exports.findByID = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    personInYear.findOne({
-        where: { persID: req.params.persID, persYear: req.params.persYear },
-        attributes: ['persID', 'persName', 'persYear', 'persTitle', 'persSuffix', 'persNote'],
-        include: [
-            {
-                model: churchInYear,
-                as: 'churches',
-                attributes: ['instID', 'instName', 'instYear', 'language', 'church_type', 'instNote', 'city_reg', 'state_orig', 'diocese'],
-                through: {
-                    model: churchPerson,
-                    attributes: []
-            }}
-        ]
+    console.log(req.params.id, req.params.year);
+    person.findOne({
+        attributes: ['ID'],
+        include: [{
+            model: almanacRecord,
+            as: 'almanacRecords',
+            where: { year: req.params.year },
+            attributes: ['instID','instName','year','diocese'],
+            through: {
+                model: personInAlmanac,
+                where: { persID: req.params.id },
+                attributes: ['name', 'title', 'suffix', 'note']
+            }
+        }]
     }).then(data => {
         if (!data) {
             res.status(404).send({

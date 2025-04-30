@@ -8,14 +8,14 @@
         <mat-card-content>
             <table>
                 <tbody>
-                    <app-select-year [years]="processedData.instYear" (yearSelected)="onYearSelected($event)"></app-select-year>
+                    <app-select-year [years]="processedData.year" (yearSelected)="onYearSelected($event)"></app-select-year>
                     <tr>
                         <td class="custom-td">Institution ID</td>
-                        <td>{{data.instID}}</td>
+                        <td>{{data.ID}}</td>
                     </tr>
                     <tr>
                         <td class="custom-td">Institution Type</td>
-                        <td>{{processedData.church_type}}</td>
+                        <td>{{processedData.instType}}</td>
                     </tr>
                     <tr>
                         <td class="custom-td">Language</td>
@@ -27,11 +27,11 @@
                     </tr>
                     <tr>
                         <td class="custom-td">State</td>
-                        <td>{{processedData.state_orig}}</td>
+                        <td>{{processedData.stateOrig}}</td>
                     </tr>
                     <tr>
                         <td class="custom-td">City</td>
-                        <td>{{processedData.city_reg}}</td>
+                        <td>{{processedData.cityReg}}</td>
                     </tr>
                     <tr>
                         <td class="custom-td">Notes</td>
@@ -42,7 +42,7 @@
                         <td>
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                 <button mat-button class="custom-button" *ngFor="let item of processedData.personInfo">
-                                    <div [routerLink]="'/people' + item.persID">{{item.persTitle + ' ' + item.persName}}</div>
+                                    <div [routerLink]="'/people' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
                                 </button>
                             </div>
                             <div *ngIf="processedData.personInfo.length === 0">None</div>
@@ -52,11 +52,11 @@
                         <td class="custom-td">Attending Institutions</td>
                         <td>
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of processedData.attendingChurches" (click)="onInstitutionClick(item)">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.attendingInstitutions" (click)="onInstitutionClick(item)">
                                     <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                 </button>
                             </div>
-                            <div *ngIf="processedData.attendingChurches.length === 0">None</div>
+                            <div *ngIf="processedData.attendingInstitutions.length === 0">None</div>
                         </td>
                     </tr>
                     <tr>
