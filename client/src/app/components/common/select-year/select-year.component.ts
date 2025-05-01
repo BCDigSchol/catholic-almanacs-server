@@ -11,7 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class SelectYearComponent implements OnInit {
   @Input() years: number[] = [];
-  @Output() yearSelected = new EventEmitter<number>();
+  @Output() yearSelected = new EventEmitter<number | string>();
+  selectedYear: number | string = 'All';
   
   ngOnInit() {
     //console.log(this.years);
@@ -19,5 +20,11 @@ export class SelectYearComponent implements OnInit {
 
   onYearClick(year: number) {
     this.yearSelected.emit(year);
+    this.selectedYear = year;
   }
+
+  onAllYearsClick() {
+    this.selectedYear = 'All';
+    this.yearSelected.emit('All');
+}
 }

@@ -1,0 +1,25 @@
+:host mat-card-title{
+    font-family: "Tagesschrift", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+:host .custom-button {
+    background-color: white;
+    color: #405B8C
+}
+
+:host table {
+    width: 100%;
+    border-collapse: collapse;
+    line-height: 2.0; 
+    font-family: "Rubik", sans-serif;
+    font-size: 14px; 
+}
+
+:host .custom-td {
+    font-weight: bold;
+    font-size: 15px;
+    width: 150px;
+    padding-right: 20px;
+}

@@ -37,10 +37,10 @@ totalItems = 0;
 // filter variables
 filterBy: any = {
   persName: '',
-  city_reg: '',
+  cityReg: '',
   diocese: '',
   instName: '',
-  persYear: null,
+  year: null,
 }
 
 constructor(public apiService: ApiService) {}
@@ -55,11 +55,11 @@ ngOnInit () {
 getData () {
 
   let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
-  queryString += this.filterBy.persName ? `&persName=${this.filterBy.persName}` : '';
-  queryString += this.filterBy.city_reg ? `&city_reg=${this.filterBy.city_reg}` : '';
+  queryString += this.filterBy.name ? `&persName=${this.filterBy.name}` : '';
+  queryString += this.filterBy.cityReg ? `&cityReg=${this.filterBy.cityReg}` : '';
   queryString += this.filterBy.diocese ? `&diocese=${this.filterBy.diocese}` : '';
   queryString += this.filterBy.instName ? `&instName=${this.filterBy.instName}` : '';
-  queryString += this.filterBy.persYear ? `&persYear=${this.filterBy.persYear}` : '';
+  queryString += this.filterBy.year ? `&year=${this.filterBy.year}` : '';
 
   this.apiService.getTypeRequest('person'+ queryString).subscribe((res:any) => {
     this.data  = res.rows;
@@ -82,22 +82,36 @@ changePage (e: PageEvent) {
  * reset year filter
  */
 resetYear () {
-  this.filterBy.persYear = null;
+  this.filterBy.year = null;
   this.getData();
 }
 
 /**
  * return unique dioceses to be displayed for each person
- * @param churches 
- */
-getUniqueDioceses(churches: any[]): any[] {
+ * @param institutions 
+ *
+getUniqueDioceses(institutions: any[]): any[] {
   const uniqueDioceses = new Set<string>();
-  return churches.filter(church => {
-    if (!uniqueDioceses.has(church.diocese)) {
-      uniqueDioceses.add(church.diocese);
+  return institutions.filter(institution => {
+    if (!uniqueDioceses.has(institution.diocese)) {
+      uniqueDioceses.add(institution.diocese);
       return true;
     }
     return false;
   })
+} */
+
+/**
+ * return unique years to be displayed for each person
+ * @param records 
+ */
+getUniqueYears(records: any[]): any[] {
+  const uniqueYears = new Set<number>();
+  records.forEach(record => {
+    if (record.year && !uniqueYears.has(record.year)) {
+      uniqueYears.add(record.year);
+    }
+  });
+  return Array.from(uniqueYears);
 }
 }

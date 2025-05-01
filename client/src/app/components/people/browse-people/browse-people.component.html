@@ -7,11 +7,11 @@
                     <div class="flex flex-wrap md:flex-nowrap justify-start items-center">
                         <mat-form-field class="mx-2 w-full sm:w-auto">
                             <mat-label>Filter by Person Name</mat-label>
-                            <input matInput [(ngModel)]="filterBy.persName" (input)="getData()">
+                            <input matInput [(ngModel)]="filterBy.name" (input)="getData()">
                         </mat-form-field>
                         <mat-form-field class="mx-2 w-full sm:w-auto">
                             <mat-label>Filter by City</mat-label>
-                            <input matInput [(ngModel)]="filterBy.city_reg" (input)="getData()">
+                            <input matInput [(ngModel)]="filterBy.cityReg" (input)="getData()">
                         </mat-form-field>
                         <mat-form-field class="mx-2 w-full sm:w-auto">
                             <mat-label>Filter by Diocese</mat-label>
@@ -24,11 +24,11 @@
                     </div>
                     <div class="flex justify-between max-w-[250px]">
                         <label id="example-name-label" class="example-name-label">Year</label>
-                        <label class="example-value-label">{{filterBy.persYear || 'All Years'}}</label>
+                        <label class="example-value-label">{{filterBy.year || 'All Years'}}</label>
                     </div>
                     <div class="flex flex-row justify-start items-center">
                         <mat-slider class="mx-2" style="width:230px" min="1864" max="1870" step="1" [discrete]="true">
-                            <input matSliderThumb [(ngModel)]="filterBy.persYear" (input)="getData()">
+                            <input matSliderThumb [(ngModel)]="filterBy.year" (input)="getData()">
                         </mat-slider>
                         <div>
                             <button mat-button class="mx-2" (click)="resetYear()" color="primary">Reset Year</button>
@@ -49,9 +49,9 @@
     </div>
 
     <mat-card *ngFor="let item of data" class="my-5">
-        <mat-card-header [routerLink]="'/people/' + item.persID" style="cursor: pointer;">
+        <mat-card-header [routerLink]="'/people/' + item.ID" style="cursor: pointer;">
             <mat-card-title>
-                {{ item.personInYear[item.personInYear.length - 1].persTitle + ' ' + item.personInYear[item.personInYear.length - 1]?.persName }}
+                {{ item.almanacRecords[item.almanacRecords.length - 1].personInAlmanacRecord.title + ' ' + item.almanacRecords[item.almanacRecords.length - 1]?.personInAlmanacRecord.name }}
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -59,19 +59,17 @@
                 <mat-list-item>
                     <mat-icon matListItemIcon>description</mat-icon>
                     <div matListItemTitle>
-                        ID: {{ item.persID }}
+                        ID: {{ item.ID }}
                     </div>
                     <div matListItemLine>
                         Years In Records:
-                        <span *ngFor="let c of item.personInYear">
-                            {{ c.persYear }} 
+                        <span *ngFor="let year of getUniqueYears(item.almanacRecords)">
+                            {{ year }} 
                         </span>
                     </div>
                     <div matListItemLine>
-                        Diocese (in {{item.personInYear[item.personInYear.length - 1].persYear}}):
-                        <span *ngFor="let c of getUniqueDioceses(item.personInYear[item.personInYear.length - 1]?.churches)">
-                            {{ c.diocese }}
-                        </span>
+                        Diocese (in {{item.almanacRecords[item.almanacRecords.length - 1].year}}):
+                        {{ item.almanacRecords[item.almanacRecords.length - 1].diocese }}
                     </div>
                 </mat-list-item>
             </mat-list>

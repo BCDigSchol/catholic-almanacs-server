@@ -48,15 +48,18 @@ export class InstitutionDetailsComponent implements OnInit {
    * when a user clicks the year button, the child component emits the variable year and the yearSelected event
    * @param year 
    */
-  onYearSelected (year: number) {
+  onYearSelected (year: number | string) {
     //this.loading = true;
-    this._api.getTypeRequest('institution/' + this.processedData.instID + '/' + year).subscribe((res: any) => {
+    if (year === 'All') {
+      this.getData();
+    } else {
+      this._api.getTypeRequest('institution/' + this.processedData.instID + '/' + year).subscribe((res: any) => {
       this.loading = false;
       const yearTemp = this.processedData.year;
       this.processedData = res.almanacRecord[0];
       this.processedData.instID = res.ID;
       this.processedData.year = yearTemp;
-    });
+    })};
   }
 
   /**

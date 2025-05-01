@@ -40,13 +40,16 @@ exports.findAll = (req, res) => {
     let {limit, offset} = getPagination(page, size);
     let persWhere = {};
     let instWhere = {};
-    let { persName, instName, diocese, year } = req.query;
+    let { persName, instName, diocese, cityReg, year } = req.query;
     if (persName) {
         persWhere.name = { [Op.like]: `%${persName}%` };
     };
     if (instName) {
         instWhere.instName = { [Op.like]: `%${instName}%` };
     };
+    if (cityReg) {
+        instWhere.cityReg = { [Op.like]: `%${cityReg}%` };
+    }
     if (diocese) {
         instWhere.diocese = { [Op.like]: `%${diocese}%` };
     };
@@ -63,7 +66,7 @@ exports.findAll = (req, res) => {
                 model: almanacRecord,
                 where: instWhere,
                 as: 'almanacRecords',
-                attributes: ['instID','instName','year','diocese'],
+                attributes: ['instID','instName','year','cityReg', 'diocese'],
                 through: {
                     model: personInAlmanac,
                     where: persWhere,
@@ -89,7 +92,7 @@ exports.findByID = (req, res) => {
             {
                 model: almanacRecord,
                 as: 'almanacRecords',
-                attributes: ['instID','instName','year','diocese'],
+                attributes: ['instID','instName','year','cityReg', 'diocese'],
                 through: {
                     model: personInAlmanac,
                     attributes: ['name', 'title', 'suffix', 'note']
@@ -118,7 +121,7 @@ exports.findOne = (req, res) => {
             model: almanacRecord,
             as: 'almanacRecords',
             where: { year: req.params.year },
-            attributes: ['instID','instName','year','diocese'],
+            attributes: ['instID','instName','year', 'cityReg', 'diocese'],
             through: {
                 model: personInAlmanac,
                 where: { persID: req.params.id },

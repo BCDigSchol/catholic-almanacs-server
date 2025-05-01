@@ -1,0 +1,43 @@
+<div *ngIf="!loading">
+    <mat-card class="mx-2">
+        <mat-card-header>
+            <mat-card-title>
+                {{processedData.name}}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+                <tbody>
+                    <app-select-year [years]="processedData.year" (yearSelected)="onYearSelected($event)"></app-select-year>
+                    <tr>
+                        <td class="custom-td">Person ID</td>
+                        <td>{{processedData.persID}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Title</td>
+                        <td>{{processedData.title}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Suffix</td>
+                        <td>{{processedData.suffix}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Notes</td>
+                        <td>{{processedData.note}}</td>
+                    </tr>
+                    <tr>
+                        <td class="custom-td">Relevant Institutions</td>
+                        <td>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.almanacRecords">
+                                    <div [routerLink]="'/institution/' + item.instID">{{item.instName}}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.almanacRecords.length === 0">None</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

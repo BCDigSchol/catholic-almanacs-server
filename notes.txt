@@ -29,3 +29,9 @@ improve the search result json structure
 pagination when searching
 
 how to change the color of the slider
+
+take down the old server?
+
+person -- getUniqueDiocese
+
+router link for inst to pers or pers to inst
