@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use "tailwindcss" as *;
+@use '@angular/material' as mat;
 
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
@@ -15,3 +16,38 @@ body {
     background-color: #FDFDFF; 
 }
 
+:root {
+    @include mat.slider-overrides((
+        handle-color: #405B8C,
+        active-track-color: #405B8C,
+    ));
+}
+
+
+.table {
+    display: table;
+    border-spacing: 10px;
+}
+
+.table .table-body {
+    display: table-row-group;
+}
+
+.table .row {
+    display: table-row;
+}
+
+.table .row .cell {
+    display: table-cell;
+}
+
+.formatted-table .row .cell:nth-child(1) {
+    width: 300px;
+    font-weight: bold;
+}
+
+.custom-font {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}

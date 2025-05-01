@@ -1,7 +1,12 @@
 :host .header{
     font-family: "Rubik", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;
+    font-weight: 430;
     font-style: normal;
-    color: #405B8C;
+    color: rgba(250, 249, 253, 0.938);
+    background-color: #405B8C;
+}
+
+:host .menu-button{
+    color: rgba(250, 249, 253, 0.938)
 }

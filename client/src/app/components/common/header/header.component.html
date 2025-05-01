@@ -1,11 +1,11 @@
-<mat-toolbar>
-    <div class="w-full header text-sm md:text-2xl">{{ title }}</div>
-    <div class="text-blue-500">
-        <button mat-button [matMenuTriggerFor]="navmenu">
+<div class="header flex flex-row justify-start w-full items-center p-4">
+    <div class="w-full text-sm md:text-2xl">{{ title }}</div>
+    <div>
+        <button mat-button [matMenuTriggerFor]="navmenu" class="menu-button">
             <mat-icon fontIcon="menu"></mat-icon>
         </button>
         <mat-menu #navmenu="matMenu">
             <button *ngFor="let item of navItems" mat-menu-item [routerLink]="item.route">{{ item.name }}</button>
         </mat-menu>
     </div>
-</mat-toolbar>
+</div>

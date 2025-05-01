@@ -50,12 +50,22 @@ export class PersonDetailsComponent implements OnInit{
     } else {
       this._api.getTypeRequest('person/' + this.processedData.persID + '/' + year).subscribe((res: any) => {
       this.loading = false;
-      this.processedData.persID = res.ID;
       this.processedData.name = res.almanacRecords[0].personInAlmanacRecord.name || '(Not Recorded)';
       this.processedData.title = res.almanacRecords[0].personInAlmanacRecord.title || '(Not Recorded)';
       this.processedData.suffix = res.almanacRecords[0].personInAlmanacRecord.suffix || '(Not Recorded)';
       this.processedData.note = res.almanacRecords[0].personInAlmanacRecord.note || '(Not Recorded)';
-    })};
+      let uniqueAlmanacRecords = new Set();
+      this.processedData.almanacRecords = [];
+      console.log(res.almanacRecords);
+      for (let i = res.almanacRecords.length - 1; i >= 0; i--) {
+        const record = res.almanacRecords[i];
+        console.log(record);
+        if (record.instID && !uniqueAlmanacRecords.has(record.instID)) {
+          uniqueAlmanacRecords.add(record.instID);
+          this.processedData.almanacRecords.push(record);
+        }
+      }
+      })};
   }
 
   processData () {
@@ -72,6 +82,14 @@ export class PersonDetailsComponent implements OnInit{
         this.processedData.year.push(i.year);
       }
     };
-    this.processedData.almanacRecords = this.data.almanacRecords;
+    let uniqueAlmanacRecords = new Set();
+    this.processedData.almanacRecords = [];
+    for (let i = this.data.almanacRecords.length - 1; i >= 0; i--) {
+      const record = this.data.almanacRecords[i];
+      if (record.instID && !uniqueAlmanacRecords.has(record.instID)) {
+        uniqueAlmanacRecords.add(record.instID);
+        this.processedData.almanacRecords.push(record);
+      }
+    }
   };
 }

@@ -6,6 +6,40 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
+            <app-select-year [years]="processedData.year" (yearSelected)="onYearSelected($event)"></app-select-year>
+            <div class="table formatted-table custom-font">
+                <div class="table-body">
+                    <div class="row">
+                        <div class="cell">Person ID</div>
+                        <div class="cell">{{processedData.persID}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Title</div>
+                        <div class="cell">{{processedData.title}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Suffix</div>
+                        <div class="cell">{{processedData.suffix}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Notes</div>
+                        <div class="cell">{{processedData.note}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Relevant Institutions</div>
+                        <div class="cell">
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.almanacRecords">
+                                    <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.almanacRecords.length === 0">None</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
             <table>
                 <tbody>
                     <app-select-year [years]="processedData.year" (yearSelected)="onYearSelected($event)"></app-select-year>
@@ -30,7 +64,7 @@
                         <td>
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                 <button mat-button class="custom-button" *ngFor="let item of processedData.almanacRecords">
-                                    <div [routerLink]="'/institution/' + item.instID">{{item.instName}}</div>
+                                    <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                 </button>
                             </div>
                             <div *ngIf="processedData.almanacRecords.length === 0">None</div>
@@ -40,4 +74,4 @@
             </table>
         </mat-card-content>
     </mat-card>
-</div>
+</div> -->

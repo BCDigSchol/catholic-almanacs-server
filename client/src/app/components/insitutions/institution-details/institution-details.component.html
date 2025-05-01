@@ -6,9 +6,78 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <table>
+            <app-select-year [years]="processedData.year" (yearSelected)="onYearSelected($event)"></app-select-year>
+            <div class="table formatted-table custom-font">
+                <div class="table-body">
+                    <div class="row">
+                        <div class="cell">Institution ID</div>
+                        <div class="cell">{{processedData.instID}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Institution Type</div>
+                        <div class="cell">{{processedData.instType}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Language</div>
+                        <div class="cell">{{processedData.language}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Diocese</div>
+                        <div class="cell">{{processedData.diocese}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">State</div>
+                        <div class="cell">{{processedData.stateOrig}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">City</div>
+                        <div class="cell">{{processedData.cityReg}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Notes</div>
+                        <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{processedData.instNote}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Relevant People</div>
+                        <div class="cell">
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.personInfo">
+                                    <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.personInfo.length === 0">None</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Attending Institutions</div>
+                        <div class="cell">
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.attendingInstitutions" (click)="onInstitutionClick(item)">
+                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.attendingInstitutions.length === 0">None</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Attended By</div>
+                        <div class="cell">
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <button mat-button class="custom-button" *ngFor="let item of processedData.attendedBy" (click)="onInstitutionClick(item)">
+                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                </button>
+                            </div>
+                            <div *ngIf="processedData.attendedBy.length === 0">None</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+            <!-- <table>
                 <tbody>
-                    <app-select-year [years]="processedData.year" (yearSelected)="onYearSelected($event)"></app-select-year>
                     <tr>
                         <td class="custom-td">Institution ID</td>
                         <td>{{data.ID}}</td>
@@ -42,7 +111,7 @@
                         <td>
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                 <button mat-button class="custom-button" *ngFor="let item of processedData.personInfo">
-                                    <div [routerLink]="'/people' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
+                                    <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
                                 </button>
                             </div>
                             <div *ngIf="processedData.personInfo.length === 0">None</div>
@@ -74,4 +143,4 @@
             </table>
         </mat-card-content>
     </mat-card>
-</div>
+</div> -->
