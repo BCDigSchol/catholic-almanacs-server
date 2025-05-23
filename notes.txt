@@ -4,28 +4,19 @@ year (e.g., Detroit 1866, Erie 1867)
 
 special characters encoding? (Lamy)
 
-paginator (difference?? is it parseInt?)
+search by ID -- a separate page or just a filter bar?
 
-(page)="changePage($event)" event binding? (click attending inst, click "back" -- need to refresh the page)
+improve the search result json structure -- still working on it
 
-should I have two separate pages for institutions and people? -- also, should I display people in the institution page
-should I have a separate page (or section) for find by instID?
+ID - id
 
-better mobility for filter bars
+simpleChanges
 
-what if a church's name changed (e.g. alt.il.0007) filter: instYear = 1864 (mat-card); inst-detail name - 1870
+findByID and findOne -- do I need two functions?
 
-the space between columns appears different on different pages
+How and when should a metadata field display "none" or other words indicating missing data
 
-querying person with a page number is slower than expected
+for some insitutions, their name is "not recoreded" when attended by another institution, but they get a new name
+in later years...for example, alb.ny.0083, the fourth "not recorded" -- alb.ny.0056
 
-
-improvements to be made:
-1. tables (personInYear unnecessary)
-2. improve controllers (an additional field of all the relevant people to an institution, attending institions and attended institutions)
-
-improve the search result json structure
-
-pagination when searching
-
-person -- getUniqueDiocese
+not recorded vs. -- (alb.ny.0316)

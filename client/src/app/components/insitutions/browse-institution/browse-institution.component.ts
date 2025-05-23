@@ -77,6 +77,11 @@ export class BrowseInstitutionComponent implements OnInit {
     })
   }
 
+  updateFilter () {
+    this.currentPage = 0;
+    this.getData();
+  }
+
   /**
    * runs when the slider is changed
    */

@@ -142,9 +142,9 @@ exports.findAll = async (req, res) => {
     }
 };
 
-exports.findByID = (req, res) => {
+exports.findByID = async (req, res) => {
     const id = req.params.id;
-    institution.findOne({
+    data = await institution.findOne({
         where: { ID: id },
         attributes: ['ID'],
         include: [{
@@ -173,65 +173,109 @@ exports.findByID = (req, res) => {
                         attributes: ['name','title', 'suffix', 'note'],
                     }}]
         }]
-    }).then(data => {
-        if (!data) {
-            res.status(404).send({
-                message: `Cannot find almanacRecord with id=${id}.`
-            });
-        } else {
-            res.send(data);
-        }
-    }).catch(err => {
-        res.status(500).send({
-            message: "Error retrieving almanacRecord with id=" + id
-        });
     });
+    if (data) {
+        let processedData = {
+            instID: data.dataValues.ID,
+            year: [],
+            attendingInstitutions: [],
+            attendedBy: [],
+            personInfo: [],
+            instName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instName,
+            language: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].language,
+            diocese: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].diocese,
+            instType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instType,
+            instNote: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instNote,
+            cityReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].cityReg,
+            stateOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].stateOrig,
+            attendingInstitutions: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].attendingInstitutions,
+            attendedBy: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].attendedBy,
+            personInfo: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].personInfo
+            // adding the info of the last record first so that the information of "all years" is the most up-to-date
+        };
+        
+        data.dataValues.almanacRecord.forEach(record => {
+            processedData.year.push(record.year);
+            record.attendingInstitutions.forEach(attendingInst => {
+                if (!processedData.attendingInstitutions.some(existingInst => existingInst.instID === attendingInst.instID)) {
+                    processedData.attendingInstitutions.push(attendingInst);
+                }}
+            )
+            record.attendedBy.forEach(attendedByInst => {
+                if (!processedData.attendedBy.some(existingInst => existingInst.instID === attendedByInst.instID)) {
+                    processedData.attendedBy.push(attendedByInst);
+                }}
+            )
+            record.personInfo.forEach(person => {
+                if (!processedData.personInfo.some(existingPerson => existingPerson.ID === person.ID)) {
+                    processedData.personInfo.push(person);
+                }}
+            )
+        })
+        console.log('processedData', processedData);
+
+        res.send(processedData);
+    }
+    else {
+        res.status(404).send({
+            message: `Cannot find almanacRecord with id=${id}.`
+        });
+    }
 };
 
 exports.findOne = async (req, res) => {
-    institution.findOne({
-        where: { ID: req.params.id },
-        attributes: ['ID'],
-        include: [{
-            model: almanacRecord,
-            as: 'almanacRecord',
-            where: { year: req.params.year },
-            attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
-            include: [{
-                model: almanacRecord,
-                as: 'attendingInstitutions',
-                attributes: ['instID', 'instName', 'year'],
-                through: {
-                    attributes: ['attendingFrequency', 'note']
-                }}, {
-                model: almanacRecord,
-                as: 'attendedBy',
-                attributes: ['instID', 'instName', 'year'],
-                through: {
-                    attributes: ['attendingFrequency', 'note']
-                }}
-                ,{
-                model: person,
-                as: 'personInfo',
+    data = await institution.findOne({
+                where: { ID: req.params.id },
                 attributes: ['ID'],
-                through: {
-                    model: personInAlmanacRecord,
-                    attributes: ['name','title', 'suffix', 'note'],
-                }}]
-        }]
-    }).then(data => {
-        if (!data) {
-            res.status(404).send({
-                message: `Cannot find almanacRecord with id=${id}.`
-            });
-        } else {
-            res.send(data);
-        }
-    }).catch(err => {
-        res.status(500).send({
-            message: "Error retrieving almanacRecord with id=" + id
-        });
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    where: { year: req.params.year },
+                    attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
+                    include: [{
+                        model: almanacRecord,
+                        as: 'attendingInstitutions',
+                        attributes: ['instID', 'instName', 'year'],
+                        through: {
+                            attributes: ['attendingFrequency', 'note']
+                        }}, {
+                        model: almanacRecord,
+                        as: 'attendedBy',
+                        attributes: ['instID', 'instName', 'year'],
+                        through: {
+                            attributes: ['attendingFrequency', 'note']
+                        }}
+                        ,{
+                        model: person,
+                        as: 'personInfo',
+                        attributes: ['ID'],
+                        through: {
+                            model: personInAlmanacRecord,
+                            attributes: ['name','title', 'suffix', 'note'],
+                        }}]
+                }]
     });
+    if (data) {
+        let processedData = {
+            instID: data.dataValues.ID,
+            instName: data.dataValues.almanacRecord[0].instName,
+            language: data.dataValues.almanacRecord[0].language,
+            diocese: data.dataValues.almanacRecord[0].diocese,
+            instType: data.dataValues.almanacRecord[0].instType,
+            instNote: data.dataValues.almanacRecord[0].instNote,
+            cityReg: data.dataValues.almanacRecord[0].cityReg,
+            stateOrig: data.dataValues.almanacRecord[0].stateOrig,
+            year: data.dataValues.almanacRecord[0].year,
+            attendingInstitutions: data.dataValues.almanacRecord[0].attendingInstitutions,
+            attendedBy: data.dataValues.almanacRecord[0].attendedBy,
+            personInfo: data.dataValues.almanacRecord[0].personInfo
+        };
+        res.send(processedData);}
+    else {
+        res.status(404).send({
+            message: `Cannot find almanacRecord with id=${req.params.id}.`
+        });
+    }
 };
 
 exports.delete = (req, res) => {
