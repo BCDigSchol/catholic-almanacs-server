@@ -30,8 +30,13 @@ export class InstitutionDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit () {
-    this.itemId = this._route.snapshot.paramMap.get('id');
-    this.getData();
+    // refresh the page whenever the parameter changes
+    // this._route.paramMap is an observable that emits whenever the route parameters change
+    // and when a new value is emitted, .subscribe is called
+    this._route.paramMap.subscribe(params => {
+      this.itemId = params.get('id');
+      this.getData();
+    });
   }
 
   getData () {
@@ -53,18 +58,10 @@ export class InstitutionDetailsComponent implements OnInit {
     } else {
       this._api.getTypeRequest('institution/' + this.data.instID + '/' + year).subscribe((res: any) => {
       this.loading = false;
-      const yearTemp = this.data.year;
+      const allYears = this.data.year;
       this.data = res;
-      this.data.year = yearTemp;
+      this.data.year = allYears;
       this.itemId = this.data.instID;
     })};
-  }
-
-  onInstitutionClick(item: any): void{
-    this.loading = true;
-    this._api.getTypeRequest('institution/' + item.instID).subscribe((res: any) => {
-      this.data = res;
-      this.loading = false;
-    });
   }
 }

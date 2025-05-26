@@ -178,9 +178,6 @@ exports.findByID = async (req, res) => {
         let processedData = {
             instID: data.dataValues.ID,
             year: [],
-            attendingInstitutions: [],
-            attendedBy: [],
-            personInfo: [],
             instName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instName,
             language: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].language,
             diocese: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].diocese,
@@ -212,7 +209,7 @@ exports.findByID = async (req, res) => {
                 }}
             )
         })
-        console.log('processedData', processedData);
+        //console.log('processedData', processedData);
 
         res.send(processedData);
     }
@@ -225,36 +222,36 @@ exports.findByID = async (req, res) => {
 
 exports.findOne = async (req, res) => {
     data = await institution.findOne({
-                where: { ID: req.params.id },
+        where: { ID: req.params.id },
+        attributes: ['ID'],
+        include: [{
+            model: almanacRecord,
+            as: 'almanacRecord',
+            where: { year: req.params.year },
+            attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
+            include: [{
+                model: almanacRecord,
+                as: 'attendingInstitutions',
+                attributes: ['instID', 'instName', 'year'],
+                through: {
+                    attributes: ['attendingFrequency', 'note']
+                }}, {
+                model: almanacRecord,
+                as: 'attendedBy',
+                attributes: ['instID', 'instName', 'year'],
+                through: {
+                    attributes: ['attendingFrequency', 'note']
+                }}
+                ,{
+                model: person,
+                as: 'personInfo',
                 attributes: ['ID'],
-                include: [{
-                    model: almanacRecord,
-                    as: 'almanacRecord',
-                    where: { year: req.params.year },
-                    attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'cityReg', 'stateOrig', 'diocese'],
-                    include: [{
-                        model: almanacRecord,
-                        as: 'attendingInstitutions',
-                        attributes: ['instID', 'instName', 'year'],
-                        through: {
-                            attributes: ['attendingFrequency', 'note']
-                        }}, {
-                        model: almanacRecord,
-                        as: 'attendedBy',
-                        attributes: ['instID', 'instName', 'year'],
-                        through: {
-                            attributes: ['attendingFrequency', 'note']
-                        }}
-                        ,{
-                        model: person,
-                        as: 'personInfo',
-                        attributes: ['ID'],
-                        through: {
-                            model: personInAlmanacRecord,
-                            attributes: ['name','title', 'suffix', 'note'],
-                        }}]
-                }]
-    });
+                through: {
+                    model: personInAlmanacRecord,
+                    attributes: ['name','title', 'suffix', 'note'],
+                }}]
+        }]
+});
     if (data) {
         let processedData = {
             instID: data.dataValues.ID,

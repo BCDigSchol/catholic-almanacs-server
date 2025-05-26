@@ -52,7 +52,7 @@
                         <div class="cell">Attending Institutions</div>
                         <div class="cell">
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions" (click)="onInstitutionClick(item)">
+                                <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions">
                                     <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                 </button>
                             </div>
@@ -63,7 +63,7 @@
                         <div class="cell">Attended By</div>
                         <div class="cell">
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendedBy" (click)="onInstitutionClick(item)">
+                                <button mat-button class="custom-button" *ngFor="let item of data.attendedBy">
                                     <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                 </button>
                             </div>

@@ -4,7 +4,7 @@ year (e.g., Detroit 1866, Erie 1867)
 
 special characters encoding? (Lamy)
 
-search by ID -- a separate page or just a filter bar?
+search by ID -- a separate page or just a filter bar? (and, findOne or findAll)
 
 improve the search result json structure -- still working on it
 
@@ -19,4 +19,8 @@ How and when should a metadata field display "none" or other words indicating mi
 for some insitutions, their name is "not recoreded" when attended by another institution, but they get a new name
 in later years...for example, alb.ny.0083, the fourth "not recorded" -- alb.ny.0056
 
-not recorded vs. -- (alb.ny.0316)
+inst name: not recorded vs. -- (alb.ny.0316)
+
+Can a person's title vary across different institutions in the same year...?
+
+alt.il.0222

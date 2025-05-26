@@ -83,9 +83,9 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.findByID = (req, res) => {
+exports.findByID = async (req, res) => {
     const id = req.params.id;
-    person.findAll({
+    data = await person.findOne({
         where: { ID: id },
         attributes: ['ID'],
         include: [
@@ -98,24 +98,49 @@ exports.findByID = (req, res) => {
                     attributes: ['name', 'title', 'suffix', 'note']
                 }
             }]}
-    ).then(data => {
-        if (!data) {
-            res.status(404).send({
-                message: `Cannot find Person with id=${id}.`
-            });
-        } else {
-            res.send(data);
+    );
+    if (data) {
+        let processedData = {
+            persID: data.dataValues.ID,
+            name: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.name || '(not recorded)',
+            title: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.title || '(not recorded)',
+            suffix: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.suffix || '(not recorded)',
+            note: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.note || '(not recorded)',
+            almanacRecords: [],
+            year: [],
         }
-    }).catch(err => {
-        res.status(500).send({
-            message: "Error retrieving Person with id=" + id
+        let existingAlmanacRecords = [];
+        let existingYears = [];
+        for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
+            let almanacRecord = data.dataValues.almanacRecords[i];
+            if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
+                existingAlmanacRecords.push(almanacRecord.instID);
+                processedData.almanacRecords.push({
+                    instID: almanacRecord.instID,
+                    instName: almanacRecord.instName,
+                    year: almanacRecord.year,
+                    cityReg: almanacRecord.cityReg,
+                    diocese: almanacRecord.diocese
+                })
+            }
+        }
+        for (let i = 0; i < data.dataValues.almanacRecords.length; i++) {
+            let almanacRecord = data.dataValues.almanacRecords[i];
+            if (!existingYears.includes(almanacRecord.year)){
+                existingYears.push(almanacRecord.year);
+                processedData.year.push(almanacRecord.year);
+            }
+        }
+        res.send(processedData);
+    } else {
+        res.status(404).send({
+            message: `Cannot find Person with id=${id}.`
         });
-    });
+    }
 };
 
-exports.findOne = (req, res) => {
-    console.log(req.params.id, req.params.year);
-    person.findOne({
+exports.findOne = async (req, res) => {
+    data = await person.findOne({
         attributes: ['ID'],
         include: [{
             model: almanacRecord,
@@ -128,19 +153,23 @@ exports.findOne = (req, res) => {
                 attributes: ['name', 'title', 'suffix', 'note']
             }
         }]
-    }).then(data => {
-        if (!data) {
-            res.status(404).send({
-                message: `Cannot find Person with id=${id}.`
-            });
-        } else {
-            res.send(data);
-        }
-    }).catch(err => {
-        res.status(500).send({
-            message: "Error retrieving Person with id=" + id
-        });
     });
+    if (data) {
+        let processedData = {
+            persID: data.dataValues.ID,
+            name: data.dataValues.almanacRecords[0].personInAlmanacRecord.name || '(not recorded)',
+            title: data.dataValues.almanacRecords[0].personInAlmanacRecord.title || '(not recorded)',
+            suffix: data.dataValues.almanacRecords[0].personInAlmanacRecord.suffix || '(not recorded)',
+            note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note || '(not recorded)',
+            almanacRecords: data.dataValues.almanacRecords,
+            year: data.dataValues.almanacRecords[0].year,
+        }
+        res.send(processedData);
+    } else {
+        res.status(404).send({
+            message: `Cannot find Person with id=${req.params.id}.`
+        });
+    }
 };
 
 

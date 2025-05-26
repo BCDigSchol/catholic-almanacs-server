@@ -23,7 +23,6 @@ export class PersonDetailsComponent implements OnInit{
   loading = true;
   itemId: any;
   data: any = [];
-  processedData: any = {};
 
   constructor(
     private _route: ActivatedRoute,
@@ -37,9 +36,8 @@ export class PersonDetailsComponent implements OnInit{
 
   getData () {
     this._api.getTypeRequest('person/' + this.itemId).subscribe((res: any) => {
-      this.data = res[0];
+      this.data = res;
       this.loading = false;
-      this.processData();
     }
     );}
 
@@ -48,48 +46,12 @@ export class PersonDetailsComponent implements OnInit{
     if (year === 'All') {
       this.getData();
     } else {
-      this._api.getTypeRequest('person/' + this.processedData.persID + '/' + year).subscribe((res: any) => {
+      this._api.getTypeRequest('person/' + this.data.persID + '/' + year).subscribe((res: any) => {
       this.loading = false;
-      this.processedData.name = res.almanacRecords[0].personInAlmanacRecord.name || '(Not Recorded)';
-      this.processedData.title = res.almanacRecords[0].personInAlmanacRecord.title || '(Not Recorded)';
-      this.processedData.suffix = res.almanacRecords[0].personInAlmanacRecord.suffix || '(Not Recorded)';
-      this.processedData.note = res.almanacRecords[0].personInAlmanacRecord.note || '(Not Recorded)';
-      let uniqueAlmanacRecords = new Set();
-      this.processedData.almanacRecords = [];
-      console.log(res.almanacRecords);
-      for (let i = res.almanacRecords.length - 1; i >= 0; i--) {
-        const record = res.almanacRecords[i];
-        console.log(record);
-        if (record.instID && !uniqueAlmanacRecords.has(record.instID)) {
-          uniqueAlmanacRecords.add(record.instID);
-          this.processedData.almanacRecords.push(record);
-        }
-      }
-      })};
-  }
-
-  processData () {
-    //console.log(this.data);
-    //console.log(this.data.almanacRecords.length);
-    this.processedData.persID = this.data.ID;
-    this.processedData.name = this.data.almanacRecords[this.data.almanacRecords.length - 1].personInAlmanacRecord.name || '(Not Recorded)';
-    this.processedData.title = this.data.almanacRecords[this.data.almanacRecords.length - 1].personInAlmanacRecord.title || '(Not Recorded)';
-    this.processedData.suffix = this.data.almanacRecords[this.data.almanacRecords.length - 1].personInAlmanacRecord.suffix || '(Not Recorded)';
-    this.processedData.note = this.data.almanacRecords[this.data.almanacRecords.length - 1].personInAlmanacRecord.note || '(Not Recorded)';
-    this.processedData.year = [];
-    for (let i of this.data.almanacRecords) {
-      if (i.year && !this.processedData.year.includes(i.year)) {
-        this.processedData.year.push(i.year);
-      }
-    };
-    let uniqueAlmanacRecords = new Set();
-    this.processedData.almanacRecords = [];
-    for (let i = this.data.almanacRecords.length - 1; i >= 0; i--) {
-      const record = this.data.almanacRecords[i];
-      if (record.instID && !uniqueAlmanacRecords.has(record.instID)) {
-        uniqueAlmanacRecords.add(record.instID);
-        this.processedData.almanacRecords.push(record);
-      }
-    }
-  };
+      const allYears = this.data.year;
+      this.data = res;
+      this.data.year = allYears;
+      this.itemId = this.data.persID;
+      });
+  }}
 }
