@@ -33,12 +33,44 @@ module.exports = {
         type: Sequelize.STRING(1024),
         allowNull: true
       },
+      placeName: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      region: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      countyOrig: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      countyReg: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      cityOrig: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       cityReg: {
         type: Sequelize.STRING,
         allowNull: true
       },
       stateOrig: {
         type: Sequelize.STRING,
+        allowNull: true
+      },
+      stateReg: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      latitude: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+      },
+      longitude: {
+        type: Sequelize.FLOAT,
         allowNull: true
       },
       memberType: {

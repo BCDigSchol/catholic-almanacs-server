@@ -70,7 +70,7 @@ exports.findAll = (req, res) => {
                 through: {
                     model: personInAlmanac,
                     where: persWhere,
-                    attributes: ['name', 'title', 'suffix', 'note']
+                    attributes: ['name', 'title', 'suffix', 'role', 'note']
                 }
             }
         ]
@@ -95,7 +95,7 @@ exports.findByID = async (req, res) => {
                 attributes: ['instID','instName','year','cityReg', 'diocese'],
                 through: {
                     model: personInAlmanac,
-                    attributes: ['name', 'title', 'suffix', 'note']
+                    attributes: ['name', 'title', 'suffix', 'role', 'note']
                 }
             }]}
     );
@@ -103,14 +103,16 @@ exports.findByID = async (req, res) => {
         let processedData = {
             persID: data.dataValues.ID,
             name: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.name || '(not recorded)',
-            title: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.title || '(not recorded)',
-            suffix: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.suffix || '(not recorded)',
-            note: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.note || '(not recorded)',
+            title: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.title,
+            suffix: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.suffix,
+            note: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.note,
+            role: [],
             almanacRecords: [],
             year: [],
         }
         let existingAlmanacRecords = [];
         let existingYears = [];
+        let existingRoles = [];
         for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
@@ -120,8 +122,13 @@ exports.findByID = async (req, res) => {
                     instName: almanacRecord.instName,
                     year: almanacRecord.year,
                     cityReg: almanacRecord.cityReg,
-                    diocese: almanacRecord.diocese
+                    diocese: almanacRecord.diocese,
+                    personInAlmanacRecord: almanacRecord.personInAlmanacRecord
                 })
+            }
+            if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
+                existingRoles.push(almanacRecord.personInAlmanacRecord.role);
+                processedData.role.push(almanacRecord.personInAlmanacRecord.role);
             }
         }
         for (let i = 0; i < data.dataValues.almanacRecords.length; i++) {
@@ -150,7 +157,7 @@ exports.findOne = async (req, res) => {
             through: {
                 model: personInAlmanac,
                 where: { persID: req.params.id },
-                attributes: ['name', 'title', 'suffix', 'note']
+                attributes: ['name', 'title', 'suffix', 'role', 'note']
             }
         }]
     });
@@ -158,12 +165,21 @@ exports.findOne = async (req, res) => {
         let processedData = {
             persID: data.dataValues.ID,
             name: data.dataValues.almanacRecords[0].personInAlmanacRecord.name || '(not recorded)',
-            title: data.dataValues.almanacRecords[0].personInAlmanacRecord.title || '(not recorded)',
-            suffix: data.dataValues.almanacRecords[0].personInAlmanacRecord.suffix || '(not recorded)',
-            note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note || '(not recorded)',
+            title: data.dataValues.almanacRecords[0].personInAlmanacRecord.title,
+            suffix: data.dataValues.almanacRecords[0].personInAlmanacRecord.suffix,
+            note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note,
             almanacRecords: data.dataValues.almanacRecords,
             year: data.dataValues.almanacRecords[0].year,
+            role: [],
         }
+        let existingRoles = [];
+        for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
+            let almanacRecord = data.dataValues.almanacRecords[i];
+            if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
+                existingRoles.push(almanacRecord.personInAlmanacRecord.role);
+                processedData.role.push(almanacRecord.personInAlmanacRecord.role);
+            }
+        };
         res.send(processedData);
     } else {
         res.status(404).send({

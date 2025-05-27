@@ -2,7 +2,7 @@
     <mat-card class="mx-2">
         <mat-card-header>
             <mat-card-title>
-                {{data.title + ' ' + data.name}}
+                {{data.title + ' ' + data.name + ' ' + data.suffix}}
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -22,6 +22,10 @@
                         <div class="cell">{{data.suffix}}</div>
                     </div>
                     <div class="row">
+                        <div class="cell">Role</div>
+                        <div class="cell">{{data.role}}</div>
+                    </div>
+                    <div class="row">
                         <div class="cell">Notes</div>
                         <div class="cell">{{data.note}}</div>
                     </div>
@@ -29,7 +33,7 @@
                         <div class="cell">Relevant Institutions</div>
                         <div class="cell">
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.almanacRecords">
+                                <button mat-button class="custom-button" *ngFor="let item of data.almanacRecords" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
                                     <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                 </button>
                             </div>

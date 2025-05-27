@@ -25,7 +25,7 @@ module.exports = {
 
 async function importData(data) {
 
-  const instKeys = ['uniqueInstID', 'instID', 'instYear', 'church_type', 'instName', 'language', 'instNote', 'state_orig', 'city_reg', 'memberType', 'member', 'affiliated', 'diocese'];
+  const instKeys = ['uniqueInstID', 'instID', 'instYear', 'church_type', 'instName', 'language', 'instNote', 'placeName', 'region', 'county_orig', 'county_reg', 'city_orig', 'city_reg', 'state_orig', 'state_reg', 'latitude', 'longitude', 'memberType', 'member', 'affiliated', 'diocese'];
 
   const keyMapping = {
     uniqueInstID: 'ID',
@@ -35,8 +35,16 @@ async function importData(data) {
     instName: 'instName',
     language: 'language',
     instNote: 'instNote',
-    state_orig: 'stateOrig',
+    placeName: 'placeName',
+    region: 'region',
+    county_orig: 'countyOrig',
+    county_reg: 'countyReg',
+    city_orig: 'cityOrig',
     city_reg: 'cityReg',
+    state_orig: 'stateOrig',
+    state_reg: 'stateReg',
+    latitude: 'latitude',
+    longitude: 'longitude',
     memberType: 'memberType',
     member: 'member',
     affiliated: 'affiliated',

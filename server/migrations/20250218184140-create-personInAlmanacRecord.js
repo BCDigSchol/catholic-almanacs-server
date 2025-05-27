@@ -30,6 +30,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       note: {
         type: Sequelize.STRING(1024),
         allowNull: true

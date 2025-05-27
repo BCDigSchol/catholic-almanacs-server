@@ -1,26 +1,20 @@
-persID and persName cannot start with a hyphen (-)? (not even a hyphen)
-
-year (e.g., Detroit 1866, Erie 1867)
-
-special characters encoding? (Lamy)
-
-search by ID -- a separate page or just a filter bar? (and, findOne or findAll)
-
-improve the search result json structure -- still working on it
-
 ID - id
 
-simpleChanges
+alt.il.0222 (Alton 1864)
 
-findByID and findOne -- do I need two functions?
+1. update the models (add more fields) and controllers (update query strings) -- solved, query strings to be updated
+2. persRole pop up -- solved
+3. persSuffix add to names -- solved
+4. attending institution name -- mice hover above and display the most up to date name
+5. add a "back" button to the previous page
+6. filter component
 
-How and when should a metadata field display "none" or other words indicating missing data
+- another encoding issue a_gaudet_001 (persRole)
 
-for some insitutions, their name is "not recoreded" when attended by another institution, but they get a new name
-in later years...for example, alb.ny.0083, the fourth "not recorded" -- alb.ny.0056
+inst findAll controllers: do I need to include attending/attended by inst if I don't display them
 
-inst name: not recorded vs. -- (alb.ny.0316)
+attendingFrequency and note
 
-Can a person's title vary across different institutions in the same year...?
-
-alt.il.0222
+inst detail page:
+1) fix findOne
+2) sort year buttons

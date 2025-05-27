@@ -22,7 +22,7 @@ module.exports = {
 
 async function importData(data) {
 
-  const personInAlmanacRecordKeys = ['uniqueInstID', 'persID', 'persName', 'persTitle', 'persSuffix', 'persNote'];
+  const personInAlmanacRecordKeys = ['uniqueInstID', 'persID', 'persName', 'persTitle', 'persSuffix', 'persRole', 'persNote'];
 
   const keyMapping = {
     uniqueInstID: 'almanacRecordID',
@@ -30,6 +30,7 @@ async function importData(data) {
     persName: 'name',
     persTitle: 'title',
     persSuffix: 'suffix',
+    persRole: 'role',
     persNote: 'note'
   };
 

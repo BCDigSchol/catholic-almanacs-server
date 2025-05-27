@@ -29,20 +29,20 @@ async function preprocessCSV(filePath) {
           row[cleanedKey] = row[cleanedKey].replace(/^\ufeff/, '');
         }
     
-        if(row['year']) {
+        if (row['year']) {
           row['instYear'] = parseInt(row['year']);
           row['persYear'] = parseInt(row['year']);
           row['attendingInstYear'] = parseInt(row['year']);
           delete row['year'];
         }
 
-        if(row['instID'] && row['instYear']) {
+        if (row['instID'] && row['instYear']) {
           row['uniqueInstID'] = `${row['instYear']}_${row['instID']}`;
         } else {
           row['uniqueInstID'] = '';
         }
 
-        if(row['attendingInstID'] && row['attendingInstYear']) {
+        if (row['attendingInstID'] && row['attendingInstYear']) {
           row['uniqueAttendingInstID'] = `${row['attendingInstYear']}_${row['attendingInstID']}`;
         } else {
           row['uniqueAttendingInstID'] = '';
@@ -58,6 +58,21 @@ async function preprocessCSV(filePath) {
 
         if (row['persID'] && row['persYear']) {
           row['uniquePersID'] = `${row['persYear']}_${row['persID']}`;
+        }
+
+        if ('longitude' in row) {
+          if (row['longitude'] === "" || isNaN(Number(row['longitude']))) {
+            row['longitude'] = null;
+          } else {
+            row['longitude'] = Number(row['longitude']);
+          }
+        }
+        if ('latitude' in row) {
+          if (row['latitude'] === "" || isNaN(Number(row['latitude']))) {
+            row['latitude'] = null;
+          } else {
+            row['latitude'] = Number(row['latitude']);
+          }
         }
       };
     return data;

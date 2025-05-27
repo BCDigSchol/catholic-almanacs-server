@@ -26,22 +26,38 @@
                         <div class="cell">{{data.diocese}}</div>
                     </div>
                     <div class="row">
-                        <div class="cell">State</div>
-                        <div class="cell">{{data.stateOrig}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">City</div>
-                        <div class="cell">{{data.cityReg}}</div>
-                    </div>
-                    <div class="row">
                         <div class="cell">Notes</div>
                         <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Place Name</div>
+                        <div class="cell">{{data.placeName}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Region</div>
+                        <div class="cell">{{data.region}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Location (Original)</div>
+                        <div class="cell">
+                            {{data.countyOrig ? data.countyOrig + ', ' : ''}}
+                            {{data.cityOrig ? data.cityOrig + ', ' : ''}}
+                            {{data.stateOrig ? data.stateOrig : data.stateReg}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Location (Regular)</div>
+                        <div class="cell">
+                            {{data.countyReg ? data.countyReg + ', ' : ''}}
+                            {{data.cityReg ? data.cityReg + ', ' : ''}}
+                            {{data.stateReg ? data.stateReg : data.stateOrig}}
+                        </div>
                     </div>
                     <div class="row">
                         <div class="cell">Relevant People</div>
                         <div class="cell">
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.personInfo">
+                                <button mat-button class="custom-button" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
                                     <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
                                 </button>
                             </div>
@@ -52,7 +68,7 @@
                         <div class="cell">Attending Institutions</div>
                         <div class="cell">
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions">
+                                <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.year + ')'">
                                     <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                 </button>
                             </div>

@@ -8,13 +8,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { SelectYearComponent } from '../../common/select-year/select-year.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-person-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-    RouterLink, SelectYearComponent
+    RouterLink, SelectYearComponent, MatTooltipModule
 ],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
