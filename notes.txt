@@ -13,3 +13,6 @@ alt.il.0222 (Alton 1864)
 - another encoding issue a_gaudet_001 (persRole)
 
 where to put attendingFrequency and note 
+
+adjust the button size
+expansion panel color and text color

@@ -1,0 +1,40 @@
+.chip-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+mat-expansion-panel-header {
+    width: 100%;
+    height: 60px;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1px
+}
+
+.filter-forms-row {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.mat-form-field {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.custom-button mat-icon {
+    font-size: 18px,
+}

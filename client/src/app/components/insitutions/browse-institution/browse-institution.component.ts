@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
+import { FilterComponent } from '../../common/filter/filter.component';
 
 import { ApiService } from '../../../services/api.service'; 
 
@@ -19,7 +20,7 @@ import { ApiService } from '../../../services/api.service';
   selector: 'app-browse-institution',
   imports: [CommonModule, MatCardModule, MatListModule, MatIconModule,
     MatPaginatorModule, MatInputModule, FormsModule, MatFormFieldModule,
-    RouterLink, MatSliderModule, MatButtonModule
+    RouterLink, MatSliderModule, MatButtonModule, FilterComponent
   ],
   templateUrl: './browse-institution.component.html',
   styleUrl: './browse-institution.component.scss'
@@ -46,6 +47,18 @@ export class BrowseInstitutionComponent implements OnInit {
     cityReg: '',
     persName: ''
   }
+
+  // filter options for the filter component
+  filterOptions: string[] = ['Institution Name', 'Institution Type', 'Language', 'Location', 'Diocese', 'Relevant People']
+
+  filterOptionMap: { [key: string]: string } = {
+  'Institution Name': 'instName',
+  'Institution Type': 'instType',
+  'Language': 'language',
+  'Location': 'cityReg',
+  'Diocese': 'diocese',
+  'Relevant People': 'persName'
+};
 
   constructor(public apiService: ApiService) {}
 
@@ -80,6 +93,21 @@ export class BrowseInstitutionComponent implements OnInit {
   updateFilter () {
     this.currentPage = 0;
     this.getData();
+  }
+
+  onFilterChanged (filterValues: { [key: string]: string }) {
+    for (const key in this.filterBy) {
+    if (typeof this.filterBy[key] === 'string') {
+      this.filterBy[key] = '';
+    }
+  }
+    for (const displayKey in filterValues) {
+    const backendKey = this.filterOptionMap[displayKey];
+    if (backendKey) {
+      this.filterBy[backendKey] = filterValues[displayKey];
+    }
+  }
+    this.updateFilter();
   }
 
   /**

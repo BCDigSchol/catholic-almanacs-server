@@ -1,5 +1,5 @@
 <div *ngIf="!loading">
-
+<!--
     <div class="flex flex-row justify-start items-center">
         <mat-card class="w-full">
             <mat-card-content>
@@ -55,6 +55,22 @@
                 </div>
             </mat-card-content>
         </mat-card>
+    </div>
+-->
+
+    <app-filter
+        [filterOptions]="filterOptions"
+        (filterSelected)="onFilterChanged($event)">
+    </app-filter>
+    
+    <div>
+        <mat-paginator (page)="changePage($event)"
+        [length]="totalItems"
+        [pageSize]="itemsPerPage"
+        [pageIndex]="currentPage"
+        [showFirstLastButtons]="true"
+        [pageSizeOptions]="[5, 10, 25, 50]">
+        </mat-paginator>
     </div>
 
     <mat-card *ngFor="let item of data" class="my-5">

@@ -1,0 +1,36 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="isOpen"> 
+        <mat-expansion-panel-header>
+            <div class="header-stack">
+                <mat-panel-title>
+                Filter by:
+                </mat-panel-title>
+            </div>
+        </mat-expansion-panel-header>
+        <mat-chip-grid #chipGrid *ngIf="filterOptions.length > 0">
+            <mat-chip  *ngFor="let filter of filterOptions"
+            (click)="onChipSelect(filter)">
+            <mat-icon fontIcon="filter_alt"></mat-icon>
+                {{ filter }}
+            </mat-chip>
+            <input [matChipInputFor]="chipGrid" style="display:none;" />
+        </mat-chip-grid>
+
+        <div class="filter-forms-row">
+            <form class="filter-form" *ngFor="let filter of selectedFilters">
+                <mat-form-field>
+                    <mat-label>Filter by {{ filter }}</mat-label>
+                    <input matInput 
+                    placeholder="filter by {{ filter}}"
+                    [(ngModel)]="filterValues[filter]"
+                    (ngModelChange)="onFilterValueChange(filter, filterValues[filter])"
+                    name="filter-{{ filter }}"
+                    autocomplete="off">
+                </mat-form-field>
+                <button mat-icon-button color="warn" class="custom-button" (click)="removeFilter(filter)" type="button">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </form>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
