@@ -218,10 +218,11 @@ exports.findByID = async (req, res) => {
                         include: [{
                             model: almanacRecord,
                             as: 'almanacRecord',
-                            attributes: ['instName'],
+                            attributes: ['instName', 'year'],
                         }]
                     });
                     let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+                    let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
                     //console.log('latestInstName', latestInstName);
                     processedData.attendingInstitutions.push({
                         instID: attendingInst.instID,
@@ -230,22 +231,25 @@ exports.findByID = async (req, res) => {
                         attendingFrequency: attendingInst.attendingInstitution.attendingFrequency,
                         note: attendingInst.attendingInstitution.note,
                         latestInstName: latestInstName,
+                        latestYear: latestYear
                     });
-                    console.log('processedData.attendingInstitutions', processedData.attendingInstitutions);
+                    //console.log('processedData.attendingInstitutions', processedData.attendingInstitutions);
                     }};
             
             for (const attendedInst of record.attendedBy) {
                 if (!existingAttendedByInstIDs.includes(attendedInst.instID)) {
                     existingAttendedByInstIDs.push(attendedInst.instID);
-                    let latestInstName = await institution.findAll({
+                    const instDetails = await institution.findAll({
                         where: { ID: attendedInst.instID },
                         attributes: ['ID'],
                         include: [{
                             model: almanacRecord,
                             as: 'almanacRecord',
-                            attributes: ['instName'],
+                            attributes: ['instName', 'year'],
                         }]
-                    }).dataValues.almanacRecord.instName;
+                    });
+                    let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+                    let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
                     processedData.attendedBy.push({
                         instID: attendedInst.instID,
                         instName: attendedInst.instName,
@@ -253,6 +257,7 @@ exports.findByID = async (req, res) => {
                         attendingFrequency: attendedInst.attendingInstitution.attendingFrequency,
                         note: attendedInst.attendingInstitution.note,
                         latestInstName: latestInstName,
+                        latestYear: latestYear
                     });}};
             
             record.personInfo.forEach(person => {
@@ -262,6 +267,7 @@ exports.findByID = async (req, res) => {
                 }
             });
         }
+        processedData.year.reverse();
         res.send(processedData);
     }
     else {
@@ -322,10 +328,60 @@ exports.findOne = async (req, res) => {
             latitude: data.dataValues.almanacRecord[0].latitude,
             longitude: data.dataValues.almanacRecord[0].longitude,
             year: data.dataValues.almanacRecord[0].year,
-            attendingInstitutions: data.dataValues.almanacRecord[0].attendingInstitutions,
-            attendedBy: data.dataValues.almanacRecord[0].attendedBy,
-            personInfo: data.dataValues.almanacRecord[0].personInfo
+            attendingInstitutions: [],
+            attendedBy: [],
+            personInfo: []
         };
+        console.log('processedData', data.dataValues.almanacRecord[0]);
+        for (const attendingInst of data.dataValues.almanacRecord[0].attendingInstitutions) {
+            const instDetails = await institution.findAll({
+                where: { ID: attendingInst.instID },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    attributes: ['instName', 'year'],
+                }]
+            });
+            let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+            let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
+            processedData.attendingInstitutions.push({
+                instID: attendingInst.instID,
+                instName: attendingInst.instName,
+                year: attendingInst.year,
+                attendingFrequency: attendingInst.attendingInstitution.attendingFrequency,
+                note: attendingInst.attendingInstitution.note,
+                latestInstName: latestInstName,
+                latestYear: latestYear
+            });
+        }
+
+        for (const attendedInst of data.dataValues.almanacRecord[0].attendedBy) {
+            const instDetails = await institution.findAll({
+                where: { ID: attendedInst.instID },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    attributes: ['instName', 'year'],
+                }]
+            });
+            let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+            let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
+            processedData.attendedBy.push({
+                instID: attendedInst.instID,
+                instName: attendedInst.instName,
+                year: attendedInst.year,
+                attendingFrequency: attendedInst.attendingInstitution.attendingFrequency,
+                note: attendedInst.attendingInstitution.note,
+                latestInstName: latestInstName,
+                latestYear: latestYear
+            });}
+
+        for (const person of data.dataValues.almanacRecord[0].personInfo) {
+            processedData.personInfo.push(person);
+        }
+
         res.send(processedData);}
     else {
         res.status(404).send({
