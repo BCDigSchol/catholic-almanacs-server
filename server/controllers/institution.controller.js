@@ -42,7 +42,7 @@ exports.findAll = async (req, res) => {
         let {limit, offset} = getPagination(page, size);
         let where = {};
         let persWhere = {};
-        let { instName, cityReg, diocese, instStartYear, instEndYear, language, instType, persName, instID } = req.query;
+        let { instName, countyReg, cityReg, stateReg, diocese, instStartYear, instEndYear, language, instType, persName, instID } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
@@ -62,8 +62,14 @@ exports.findAll = async (req, res) => {
               [Op.lte]: instEndYear
             };
         };
+        if (countyReg) {
+            where.countyReg = { [Op.like]: `%${countyReg}%` };
+        };
         if (cityReg) {
             where.cityReg = { [Op.like]: `%${cityReg}%` };
+        };
+        if (stateReg) {
+            where.stateReg = { [Op.like]: `%${stateReg}%` };
         };
         if (language) {
             where.language = { [Op.like]: `%${language}%` };

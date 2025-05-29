@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
+import { FilterComponent } from '../../common/filter/filter.component';
 
 import { ApiService } from '../../../services/api.service';  
 
@@ -19,7 +20,7 @@ import { ApiService } from '../../../services/api.service';
   selector: 'app-browse-people',
   imports: [CommonModule, MatCardModule, MatListModule, MatIconModule,
     MatPaginatorModule, MatInputModule, FormsModule, MatFormFieldModule,
-    RouterLink, MatSliderModule, MatButtonModule
+    RouterLink, MatSliderModule, MatButtonModule, FilterComponent
   ],
   templateUrl: './browse-people.component.html',
   styleUrl: './browse-people.component.scss'
@@ -42,6 +43,14 @@ filterBy: any = {
   instName: '',
   year: null,
 }
+
+filterFields = [
+  { type: 'input', label: 'Person Name', key: 'persName', active: false },
+  { type: 'input', label: 'City', key: 'cityReg', active: false },
+  { type: 'input', label: 'Diocese', key: 'diocese', active: false },
+  { type: 'input', label: 'Institution Name', key: 'instName', active: false },
+  { type: 'range', keyStart: 'year', keyEnd: '', label: 'Year', min: 1860, max: 1870 }
+]
 
 constructor(public apiService: ApiService) {}
 

@@ -10,6 +10,10 @@ import { FilterComponent } from '../filter/filter.component';
 })
 export class AboutComponent {
 
-  filterOptions: string[] = ['Institution Name', 'Institution Type', 'Language', 'Location', 'Diocese', 'Relevant People']
+  filterFields = [
+    { type: 'input', label: 'Institution Name', key: 'instName', active: false },
+    { type: 'input', label: 'Diocese', key: 'diocese', active: false },
+    { type: 'input', label: 'Language', key: 'language', active: false },
+  ]
 
 }

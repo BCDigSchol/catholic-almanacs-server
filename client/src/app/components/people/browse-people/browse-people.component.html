@@ -1,5 +1,6 @@
 <div *ngIf="!loading">
 
+<!--
     <div class="flex flex-row justify-start items-center">
         <mat-card class="w-full">
             <mat-card-content>
@@ -47,6 +48,8 @@
             </mat-card-content>
         </mat-card>
     </div>
+-->
+    <app-filter [filterFields]="filterFields" (filterSelected)="onFilterChanged($event)"></app-filter>
 
     <mat-card *ngFor="let item of data" class="my-5">
         <mat-card-header [routerLink]="'/people/' + item.ID" style="cursor: pointer;">

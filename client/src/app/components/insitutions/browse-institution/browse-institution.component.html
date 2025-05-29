@@ -58,10 +58,7 @@
     </div>
 -->
 
-    <app-filter
-        [filterOptions]="filterOptions"
-        (filterSelected)="onFilterChanged($event)">
-    </app-filter>
+    <app-filter [filterFields]="filterFields" (filterSelected)="onFilterChanged($event)"></app-filter>
     
     <div>
         <mat-paginator (page)="changePage($event)"

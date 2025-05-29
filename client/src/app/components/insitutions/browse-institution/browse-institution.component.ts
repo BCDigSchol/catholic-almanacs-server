@@ -43,22 +43,22 @@ export class BrowseInstitutionComponent implements OnInit {
     instType: '',
     instStartYear: 1860,
     instEndYear: 1870,
-    instYear: false,
     cityReg: '',
     persName: ''
   }
-
-  // filter options for the filter component
-  filterOptions: string[] = ['Institution Name', 'Institution Type', 'Language', 'Location', 'Diocese', 'Relevant People']
-
-  filterOptionMap: { [key: string]: string } = {
-  'Institution Name': 'instName',
-  'Institution Type': 'instType',
-  'Language': 'language',
-  'Location': 'cityReg',
-  'Diocese': 'diocese',
-  'Relevant People': 'persName'
-};
+  
+  filterFields = [
+    { type: 'input', label: 'Institution Name', key: 'instName', active: false },
+    { type: 'input', label: 'Language', key: 'language', active: false },
+    { type: 'input', label: 'Institution Type', key: 'instType', active: false },
+    { type: 'input', label: 'County', key: 'countyReg', active: false },
+    { type: 'input', label: 'City', key: 'cityReg', active: false },
+    { type: 'input', label: 'State', key: 'stateReg', active: false },
+    { type: 'input', label: 'Diocese', key: 'diocese', active: false },
+    { type: 'input', label: 'Person Name', key: 'persName', active: false },
+    { type: 'range', keyStart: 'instStartYear', keyEnd: 'instEndYear', label: 'Year', min: 1860, max:1870}
+  ]
+  
 
   constructor(public apiService: ApiService) {}
 
@@ -77,11 +77,11 @@ export class BrowseInstitutionComponent implements OnInit {
     queryString += this.filterBy.diocese ? `&diocese=${this.filterBy.diocese}` : '';
     queryString += this.filterBy.language ? `&language=${this.filterBy.language}` : '';
     queryString += this.filterBy.instType ? `&instType=${this.filterBy.instType}` : '';
+    queryString += this.filterBy.countyReg ? `&countyReg=${this.filterBy.countyReg}` : '';
     queryString += this.filterBy.cityReg ? `&cityReg=${this.filterBy.cityReg}` : '';
-    if (this.filterBy.instYear) {
-      queryString += this.filterBy.instStartYear ? `&instStartYear=${this.filterBy.instStartYear}` : '';
-      queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
-    }
+    queryString += this.filterBy.stateReg ? `&stateReg=${this.filterBy.stateReg}` : '';
+    queryString += this.filterBy.instStartYear ? `&instStartYear=${this.filterBy.instStartYear}` : '';
+    queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
 
     this.apiService.getTypeRequest('institution'+ queryString).subscribe((res:any) => {
       this.data  = res.rows;
@@ -95,17 +95,16 @@ export class BrowseInstitutionComponent implements OnInit {
     this.getData();
   }
 
-  onFilterChanged (filterValues: { [key: string]: string }) {
+  onFilterChanged (filterValues: any) {
     for (const key in this.filterBy) {
     if (typeof this.filterBy[key] === 'string') {
       this.filterBy[key] = '';
     }
   }
-    for (const displayKey in filterValues) {
-    const backendKey = this.filterOptionMap[displayKey];
-    if (backendKey) {
-      this.filterBy[backendKey] = filterValues[displayKey];
-    }
+    for (const key in filterValues) {
+      if (filterValues[key] !== '') {
+        this.filterBy[key] = filterValues[key];
+      }
   }
     this.updateFilter();
   }
