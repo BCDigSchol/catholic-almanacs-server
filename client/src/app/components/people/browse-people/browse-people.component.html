@@ -50,6 +50,15 @@
     </div>
 -->
     <app-filter [filterFields]="filterFields" (filterSelected)="onFilterChanged($event)"></app-filter>
+    <div>
+        <mat-paginator (page)="changePage($event)"
+        [length]="totalItems"
+        [pageSize]="itemsPerPage"
+        [pageIndex]="currentPage"
+        [showFirstLastButtons]="true"
+        [pageSizeOptions]="[5, 10, 25, 50]">
+        </mat-paginator>
+    </div>
 
     <mat-card *ngFor="let item of data" class="my-5">
         <mat-card-header [routerLink]="'/people/' + item.ID" style="cursor: pointer;">

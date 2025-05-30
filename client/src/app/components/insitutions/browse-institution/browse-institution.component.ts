@@ -90,6 +90,9 @@ export class BrowseInstitutionComponent implements OnInit {
     })
   }
 
+  /**
+   * when the filter is updated, reset the current page
+   */
   updateFilter () {
     this.currentPage = 0;
     this.getData();

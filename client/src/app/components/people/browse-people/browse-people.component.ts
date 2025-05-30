@@ -38,7 +38,9 @@ totalItems = 0;
 // filter variables
 filterBy: any = {
   persName: '',
+  countyReg: '',
   cityReg: '',
+  stateReg: '',
   diocese: '',
   instName: '',
   year: null,
@@ -46,10 +48,12 @@ filterBy: any = {
 
 filterFields = [
   { type: 'input', label: 'Person Name', key: 'persName', active: false },
+  { type: 'input', label: 'County', key: 'countyReg', active: false },
   { type: 'input', label: 'City', key: 'cityReg', active: false },
+  { type: 'input', label: 'State', key: 'stateReg', active: false },
   { type: 'input', label: 'Diocese', key: 'diocese', active: false },
   { type: 'input', label: 'Institution Name', key: 'instName', active: false },
-  { type: 'range', keyStart: 'year', keyEnd: '', label: 'Year', min: 1860, max: 1870 }
+  { type: 'range', keyStart: 'instStartYear', keyEnd: 'instEndYear', label: 'Year', min: 1860, max: 1870 }
 ]
 
 constructor(public apiService: ApiService) {}
@@ -64,11 +68,14 @@ ngOnInit () {
 getData () {
 
   let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
-  queryString += this.filterBy.name ? `&persName=${this.filterBy.name}` : '';
+  queryString += this.filterBy.persName ? `&persName=${this.filterBy.persName}` : '';
+  queryString += this.filterBy.countyReg ? `&countyReg=${this.filterBy.countyReg}` : '';
   queryString += this.filterBy.cityReg ? `&cityReg=${this.filterBy.cityReg}` : '';
+  queryString += this.filterBy.stateReg ? `&stateReg=${this.filterBy.stateReg}` : '';
   queryString += this.filterBy.diocese ? `&diocese=${this.filterBy.diocese}` : '';
   queryString += this.filterBy.instName ? `&instName=${this.filterBy.instName}` : '';
-  queryString += this.filterBy.year ? `&year=${this.filterBy.year}` : '';
+  queryString += this.filterBy.instStartYear  ? `&instStartYear=${this.filterBy.instStartYear}` : '';
+  queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
 
   this.apiService.getTypeRequest('person'+ queryString).subscribe((res:any) => {
     this.data  = res.rows;
@@ -93,6 +100,28 @@ changePage (e: PageEvent) {
 resetYear () {
   this.filterBy.year = null;
   this.getData();
+}
+
+/** 
+ * when filter is updated, reset current page
+*/
+updateFilter () {
+    this.currentPage = 0;
+    this.getData();
+  }
+
+onFilterChanged (filterValues: any) {
+  for (const key in this.filterBy) {
+  if (typeof this.filterBy[key] === 'string') {
+    this.filterBy[key] = '';
+  }
+}
+  for (const key in filterValues) {
+    if (filterValues[key] !== '') {
+      this.filterBy[key] = filterValues[key];
+    }
+}
+  this.updateFilter();
 }
 
 /**
