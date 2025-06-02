@@ -38,13 +38,11 @@ export class FilterComponent implements OnInit{
   clearFilters() {
     this.filterValues = {};
     for (let filter of this.filterFields) {
-      if (filter.active) {
-        if (filter.type === 'range') {
-          this.filterValues[filter.keyStart] = filter.min || 1860;
-          this.filterValues[filter.keyEnd] = filter.max || 1870;
-        } else {
-          this.filterValues[filter.key] = '';
-        }
+      if (filter.type === 'range') {
+        this.filterValues[filter.keyStart] = filter.min || 1860;
+        this.filterValues[filter.keyEnd] = filter.max || 1870;
+      } else {
+        this.filterValues[filter.key] = '';
       }
     }
   }

@@ -33,7 +33,7 @@ export class ApiService {
    * @returns The http response object as a blob
    */
   getBlobRequest(url: string) {
-    return this._http.get(`${this.baseUrl}${url}, { responseType: 'blob' }`).pipe(map(res => {
+    return this._http.get(`${this.baseUrl}${url}`, { responseType: 'blob' }).pipe(map(res => {
       return res;
     }));
   }

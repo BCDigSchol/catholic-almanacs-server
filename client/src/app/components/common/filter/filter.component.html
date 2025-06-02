@@ -29,9 +29,9 @@
                         </mat-form-field>
                     </div>
                     <div *ngSwitchCase="filter.type == 'range'">
-                        <mat-slider class="mx-2" style="width:200px" min="1860" max="1870" step="1" discrete>
-                            <input value="{{filter.min}}" (change)="updateFilter()" [(ngModel)]="filterValues[filter.keyStart]" matSliderStartThumb />
-                            <input value="{{filter.max}}" (change)="updateFilter()" [(ngModel)]="filterValues[filter.keyEnd]" matSliderEndThumb />
+                        <mat-slider class="mx-2" style="width:200px" [min]="filter.min" [max]="filter.max" step="1" discrete>
+                            <input value="{{filter.min}}" (change)="updateFilter()" [(ngModel)]="filterValues[filter.keyStart]" matSliderStartThumb >
+                            <input value="{{filter.max}}" (change)="updateFilter()" [(ngModel)]="filterValues[filter.keyEnd]" matSliderEndThumb >
                         </mat-slider>
                     </div>
                 </ng-container>

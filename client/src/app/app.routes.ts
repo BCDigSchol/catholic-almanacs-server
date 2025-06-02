@@ -7,6 +7,7 @@ import { BrowseInstitutionComponent } from './components/insitutions/browse-inst
 import { InstitutionDetailsComponent } from './components/insitutions/institution-details/institution-details.component';
 import { BrowsePeopleComponent } from './components/people/browse-people/browse-people.component';
 import { PersonDetailsComponent } from './components/people/person-details/person-details.component';
+import { ExportComponent } from './components/export/export.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'institutions/:id', component: InstitutionDetailsComponent },
     { path: 'people', component: BrowsePeopleComponent},
     { path: 'people/:id', component: PersonDetailsComponent }, 
+    { path: 'export', component: ExportComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' }
 ];

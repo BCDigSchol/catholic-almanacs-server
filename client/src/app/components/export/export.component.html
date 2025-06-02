@@ -1,0 +1,10 @@
+<div class="w-full flex flex-col items-center justify-center">
+    <mat-slide-toggle (change)="toggleFormat()">
+        {{format}}
+    </mat-slide-toggle>
+    <button mat-raised-button>
+        <a [href]="downloadURI" download="almanacs.zip">
+        download
+        </a>
+    </button>
+</div>
