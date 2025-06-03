@@ -76,7 +76,7 @@ exports.findAll = (req, res) => {
                 model: almanacRecord,
                 where: instWhere,
                 as: 'almanacRecords',
-                attributes: ['instID','instName','year','cityReg', 'diocese'],
+                attributes: ['instID','instName','year','cityReg', 'diocese', 'latitude', 'longitude'],
                 through: {
                     model: personInAlmanac,
                     where: persWhere,
@@ -102,7 +102,7 @@ exports.findByID = async (req, res) => {
             {
                 model: almanacRecord,
                 as: 'almanacRecords',
-                attributes: ['instID','instName','year','cityReg', 'diocese'],
+                attributes: ['instID','instName','year','cityReg', 'diocese', 'latitude', 'longitude'],
                 through: {
                     model: personInAlmanac,
                     attributes: ['name', 'title', 'suffix', 'role', 'note']
@@ -133,6 +133,8 @@ exports.findByID = async (req, res) => {
                     year: almanacRecord.year,
                     cityReg: almanacRecord.cityReg,
                     diocese: almanacRecord.diocese,
+                    latitude: almanacRecord.latitude,
+                    longitude: almanacRecord.longitude,
                     personInAlmanacRecord: almanacRecord.personInAlmanacRecord
                 })
             }
@@ -163,7 +165,7 @@ exports.findOne = async (req, res) => {
             model: almanacRecord,
             as: 'almanacRecords',
             where: { year: req.params.year },
-            attributes: ['instID','instName','year', 'cityReg', 'diocese'],
+            attributes: ['instID','instName','year', 'cityReg', 'diocese', 'latitude', 'longitude'],
             through: {
                 model: personInAlmanac,
                 where: { persID: req.params.id },

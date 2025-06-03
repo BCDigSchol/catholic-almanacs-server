@@ -6,157 +6,99 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
-            <div class="table formatted-table custom-font">
-                <div class="table-body">
-                    <div class="row">
-                        <div class="cell">Institution ID</div>
-                        <div class="cell">{{data.instID}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Institution Type</div>
-                        <div class="cell">{{data.instType}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Language</div>
-                        <div class="cell">{{data.language}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Diocese</div>
-                        <div class="cell">{{data.diocese}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Notes</div>
-                        <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Place Name</div>
-                        <div class="cell">{{data.placeName}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Region</div>
-                        <div class="cell">{{data.region}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Location (Original)</div>
-                        <div class="cell">
-                            {{data.countyOrig ? data.countyOrig + ', ' : ''}}
-                            {{data.cityOrig ? data.cityOrig + ', ' : ''}}
-                            {{data.stateOrig ? data.stateOrig : data.stateReg}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Location (Regular)</div>
-                        <div class="cell">
-                            {{data.countyReg ? data.countyReg + ', ' : ''}}
-                            {{data.cityReg ? data.cityReg + ', ' : ''}}
-                            {{data.stateReg ? data.stateReg : data.stateOrig}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Relevant People</div>
-                        <div class="cell">
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
-                                    <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
-                                </button>
+            <div class="w-full flex flex-row justify-center items-start">
+                <div class="w-full flex flex-col justify-center items-start">
+                    <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
+                    <div class="table formatted-table custom-font">
+                        <div class="table-body">
+                            <div class="row">
+                                <div class="cell">Institution ID</div>
+                                <div class="cell">{{data.instID}}</div>
                             </div>
-                            <div *ngIf="data.personInfo.length === 0">None</div>
+                            <div class="row">
+                                <div class="cell">Institution Type</div>
+                                <div class="cell">{{data.instType}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Language</div>
+                                <div class="cell">{{data.language}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Diocese</div>
+                                <div class="cell">{{data.diocese}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Notes</div>
+                                <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Place Name</div>
+                                <div class="cell">{{data.placeName}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Region</div>
+                                <div class="cell">{{data.region}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Location (Original)</div>
+                                <div class="cell">
+                                    {{data.countyOrig ? data.countyOrig + ', ' : ''}}
+                                    {{data.cityOrig ? data.cityOrig + ', ' : ''}}
+                                    {{data.stateOrig ? data.stateOrig : data.stateReg}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Location (Regular)</div>
+                                <div class="cell">
+                                    {{data.countyReg ? data.countyReg + ', ' : ''}}
+                                    {{data.cityReg ? data.cityReg + ', ' : ''}}
+                                    {{data.stateReg ? data.stateReg : data.stateOrig}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Relevant People</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="custom-button" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
+                                            <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.personInfo.length === 0">None</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Attending Institutions</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.attendingInstitutions.length === 0">None</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Attended By</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="custom-button" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.attendedBy.length === 0">None</div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="cell">Attending Institutions</div>
-                        <div class="cell">
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
-                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                </button>
-                            </div>
-                            <div *ngIf="data.attendingInstitutions.length === 0">None</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Attended By</div>
-                        <div class="cell">
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
-                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                </button>
-                            </div>
-                            <div *ngIf="data.attendedBy.length === 0">None</div>
-                        </div>
+                    <div class="w-full flex flex-col justify-center items-center">
+                        <google-map [options]="mapOptions" width="700px" heigh="400px">
+                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
+                            </map-marker>
+                            <map-polygon></map-polygon> <!--could be an option-->
+                        </google-map>
                     </div>
                 </div>
-            </div>
         </mat-card-content>
     </mat-card>
 </div>
-
-            <!-- <table>
-                <tbody>
-                    <tr>
-                        <td class="custom-td">Institution ID</td>
-                        <td>{{data.ID}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Institution Type</td>
-                        <td>{{data.instType}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Language</td>
-                        <td>{{data.language}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Diocese</td>
-                        <td>{{data.diocese}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">State</td>
-                        <td>{{data.stateOrig}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">City</td>
-                        <td>{{data.cityReg}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Notes</td>
-                        <td style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Relevant People</td>
-                        <td>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.personInfo">
-                                    <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
-                                </button>
-                            </div>
-                            <div *ngIf="data.personInfo.length === 0">None</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Attending Institutions</td>
-                        <td>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions" (click)="onInstitutionClick(item)">
-                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                </button>
-                            </div>
-                            <div *ngIf="data.attendingInstitutions.length === 0">None</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Attended By</td>
-                        <td>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.attendedBy" (click)="onInstitutionClick(item)">
-                                    <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                </button>
-                            </div>
-                            <div *ngIf="data.attendedBy.length === 0">None</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </mat-card-content>
-    </mat-card>
-</div> -->
