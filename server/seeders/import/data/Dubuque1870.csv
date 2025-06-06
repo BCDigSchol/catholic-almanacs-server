@@ -7,8 +7,8 @@
 ﻿dub.ia.0002,﻿church,﻿St. Patrick's,English,﻿Residence adjoining,﻿corner of Fourteenth and Iowa streets.,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.506691,-90.6692977,,,,,﻿pet_bumenshankel_001,﻿Rev.,﻿Peter Bumenshankel,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0002,﻿church,﻿St. Patrick's,English,﻿Residence adjoining,﻿corner of Fourteenth and Iowa streets.,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.506691,-90.6692977,,,,,﻿ryan_001,﻿Rev. Mr.,﻿Ryan,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0003,﻿church,﻿St. Mary's,﻿German,﻿Residence adjoining,﻿corner of Fifteenth and White streets,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.50767966,-90.66700683,,,,,﻿a_meiss_001,﻿Rev.,﻿A. Meiss,,,,,,,1870.0,Dubuque
-﻿dub.ia.0003,﻿church,﻿St. Mary's,﻿German,﻿Residence adjoining,﻿corner of Fifteenth and White streets,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.50767966,-90.66700683,,,,,﻿aug_sauter_001,﻿Rev.,﻿Augustin Sauter,,,,,,,1870.0,Dubuque
-﻿dub.ia.0004,﻿church,﻿St. Joseph's,English,﻿church in process of erection,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.5831975,-90.8836303,,,,,﻿a_f_moynihan_001,﻿Rev.,﻿A. F. Moynihan,,﻿assistant,,,,,1870.0,Dubuque
+﻿dub.ia.0003,﻿church,﻿St. Mary's,﻿German,﻿Residence adjoining,﻿corner of Fifteenth and White streets,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.50767966,-90.66700683,,,,,﻿aug_sauter_001,﻿Rev.,﻿Augustin Sauter,,﻿assistant,,,,,1870.0,Dubuque
+﻿dub.ia.0004,﻿church,﻿St. Joseph's,English,﻿church in process of erection,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.5831975,-90.8836303,,,,,﻿a_f_moynihan_001,﻿Rev.,﻿A. F. Moynihan,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0005,﻿church,﻿St. Catherine's,English,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.4059085,-90.5919455,,,,,,﻿Rev.,﻿---,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0006,﻿church,﻿St. Donatus,﻿German,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.3608433,-90.53929509999999,,,,,﻿m_flamang_001,﻿Rev.,﻿M. Flamang,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0007,﻿church,﻿St. Theresa,English,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.4694679,-90.8294002,﻿dub.ia.0015,﻿attended from Burns' Settlement,,,,,,,,,,,,1870.0,Dubuque
@@ -51,9 +51,9 @@
 ﻿dub.ia.0045,﻿church,not recorded,English,,,,﻿Scott County,﻿Scott County,﻿Walnut Grove,﻿Walnut Grove,﻿IA,,41.46586822,-90.66126170000001,﻿dub.ia.0041,"﻿attended from St. Anthony's, Davenport",,,,,,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0046,﻿church,﻿St. Benedict's,English,,,,﻿Winneshiek County,﻿Winneshiek County,﻿Decorah,﻿Decorah,﻿IA,,43.30248213,-91.78000207,,,,,﻿tho_lenehan_001,﻿Rev.,﻿Thomas Lenehan,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0047,﻿church,﻿St. Agnes,English,﻿new church in the process of erection,,,,﻿Winneshiek County,﻿Plymouth Rock,,﻿IA,,43.45721803,-91.96342916,﻿dub.ia.0046,﻿attended from Decorah,,,,,,,,,,,,1870.0,Dubuque
-﻿dub.ia.0048,﻿church,﻿St. Ambrose,English,,,,﻿Polk County,﻿Polk County,﻿Des Moines,﻿Des Moines,﻿IA,,41.58881470000001,-93.6258836,,,,,﻿joh_brazill_001,﻿Very Rev.,﻿John Brazill,,,,,,,1870.0,Dubuque
-﻿dub.ia.0048,﻿church,﻿St. Ambrose,English,,,,﻿Polk County,﻿Polk County,﻿Des Moines,﻿Des Moines,﻿IA,,41.58881470000001,-93.6258836,,,,,﻿b_cannon_001,﻿Rev.,﻿B. Cannon,,﻿V.G.,,,,,1870.0,Dubuque
-﻿dub.ia.0049,﻿station,not recorded,English,,,,﻿Polk County,﻿Polk County,﻿Ottawa,,﻿IA,,41.77258784,-93.50231738,﻿dub.ia.0048,﻿attended from Des Moines,,,,,,,﻿Assistant,,,,,1870.0,Dubuque
+﻿dub.ia.0048,﻿church,﻿St. Ambrose,English,,,,﻿Polk County,﻿Polk County,﻿Des Moines,﻿Des Moines,﻿IA,,41.58881470000001,-93.6258836,,,,,﻿joh_brazill_001,﻿Very Rev.,﻿John Brazill,,﻿V.G.,,,,,1870.0,Dubuque
+﻿dub.ia.0048,﻿church,﻿St. Ambrose,English,,,,﻿Polk County,﻿Polk County,﻿Des Moines,﻿Des Moines,﻿IA,,41.58881470000001,-93.6258836,,,,,﻿b_cannon_001,﻿Rev.,﻿B. Cannon,,﻿Assistant,,,,,1870.0,Dubuque
+﻿dub.ia.0049,﻿station,not recorded,English,,,,﻿Polk County,﻿Polk County,﻿Ottawa,,﻿IA,,41.77258784,-93.50231738,﻿dub.ia.0048,﻿attended from Des Moines,,,,,,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0050,﻿station,﻿new church in process of erection,English,,,,﻿Guthrie County,﻿Guthrie County,﻿Panora,﻿Panora,﻿IA,,41.691653499999994,-94.3630215,﻿dub.ia.0048,﻿attended from Des Moines,,,,,,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0051,﻿station,not recorded,English,,,,﻿Jasper County,﻿Jasper County,﻿Newton,﻿Newton,﻿IA,,41.7033177,-93.05735329999999,﻿dub.ia.0048,﻿attended from Des Moines,,,,,,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0052,﻿station,﻿church in process of erection,English,,﻿Irish settlement,,﻿Madison County,﻿Madison County,,﻿Cumming,﻿IA,,41.42751192,-93.79277736,﻿dub.ia.0048,﻿attended from Des Moines,,,,,,,,,,,,1870.0,Dubuque
@@ -95,8 +95,8 @@
 ﻿dub.ia.0088,﻿church,not recorded,English,,,,﻿Johnson County,﻿Johnson County,﻿Iowa City,﻿Iowa City,﻿IA,,41.657825700000004,-91.53461690000002,,,,,﻿wil_emmonds_001,﻿Rev.,﻿William Emmonds,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0089,﻿church,not recorded,English,,,,﻿Linn County,,﻿Irish Valley,,﻿IA,,42.0659844,-91.67606909999999,﻿dub.ia.0088,﻿attended from Iowa City,,,,,,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0090,﻿church,not recorded,English,,,,﻿Lee County,﻿Lee County,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,﻿ant_trevis_001,﻿Rev.,﻿Anthony Trevis,,,,,,,1870.0,Dubuque
-﻿dub.ia.0090,﻿church,not recorded,English,,,,﻿Lee County,﻿Lee County,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,﻿vin_hayes_001,﻿Rev.,﻿Vincent Hayes,,,,,,,1870.0,Dubuque
-﻿dub.ia.0091,﻿church,﻿St. Mary's,﻿German,,,,﻿Lee County,﻿Lee County,﻿Keokuk,﻿Keokuk,﻿IA,,40.40217765,-91.39160399,,,,,﻿jos_weikman_001,﻿Rev.,﻿Joseph Weikman,,﻿Assistant,,,,,1870.0,Dubuque
+﻿dub.ia.0090,﻿church,not recorded,English,,,,﻿Lee County,﻿Lee County,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,﻿vin_hayes_001,﻿Rev.,﻿Vincent Hayes,,﻿Assistant,,,,,1870.0,Dubuque
+﻿dub.ia.0091,﻿church,﻿St. Mary's,﻿German,,,,﻿Lee County,﻿Lee County,﻿Keokuk,﻿Keokuk,﻿IA,,40.40217765,-91.39160399,,,,,﻿jos_weikman_001,﻿Rev.,﻿Joseph Weikman,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0092,﻿church,not recorded,English,,,,﻿Alamakee County,﻿Allamakee County,﻿Lansing,﻿Lansing,﻿IA,,43.3609053,-91.21876800000001,,,,,﻿f_jacobi_001,﻿Rev.,﻿F. Jacobi,,,,,,,1870.0,Dubuque
 ﻿dub.ia.0093,﻿church,﻿Holy Cross,English,﻿with one other priest and two lay brothers,,,﻿Benton County,﻿Benton County,﻿Luzerne,﻿Luzerne,﻿IA,,41.9055544,-92.1799056,,,,,﻿pau_e_gillen_001,﻿Rev.,﻿Paul E. Gillen,﻿SS.C.,,,,,,1870.0,Dubuque
 ﻿dub.ia.0094,﻿church,﻿St. Irenaeus,English,,,,﻿Clinton County,﻿Clinton County,﻿Lyons,﻿Clinton,﻿IA,,41.8781949,-90.17737599,,,,,﻿fre_jean_001,﻿Rev.,﻿Frederick Jean,,,,,,,1870.0,Dubuque
@@ -184,20 +184,12 @@
 ﻿dub.ia.0169,﻿school,﻿St. Agatha's Select School,English,,,,,,﻿Iowa City,﻿Iowa City,﻿IA,,41.657825700000004,-91.53461690000002,,,,,,,,,,,﻿pupil,"﻿number, about 500",﻿conducted by the Sisters of Charity of the B.V.M.,1870.0,Dubuque
 ﻿dub.ia.0170,﻿school,not recorded,English,﻿A Select School.,,,,,﻿Des Moines,﻿Des Moines,﻿IA,,41.5868417,-93.6249522,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 300",﻿conducted by the Sisters of Charity of the B.V.M,1870.0,Dubuque
 ﻿dub.ia.0171,﻿school,not recorded,English,﻿A Select School.,,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,﻿pupil,﻿Number of pupils about 60,﻿conducted by the Sisters of Charity of the B.V.M,1870.0,Dubuque
-﻿dub.ia.0172,﻿school,﻿St. Raphael's,English,"﻿Taught by the Sisters of Charity, and three lay teachers. Pupils, about 240 between the schools",,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.495194700000006,-90.6668325,,,,,,,,,,,,,﻿Taught by the Sisters of Charity,1870.0,Dubuque
-﻿dub.ia.0173,﻿school,﻿St. Raphael's,English,"﻿Taught by the Sisters of Charity, and three lay teachers. Pupils, about 240 between the schools",,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.495194700000006,-90.6668325,,,,,,,,,,,,,﻿Taught by the Sisters of Charity,1870.0,Dubuque
+﻿dub.ia.0172,﻿school,﻿St. Raphael's,English,"﻿Number of schools, 2;  pupils about 240; taught by the Sisters of Charity, and three lay teachers.",,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.495194700000006,-90.6668325,,,,,,,,,,,﻿pupil,﻿about 240,﻿Taught by the Sisters of Charity,1870.0,Dubuque
 ﻿dub.ia.0174,﻿school,﻿St. Patrick's,English,﻿Conducted by two lay teachers,,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.506691,-90.6692977,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Dubuque
 ﻿dub.ia.0175,﻿school,﻿St. Mary's,English,﻿Conducted by lay teachers,,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.4951674,-90.6683407,,,,,,,,,,,﻿pupil,"﻿Pupils, about 400",,1870.0,Dubuque
 ﻿dub.ia.0176,﻿school,﻿St. Peter's,English,﻿Conducted by two Sisters of Charity and three lay teachers,,,,,﻿Davenport,﻿Davenport,﻿IA,,41.5236437,-90.57763670000001,,,,,,,,,,,﻿pupil,"﻿Number of pupils, about 500",﻿Sisters of Charity,1870.0,Dubuque
-﻿dub.ia.0177,﻿school,﻿St. Peter's,English,"﻿for boys, taught by lay teachers. Number of pupils across 3 schools, 480",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,,,,1870.0,Dubuque
-﻿dub.ia.0178,﻿school,﻿St. Peter's,English,"﻿for boys, taught by lay teachers. Number of pupils across 3 schools, 480",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,,,,1870.0,Dubuque
-﻿dub.ia.0179,﻿school,﻿St. Peter's,English,"﻿for boys, taught by lay teachers. Number of pupils across 3 schools, 480",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,,,,1870.0,Dubuque
-﻿dub.ia.0180,﻿school,﻿St. Peter's,English,"﻿for girls, taught by the Sisters of Charity from Emmitsburgh. Number of pupils across the 3 schools, 200",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,,,﻿Sisters of Charity,1870.0,Dubuque
-﻿dub.ia.0181,﻿school,﻿St. Peter's,English,"﻿for girls, taught by the Sisters of Charity from Emmitsburgh. Number of pupils across the 3 schools, 200",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,,,﻿Sisters of Charity,1870.0,Dubuque
-﻿dub.ia.0182,﻿school,﻿St. Peter's,English,"﻿for girls, taught by the Sisters of Charity from Emmitsburgh. Number of pupils across the 3 schools, 200",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,,,﻿Sisters of Charity,1870.0,Dubuque
-﻿dub.ia.0183,﻿school,﻿St. Mary's,﻿German,﻿taught by lay teachers,,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,﻿boy,"﻿Boys, 40",,1870.0,Dubuque
-﻿dub.ia.0184,﻿school,﻿St. Mary's,﻿German,﻿taught by lay teachers,,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,﻿girl,"﻿girls, 50",,1870.0,Dubuque
-﻿dub.ia.0185,﻿school,﻿Annunciation,English,,,,,,﻿West Point,﻿West Point,﻿IA,,40.7167039,-91.4501542,,,,,,,,,,,,,﻿conducted by the Sisters of Notre Dame,1870.0,Dubuque
-﻿dub.ia.0186,﻿school,﻿Annunciation,English,,,,,,﻿West Point,﻿West Point,﻿IA,,40.7167039,-91.4501542,,,,,,,,,,,,,﻿conducted by the Sisters of Notre Dame,1870.0,Dubuque
-﻿dub.ia.0187,﻿school,not recorded,English,"﻿parochial school conducted by the Sisters of Charity, 175 pupils across 2 schools",,,,,﻿Cascade,﻿Cascade,﻿IA,,42.2981422,-91.0160924,,,,,,,,,,,,,﻿Sisters of Charity,1870.0,Dubuque
-﻿dub.ia.0188,﻿school,not recorded,English,"﻿parochial school conducted by the Sisters of Charity, 175 pupils across 2 schools",,,,,﻿Cascade,﻿Cascade,﻿IA,,42.2981422,-91.0160924,,,,,,,,,,,,,﻿Sisters of Charity,1870.0,Dubuque
+﻿dub.ia.0177,﻿school,﻿St. Peter's,English,"﻿Six schools: three for boys, taught by three lay teachers. Number of pupils, 480",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,﻿pupil,﻿480 pupils,,1870.0,Dubuque
+﻿dub.ia.0180,﻿school,﻿St. Peter's,English,"﻿Three for girls, taught by the Sisters of Charity from Emmitsburgh. Number of pupils, 200",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,﻿pupil,﻿200 pupils,﻿Sisters of Charity,1870.0,Dubuque
+﻿dub.ia.0183,﻿school,﻿St. Mary's,﻿German,"﻿Two schools, taught by lay teachers",,,,,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,,,,,,,﻿pupil,"﻿Boys, 40; girls, 50",,1870.0,Dubuque
+﻿dub.ia.0185,﻿school,﻿Annunciation,English,﻿Two schools conducted by the sisters of Notre Dame.,,,,,﻿West Point,﻿West Point,﻿IA,,40.7167039,-91.4501542,,,,,,,,,,,,,﻿conducted by the Sisters of Notre Dame,1870.0,Dubuque
+﻿dub.ia.0187,﻿school,not recorded,English,"﻿parochial schools at Cascade, conducted by the Sisters of Charity. number of pupils, 175",,,,,﻿Cascade,﻿Cascade,﻿IA,,42.2981422,-91.0160924,,,,,,,,,,,﻿pupil,"﻿pupils, 175",﻿Sisters of Charity,1870.0,Dubuque

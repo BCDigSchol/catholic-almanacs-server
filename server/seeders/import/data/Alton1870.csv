@@ -55,13 +55,13 @@
 ﻿alt.il.0050,﻿church,﻿St. Patrick's,English,,﻿Church building,,﻿Jersey County,﻿Jersey County,﻿Grafton,﻿Grafton,﻿IL,,38.970336700000004,-90.4457993,,,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0051,﻿church,﻿St. Mary's of Help,English,,,,﻿Effingham County,﻿Effingham County,﻿Green Creek,﻿Green Creek,﻿IL,,39.2028179,-88.5233829,﻿alt.il.0216,"﻿Attended by Rev. N. Kommerscheit, O.S.F.",,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0052,﻿church,﻿St. Edward's,English,,,,﻿Pike County,﻿Pike County,﻿Griggsville,﻿Griggsville,﻿IL,,39.7089361,-90.72457220000001,﻿alt.il.0089,﻿Attended from Pittsfield,,,,,,,,,,,,1870.0,Alton
-﻿alt.il.0053,﻿church,﻿St. Francis,English,,,,﻿Monroe County,﻿Monroe County,﻿Harrisonville,﻿Harrisonville,﻿IL,,38.2775544,-90.3501191,﻿alt.il.0261,﻿Attended from Madonnaville,,,,,,,,,,,,1870.0,Alton
+﻿alt.il.0053,﻿church,﻿St. Francis,English,,,,﻿Monroe County,﻿Monroe County,﻿Harrisonville,﻿Harrisonville,﻿IL,,38.28670882,-90.34951975,﻿alt.il.0261,﻿Attended from Madonnaville,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0054,﻿church,﻿St. Paul's,English,,,,﻿Madison County,﻿Madison County,﻿Highland,﻿Highland,﻿IL,,38.74106939999999,-89.6736499,,,,,﻿p_peters_001,﻿Rev.,﻿P. Peters,,,,,,,1870.0,Alton
 ﻿alt.il.0055,﻿church,﻿St. Agnes,English,,﻿Church building,,﻿Montgomery County,﻿Montgomery County,﻿Hillsbboro,﻿Hillsbboro,﻿IL,,39.1547025,-89.49201109999998,,,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0056,﻿church,﻿Visitation of the Blessed Virgin Mary,English,,,,﻿Sangamon County,﻿Sangamon County,﻿Illiopolis,﻿Illiopolis,﻿IL,,39.8536535,-89.2420291,﻿alt.il.0034,﻿Attended from Decatur,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0057,﻿church,﻿Church of our Saviour,English,,,,﻿Morgan County,﻿Morgan County,﻿Jacksonville,﻿Jacksonville,﻿IL,,39.7345804,-90.221274,,,,,﻿jos_costa_001,﻿Rev.,﻿Joseph Costa,﻿O.C.,,,,,,1870.0,Alton
 ﻿alt.il.0058,﻿church,﻿St. Francis Xavier,English,,,,﻿Jersey County,﻿Jersey County,﻿Jerseyville,﻿Jerseyville,﻿IL,,39.115981500000004,-90.32542099999999,,,,,﻿jam_harty_001,﻿Rev.,﻿James Harty,,,,,,,1870.0,Alton
-﻿alt.il.0059,﻿church,﻿Immaculate Conception,English,,,,﻿Randolph County,﻿Randolph County,﻿Kaskaskia,﻿Kaskaskia,﻿IL,,37.92144129999999,-89.91316429999999,,,,,﻿p_j_bedard_001,﻿Rev.,﻿P. J. Bedard,,,,,,,1870.0,Alton
+﻿alt.il.0059,﻿church,﻿Immaculate Conception,English,,,,﻿Randolph County,﻿Randolph County,﻿Kaskaskia,﻿Kaskaskia,﻿IL,,37.92209896,-89.91503761,,,,,﻿p_j_bedard_001,﻿Rev.,﻿P. J. Bedard,,,,,,,1870.0,Alton
 ﻿alt.il.0060,﻿church,﻿St. Joseph's,English,,,,﻿St. Clair County,﻿St. Clair County,﻿Lebanon,﻿Lebanon,﻿IL,,38.6145544,-89.81579559999999,﻿alt.il.0082,﻿Attended from O'Fallon Station,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0061,﻿church,﻿Assumption of the Blessed Virgin Mary,English,,,,﻿Montgomery County,﻿Montgomery County,﻿Litchfield,﻿Litchfield,﻿IL,,39.1753256,-89.6542579,,,,,﻿cha_gonant_001,﻿Rev.,﻿Charles Gonant,,,,,,,1870.0,Alton
 ﻿alt.il.0062,﻿church,﻿St. Anthony's,English,,,,﻿Washington County,﻿Washington County,﻿Lively Grove,﻿Lively Grove,﻿IL,,38.3064384,-89.6114824,,,,,﻿b_rosmöller_001,﻿Rev.,﻿B. Rosmöller,,,,,,,1870.0,Alton
@@ -85,7 +85,7 @@
 ﻿alt.il.0080,﻿church,﻿St. Matthew's,English,,,,﻿Marion County,﻿Marion County,﻿Odin,﻿Odin,﻿IL,,38.617271,-89.05228670000001,﻿alt.il.0131,﻿Attended from Vandalia,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0081,﻿church,﻿St. Bridget's,English,,,,﻿Lawrence County,,﻿O'Donnell's Settlement,,﻿IL,,38.7157534,-87.7763333,﻿alt.il.0084,﻿Attended from Olney,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0082,﻿church,﻿St. Clare's,English,,,,﻿St. Clair County,﻿St. Clair County,﻿O'Fallon Station,﻿O'Fallon,﻿IL,,38.5916061,-89.9088821,,,,,﻿t_kamann_001,﻿Rev.,﻿T. Kamann,,,,,,,1870.0,Alton
-﻿alt.il.0083,﻿church,﻿St. Patrick's,English,,﻿Ruma P.O.,,﻿Randolph County,,﻿O'Hara's Settlement,,﻿IL,,38.12720770000001,-90.00364520000001,,,,,﻿joh_f_mohr_001,﻿Rev.,﻿John F. Mohr,,,,,,,1870.0,Alton
+﻿alt.il.0083,﻿church,﻿St. Patrick's,English,,﻿Ruma P.O.,,﻿Randolph County,,﻿O'Hara's Settlement,,﻿IL,,38.12947755,-90.00877373,,,,,﻿joh_f_mohr_001,﻿Rev.,﻿John F. Mohr,,,,,,,1870.0,Alton
 ﻿alt.il.0084,﻿church,﻿St. John's,English,,,,﻿Richland County,﻿Richland County,﻿Olney,﻿Olney,﻿IL,,38.73335,-88.093414,,,,,﻿jos_meckel_001,﻿Rev.,﻿Joseph Meckel,,,,,,,1870.0,Alton
 ﻿alt.il.0085,﻿church,﻿St. Michael's,English,,﻿Floraville P.O.,,﻿St. Clair County,﻿St. Clair County,﻿Paderborn,﻿Paderborn,﻿IL,,38.36032879999999,-90.0426078,,,,,﻿fra_lohmann_001,﻿Rev.,﻿Francis Lohmann,,,,,,,1870.0,Alton
 ﻿alt.il.0086,﻿church,﻿St. Patrick's,English,,,,﻿Christian County,﻿Christian County,﻿Pana,﻿Pana,﻿IL,,39.3864527,-89.0828126,﻿alt.il.0116,﻿Attended from Shelbyville,,,,,,,,,,,,1870.0,Alton
@@ -94,7 +94,7 @@
 ﻿alt.il.0089,﻿church,﻿St. Mary's,English,,,,﻿Pittsfield County,﻿Pike County,﻿Pike,﻿Pittsfield,﻿IL,,39.607825399999996,-90.80512890000001,,,,,﻿f_recouvreur_001,﻿Rev.,﻿F. Recouvreur,,,,,,,1870.0,Alton
 ﻿alt.il.0090,﻿church,﻿St. Patrick's,English,,,,﻿Gallatin County,,﻿Pond Settlement,,﻿IL,,37.7107751,-88.24611829999999,﻿alt.il.0115,﻿Attended from Shawneetown,,,,,,,,,,,,1870.0,Alton
 ﻿alt.il.0091,﻿church,﻿St. Augustine's,English,,﻿Heckler P.O.,,﻿Monroe County,﻿St. Clair County,﻿Prarie du Long,﻿Prairie Du Long Township,﻿IL,,38.300842200000005,-90.0360704,,,,,﻿joh_berlage_001,﻿Rev.,﻿John Berlage,,,,,,,1870.0,Alton
-﻿alt.il.0092,﻿church,﻿St. Joseph's,English,,,,﻿Randolph County,﻿Randolph County,﻿Prarie du Rocher,﻿Prairie Du Rocher,﻿IL,,38.0629321,-89.7755338,,,,,﻿h_fröhbose_001,﻿Rev.,﻿H. Fröhbose,,,,,,,1870.0,Alton
+﻿alt.il.0092,﻿church,﻿St. Joseph's,English,,,,﻿Randolph County,﻿Randolph County,﻿Prarie du Rocher,﻿Prairie Du Rocher,﻿IL,,38.07923498,-90.09333592,,,,,﻿h_fröhbose_001,﻿Rev.,﻿H. Fröhbose,,,,,,,1870.0,Alton
 ﻿alt.il.0093,﻿church,﻿St. Boniface's,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.9324547,-91.4051099,,,,,﻿h_schäfermeyer_001,﻿Rev.,﻿H. Schäfermeyer,,,,,,,1870.0,Alton
 ﻿alt.il.0093,﻿church,﻿St. Boniface's,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.9324547,-91.4051099,,,,,﻿w_schamoni_001,﻿Rev.,﻿W. Schamoni,,,,,,,1870.0,Alton
 ﻿alt.il.0094,﻿church,﻿St. Peter's,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.9344653,-91.3615029,,,,,﻿pet_mcgirr_001,﻿Rev.,﻿Peter McGirr,,,,,,,1870.0,Alton

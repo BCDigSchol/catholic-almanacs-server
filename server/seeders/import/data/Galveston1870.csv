@@ -32,7 +32,7 @@
 ﻿gal.tx.0023,﻿church,﻿Church of the Immaculate Conception,English,,,,﻿Cameron County,﻿Cameron County,﻿Brownsville,﻿Brownsville,﻿TX,,25.902534,-97.4960588,,,,,﻿j_m_malmartel_001,﻿Rev.,﻿J. M. Malmartel,,,,,,,1870.0,Galveston
 ﻿gal.tx.0023,﻿church,﻿Church of the Immaculate Conception,English,,,,﻿Cameron County,﻿Cameron County,﻿Brownsville,﻿Brownsville,﻿TX,,25.902534,-97.4960588,,,,,﻿f_borries_001,﻿Rev.,﻿F. Borries,﻿O.M.I.,,,,,,1870.0,Galveston
 ﻿gal.tx.0024,﻿chapel,﻿St. Joseph's Chapel,English,,,,﻿Lavacca County,﻿Lavaca County,﻿Brushy,﻿Yoakum,﻿TX,,29.290602500000002,-97.1442256,,,,,﻿joh_gaillet_001,﻿Rev.,﻿John Gaillet,,,,,,,1870.0,Galveston
-﻿gal.tx.0025,﻿church,not recorded,English,,,,﻿Fayette County,﻿Fayette County,﻿Büchel Settlement,,﻿TX,,29.8896442,-96.8350999,﻿gal.tx.0054,﻿attended from Frelsburgh,,,,,,,,,,,,1870.0,Galveston
+﻿gal.tx.0025,﻿church,not recorded,English,,,,﻿Fayette County,﻿Fayette County,﻿Büchel Settlement,,﻿TX,,29.87437879,-96.72783994,﻿gal.tx.0054,﻿attended from Frelsburgh,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0026,﻿church,not recorded,English,,,,﻿Wilson County,﻿Wilson County,﻿Cantu los Arroyos,,﻿TX,,29.2683783,-98.0465185,,,,,﻿pro_goddard_001,﻿Rev.,﻿Prosper Goddard,,,,,,,1870.0,Galveston
 ﻿gal.tx.0027,﻿church,not recorded,English,,,,﻿Cameron County,﻿Cameron County,﻿Capitaneño,,﻿TX,,26.09631936,-97.67379539,﻿gal.tx.0023,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0028,﻿church,not recorded,English,,,,﻿Zapata County,﻿Zapata County,﻿Capitaneño,﻿Falcon Village,﻿TX,,26.638663399999995,-99.0955885,﻿gal.tx.0114,﻿attended from Roma,,,,,,,,,,,,1870.0,Galveston
@@ -113,7 +113,7 @@
 ﻿gal.tx.0096,﻿church,﻿Nuestra Señora de la Espada,English,,,,,,,,﻿TX,,31.968598800000002,-99.9018131,,,,,﻿f_bouchu_001,﻿Rev.,﻿F. Bouchu,,,,,,,1870.0,Galveston
 ﻿gal.tx.0097,﻿church,not recorded,English,,,,﻿Orange County,,﻿Orange,﻿Orange,﻿TX,,30.092987899999997,-93.73655490000002,﻿gal.tx.0001,﻿attended from Galveston,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0098,﻿church,not recorded,English,,,,﻿Cameron County,,﻿Païste,,﻿TX,,26.1284971,-97.5247243,﻿gal.tx.0041,﻿attended from Corpus Christi,,,,,,,,,,,,1870.0,Galveston
-﻿gal.tx.0099,﻿church,not recorded,English,,,,﻿Cameron County,,﻿Palmetto,,﻿TX,,26.1284971,-97.5247243,,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
+﻿gal.tx.0099,﻿church,not recorded,English,,,,﻿Cameron County,,﻿Palmetto,,﻿TX,,26.20193953,-97.5247243,,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0100,﻿church,not recorded,English,,,,﻿Karnes County,﻿Karnes County,﻿Paña Maria,﻿Panna Maria,﻿TX,,28.9571914,-97.8981624,,,,,﻿ado_bakanowski_001,﻿Very Rev.,﻿Adolph Bakanowski,﻿C.R.D.N.,﻿Superior,,,,,1870.0,Galveston
 ﻿gal.tx.0100,﻿church,not recorded,English,,,,﻿,﻿Karnes County,﻿Paña Maria,﻿Panna Maria,﻿TX,,28.9571914,-97.8981624,,,,,﻿fel_zwiardowski_001,﻿Rev.,﻿Felix Zwiardowski,﻿C.R.D.N.,,,,,,1870.0,Galveston
 ﻿gal.tx.0101,﻿church,not recorded,English,,,,﻿Nueces County,,﻿Para,,﻿TX,,27.769335100000003,-97.48141629999999,,﻿attended from San Patricio,,,,,,,,,,,,1870.0,Galveston
@@ -163,7 +163,7 @@
 ﻿gal.tx.0137,﻿church,not recorded,English,,,,﻿,﻿Cameron County,﻿Santa Rosalia,﻿Brownsville,﻿TX,,25.9017472,-97.4974838,﻿gal.tx.0023,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0138,﻿church,not recorded,English,,,,﻿,﻿Cameron County,﻿San Rafael,,﻿TX,,25.84975,-97.38797,﻿gal.tx.0023,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0139,﻿church,not recorded,English,,,,﻿Bexar County,,﻿Santiago,,﻿TX,,29.420076300000005,-98.5721016,,,,,,,,,,﻿(See Jamestown.),,,,1870.0,Galveston
-﻿gal.tx.0140,﻿church,not recorded,English,,,,﻿Cameron County,,﻿Savinito,﻿Sabanito,﻿TX,,26.1284971,-97.5247243,﻿gal.tx.0023,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
+﻿gal.tx.0140,﻿church,not recorded,English,,,,﻿Cameron County,,﻿Savinito,﻿Sabanito,﻿TX,,26.21104557,-97.5247243,﻿gal.tx.0023,﻿attended from Brownsville,,,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0141,﻿church,not recorded,English,,,,﻿Bexar County,﻿Guadalupe County,﻿Seguin,﻿Seguin,﻿TX,,29.5689248,-97.9645832,,,,,﻿j_dumoulin_001,﻿Rev.,﻿J. Dumoulin,,,,,,,1870.0,Galveston
 ﻿gal.tx.0142,﻿church,not recorded,English,,﻿Rose Hill P.O.,,﻿Montgomery County,﻿Harris County,﻿Spring Creek,﻿Rose Hill,﻿TX,,30.0707743,-95.70355759999998,﻿gal.tx.0063,﻿attended from Houston,,﻿There are two churches in Houston.  Went with the English (not German) one,,,,,,,,,,1870.0,Galveston
 ﻿gal.tx.0143,﻿church,not recorded,English,,,,﻿Liberty County,﻿Hardin County,﻿Sour Lake,﻿Sour Lake,﻿TX,,30.140212199999997,-94.4110239,﻿gal.tx.0063,﻿attended from Houston,,﻿There are two churches in Houston.  Went with the English (not German) one,,,,,,,,,,1870.0,Galveston

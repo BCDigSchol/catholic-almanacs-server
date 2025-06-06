@@ -21,8 +21,8 @@
 ﻿cov.kt.0015,﻿church,﻿St. John the Evangelist,English,﻿brick church,,,﻿Carroll County,,﻿Carrollton,﻿Carrollton,﻿KY,,38.6763441,-85.1791896,,,,,﻿joh_stephany_001,﻿Rev.,﻿John Stephany,,﻿Pastor,,,,,1867.0,Covington
 ﻿cov.kt.0016,﻿church,not recorded,English,,﻿K.C.R.R.,,﻿Canton County,﻿Kenton County,﻿Culberton's Station,,﻿KY,,38.93509011,-84.49722856,﻿cov.kt.0006,﻿attended from West-Covington,﻿once a month,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0017,﻿church,not recorded,English,,,,﻿Harrison County,,﻿Cynthiana,﻿Cynthania,﻿KY,,38.3903526,-84.2941013,,﻿attended from Paris,﻿every second Sunday,,,,,,,,,,,1867.0,Covington
-﻿cov.kt.0017,﻿church,not recorded,English,,,,﻿Mason County,,﻿Davis,﻿Cynthania,﻿KY,,38.3903526,-84.2941013,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
-﻿cov.kt.0017,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Elizaville,﻿Cynthania,﻿KY,,38.3903526,-84.2941013,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
+﻿cov.kt.0100,﻿church,not recorded,English,,,,﻿Mason County,,﻿Davis,,,,38.3903526,-84.2941013,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
+﻿cov.kt.0101,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Elizaville,,,,38.3903526,-84.2941013,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0018,﻿church,﻿St. Francis Xavier,English,﻿brick church,,,﻿Pendleton County,,﻿Falmouth,﻿Falmouth,﻿KY,,38.676737200000005,-84.3302142,,﻿attended from Paris,﻿fourth Sunday,,﻿eh_brendts_001,﻿Rev.,﻿E. H. Brandts,,,,,,,1867.0,Covington
 ﻿cov.kt.0019,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Flemingsburgh,﻿Flemingsburg,﻿KY,,38.4222995,-83.73380759999999,,﻿attended by Rev. John Hickey,﻿twice a month,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0020,﻿church,not recorded,English,,,,﻿Boon County,,﻿Florence,﻿Florence,﻿KY,,38.9989499,-84.62661109999999,﻿cov.kt.0006,﻿attended from West-Covington,﻿third Sunday,,,,,,,,,,,1867.0,Covington
@@ -31,8 +31,8 @@
 ﻿cov.kt.0023,﻿church,﻿Church of the Good Shepherd,English,"﻿with residence, etc.",,,﻿Franklin County,,﻿Frankfort,﻿Frankfort,﻿KY,,38.2009055,-84.8732835,,,,,﻿jam_m_lancaster_001,﻿Rev.,﻿James M. Lancaster,,﻿Pastor,,,,,1867.0,Covington
 ﻿cov.kt.0024,﻿church,not recorded,English,,,,﻿Scott County,,﻿Georgetown,﻿Georgetown,﻿KY,,38.2228104,-84.5675837,,﻿attended by Rev. John Mackey,,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0025,﻿church,not recorded,English,,,,﻿Carroll County,,﻿Ghent,﻿Ghent,﻿KY,,38.7375625,-85.0582835,,﻿attended from Carrollton,﻿occasionally,,,,,,,,,,,1867.0,Covington
-﻿cov.kt.0025,﻿church,not recorded,English,,,,﻿Mason County,,﻿Germantown,﻿Ghent,﻿KY,,38.7375625,-85.0582835,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
-﻿cov.kt.0025,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Hilsboro,﻿Ghent,﻿KY,,38.7375625,-85.0582835,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
+﻿cov.kt.0102,﻿church,not recorded,English,,,,﻿Mason County,,﻿Germantown,,﻿KY,,38.7375625,-85.0582835,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
+﻿cov.kt.0103,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Hilsboro,,﻿KY,,38.7375625,-85.0582835,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0026,﻿church,not recorded,English,,,,﻿Kenton County,,﻿Independence,﻿Independence,﻿KY,,38.943118299999995,-84.54410899999999,﻿cov.kt.0006,﻿attended from West-Covington,,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0027,﻿church,﻿St. Francis of Assisium,English,"﻿brick church, pastoral residence, and school-house",,,,,﻿Jamestown,,﻿KY,,37.839333200000006,-84.2700179,,,,,﻿fra_grome_001,﻿Rev.,﻿Francis Grome,,﻿Pastor,,,,,1867.0,Covington
 ﻿cov.kt.0028,﻿church,﻿St. Peter's Church,English,﻿residence and boys' academy,,,﻿Fayette County,,﻿Lexington,﻿Lexington,﻿KY,,38.0469186,-84.4945282,,,,,﻿i_h_bekkars_001,﻿Rev.,﻿I. H. Bekkars,,﻿Pastor,,,,,1867.0,Covington
@@ -57,13 +57,13 @@
 ﻿cov.kt.0045,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Poplar Plains,﻿Poplar Plains,﻿KY,,38.3609113,-83.6743608,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
 ﻿cov.kt.0046,﻿church,not recorded,English,,,,﻿Madison County,,﻿Richmond,﻿Richmond,﻿KY,,37.747857200000006,-84.29465390000001,,,,,﻿l_d_willie_001,﻿Rev.,﻿L. D. Willie,,,,,,,1867.0,Covington
 ﻿cov.kt.0047,﻿church,not recorded,English,,,,﻿Madison County,,﻿Rogersville,,﻿KY,,37.68469739,-84.25842113,,,,,﻿l_d_willie_001,﻿Rev.,﻿L. D. Willie,,,,,,,1867.0,Covington
-﻿cov.kt.0047,﻿church,not recorded,English,,,,﻿Mason County,,﻿Sardis,,﻿KY,,37.68469739,-84.25842113,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
+﻿cov.kt.0104,﻿church,not recorded,English,,,,﻿Mason County,,﻿Sardis,,﻿KY,,37.68469739,-84.25842113,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
 ﻿cov.kt.0049,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Sherbourne,﻿Sherburne,﻿KY,,38.2817443,-83.80269820000001,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
 ﻿cov.kt.0050,﻿church,not recorded,English,﻿new frame church,,,﻿Pendleton County,,﻿Stepstone,﻿Stepstone,﻿KY,,38.6900889,-84.359802,,﻿attended from Twelve Mile,,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0051,﻿church,not recorded,English,﻿log church,,,﻿Estell County,﻿Estill County,﻿Station Camp,﻿Station Camp,﻿KY,,37.839333200000006,-84.2700179,,,,,﻿l_d_willie_001,﻿Rev.,﻿L. D. Willie,,,,,,,1867.0,Covington
 ﻿cov.kt.0052,﻿church,﻿Church of St. Peter,English,﻿school-house,,,﻿Campbell County,,﻿Twelve Mile,,﻿KY,,38.8951891,-84.3962535,,,,,﻿joh_m_schuchart_001,﻿Rev.,﻿John M. Schuchart,﻿Pastor,,,,,,1867.0,Covington
-﻿cov.kt.0052,﻿church,﻿Church of St. Peter,English,﻿school-house,,,﻿Fleming County,,﻿Tilton,,﻿KY,,38.8951891,-84.3962535,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
-﻿cov.kt.0052,﻿church,﻿Church of St. Peter,English,﻿school-house,,,﻿Lewis County,,﻿Vanceburgh,,﻿KY,,38.8951891,-84.3962535,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
+﻿cov.kt.0105,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Tilton,,﻿KY,,38.8951891,-84.3962535,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
+﻿cov.kt.0106,﻿church,not recorded,English,,,,﻿Lewis County,,﻿Vanceburgh,,﻿KY,,38.8951891,-84.3962535,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1867.0,Covington
 ﻿cov.kt.0053,﻿church,not recorded,English,,,,﻿Boone County,,﻿Verona,﻿Verona,﻿KY,,38.8180932,-84.66060920000001,﻿cov.kt.0006,﻿attended from West-Covington,,,,,,,,,,,,1867.0,Covington
 ﻿cov.kt.0054,﻿church,not recorded,English,,,,﻿Woodford County,,﻿Versailles,﻿Versailles,﻿KY,,38.052576,-84.7299464,,,,,﻿j_mackey_001,﻿Rev.,﻿J. Mackey,,,,,,,1867.0,Covington
 ﻿cov.kt.0055,﻿church,not recorded,English,﻿new brick church,,,﻿Gallatin County,,﻿Warsaw,﻿Warsaw,﻿KY,,38.7833963,-84.9016151,﻿cov.kt.0015,﻿attended from Carrollton,,,,,,,,,,,,1867.0,Covington
@@ -108,4 +108,4 @@
 ﻿cov.kt.0098,﻿priory,﻿St. Joseph's Priory of the Benedictine Order,English,,﻿Bush street,,,,﻿Covington,﻿Covington,﻿KY,,38.8951891,-84.3962535,,,,,﻿p_m_hofmeyer_001,﻿Rev.,﻿P. Michael Hofmeyer,﻿O.S.B.,,,,,,1867.0,Covington
 ﻿cov.kt.0098,﻿priory,﻿St. Joseph's Priory of the Benedictine Order,English,,﻿Bush street,,,,﻿Covington,﻿Covington,﻿KY,,38.8951891,-84.3962535,,,,,﻿p_e_vanino_001,﻿Rev.,﻿P. Erhard Vanino,﻿O.S.B.,,,,,,1867.0,Covington
 ﻿cov.kt.0098,﻿priory,﻿St. Joseph's Priory of the Benedictine Order,English,,﻿Bush street,,,,﻿Covington,﻿Covington,﻿KY,,38.8951891,-84.3962535,,,,,﻿p_a_herman_001,﻿Rev.,﻿P. Alto Herman,﻿O.S.B.,,﻿resides at Augusta,,,,1867.0,Covington
-﻿cov.kt.0098,﻿college,﻿Prepatory College of St. Aloysius,English,"﻿removed from St. Stanislaus', Scott Co.; on a well-wooded, rolling farm, with farm-house, large brick college and chapel, and other buildings in progress, will be opened on the first Monday in September.",﻿four miles from Covington,,﻿Kenton County,,﻿Covington,﻿Covington,﻿KY,,38.8951891,-84.3962535,,,,,,,,,,,,,,1867.0,Covington
+﻿cov.kt.0107,﻿college,﻿Prepatory College of St. Aloysius,English,"﻿removed from St. Stanislaus', Scott Co.; on a well-wooded, rolling farm, with farm-house, large brick college and chapel, and other buildings in progress, will be opened on the first Monday in September.",﻿four miles from Covington,,﻿Kenton County,,,,﻿KY,,38.8951891,-84.3962535,,,,,,,,,,,,,,1867.0,Covington

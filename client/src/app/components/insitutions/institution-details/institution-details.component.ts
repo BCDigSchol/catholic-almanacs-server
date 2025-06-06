@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
@@ -10,13 +10,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { SelectYearComponent } from '../../common/select-year/select-year.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { Location } from '@angular/common';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-institution-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-            RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule
+            RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIcon,
+            MatIconModule
   ],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
@@ -35,6 +38,8 @@ export class InstitutionDetailsComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _api: ApiService,
+    private _location: Location,
+    private _router: Router
   ) { }
 
   ngOnInit () {
@@ -51,6 +56,7 @@ export class InstitutionDetailsComponent implements OnInit {
     this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
+      console.log(this.data.religiousOrder)
     }
     );
   }
@@ -71,9 +77,16 @@ export class InstitutionDetailsComponent implements OnInit {
       this.data.year = allYears;
       this.itemId = this.data.instID;
     })};
-  }
+  };
 
   clickMap (event: google.maps.MapMouseEvent) {
-  
+  };
+
+  goBack (): void {
+    if (window.history.length > 1) {
+      this._location.back();
+    } else {
+      this._router.navigate(['/institutions']);
+    }
   }
 }

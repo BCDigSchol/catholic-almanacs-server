@@ -29,7 +29,7 @@
 ﻿new.la.0014,﻿church,﻿St. Teresa's,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿pat_allen_001,﻿Rev.,﻿Patrick Ollen,,﻿Assistant,﻿spelled 'Ollen' in 1869 (typo?),,,,1869.0,NewOrleans
 ﻿new.la.0014,﻿church,﻿St. Teresa's,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿m_holton_001,﻿Rev.,﻿M. Holton,,﻿Assistant,,,,,1869.0,NewOrleans
 ﻿new.la.0015,﻿church,﻿Trinity Church,﻿German,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿mr_thévis_001,﻿Rev.,﻿Mr. Thévis,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0016,﻿church,﻿St. Maurice's,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,,﻿Rev.,﻿A. Duval,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0016,﻿church,﻿St. Maurice's,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿a_duval_001,﻿Rev.,﻿A. Duval,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0017,﻿church,﻿St. Bartholomew's,English,,﻿Algiers,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9214314,-90.01424859999999,,,,,﻿f_dennis_001,﻿Rev.,﻿F. Dennis,﻿S.M.,,,,,,1869.0,NewOrleans
 ﻿new.la.0017,﻿church,﻿St. Bartholomew's,English,,﻿Algiers,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9214314,-90.01424859999999,,,,,﻿f_gautherin_001,﻿Rev.,﻿F. Gautherin,﻿S.M.,,,,,,1869.0,NewOrleans
 ﻿new.la.0017,﻿church,﻿St. Bartholomew's,English,,﻿Algiers,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9214314,-90.01424859999999,,,,,﻿f_binsfield_001,﻿Rev.,﻿F. Binsfield,﻿S.M.,,,,,,1869.0,NewOrleans
@@ -80,7 +80,7 @@
 ﻿new.la.0051,﻿church,﻿St. Francis of Sales,English,,,,﻿Terre Bonne Parish,,﻿Houma,﻿Houma,﻿LA,,29.5957696,-90.7195348,,,,,﻿m_gonellaz_001,﻿Rev.,﻿M. Gonellaz,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0052,﻿church,﻿St. Gabriel,English,,,,﻿Iberville Parish,,,,﻿LA,,30.2899179,-91.40482490000001,,,,,﻿dubernard_001,﻿Rev.,﻿Dubernard,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0053,﻿church,﻿St. Raphael,English,,,,﻿Iberville Parish,,,,﻿LA,,30.2899179,-91.40482490000001,,,,,﻿mr_vallé_001,﻿Rev.,﻿Mr. Vallé,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0054,﻿church,﻿Conception,English,,,,,,﻿Ile Piquante,﻿Ile Piquante,﻿LA,,29.9035383,-91.7337272,﻿new.la.0061,﻿Attended from New Iberia,,,﻿mr_vallé_001,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0054,﻿church,﻿Conception,English,,,,,,﻿Ile Piquante,﻿Ile Piquante,﻿LA,,29.9035383,-91.7337272,﻿new.la.0061,﻿Attended from New Iberia,,,,,,,,,,,,1869.0,NewOrleans
 ﻿new.la.0055,﻿church,not recorded,English,,,,﻿East Feliciana Parish,,﻿Jackson,﻿Jackson,﻿LA,,30.8374036,-91.2176087,,,,,﻿m_scolard_001,﻿Rev.,﻿M. Scolard,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0056,﻿church,﻿Assumption,English,,,,﻿Lafourche Parish,,,,﻿LA,,29.6952295,-90.5257823,,,,,﻿bouchet_001,﻿Rev.,﻿— Bouchet,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0057,﻿church,﻿St. Mary's,English,,,,﻿Lafourche Parish,,,,﻿LA,,29.6952295,-90.5257823,,,,,﻿jb_héran_001,﻿Rev.,﻿J.B. Héran,,﻿Pastor,,,,,1869.0,NewOrleans
@@ -92,37 +92,37 @@
 ﻿new.la.0061,﻿church,﻿St. Peter's,English,,,,,,﻿New Iberia,﻿New Iberia,﻿LA,,30.0035365,-91.8187285,,,,,﻿tp_pouchon_001,﻿Rev.,﻿T.P. Pouchon,,﻿Assistant,,,,,1869.0,NewOrleans
 ﻿new.la.0062,﻿church,not recorded,English,,,,,,﻿New River,﻿New River,﻿LA,,30.5190775,-91.52086240000001,﻿new.la.0044,﻿Attended from Donaldsonville,,,,,,,,,,,,1869.0,NewOrleans
 ﻿new.la.0063,﻿church,﻿St. Landry,English,,,,﻿St. Landry Parish,,﻿Opelousas,﻿Opelousas,﻿LA,,30.5335302,-92.081509,,,,,﻿fx_raymond_001,﻿Rev.,﻿F.X. Raymond,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0063,﻿church,﻿St. Landry,English,,,,﻿St. Landry Parish,,﻿Opelousas,﻿Opelousas,﻿LA,,30.5335302,-92.081509,,,,,,﻿Rev.,﻿Alexandre Marie-Mehant,,﻿Assistant,,,,,1869.0,NewOrleans
+﻿new.la.0063,﻿church,﻿St. Landry,English,,,,﻿St. Landry Parish,,﻿Opelousas,﻿Opelousas,﻿LA,,30.5335302,-92.081509,,,,,﻿ale_mariemehant_001,﻿Rev.,﻿Alexandre Marie-Mehant,,﻿Assistant,,,,,1869.0,NewOrleans
 ﻿new.la.0063,﻿church,﻿St. Landry,English,,,,﻿St. Landry Parish,,﻿Opelousas,﻿Opelousas,﻿LA,,30.5335302,-92.081509,,,,,﻿arm_j_dubourg_001,﻿Rev.,﻿Armand J. M. Dubourg,,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0063,﻿church,﻿St. Landry,English,,,,﻿St. Landry Parish,,﻿Opelousas,﻿Opelousas,﻿LA,,29.9902013,-91.05510009999999,,,,,﻿tou_f_bege_001,﻿Rev.,﻿Toussaint F. Bege,,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0064,﻿church,﻿St. Elizabeth's,English,,,,,,﻿Paincourtville,﻿Paincourtville,﻿LA,,29.6932641,-91.3020502,,,,,﻿jb_lesaichere_001,﻿Rev.,﻿J.B. Lesaichere,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0065,﻿church,not recorded,English,,,,,,﻿Patterson,﻿Patterson,﻿LA,,30.5190775,-91.52086240000001,﻿new.la.0046,﻿Attended from Franklin,,,,,,,,,,,,1869.0,NewOrleans
-﻿new.la.0066,﻿church,not recorded,English,,,,,,﻿Petit Callou,﻿Petit Callou,﻿LA,,29.9652016,-91.2031593,,,,,﻿jm_denécé_001,﻿Rev.,﻿J.M. Denécé,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0067,﻿church,not recorded,English,,,,,,﻿Pierrepart Bayou,﻿Pierrepart Bayou,﻿LA,,30.2890833,-91.2342744,﻿new.la.0064,﻿Attended from Paincourtville,,,,,,,,,,,,1869.0,NewOrleans
-﻿new.la.0068,﻿church,﻿St. John's,English,,,,﻿Iberville Parish,,﻿Plaquemine,﻿Plaquemine,﻿LA,,29.3240045,-89.4742177,,,,,﻿vic_c_dhémécourt_001,﻿Rev.,﻿Victor C.D. D'Hémécourt,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0063,﻿church,﻿St. Landry,English,,,,﻿St. Landry Parish,,﻿Opelousas,﻿Opelousas,﻿LA,,30.5335302,-92.081509,,,,,﻿tou_f_bege_001,﻿Rev.,﻿Toussaint F. Bege,,﻿Assistant,,,,,1869.0,NewOrleans
+﻿new.la.0064,﻿church,﻿St. Elizabeth's,English,,,,,,﻿Paincourtville,﻿Paincourtville,﻿LA,,29.9902013,-91.05510009999999,,,,,﻿jb_lesaichere_001,﻿Rev.,﻿J.B. Lesaichere,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0065,﻿church,not recorded,English,,,,,,﻿Patterson,﻿Patterson,﻿LA,,29.6932641,-91.3020502,﻿new.la.0046,﻿Attended from Franklin,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0066,﻿church,not recorded,English,,,,,,﻿Petit Callou,﻿Petit Callou,﻿LA,,30.5190775,-91.52086240000001,,,,,﻿jm_denécé_001,﻿Rev.,﻿J.M. Denécé,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0067,﻿church,not recorded,English,,,,,,﻿Pierrepart Bayou,﻿Pierrepart Bayou,﻿LA,,29.9652016,-91.2031593,﻿new.la.0064,﻿Attended from Paincourtville,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0068,﻿church,﻿St. John's,English,,,,﻿Iberville Parish,,﻿Plaquemine,﻿Plaquemine,﻿LA,,30.2890833,-91.2342744,,,,,﻿vic_c_dhémécourt_001,﻿Rev.,﻿Victor C.D. D'Hémécourt,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0069,﻿church,﻿St. Thomas',English,,,,﻿Parish of Plaquemine,,,,﻿LA,,29.3240045,-89.4742177,,,,,﻿a_langlois_001,﻿Rev.,﻿A. Langlois,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0069,﻿church,﻿St. Thomas',English,,,,﻿Parish of Plaquemine,,,,﻿LA,,29.3240045,-89.4742177,,,,,﻿jul_bertolin_001,﻿Rev.,﻿Jules Bertolin,,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0070,﻿church,﻿Notre Dame de Bon Port,English,,,,﻿Parish of Plaquemine,,,,﻿LA,,30.6102166,-91.5983959,,,,,﻿m_harnais_001,﻿Rev.,﻿M. Harnais,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0071,﻿church,﻿St. Francis,English,,,,﻿Pointe Coupee Parish,,,,﻿LA,,30.0179292,-90.79132270000001,,,,,﻿hj_poyet_001,﻿Rev.,﻿H.J. Poyet,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0072,﻿church,﻿St. James',English,,,,﻿St. James' Parish,,,,﻿LA,,30.0110809,-90.71971429999999,,,,,﻿m_vignonet_001,﻿Rev.,﻿M. Vignonet,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0073,﻿church,not recorded,English,,,,﻿St. James' Parish,,﻿Vacherie,﻿Vacherie,﻿LA,,29.93326572,-90.06857887,,,,,﻿jm_ravoire_001,﻿Rev.,﻿J.M. Ravoire,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0070,﻿church,﻿Notre Dame de Bon Port,English,,,,﻿Parish of Plaquemine,,,,﻿LA,,29.3240045,-89.4742177,,,,,﻿m_harnais_001,﻿Rev.,﻿M. Harnais,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0071,﻿church,﻿St. Francis,English,,,,﻿Pointe Coupee Parish,,,,﻿LA,,30.6102166,-91.5983959,,,,,﻿hj_poyet_001,﻿Rev.,﻿H.J. Poyet,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0072,﻿church,﻿St. James',English,,,,﻿St. James' Parish,,,,﻿LA,,30.0179292,-90.79132270000001,,,,,﻿m_vignonet_001,﻿Rev.,﻿M. Vignonet,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0073,﻿church,not recorded,English,,,,﻿St. James' Parish,,﻿Vacherie,﻿Vacherie,﻿LA,,30.0110809,-90.71971429999999,,,,,﻿jm_ravoire_001,﻿Rev.,﻿J.M. Ravoire,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0074,﻿church,﻿St. Michael,English,,,,,,,﻿New Orleans,﻿LA,,29.93326572,-90.06857887,,,,,﻿f_bellanger_001,﻿Rev.,﻿F. Bellanger,﻿S.M.,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0074,﻿church,﻿St. Michael,English,,,,,,,﻿New Orleans,﻿LA,,29.93326572,-90.06857887,,,,,﻿f_chavas_001,﻿Rev.,﻿F. Chavas,﻿S.M.,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0074,﻿church,﻿St. Michael,English,,,,,,,﻿New Orleans,﻿LA,,30.6879749,-92.2715157,,,,,﻿m_renaudier_001,﻿Rev.,﻿M. Renaudier,﻿S.M.,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0076,﻿church,not recorded,English,,,,,,﻿Villeplate,﻿Villeplate,﻿LA,,30.09745228,-91.99071354,,,,,﻿mr_forge_001,﻿Rev.,﻿Mr. Forge,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0077,﻿church,not recorded,English,,,,,,﻿Royville,﻿Rayville,﻿LA,,30.1231441,-91.8294817,,,,,﻿h_lecozic_001,﻿Rev.,﻿H. Lecozic,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0078,﻿church,not recorded,English,,,,,,﻿St. Martinville,﻿St. Martinville,﻿LA,,29.8794786,-89.8130124,,,,,﻿m_jan_001,﻿Very Rev.,﻿M. Jan,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0079,﻿church,﻿St. Bernard,English,,,,﻿St. Bernard Parish,,﻿Terre aux Boeufs,﻿Terre aux Boeufs,﻿LA,,29.7957633,-90.82287099999999,,,,,﻿m_jacquet_001,﻿Rev.,﻿M. Jacquet,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0074,﻿church,﻿St. Michael,English,,,,,,,﻿New Orleans,﻿LA,,29.93326572,-90.06857887,,,,,﻿m_renaudier_001,﻿Rev.,﻿M. Renaudier,﻿S.M.,﻿Assistant,,,,,1869.0,NewOrleans
+﻿new.la.0076,﻿church,not recorded,English,,,,,,﻿Villeplate,﻿Villeplate,﻿LA,,30.6879749,-92.2715157,,,,,﻿mr_forge_001,﻿Rev.,﻿Mr. Forge,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0077,﻿church,not recorded,English,,,,,,﻿Royville,﻿Rayville,﻿LA,,30.09745228,-91.99071354,,,,,﻿h_lecozic_001,﻿Rev.,﻿H. Lecozic,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0078,﻿church,not recorded,English,,,,,,﻿St. Martinville,﻿St. Martinville,﻿LA,,30.1231441,-91.8294817,,,,,﻿m_jan_001,﻿Very Rev.,﻿M. Jan,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0079,﻿church,﻿St. Bernard,English,,,,﻿St. Bernard Parish,,﻿Terre aux Boeufs,﻿Terre aux Boeufs,﻿LA,,29.8794786,-89.8130124,,,,,﻿m_jacquet_001,﻿Rev.,﻿M. Jacquet,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0080,﻿church,﻿St. Joseph's,English,,,,,,﻿Thibodeaux,﻿Thibodeaux,﻿LA,,29.7957633,-90.82287099999999,,,,,﻿cha_menard_001,﻿Very Rev.,﻿Charles Menard,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0080,﻿church,﻿St. Joseph's,English,,,,,,﻿Thibodeaux,﻿Thibodeaux,﻿LA,,29.7957633,-90.82287099999999,,,,,﻿cla_favre_001,﻿Rev.,﻿Claude Favre,,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0081,﻿church,﻿St. Philomena's Church,English,,,,,,﻿Thibodeaux,﻿Thibodeaux,﻿LA,,30.2240897,-92.0198427,,,,,﻿t_venissat_001,﻿Rev.,﻿T. Venissat,,﻿Pastor,,,,,1869.0,NewOrleans
+﻿new.la.0081,﻿church,﻿St. Philomena's Church,English,,,,,,﻿Thibodeaux,﻿Thibodeaux,﻿LA,,29.7957633,-90.82287099999999,,,,,﻿t_venissat_001,﻿Rev.,﻿T. Venissat,,﻿Pastor,,,,,1869.0,NewOrleans
 ﻿new.la.0082,﻿church,﻿St. John the Evangelist,English,,,,,,﻿Vermilionville,﻿Vermilionville,﻿LA,,30.2240897,-92.0198427,,,,,﻿gus_rouxel_001,﻿Rev.,﻿Gustave Rouxel,,﻿Pastor,,,,,1869.0,NewOrleans
-﻿new.la.0082,﻿church,﻿St. John the Evangelist,English,,,,,,﻿Vermilionville,﻿Vermilionville,﻿LA,,29.7060425,-90.91120649999999,,,,,﻿ajm_guillot_001,﻿Rev.,﻿A.J.M. Guillot,,﻿Assistant,,,,,1869.0,NewOrleans
-﻿new.la.0083,﻿church,not recorded,English,,,,,,﻿Chacagoula,﻿Chacagoula,﻿LA,,30.0429108,-90.5433979,﻿new.la.0115,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
-﻿new.la.0084,﻿church,not recorded,English,,,,,,﻿Tigerville,﻿Tigerville,﻿LA,,29.8693736,-90.596754,﻿new.la.0116,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
-﻿new.la.0085,﻿church,not recorded,English,,,,,,﻿Bayou Boeuf,﻿Bayou Boeuf,﻿LA,,29.6993748,-91.20676999999999,﻿new.la.0117,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
-﻿new.la.0086,﻿church,not recorded,English,,,,,,﻿Brashear,﻿Morgan City,﻿LA,,30.6163073,-92.057063,﻿new.la.0118,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
-﻿new.la.0087,﻿church,not recorded,English,,,,,,﻿Washington,﻿Washington,﻿LA,,29.9508941,-90.07583559999999,,﻿Attended from Opelousas,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0082,﻿church,﻿St. John the Evangelist,English,,,,,,﻿Vermilionville,﻿Vermilionville,﻿LA,,30.2240897,-92.0198427,,,,,﻿ajm_guillot_001,﻿Rev.,﻿A.J.M. Guillot,,﻿Assistant,,,,,1869.0,NewOrleans
+﻿new.la.0083,﻿church,not recorded,English,,,,,,﻿Chacagoula,﻿Chacagoula,﻿LA,,29.7060425,-90.91120649999999,﻿new.la.0115,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0084,﻿church,not recorded,English,,,,,,﻿Tigerville,﻿Tigerville,﻿LA,,30.0429108,-90.5433979,﻿new.la.0116,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0085,﻿church,not recorded,English,,,,,,﻿Bayou Boeuf,﻿Bayou Boeuf,﻿LA,,29.8693736,-90.596754,﻿new.la.0117,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0086,﻿church,not recorded,English,,,,,,﻿Brashear,﻿Morgan City,﻿LA,,29.6993748,-91.20676999999999,﻿new.la.0118,﻿Attended from Thibodeauxville,,,,,,,,,,,,1869.0,NewOrleans
+﻿new.la.0087,﻿church,not recorded,English,,,,,,﻿Washington,﻿Washington,﻿LA,,30.6163073,-92.057063,,﻿Attended from Opelousas,,,,,,,,,,,,1869.0,NewOrleans
 ﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿a_jourdan_001,﻿Rev.,﻿A Jourdan,﻿S.J.,﻿President,,﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
 ﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿f_gautrelet_001,﻿Rev.,﻿J. Gautrelet,﻿S.J.,﻿Vice-President,,﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
 ﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿w_murphy_001,﻿Rev.,﻿W. Murphy,﻿S.J.,﻿Chaplain,,﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
@@ -133,7 +133,7 @@
 ﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿j_downey_001,﻿Rev.,﻿J. Downey,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
 ﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿fr_vaure_001,﻿Rev.,﻿Fr. Vaure,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
 ﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿j_foley_001,﻿Rev.,﻿J. Foley,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,30.419832,-92.0500929,,,,,﻿b_roydhouse_001,﻿Mr.,﻿B. Roydhouse,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿b_roydhouse_001,﻿Mr.,﻿B. Roydhouse,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿there are 6 brothers,,1869.0,NewOrleans
 ﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿fel_benausse_001,﻿Very Rev.,﻿Fel. Benausse,﻿S.J.,﻿President,,﻿Brother,﻿11 brothers,,1869.0,NewOrleans
 ﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿fre_larnaudie_001,﻿Rev.,﻿Fred. Larnaudie,﻿S.J.,﻿Vice-President,,﻿Brother,﻿11 brothers,,1869.0,NewOrleans
 ﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,,,﻿--------,﻿S.J.,﻿Chaplain,,﻿Brother,﻿11 brothers,,1869.0,NewOrleans
@@ -144,7 +144,7 @@
 ﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿h_begly_001,﻿Rev.,﻿H. Begly,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿11 brothers,,1869.0,NewOrleans
 ﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿joh_oshanahan_001,﻿Rev.,﻿John O'Shanahan,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿11 brothers,,1869.0,NewOrleans
 ﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿w_kennelly_001,﻿Rev.,﻿W. Kennelly,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿11 brothers,,1869.0,NewOrleans
-﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,29.9494671,-90.07597,,,,,﻿p_murphy_003,﻿Rev.,﻿P. Murphy,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿11 brothers,,1869.0,NewOrleans
+﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿p_murphy_003,﻿Rev.,﻿P. Murphy,﻿S.J.,﻿Professor,"﻿""teachers""",﻿Brother,﻿11 brothers,,1869.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿s_giesen_001,﻿Rev.,﻿S. Giesen,﻿C.SS.R.,﻿Rector,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿j_b_duffy_001,﻿Rev.,﻿J. B. Duffy,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿ale_cvitkovicz_001,﻿Rev.,﻿Alexander Cvitkovicz,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
@@ -153,7 +153,7 @@
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿e_smulders_001,﻿Rev.,﻿E. Smulders,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿brandstaeter_001,﻿Rev.,﻿-- Brandstaeter,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿alf_de-ham_001,﻿Rev.,﻿Alf. de Ham,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
-﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,30.03118501,-90.83246332,,,,,﻿b_neithart_001,﻿Rev.,﻿B. Neithart,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
+﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,﻿Lafayette,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿b_neithart_001,﻿Rev.,﻿B. Neithart,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1869.0,NewOrleans
 ﻿new.la.0091,﻿college,﻿College of Jefferson,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,﻿s_chaurain_001,﻿Rev.,﻿S. Chaurain,﻿S.M.,﻿President,,﻿lay brother,﻿6 lay brothers,﻿under the direction of the Fathers of the Society of Mary,1869.0,NewOrleans
 ﻿new.la.0091,﻿college,﻿College of Jefferson,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,﻿f_renaudier_001,﻿Rev.,﻿F. Renaudier,﻿S.M.,﻿Vice-President,,﻿boarder,﻿80 boarders,﻿under the direction of the Fathers of the Society of Mary,1869.0,NewOrleans
 ﻿new.la.0091,﻿college,﻿College of Jefferson,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,﻿f_bigot_001,﻿Rev.,﻿F. Bigot,﻿S.M.,,,﻿boarder,﻿80 boarders,﻿under the direction of the Fathers of the Society of Mary,1869.0,NewOrleans
@@ -164,29 +164,29 @@
 ﻿new.la.0091,﻿college,﻿College of Jefferson,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,﻿f_hallefax_001,﻿Rev.,﻿F. Hallefax,﻿S.M.,,,﻿boarder,﻿80 boarders,﻿under the direction of the Fathers of the Society of Mary,1869.0,NewOrleans
 ﻿new.la.0091,﻿college,﻿College of Jefferson,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,﻿f_freyssinet_001,﻿Rev.,﻿F. Freyssinet,﻿S.M.,,,﻿boarder,﻿80 boarders,﻿under the direction of the Fathers of the Society of Mary,1869.0,NewOrleans
 ﻿new.la.0091,﻿college,﻿College of Jefferson,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,﻿m_glenn_001,﻿Rev.,﻿M. Glenn,﻿S.M.,,,﻿boarder,﻿80 boarders,﻿under the direction of the Fathers of the Society of Mary,1869.0,NewOrleans
-﻿new.la.0092,﻿school,﻿St. Alphonsus' School,English,,,,,,,,﻿LA,,29.93008396,-90.07423737,,,,,,,,,,,﻿children,"﻿1,370 children of both sexes","﻿under the superintendence of the Redemptorist Fathers, and conducted by secular teachers.",1869.0,NewOrleans
-﻿new.la.0093,﻿school,﻿St. Mary's School,English,,,,,,,,﻿LA,,29.95499704,-90.06607323,,,,,,,,,,,﻿children,﻿850 children of both sexes,﻿under the superintendence of the Redemptorist Fathers. The girls are under the charge of the Sisters of Notre Dame; the boys under secular teachers,1869.0,NewOrleans
-﻿new.la.0094,﻿academy,﻿St. Mary's Academy,English,,,﻿Corner of Poyfare and Foucher streets,,,﻿New Orleans,,﻿LA,,30.0146711,-90.0074452,,,,,,﻿Brother,﻿Isaiah,,"﻿Visitor of the Province of New Orleans, President",,﻿day scholar,﻿190 day scholars,﻿under the direction of the Brothers of the Christian Schools,1869.0,NewOrleans
+﻿new.la.0092,﻿school,﻿St. Alphonsus' School,English,,,,,,,,﻿LA,,30.03118501,-90.83246332,,,,,,,,,,,﻿children,"﻿1,370 children of both sexes","﻿under the superintendence of the Redemptorist Fathers, and conducted by secular teachers.",1869.0,NewOrleans
+﻿new.la.0093,﻿school,﻿St. Mary's School,English,,,,,,,,﻿LA,,29.93008396,-90.07423737,,,,,,,,,,,﻿children,﻿850 children of both sexes,﻿under the superintendence of the Redemptorist Fathers. The girls are under the charge of the Sisters of Notre Dame; the boys under secular teachers,1869.0,NewOrleans
+﻿new.la.0094,﻿academy,﻿St. Mary's Academy,English,,,﻿Corner of Poyfare and Foucher streets,,,﻿New Orleans,,﻿LA,,29.95499704,-90.06607323,,,,,,﻿Brother,﻿Isaiah,,"﻿Visitor of the Province of New Orleans, President",,﻿day scholar,﻿190 day scholars,﻿under the direction of the Brothers of the Christian Schools,1869.0,NewOrleans
 ﻿new.la.0094,﻿academy,﻿St. Mary's Academy,English,,,﻿Corner of Poyfare and Foucher streets,,,﻿New Orleans,,﻿LA,,30.0146711,-90.0074452,,,,,,,,,,,﻿brothers,﻿8 brothers,﻿under the direction of the Brothers of the Christian Schools,1869.0,NewOrleans
-﻿new.la.0095,﻿school,﻿St. Patrick's Parochial School,English,﻿under the direction of 3 Brothers of the Christian Schools,,,,,,,﻿LA,,29.95189259,-90.06843239,,,,,,,,,,,﻿pupil,﻿180 pupils,﻿under the direction of 3 Brothers of the Christian Schools,1869.0,NewOrleans
-﻿new.la.0096,﻿school,﻿Trinity Church School,English,﻿Under secular teachers,,,,,,,﻿LA,,34.0549076,-118.24264299999999,,,,,﻿thevis_001,﻿Father,﻿Thevis,,﻿superintendent,,﻿pupils,﻿350 pupils,,1869.0,NewOrleans
-﻿new.la.0097,﻿school,﻿St. John the Baptist's School,English,,,,,,,,﻿LA,,30.5190775,-91.52086240000001,,,,,﻿j_moynihan_001,﻿Rev.,﻿J. Moynihan,,﻿superintendent,,﻿pupil,﻿276 pupils,﻿under the charge of the Brothers of the Christian Schools,1869.0,NewOrleans
+﻿new.la.0095,﻿school,﻿St. Patrick's Parochial School,English,﻿under the direction of 3 Brothers of the Christian Schools,,,,,,,﻿LA,,30.0146711,-90.0074452,,,,,,,,,,,﻿pupil,﻿180 pupils,﻿under the direction of 3 Brothers of the Christian Schools,1869.0,NewOrleans
+﻿new.la.0096,﻿school,﻿Trinity Church School,English,﻿Under secular teachers,,,,,,,﻿LA,,29.95189259,-90.06843239,,,,,﻿thevis_001,﻿Father,﻿Thevis,,﻿superintendent,,﻿pupils,﻿350 pupils,,1869.0,NewOrleans
+﻿new.la.0097,﻿school,﻿St. John the Baptist's School,English,,,,,,,,﻿LA,,34.0549076,-118.24264299999999,,,,,﻿j_moynihan_001,﻿Rev.,﻿J. Moynihan,,﻿superintendent,,﻿pupil,﻿276 pupils,﻿under the charge of the Brothers of the Christian Schools,1869.0,NewOrleans
 ﻿new.la.0097,﻿school,﻿St. John the Baptist's School,English,,,,,,,,﻿LA,,30.5190775,-91.52086240000001,,,,,,,,,,,﻿brother,﻿4 brothers,﻿under the charge of the Brothers of the Christian Schools,1869.0,NewOrleans
-﻿new.la.0100,﻿school,﻿St. Peter's School,English,,,,,,,,﻿LA,,34.0549076,-118.24264299999999,,,,,﻿cor_moynihan_001,﻿Rev.,﻿Cornelius Moynihan,,﻿superintendent,,,,,1869.0,NewOrleans
-﻿new.la.0101,﻿school,﻿St. Vincent's Parochial School,English,﻿Two new classes are going to be opened,,,,,﻿Bouligny,,﻿LA,,30.5190775,-91.52086240000001,,,,,,﻿Brother,﻿Austin,,﻿Director,,﻿pupil,﻿90 pupils,,1869.0,NewOrleans
+﻿new.la.0100,﻿school,﻿St. Peter's School,English,,,,,,,,﻿LA,,30.5190775,-91.52086240000001,,,,,﻿cor_moynihan_001,﻿Rev.,﻿Cornelius Moynihan,,﻿superintendent,,,,,1869.0,NewOrleans
+﻿new.la.0101,﻿school,﻿St. Vincent's Parochial School,English,﻿Two new classes are going to be opened,,,,,﻿Bouligny,,﻿LA,,34.0549076,-118.24264299999999,,,,,,﻿Brother,﻿Austin,,﻿Director,,﻿pupil,﻿90 pupils,,1869.0,NewOrleans
 ﻿new.la.0101,﻿school,﻿St. Vincent's Parochial School,English,﻿Two new classes are going to be opened,,,,,﻿Bouligny,,﻿LA,,30.5190775,-91.52086240000001,,,,,,,,,,,﻿brothers,﻿5 brothers,,1869.0,NewOrleans
-﻿new.la.0102,﻿school,﻿St. Joseph's Parochial School for Boys,English,,,,,,,,﻿LA,,29.9572642,-90.08164453,,,,,﻿t_smith_001,﻿Rev.,﻿T. Smith,﻿C.M.,,,﻿pupil,﻿500 pupils,﻿Conducted by the Christian Brothers,1869.0,NewOrleans
-﻿new.la.0103,﻿academy,﻿Opelousas Academy for Boys,English,,,,,,﻿Opelousas,,﻿LA,,30.534108,-92.074463,,,,,﻿fx_raymond_001,﻿Rev.,﻿F.X. Raymond,,﻿President,,,,,1869.0,NewOrleans
-﻿new.la.0104,﻿school,﻿School for Boys,English,﻿at Algiers,,,,,﻿Algiers,,﻿LA,,29.9508941,-90.07583559999999,,,,,,,,,,,﻿day scholars,﻿80 day-scholars,﻿under the superintendence of the Fathers of the Society of Mary,1869.0,NewOrleans
-﻿new.la.0105,﻿school,﻿St. Joseph's Parochial School,English,,,,,,﻿Gretna,,﻿LA,,29.9146493,-90.0539603,,,,,,,,,,,﻿pupils,﻿100 pupils,,1869.0,NewOrleans
-﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9608264,-90.0606764,,,,,,﻿Mother,﻿St. Augustin,,﻿Superior,,﻿lay sister,﻿12 lay sisters,,1869.0,NewOrleans
+﻿new.la.0102,﻿school,﻿St. Joseph's Parochial School for Boys,English,,,,,,,,﻿LA,,30.5190775,-91.52086240000001,,,,,﻿t_smith_001,﻿Rev.,﻿T. Smith,﻿C.M.,,,﻿pupil,﻿500 pupils,﻿Conducted by the Christian Brothers,1869.0,NewOrleans
+﻿new.la.0103,﻿academy,﻿Opelousas Academy for Boys,English,,,,,,﻿Opelousas,,﻿LA,,29.9572642,-90.08164453,,,,,﻿fx_raymond_001,﻿Rev.,﻿F.X. Raymond,,﻿President,,,,,1869.0,NewOrleans
+﻿new.la.0104,﻿school,﻿School for Boys,English,﻿at Algiers,,,,,﻿Algiers,,﻿LA,,30.534108,-92.074463,,,,,,,,,,,﻿day scholars,﻿80 day-scholars,﻿under the superintendence of the Fathers of the Society of Mary,1869.0,NewOrleans
+﻿new.la.0105,﻿school,﻿St. Joseph's Parochial School,English,,,,,,﻿Gretna,,﻿LA,,29.9508941,-90.07583559999999,,,,,,,,,,,﻿pupils,﻿100 pupils,,1869.0,NewOrleans
+﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9146493,-90.0539603,,,,,,﻿Mother,﻿St. Augustin,,﻿Superior,,﻿lay sister,﻿12 lay sisters,,1869.0,NewOrleans
 ﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9608264,-90.0606764,,,,,,,,,,,﻿pupil,﻿from 100-120 pupils,,1869.0,NewOrleans
 ﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9608264,-90.0606764,,,,,,,,,,,﻿orphan girl,"﻿Academy, 30 orphan girls",,1869.0,NewOrleans
 ﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9608264,-90.0606764,,,,,,,,,,,﻿professed nun,﻿26 professed nuns,,1869.0,NewOrleans
-﻿new.la.0107,﻿convent,﻿Ursuline Convent,English,,,,,,﻿Opelousas,,﻿LA,,30.5415406,-92.07995890000001,,,,,,﻿Mother Superior,﻿St. Pierre,,﻿Superior,,﻿lay sister,﻿4 lay sisters,,1869.0,NewOrleans
+﻿new.la.0107,﻿convent,﻿Ursuline Convent,English,,,,,,﻿Opelousas,,﻿LA,,29.9608264,-90.0606764,,,,,,﻿Mother Superior,﻿St. Pierre,,﻿Superior,,﻿lay sister,﻿4 lay sisters,,1869.0,NewOrleans
 ﻿new.la.0107,﻿convent,﻿Ursuline Convent,English,,,,,,﻿Opelousas,,﻿LA,,30.5415406,-92.07995890000001,,,,,,,,,,,﻿pupil,﻿60-70 pupils,,1869.0,NewOrleans
 ﻿new.la.0107,﻿convent,﻿Ursuline Convent,English,,,,,,﻿Opelousas,,﻿LA,,30.5415406,-92.07995890000001,,,,,,,,,,,﻿professed nun,﻿7 professed nuns,,1869.0,NewOrleans
-﻿new.la.0108,﻿convent,﻿Convent of the Sacred Heart,English,﻿some orphans and day scholars,,,,,﻿St. Michael's,﻿Convent,﻿LA,,30.00984699,-90.8272353,,,,,,﻿Madam,﻿Shannon,,﻿Superior,,﻿boarder,﻿150 boarders,,1869.0,NewOrleans
+﻿new.la.0108,﻿convent,﻿Convent of the Sacred Heart,English,﻿some orphans and day scholars,,,,,﻿St. Michael's,﻿Convent,﻿LA,,30.5415406,-92.07995890000001,,,,,,﻿Madam,﻿Shannon,,﻿Superior,,﻿boarder,﻿150 boarders,,1869.0,NewOrleans
 ﻿new.la.0108,﻿convent,﻿Convent of the Sacred Heart,English,﻿some orphans and day scholars,,,,,﻿St. Michael's,﻿Convent,﻿LA,,30.00984699,-90.8272353,,,,,,,,,,,﻿religious,﻿45-50 religious,,1869.0,NewOrleans
 ﻿new.la.0109,﻿convent,﻿Convent of the Sacred Heart,English,,,,,,﻿Grand Coteau,,﻿LA,,30.00984699,-90.8272353,,,,,,﻿Madam,﻿Martinez,,﻿Superior,,﻿religious,﻿36 religious,,1869.0,NewOrleans
 ﻿new.la.0109,﻿convent,﻿Convent of the Sacred Heart,English,,,,,,﻿Grand Coteau,,﻿LA,,30.00984699,-90.8272353,,,,,,,,,,,﻿boarder,﻿50 boarders,,1869.0,NewOrleans

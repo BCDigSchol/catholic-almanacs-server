@@ -1,0 +1,290 @@
+{
+    "Society of Jesus": [
+        "Jesuits",
+        "S.J.",
+        "Fathers of the Society of Jesus"
+    ],
+    "Order of St. Augustine": [
+        "Augustinians",
+        "O.S.A.",
+        "O.S.F.",
+        "Rev. Fathers of St. Augustin's"
+    ],
+    "Congregation of the Most Holy Redeemer": [
+        "Redemptorists",
+        "CSsR",
+        "C.SS.R.",
+        "Redemptorist Fathers; Cong. St. Liguori"
+    ],
+    "School Sisters of Notre Dame": [
+        "SSND",
+        "Poor School-Sisters of Notre Dame"
+    ],
+    "Christian Brothers": [],
+    "Brothers of Christian Instruction": [
+        "La Mennais Brothers",
+        "F.I.C.P."
+    ],
+    "Society of the Sacred Heart": [
+        "RSCJ"
+    ],
+    "Sisters, Servants of the Immaculate Heart of Mary": [
+        "IHM",
+        "Sisters of the Immaculate Heart of Mary",
+        "Servants of the Immaculate Heart of Mary",
+        "Sister-Servants of the Immaculate Heart of Mary"
+    ],
+    "Congregation of Our Lady of Charity of the Good Shepherd": [
+        "Sisters of the Good Shepherd",
+        "Religious of the Good Shepherd",
+        "RGS",
+        "Sisters of Our Lady of the Good Shepherd",
+        "Magdalen",
+        "Magdalens"
+    ],
+    "Oblate Sisters of Providence": [
+        "OSP",
+        "Colored Sisters of Providence"
+    ],
+    "Sisters of Providence of Saint Mary-of-the-Woods": [
+        "Sisters of Providence",
+        "S.P."
+    ],
+    "Congregation of Divine Providence": [
+        "Sisters of Divine Providence",
+        "C.D.P.",
+        "Sisters of Providence"
+    ],
+    "Society of the Holy Child Jesus": [],
+    "Congregation of the Mission": [
+        "Vincentians",
+        "Lazarists",
+        "CM",
+        "C.M.",
+        "V.C.M.",
+        "Reverend Fathers of the Congregation of the Mission",
+        "Fathers of the Congregation of the Mission of St. Vincent of Paul"
+    ],
+    "Order of Servants of Mary": [
+        "Servites",
+        "OSM",
+        "OSBVM",
+        "O.S.B.V.M.",
+        "Servite Order"
+    ],
+    "Little Sisters of the Poor": [
+        "LSP",
+        "PSDP"
+    ],
+    "Order of Friars Minor Capuchin": [
+        "Capuchins",
+        "OFMCap",
+        "O. Min. Cap.",
+        "Minor Order of St. Francis"
+    ],
+    "Order of Friars Minor Conventual": [
+        "Conventual Franciscans",
+        "Minorites",
+        "OMC",
+        "O.M.C",
+        "OFM Conv."
+    ],
+    "Congregation of the Priests of Mercy": [
+        "Fathers of Mercy",
+        "CPM",
+        "S.P.M.",
+        "Society of the Fathers of Mercy"
+    ],
+    "Order of Preachers": [
+        "Dominicans",
+        "O.P.",
+        "O.S.D."
+    ],
+    "Poor Sisters of St. Francis": [
+        "S.P.S.F.",
+        "Sisters of the Poor of St. Francis",
+        "Sisters of the Poor",
+        "Franciscan Sisters of the Poor"
+    ],
+    "Sisters of the Holy Cross": [
+        "CSC"
+    ],
+    "Sisters of Holy Cross": [],
+    "Marianites of Holy Cross": [
+        "MSC",
+        "Marianite sisters"
+    ],
+    "Order of Saint Ursula": [
+        "Ursulines",
+        "OSU"
+    ],
+    "Congregation of Alexian Brothers": [
+        "Alexians",
+        "C.F.A."
+    ],
+    "Sisters of Charity of the Blessed Virgin Mary": [
+        "BVM"
+    ],
+    "Sisters of Loretto": [
+        "SL",
+        "Loretto Community"
+    ],
+    "Clerics of Saint Viator": [
+        "Viatorians",
+        "C.S.V.",
+        "Order of St. Viateur"
+    ],
+    "Order of Saint Benedict": [
+        "Benedictine Nuns",
+        "Sisters of St. Benedict",
+        "Nuns of St. Benedict",
+        "Nuns of the Order of St. Dominic"
+    ],
+    "Order of Cistercians": [
+        "Bernardines",
+        "OCist",
+        "SOCist"
+    ],
+    "Order of Cistercians of the Strict Observance": [
+        "Trappists",
+        "OCSO",
+        "Order of Reformed Cistercians of Our Lady of La Trappe"
+    ],
+    "Missionary Oblates of Mary Immaculate": [
+        "Oblates",
+        "O.M.I.",
+        "OMI",
+        "Oblate Fathers",
+        "Missionary Oblates of the Most Holy and Immaculate Virgin Mary",
+        "Society of Missionaries of Provence"
+    ],
+    "The Sisters of Charity of the Hôpital Général of Montreal": [
+        "Grey Nuns",
+        "Sisters of Charity of Montreal",
+        "Gray Nuns",
+        "Gray Sisters"
+    ],
+    "Congregation of Notre Dame of Montreal": [
+        "Congrégation de Notre Dame",
+        "CDN"
+    ],
+    "Sisters of the Holy Names of Jesus and Mary": [
+        "SNJM"
+    ],
+    "Order of the Brothers of the Blessed Virgin Mary of Mount Carmel": [
+        "Carmelites",
+        "OC",
+        "O.C."
+    ],
+    "Order of the Visitation of Holy Mary": [
+        "Visitation Sisters",
+        "Visitandines",
+        "VSM",
+        "Salesian Sisters",
+        "Nuns of the Visitation",
+        "Sisters of the Visitation"
+    ],
+    "Congregation of the Augustinians of the Assumption": [
+        "Assumptionists",
+        "AA"
+    ],
+    "Congregation of the Sisters of Our Lady of Mercy": [
+        "Sisters of Our Lady of Mercy",
+        "O.L.M."
+    ],
+    "Daughters of the Cross of Liège": [
+        "Daughters of the Cross"
+    ],
+    "Sisters of the Presentation of the Blessed Virgin Mary": [
+        "Presentation Sisters",
+        "PVBM"
+    ],
+    "Society of Mary": [
+        "Marianists",
+        "Marianist Brothers",
+        "Marianist Fathers",
+        "Brothers of Mary",
+        "Fathers of the Society of Mary"
+    ],
+    "Congregation of Holy Cross": [
+        "Brothers of the Holy Cross",
+        "CSC",
+        "C.S.C.",
+        "Fathers of the Congregation of the Holy Cross",
+        "Salvatorists"
+    ],
+    "Daughters of Charity of Saint Vincent de Paul": [
+        "Daughters of Charity",
+        "Sisters of Charity of Saint Vincent de Paul",
+        "D.C."
+    ],
+    "Brothers of the Sacred Heart": [
+        "S.C.",
+        "Religious Brothers from Puy France"
+    ],
+    "Order of Merciful Christ": [
+        "O.M.C",
+        "OMC"
+    ],
+    "Society of the Priests of Saint Sulpice": [
+        "Sulpicians",
+        "PSS",
+        "St. Sulpice"
+    ],
+    "Sisters of Charity of Nazareth": [
+        "SCN"
+    ],
+    "Congregation of Missionaries of the Most Precious Blood of Our Lord Jesus Christ": [
+        "Missionaries of the Precious Blood",
+        "C.PP.S"
+    ],
+    "Sisters of the Precious Blood": [
+        "C.PP.S"
+    ],
+    "Sisters of the Most Precious Blood ": [],
+    "Society of Saint Joseph of the Sacred Heart": [
+        "Josephites",
+        "SSJ"
+    ],
+    "Congregation of the Passion of Jesus Christ": [
+        "Passionists",
+        "CP"
+    ],
+    "Sisters of the Cross and Passion": [
+        "Passionist Sisters"
+    ],
+    "Congregation of Christian Doctrine": [
+        "Christian Doctrine Fathers",
+        "Doctrinaries",
+        "D.C.",
+        "Brothers of the Christian Doctrine"
+    ],
+    "Congregation of the Resurrection of Our Lord Jesus Christ": [
+        "Resurrectionists",
+        "CR",
+        "Priests of the Order of the Resurrection",
+        "Congregation of the Resurrection of our Lord",
+        "C.R.D.N. as post-nominal"
+    ],
+    "Sisters of St. Francis of Assisi": [
+        "Sisters of St. Francis Assisium"
+    ],
+    "Order of Saint Clare": [
+        "Poor Clares",
+        "Sisters of St. Clare",
+        "Clarisses",
+        "Clarissines",
+        "Minoresses",
+        "Franciscan Clarist Order",
+        "Second Order of Saint Francis"
+    ],
+    "Sisters of the Holy Humility of Mary": [
+        "Sisters of the Humility of Mary",
+        "H.M",
+        "C.H.M.",
+        "Congregation of the Humility of Mary [Iowa]"
+    ],
+    "Sisters of Charity of St. Augustine": [
+        "Sisters of the Charity of the Order of St. Augustine"
+    ]
+}

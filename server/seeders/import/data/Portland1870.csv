@@ -1,7 +1,7 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿por.me.0001,﻿cathedral,﻿Cathedral Chapel of the Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿ME,,44.8147712,-71.8803728,,,,,﻿d_w_bacon_001,﻿Rt. Rev.,﻿D. W. Bacon,﻿D.D.,,,,,,1870.0,Portland
-﻿por.me.0001,﻿cathedral,﻿Cathedral Chapel of the Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿ME,,44.8147712,-71.8803728,,,,,﻿joh_de-rose_001,﻿Rev.,﻿John De Rose,,,,,,,1870.0,Portland
-﻿por.me.0001,﻿cathedral,﻿Cathedral Chapel of the Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿ME,,44.8147712,-71.8803728,,,,,﻿eug_ocallaghan_002,﻿Rev.,﻿Eugene O'Callaghan,,,,,,,1870.0,Portland
+﻿por.me.0001,﻿cathedral,﻿Cathedral Chapel of the Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿ME,,43.66168243,-71.8803728,,,,,﻿d_w_bacon_001,﻿Rt. Rev.,﻿D. W. Bacon,﻿D.D.,,,,,,1870.0,Portland
+﻿por.me.0001,﻿cathedral,﻿Cathedral Chapel of the Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿ME,,43.66168243,-71.8803728,,,,,﻿joh_de-rose_001,﻿Rev.,﻿John De Rose,,,,,,,1870.0,Portland
+﻿por.me.0001,﻿cathedral,﻿Cathedral Chapel of the Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿ME,,43.66168243,-71.8803728,,,,,﻿eug_ocallaghan_002,﻿Rev.,﻿Eugene O'Callaghan,,,,,,,1870.0,Portland
 ﻿por.me.0002,﻿church,﻿St. Dominick's Church,English,,,,,,﻿Portland,﻿Portland,﻿ME,,43.6503141,-70.26267292,,,,,﻿joh_murphy_001,﻿Rev.,﻿John Murphy,,,,,,,1870.0,Portland
 ﻿por.me.0003,﻿chapel,﻿Calvary Chapel,English,,,,,,﻿Portland,﻿Portland,﻿ME,,43.660720399999995,-70.2580778,﻿por.me.0002,﻿attended from St. Dominick's Church,,,﻿p_mcgreavey_001,﻿Rev.,﻿P. McGreavey,,,,,,,1870.0,Portland
 ﻿por.me.0004,﻿chapel,﻿St. Aloysius' Chapel,English,,,,,,﻿Portland,﻿Portland,﻿ME,,43.660720399999995,-70.2580778,,,,,﻿eug_ocallaghan_002,﻿Rev.,﻿Eugene O'Callaghan,,,,,,,1870.0,Portland
@@ -26,7 +26,7 @@
 ﻿por.me.0020,﻿church,not recorded,English,,,,,,﻿Frankfort,﻿Frankfort,﻿ME,,44.60867329999999,-68.8744635,,,,,﻿wm_herbert_001,﻿Rev.,﻿Wm. Herbert,,,,,,,1870.0,Portland
 ﻿por.me.0021,﻿church,﻿St. Mary's,English,,,,,,﻿Gardiner,﻿Gardiner,﻿ME,,44.230069799999995,-69.7753222,,,,,﻿cha_egan_001,﻿Rev.,﻿Charles Egan,,,,,,,1870.0,Portland
 ﻿por.me.0022,﻿church,﻿St. Mary's,English,,,,,,﻿Houlton,﻿Houlton,﻿ME,,46.1252722,-67.8264926,,,,,﻿joh_brady_003,﻿Rev.,﻿John Brady,,,,,,,1870.0,Portland
-﻿por.me.0023,﻿church,﻿St. Ann's,English,,,,,,﻿Indiantown,﻿Indian Island,﻿ME,,44.94271968,-68.65226797,,,,,﻿e_vetromile_001,﻿Rev.,﻿E. Vetromile,,,,,,,1870.0,Portland
+﻿por.me.0023,﻿church,﻿St. Ann's,English,,,,,,﻿Indiantown,﻿Old Town,﻿ME,,44.94271968,-68.65226797,,,,,﻿e_vetromile_001,﻿Rev.,﻿E. Vetromile,,,,,,,1870.0,Portland
 ﻿por.me.0024,﻿church,not recorded,English,,,,,,﻿Kennebunk,﻿Kennebunk,﻿ME,,43.384530600000005,-70.54399000000001,,,,,﻿eug_müller_001,﻿Rev.,﻿Eugene Müller,,,,,,,1870.0,Portland
 ﻿por.me.0025,﻿church,﻿St. John's,English,,,,,,﻿Lewiston,﻿Lewiston,﻿ME,,44.100351,-70.2147764,,,,,﻿mic_lucey_001,﻿Rev.,﻿Michael Lucey,,,,,,,1870.0,Portland
 ﻿por.me.0025,﻿church,﻿St. John's,English,,,,,,﻿Lewiston,﻿Lewiston,﻿ME,,44.100351,-70.2147764,,,,,﻿joh_duddy_001,﻿Rev.,﻿John Duddy,,,,,,,1870.0,Portland

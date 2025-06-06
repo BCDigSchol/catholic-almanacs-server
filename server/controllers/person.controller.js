@@ -3,6 +3,7 @@ const db = require("../models");
 const Op = db.Sequelize.Op;
 
 const getPagination = require("../utils/get-pagination");
+const religiousOrderDict = require('../config/religiousOrderDict.json')
 
 const almanacRecord = db.almanacRecord;
 const personInAlmanac = db.personInAlmanac;
@@ -31,6 +32,7 @@ const person = db.person;
 
 exports.findAll = (req, res) => {
     let {page, size} = req.query;
+    console.log(req.query);
     if (!page) {
         page = 0;
     };
@@ -40,7 +42,7 @@ exports.findAll = (req, res) => {
     let {limit, offset} = getPagination(page, size);
     let persWhere = {};
     let instWhere = {};
-    let { persName, instName, diocese, countyReg, cityReg, stateReg, instStartYear, instEndYear } = req.query;
+    let { persName, instName, diocese, countyReg, cityReg, stateReg, instStartYear, instEndYear, religiousOrder } = req.query;
     if (persName) {
         persWhere.name = { [Op.like]: `%${persName}%` };
     };
@@ -66,6 +68,25 @@ exports.findAll = (req, res) => {
     if (diocese) {
         instWhere.diocese = { [Op.like]: `%${diocese}%` };
     };
+    if (religiousOrder) {
+        let equivalents = null;
+        for (const group of Object.values(religiousOrderDict)) {
+            if (group.includes(religiousOrder)) {
+                equivalents = group;
+                break;
+            }
+        }
+        if (!equivalents && religiousOrderDict[religiousOrder]) {
+            equivalents = religiousOrderDict[religiousOrder];
+        }
+        if (!equivalents) {
+            equivalents = [religiousOrder];
+        }
+        instWhere.religiousOrder = {
+            [Op.or]: equivalents.map(order => ({ [Op.like]: `%${order}%` }))
+        };  
+    };
+
     person.findAndCountAll({
         limit: limit,
         offset: offset,

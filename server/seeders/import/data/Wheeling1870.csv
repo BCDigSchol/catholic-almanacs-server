@@ -80,39 +80,38 @@
 ﻿whe.va.0074,﻿church,﻿St. Patrick's,English,,,,,﻿Doddridge County,﻿West Union,﻿West Union,﻿VA,﻿WV,39.2964723,-80.777049,﻿whe.va.0018,﻿Attended from Clarksburgh,﻿monthly,,,,,,,,,,,1870.0,Wheeling
 ﻿whe.va.0075,﻿church,﻿St. Mary's,English,﻿Residence of Rev. Cyprian T. Devine,,,,﻿Wythe County,﻿Wytheville,﻿Wytheville,,﻿VA,36.952100200000004,-81.081459,,,,,﻿cyp_t_devine_001,﻿Rev.,﻿Cyprian T. Devine,,,,,,,1870.0,Wheeling
 ﻿whe.va.0076,﻿church,not recorded,English,,,,,﻿Greenbrier County,﻿White Sulphur Springs,﻿White Sulphur Springs,﻿VA,﻿WV,37.7965107,-80.2975704,﻿whe.va.0061,﻿Attended from Sweet Springs,﻿occasionally,,,,,,,,,,,1870.0,Wheeling
-﻿whe.va.0077,﻿academy,﻿Academy of the Visitation,English,,"﻿near Wheeling, connected with the convent, known as Mt. de Chantal",,,,,,,,40.0690848,-80.6952564,﻿whe.va.0001,﻿Chapel attended by Rev. Thos. J. Ackley,,,,,,,,,,,,1870.0,Wheeling
-﻿whe.va.0078,﻿academy,﻿Wheeling Female Academy,English,,,,,,﻿Wheeling,,﻿WV,,40.069444,-80.693889,,﻿Superior,,,,﻿Mother,﻿Frances de Chantal,,﻿Superior,,﻿pupil,"﻿Number of pupils, about 70",,1870.0,Wheeling
-﻿whe.va.0079,﻿school,﻿Benevolent School for Girls,English,,﻿in basement of Cathedral,,,,﻿Wheeling,,﻿WV,,40.078050299999994,-80.7270944,,,,,,,,,,,﻿pupil,"﻿Number of pupils, about 125",,1870.0,Wheeling
-﻿whe.va.0080,﻿school,not recorded,English,,,,,,﻿Ritchietown,,,,40.02110412,-80.69676521,,,,,,,,,,,﻿children,"﻿Attendance, 130 children",,1870.0,Wheeling
-﻿whe.va.0081,﻿hospital,not recorded,English,,,,,,﻿Wheeling,,﻿WV,,40.05909019,-80.68482122,,,,,,﻿Sister,﻿Mary Stanislaus Hohman,,,,,,,1870.0,Wheeling
-﻿whe.va.0081,﻿hospital,not recorded,English,,,,,,﻿Wheeling,,﻿WV,,40.05909019,-80.68482122,,,,,,,,,,,﻿sister,﻿9 sisters,,1870.0,Wheeling
-﻿whe.va.0082,﻿school,﻿St. Vincent's Boys' School,English,,﻿Cathedral,,,,﻿Wheeling,,﻿WV,,40.078050299999994,-80.7270944,,,,,,,,,,,﻿out-scholar,﻿a school is also carried on on the premises with an attendance of about 80 out-scholars,,1870.0,Wheeling
-﻿whe.va.0083,﻿school,﻿St. Alphonsus' Boys' Schools,﻿German,,﻿German church,,,,,,,,40.061026700000006,-80.7237172,,,,,,,,,,,﻿pupil,﻿100 pupils,,1870.0,Wheeling
-﻿whe.va.0084,﻿school,﻿St. Alphonsus' Girls' Schools,English,,,,,,,,,,40.061026700000006,-80.7237172,,,,,,,,,,,﻿pupil,﻿150 pupils,,1870.0,Wheeling
-﻿whe.va.0085,﻿seminary,﻿St. Vincent's Seminary,English,,﻿connected with the College,,,,,,,,40.078050299999994,-80.7270944,,,,,,,,,,,﻿pupil,﻿upward of 200 pupils,,1870.0,Wheeling
-﻿whe.va.0086,﻿college,﻿St. Vincent's Classical and Mercantile College,English,,,,,,,,,,40.078050299999994,-80.7270944,,,,,﻿ap_louage_001,﻿Rev.,﻿A.P. Louage,,﻿President,,,,,1870.0,Wheeling
-﻿whe.va.0086,﻿college,﻿St. Vincent's Classical and Mercantile College,English,,,,,,,,,,40.078050299999994,-80.7270944,,,,,﻿ha_brann_001,﻿Rev.,﻿H.A. Brann,﻿D.D.,﻿Professor,,﻿pupil,﻿125 pupils,,1870.0,Wheeling
+﻿whe.va.0077,﻿academy,﻿Academy of the Visitation,English,,"﻿near Wheeling, connected with the convent, known as Mt. de Chantal",,,,,,,,40.0690848,-80.6952564,﻿whe.va.0001,﻿Chapel attended by Rev. Thos. J. Ackley,,,,,,,,,﻿pupil,"﻿Number of pupils, about 70",,1870.0,Wheeling
+﻿whe.va.0078,﻿academy,﻿Wheeling Female Academy,English,,,,,,﻿Wheeling,,﻿WV,,40.069444,-80.693889,,﻿Superior,,,,﻿Mother,﻿Frances de Chantal,,﻿Superior,,﻿pupil,"﻿Number of pupils, about 125",,1870.0,Wheeling
+﻿whe.va.0079,﻿school,﻿Benevolent School for Girls,English,,﻿in basement of Cathedral,,,,﻿Wheeling,,﻿WV,,40.078050299999994,-80.7270944,,,,,,,,,,,﻿children,"﻿Attendance, 130 children",,1870.0,Wheeling
+﻿whe.va.0080,﻿school,not recorded,English,,,,,,﻿Ritchietown,,,,40.02110412,-80.69676521,,,,,,,,,,,,,,1870.0,Wheeling
+﻿whe.va.0081,﻿hospital,not recorded,English,,,,,,﻿Wheeling,,﻿WV,,40.05909019,-80.68482122,,,,,,﻿Sister,﻿Mary Stanislaus Hohman,,,,﻿sister,﻿9 sisters,,1870.0,Wheeling
+﻿whe.va.0081,﻿hospital,not recorded,English,,,,,,﻿Wheeling,,﻿WV,,40.05909019,-80.68482122,,,,,,,,,,,﻿out-scholar,﻿a school is also carried on on the premises with an attendance of about 80 out-scholars,,1870.0,Wheeling
+﻿whe.va.0082,﻿school,﻿St. Vincent's Boys' School,English,,﻿Cathedral,,,,﻿Wheeling,,﻿WV,,40.078050299999994,-80.7270944,,,,,,,,,,,﻿pupil,﻿100 pupils,,1870.0,Wheeling
+﻿whe.va.0083,﻿school,﻿St. Alphonsus' Boys' Schools,﻿German,,﻿German church,,,,,,,,40.061026700000006,-80.7237172,,,,,,,,,,,﻿pupil,﻿150 pupils,,1870.0,Wheeling
+﻿whe.va.0084,﻿school,﻿St. Alphonsus' Girls' Schools,English,,,,,,,,,,40.061026700000006,-80.7237172,,,,,,,,,,,﻿pupil,﻿upward of 200 pupils,,1870.0,Wheeling
+﻿whe.va.0085,﻿seminary,﻿St. Vincent's Seminary,English,,﻿connected with the College,,,,,,,,40.078050299999994,-80.7270944,,,,,,,,,,,,,,1870.0,Wheeling
+﻿whe.va.0086,﻿college,﻿St. Vincent's Classical and Mercantile College,English,,,,,,,,,,40.078050299999994,-80.7270944,,,,,﻿ap_louage_001,﻿Rev.,﻿A.P. Louage,,﻿President,,﻿pupil,﻿125 pupils,,1870.0,Wheeling
+﻿whe.va.0086,﻿college,﻿St. Vincent's Classical and Mercantile College,English,,,,,,,,,,40.078050299999994,-80.7270944,,,,,﻿ha_brann_001,﻿Rev.,﻿H.A. Brann,﻿D.D.,﻿Professor,,﻿boarder,﻿30 of pupils are boarders,,1870.0,Wheeling
 ﻿whe.va.0086,﻿college,﻿St. Vincent's Classical and Mercantile College,English,,,,,,,,,,40.078050299999994,-80.7270944,,,,,﻿rob_keleher_001,﻿Rev.,﻿Robert Keleher,,﻿Professor,,﻿boarder,﻿30 of pupils are boarders,,1870.0,Wheeling
 ﻿whe.va.0086,﻿college,﻿St. Vincent's Classical and Mercantile College,English,,,,,,,,,,40.078050299999994,-80.7270944,,,,,﻿schnurrer_001,﻿Mr.,﻿Schnurrer,,﻿Professor,,﻿boarder,﻿30 of pupils are boarders,,1870.0,Wheeling
-﻿whe.va.0087,﻿convent,﻿Convent of the Visitation,English,,﻿Distant one and a half miles from Wheeling,,,,,,,,40.069444,-80.693889,,,,,,﻿Mother,﻿Mary Michaella Jenkins,,﻿Superior,,,,,1870.0,Wheeling
-﻿whe.va.0087,﻿convent,﻿Convent of the Visitation,English,,﻿Distant one and a half miles from Wheeling,,,,,,,,40.069444,-80.693889,,,,,,,,,,,﻿professed sister,﻿numbering upward of — professed sisters,,1870.0,Wheeling
-﻿whe.va.0088,﻿convent,﻿Convent of the Sisters of St. Joseph,English,,﻿corner of Fifth and Quincy streets,,,,,,,,40.078681,-80.6789839,,,,,,﻿Mother,﻿Jane Frances de Chantal,,﻿Superior,,﻿novice,﻿— novces,,1870.0,Wheeling
-﻿whe.va.0088,﻿convent,﻿Convent of the Sisters of St. Joseph,English,,﻿corner of Fifth and Quincy streets,,,,,,,,40.078681,-80.6789839,,,,,,,,,,,﻿professed sister,﻿9 professed sisters,,1870.0,Wheeling
+﻿whe.va.0087,﻿convent,﻿Convent of the Visitation,English,,﻿Distant one and a half miles from Wheeling,,,,,,,,40.069444,-80.693889,,,,,,﻿Mother,﻿Mary Michaella Jenkins,,﻿Superior,,﻿professed sister,﻿numbering upward of — professed sisters,,1870.0,Wheeling
+﻿whe.va.0087,﻿convent,﻿Convent of the Visitation,English,,﻿Distant one and a half miles from Wheeling,,,,,,,,40.069444,-80.693889,,,,,,,,,,,﻿novice,﻿— novces,,1870.0,Wheeling
+﻿whe.va.0088,﻿convent,﻿Convent of the Sisters of St. Joseph,English,,﻿corner of Fifth and Quincy streets,,,,,,,,40.078681,-80.6789839,,,,,,﻿Mother,﻿Jane Frances de Chantal,,﻿Superior,,﻿professed sister,﻿9 professed sisters,,1870.0,Wheeling
 ﻿whe.va.0088,﻿convent,﻿Convent of the Sisters of St. Joseph,English,,﻿corner of Fifth and Quincy streets,,,,,,,,40.078681,-80.6789839,,,,,,,,,,,﻿novice,﻿12 novices,,1870.0,Wheeling
-﻿whe.va.0089,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,﻿Mother,﻿Apollonia Digges,,﻿Superior,,﻿postulant,﻿9 postulants,,1870.0,Wheeling
-﻿whe.va.0089,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿professed sister,﻿8 professed sisters,,1870.0,Wheeling
+﻿whe.va.0088,﻿convent,﻿Convent of the Sisters of St. Joseph,English,,﻿corner of Fifth and Quincy streets,,,,,,,,40.078681,-80.6789839,,,,,,,,,,,﻿postulant,﻿9 postulants,,1870.0,Wheeling
+﻿whe.va.0089,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,﻿Mother,﻿Apollonia Digges,,﻿Superior,,﻿professed sister,﻿8 professed sisters,,1870.0,Wheeling
 ﻿whe.va.0089,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿novice,﻿2 novices,,1870.0,Wheeling
-﻿whe.va.0090,﻿academy,﻿Academy of the Visitation,English,,﻿connected with the convent,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿postulant,﻿1 postulant,,1870.0,Wheeling
-﻿whe.va.0091,﻿academy,﻿Classical Academy,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿pupil,"﻿numbering about 80 pupils, some of whom are boarders",,1870.0,Wheeling
-﻿whe.va.0092,﻿school,not recorded,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿pupil,﻿upward of 70 pupils,,1870.0,Wheeling
-﻿whe.va.0093,﻿school,not recorded,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿boy,﻿90 boys,,1870.0,Wheeling
-﻿whe.va.0094,"﻿convent, academy",﻿Convent and Academy of the Visitation,English,,,,﻿Washington,,﻿Abingdon,,,,36.7098335,-81.97734820000001,,,,,,﻿Mother,﻿Borgia Tubman,,﻿Superior,,﻿girl,﻿90 girls,,1870.0,Wheeling
-﻿whe.va.0095,﻿school,not recorded,English,,,,,,﻿Weston,,,,39.038427399999996,-80.467313,,,,,,,,,,,﻿professed sister,﻿6 professed sisters,,1870.0,Wheeling
-﻿whe.va.0096,﻿school,not recorded,English,,,,,,﻿Eton's Tunnel,,,,39.038427399999996,-80.467313,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Wheeling
-﻿whe.va.0097,﻿school,not recorded,English,,,,,,﻿Walker's Station,,,,37.1020628,81.116202,,,,,,,,,,,﻿pupil,﻿100 pupils,,1870.0,Wheeling
-﻿whe.va.0098,﻿school,not recorded,English,,,,,,﻿Pennsborough,,,,39.2850799,-80.9684422,,,,,,,,,,,﻿pupil,﻿35 pupils,,1870.0,Wheeling
-﻿whe.va.0099,﻿school,not recorded,English,,,,,,﻿Newburgh,,,,39.388416799999995,-79.8528687,,,,,,,,,,,﻿pupil,﻿45 pupils,,1870.0,Wheeling
-﻿whe.va.0100,﻿school,not recorded,English,,,,﻿Doddridge,,,,,,39.2850814,-80.73280124,,,,,,,,,,,﻿pupil,﻿35 pupils,,1870.0,Wheeling
-﻿whe.va.0101,﻿school,not recorded,English,,,,,,﻿Cornwallis,,,,39.2273007,-81.11844509999999,,,,,,,,,,,,,,1870.0,Wheeling
-﻿whe.va.0102,﻿school,not recorded,English,,,,,,﻿Silver Run,,,,39.2086894,-81.15733490000001,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Wheeling
+﻿whe.va.0089,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿postulant,﻿1 postulant,,1870.0,Wheeling
+﻿whe.va.0090,﻿academy,﻿Academy of the Visitation,English,,﻿connected with the convent,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿pupil,"﻿numbering about 80 pupils, some of whom are boarders",,1870.0,Wheeling
+﻿whe.va.0091,﻿academy,﻿Classical Academy,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿pupil,﻿upward of 70 pupils,,1870.0,Wheeling
+﻿whe.va.0092,﻿school,not recorded,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿boy,﻿90 boys,,1870.0,Wheeling
+﻿whe.va.0093,﻿school,not recorded,English,,,,,,﻿Parkersburgh,,,,39.26674179999999,-81.5615135,,,,,,,,,,,﻿girl,﻿90 girls,,1870.0,Wheeling
+﻿whe.va.0094,"﻿convent, academy",﻿Convent and Academy of the Visitation,English,,,,﻿Washington,,﻿Abingdon,,,,36.7098335,-81.97734820000001,,,,,,﻿Mother,﻿Borgia Tubman,,﻿Superior,,﻿professed sister,﻿6 professed sisters,,1870.0,Wheeling
+﻿whe.va.0095,﻿school,not recorded,English,,,,,,﻿Weston,,,,39.038427399999996,-80.467313,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Wheeling
+﻿whe.va.0096,﻿school,not recorded,English,,,,,,﻿Eton's Tunnel,,,,39.038427399999996,-80.467313,,,,,,,,,,,﻿pupil,﻿100 pupils,,1870.0,Wheeling
+﻿whe.va.0097,﻿school,not recorded,English,,,,,,﻿Walker's Station,,,,37.1020628,81.116202,,,,,,,,,,,﻿pupil,﻿35 pupils,,1870.0,Wheeling
+﻿whe.va.0098,﻿school,not recorded,English,,,,,,﻿Pennsborough,,,,39.2850799,-80.9684422,,,,,,,,,,,﻿pupil,﻿45 pupils,,1870.0,Wheeling
+﻿whe.va.0099,﻿school,not recorded,English,,,,,,﻿Newburgh,,,,39.388416799999995,-79.8528687,,,,,,,,,,,﻿pupil,﻿35 pupils,,1870.0,Wheeling
+﻿whe.va.0100,﻿school,not recorded,English,,,,﻿Doddridge,,,,,,39.2850814,-80.73280124,,,,,,,,,,,,,,1870.0,Wheeling
+﻿whe.va.0101,﻿school,not recorded,English,,,,,,﻿Cornwallis,,,,39.2273007,-81.11844509999999,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Wheeling
 ﻿whe.va.0102,﻿school,not recorded,English,,,,,,﻿Silver Run,,,,39.2086894,-81.15733490000001,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Wheeling

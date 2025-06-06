@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     member: DataTypes.STRING,
     affiliated: DataTypes.STRING,
     diocese: DataTypes.STRING,
+    religiousOrder: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'almanacRecord',

@@ -1,0 +1,11 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿pit.pa.0001,﻿cathedral,﻿St. Paul's Cathedral,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4475384,-79.949826,,,,,﻿m_domenec_001,﻿Rt. Rev.,﻿M. Domenec,﻿D.D.,,,,,,1864.0,Pittsburgh
+﻿pit.pa.0001,﻿cathedral,﻿St. Paul's Cathedral,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4475384,-79.949826,,,,,﻿e_mcmahon_002,﻿Very Rev.,﻿E. McMahon,,﻿Rector,,,,,1864.0,Pittsburgh
+﻿pit.pa.0001,﻿cathedral,﻿St. Paul's Cathedral,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4475384,-79.949826,,,,,﻿j_hickey_001,﻿Rev.,﻿J. Hickey,,,,,,,1864.0,Pittsburgh
+﻿pit.pa.0001,﻿cathedral,﻿St. Paul's Cathedral,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4475384,-79.949826,,,,,﻿j_holland_001,﻿Rev.,﻿J. Holland,,,,,,,1864.0,Pittsburgh
+﻿pit.pa.0001,﻿cathedral,﻿St. Paul's Cathedral,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4475384,-79.949826,,,,,﻿w_burke_001,﻿Rev.,﻿W. Burke,,,,,,,1864.0,Pittsburgh
+﻿pit.pa.0001,﻿cathedral,﻿St. Paul's Cathedral,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4475384,-79.949826,,,,,﻿j_burnes_001,﻿Rev.,﻿J. Burnes,,,,,,,1864.0,Pittsburgh
+﻿pit.pa.0002,﻿church,﻿St. Patrick's,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.449566299999994,-79.9849717,,,,,﻿e_f_garland_001,﻿Rev.,﻿E. F. Garland,,﻿Rector,,,,,1864.0,Pittsburgh
+﻿pit.pa.0002,﻿church,﻿St. Patrick's,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.440624799999995,-79.9958864,,,,,,,,,,,,,,1864.0,Pittsburgh
+﻿pit.pa.0003,﻿church,﻿St. Philomena's,﻿German,,,,﻿Allegheny County,,﻿Pittsburgh,,﻿PA,,40.440624799999995,-79.9958864,,,,,﻿j_m_helmpraecht_001,﻿Rev.,﻿J. M. Helmpraecht,﻿C.SS.R,﻿Rector,,,,,1864.0,Pittsburgh
+﻿pit.pa.0004,﻿church,﻿St. Bridget's,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.440624799999995,-79.9958864,,,,,﻿j_treacy_001,﻿Rev.,﻿J. Treacy,,,,,,,1864.0,Pittsburgh

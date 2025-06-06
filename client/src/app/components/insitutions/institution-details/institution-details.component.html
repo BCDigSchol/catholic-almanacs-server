@@ -56,11 +56,23 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="cell">Member</div>
+                                <div class="cell">{{data.member}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Member Type</div>
+                                <div class="cell">{{data.memberType}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Affiliated</div>
+                                <div class="cell">{{data.affiliated}}</div>
+                            </div>
+                            <div class="row">
                                 <div class="cell">Relevant People</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                         <button mat-button class="custom-button" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
-                                            <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name}}</div>
+                                            <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
                                         </button>
                                     </div>
                                     <div *ngIf="data.personInfo.length === 0">None</div>
@@ -90,9 +102,13 @@
                             </div>
                         </div>
                         </div>
+                        <button mat-button (click)="goBack()"class="custom-button">
+                            <mat-icon>arrow_back</mat-icon>
+                            Back
+                        </button>
                     </div>
                     <div class="w-full flex flex-col justify-center items-center">
-                        <google-map [options]="mapOptions" width="700px" heigh="400px">
+                        <google-map [options]="mapOptions" width="600px" heigh="350px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
                             <map-polygon></map-polygon> <!--could be an option-->

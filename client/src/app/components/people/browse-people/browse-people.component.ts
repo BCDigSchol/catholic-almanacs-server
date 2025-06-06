@@ -43,6 +43,7 @@ filterBy: any = {
   stateReg: '',
   diocese: '',
   instName: '',
+  religiousOrder: '',
   year: null,
 }
 
@@ -53,6 +54,7 @@ filterFields = [
   { type: 'input', label: 'State', key: 'stateReg', active: false },
   { type: 'input', label: 'Diocese', key: 'diocese', active: false },
   { type: 'input', label: 'Institution Name', key: 'instName', active: false },
+  { type: 'input', label: 'Religious Order', key: 'religiousOrder', active: false },
   { type: 'range', keyStart: 'instStartYear', keyEnd: 'instEndYear', label: 'Year', min: 1860, max: 1870 }
 ]
 
@@ -76,6 +78,7 @@ getData () {
   queryString += this.filterBy.instName ? `&instName=${this.filterBy.instName}` : '';
   queryString += this.filterBy.instStartYear  ? `&instStartYear=${this.filterBy.instStartYear}` : '';
   queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
+  queryString += this.filterBy.religiousOrder ? `&religiousOrder=${this.filterBy.religiousOrder}` : '';
 
   this.apiService.getTypeRequest('person'+ queryString).subscribe((res:any) => {
     this.data  = res.rows;
@@ -121,6 +124,7 @@ onFilterChanged (filterValues: any) {
       this.filterBy[key] = filterValues[key];
     }
 }
+
   this.updateFilter();
 }
 

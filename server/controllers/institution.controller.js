@@ -1,6 +1,7 @@
 const db = require("../models");
 const getPagination = require("../utils/get-pagination");
 const Op = db.Sequelize.Op;
+const religiousOrderDict = require('../config/religiousOrderDict.json');
 
 const almanacRecord = db.almanacRecord;
 const person = db.person;
@@ -42,7 +43,7 @@ exports.findAll = async (req, res) => {
         let {limit, offset} = getPagination(page, size);
         let where = {};
         let persWhere = {};
-        let { instName, countyReg, cityReg, stateReg, diocese, instStartYear, instEndYear, language, instType, persName, instID } = req.query;
+        let { instName, countyReg, cityReg, stateReg, diocese, instStartYear, instEndYear, language, instType, persName, instID, religiousOrder } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
@@ -83,6 +84,25 @@ exports.findAll = async (req, res) => {
         if (instID) {
             where.instID = { [Op.like]: `%${instID}%` };
         };
+        if (religiousOrder) {
+        let equivalents = null;
+        for (const [key, group] of Object.entries(religiousOrderDict)) {
+            if (group.includes(religiousOrder)) {
+                equivalents = [...group, key];
+                console.log(group)
+                break;
+            }
+        }
+        if (!equivalents && religiousOrderDict[religiousOrder]) {
+            equivalents = religiousOrderDict[religiousOrder];
+        }
+        if (!equivalents) {
+            equivalents = [religiousOrder];
+        }
+        where.religiousOrder = {
+            [Op.or]: equivalents.map(order => ({ [Op.like]: `%${order}%` }))
+        };  
+    };
         //console.log('-----------where', where);
         const data = await institution.findAndCountAll({
             limit: limit,
@@ -156,7 +176,9 @@ exports.findByID = async (req, res) => {
         include: [{
                 model: almanacRecord,
                 as: 'almanacRecord',
-                attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude'],
+                attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude',
+                    'member', 'memberType', 'affiliated', 'religiousOrder'
+                ],
                 include: [{
                     model: almanacRecord,
                     as: 'attendingInstitutions',
@@ -199,6 +221,10 @@ exports.findByID = async (req, res) => {
             stateReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].stateReg,
             latitude: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].latitude,
             longitude: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].longitude,
+            member: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].member,
+            memberType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].memberType,
+            affiliated: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].affiliated,
+            religiousOrder: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].religiousOrder,
             attendingInstitutions: [],
             attendedBy: [],
             personInfo: [],
@@ -291,7 +317,9 @@ exports.findOne = async (req, res) => {
             model: almanacRecord,
             as: 'almanacRecord',
             where: { year: req.params.year },
-            attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude'],
+            attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude',
+                'member', 'memberType', 'affiliated'
+            ],
             include: [{
                 model: almanacRecord,
                 as: 'attendingInstitutions',
@@ -333,6 +361,9 @@ exports.findOne = async (req, res) => {
             stateReg: data.dataValues.almanacRecord[0].stateReg,
             latitude: data.dataValues.almanacRecord[0].latitude,
             longitude: data.dataValues.almanacRecord[0].longitude,
+            member: data.dataValues.almanacRecord[0].member,
+            memberType: data.dataValues.almanacRecord[0].memberType,
+            affiliated: data.dataValues.almanacRecord[0].affiliated,
             year: data.dataValues.almanacRecord[0].year,
             attendingInstitutions: [],
             attendedBy: [],

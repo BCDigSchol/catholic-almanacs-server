@@ -4,8 +4,8 @@
 ﻿oma.ne.0001,﻿church,﻿Church of St. Philomena,English,,,,,,﻿Omaha,﻿Omaha,﻿NE,,41.2458942,-95.9290972,,,,,﻿ott_groenebaum_001,﻿Rev.,﻿Otto Groenebaum,,﻿Assistant Pastor,,,,,1868.0,VANebraska
 ﻿dub.ia.0189,﻿mission,not recorded,English,,,,﻿Harrison County,,﻿Magnolia,﻿Magnolia,﻿IA,﻿IA,41.6957842,-95.87679190000001,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,﻿p_eagan_001,﻿Rev.,﻿P. Eagan,,,,,,,1868.0,VANebraska
 ﻿dub.ia.0191,﻿mission,not recorded,English,,,,﻿Harrison County,,﻿St. John's,﻿St. John's,﻿IA,,41.6933855,-95.8142885,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,﻿p_eagan_001,﻿Rev.,﻿P. Eagan,,,,,,,1868.0,VANebraska
-﻿dub.ia.0191,﻿mission,﻿New St. John's,English,,,,﻿Harrison County,,﻿The Junction,﻿McCool Junction,﻿NE,﻿NE,40.744176200000005,-97.5975499,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,,﻿Rev.,﻿P. Eagan,,,,,,,1868.0,VANebraska
-﻿dub.ia.0191,﻿mission,﻿New St. John's,English,,,,﻿Douglas County,,﻿McArdleville,﻿McCool Junction,﻿NE,﻿NE,41.314811600000006,-96.195132,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,,﻿Rev.,﻿P. Eagan,,,,,,,1868.0,VANebraska
+﻿dub.ia.0192,﻿mission,﻿New St. John's,English,,,,,,﻿The Junction,﻿McCool Junction,﻿NE,﻿NE,40.744176200000005,-97.5975499,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,,﻿Rev.,﻿P. Eagan,,,,,,,1868.0,VANebraska
+﻿dub.ia.0193,﻿mission,not recorded,English,,,,﻿Douglas County,,﻿McArdleville,,﻿NE,﻿NE,41.314811600000006,-96.195132,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,,﻿Rev.,﻿P. Eagan,,,,,,,1868.0,VANebraska
 ﻿oma.ne.0007,﻿mission,not recorded,English,﻿an Irish settlement,,,,,﻿Forest City,,﻿NE,﻿NE,41.1193937,-96.29071390000001,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,﻿ott_groenebaum_001,﻿Rev.,﻿O. Groenebaum,,,,,,,1868.0,VANebraska
 ﻿oma.ne.0009,﻿mission,not recorded,English,,,,,,﻿Elk Horn,﻿Elkhorn,﻿NE,﻿NE,41.2831958,-96.2368465,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,﻿ott_groenebaum_001,﻿Rev.,﻿O. Groenebaum,,,,,,,1868.0,VANebraska
 ﻿oma.ne.0026,﻿mission,not recorded,English,,,,,,﻿Rockport,﻿Rock Port,﻿NE,﻿MO,40.411112200000005,-95.5169286,﻿oma.ne.0001,﻿Attended from Omaha,﻿Once a month,,﻿ott_groenebaum_001,﻿Rev.,﻿O. Groenebaum,,,,,,,1868.0,VANebraska
@@ -35,4 +35,4 @@
 ﻿oma.ne.0031,﻿school,﻿Academy,English,,,,,,﻿Nebraska City,﻿Nebraska City,﻿NE,,40.6765745,-95.85936159999999,,,,,,,,,,,,,﻿Sisters of the Benedictine Order,1868.0,VANebraska
 ﻿oma.ne.0032,﻿school,﻿Day Schools,English,﻿The girls' school is conducted by three of the Sister of Mercy. While a first-class male teacher has charge of the boys' school.,,,,,﻿Omaha,﻿Omaha,﻿NE,﻿NE,41.2565369,-95.93450340000001,,,,,,,,,,,,,﻿Sisters of Mercy,1868.0,VANebraska
 ﻿oma.ne.0033,﻿school,﻿Day Schools,English,,,,,,﻿Nebraska City,﻿Nebraska City,﻿NE,﻿NE,40.6765745,-95.85936159999999,,,,,﻿ema_hartig_001,﻿Rev.,﻿E. Hartig,,﻿Pastor,,,,,1868.0,VANebraska
-﻿oma.ne.0033,32,﻿Day Schools,English,,,,,,﻿Nebraska City,﻿Nebraska City,﻿NE,,40.6765745,-95.85936159999999,,,,,,,,,﻿Sisters of the Benedictine Ordfer,,,,,1868.0,VANebraska
+﻿oma.ne.0033,﻿school,﻿Day Schools,English,,,,,,﻿Nebraska City,﻿Nebraska City,﻿NE,,40.6765745,-95.85936159999999,,,,,,,,,﻿Sisters of the Benedictine Ordfer,,,,,1868.0,VANebraska

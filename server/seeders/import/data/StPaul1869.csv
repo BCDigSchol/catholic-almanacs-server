@@ -59,7 +59,7 @@
 ﻿stp.mn.0093,﻿church,﻿Church of the Nativity,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿Cleveland,﻿Cleveland,﻿MN,,44.3229664,-93.8430277,﻿stp.mn.0094,"﻿Visited by Rev. P. Maly, of Marysburgh",,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0094,﻿church,﻿Church of St. Patrick,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿Marysburgh,﻿Marysburg,﻿MN,,44.240245,-93.8168974,,,,,﻿p_maly_001,﻿Rev.,﻿P. Maly,,,,,,,1869.0,StPaul
 ﻿stp.mn.0095,﻿church,not recorded,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿St. Henry,﻿Sharon Township,﻿MN,,44.4291107,-93.8451731,﻿stp.mn.0094,﻿Visited by Rev. P. Maly,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0095,﻿church,not recorded,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿St. John,﻿Sharon Township,﻿MN,,44.4291107,-93.8451731,﻿stp.mn.0151,﻿Visited by Rev. A. Berghold,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0253,﻿church,not recorded,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿St. John,,,,44.4291107,-93.8451731,﻿stp.mn.0151,﻿Visited by Rev. A. Berghold,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0096,﻿church,not recorded,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿St. Thomas,﻿Derrynane Township,﻿MN,,44.5085024,-93.7232005,﻿stp.mn.0151,﻿Visited by Rev. A. Berghold,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0097,﻿station,not recorded,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿Kilkenny,﻿Kilkenny,﻿MN,,44.3132973,-93.5741156,﻿stp.mn.0130,"﻿Visited by Rev. A. Seel, of Shieldsville, Rice Co.",,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0098,﻿station,not recorded,English,,,,﻿Le Sueur County,﻿Le Sueur County,﻿Lexington,﻿Lexington Township,﻿MN,,44.4331437,-93.7232005,﻿stp.mn.0153,﻿Visited by Rev. H. Povoling,,,,,,,,,,,,1869.0,StPaul
@@ -72,7 +72,7 @@
 ﻿stp.mn.0023,﻿church,﻿Church of St. Hubert,English,,,,﻿Carver County,﻿Carver County,﻿Chanhassan,﻿Chanhassan,﻿MN,,44.855361200000004,-93.532154,﻿stp.mn.0020,﻿Visited by Rev. M. Mayer,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0024,﻿church,﻿Church of St. Victoria,English,,,,﻿Carver County,﻿Carver County,﻿Laketown,﻿Laketown Township,﻿MN,,44.8546576,-93.661907,﻿stp.mn.0020,﻿Visited by Rev. M. Mayer,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0025,﻿station,﻿Young America station,English,,,,﻿Carver County,﻿Carver County,,﻿Norwood Young American,﻿MN,,44.7809286,-93.9129135,﻿stp.mn.0019,﻿Visited by Rev. F. Stern,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0025,﻿station,﻿San Francisco station,English,,,,﻿Carver County,﻿Carver County,﻿San Francisco,﻿Norwood Young American,﻿MN,,44.7809286,-93.9129135,﻿stp.mn.0020,﻿Visited by Rev. M. Mayer,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0254,﻿station,﻿San Francisco station,English,,,,﻿Carver County,,﻿San Francisco,,,,44.7809286,-93.9129135,﻿stp.mn.0020,﻿Visited by Rev. M. Mayer,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0108,﻿church,﻿Church of St. Peter and Paul,English,,,,﻿McLeod County,﻿McLeod County,﻿Glencoe,﻿Glencoe,﻿MN,,44.769043700000005,-94.1517524,﻿stp.mn.0019,﻿Visited by Rev. F. Stern,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0109,﻿station,not recorded,English,,,,﻿McLeod County,﻿McLeod County,﻿Winsted,﻿Winsted,﻿MN,,44.963851700000006,-94.0474725,﻿stp.mn.0021,﻿Visited by Rev. C. Robert,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0110,﻿station,not recorded,English,,,,﻿McLeod County,﻿McLeod County,﻿Hutchinson,﻿Hutchinson,﻿MN,,44.892548299999994,-94.3692926,﻿stp.mn.0021,﻿Visited by Rev. C. Robert,,,,,,,,,,,,1869.0,StPaul
@@ -138,7 +138,7 @@
 ﻿stp.mn.0195,﻿station,not recorded,English,,,,﻿Wabasha County,﻿Wabasha County,﻿Backer's Settlement,,,,44.38700326,-92.04359273,﻿stp.mn.0186,﻿Visited by Rev. Jas. Trobec,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0196,﻿church,﻿Church of St. Joseph,﻿German,,,,﻿Winona County,﻿Winona County,﻿Winona,﻿Winona,﻿MN,,44.0553908,-91.6663523,,﻿,,,﻿a_plut_001,﻿Rev.,﻿A. Plut,,,,,,,1869.0,StPaul
 ﻿stp.mn.0197,﻿church,﻿Church of St. Thomas,﻿English,,,,﻿Winona County,﻿Winona County,﻿Winona,﻿Winona,﻿MN,,44.0553908,-91.6663523,,﻿,,,﻿a_plut_001,﻿Rev.,﻿A. Plut,,,,,,,1869.0,StPaul
-﻿stp.mn.0197,﻿station,﻿Church of St. Thomas,﻿English,,,,﻿Winona County,﻿Winona County,﻿Rollingstone,﻿Winona,﻿MN,,44.0553908,-91.6663523,﻿stp.mn.0196,﻿Visited by Rev. A. Plut,,﻿Went with first one,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0255,﻿station,not recorded,English,,,,﻿Winona County,,﻿Rollingstone,,,,44.0553908,-91.6663523,﻿stp.mn.0196,﻿Visited by Rev. A. Plut,,﻿Went with first one,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0199,﻿station,not recorded,English,,,,﻿Winona County,﻿Winona County,﻿Hart,﻿Hart Township,﻿MN,,43.8914987,-91.7928402,﻿stp.mn.0196,﻿Visited by Rev. A. Plut,,﻿Went with first one.,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0200,﻿church,not recorded,English,,,,﻿Winona County,﻿Winona County,﻿St. Charles,﻿St. Charles,﻿MN,,43.9694165,-92.064194,﻿stp.mn.0196,﻿Visited by Rev. A. Plut,,﻿Went with first one.,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0201,﻿station,not recorded,English,,,,﻿Winona County,﻿Winona County,﻿Elba,﻿Elba,﻿MN,,44.088574799999996,-92.01877209999999,﻿stp.mn.0196,﻿Visited by Rev. A. Plut,,﻿Went with first one.,,,,,,,,,,1869.0,StPaul
@@ -184,13 +184,13 @@
 ﻿stp.mn.0145,﻿church,not recorded,English,,,,﻿Stearns County,﻿Stearns County,﻿St. Benedict,﻿St. Benedict,﻿MN,,45.60855479999999,-94.45359040000001,,﻿Visited by Rev. A. Burns,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0105,﻿church,not recorded,English,,,,﻿Meeker County,﻿Meeker County,﻿Forest City,﻿Forest City,﻿MN,,45.206351899999994,-94.4663799,,﻿Visited by Rev. Augustin Burns,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0106,﻿station,not recorded,English,,,,﻿Meeker County,﻿Meeker County,﻿Greenleaf,﻿Greenleaf,﻿MN,,44.996350799999995,-94.49943359999999,,﻿Visited by Rev. Augustin Burns,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0106,﻿station,not recorded,English,"﻿new counties, scattering families",,,"﻿Kandiyohi, Monongalia, Pope, and Douglas",﻿Meeker County,﻿Greenleaf,﻿Greenleaf,﻿MN,,44.996350799999995,-94.49943359999999,,﻿Visited occasionally by Rev. Augustin Burns,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0256,﻿station,not recorded,English,"﻿new counties, scattering families",,,"﻿Kandiyohi, Monongalia, Pope, and Douglas",,,,,,44.996350799999995,-94.49943359999999,,﻿Visited occasionally by Rev. Augustin Burns,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0113,﻿church,not recorded,English,,,,﻿Morrison County,﻿Morrison County,﻿Belle Prairie,﻿Belle Prairie,﻿MN,,46.0346899,-94.2515626,,﻿,,,﻿jos_buh_001,﻿Rev.,﻿Joseph Buh,,,,,,,1869.0,StPaul
 ﻿stp.mn.0114,﻿church,not recorded,English,,,,﻿Morrison County,﻿Morrison County,﻿Little Falls,﻿Little Falls,﻿MN,,45.9805556,-94.3694444,﻿stp.mn.0113,﻿Visited by Rev. Joseph Buh,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0115,﻿church,﻿Church of Holy Cross,English,,,,﻿Morrison County,﻿Morrison County,﻿Two Rivers,﻿Two Rivers,﻿MN,,45.7999704,-94.34969,﻿stp.mn.0113,﻿Visited by Rev. Joseph Buh,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0031,﻿church,﻿Church of St. Francis Xavier,English,,,,﻿Crow Wing County,﻿Crow Wing County,﻿Crow Wing,﻿Crow Wing,﻿MN,,46.2799671,-94.2924998,,﻿,,,﻿t_pierze_001,﻿Rev.,﻿T. Pierze,,,,,,,1869.0,StPaul
 ﻿stp.mn.0031,﻿church,﻿Church of St. Francis Xavier,English,,,,﻿Crow Wing County,﻿Crow Wing County,﻿Crow Wing,﻿Crow Wing,﻿MN,,46.2799671,-94.2924998,,,,,﻿j_tomazin_001,﻿Rev.,﻿J. Tomazin,,,,,,,1869.0,StPaul
-﻿stp.mn.0031,﻿church,﻿Church of St. Francis Xavier,English,,﻿Fort Abercrombie,,﻿Johnson County,﻿Crow Wing County,﻿Crow Wing,﻿Crow Wing,﻿MN,,46.2799671,-94.2924998,,,,,﻿j_b_genin_001,﻿Rev.,﻿J. B. Genin,﻿O.M.S.,,,,,,1869.0,StPaul
+﻿stp.mn.0257,﻿church,not recorded,English,,﻿Fort Abercrombie,,﻿Johnson County,,,,,,46.2799671,-94.2924998,,,,,﻿j_b_genin_001,﻿Rev.,﻿J. B. Genin,﻿O.M.S.,,,,,,1869.0,StPaul
 ﻿stp.mn.0208,﻿mission,not recorded,English,﻿Indian Mission,,,﻿Itasca County,﻿Itasca County,,,﻿MN,,47.5507924,-93.5683651,﻿stp.mn.0031,﻿Attended to by Rev. Francis Pierz,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0208,﻿mission,not recorded,English,﻿Indian Mission,,,﻿Itasca County,﻿Itasca County,,,﻿MN,,47.5507924,-93.5683651,﻿stp.mn.0031,﻿Attended to by Rev. J. Tomazin,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0208,﻿mission,not recorded,English,﻿Indian Mission,,,﻿Itasca County,﻿Itasca County,,,﻿MN,,47.5507924,-93.5683651,﻿stp.mn.0113,﻿Attended to by Rev. J. Buh,,,,,,,,,,,,1869.0,StPaul
@@ -215,7 +215,7 @@
 ﻿stp.mn.0216,﻿mission,not recorded,English,﻿Indian Mission,,,﻿Aitken County,﻿Aitkin County,,,﻿MN,,46.6185433,-93.45366920000001,﻿stp.mn.0031,﻿Attended to by Rev. Francis Pierz,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0217,﻿mission,﻿Mission of Half-Breeds and Chippewas,English,﻿Indian Mission,"﻿at Pembina and St. Joseph, Red River of the North",,,﻿Pembina County,,﻿Walhalla,﻿ND,,48.923328399999995,-97.9181477,,﻿,,,﻿f_richer_001,﻿Rev.,﻿F. Richer,﻿O.M.I.,,,,,,1869.0,StPaul
 ﻿stp.mn.0217,﻿mission,﻿Mission of Half-Breeds and Chippewas,English,﻿Indian Mission,"﻿at Pembina and St. Joseph, Red River of the North",,,﻿Pembina County,,﻿Walhalla,﻿ND,,48.923328399999995,-97.9181477,,﻿,,,﻿f_ledue_001,﻿Rev.,﻿F. Ledue,﻿O.M.I.,,,,,,1869.0,StPaul
-﻿stp.mn.0218,﻿mission,﻿Mission of Fond du Lac,English,﻿Indian Mission,﻿near Superior City,,,﻿Douglas County,,﻿Superior City,﻿WI,,46.71581695,-92.51326606,﻿lac.wi.0004,"﻿Visited by Rev. John Chebul  of Bayfield, Wisconsin",,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0218,﻿mission,﻿Mission of Fond du Lac,English,﻿Indian Mission,﻿near Superior City,,,﻿Douglas County,,﻿Superior City,﻿WI,,46.71581695,-92.11025381,﻿lac.wi.0004,"﻿Visited by Rev. John Chebul  of Bayfield, Wisconsin",,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0219,﻿mission,not recorded,English,﻿Indian Mission,﻿north shore of Lake Superior,,,﻿Cook County,﻿Grand Portage,﻿Grand Portage,﻿MN,,47.963776,-89.68481209999999,,﻿Attended by the Jesuit Fathers at Fort William,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0220,﻿seminary,not recorded,English,"﻿Preparatory Seminary. The Theological Students of the Diocese are distributed between All-Hallows', Lublin; St. John's College, Minnesota; and St. Vincent's Seminary, Cape Girardeau, Mo.",,,,,﻿St. Paul,﻿St. Paul,﻿MN,,44.953702899999996,-93.0899578,,,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0221,﻿abbey,﻿Abbey of St. Louis on the Lake,English,"﻿the Order of St. Benedict. There are also houses attached to the abbey, at St. Paul's, St. Cloud, Shakopee, St. Joseph, and Richmond.","﻿near St. Cloud, Clinton P.O.",,﻿Stearns County,,,,﻿MN,,45.584479200000004,-94.5865603,,,,,﻿rup_seidenbush_001,﻿Rt. Rev.,﻿Rupert Seidenbush,﻿O.S.B.,﻿Abbot and Rector of the College,,,﻿15 scholastics,,1869.0,StPaul
@@ -242,66 +242,66 @@
 ﻿stp.mn.0234,﻿school,not recorded,English,"﻿German school, under direction of the Sisters of St. Joseph, and secular teachers",,,,,﻿St. Paul,﻿St. Paul,﻿MN,,44.953702899999996,-93.0899578,,,,,,,,,,,,﻿500 scholars,,1869.0,StPaul
 ﻿stp.mn.0237,﻿school,not recorded,English,﻿School under the direction of the Sisters of St. Joseph,,,,,﻿Minneapolis,﻿Minneapolis,﻿MN,,44.977753,-93.2650108,,,,,,,,,,,,﻿200 scholars,,1869.0,StPaul
 ﻿stp.mn.0238,﻿school,not recorded,English,﻿School under direction of the Sisters of St. Joseph,,,,,﻿St. Anthony,﻿St. Anthony,﻿MN,,45.0205565,-93.2179335,,,,,,,,,,,,﻿140 scholars,,1869.0,StPaul
-﻿stp.mn.0238,﻿school,not recorded,English,﻿German Catholic School,,,,,﻿St. Anthony,﻿St. Anthony,﻿MN,,45.0205565,-93.2179335,,,,,,,,,,,,﻿60 scholars,,1869.0,StPaul
+﻿stp.mn.0258,﻿school,not recorded,English,﻿German Catholic School,,,,,﻿St. Anthony,,,,45.0205565,-93.2179335,,,,,,,,,,,,﻿60 scholars,,1869.0,StPaul
 ﻿stp.mn.0239,﻿school,not recorded,English,﻿School under direction of the Sisters of St. Benedict,,,,,﻿Shakopee,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0240,﻿school,not recorded,English,﻿School under direction of the Sisters of Notre Dame,,,,,﻿Mankato,﻿Mankato,﻿MN,,44.1661456,-94.0055647,,,,,,,,,,,,﻿250 scholars,,1869.0,StPaul
 ﻿stp.mn.0241,﻿school,not recorded,English,"﻿Parochial Schools, under direction of the Sisters of St. Dominic",,,﻿Faribault County,,,,﻿MN,,43.6448766,-93.9878427,,,,,,,,,,,,﻿225 scholars,,1869.0,StPaul
 ﻿stp.mn.0242,﻿school,not recorded,English,﻿Catholic Schools,,,,,﻿St. Cloud,﻿St. Cloud,﻿MN,,45.5579451,-94.1632404,,,,,,,,,,,,﻿200 scholars,,1869.0,StPaul
-﻿stp.mn.0242,﻿school,not recorded,English,﻿School under charge of secular teachers,,,,,﻿Carver,﻿St. Cloud,﻿MN,,45.5579451,-94.1632404,,,,,,,,,,,,﻿200 scholars,,1869.0,StPaul
-﻿stp.mn.0242,﻿school,not recorded,English,﻿There are Catholic schools attached to nearly all the churches and chapels throughout the diocese.,,,,,﻿Carver,﻿St. Cloud,﻿MN,,45.5579451,-94.1632404,,,,,,,,,,,,﻿200 scholars,,1869.0,StPaul
+﻿stp.mn.0259,﻿school,not recorded,English,﻿School under charge of secular teachers,,,,,﻿Carver,,,,45.5579451,-94.1632404,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0260,﻿school,not recorded,English,﻿There are Catholic schools attached to nearly all the churches and chapels throughout the diocese.,,,,,,,,,45.5579451,-94.1632404,,,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0244,﻿hospital,﻿St. Joseph's Hospital,English,﻿under charge of the Sisters of St. Joseph,,,,,﻿St. Paul,﻿St. Paul,﻿MN,,44.94872410000001,-93.100348,,,,,,﻿Sister,﻿Alphonsus,,﻿Superior,,,,,1869.0,StPaul
 ﻿stp.mn.0244,﻿hospital,﻿St. Joseph's Hospital,English,﻿under charge of the Sisters of St. Joseph,,,,,﻿St. Paul,﻿St. Paul,﻿MN,,44.94872410000001,-93.100348,,,,,,﻿Sister,﻿Mary Antoinette,,﻿Superior,﻿listed with the Order,,,,1869.0,StPaul
 ﻿stp.mn.0245,﻿asylum,﻿St. Joseph's Orphan Asylum,English,﻿under charge of the Sisters of St. Joseph,,,,,﻿St. Paul,﻿St. Paul,﻿MN,,44.94872410000001,-93.100348,,,,,,﻿Sister,﻿Mary Antoinette,,﻿Superior,﻿listed with the Order,,﻿72 orphans,,1869.0,StPaul
-﻿stp.mn.0245,﻿asylum,﻿House of the Good Shepherd,English,﻿under charge of the Sisters of St. Joseph,,,,,﻿St. Paul,﻿St. Paul,﻿MN,,44.94872410000001,-93.100348,,,,,,,,,,,,﻿72 orphans,,1869.0,StPaul
+﻿stp.mn.0261,﻿asylum,﻿House of the Good Shepherd,English,,,,,,﻿St. Paul,,,,44.94872410000001,-93.100348,,,,,,,,,,,,,,1869.0,StPaul
 ﻿stp.mn.0246,﻿asylum,﻿Orphan Asylum,English,﻿under charge of Sisters of St. Benedict,,,,,﻿Shakopee,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Orphan Asylum,English,﻿under direction of Rev. Geo. Keller,,,﻿Faribault County,,﻿Shakopee,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Society of St. Vincent,English,﻿two conferences,,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Society of St. Vincent,English,﻿one conference,,,﻿Faribault County,,﻿St. Anthony,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿St. Joseph's Mutual Benevolent Society,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Anthony,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
-﻿stp.mn.0246,﻿asylum,﻿Young Men's Catholic Literary Association,English,"﻿attached to German Church, St. Paul.",,,﻿Faribault County,,﻿St. Paul,﻿Shakopee,﻿MN,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0262,﻿asylum,﻿Orphan Asylum,English,﻿under direction of Rev. Geo. Keller,,,﻿Faribault County,,,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0263,﻿asylum,﻿Society of St. Vincent,English,﻿two conferences,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0264,﻿asylum,﻿Society of St. Vincent,English,﻿one conference,,,,,﻿St. Anthony,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0265,﻿asylum,﻿St. Joseph's Mutual Benevolent Society,English,"﻿attached to German Church, St. Paul.",,,,,,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul
+﻿stp.mn.0266,﻿asylum,﻿Young Men's Catholic Literary Association,English,,,,,,﻿St. Paul,,,,44.79739620000001,-93.5272861,,,,,,,,,,,,,,1869.0,StPaul

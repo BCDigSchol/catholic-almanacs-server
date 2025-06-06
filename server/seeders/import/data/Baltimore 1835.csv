@@ -1,0 +1,88 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿bal.md.0001,﻿cathedral,﻿Cathedral,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,﻿MD,39.294376659136205,-76.61624542628991,,,,,,﻿Most Rev.,﻿Samuel Eccleston,﻿D. D.,,,,,,,Baltimore 
+﻿bal.md.0001,﻿cathedral,﻿Cathedral,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.294376659136205,-76.61624542628991,,,,,,﻿Rev.,﻿Ed. Damphoux,﻿D.D.,,,,,,,Baltimore 
+﻿bal.md.0001,﻿cathedral,﻿Cathedral,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.294376659136205,-76.61624542628991,,,,,,﻿Rev.,﻿Peter Schreiber,,,,,,,,Baltimore 
+﻿bal.md.0001,﻿cathedral,﻿Cathedral,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.294376659136205,-76.61624542628991,,,,,,﻿Rev.,﻿C. I. White,,,,,,,,Baltimore 
+﻿bal.md.0004,﻿church,﻿St. Peter's,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,﻿MD,39.292778000000006,-76.615278,,,,,,﻿Most Rev.,﻿Samuel Eccleston,﻿D. D.,,,,,,,Baltimore 
+﻿bal.md.0004,﻿church,﻿St. Peter's,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.292778000000006,-76.615278,,,,,,﻿Rev.,﻿Ed. Damphoux,﻿D.D.,,,,,,,Baltimore 
+﻿bal.md.0004,﻿church,﻿St. Peter's,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.292778000000006,-76.615278,,,,,,﻿Rev.,﻿Peter Schreiber,,,,,,,,Baltimore 
+﻿bal.md.0004,﻿church,﻿St. Peter's,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.292778000000006,-76.615278,,,,,,﻿Rev.,﻿C. I. White,,,,,,,,Baltimore 
+﻿bal.md.0002,﻿church,"﻿St. Patrick's, F.P.",English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,﻿MD,39.2908873673903,-76.59025713465671,,,,,,﻿Rev.,﻿Nicholas Kerny,,,,,,,,Baltimore 
+﻿bal.md.0005,﻿church,﻿St. John's,English,﻿German Church,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,﻿MD,39.292841328129896,-76.6179880052368,,,,,,﻿Very Rev.,﻿Lewis de Barth,,,,,,,,Baltimore 
+﻿bal.md.0012,﻿church,﻿St. James',English,,,,,,﻿Baltimore,,﻿MD,﻿MD,39.292841328129896,-76.6179880052368,,,,,,﻿Rev.,﻿John Gildea,,,,,,,,Baltimore 
+﻿bal.md.0016,﻿church,﻿St. Mary's,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,﻿MD,39.292841328129896,-76.6179880052368,,,,,,﻿Very Rev.,﻿Lewis Deluol,﻿D. D.,,,,,,,Baltimore 
+﻿bal.md.0016,﻿church,﻿St. Mary's,English,,,,,﻿Baltimore County,﻿Baltimore,﻿Baltimore,﻿MD,,39.292841328129896,-76.6179880052368,,,,,,﻿Rev.,﻿J. Gildea,,﻿Champlain of the Carmelites,,,,,,Baltimore 
+﻿bal.md.0026,﻿church,﻿Alleghany Church,English,,,,,﻿Allegany County,﻿Alleghany Church,﻿Cumberland,﻿MD,﻿MD,39.6524415174475,-78.7671633423962,,,,,,﻿Rev.,﻿Francis Marshall,,,,,,,,Baltimore 
+﻿bal.md.0026,﻿church,﻿Alleghany Church,English,﻿once a month,,,,﻿Allegany County,﻿Annapolis,﻿Cumberland,﻿MD,,39.6524415174475,-78.7671633423962,,,,,,﻿Rev.,﻿Robert D. Woodley,,,,,,,,Baltimore 
+﻿bal.md.0026,﻿church,﻿Mountain Church,English,﻿once a month,,,﻿Alleghany County,﻿Allegany County,﻿Arnold Settlement,﻿Mount Savage,﻿MD,﻿MD,39.697778,-78.873889,,,,,,﻿Rev.,﻿F. X. Marshall,,,,,,,,Baltimore 
+﻿bal.md.0091,﻿church,not recorded,English,,,,﻿Montgomery County,﻿Montgomery County,﻿Barnsville,﻿Barnesville,﻿MD,﻿MD,39.2206678230957,-77.380777443303,,,,,,,,,,,,,,,Baltimore 
+﻿bal.md.0079,﻿church,not recorded,English,,,,﻿Harford County,﻿Harford County,﻿Bel Air,﻿Forest Hill,﻿MD,﻿MD,39.5737449263999,-76.3549067294093,,,,,,﻿Rev.,﻿H. Coskery,,,,,,,,Baltimore 
+﻿bal.md.0028,﻿church,not recorded,English,﻿1st Sunday,,,﻿Alleghany County,,﻿Blooming Rose Settlement,﻿Friendsville,﻿MD,﻿MD,39.656667,-79.439167,,,,,,﻿Rev.,﻿F. X. Marshall,,,,,,,,Baltimore 
+﻿wil.de.0012,﻿church,not recorded,English,,,﻿Eastern Shore of Maryland,﻿Cecil County,﻿Cecil County,﻿Bohemia,﻿Warwick,﻿MD,﻿MD,39.4374421910057,-75.8047393924712,,,,,,﻿Rev. Mr.,﻿Varin,,,,,,,,Baltimore 
+﻿bal.md.0104,﻿chapel,﻿Boone's Chapel,English,,,,﻿Prince George County,﻿Prince George County,,﻿Upper Marlboro,﻿MD,﻿MD,38.7400265884637,-76.8075849277595,,,,,,﻿Rev.,﻿Ign. Coombes,,,,,,,,Baltimore 
+﻿bal.md.0104,﻿church,﻿Boone's Chapel,English,,﻿Brien's Furnace,,﻿Prince George County,﻿Prince George County,,﻿Antietam,﻿MD,﻿MD,39.416083386104795,-77.74074324604629,,﻿Attended from Mt. St. Mary's,,,,,,,,,,,,,Baltimore 
+﻿bal.md.0063,﻿church,not recorded,English,﻿1st & 3rd Sund.,,,,﻿Charles County,﻿Bryantown,﻿Bryantown,﻿MD,﻿MD,38.539602653563,-76.83688739030771,,,,,,﻿Rev.,﻿F. Roloff,,,,,,,,Baltimore 
+﻿bal.md.0072,﻿church,not recorded,English,,﻿Carrollton Manor,,﻿Frederick County,﻿Frederick County,,﻿Frederick,﻿MD,﻿MD,39.330807391714295,-77.46273323809791,,,﻿occasionally,,,﻿Rev.,﻿John McElroy,,,﻿Dw. at Frederick,,,,,Baltimore 
+﻿bal.md.0064,﻿church,not recorded,English,﻿1st and 3rd Sund.,,,﻿Charles County,,﻿Cob Neck,﻿Cobb Neck,﻿MD,﻿MD,38.3406824,-76.91802659999999,,,﻿occasionally,,,﻿Rev.,﻿Philip A. Sacchi,,,﻿Dw. at St. Thomas' Manor,,,,,Baltimore 
+﻿wil.de.0013,﻿church,not recorded,English,﻿5th Sund.,﻿Susquehanna Bridge,,,﻿Cecil County,﻿Conewingo,﻿Conowingo,﻿MD,﻿MD,39.7159985710504,-76.2019720303817,,,,,,﻿Rev.,﻿H. Coskery,,,﻿Dw. in Hartford,,,,,Baltimore 
+﻿bal.md.0065,﻿church,not recorded,English,,,,﻿Charles County,﻿Charles County,﻿Cornwallis,﻿Indian Head,﻿MD,﻿MD,38.5959041699152,-77.16772737119041,,,,,,﻿Rev.,﻿Benjamin Young,,,﻿Dw. at St Thomas',,,,,Baltimore 
+﻿bal.md.0026,﻿church,not recorded,English,﻿once a month,,,﻿Alleghany County,﻿Allegany County,﻿Cumberland,﻿Cumberland,﻿MD,﻿MD,39.6524415174475,-78.7671633423962,,,,,,﻿Rev.,﻿Francis Marshall,,,,,,,,Baltimore 
+﻿wil.de.0022,﻿church,not recorded,English,﻿3rd Sund.,,﻿Eastern Shore of Maryland,﻿Caroline County,﻿Caroline County,﻿Denton,﻿Denton,﻿MD,﻿MD,38.8855449250972,-75.83477098957209,,,,,,﻿Rev.,﻿John B. Carey,,,"﻿Dw. at S. Joseph's, Talbot Co.",,,,,Baltimore 
+﻿bal.md.9000,﻿church,not recorded,English,,,﻿Eastern Shore of Maryland,,,﻿Dorset,,﻿MD,,38.8855449250972,-75.83477098957209,,,,,,﻿Rev.,﻿Thomas D. Monelly,,,,,,,,Baltimore 
+﻿bal.md.0085,﻿church,not recorded,English,,﻿Dougharagen Manor,,,﻿Howard County,,﻿Ellicott City,﻿MD,﻿MD,39.276589653956705,-76.8931164052458,,,,,,﻿Rev.,﻿H. Coskery,,,,,,,,Baltimore 
+﻿bal.md.0073,﻿church,not recorded,English,,,,﻿Frederick County,﻿Frederick County,﻿Emmettsburg,﻿Emmitsburg,﻿MD,﻿MD,39.7054344914427,-77.32609194946771,,,,,,﻿Rev.,﻿John Hickey,,,,,,,,Baltimore 
+﻿bal.md.0034,﻿church,not recorded,English,,﻿Fifteen Mile Creek,,﻿Alleghany County,,,,﻿MD,﻿MD,39.7054344914427,-77.32609194946771,,,,,,﻿Rev.,﻿T. Ryan,,,,,,,,Baltimore 
+﻿bal.md.0070,﻿church,not recorded,English,,,,,﻿Cecil County,﻿Frederick,﻿Frederick,﻿MD,﻿MD,39.4160644923611,-77.40764836276179,,,,,,﻿Rev.,﻿John McElroy,,,,,,,,Baltimore 
+﻿bal.md.0070,﻿church,not recorded,English,,,,,﻿Cecil County,﻿Frederick,﻿Frederick,﻿MD,,39.4160644923611,-77.40764836276179,,,,,,﻿Rev.,﻿Virgil Barber,,,,,,,,Baltimore 
+﻿bal.md.0070,﻿church,not recorded,English,,,,,﻿Cecil County,﻿Frederick,﻿Frederick,﻿MD,,39.4160644923611,-77.40764836276179,,,,,,﻿Rev.,﻿Peter P. Kroes,,,,,,,,Baltimore 
+﻿bal.md.0108,﻿church,not recorded,English,,,,﻿Washington County,﻿Washington County,﻿Hagerstown,﻿Hagerstown,﻿MD,﻿MD,39.644567459745204,-77.72496515176941,,,,,,﻿Rev.,﻿T. Ryan,,,,,,,,Baltimore 
+﻿bal.md.0108,﻿church,not recorded,English,,﻿Harbaugh's Valley,,﻿Washington County,﻿Frederick County,﻿Hagerstown,﻿Hagerstown,﻿MD,,39.7090970267311,-77.4240260539672,,,﻿once a month from Emmitsburg,,,,,,,,,,,,Baltimore 
+﻿bal.md.0099,﻿chapel,﻿Lady's Chapel,English,,,,﻿St. Mary's County,﻿St. Mary's County,,﻿Leonardtown,﻿MD,﻿MD,38.2610064403812,-76.6200065278075,,,,,,﻿Rev.,﻿P. Havremans,,,,,,,,Baltimore 
+﻿bal.md.0075,﻿church,not recorded,English,,,,﻿Frederick County,﻿Frederick County,﻿Liberty,﻿Libertytown,﻿MD,﻿MD,39.486800710511396,-77.2407878818952,,﻿attended from Frederick City,,,,,,,,,,,,,Baltimore 
+﻿bal.md.0048,﻿church,not recorded,English,,,,﻿Baltimore County,﻿Baltimore County,﻿Long Green,﻿Hydes,﻿MD,﻿MD,39.4875068534538,-76.4749122214741,,,,,,,,,,﻿Vacant,,,,,Baltimore 
+﻿bal.md.0104,﻿church,not recorded,English,,﻿Brien's Furnace,,﻿Prince George County,﻿Prince George County,﻿Marlborough,﻿Upper Marlboro,﻿MD,﻿MD,38.818599186573,-76.74824711258309,,,,,,﻿Rev.,﻿Ign. Coombes,,,,,,,,Baltimore 
+﻿bal.md.9001,﻿church,not recorded,English,﻿Service on the 5th Sunday and all Holidays,﻿near Piscataway,,﻿Prince George County,,﻿Mattawoman,,﻿MD,,38.818599186573,-76.74824711258309,,,,,,﻿Rev.,﻿F. Roloff,,,﻿Dw. at Bryantown,,,,,Baltimore 
+﻿bal.md.0076,﻿church,not recorded,English,,﻿Merryland Tract,,,﻿Frederick County,﻿Petersville,﻿Knoxville,﻿MD,﻿MD,39.348291296621596,-77.6165187353548,,,,,,﻿Rev.,﻿John McElroy,,,﻿Dw. at Frederick,,,,,Baltimore 
+﻿bal.md.0074,﻿church,﻿Mountain Church,English,,﻿near Emmittsburg,,,﻿Frederick County,,﻿Emmitsburg,﻿MD,﻿MD,39.6808896864661,-77.3543071502336,,,,,,﻿Rev.,﻿George Flaut,,,,,,,,Baltimore 
+﻿bal.md.0067,﻿church,not recorded,English,﻿2d and 4th Sund.,,,﻿Charles County,﻿Charles County,﻿Newport,﻿Newport,﻿MD,﻿MD,38.433772665335106,-76.909755163362,,,,,,﻿Rev.,﻿Philip A. Sacchi,,,﻿Dw. at S Thomas' Manor,,,,,Baltimore 
+﻿bal.md.0098,﻿church,not recorded,English,,,,﻿St Mary's County,﻿St Mary's County,﻿Newtown,﻿Leonardtown,﻿MD,﻿MD,38.2557474723112,-76.70021752160599,,,,,,﻿Rev.,﻿Aloysius Mudd,,,,,,,,Baltimore 
+﻿bal.md.0068,﻿church,not recorded,English,,,,﻿Charles County,﻿Charles County,﻿Pomfort,﻿Pomfret,﻿MD,﻿MD,38.5866366574855,-77.0241449388855,,,,,,﻿Rev.,﻿Benjamin Young,,,﻿Dw. at S Thomas' Manor,,,,,Baltimore 
+﻿wil.de.0018,﻿church,not recorded,English,,,﻿Eastern Shore of Maryland,,﻿Queene Anne's County,﻿Queen's Town,﻿Queenstown,﻿MD,﻿MD,38.9777056999489,-76.13343743915921,,,,,,﻿Rev.,﻿Thos. D. Monelly,,,,,,,,Baltimore 
+﻿bal.md.9002,﻿chapel,﻿Queen's Chapel,English,,﻿Near Washington,,,,﻿Washington,﻿Washington,﻿MD,﻿DC,38.925281228631604,-76.97767439547059,,,,,,,,,,﻿Vacant,,,,,Baltimore 
+﻿bal.md.9003,﻿church,not recorded,English,,,,﻿Prince George County,,﻿Rock Creek,﻿Washington,﻿MD,﻿DC,38.966924675079,-77.0449019706719,,,,,,﻿Rev. Mr.,﻿Devoss,,,﻿Dw. at Barnsville,,,,,Baltimore 
+﻿bal.md.0088,﻿church,not recorded,English,,﻿Montgomery Court House,,,﻿Montgomery County,﻿Rockville,﻿Rockville,﻿MD,﻿MD,39.081860074450496,-77.1445311448158,,,,,,,,,,,,,,,Baltimore 
+﻿bal.md.0102,﻿church,﻿Sacred Heart Church,English,,,,﻿St. Mary's County,﻿St. Mary's County,,,﻿MD,﻿MD,39.081860074450496,-77.1445311448158,,,,,,﻿Rev.,﻿P. Havremans,,,﻿Dw. at Newtown,,,,,Baltimore 
+﻿bal.md.0097,﻿church,﻿St. Aloysius,English,,﻿near Leonardtown,,﻿St. Mary's County,﻿St. Mary's County,﻿Leonardtown,﻿Leonardtown,﻿MD,﻿MD,38.294514441844605,-76.635398466934,,﻿attended from Newtown,﻿occasionally,,,﻿Rev.,﻿T. D. Monelly,,,,,,,,Baltimore 
+﻿bal.md.0093,﻿church,not recorded,English,,,,﻿St. Mary's County,﻿St. Mary's County,﻿St. Inigoes,﻿St. Inigoes,﻿MD,﻿MD,38.1498426225578,-76.42361732240259,,,,,,﻿Rev.,﻿Joseph Carbery,,,,,,,,Baltimore 
+﻿bal.md.0093,﻿church,not recorded,English,,,,﻿St. Mary's County,﻿St. Mary's County,﻿St. Inigoes,﻿St. Inigoes,﻿MD,,38.1498426225578,-76.42361732240259,,,,,,﻿Rev.,﻿Thomas Finigan,,,,,,,,Baltimore 
+﻿bal.md.0100,﻿church,﻿St. John's,English,,,,﻿St. Mary's County,﻿St. Mary's County,,﻿Hollywood,﻿MD,﻿MD,38.3332288241834,-76.5582752908745,,﻿attended from Newtown,﻿occasionally,,,,,,,,,,,,Baltimore 
+﻿bal.md.0101,﻿church,﻿St. Joseph's,English,,,,﻿St. Mary's County,﻿St. Mary's County,,﻿Morganza,﻿MD,﻿MD,38.375775896159,-76.6971849883605,,﻿attended from Newtown,﻿occasionally,,,,,,,,,,,,Baltimore 
+﻿wil.de.0016,﻿church,﻿St. Joseph's,English,﻿1st and 4th Sund.,,﻿Eastern Shore of Maryland,﻿Talbot County,﻿Talbot County,,﻿Cordova,﻿MD,﻿MD,38.909875726487705,-76.0133688953308,,,,,,﻿Rev.,﻿John B. Carey,,,,,,,,Baltimore 
+﻿bal.md.0094,﻿church,﻿St. Nicholas,English,,,,﻿St. Mary's County,﻿St. Mary's County,,﻿Lexington Park,﻿MD,﻿MD,38.2624226941755,-76.4437699367707,,,,,,﻿Rev.,﻿Joseph Carbery,,,,,,,,Baltimore 
+﻿bal.md.0069,﻿church,not recorded,English,,﻿St. Thomas' Manor,,﻿Charles County,﻿Charles County,,﻿Port Tobacco,﻿MD,﻿MD,38.465471850445496,-77.0236036901079,,,,,,﻿Rev.,﻿Wm. McSherry,,,,,,,,Baltimore 
+﻿bal.md.0069,﻿church,not recorded,English,,﻿St. Thomas' Manor,,﻿Charles County,﻿Charles County,,﻿Port Tobacco,﻿MD,,38.465471850445496,-77.0236036901079,,,,,,﻿Rev.,﻿F. Neale,,﻿Provincial of the Jesuits,,,,,,Baltimore 
+﻿bal.md.0069,﻿church,not recorded,English,,﻿St. Thomas' Manor,,﻿Charles County,﻿Charles County,,﻿Port Tobacco,﻿MD,,38.465471850445496,-77.0236036901079,,,,,,﻿Rev.,﻿Benj. Young,,﻿Provincial of the Jesuits,,,,,,Baltimore 
+﻿bal.md.0069,﻿church,not recorded,English,,﻿St. Thomas' Manor,,﻿Charles County,﻿Charles County,,﻿Port Tobacco,﻿MD,,38.465471850445496,-77.0236036901079,,,,,,﻿Rev.,﻿Philip A. Sacchi,,﻿Provincial of the Jesuits,,,,,,Baltimore 
+﻿bal.md.0069,﻿church,not recorded,English,,﻿St. Thomas' Manor,,﻿Charles County,﻿Charles County,,﻿Port Tobacco,﻿MD,,38.465471850445496,-77.0236036901079,,,,,,﻿Rev.,﻿Matthew Sanders,,﻿Provincial of the Jesuirs,,,,,,Baltimore 
+﻿bal.md.0056,﻿church,not recorded,English,,,,﻿Frederick County,﻿Carroll County,﻿Taneytown,﻿Taneytown,﻿MD,﻿MD,39.6584603116749,-77.17962446946551,,,,,,﻿Rev.,﻿Nicholas Zocchi,,,,,,,,Baltimore 
+﻿bal.md.0057,﻿church,not recorded,English,﻿3rd Sund.,,,﻿Frederick County,﻿Carroll County,﻿Westminster,﻿Westminster,﻿MD,﻿MD,39.5859095268333,-76.9929441356212,,,,,,﻿Rev.,﻿Nicholas Zocchi,,,﻿Dw. at Taneytown,,,,,Baltimore 
+﻿bal.md.0107,﻿church,not recorded,English,,,,﻿Prince George County,,﻿White Marsh,﻿Bowie,﻿MD,﻿MD,38.9832728008628,-76.72140310592691,,,,,,﻿Rev.,﻿Ign. Coombes,,,,,,,,Baltimore 
+﻿bal.md.0107,﻿church,not recorded,English,,,,﻿Prince George County,,﻿White Marsh,﻿Bowie,﻿MD,,38.9832728008628,-76.72140310592691,,,,,,﻿Rev.,﻿Robert Woodley,,,,,,,,Baltimore 
+﻿bal.md.9004,﻿church,not recorded,English,﻿2d and 4th Sund.,,﻿Upper Charles County,﻿Charles County,﻿Charles County,﻿Zachiah,﻿La Plata,﻿MD,﻿MD,38.5245936986904,-76.9504046148022,,,,,,﻿Rev.,﻿Francis Roloff,,,,,,,,Baltimore 
+﻿ric.va.0001,﻿church,not recorded,English,,,,,,﻿Richmond,﻿Richmond,﻿VA,﻿VA,37.540548986953205,-77.4352401427604,,,,,,﻿Rev.,﻿Timothy O'Brien,,,,,,,,Baltimore 
+﻿ric.va.0004,﻿church,not recorded,English,,,,,,﻿Petersburg,﻿Petersburg,﻿VA,﻿VA,37.2275411655916,-77.4064432754198,,,,,,﻿Rev.,﻿Timothy O'Brien,,,,,,,,Baltimore 
+﻿ric.va.0015,﻿church,not recorded,English,,,,,,﻿Norfolk,﻿Norfolk,﻿VA,﻿VA,36.8471492640561,-76.2823633523825,,,,,,﻿Rev. Mr.,﻿Borgess,,,,,,,,Baltimore 
+﻿ric.va.0017,﻿church,not recorded,English,,,,,﻿Norfolk County,﻿Portsmouth,﻿Portsmouth,﻿VA,﻿VA,36.835604035665604,-76.3034753729257,,,,,,﻿Rev. Mr.,﻿Borgess,,,,,,,,Baltimore 
+﻿ric.va.0010,﻿church,not recorded,English,﻿once a month,,,,,﻿Bath,,﻿VA,,36.835604035665604,-76.3034753729257,,,,,,﻿Rev.,﻿Fr. Jamison,,,,,,,,Baltimore 
+﻿ric.va.0011,﻿church,not recorded,English,﻿3 Sundays,,,,﻿Jefferson County,﻿Harper's Ferry,﻿Harper's Ferry,﻿VA,﻿WV,39.3227230468818,-77.731311919741,,,,,,﻿Rev.,﻿Francis Todrig,,,,,,,,Baltimore 
+﻿ric.va.0009,﻿church,not recorded,English,﻿3 Sundays,,,,﻿Berkeley County,﻿Martinsburg,﻿Martinsburg,﻿VA,﻿WV,39.455404309319704,-77.964527107009,,,,,,﻿Rev.,﻿Francis Jamison,,,,,,,,Baltimore 
+﻿ric.va.0012,﻿church,not recorded,English,﻿once a month,,,,,﻿Winchester,,﻿VA,,39.455404309319704,-77.964527107009,,,,,,﻿Rev.,﻿Francis Jamison,,,,,,,,Baltimore 
+﻿whe.va.0001,﻿church,﻿St.James',English,,,,,﻿Ohio County,﻿Wheeling,﻿Wheeling,﻿VA,﻿WV,40.0664588483856,-80.7195322380571,,,,,,﻿Rev.,﻿James Hoerner,,,,,,,,Baltimore 
+﻿whe.va.9000,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Shepherdstown,﻿Shepherdstown,﻿VA,﻿WV,39.429773601868895,-77.8081351475615,,,﻿visited occas.,,,﻿Rev.,﻿F. Todrig,,,,,,,,Baltimore 
+﻿whe.va.9000,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Waterford,﻿Shepherdstown,﻿VA,,39.429773601868895,-77.8081351475615,,,﻿visited occas.,,,﻿Rev.,﻿F. Todrig,,,,,,,,Baltimore 
+﻿bal.md.0114,﻿church,﻿St. Patrick's,English,,,,,,﻿Washington,﻿Washington,﻿DC,﻿DC,38.8979092998369,-77.0258058235742,,,,,,﻿Very Rev.,﻿Wm. Matthews,,,,,,,,Baltimore 
+﻿bal.md.0114,﻿church,﻿St. Patrick's,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.8979092998369,-77.0258058235742,,,,,,﻿Rev.,﻿Timolean Figeac,,,,,,,,Baltimore 
+﻿bal.md.0116,﻿church,﻿St. Peter's,English,,,,,,﻿Washington,﻿Washington,﻿DC,﻿DC,38.8856234940562,-77.003738732245,,,,,,﻿Rev.,﻿J. Vanhorsigh,,,,,,,,Baltimore 
+﻿ric.va.0005,﻿church,not recorded,English,,,,,,﻿Alexandria,﻿Alexandria,﻿DC,﻿VA,38.8018872619269,-77.04381244350171,,,,,,﻿Rev.,﻿J. Smith,,,,,,,,Baltimore 
+﻿bal.md.0124,﻿church,﻿Trinity Church,English,,,,,,﻿Georgetown,﻿Washington,﻿DC,﻿DC,38.907129535479704,-77.0700096812051,,,,,,﻿Rev.,﻿James Lucas,,,,,,,,Baltimore 
+﻿bal.md.0124,﻿church,﻿Trinity Church,English,,,,,,﻿Georgetown,﻿Washington,﻿DC,,38.907129535479704,-77.0700096812051,,,,,,﻿Rev.,﻿Richard Hardey,,,,,,,,Baltimore 

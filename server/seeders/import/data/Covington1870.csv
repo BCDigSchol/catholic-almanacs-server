@@ -19,34 +19,34 @@
 ﻿cov.kt.0013,﻿church,not recorded,English,,,,﻿Nicholas County,,﻿Carlisle,﻿Carlisle,﻿KY,,38.31201970000001,-84.027427,,﻿attended by Rev. John Hickey,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0014,﻿church,not recorded,English,,,,﻿Grant County,,﻿Crittenden,﻿Crittenden,﻿KY,,38.7845959,-84.6032404,,﻿attended by Rev. Thos. C. Moore,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0015,﻿church,﻿St. John the Evangelist,English,﻿brick church,,,﻿Carroll County,,﻿Carrollton,﻿Carrollton,﻿KY,,38.6763441,-85.1791896,,,,,﻿joh_stephany_001,﻿Rev.,﻿John Stephany,,,,,,,1870.0,Covington
-﻿cov.kt.0016,﻿church,not recorded,English,,﻿K.C.R.R.,,﻿Canton County,﻿Kenton County,﻿Culberton's Station,,﻿KY,,38.93509011,-84.49722856,,﻿attended from Cathedral,﻿once a month,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0017,﻿church,not recorded,English,,,,﻿Harrison County,,﻿Cynthiana,﻿Cynthania,﻿KY,,38.3903526,-84.2941013,,﻿attended from Paris,﻿every second Sunday,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0018,﻿church,﻿St. Francis Xavier,English,﻿brick church,,,﻿Pendleton County,,﻿Falmouth,﻿Falmouth,﻿KY,,38.676737200000005,-84.3302142,,﻿attended from Cathedral,﻿twice a month,,﻿j_smith_001,﻿Rev.,﻿J. Smith,,,,,,,1870.0,Covington
+﻿cov.kt.0016,﻿church,not recorded,English,,﻿K.C.R.R.,,﻿Canton County,﻿Kenton County,﻿Culberton's Station,,﻿KY,,38.93509011,-84.49722856,﻿cov.kt.0001,﻿attended from Cathedral,﻿once a month,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0017,﻿church,not recorded,English,,,,﻿Harrison County,,﻿Cynthiana,﻿Cynthania,﻿KY,,38.3903526,-84.2941013,﻿cov.kt.0097,﻿attended from Paris,﻿every second Sunday,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0018,﻿church,﻿St. Francis Xavier,English,﻿brick church,,,﻿Pendleton County,,﻿Falmouth,﻿Falmouth,﻿KY,,38.676737200000005,-84.3302142,﻿cov.kt.0001,﻿attended from Cathedral,﻿twice a month,,﻿j_smith_001,﻿Rev.,﻿J. Smith,,,,,,,1870.0,Covington
 ﻿cov.kt.0019,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Flemingsburgh,﻿Flemingsburg,﻿KY,,38.4222995,-83.73380759999999,,﻿attended by Rev. John Hickey,﻿twice a month,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0020,﻿church,not recorded,English,,,,﻿Boone County,,﻿Florence,﻿Florence,﻿KY,,38.9989499,-84.62661109999999,,﻿attended from Cathedral,﻿third Sunday,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0021,﻿church,not recorded,English,,,,﻿,,﻿Foster's Landing,﻿Foster's Landing,﻿KY,,37.839333200000006,-84.2700179,,﻿attended from Twelve Mile,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0020,﻿church,not recorded,English,,,,﻿Boone County,,﻿Florence,﻿Florence,﻿KY,,38.9989499,-84.62661109999999,﻿cov.kt.0001,﻿attended from Cathedral,﻿third Sunday,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0021,﻿church,not recorded,English,,,,﻿,,﻿Foster's Landing,﻿Foster's Landing,﻿KY,,37.839333200000006,-84.2700179,﻿cov.kt.0093,﻿attended from Twelve Mile,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0022,﻿church,﻿Church of St. Joseph,English,"﻿residence, school-house, etc.",,,﻿Campbell County,,﻿Four Mile,﻿Four Mile,﻿KY,,38.8951891,-84.3962535,,,,,﻿ostlangenberg_001,﻿Rev. Mr.,﻿Ostlangenberg,,,,,,,1870.0,Covington
 ﻿cov.kt.0023,﻿church,﻿Church of the Good Shepherd,English,"﻿with residence, etc.",,,﻿Franklin County,,﻿Frankfort,﻿Frankfort,﻿KY,,38.2009055,-84.8732835,,,,,﻿lam_young_001,﻿Rev.,﻿Lambert Young,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0024,﻿church,﻿St. John's,English,﻿brick church,,,﻿Scott County,,﻿Georgetown,﻿Georgetown,﻿KY,,38.2228104,-84.5675837,,﻿attended by Rev. J. Bowe,,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0025,﻿church,not recorded,English,,,,﻿Carroll County,,﻿Ghent,﻿Ghent,﻿KY,,38.7375625,-85.0582835,,﻿attended from Carrollton,﻿occasionally,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0026,﻿church,not recorded,English,,,,﻿Kenton County,,﻿Independence,﻿Independence,﻿KY,,38.943118299999995,-84.54410899999999,,﻿attended from the Cathedral,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0025,﻿church,not recorded,English,,,,﻿Carroll County,,﻿Ghent,﻿Ghent,﻿KY,,38.7375625,-85.0582835,﻿cov.kt.0015,﻿attended from Carrollton,﻿occasionally,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0026,﻿church,not recorded,English,,,,﻿Kenton County,,﻿Independence,﻿Independence,﻿KY,,38.943118299999995,-84.54410899999999,﻿cov.kt.0001,﻿attended from the Cathedral,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0027,﻿church,﻿St. Francis of Assisium,English,"﻿brick church, pastoral residence, and school-house",,,﻿,,,,﻿KY,,37.839333200000006,-84.2700179,,,,,﻿fra_grome_001,﻿Rev.,﻿Francis Grome,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0028,﻿church,﻿St. Peter's Church,English,﻿residence and boys' academy,,,﻿Fayette County,,﻿Lexington,﻿Lexington,﻿KY,,38.0469186,-84.4945282,,,,,﻿ih_bekkars_001,﻿Rev.,﻿I.H. Bekkars,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0028,﻿church,﻿St. Peter's Church,English,﻿residence and boys' academy,,,﻿Fayette County,,﻿Lexington,﻿Lexington,﻿KY,,38.0469186,-84.4945282,,,,,﻿ld_willie_001,﻿Rev.,﻿L.D. Willie,,,,,,,1870.0,Covington
 ﻿cov.kt.0029,﻿church,not recorded,English,,,,﻿Mason County,,﻿Mayslick,﻿Mays Lick,﻿KY,,38.5175757,-83.84186650000001,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1870.0,Covington
 ﻿cov.kt.0030,﻿church,﻿St. Patrick's Church,English,,,,﻿Mason County,,﻿Maysville,﻿Maysville,﻿KY,,38.6451148,-83.7634277,,,,,﻿joh_b_glorieux_001,﻿Rev.,﻿John B. Glorieux,,﻿pastor,,,,,1870.0,Covington
-﻿cov.kt.0031,﻿church,not recorded,English,,,,﻿Bracken County,,﻿Milford,﻿Milford,﻿KY,,38.581739899999995,-84.1565983,,﻿attended from Augusta,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0031,﻿church,not recorded,English,,,,﻿Bracken County,,﻿Milford,﻿Milford,﻿KY,,38.581739899999995,-84.1565983,﻿cov.kt.0009,﻿attended from Augusta,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0032,﻿church,not recorded,English,﻿residence,,,﻿Montgomery County,,﻿Mt. Sterling,﻿Mount Sterling,﻿KY,,38.0564679,-83.9432556,,﻿attended by Rev. J. Vandeville,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0033,﻿church,not recorded,English,,,,﻿Mason County,,﻿Minerva,﻿Minerva,﻿KY,,38.705350200000005,-83.9190929,,,,,﻿j_mcnerney_001,﻿Rev.,﻿J. McNerney,,,,,,,1870.0,Covington
-﻿cov.kt.0034,﻿church,﻿Church of St. John the Baptist,English,﻿stone church and school-house,,,﻿Campbell County,,﻿Mt. St. John,,﻿KY,,38.8951891,-84.3962535,,"﻿attended from St. Joseph's Church, Covington, by the Benedictine Fathers",,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0035,﻿church,﻿Church of St. Benedict,English,,﻿on the Kentucky Central Railroad,,﻿Kenton County,,﻿Mullins' Station,,﻿KY,,38.9863872,-84.56414699999999,,"﻿attended by Benedictine Fathers of St. Joseph's Church, Covington",,,,﻿Rev.,,,,,,,,1870.0,Covington
+﻿cov.kt.0034,﻿church,﻿Church of St. John the Baptist,English,﻿stone church and school-house,,,﻿Campbell County,,﻿Mt. St. John,,﻿KY,,38.8951891,-84.3962535,﻿cov.kt.0022,"﻿attended from St. Joseph's Church, Covington, by the Benedictine Fathers",,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0035,﻿church,﻿Church of St. Benedict,English,,﻿on the Kentucky Central Railroad,,﻿Kenton County,,﻿Mullins' Station,,﻿KY,,38.9863872,-84.56414699999999,﻿cov.kt.0022,"﻿attended by Benedictine Fathers of St. Joseph's Church, Covington",,,,﻿Rev.,,,,,,,,1870.0,Covington
 ﻿cov.kt.0036,﻿church,﻿Immaculate Conception,English,﻿schools and residence,,,﻿Campbell County,,﻿Newport,﻿Newport,﻿KY,,39.091449,-84.4957757,,,,,﻿pat_guilfoyle_001,﻿Rev.,﻿Patrick Guilfoyle,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0037,﻿church,﻿Corpus Christi Church,﻿German,﻿schools and residence,,,﻿Campbell County,,﻿Newport,﻿Newport,﻿KY,,39.091449,-84.4957757,,,,,﻿joh_vol_001,﻿Rev.,﻿John Vol,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0038,﻿church,﻿St. Stephen's,English,﻿schools and residences,,,﻿Campbell County,,﻿Newport,﻿Newport,﻿KY,,39.091449,-84.4957757,,,,,﻿h_shulte_001,﻿Rev.,﻿H. Shulte,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0039,﻿church,not recorded,English,,,,﻿Jessamine County,,﻿Nicholasville,﻿Nicholasville,﻿KY,,37.8806341,-84.57299609999998,,,,,﻿ld_willie_001,﻿Rev.,﻿L.D. Willie,,,,,,,1870.0,Covington
-﻿cov.kt.0040,﻿church,not recorded,English,,,,﻿Carroll County,﻿Owen County,﻿New Liberty,,﻿KY,,38.6808958,-85.17939790000001,,﻿attended from Carrollton,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0040,﻿church,not recorded,English,,,,﻿Carroll County,﻿Owen County,﻿New Liberty,,﻿KY,,38.6808958,-85.17939790000001,﻿cov.kt.0015,﻿attended from Carrollton,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0041,﻿church,not recorded,English,,,,﻿Bath County,,﻿Owensville,﻿Owingsville,﻿KY,,38.1448015,-83.76408470000001,,,,,﻿j_vandeville_001,﻿Rev.,﻿J. Vandeville,,,,,,,1870.0,Covington
-﻿cov.kt.0042,﻿church,not recorded,English,,,,﻿Boone County,,﻿Petersburgh,﻿Petersburgh,﻿KY,,39.068738700000004,-84.8673956,,﻿attended by Benedictine Fathers,﻿occasionally,,,﻿Rev.,,,,,,,,1870.0,Covington
+﻿cov.kt.0042,﻿church,not recorded,English,,,,﻿Boone County,,﻿Petersburgh,﻿Petersburgh,﻿KY,,39.068738700000004,-84.8673956,﻿cov.kt.0022,﻿attended by Benedictine Fathers,﻿occasionally,,,﻿Rev.,,,,,,,,1870.0,Covington
 ﻿cov.kt.0043,﻿church,﻿Church of the Annunciation,English,﻿brick residence and school,,,﻿Bourbon County,,﻿Paris,﻿Paris,﻿KY,,38.2081083,-84.2539077,,,,,﻿eh_brandts_001,﻿Rev.,﻿E.H. Brandts,,﻿pastor,,,,,1870.0,Covington
 ﻿cov.kt.0044,﻿church,not recorded,English,,,,﻿Ouseley County,﻿Lee County,﻿Proctor,﻿Proctor,﻿KY,,37.57,-83.713889,,,,,﻿j_vandeville_001,﻿Rev.,﻿J. Vandeville,,,,,,,1870.0,Covington
 ﻿cov.kt.0045,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Poplar Plains,﻿Poplar Plains,﻿KY,,38.3609113,-83.6743608,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1870.0,Covington
@@ -54,16 +54,16 @@
 ﻿cov.kt.0047,﻿church,not recorded,English,,,,﻿Madison County,,﻿Rogersville,,﻿KY,,37.68469739,-84.25842113,,,,,﻿j_vandeville_001,﻿Rev.,﻿J. Vandeville,,,,,,,1870.0,Covington
 ﻿cov.kt.0048,﻿church,not recorded,English,﻿residence,,,﻿Kenton County,,﻿Sandford Town,﻿Sandfordtown,﻿KY,,39.0258942,-84.5368872,,,,,﻿f_reck_001,﻿Rev.,﻿F. Reck,,,,,,,1870.0,Covington
 ﻿cov.kt.0049,﻿church,not recorded,English,,,,﻿Fleming County,,﻿Sherbourne,﻿Sherburne,﻿KY,,38.2817443,-83.80269820000001,,,,,﻿joh_hickey_001,﻿Rev.,﻿John Hickey,,,,,,,1870.0,Covington
-﻿cov.kt.0050,﻿church,not recorded,English,﻿new frame church,,,﻿Pendleton County,,﻿Stepstone,﻿Stepstone,﻿KY,,38.6900889,-84.359802,,﻿attended from Twelve Mile,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0050,﻿church,not recorded,English,﻿new frame church,,,﻿Pendleton County,,﻿Stepstone,﻿Stepstone,﻿KY,,38.6900889,-84.359802,﻿cov.kt.0093,﻿attended from Twelve Mile,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0051,﻿church,not recorded,English,﻿log church,,,﻿Estell County,﻿Estill County,﻿Station Camp,﻿Station Camp,﻿KY,,37.839333200000006,-84.2700179,,,,,﻿j_vandeville_001,﻿Rev.,﻿J. Vandeville,,,,,,,1870.0,Covington
 ﻿cov.kt.0052,﻿church,﻿Church of St. Peter,English,﻿school-house,,,﻿Campbell County,,﻿Twelve Mile,,﻿KY,,38.8951891,-84.3962535,,﻿attended by Rev. F. Everhardt,,,,,,,,,,,,1870.0,Covington
-﻿cov.kt.0053,﻿church,not recorded,English,,,,﻿Boone County,,﻿Verona,﻿Verona,﻿KY,,38.8180932,-84.66060920000001,,﻿attended from Cathedral by Rev. F.C. Moore,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0053,﻿church,not recorded,English,,,,﻿Boone County,,﻿Verona,﻿Verona,﻿KY,,38.8180932,-84.66060920000001,﻿cov.kt.0001,﻿attended from Cathedral by Rev. F.C. Moore,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0054,﻿church,not recorded,English,,,,﻿Woodford County,,﻿Versailles,﻿Versailles,﻿KY,,38.052576,-84.7299464,,,,,﻿joh_bowe_001,﻿Rev.,﻿John Bowe,,,,,,,1870.0,Covington
 ﻿cov.kt.0055,﻿church,not recorded,English,﻿new brick church,,,﻿Gallatin County,,﻿Warsaw,﻿Warsaw,﻿KY,,38.7833963,-84.9016151,,,,,﻿j_stephamy_001,﻿Rev.,﻿J. Stephamy,,,,,,,1870.0,Covington
 ﻿cov.kt.0056,﻿church,﻿St. Pius' Church,English,﻿residence,,,﻿Scott County,,﻿White Sulphur,﻿White Sulphur,﻿KY,,38.205073299999995,-84.7021687,,,,,﻿joh_bowe_001,﻿Rev.,﻿John Bowe,,,,,,,1870.0,Covington
 ﻿cov.kt.0057,﻿church,not recorded,English,,,,﻿Grant County,,﻿Williamstown,﻿Williamstown,﻿KY,,38.6368321,-84.5604962,,,,,﻿joh_bowe_001,﻿Rev.,﻿John Bowe,,,,,,,1870.0,Covington
 ﻿cov.kt.0058,﻿church,not recorded,English,,,,﻿Clark County,,﻿Winchester,﻿Winchester,﻿KY,,37.990078999999994,-84.1796503,,,,,﻿j_vandeville_001,﻿Rev.,﻿J. Vandeville,,,,,,,1870.0,Covington
-﻿cov.kt.0059,﻿church,not recorded,English,,,,﻿Boone County,,﻿Walton,﻿Walton,﻿KY,,38.8756194,-84.61022129999999,,﻿attended from the Cathedral,,,,,,,,,,,,1870.0,Covington
+﻿cov.kt.0059,﻿church,not recorded,English,,,,﻿Boone County,,﻿Walton,﻿Walton,﻿KY,,38.8756194,-84.61022129999999,﻿cov.kt.0001,﻿attended from the Cathedral,,,,,,,,,,,,1870.0,Covington
 ﻿cov.kt.0060,﻿hospital,﻿Hospital of St. Elizabeth,English,"﻿a very large and commodious building, well furnished, ample grounds and shrubbery, on high ground in the centre of the city",﻿Eleventh street,,,,﻿Covington,﻿Covington,﻿KY,,39.0711158,-84.5177892,,,,,,,,,,,,,﻿Sisters of the Poor of St. Francis,1870.0,Covington
 ﻿cov.kt.0061,﻿chapel,﻿Chapel of Hospital,English,,"﻿Hospital of St. Elizabeth, Eleventh Street",,,,﻿Covington,﻿Covington,﻿KY,,39.0711158,-84.5177892,,,,,,,﻿---,,﻿resident,,,,,1870.0,Covington
 ﻿cov.kt.0062,﻿asylum,﻿German Orphan Asylum,﻿German,﻿for boys and girls.  On a farm of fifty-five acres with a fine large brick building,﻿four miles from Covington,,,,,,﻿KY,,39.083671200000005,-84.5085536,,,,,,,,,,,,,,1870.0,Covington

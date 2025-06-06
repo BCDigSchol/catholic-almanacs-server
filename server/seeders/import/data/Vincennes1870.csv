@@ -1,7 +1,7 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿vinc.in.0001,﻿cathedral,﻿St. Francis Xavier's Cathedral,English,,,,﻿Knox County,,﻿Vincennes,﻿Vincennes,﻿IN,,38.6789484,-87.5340134,,,,,﻿mau_d_palais_001,﻿Rt. Rev.,﻿Maurice de St. Palais,﻿D.D.,,,,,,1870.0,Vincennes
-﻿vinc.in.0001,﻿cathedral,﻿St. Francis Xavier's Cathedral,English,,,,﻿,,﻿Vincennes,﻿Vincennes,﻿IN,,38.6789484,-87.5340134,,,,,﻿p_b_oconnor_001,﻿Very Rev.,﻿P. Bede O'Connor,﻿O.S.B.,﻿Vicar-General and Chancellor,,,,,1870.0,Vincennes
-﻿vinc.in.0001,﻿cathedral,﻿St. Francis Xavier's Cathedral,English,,,,﻿,,﻿Vincennes,﻿Vincennes,﻿IN,,38.6789484,-87.5340134,,,,,﻿joh_contin_001,﻿Rev.,﻿John Contin,,,,,,,1870.0,Vincennes
+﻿vinc.in.0001,﻿cathedral,﻿St. Francis Xavier's Cathedral,English,,,,﻿Knox County,,﻿Vincennes,﻿Vincennes,﻿IN,,38.67902364,-87.5341505,,,,,﻿mau_d_palais_001,﻿Rt. Rev.,﻿Maurice de St. Palais,﻿D.D.,,,,,,1870.0,Vincennes
+﻿vinc.in.0001,﻿cathedral,﻿St. Francis Xavier's Cathedral,English,,,,﻿,,﻿Vincennes,﻿Vincennes,﻿IN,,38.67902364,-87.5341505,,,,,﻿p_b_oconnor_001,﻿Very Rev.,﻿P. Bede O'Connor,﻿O.S.B.,﻿Vicar-General and Chancellor,,,,,1870.0,Vincennes
+﻿vinc.in.0001,﻿cathedral,﻿St. Francis Xavier's Cathedral,English,,,,﻿,,﻿Vincennes,﻿Vincennes,﻿IN,,38.67902364,-87.5341505,,,,,﻿joh_contin_001,﻿Rev.,﻿John Contin,,,,,,,1870.0,Vincennes
 ﻿vinc.in.0002,﻿church,﻿St. John the Baptist,﻿German,,,,﻿Knox County,,﻿Vincennes,﻿Vincennes,﻿IN,,38.677269,-87.5286325,,,,,﻿aeg_merz_001,﻿Rev.,﻿Aegidius Merz,,,,,,,1870.0,Vincennes
 ﻿vinc.in.0003,﻿church,not recorded,English,,,,﻿Shelby County,﻿Marion County,﻿Acton,﻿Acton,﻿IN,,39.6553738,-85.96843929999999,﻿vinc.in.0127,﻿Attended from Shelbyville,,,,,,,,,,,,1870.0,Vincennes
 ﻿vinc.in.0004,﻿church,not recorded,English,,,,﻿Marion County,,﻿Augusta,﻿Pike Township,﻿IN,,39.8817723,-86.2598229,﻿vinc.in.0064,﻿Attended from Indianapolis,,,,,,,,,,,,1870.0,Vincennes

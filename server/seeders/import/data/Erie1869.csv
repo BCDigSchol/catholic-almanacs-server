@@ -5,7 +5,7 @@
 ﻿erie.pa.0002,﻿church,﻿St. Mary's,English,,﻿Ninth street,,﻿Erie County,,﻿Erie,﻿Erie,﻿PA,,42.1288429,-80.0761177,,,,,﻿ger_pilz_001,﻿Rev.,﻿Gerhard Pilz,﻿O.S.B.,,,,,,1869.0,Erie
 ﻿erie.pa.0002,﻿church,﻿St. Mary's,English,,﻿Ninth street,,﻿Erie County,,﻿Erie,﻿Erie,﻿PA,,42.1288429,-80.0761177,,,,,﻿tha_heinzelmayer_001,﻿Rev.,﻿Thaddeus Heinzelmayer,﻿O.S.B.,,,,,,1869.0,Erie
 ﻿erie.pa.0003,﻿church,﻿St. Joseph's,English,,﻿Federal Hill,,﻿Erie County,,﻿Erie,﻿Erie,﻿PA,,42.111107700000005,-80.07482990000001,,,,,﻿jos_stumpe_001,﻿Rev.,﻿Joseph Stumpe,,,,,,,1869.0,Erie
-﻿erie.pa.0005,﻿church,not recorded,English,,,,﻿Crawford County,,﻿Albion,﻿Albion,﻿PA,,41.8906112,-80.3664542,,﻿attended from Linesville,,,,,,,,,,,,1869.0,Erie
+﻿erie.pa.0005,﻿church,not recorded,English,,,,﻿Crawford County,,﻿Albion,﻿Albion,﻿PA,,41.8906112,-80.3664542,﻿erie.pa.0012,﻿attended from Linesville,,,,,,,,,,,,1869.0,Erie
 ﻿erie.pa.0004,﻿church,﻿St. Mary's,English,,,,﻿McKean County,,﻿Annin Township,,﻿PA,,41.8906112,-80.3664542,,,,,﻿pet_patterson_001,﻿Rev.,﻿Peter Patterson,,,,,,,1869.0,Erie
 ﻿erie.pa.0007,﻿church,not recorded,English,,,,﻿Erie County,,﻿Beechwood,,﻿PA,,42.1292241,-80.085059,,,,,﻿gerst_001,﻿Rev. Father,﻿Gerst,,,,,,,1869.0,Erie
 ﻿erie.pa.0009,﻿church,﻿Immaculate Conception,English,,,,﻿Jefferson County,,﻿Brookville,﻿Brookville,﻿PA,,41.1611746,-79.08309240000001,﻿erie.pa.0021,,,,,,,,,,,,,1869.0,Erie
@@ -98,4 +98,3 @@
 ﻿erie.pa.0110,﻿school,﻿SS. Peter and Paul,English,,,,,,﻿Petroleum Centre,﻿Petroleum Center,﻿PA,,41.5161706,-79.6822746,,,,,,,,,,,﻿children,﻿75 children,,1869.0,Erie
 ﻿erie.pa.0111,﻿school,﻿St. Mary's,English,,﻿Genesee Township,,,,﻿Genesee Township,,﻿PA,,41.9695789,-77.9053182,,,,,,,,,,,﻿children,﻿75 children,,1869.0,Erie
 ﻿erie.pa.0123,﻿school,not recorded,English,,﻿Benzinger P.O.,,,,,,﻿PA,,41.9695789,-77.9053182,,,,,,,,,,,﻿children,﻿400 children,,1869.0,Erie
-﻿erie.pa.0123,92,not recorded,English,,﻿Benzinger P.O.,,,,,,﻿PA,,41.9695789,-77.9053182,,,,,,,,,,,﻿children,﻿400 children,,1869.0,Erie

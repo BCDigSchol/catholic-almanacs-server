@@ -25,7 +25,7 @@ module.exports = {
 
 async function importData(data) {
 
-  const instKeys = ['uniqueInstID', 'instID', 'instYear', 'church_type', 'instName', 'language', 'instNote', 'placeName', 'region', 'county_orig', 'county_reg', 'city_orig', 'city_reg', 'state_orig', 'state_reg', 'latitude', 'longitude', 'memberType', 'member', 'affiliated', 'diocese'];
+  const instKeys = ['uniqueInstID', 'instID', 'instYear', 'church_type', 'instName', 'language', 'instNote', 'placeName', 'region', 'county_orig', 'county_reg', 'city_orig', 'city_reg', 'state_orig', 'state_reg', 'latitude', 'longitude', 'memberType', 'member', 'affiliated', 'diocese', 'religiousOrder'];
 
   const keyMapping = {
     uniqueInstID: 'ID',
@@ -48,7 +48,8 @@ async function importData(data) {
     memberType: 'memberType',
     member: 'member',
     affiliated: 'affiliated',
-    diocese: 'diocese'
+    diocese: 'diocese',
+    religiousOrder: 'religiousOrder'
   };
 
   // extract institution information

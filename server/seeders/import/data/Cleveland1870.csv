@@ -57,7 +57,7 @@
 ﻿cle.oh.0046,﻿church,not recorded,English,,,,,﻿Van Wert County,﻿Convoy,﻿Convoy,﻿OH,,40.916715,-84.702737,﻿?,﻿attended from Delphos,,,,,,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0047,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Crawfordville,,﻿OH,,40.8268068,-82.9931607,﻿cle.oh.0117,﻿attended from New Riegel,,,,,,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0048,﻿church,﻿St. Joseph's,English,,,,,﻿Crawford County,﻿Crestline,﻿Crestline,﻿OH,,40.7875572,-82.73656770000001,,,,,﻿jp_pitts_001,﻿Rev.,﻿J.P. Pitts,,,,,,,1870.0,Cleveland
-﻿cle.oh.0049,﻿church,not recorded,English,,,,,﻿Summit County,﻿Cuyahoga Falls,﻿Cuyahoga Falls,﻿OH,,41.133944899999996,-81.48455849999999,﻿?,﻿attended from Akron,,,,,,,,,,,,1870.0,Cleveland
+﻿cle.oh.0049,﻿church,not recorded,English,,,,,﻿Summit County,﻿Cuyahoga Falls,﻿Cuyahoga Falls,﻿OH,,41.133944899999996,-81.48455849999999,﻿cle.oh.0017,﻿attended from Akron,,﻿went with English-speaking church in Akron (instead of German one),,,,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0050,﻿church,﻿St. John the Evangelist's,English,,,,,﻿Defiance County,﻿Defiance,﻿Defiance,﻿OH,,41.284493299999994,-84.3557802,,,,,﻿c_viere_001,﻿Rev.,﻿C. Viere,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0050,﻿church,﻿St. John the Evangelist's,English,,,,,﻿Defiance County,﻿Defiance,﻿Defiance,﻿OH,,41.284493299999994,-84.3557802,,,,,﻿j_conway_001,﻿Rev.,﻿J. Conway,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0051,﻿church,not recorded,English,,,,,﻿Defiance County,﻿Delaware,﻿Delaware Township,﻿OH,,41.290161100000006,-84.5012435,﻿cle.oh.0050,﻿attended from Defiance,,,,,,,,,,,,1870.0,Cleveland
@@ -126,7 +126,7 @@
 ﻿cle.oh.0113,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Newburgh,﻿Newburgh Heights,﻿OH,,41.450052,-81.66346170000001,,,,,﻿j_daudet_001,﻿Rev.,﻿J. Daudet,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0114,﻿church,﻿Holy Family,English,,,,,﻿Putnam County,﻿New Cleveland,﻿New Cleveland,﻿OH,,41.0648698,-84.0435948,﻿cle.oh.0097,﻿attended from Maria Camp,,,,,,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0115,﻿church,not recorded,English,,,,,﻿Huron County,﻿New London,﻿New London,﻿OH,,41.0850542,-82.3998887,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1870.0,Cleveland
-﻿cle.oh.0116,﻿church,not recorded,English,,,,,﻿Summit County,﻿New Portage,﻿Barberton,﻿OH,,41.012833,-81.60512209999999,﻿?,﻿attended from Akron,,,,,,,,,,,,1870.0,Cleveland
+﻿cle.oh.0116,﻿church,not recorded,English,,,,,﻿Summit County,﻿New Portage,﻿Barberton,﻿OH,,41.012833,-81.60512209999999,﻿cle.oh.0017,﻿attended from Akron,,﻿went with English-speaking church in Akron (instead of German one),,,,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0117,﻿church,﻿St. Boniface's,English,,,,,﻿Seneca County,﻿New Riegel,﻿New Riegel,﻿OH,,41.050765000000006,-83.31416,,,,,﻿jam_marte_001,﻿Rev.,﻿James Marte,,,,,,,1870.0,Cleveland
 ﻿cle.oh.0117,﻿church,﻿St. Boniface's,English,,,,,﻿Seneca County,﻿New Riegel,﻿New Riegel,﻿OH,,41.050765000000006,-83.31416,,,,,﻿cas_schedler_001,﻿Rev.,﻿Caspar Schedler,﻿C.PP.S.,,,,,,1870.0,Cleveland
 ﻿cle.oh.0118,﻿church,﻿St. Bernard's,English,,,,,﻿Crawford County,﻿New Washington,﻿New Washington,﻿OH,,40.9625079,-82.857191,,,,,﻿mic_bäcker_001,﻿Rev.,﻿Michael Bäcker,,,,,,,1870.0,Cleveland
