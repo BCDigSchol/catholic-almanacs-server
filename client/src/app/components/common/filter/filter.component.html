@@ -8,8 +8,8 @@
             </div>
         </mat-expansion-panel-header>
         <mat-chip-listbox class="w-full">
-            <ng-container *ngFor="let filter of filterFields">
-            <mat-chip  *ngIf="!filter.active" (click)="toggleFilter(filter)">
+            <ng-container *ngFor="let filter of filterService.fields; let index = index">
+            <mat-chip  *ngIf="!filter.active" (click)="toggleFilter(index)">
             <mat-icon fontIcon="filter_alt"></mat-icon>
                 {{ filter.label }}
             </mat-chip>
@@ -17,25 +17,37 @@
         </mat-chip-listbox>
 
         <div class="flex flex-row flex-wrap justify-start items-center">
-            <div *ngFor="let filter of filterFields" class="filter-form mr-2 mt-2">
+            <div *ngFor="let filter of filterService.fields; let index = index" class="filter-form mr-2 mt-2">
                 <ng-container *ngIf="filter.active">
                 <ng-container [ngSwitch]="true">
                     <div *ngSwitchCase="filter.type == 'input'">
                         <mat-form-field style="width:190px">
                             <mat-label>{{filter.label}}</mat-label>
                             <input matInput placeholder="filter by {{ filter.label }}"
-                            (input)="updateFilter()"
-                            [(ngModel)]="filterValues[filter.key]">
+                            (input)="updateFilter(filter)"
+                            [(ngModel)]="filterValues[filter.keyword!]">
                         </mat-form-field>
                     </div>
                     <div *ngSwitchCase="filter.type == 'range'">
                         <mat-slider class="mx-2" style="width:200px" [min]="filter.min" [max]="filter.max" step="1" discrete>
-                            <input value="{{filter.min}}" (change)="updateFilter()" [(ngModel)]="filterValues[filter.keyStart]" matSliderStartThumb >
-                            <input value="{{filter.max}}" (change)="updateFilter()" [(ngModel)]="filterValues[filter.keyEnd]" matSliderEndThumb >
+                            <input value="{{filter.min}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keywordStart!]" matSliderStartThumb >
+                            <input value="{{filter.max}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keywordEnd!]" matSliderEndThumb >
                         </mat-slider>
                     </div>
+                    <div *ngSwitchCase="filter.type == 'boolean'">
+                      <mat-slide-toggle id="{{ filter.keyword }} + 'Filter'" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keyword!]">
+                        {{ filter.label }}
+                      </mat-slide-toggle>
+                    </div>
+                    <div *ngSwitchCase="filter.type == 'dropdown'">
+                        <mat-form-field>
+                            <mat-select placeholder="{{filter.label}}" class="border border-gray-300 rounded-lg" id="{{ filter.keyword }} + 'Filter'" (selectionChange)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keyword!]">
+                            <mat-option *ngFor="let option of filter.dropdown" [value]="option">{{ option }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </ng-container>
-                <button mat-icon-button color="warn" type="button" class="custom-button" (click)="toggleFilter(filter)">
+                <button mat-icon-button color="warn" type="button" class="custom-button" (click)="toggleFilter(index)">
                     <mat-icon fontIcon="close"></mat-icon>
                 </button>
                 </ng-container>

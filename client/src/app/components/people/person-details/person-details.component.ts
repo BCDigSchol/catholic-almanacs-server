@@ -10,13 +10,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { SelectYearComponent } from '../../common/select-year/select-year.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 
 import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-person-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule
+    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIconModule, MatIcon
 ],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
@@ -27,6 +29,7 @@ export class PersonDetailsComponent implements OnInit{
   loading = true;
   itemId: any;
   data: any = [];
+
   mapOptions: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
     zoom: 4,
@@ -37,7 +40,8 @@ export class PersonDetailsComponent implements OnInit{
   constructor(
     private _route: ActivatedRoute,
     private _api: ApiService,
-    private _router: Router
+    private _router: Router,
+    private _location: Location,
   ) {}
 
   ngOnInit () {
@@ -69,4 +73,12 @@ export class PersonDetailsComponent implements OnInit{
   clickMap (event: google.maps.MapMouseEvent, instID: string) {
     this._router.navigate(['/institutions', instID]);
   };
+
+  goBack (): void {
+    if (window.history.length > 1) {
+      this._location.back();
+    } else {
+      this._router.navigate(['/people']);
+    }
+  }
 }

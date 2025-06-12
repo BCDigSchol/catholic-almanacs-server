@@ -6,7 +6,7 @@ const getPagination = require("../utils/get-pagination");
 const religiousOrderDict = require('../config/religiousOrderDict.json')
 
 const almanacRecord = db.almanacRecord;
-const personInAlmanac = db.personInAlmanac;
+const personInAlmanacRecord = db.personInAlmanacRecord;
 const person = db.person;
 
 /*exports.create = (req, res) => {
@@ -99,7 +99,7 @@ exports.findAll = (req, res) => {
                 as: 'almanacRecords',
                 attributes: ['instID','instName','year','cityReg', 'diocese', 'latitude', 'longitude'],
                 through: {
-                    model: personInAlmanac,
+                    model: personInAlmanacRecord,
                     where: persWhere,
                     attributes: ['name', 'title', 'suffix', 'role', 'note']
                 }
@@ -125,7 +125,7 @@ exports.findByID = async (req, res) => {
                 as: 'almanacRecords',
                 attributes: ['instID','instName','year','cityReg', 'diocese', 'latitude', 'longitude'],
                 through: {
-                    model: personInAlmanac,
+                    model: personInAlmanacRecord,
                     attributes: ['name', 'title', 'suffix', 'role', 'note']
                 }
             }]}
@@ -188,7 +188,7 @@ exports.findOne = async (req, res) => {
             where: { year: req.params.year },
             attributes: ['instID','instName','year', 'cityReg', 'diocese', 'latitude', 'longitude'],
             through: {
-                model: personInAlmanac,
+                model: personInAlmanacRecord,
                 where: { persID: req.params.id },
                 attributes: ['name', 'title', 'suffix', 'role', 'note']
             }

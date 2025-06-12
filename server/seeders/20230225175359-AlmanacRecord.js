@@ -20,6 +20,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('institutions', null, {});
+    await queryInterface.bulkDelete('almanacRecords', null, {});
   }
 };
 
@@ -64,8 +65,43 @@ async function importData(data) {
       return filteredRow;
     });
   
+  const instInfoMap = new Map();
+
+  instInfo.forEach(item => {
+    if (!item.ID) return;
+    if (!instInfoMap.has(item.ID)) {
+      instInfoMap.set(item.ID, { ...item });
+    } else {
+      const existing = instInfoMap.get(item.ID);
+
+      // Aggregate memberType
+      if (item.memberType) {
+        const types = new Set(
+          (existing.memberType ? existing.memberType.split(',') : [])
+          .concat(item.memberType.split(','))
+          .map(s => s.trim())
+          .filter(Boolean)
+        );
+        existing.memberType = Array.from(types).join(',');
+      }
+
+      // Aggregate member
+      if (item.member) {
+        const members = new Set(
+          (existing.member ? existing.member.split(',') : [])
+          .concat(item.member.split(','))
+          .map(s => s.trim())
+          .filter(Boolean)
+        );
+        existing.member = Array.from(members).join(',');
+      }
+    }
+  });
+
+  const uniqueInstInfo = Array.from(instInfoMap.values());
+
   // remove duplicates
-  const uniqueInstInfo = Array.from(new Map(instInfo.map(item => [item.ID, item])).values());
+  //const uniqueInstInfo = Array.from(new Map(instInfo.map(item => [item.ID, item])).values());
   // mapping the items in instInfo to tuples of [instID, item]
   // creating a new Map object which automatically removes duplicates
   // converting the Map back to an array of values

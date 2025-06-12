@@ -44,6 +44,12 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <button mat-button (click)="goBack()"class="custom-button">
+                            <mat-icon>arrow_back</mat-icon>
+                            Back
+                        </button>
+                    </div>
                     </div> 
                     <div class="w-full flex flex-col justify-center items-center">
                         <google-map [options]="mapOptions" width="700px" heigh="400px">

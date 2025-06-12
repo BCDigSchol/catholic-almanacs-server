@@ -90,40 +90,7 @@ async function preprocessCSV(filePath) {
           row['religiousOrder'] = '';
         }
     };
-
-    const groupedData = {};
-    for (const row of data) {
-      const key = row['instID'];
-      if (!key) continue;
-      if (!groupedData[key]) {
-        groupedData[key] = [];
-      }
-      groupedData[key].push(row);
-    }
-
-    const mergedData = [];
-    for (const key in groupedData) {
-      const rows = groupedData[key];
-      if (rows.length === 1) {
-        mergedData.push(rows[0]);
-        continue;
-      }
-      const memberTypes = [];
-      const members = [];
-      for (const r of rows) {
-        if (r.memberType && !memberTypes.includes(r.memberType)) {
-          memberTypes.push(r.memberType);
-        };
-        if (r.member && !members.includes(r.member)) {
-          members.push(r.member);
-        }
-      }
-      rows[0].memberType = memberTypes.join(', ');
-      rows[0].member = members.join(', ');
-      mergedData.push(rows[0]);
-    }
-
-    return mergedData;
+    return data;
 }
 
 async function loadData(directoryPath) {

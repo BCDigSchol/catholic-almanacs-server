@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -15,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FilterComponent } from '../../common/filter/filter.component';
 
 import { ApiService } from '../../../services/api.service';  
+import { FilterService } from '../../../services/filter.service';
+import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-browse-people',
@@ -30,38 +33,42 @@ export class BrowsePeopleComponent implements OnInit {
 loading : boolean = true;
 data : any[] = [];
 
+filterValues$!: Observable<any>; //! = can be null
+filterValues: any = {};
+private wasNavigatedToByBackButton = false;
+
 // paginator variables, default values
 itemsPerPage = 5;
 currentPage = 0;
 totalItems = 0;
 
-// filter variables
-filterBy: any = {
-  persName: '',
-  countyReg: '',
-  cityReg: '',
-  stateReg: '',
-  diocese: '',
-  instName: '',
-  religiousOrder: '',
-  year: null,
-}
-
 filterFields = [
-  { type: 'input', label: 'Person Name', key: 'persName', active: false },
-  { type: 'input', label: 'County', key: 'countyReg', active: false },
-  { type: 'input', label: 'City', key: 'cityReg', active: false },
-  { type: 'input', label: 'State', key: 'stateReg', active: false },
-  { type: 'input', label: 'Diocese', key: 'diocese', active: false },
-  { type: 'input', label: 'Institution Name', key: 'instName', active: false },
-  { type: 'input', label: 'Religious Order', key: 'religiousOrder', active: false },
-  { type: 'range', keyStart: 'instStartYear', keyEnd: 'instEndYear', label: 'Year', min: 1860, max: 1870 }
+  { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
+  { type: 'input', label: 'County', keyword: 'countyReg', active: false },
+  { type: 'input', label: 'City', keyword: 'cityReg', active: false },
+  { type: 'input', label: 'State', keyword: 'stateReg', active: false },
+  { type: 'input', label: 'Diocese', keyword: 'diocese', active: false },
+  { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
+  { type: 'input', label: 'Religious Order', keyword: 'religiousOrder', active: false },
+  { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1860, max: 1870, active: false },
 ]
 
-constructor(public apiService: ApiService) {}
+constructor(
+  public apiService: ApiService, 
+  public filterService: FilterService,
+  public navigationService: NavigationService,
+) {}
 
 ngOnInit () {
-  this.getData()
+  if (this.navigationService.lastNavigationTrigger !== 'popstate') {
+    this.filterService.clearFilters();
+    this.filterService.setFields(this.filterFields);
+  }
+  this.filterValues$ = this.filterService.filterValues$;
+  this.filterValues$.subscribe(values => {
+    this.filterValues = values;
+    this.getData();
+  });
 }
 
 /**
@@ -70,15 +77,15 @@ ngOnInit () {
 getData () {
 
   let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
-  queryString += this.filterBy.persName ? `&persName=${this.filterBy.persName}` : '';
-  queryString += this.filterBy.countyReg ? `&countyReg=${this.filterBy.countyReg}` : '';
-  queryString += this.filterBy.cityReg ? `&cityReg=${this.filterBy.cityReg}` : '';
-  queryString += this.filterBy.stateReg ? `&stateReg=${this.filterBy.stateReg}` : '';
-  queryString += this.filterBy.diocese ? `&diocese=${this.filterBy.diocese}` : '';
-  queryString += this.filterBy.instName ? `&instName=${this.filterBy.instName}` : '';
-  queryString += this.filterBy.instStartYear  ? `&instStartYear=${this.filterBy.instStartYear}` : '';
-  queryString += this.filterBy.instEndYear ? `&instEndYear=${this.filterBy.instEndYear}` : '';
-  queryString += this.filterBy.religiousOrder ? `&religiousOrder=${this.filterBy.religiousOrder}` : '';
+  queryString += this.filterValues.persName ? `&persName=${this.filterValues.persName}` : '';
+  queryString += this.filterValues.countyReg ? `&countyReg=${this.filterValues.countyReg}` : '';
+  queryString += this.filterValues.cityReg ? `&cityReg=${this.filterValues.cityReg}` : '';
+  queryString += this.filterValues.stateReg ? `&stateReg=${this.filterValues.stateReg}` : '';
+  queryString += this.filterValues.diocese ? `&diocese=${this.filterValues.diocese}` : '';
+  queryString += this.filterValues.instName ? `&instName=${this.filterValues.instName}` : '';
+  queryString += this.filterValues.instStartYear  ? `&instStartYear=${this.filterValues.instStartYear}` : '';
+  queryString += this.filterValues.instEndYear ? `&instEndYear=${this.filterValues.instEndYear}` : '';
+  queryString += this.filterValues.religiousOrder ? `&religiousOrder=${this.filterValues.religiousOrder}` : '';
 
   this.apiService.getTypeRequest('person'+ queryString).subscribe((res:any) => {
     this.data  = res.rows;
@@ -97,14 +104,6 @@ changePage (e: PageEvent) {
   this.getData();
 }
 
-/**
- * reset year filter
- */
-resetYear () {
-  this.filterBy.year = null;
-  this.getData();
-}
-
 /** 
  * when filter is updated, reset current page
 */
@@ -112,36 +111,6 @@ updateFilter () {
     this.currentPage = 0;
     this.getData();
   }
-
-onFilterChanged (filterValues: any) {
-  for (const key in this.filterBy) {
-  if (typeof this.filterBy[key] === 'string') {
-    this.filterBy[key] = '';
-  }
-}
-  for (const key in filterValues) {
-    if (filterValues[key] !== '') {
-      this.filterBy[key] = filterValues[key];
-    }
-}
-
-  this.updateFilter();
-}
-
-/**
- * return unique dioceses to be displayed for each person
- * @param institutions 
- *
-getUniqueDioceses(institutions: any[]): any[] {
-  const uniqueDioceses = new Set<string>();
-  return institutions.filter(institution => {
-    if (!uniqueDioceses.has(institution.diocese)) {
-      uniqueDioceses.add(institution.diocese);
-      return true;
-    }
-    return false;
-  })
-} */
 
 /**
  * return unique years to be displayed for each person
