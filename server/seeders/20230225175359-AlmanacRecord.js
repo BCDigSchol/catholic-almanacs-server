@@ -82,7 +82,7 @@ async function importData(data) {
           .map(s => s.trim())
           .filter(Boolean)
         );
-        existing.memberType = Array.from(types).join(',');
+        existing.memberType = Array.from(types).join(', ');
       }
 
       // Aggregate member
@@ -93,7 +93,7 @@ async function importData(data) {
           .map(s => s.trim())
           .filter(Boolean)
         );
-        existing.member = Array.from(members).join(',');
+        existing.member = Array.from(members).join(', ');
       }
     }
   });

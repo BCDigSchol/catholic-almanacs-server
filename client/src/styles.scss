@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'sass:map';
+@use 'app/theme-colors' as theme-colors;
 @use "tailwindcss" as *;
 @use '@angular/material' as mat;
+
+@include mat.core();
 
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
@@ -13,14 +17,6 @@ html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: "Rubik", sans-serif;
-    background-color: #FDFDFF; 
-}
-
-:root {
-    @include mat.slider-overrides((
-        handle-color: #405B8C,
-        active-track-color: #405B8C,
-    ));
 }
 
 
@@ -50,4 +46,19 @@ body {
     font-family: "Rubik", sans-serif;
     font-weight: 400;
     font-size: 14px;
+}
+
+$custom-color: (
+    primary: theme-colors.$primary-palette,
+    tertiary: theme-colors.$tertiary-palette,
+);
+
+$custom-theme:(
+    color: $custom-color,
+    density: 0
+);
+
+html {
+    color-scheme: light dark;
+    @include mat.theme($custom-theme);
 }

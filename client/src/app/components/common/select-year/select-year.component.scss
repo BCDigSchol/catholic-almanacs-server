@@ -1,14 +1,3 @@
-:host .custom-button {
-    background-color: white;
-    color: #405B8C;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-:host .custom-button.clicked {
-    background-color: #405B8C;
-    color: white;
-}
-
 :host table {
     width: 100%;
     border-collapse: collapse;

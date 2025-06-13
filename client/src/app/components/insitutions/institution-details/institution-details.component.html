@@ -71,7 +71,7 @@
                                 <div class="cell">Relevant People</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="custom-button" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
+                                        <button mat-button color="primary" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
                                             <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
                                         </button>
                                     </div>
@@ -82,7 +82,7 @@
                                 <div class="cell">Attending Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="custom-button" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                        <button mat-button color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                             <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                         </button>
                                     </div>
@@ -93,7 +93,7 @@
                                 <div class="cell">Attended By</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="custom-button" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                        <button mat-button color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                             <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                         </button>
                                     </div>
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         </div>
-                        <button mat-button (click)="goBack()"class="custom-button">
+                        <button mat-button class="tertiary-btn" (click)="goBack()">
                             <mat-icon>arrow_back</mat-icon>
                             Back
                         </button>

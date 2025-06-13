@@ -4,11 +4,6 @@
     font-style: normal;
 }
 
-:host .custom-button {
-    background-color: white;
-    color: #405B8C
-}
-
 :host table {
     width: 100%;
     border-collapse: collapse;
@@ -22,4 +17,9 @@
     font-size: 15px;
     width: 150px;
     padding-right: 20px;
+}
+
+:host .tertiary-btn {
+    color: #004346;
+    background-color: #ceddde;
 }
