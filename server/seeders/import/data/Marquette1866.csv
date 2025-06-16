@@ -1,6 +1,6 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-,﻿cathedral,﻿St. Mary's Cathedral,English,,,,,,,,,,,,,,,,﻿fre_baraga_001,﻿Rt. Rev.,﻿Frederic Baraga,﻿D.D.,,,,,,1866.0,Marquette
-,﻿cathedral,﻿St. Mary's Cathedral,English,,,,,,,,,,,,,,,,﻿joh_b_menet_001,﻿Rev.,﻿John B. Menet,﻿S.J.,,,,,,1866.0,Marquette
+﻿mar.mi.0082,﻿cathedral,﻿St. Mary's Cathedral,English,,,,﻿Chippewa County,,﻿Saut-Sainte-Marie,,,,,,,,,,﻿fre_baraga_001,﻿Rt. Rev.,﻿Frederic Baraga,﻿D.D.,,,,,,1866.0,Marquette
+﻿mar.mi.0082,﻿cathedral,﻿St. Mary's Cathedral,English,,,,﻿Chippewa County,,﻿Saut-Sainte-Marie,,,,,,,,,,﻿joh_b_menet_001,﻿Rev.,﻿John B. Menet,﻿S.J.,,,,,,1866.0,Marquette
 ﻿mar.mi.0043,﻿cathedral,not recorded,English,,﻿Bay De Noc,,﻿Schoolcraft County,,﻿Escanaba,,,,45.7452466,-87.0645801,,,,,﻿seb_duroc_001,﻿Rev.,﻿S. Duroc,,,,,,,1866.0,Marquette
 ﻿mar.mi.0007,﻿church,﻿St. Ann's Church,English,,﻿Portage Lake,,﻿Houghton County,﻿Houghton County,﻿Hancock,﻿Hancock,﻿MI,,47.113597999999996,-88.521652,,,,,﻿e_jacker_001,﻿Rev.,﻿Edward Jacker,,,,,,,1866.0,Marquette
 ﻿mar.mi.0007,﻿church,﻿St. Ann's Church,English,,﻿Portage Lake,,﻿Houghton County,﻿Houghton County,﻿Hancock,﻿Hancock,﻿MI,,47.113597999999996,-88.521652,,,,,﻿jam_sweeney_001,﻿Rev.,﻿James Sweeney,,,,,,,1866.0,Marquette

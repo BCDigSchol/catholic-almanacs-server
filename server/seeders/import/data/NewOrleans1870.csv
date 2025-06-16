@@ -1,8 +1,8 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿gab_chalon_001,﻿Rev.,﻿Gabriel Chalon,,﻿Pastor,,,,,1870.0,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿m_tholomier_001,﻿Rev.,﻿M. Tholomier,,﻿Assistant,,,,,1870.0,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿cha_s_férec_001,﻿Rev.,﻿Charles S.M. Férec,,﻿Assistant,,,,,1870.0,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿jm_millet_001,﻿Rev.,﻿J.M. Millet,,﻿Assistant,,,,,1870.0,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.95797216,-90.06373226,,,,,﻿gab_chalon_001,﻿Rev.,﻿Gabriel Chalon,,﻿Pastor,,,,,1870.0,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.95797216,-90.06373226,,,,,﻿m_tholomier_001,﻿Rev.,﻿M. Tholomier,,﻿Assistant,,,,,1870.0,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.95797216,-90.06373226,,,,,﻿cha_s_férec_001,﻿Rev.,﻿Charles S.M. Férec,,﻿Assistant,,,,,1870.0,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿St. Louis' Cathedral,English,,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.95797216,-90.06373226,,,,,﻿jm_millet_001,﻿Rev.,﻿J.M. Millet,,﻿Assistant,,,,,1870.0,NewOrleans
 ﻿new.la.0002,﻿church,﻿St. Mary's,English,﻿Archibishop's Residence,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿g_raymond_001,﻿Very Rev.,﻿G. Raymond,"﻿D.D., V.G.",,,,,,1870.0,NewOrleans
 ﻿new.la.0002,﻿church,﻿St. Mary's,English,﻿Archibishop's Residence,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿c_dénoyelle_001,﻿Rev.,﻿C. Dénoyelle,,,,,,,1870.0,NewOrleans
 ﻿new.la.0002,﻿church,﻿St. Mary's,English,﻿Archibishop's Residence,,,,,﻿New Orleans,﻿New Orleans,﻿LA,,29.9510658,-90.0715323,,,,,﻿a_mascaroni_001,﻿Rev.,﻿A. Mascaroni,,,,,,,1870.0,NewOrleans
@@ -132,24 +132,24 @@
 ﻿new.la.0085,﻿church,not recorded,English,,,,,,﻿Bayou Boeuf,﻿Bayou Boeuf,﻿LA,,29.8693736,-90.596754,﻿new.la.0117,﻿Attended from Thibodeauxville,,,,,,,,,,,,1870.0,NewOrleans
 ﻿new.la.0086,﻿church,not recorded,English,,,,,,﻿Brashear,﻿Morgan City,﻿LA,,29.6993748,-91.20676999999999,﻿new.la.0118,﻿Attended from Thibodeauxville,,,,,,,,,,,,1870.0,NewOrleans
 ﻿new.la.0087,﻿church,not recorded,English,,,,,,﻿Washington,﻿Washington,﻿LA,,30.6163073,-92.057063,,,,,﻿m_jacquet_001,﻿Rev.,﻿M. Jacquet,,﻿Pastor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿f_gautrelet_001,﻿Rev.,﻿F. Gautrelet,﻿S.J.,﻿President,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿f_lespes_002,﻿Rev.,﻿F. Lespes,﻿S.J.,﻿Vice-President,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿a_simond_001,﻿Rev.,﻿A. Simond,﻿S.J.,﻿Secretary,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿j_cambiaso_001,﻿Rev.,﻿J. Cambiaso,﻿S.J.,"﻿Professor of Natural Philosophy, Chemistry, and Mathematics",,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿a_jourdon_001,﻿Rev.,﻿A. Jourdon,﻿S.J.,﻿Chaplain,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿d_hubert_001,﻿Rev.,﻿D. Hubert,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿j_foley_001,﻿Rev.,﻿J. Foley,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿pi_carrière_001,﻿Rev.,﻿P.I. Carrière,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿j_oshanaan_001,﻿Rev.,﻿J. Oshanaan,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿w_kennelly_001,﻿Rev.,﻿W. Kennelly,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿t_mcelligot_001,﻿Rev.,﻿T. McElligot,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿j_bahan_001,﻿Mr.,﻿J. Bahan,,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.9508941,-90.07583559999999,,,,,﻿jb_guibert_001,﻿Mr.,﻿J.B. Guibert,,﻿Drawing Master,,,,,1870.0,NewOrleans
-﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿j_benausse_001,﻿Very Rev.,﻿J. Benausse,﻿S.J.,﻿President,,,,,1870.0,NewOrleans
-﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿p_larnaudie_001,﻿Rev.,﻿P. Larnaudie,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿a_ussanaz_001,﻿Rev.,﻿A. Ussanaz,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿c_booker_002,﻿Rev.,﻿C. Booker,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
-﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.419832,-92.0500929,,,,,﻿gallagher_001,﻿Mr.,﻿Gallagher,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿f_gautrelet_001,﻿Rev.,﻿F. Gautrelet,﻿S.J.,﻿President,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿f_lespes_002,﻿Rev.,﻿F. Lespes,﻿S.J.,﻿Vice-President,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿a_simond_001,﻿Rev.,﻿A. Simond,﻿S.J.,﻿Secretary,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿j_cambiaso_001,﻿Rev.,﻿J. Cambiaso,﻿S.J.,"﻿Professor of Natural Philosophy, Chemistry, and Mathematics",,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿a_jourdon_001,﻿Rev.,﻿A. Jourdon,﻿S.J.,﻿Chaplain,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿d_hubert_001,﻿Rev.,﻿D. Hubert,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿j_foley_001,﻿Rev.,﻿J. Foley,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿pi_carrière_001,﻿Rev.,﻿P.I. Carrière,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿j_oshanaan_001,﻿Rev.,﻿J. Oshanaan,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿w_kennelly_001,﻿Rev.,﻿W. Kennelly,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿t_mcelligot_001,﻿Rev.,﻿T. McElligot,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿j_bahan_001,﻿Mr.,﻿J. Bahan,,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0088,﻿college,﻿College of the Immaculate Conception,English,,,,,,﻿New Orleans,,﻿LA,,29.95301574,-90.07231473,,,,,﻿jb_guibert_001,﻿Mr.,﻿J.B. Guibert,,﻿Drawing Master,,,,,1870.0,NewOrleans
+﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.41833594,-92.0433683,,,,,﻿j_benausse_001,﻿Very Rev.,﻿J. Benausse,﻿S.J.,﻿President,,,,,1870.0,NewOrleans
+﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.41833594,-92.0433683,,,,,﻿p_larnaudie_001,﻿Rev.,﻿P. Larnaudie,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.41833594,-92.0433683,,,,,﻿a_ussanaz_001,﻿Rev.,﻿A. Ussanaz,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.41833594,-92.0433683,,,,,﻿c_booker_002,﻿Rev.,﻿C. Booker,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
+﻿new.la.0089,﻿college,﻿St. Charles' College,English,,,,,,﻿Grand Coteau,,﻿LA,,30.41833594,-92.0433683,,,,,﻿gallagher_001,﻿Mr.,﻿Gallagher,﻿S.J.,﻿Professor,,,,,1870.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿s_giesen_001,﻿Rev.,﻿S. Giesen,﻿C.SS.R.,﻿Rector,,﻿lay brother,﻿6 lay brothers,,1870.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿ale_cvitkovicz_001,﻿Rev.,﻿Alexander Cvitkovicz,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1870.0,NewOrleans
 ﻿new.la.0090,﻿convent,﻿Redemptorist Convent,English,,,,,,﻿New Orleans,,﻿LA,,29.9494671,-90.07597,,,,,﻿wm_v_meredith_001,﻿Rev.,﻿Wm. V. Meredith,﻿C.SS.R.,,,﻿lay brother,﻿6 lay brothers,,1870.0,NewOrleans

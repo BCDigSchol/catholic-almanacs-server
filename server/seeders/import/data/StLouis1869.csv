@@ -94,7 +94,7 @@
 ﻿stl.mo.0061,﻿church,﻿St. Joseph's,English,,,,﻿Knox County,,﻿Edina,﻿Edina,﻿MO,,40.1675386,-92.1726821,,,,,﻿m_monks_001,﻿Rev.,﻿M. Monks,,,,,,,1869.0,StLouis
 ﻿stl.mo.0062,﻿church,﻿St. Ferdinand's,English,,,,﻿St. Louis County,,﻿Florissant,﻿Florissant,﻿MO,,38.789217,-90.322614,,,,,﻿jud_f_van-assche_001,﻿Rev.,﻿Judocus F. Van Assche,﻿S.J.,,,,,,1869.0,StLouis
 ﻿stl.mo.0063,﻿church,﻿Sacred Heart,﻿German,,,,﻿St. Louis County,,﻿Florissant,﻿Florissant,﻿MO,,38.789217,-90.322614,,,,,﻿ign_peukert_001,﻿Rev.,﻿Ign. Peukert,﻿S.J.,,,,,,1869.0,StLouis
-﻿stl.mo.0063,﻿church,﻿St. Ann's,﻿German,,,,﻿St. Louis County,,﻿Florissant Road,﻿Florissant,﻿MO,,38.789217,-90.322614,,,,,﻿a_van-hulst_001,﻿Rev.,﻿A Van Hulst,﻿S.J.,,,,,,1869.0,StLouis
+﻿stl.mo.0198,﻿church,﻿St. Ann's,English,,,,﻿St. Louis County,,﻿Florissant Road,﻿Florissant,﻿MO,,38.789217,-90.322614,,,,,﻿a_van-hulst_001,﻿Rev.,﻿A Van Hulst,﻿S.J.,,,,,,1869.0,StLouis
 ﻿stl.mo.0064,﻿church,﻿St. Philomena's,English,,,,﻿St. Genevieve County,,﻿Fourche a Duclos,﻿Fourche a Duclos,﻿MO,,37.99995055,-90.20951988,﻿stl.mo.0067,﻿Attended from French Village,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0065,﻿church,not recorded,English,﻿church in progress,,,﻿Saline County,,﻿Frankport,﻿Frankport,﻿MO,,39.194356400000004,-93.1779659,﻿stl.mo.0069,﻿Attended from Glasgow,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0066,﻿church,﻿St. Michael's,English,,,,﻿Madison County,,﻿Fredericktown,﻿Fredericktown,﻿MO,,37.55977539999999,-90.2940069,,,,,﻿l_tucker_001,﻿Rev.,﻿L. Tucker,,,,,,,1869.0,StLouis
@@ -107,7 +107,7 @@
 ﻿stl.mo.0073,﻿church,﻿St. Francis Xavier's,English,,,,﻿Osage County,,﻿Harr's Settlement,,﻿MO,,38.3853377,-91.9099238,,,,,﻿f_helias_001,﻿Rev.,﻿F. Helias,﻿S.J.,,﻿(Taos P.O.),,,,1869.0,StLouis
 ﻿stl.mo.0074,﻿church,﻿St. John's,English,,,,﻿Pettis County,,﻿Haw Creek Settlement,,﻿MO,,38.6893153,-93.3388917,﻿stl.mo.0141,﻿Attended from Tipton,﻿every last Sunday in the month,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0075,﻿church,not recorded,English,,,,﻿Jackson County,,﻿Independence,﻿Independence,﻿MO,,39.0911161,-94.4155068,,,,,﻿d_kennedy_001,﻿Rev.,﻿D. Kennedy,,,,,,,1869.0,StLouis
-﻿stl.mo.0075,﻿church,﻿St. Thomas',English,,,,﻿Osage County,,﻿Indian Bottom,﻿Independence,﻿MO,,39.0911161,-94.4155068,,﻿Attended from Westphalia,,,,,,,,,,,,1869.0,StLouis
+﻿stl.mo.0199,﻿church,﻿St. Thomas',English,,,,﻿Osage County,,﻿Indian Bottom,,﻿MO,,38.130690049381,-90.41224098043828,,﻿Attended from Westphalia,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0076,﻿church,not recorded,English,,,,﻿Monroe County,,﻿Indian Creek,﻿Indian Creek,﻿MO,,39.594485299999995,-91.7768291,,,,,﻿j_cummings_001,﻿Rev.,﻿J. Cummings,,,,,,,1869.0,StLouis
 ﻿stl.mo.0077,﻿church,﻿St. —,English,,,,﻿Iron County,,﻿Irondale,﻿Irondale,﻿MO,,37.551518200000004,-90.6773046,﻿stl.mo.0115,﻿Attended from Potosi,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0078,﻿church,not recorded,English,,,,﻿Iron County,,﻿Iron Mountain,﻿Iron Mountain,﻿MO,,37.551518200000004,-90.6773046,,﻿Attended from Fredericktown,,,,,,,,,,,,1869.0,StLouis
@@ -135,8 +135,8 @@
 ﻿stl.mo.0102,﻿church,not recorded,English,,,,﻿Scott County,,﻿New Hamburgh,﻿New Hamburg,﻿MO,,37.126439399999995,-89.59341979999999,,,,,﻿m_scherer_001,﻿Rev.,﻿M. Scherer,,,﻿(St. Lawrence P.O.),,,,1869.0,StLouis
 ﻿stl.mo.0103,﻿church,﻿St. John the Baptist's,English,,,,﻿New Madrid County,,,,﻿MO,,36.58644879999999,-89.5278547,,,,,﻿f_mckenna_001,﻿Rev.,﻿F. McKenna,,,,,,,1869.0,StLouis
 ﻿stl.mo.0104,﻿church,not recorded,English,,,,﻿St. Genevieve County,,﻿New Offenburgh,﻿New Offenburg,﻿MO,,37.9086641,-90.19734040000002,,,,,﻿t_stein_001,﻿Rev.,﻿T. Stein,,,,,,,1869.0,StLouis
-﻿stl.mo.0104,﻿church,﻿St. Joseph's,English,,,,﻿Osage County,,﻿Westphalia,﻿New Offenburg,﻿MO,,38.4407029544676,-91.99638612257591,,,,,﻿joh_b_goeldlin_001,﻿Rev.,﻿John B. Goeldlin,﻿S.J.,,,,,,1869.0,StLouis
-﻿stl.mo.0104,﻿church,﻿St. Joseph's,English,,,,﻿Osage County,,﻿Westphalia,﻿New Offenburg,﻿MO,,38.4407029544676,-91.99638612257591,,,,,﻿pet_grietens_001,﻿Rev.,﻿Peter Grietens,﻿S.J.,,,,,,1869.0,StLouis
+﻿stl.mo.0200,﻿church,﻿St. Joseph's,English,,,,﻿Osage County,,﻿Westphalia,,﻿MO,,38.4407029544676,-91.99638612257591,,,,,﻿joh_b_goeldlin_001,﻿Rev.,﻿John B. Goeldlin,﻿S.J.,,,,,,1869.0,StLouis
+﻿stl.mo.0200,﻿church,﻿St. Joseph's,English,,,,﻿Osage County,,﻿Westphalia,,﻿MO,,38.4407029544676,-91.99638612257591,,,,,﻿pet_grietens_001,﻿Rev.,﻿Peter Grietens,﻿S.J.,,,,,,1869.0,StLouis
 ﻿stl.mo.0106,﻿church,not recorded,English,,,,﻿Washington County,,﻿Old Mines,﻿Old Mines,﻿MO,,38.015327899999996,-90.75596440000001,,,,,﻿ed_shea_001,﻿Rev.,﻿Ed. Shea,,,,,,,1869.0,StLouis
 ﻿stl.mo.0106,﻿church,not recorded,English,,,,﻿Washington County,,﻿Old Mines,﻿Old Mines,﻿MO,,38.015327899999996,-90.75596440000001,,,,,﻿m_tobyn_001,﻿Rev.,﻿M. Tobyn,,,,,,,1869.0,StLouis
 ﻿stl.mo.0107,﻿church,not recorded,English,,,,﻿Lincoln County,,﻿Old Monroe,﻿Old Monroe,﻿MO,,38.931717600000006,-90.74679240000002,,,,,﻿p_gerhard_001,﻿Rev.,﻿P. Gerhard,﻿O.C.,,,,,,1869.0,StLouis
@@ -171,9 +171,9 @@
 ﻿stl.mo.0137,﻿church,﻿St. Patrick's,English,,,,﻿Clark County,,﻿St. Maryville,,﻿MO,,40.2644884,-91.62766040000001,,,,,﻿j_gleason_001,﻿Rev.,﻿J. Gleason,,,"﻿(P.O., Canton, Lewis Co.,)",,,,1869.0,StLouis
 ﻿stl.mo.0138,﻿church,"﻿St. Mary's, Help of Christians",English,,﻿near Loose Creek Station,,,,,,﻿MO,,38.508088799999996,-91.957391,﻿stl.mo.0090,﻿Attended from Loose Creek,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0139,﻿church,﻿St. Thomas,English,,,,﻿Cole County,,﻿St. Thomas,﻿St. Thomas,﻿MO,,38.3683685,-92.21684559999998,,﻿Attended from Westphalia,,,,,,,,,,,,1869.0,StLouis
-﻿stl.mo.0139,﻿church,﻿St. Thomas,English,,,,﻿Jackson County,,﻿Silbey,﻿Sibley,﻿MO,,38.3683685,-92.21684559999998,,﻿Attended from Independence,,,,,,,,,,,,1869.0,StLouis
+﻿stl.mo.0201,﻿church,not recorded,English,,,,﻿Jackson County,,﻿Silbey,﻿Sibley,﻿MO,,38.3683685,-92.21684559999998,,﻿Attended from Independence,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0140,﻿church,﻿Station,English,,,,﻿Morgan County,,﻿Syracuse,﻿Syracuse,﻿MO,,38.6700209,-92.8732509,,﻿Attended occasionally from Tipton,﻿occasionally,,,,,,,,,,,1869.0,StLouis
-﻿stl.mo.0140,﻿church,﻿Station,English,,,,﻿Morgan County,,﻿Tully,﻿Canton,﻿MO,,38.6700209,-92.8732509,,﻿Attended from Marthasville,,,,,,,,,,,,1869.0,StLouis
+﻿stl.mo.0202,﻿church,not recorded,English,,,,,,﻿Tully,﻿Canton,﻿MO,,38.6700209,-92.8732509,,﻿Attended from Marthasville,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0141,﻿church,﻿St. Andrew's,English,,,,﻿Moniteau County,,﻿Tipton,﻿Tipton,﻿MO,,38.6539924,-92.78031999999999,,,,,﻿h_v_kalmer_001,﻿Rev.,﻿H. V. Kalmer,,,,,,,1869.0,StLouis
 ﻿stl.mo.0142,﻿church,not recorded,English,,,,﻿Scott County,,﻿Tywappity Bottom,﻿Mississippi County,﻿MO,,37.9642529,-91.83183340000001,,﻿Attended from New-Hamburgh,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0143,﻿church,﻿St. Mary's,English,,,,﻿Johnson County,,﻿Warrensburgh,﻿Warrensburg,﻿MO,,38.7627893,-93.7360498,,,,,﻿h_murray_001,﻿Rev.,﻿H. Murray,,,,,,,1869.0,StLouis
@@ -257,8 +257,8 @@
 ﻿stl.mo.0174,﻿convent,﻿Convent of Sisters of Mercy,English,"﻿the Sisters visit the prisons and hospitals at regular intervals, and supply their inmates with reading matter, etc.",,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,,,,,,,,,,,﻿children,"﻿number of distressed young women supported and trained to useful employments in the House of Mercy, 60; daily average, -----;",,1869.0,StLouis
 ﻿stl.mo.0174,﻿convent,﻿Convent of Sisters of Mercy,English,"﻿the Sisters visit the prisons and hospitals at regular intervals, and supply their inmates with reading matter, etc.",,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,,,,,,,,,,,﻿children,"﻿number of children attending schools attached to the convent, 400",,1869.0,StLouis
 ﻿stl.mo.0174,﻿convent,﻿Convent of Sisters of Mercy,English,"﻿the Sisters visit the prisons and hospitals at regular intervals, and supply their inmates with reading matter, etc.",,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,,,,,,,,,,,﻿children,"﻿in community, 26",,1869.0,StLouis
-﻿stl.mo.0174,﻿house,﻿House of Protection,English,﻿conducted by Sisters of Mercy,,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,﻿Sisters of Mercy,,,,,,,,,,﻿children,"﻿in community, 26",,1869.0,StLouis
-﻿stl.mo.0174,﻿school,﻿Free School,English,﻿conducted by Sisters of Mercy,,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,﻿Sisters of Mercy,,,,,,,,,,﻿children,"﻿in community, 26",,1869.0,StLouis
+﻿stl.mo.0203,﻿house,﻿House of Protection,English,﻿conducted by Sisters of Mercy,,,,,,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,﻿Sisters of Mercy,,,,,,,,,,,,,1869.0,StLouis
+﻿stl.mo.0204,﻿school,﻿Free School,English,﻿conducted by Sisters of Mercy,,,,,,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,﻿Sisters of Mercy,,,,,,,,,,,,,1869.0,StLouis
 ﻿stl.mo.0175,﻿convent,﻿Convent of the Carmelite Nuns,English,,"﻿at Clay Farm, near Calvary Cemetery",,,,,,﻿MO,,37.9642529,-91.83183340000001,,,,,,﻿Rev. Mother,﻿Alberta,﻿of the Immaculate Conception,﻿Superior,,,,,1869.0,StLouis
 ﻿stl.mo.0176,﻿asylum,﻿Deaf and Dumb Asylum,English,,﻿Christy avenue and Beaumont street,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,,,,,,﻿Mother,﻿M. Justine,,﻿Superior,,,,﻿conducted by the Sisters of St. Joseph,1869.0,StLouis
 ﻿stl.mo.0177,﻿academy,﻿Academy of St. Joseph,English,,,,,,﻿Hannibal,﻿Hannibal,﻿MO,,39.767457799999995,-94.846681,,,,,,﻿Sister,,,,,﻿pupil,﻿250 pupils,,1869.0,StLouis

@@ -227,6 +227,7 @@ exports.findByID = async (req, res) => {
             religiousOrder: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].religiousOrder,
             attendingInstitutions: [],
             attendedBy: [],
+            relevantInstitutions: [],
             personInfo: [],
             // adding the info of the last record first so that the information of "all years" is the most up-to-date
         };
@@ -298,7 +299,55 @@ exports.findByID = async (req, res) => {
                     processedData.personInfo.push(person);
                 }
             });
+        };
+        
+        //console.log('instID', processedData.instID);
+        // if the institution is a "parent insitution"
+        if (!processedData.instID.includes('_')) {
+            const relevantInstitutions = await institution.findAll({
+                where: { ID: { [Op.like]: `${processedData.instID}%`, [Op.ne]: processedData.instID} },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    attributes: ['instName', 'instType'],
+                }]
+            });
+            console.log('relevantInstitutions', relevantInstitutions);
+            if (relevantInstitutions.length > 0) {
+                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
+                    return {
+                        instID: inst.ID,
+                        instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
+                        instType: inst.almanacRecord[inst.almanacRecord.length - 1].instType,
+                    }
+                })
+            }
+        } 
+        // if the institution is a "child institution"
+        else {
+            const baseInstID = processedData.instID.split('_')[0];
+            console.log('baseInstID', baseInstID);
+            const relevantInstitutions = await institution.findAll({
+                where: { ID: { [Op.like]: `${baseInstID}%`, [Op.ne]: processedData.instID} },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    attributes: ['instName', 'instType']
+                }]
+            });
+            if (relevantInstitutions.length > 0) {
+                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
+                    return {
+                        instID: inst.ID,
+                        instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
+                        instType: inst.almanacRecord[inst.almanacRecord.length - 1].instType,
+                    }
+                })
+            }
         }
+
         processedData.year.reverse();
         res.send(processedData);
     }
@@ -367,9 +416,10 @@ exports.findOne = async (req, res) => {
             year: data.dataValues.almanacRecord[0].year,
             attendingInstitutions: [],
             attendedBy: [],
+            relevantInstitutions: [],
             personInfo: []
         };
-        console.log('processedData', data.dataValues.almanacRecord[0]);
+        //console.log('processedData', data.dataValues.almanacRecord[0]);
         for (const attendingInst of data.dataValues.almanacRecord[0].attendingInstitutions) {
             const instDetails = await institution.findAll({
                 where: { ID: attendingInst.instID },
@@ -417,7 +467,52 @@ exports.findOne = async (req, res) => {
 
         for (const person of data.dataValues.almanacRecord[0].personInfo) {
             processedData.personInfo.push(person);
+        };
+
+        if (!processedData.instID.includes('_')) {
+            const relevantInstitutions = await institution.findAll({
+                where: { ID: { [Op.like]: `${processedData.instID}%`, [Op.ne]: processedData.instID} },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    where: { year: req.params.year },
+                    as: 'almanacRecord',
+                    attributes: ['instName', 'instType']
+                }]
+            });
+            if (relevantInstitutions.length > 0) {
+                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
+                    return {
+                        instID: inst.ID,
+                        instName: inst.almanacRecord[0].instName,
+                        instType: inst.almanacRecord[0].instType,
+                    }
+                })
+            };
         }
+        else {
+            const baseInstID = processedData.instID.split('_')[0];
+            const relevantInstitutions = await institution.findAll({
+                where: { ID: { [Op.like]: `${baseInstID}%`, [Op.ne]: processedData.instID} },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    where: { year: req.params.year },
+                    as: 'almanacRecord',
+                    attributes: ['instName', 'instType']
+                }]
+            });
+            if (relevantInstitutions.length > 0) {
+                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
+                    return {
+                        instID: inst.ID,
+                        instName: inst.almanacRecord[0].instName,
+                        instType: inst.almanacRecord[0].instType,
+                    }
+                })
+            };
+        }
+
 
         res.send(processedData);}
     else {

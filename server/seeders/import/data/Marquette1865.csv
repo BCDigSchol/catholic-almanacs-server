@@ -1,5 +1,5 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-,﻿cathedral,﻿St. Mary's Cathedral,English,,,,,,,,,,,,,,,,﻿fre_baraga_001,﻿Rt. Rev.,﻿Frederic Baraga,﻿D.D.,,,,,,1865.0,Marquette
+﻿mar.mi.0082,﻿cathedral,﻿St. Mary's Cathedral,English,,,,﻿Chippewa County,,﻿Saut-Sainte-Marie,,,,,,,,,,﻿fre_baraga_001,﻿Rt. Rev.,﻿Frederic Baraga,﻿D.D.,,,,,,1865.0,Marquette
 ﻿mar.mi.0043,﻿cathedral,not recorded,English,,﻿Bay des Noques,,﻿Schoolcraft County,,,,,,45.7452466,-87.0645801,,,,,﻿seb_duroc_001,﻿Rev.,﻿S. Duroc,,,,,,,1865.0,Marquette
 ﻿mar.mi.0042,﻿church,﻿Church of the Holy Cross,English,,"﻿on Beaver Island, in Lake Michigan",,,,﻿Beaver Harbor,,,,45.7355109,-85.5173856,,,,,﻿pat_murray_001,﻿Rev.,﻿Patrick Bernard Murray,,,,,,,1865.0,Marquette
 ﻿mar.mi.0003,﻿church,not recorded,English,,"﻿Clifton, or Cliff Mine",,﻿Houghton County,﻿Keweenaw County,"﻿Clifton, or Cliff Mine",﻿Phoenix,﻿MI,,47.388983,-88.27656400000001,﻿mar.mi.0004,﻿attended by Rev. John Brown,﻿Every second Sunday,,,,,,,,,,,1865.0,Marquette

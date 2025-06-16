@@ -184,22 +184,22 @@
 ﻿buf.ny.0136,﻿school,"﻿St. Joseph's School, Cathedral",English,﻿for boys,,,,,,,﻿NY,,42.88282122,-78.87820188,,,,,,,,,,,﻿pupil,"﻿Pupils, 450",﻿under Christian Brothers,1870.0,Buffalo
 ﻿buf.ny.0137,﻿school,﻿St. Joseph's School,English,﻿for girls,,,,,﻿Buffalo,,﻿NY,,42.958847399999996,-78.84868279999999,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",﻿under the Ladies of the Immaculate Heart of Mary,1870.0,Buffalo
 ﻿buf.ny.0138,﻿school,﻿St. Louis',﻿German,﻿lay teachers,,,,,﻿Buffalo,,﻿NY,,42.89568118,-78.87218644,,,,,,,,,,,﻿pupil,"﻿Pupils, 600",﻿under the Sisters of St. Joseph,1870.0,Buffalo
-﻿buf.ny.0139,﻿school,﻿St. Mary's,﻿German,"﻿Male, under secular teachers",,,,,﻿Buffalo,,﻿NY,,42.88748313,-78.86446773,,,,,,,,,,,﻿pupil,"﻿Pupils, 550",﻿Sisters of St. Francis,1870.0,Buffalo
-﻿buf.ny.0140,﻿school,﻿St. Mary's,﻿German,"﻿Female, 3 secular teachers",,,,,﻿Buffalo,,﻿NY,,42.88748313,-78.86446773,,,,,,,,,,,﻿pupil,"﻿Pupils, 700 girls",﻿under 7 Sisters of Notre Dame,1870.0,Buffalo
-﻿buf.ny.0140,﻿school,﻿St. Mary's,﻿German,"﻿Female, 3 secular teachers",,,,,﻿Buffalo,,﻿NY,,42.88748313,-78.86446773,,,,,,,,,,,﻿boy,﻿500 boys under secular teachers,﻿under 7 Sisters of Notre Dame,1870.0,Buffalo
+﻿buf.ny.0008_02,﻿school,﻿St. Mary's,﻿German,"﻿Male, under secular teachers",,,,,﻿Buffalo,,﻿NY,,42.88748313,-78.86446773,,,,,,,,,,,﻿pupil,"﻿Pupils, 550",﻿Sisters of St. Francis,1870.0,Buffalo
+﻿buf.ny.0008_03,﻿school,﻿St. Mary's,﻿German,"﻿Female, 3 secular teachers",,,,,﻿Buffalo,,﻿NY,,42.88748313,-78.86446773,,,,,,,,,,,﻿pupil,"﻿Pupils, 700 girls",﻿under 7 Sisters of Notre Dame,1870.0,Buffalo
+﻿buf.ny.0008_03,﻿school,﻿St. Mary's,﻿German,"﻿Female, 3 secular teachers",,,,,﻿Buffalo,,﻿NY,,42.88748313,-78.86446773,,,,,,,,,,,﻿boy,﻿500 boys under secular teachers,﻿under 7 Sisters of Notre Dame,1870.0,Buffalo
 ﻿buf.ny.0141,﻿school,﻿Immaculate Conception,English,﻿Female,,,,,﻿Buffalo,,﻿NY,,42.8864468,-78.8783689,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",﻿under Sisters of St. Joseph,1870.0,Buffalo
 ﻿buf.ny.0141,﻿school,﻿Immaculate Conception,English,﻿Female,,,,,﻿Buffalo,,﻿NY,,42.8864468,-78.8783689,,,,,,,,,,,﻿boy,"﻿Boys under secular teachers, 150",﻿under Sisters of St. Joseph,1870.0,Buffalo
-﻿buf.ny.0142,﻿school,﻿St. Boniface's,﻿German,"﻿Male, under 3 secular teachers",,,,,﻿Buffalo,,﻿NY,,42.9154358,-78.7699029,,,,,,,,,,,﻿pupil,"﻿Pupils, 500",,1870.0,Buffalo
-﻿buf.ny.0143,﻿school,﻿St. Michael's,﻿German,"﻿Male, under a secular teacher",,,,,﻿Buffalo,,﻿NY,,42.8910876,-78.8704902,,,,,,,,,,,﻿pupil,"﻿Pupils, 550",,1870.0,Buffalo
-﻿buf.ny.0144,﻿school,﻿St. Peter's,﻿French,"﻿Male, under a secular teacher",,,,,﻿Buffalo,,﻿NY,,42.9721211,-78.81547490000001,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Buffalo
-﻿buf.ny.0145,﻿school,﻿St. Ann's,﻿German,"﻿Male, under a secular teacher",,,,,﻿Buffalo,,﻿NY,,42.8822131,-78.8493334,,,,,,,,,,,﻿pupil,"﻿Pupils, 606",,1870.0,Buffalo
-﻿buf.ny.0146,﻿school,﻿St. Bridget's,English,,,,,,﻿Buffalo,,﻿NY,,42.8864468,-78.8783689,,,,,,,,,,,﻿pupil,"﻿Pupils, 800; boys, 200; girls, 600",﻿under the Sisters of Mercy,1870.0,Buffalo
-﻿buf.ny.0147,﻿school,﻿Holy Angels',English,,,,,,﻿Buffalo,,﻿NY,,42.9034422,-78.88930340000002,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",﻿under the Gray Sisters,1870.0,Buffalo
+﻿buf.ny.0007_02,﻿school,﻿St. Boniface's,﻿German,"﻿Male, under 3 secular teachers",,,,,﻿Buffalo,,﻿NY,,42.9154358,-78.7699029,,,,,,,,,,,﻿pupil,"﻿Pupils, 500",,1870.0,Buffalo
+﻿buf.ny.0009_02,﻿school,﻿St. Michael's,﻿German,"﻿Male, under a secular teacher",,,,,﻿Buffalo,,﻿NY,,42.8910876,-78.8704902,,,,,,,,,,,﻿pupil,"﻿Pupils, 550",,1870.0,Buffalo
+﻿buf.ny.0011_02,﻿school,﻿St. Peter's,﻿French,"﻿Male, under a secular teacher",,,,,﻿Buffalo,,﻿NY,,42.9721211,-78.81547490000001,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Buffalo
+﻿buf.ny.0010_02,﻿school,﻿St. Ann's,﻿German,"﻿Male, under a secular teacher",,,,,﻿Buffalo,,﻿NY,,42.8822131,-78.8493334,,,,,,,,,,,﻿pupil,"﻿Pupils, 606",,1870.0,Buffalo
+﻿buf.ny.0002_02,﻿school,﻿St. Bridget's,English,,,,,,﻿Buffalo,,﻿NY,,42.8864468,-78.8783689,,,,,,,,,,,﻿pupil,"﻿Pupils, 800; boys, 200; girls, 600",﻿under the Sisters of Mercy,1870.0,Buffalo
+﻿buf.ny.0005_02,﻿school,﻿Holy Angels',English,,,,,,﻿Buffalo,,﻿NY,,42.9034422,-78.88930340000002,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",﻿under the Gray Sisters,1870.0,Buffalo
 ﻿buf.ny.0148,﻿school,﻿St. Patrick's,English,﻿Female,,,,,﻿Buffalo,,﻿NY,,42.884064200000005,-78.8288968,,,,,,,,,,,﻿pupil,"﻿Pupils, 60",﻿under the Franciscan Sisters,1870.0,Buffalo
 ﻿buf.ny.0149,﻿school,﻿St. Patrick's,English,﻿Male,,,,,﻿Buffalo,,﻿NY,,42.884064200000005,-78.8288968,,,,,,﻿Brother,﻿Francis White,,﻿O.S.F.,,﻿pupil,"﻿Pupils, 120",,1870.0,Buffalo
 ﻿buf.ny.0149,﻿school,﻿St. Patrick's,English,﻿Male,,,,,﻿Buffalo,,﻿NY,,42.884064200000005,-78.8288968,,,,,,﻿Brother,﻿Aloysius Murphy,,﻿O.S.F.,,﻿pupil,"﻿Pupils, 120",,1870.0,Buffalo
 ﻿buf.ny.0150,﻿school,﻿St. Vincent's,English,,﻿Main Street,,,,﻿Buffalo,,﻿NY,,42.9280679,-78.8510078,,,,,,,,,,,﻿pupil,"﻿Pupils, 75",﻿under Sisters of St. Joseph,1870.0,Buffalo
-﻿buf.ny.0151,﻿school,﻿St. Francis Xavier's,﻿German,"﻿Male, under a secular teacher",,,,,﻿Blackrock,,﻿NY,,42.93065347,-78.89829546,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Buffalo
+﻿buf.ny.0213_02,﻿school,﻿St. Francis Xavier's,﻿German,"﻿Male, under a secular teacher",,,,,﻿Blackrock,,﻿NY,,42.93065347,-78.89829546,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Buffalo
 ﻿buf.ny.0152,﻿school,﻿St. Joseph's Parochial Schools,English,,,,,,﻿Batavia,,﻿NY,,42.9981156,-78.1875167,,,,,,,,,,,﻿pupil,"﻿Pupils, 400",﻿under the Sisters of Mercy,1870.0,Buffalo
 ﻿buf.ny.0153,﻿school,not recorded,English,﻿Male and Female,,,,,﻿Corning,,﻿NY,,42.1428521,-77.05469029999999,,,,,,,,,,,﻿pupil,"﻿Pupils, 400",﻿under Sisters of Mercy,1870.0,Buffalo
 ﻿buf.ny.0154,﻿school,not recorded,English,﻿Female,,,,,﻿Owego,,﻿NY,,42.1034075,-76.26215490000001,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",﻿under charge of Sisters of Mercy,1870.0,Buffalo

@@ -160,8 +160,8 @@
 ﻿mil.wi.0111,﻿church,﻿St. Patrick's,English,,,,﻿Rock County,﻿Rock County,﻿Janesville,﻿Janesville,﻿WI,,42.6763644,-89.025287,,,,,﻿jam_doyle_001,﻿Rev.,﻿James Doyle,,,,,,,1868,Milwaukee
 ﻿mil.wi.0112,﻿church,﻿St. John Baptist's,English,,,,﻿Jefferson County,﻿Jefferson County,﻿Jefferson,﻿Jefferson,﻿WI,,43.0069456,-88.8022097,,,,,﻿a_sigg_001,﻿Rev.,﻿A. Sigg,,,,,,,1868,Milwaukee
 ﻿mil.wi.0113,﻿church,﻿St. Lawrence's,English,,,,﻿Jefferson County,﻿Jefferson County,﻿Jefferson,﻿Jefferson,﻿WI,,43.0049651,-88.7791913,,,,,﻿f_x_obermueller_001,﻿Rev.,﻿F. X. Obermueller,,,,,,,1868,Milwaukee
-﻿lac.wi.0014,﻿church,﻿Nativity B.V.M.,English,,,,﻿Monroe County,﻿Monroe County,﻿Jefferson,﻿Jefferson,﻿WI,,43.7980958,-90.68686839,,,,,,﻿Rev.,﻿N. Stehle,,,,,,,1868,Milwaukee
-﻿lac.wi.0099,﻿church,﻿St. Fridolin's,English,,,,﻿Sauk County,,﻿Ironton,,﻿WI,,43.7980958,-90.68686839,﻿lac.wi.0015,﻿Attended from Ithaca,,,,,,,,,,,,1868,Milwaukee
+﻿lac.wi.0014,﻿church,﻿Nativity B.V.M.,English,,,,﻿Monroe County,﻿Monroe County,﻿Jefferson,﻿Jefferson,﻿WI,,43.7980958019359,-90.68686839461891,,,,,,﻿Rev.,﻿N. Stehle,,,,,,,1868,Milwaukee
+﻿lac.wi.0099,﻿church,﻿St. Fridolin's,English,,,,﻿Sauk County,,﻿Ironton,,﻿WI,,43.7980958019359,-90.68686839461891,﻿lac.wi.0015,﻿Attended from Ithaca,,,,,,,,,,,,1868,Milwaukee
 ﻿lac.wi.0015,﻿church,﻿Nativity B.V.M.,English,,,,﻿Richland County,﻿Richland County,﻿Ithaca,﻿Ithaca,﻿WI,,43.3408176,-90.2817921,,,,,,﻿Rev.,﻿J. Beau,,,,,,,1868,Milwaukee
 ﻿mil.wi.0114,﻿church,﻿St. Mark's,English,,,,﻿Kenosha County,﻿Kenosha County,﻿Kenosha,﻿Kenosha,﻿WI,,42.5681355,-87.8249189,,,,,﻿p_f_petit_001,﻿Rev.,﻿P. F. Petit,,,,,,,1868,Milwaukee
 ﻿mil.wi.0115,﻿church,﻿St. George's,﻿German,,,,﻿Kenosha County,﻿Kenosha County,﻿Kenosha,﻿Kenosha,﻿WI,,42.5811225,-87.872016,,,,,﻿w_reiter_001,﻿Rev.,﻿W. Reiter,,,,,,,1868,Milwaukee
@@ -364,12 +364,12 @@
 ﻿mil.wi.0383,﻿station,not recorded,English,,,,﻿Door County,,﻿Big Sturgeon Bay,,﻿WI,,44.74843972,-87.6218728,,,,,,,,,,,,,,1868,Milwaukee
 ﻿mil.wi.0384,﻿station,not recorded,English,,,,﻿Door County,,﻿Little Sturgeon Bay,,﻿WI,,44.74843972,-87.6218728,,,,,,,,,,,,,,1868,Milwaukee
 ﻿mil.wi.0385,﻿station,not recorded,English,,,,﻿Door County,,﻿Washington Harbor,,﻿WI,,44.74843972,-87.6218728,,,,,,,,,,,,,,1868,Milwaukee
-﻿lac.wi.0067,﻿station,not recorded,English,,,,﻿Douglas County,,﻿Superior City,,﻿WI,,46.70320773,-92.04686186,,,,,,,,,,,,,,1868,Milwaukee
-﻿mil.wi.0386,﻿station,not recorded,English,,,,﻿Douglas County,,﻿Fond du Lac,,﻿WI,,46.70320773,-92.04686186,,,,,,,,,,,,,,1868,Milwaukee
-﻿lac.wi.0128,﻿station,not recorded,English,,,,﻿Dunn County,,﻿Fall City,,﻿WI,,46.70320773,-92.04686186,,,,,,,,,,,,,,1868,Milwaukee
-﻿lac.wi.0031,﻿station,not recorded,English,,,,﻿Eau Claire County,,﻿Adams' Settlement,,﻿WI,,46.70320773,-92.04686186,,,,,,,,,,,,,,1868,Milwaukee
-﻿lac.wi.0129,﻿station,not recorded,English,,,,﻿Eau Claire County,,﻿Pleasant Valley,,﻿WI,,46.70320773,-92.04686186,,,,,,,,,,,,,,1868,Milwaukee
-﻿mil.wi.0387,﻿station,not recorded,English,,,,﻿Fond du Lac County,,﻿Eldora,,﻿WI,,46.70320773,-92.04686186,,,,,,,,,,,,,,1868,Milwaukee
+﻿lac.wi.0067,﻿station,not recorded,English,,,,﻿Douglas County,,﻿Superior City,,﻿WI,,46.7032077268766,-92.0468618601298,,,,,,,,,,,,,,1868,Milwaukee
+﻿mil.wi.0386,﻿station,not recorded,English,,,,﻿Douglas County,,﻿Fond du Lac,,﻿WI,,46.7032077268766,-92.0468618601298,,,,,,,,,,,,,,1868,Milwaukee
+﻿lac.wi.0128,﻿station,not recorded,English,,,,﻿Dunn County,,﻿Fall City,,﻿WI,,46.7032077268766,-92.0468618601298,,,,,,,,,,,,,,1868,Milwaukee
+﻿lac.wi.0031,﻿station,not recorded,English,,,,﻿Eau Claire County,,﻿Adams' Settlement,,﻿WI,,46.7032077268766,-92.0468618601298,,,,,,,,,,,,,,1868,Milwaukee
+﻿lac.wi.0129,﻿station,not recorded,English,,,,﻿Eau Claire County,,﻿Pleasant Valley,,﻿WI,,46.7032077268766,-92.0468618601298,,,,,,,,,,,,,,1868,Milwaukee
+﻿mil.wi.0387,﻿station,not recorded,English,,,,﻿Fond du Lac County,,﻿Eldora,,﻿WI,,46.7032077268766,-92.0468618601298,,,,,,,,,,,,,,1868,Milwaukee
 ﻿mil.wi.0233,﻿station,not recorded,English,,,,﻿Fond du Lac County,﻿Fond du Lac County,﻿Rosendale,﻿Rosendale,﻿WI,,43.80776289999999,-88.674832,,,,,,,,,,,,,,1868,Milwaukee
 ﻿mil.wi.0388,﻿station,not recorded,English,,,,﻿Fond du Lac County,,﻿Walkosten,,﻿WI,,43.80776289999999,-88.674832,,,,,,,,,,,,,,1868,Milwaukee
 ﻿mil.wi.0236,﻿station,not recorded,English,,,,﻿Grant County,﻿Grant County,﻿Beetown,﻿Beetown,﻿WI,,42.794991100000004,-90.8854047,,,,,,,,,,,,,,1868,Milwaukee

@@ -1,5 +1,5 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,﻿fp_mcfarland_001,﻿Rt. Rev.,﻿F.P. McFarland,﻿D.D.,,,,,,1870.0,Hartford
+﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,﻿f_p_mcfarland_001,﻿Rt. Rev.,﻿F. P. McFarland,﻿D.D.,,,,,,1870.0,Hartford
 ﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,﻿mic_tierney_001,﻿Rev.,﻿Michael Tierney,,,,,,,1870.0,Hartford
 ﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,﻿mic_fitzgerald_001,﻿Rev.,﻿Michael Fitzgerald,,,,,,,1870.0,Hartford
 ﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,﻿jos_b_reid_001,﻿Rev.,﻿Joseph B. Reid,,,,,,,1870.0,Hartford
@@ -14,7 +14,7 @@
 ﻿har.ct.0005,﻿church,﻿Immaculate Conception,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.8239891,-71.4128343,,,,,﻿mat_mccabe_001,﻿Rev.,﻿Mathew McCabe,,,,,,,1870.0,Hartford
 ﻿har.ct.0005,﻿church,﻿Immaculate Conception,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.8239891,-71.4128343,,,,,﻿jam_b_reynolds_001,﻿Rev.,﻿James B. Reynolds,,,,,,,1870.0,Hartford
 ﻿har.ct.0006,﻿church,﻿St. Michael's,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.8017693,-71.4134994,,,,,﻿m_a_wallace_001,﻿Rev.,﻿M. A. Wallace,﻿LL.D.,﻿pastor,,,,,1870.0,Hartford
-﻿har.ct.0007,﻿chapel,﻿St. Aloysius' Chapel,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.821091700000004,-71.4140041,,﻿attended from different parishes of the city,,,,,,,,,,,,1870.0,Hartford
+﻿har.ct.0157_02,﻿chapel,﻿St. Aloysius' Chapel,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.821091700000004,-71.4140041,,﻿attended from different parishes of the city,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0008,﻿chapel,﻿St. Catharine's Chapel,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.821091700000004,-71.4140041,﻿har.ct.0001,﻿attended from the Cathedral,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0009,﻿church,not recorded,English,,,,﻿Providence County,﻿Providence County,﻿Albion,﻿Albion,﻿RI,,41.9532999,-71.4581359,﻿har.ct.0031,﻿attended from Valley Falls,﻿every second Sunday,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0010,﻿church,not recorded,English,,,,,,﻿Appanany,﻿Apponaug,﻿RI,,41.70028,-71.46028000000001,﻿har.ct.0020,﻿attended from Greenwich,,,,,,,,,,,,1870.0,Hartford
@@ -22,7 +22,7 @@
 ﻿har.ct.0012,﻿church,﻿St. Mary's,English,,,,,﻿Bristol County,﻿Bristol,﻿Bristol,﻿RI,,41.6711818,-71.2707346,﻿har.ct.0033,﻿attended from Warren,﻿every second Sunday,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0013,﻿church,not recorded,English,,,,,﻿Washington County,﻿Carolina,﻿Carolina,﻿RI,,41.4568113,-71.66733520000001,﻿har.ct.0136,﻿attended from Westerly,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0014,﻿church,not recorded,English,,,,,﻿Washington County,﻿Carolina,﻿Carolina,﻿RI,,41.4568113,-71.66733520000001,﻿har.ct.0136,﻿attended from Westerly,,,,,,,,,,,,1870.0,Hartford
-﻿har.ct.0015,﻿church,not recorded,English,,,,,,﻿Coal Mines,,﻿RI,,41.5800945,-71.4774291,,﻿attended from Newport,,,,,,,,,,,,1870.0,Hartford
+﻿har.ct.0015,﻿church,not recorded,English,,,,,,﻿Coal Mines,,﻿RI,,41.5800945,-71.4774291,﻿har.ct.0025,﻿attended from Newport,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0016,﻿church,﻿St. Anne's,English,,,,,﻿Providence County,﻿Cranston,﻿Cranston,﻿RI,,41.7798226,-71.4372796,,,,,﻿jos_obrien_001,﻿Rev.,﻿Joseph O'Brien,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0017,﻿church,﻿Our Lady of Mount Carmel,English,,,,,﻿Kent County,﻿Crompton,﻿Crompton,﻿RI,,41.68472,-71.5141699,,,,,﻿jam_p_gibson_001,﻿Rev.,﻿James P. Gibson,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0018,﻿church,not recorded,English,,,,,﻿Providence County,﻿Georgiaville,﻿Georgiaville,﻿RI,,41.8870436,-71.5083944,﻿har.ct.0021,﻿attended from Greenville,,,,,,,,,,,,1870.0,Hartford
@@ -38,8 +38,8 @@
 ﻿har.ct.0027,﻿church,﻿SS. Peter and Paul,English,,,,,﻿Kent County,﻿Phoenixville,﻿West Warwick,﻿RI,,41.721302200000004,-71.52952640000001,,,,,﻿joh_a_couch_001,﻿Rev.,﻿John A. Couch,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0028,﻿church,not recorded,English,,,,,﻿Kent County,﻿Pontiac,﻿Pontiac,﻿RI,,41.657914700000006,-71.71479509999999,﻿har.ct.0027,﻿attended from Phoenixville,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0029,﻿church,not recorded,English,,,,,﻿Washington County,﻿Shady Lea,﻿Shady Lea Historic District,﻿RI,,41.5387388,-71.4679694,﻿har.ct.0020,﻿attended from Greenwich,,,,,,,,,,,,1870.0,Hartford
-﻿har.ct.0030,﻿church,not recorded,English,,,,,﻿Providence County,﻿Slatersville,﻿Slatersville,﻿RI,,42.0005695,-71.58017190000001,,﻿attended from Harrisville,﻿every second Sunday,,,,,,,,,,,1870.0,Hartford
-﻿har.ct.0031,﻿church,﻿St. Patrick's,English,,,,,﻿Providence County,﻿Valley Falls,﻿Valley Falls,﻿RI,,41.906766299999994,-71.39061190000001,,,,,﻿hj_oreilly_001,﻿Rev.,﻿H.J. O'Reilly,,﻿pastor,,,,,1870.0,Hartford
+﻿har.ct.0030,﻿church,not recorded,English,,,,,﻿Providence County,﻿Slatersville,﻿Slatersville,﻿RI,,42.0005695,-71.58017190000001,﻿har.ct.0022,﻿attended from Harrisville,﻿every second Sunday,,,,,,,,,,,1870.0,Hartford
+﻿har.ct.0031,﻿church,﻿St. Patrick's,English,,,,,﻿Providence County,﻿Valley Falls,﻿Valley Falls,﻿RI,,41.906766299999994,-71.39061190000001,,,,,﻿h_j_oreilly_001,﻿Rev.,﻿H. J. O'Reilly,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0031,﻿church,﻿St. Patrick's,English,,,,,﻿Providence County,﻿Valley Falls,﻿Valley Falls,﻿RI,,41.906766299999994,-71.39061190000001,,,,,﻿ber_osheridan_001,﻿Rev.,﻿Bernard O'Sheridan,,,,,,,1870.0,Hartford
 ﻿har.ct.0032,﻿church,﻿St. Francis',English,,,,,﻿Washington County,﻿Wakefield,﻿Wakefield,﻿RI,,41.4381721,-71.50155459999999,﻿har.ct.0020,﻿attended from Greenwich,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0033,﻿church,﻿St. Mary's,English,,,,,﻿Bristol County,﻿Warren,﻿Warren,﻿RI,,41.730379299999996,-71.2825493,,,,,﻿mic_mccallion_001,﻿Rev.,﻿Michael McCallion,,﻿pastor,,,,,1870.0,Hartford
@@ -51,7 +51,7 @@
 ﻿har.ct.0037,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Avon,﻿Avon,﻿CT,,41.809620100000004,-72.83051540000001,﻿har.ct.0052,﻿attended from Collinsville,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0038,﻿church,﻿Immaculate Conception,English,,,,,﻿New London County,﻿Baltic,﻿Baltic,﻿CT,,41.6172065,-72.0850766,,,,,﻿aeg_van-laar_001,﻿Rev.,﻿Aegidius Van Laar,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0039,﻿church,﻿St. Augustine's,English,,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1804284,-73.1966099,,,,,﻿tho_j_sinnott_001,﻿Rev.,﻿Thomas J. Sinnott,,,,,,,1870.0,Hartford
-﻿har.ct.0039,﻿church,﻿St. Augustine's,English,,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1804284,-73.1966099,,,,,﻿js_fitzpatrick_001,﻿Rev.,﻿J.S. Fitzpatrick,,,,,,,1870.0,Hartford
+﻿har.ct.0039,﻿church,﻿St. Augustine's,English,,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1804284,-73.1966099,,,,,﻿j_s_fitzpatrick_001,﻿Rev.,﻿J. S. Fitzpatrick,,,,,,,1870.0,Hartford
 ﻿har.ct.0039,﻿church,﻿St. Augustine's,English,,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1804284,-73.1966099,,,,,﻿wil_f_obrien_001,﻿Rev.,﻿William F. O'Brien,,,,,,,1870.0,Hartford
 ﻿har.ct.0040,﻿church,﻿St. Mary's,English,,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1814605,-73.1788739,,,,,﻿tho_drea_001,﻿Rev.,﻿Thomas Drea,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0040,﻿church,﻿St. Mary's,English,,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1814605,-73.1788739,,,,,﻿jno_fleming_001,﻿Rev.,﻿Jno. Fleming,,,,,,,1870.0,Hartford
@@ -119,13 +119,13 @@
 ﻿har.ct.0095,﻿church,﻿St. Patrick's,English,,,,,﻿New London County,﻿New London,﻿New London,﻿CT,,41.3556539,-72.0995209,,,,,﻿edm_a_oconnor_001,﻿Rev.,﻿Edmond A. O'Connor,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0095,﻿church,﻿St. Patrick's,English,,,,,﻿New London County,﻿New London,﻿New London,﻿CT,,41.3556539,-72.0995209,,,,,﻿jno_furlong_001,﻿Rev.,﻿Jno. Furlong,,,,,,,1870.0,Hartford
 ﻿har.ct.0096,﻿church,﻿St. Patrick's Church,English,,,,,﻿Litchfield County,﻿New Hartford,﻿New Hartford,﻿CT,,41.873500899999996,-72.96702490000001,﻿har.ct.0052,﻿attended from Collinsville,,,,,,,,,,,,1870.0,Hartford
-﻿har.ct.0097,﻿church,﻿St. Mary's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.31192070000001,-72.92382370000001,,,,,﻿ej_obrien_001,﻿Rev.,﻿E.J. O'Brien,,﻿pastor,,,,,1870.0,Hartford
+﻿har.ct.0097,﻿church,﻿St. Mary's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.31192070000001,-72.92382370000001,,,,,﻿e_j_obrien_001,﻿Rev.,﻿E. J. O'Brien,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0097,﻿church,﻿St. Mary's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.31192070000001,-72.92382370000001,,,,,﻿jas_daly_001,﻿Rev.,﻿Jas. Daly,,,,,,,1870.0,Hartford
 ﻿har.ct.0098,﻿church,﻿St. Patrick's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.2967151,-72.94313079999999,,,,,﻿mat_hart_001,﻿Rev.,﻿Math. Hart,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0098,﻿church,﻿St. Patrick's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.2967151,-72.94313079999999,,,,,﻿wm_hart_001,﻿Rev.,﻿Wm. Hart,,,,,,,1870.0,Hartford
 ﻿har.ct.0098,﻿church,﻿St. Patrick's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.2967151,-72.94313079999999,,,,,﻿jno_quinn_001,﻿Rev.,﻿Jno. Quinn,,,,,,,1870.0,Hartford
 ﻿har.ct.0099,﻿church,﻿St. John's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.316120899999994,-72.91676319999999,,,,,﻿hug_carmody_001,﻿Rev.,﻿Hugh Carmody,﻿D.D.,,,,,,1870.0,Hartford
-﻿har.ct.0099,﻿church,﻿St. John's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.316120899999994,-72.91676319999999,,,,,﻿pp_lawler_001,﻿Rev.,﻿P.P. Lawler,,,,,,,1870.0,Hartford
+﻿har.ct.0099,﻿church,﻿St. John's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.316120899999994,-72.91676319999999,,,,,﻿p_p_lawler_001,﻿Rev.,﻿P. P. Lawler,,,,,,,1870.0,Hartford
 ﻿har.ct.0100,﻿church,not recorded,﻿German,﻿German Congregation,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.308274,-72.9278835,,﻿attended by Rev. H. Windelschmidt,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0101,﻿church,not recorded,English,,,,,﻿Fairfield County,﻿New Fairfield,﻿New Fairfield,﻿CT,,41.466099299999996,-73.48564609999998,﻿har.ct.0055,﻿attended from Danbury,,,,﻿Rev.,,,,,,,,1870.0,Hartford
 ﻿har.ct.0102,﻿church,﻿St. Francis Xavier's,English,,,,,﻿Litchfield County,﻿New Milford,﻿New Milford,﻿CT,,41.58107570000001,-73.4115292,﻿har.ct.0103,﻿attended from Newtown,,,,,,,,,,,,1870.0,Hartford

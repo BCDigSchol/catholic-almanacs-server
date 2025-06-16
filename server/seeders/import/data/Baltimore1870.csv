@@ -90,7 +90,7 @@
 ﻿bal.md.0070,﻿church,﻿St. John's,English,,,,﻿Frederick County,,﻿Frederick City,﻿Frederick,﻿MD,,0.0,0.0,,,,,﻿cha_f_king_001,﻿Rev.,﻿Charles F. King,﻿S.J.,,,,,,1870.0,Baltimore
 ﻿bal.md.0070,﻿church,﻿St. John's,English,,,,﻿Frederick County,,﻿Frederick City,﻿Frederick,﻿MD,,0.0,0.0,,,,,﻿joh_gaffney_001,﻿Rev.,﻿John Gaffney,﻿S.J.,,,,,,1870.0,Baltimore
 ﻿bal.md.0070,﻿church,﻿St. John's,English,,,,﻿Frederick County,,﻿Frederick City,﻿Frederick,﻿MD,,0.0,0.0,,,,,﻿j_b_emig_001,﻿Rev.,﻿J. B. Emig.,﻿S.J.,,,,,,1870.0,Baltimore
-﻿bal.md.0071,﻿chapel,﻿Visitation Convent Chapel,English,,,,﻿Frederick County,,﻿Frederick City,﻿Frederick,﻿MD,,39.4142687999999,-77.41054090000002,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0143_02,﻿chapel,﻿Visitation Convent Chapel,English,,,,﻿Frederick County,,﻿Frederick City,﻿Frederick,﻿MD,,39.4142687999999,-77.41054090000002,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0072,﻿church,﻿St. Joseph's,English,,,,﻿Frederick County,,﻿Carrollton Manor,﻿Frederick,﻿MD,,39.3308576,-77.4646724999999,﻿bal.md.0070,﻿Attended from Frederick,,,﻿joh_gaffney_001,﻿Rev.,﻿John Gaffney,﻿S.J.,,,,,,1870.0,Baltimore
 ﻿bal.md.0073,﻿church,﻿St. Joseph's,English,,,,﻿Frederick County,,﻿Emmittsburgh,﻿Emmitsburg,﻿MD,,39.7054956372214,-77.3261837646545,,,﻿2nd Sunday,,﻿fra_burlando_001,﻿Very Rev.,﻿Francis Burlando,﻿C.M.,"﻿Superior of the Sisters of Charity, U.S.",,,,,1870.0,Baltimore
 ﻿bal.md.0073,﻿church,﻿St. Joseph's,English,,,,﻿Frederick County,,﻿Emmittsburgh,﻿Emmitsburg,﻿MD,,0.0,0.0,,,,,﻿a_h_gandolfo_001,﻿Rev.,﻿A. H. Gandolfo,﻿C.M.,﻿Chaplain of St. Joseph's House,,,,,1870.0,Baltimore
@@ -163,7 +163,7 @@
 ﻿bal.md.0123,﻿chapel,﻿Visitation Convent Chapel,English,,,,﻿,,﻿Washington City,﻿Washington,﻿DC,,38.8983700854475,-77.0259977034935,﻿bal.md.0155,﻿Attended from Gonzaga College,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0124,﻿chapel,﻿Holy Trinity,English,,,,﻿,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9071681960844,-77.06996883816741,,,,,﻿hen_gache_001,﻿Rev.,﻿Henry Gache,﻿S.J.,,,,,,1870.0,Baltimore
 ﻿bal.md.0124,﻿chapel,﻿Holy Trinity,English,,,,﻿,,﻿Georgetown,﻿Georgetown,﻿DC,,0.0,0.0,,,,,﻿joh_guida_001,﻿Rev.,﻿John Guida,﻿S.J.,,,,,,1870.0,Baltimore
-﻿bal.md.0125,﻿chapel,﻿Visitation Convent Chapel,English,,,,﻿,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9089004430347,-77.0694006221641,﻿bal.md.0154,﻿Attended from Georgetown College,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0140_04,﻿chapel,﻿Visitation Convent Chapel,English,,,,﻿,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9089004430347,-77.0694006221641,﻿bal.md.0154,﻿Attended from Georgetown College,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0126,﻿chapel,﻿Chapel at St. Ann's,English,,,,﻿,,﻿Tennelly Town,﻿Tennelly Town,﻿DC,,38.946559399218394,-77.0793374275695,﻿bal.md.0154,﻿Attended from Georgetown College,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0127,"﻿seminary, university",﻿Theological Seminary of St. Sulpice and St. Mary's University,English,,,,,,,,﻿MD,,39.36053963020029,-76.639791609685,,,,,﻿j_p_dubreul_001,﻿Very Rev.,﻿J. Paul Dubreul,﻿D.D.,,,﻿student,"﻿Number of students, 60",,1870.0,Baltimore
 ﻿bal.md.0127,"﻿seminary, university",﻿Theological Seminary of St. Sulpice and St. Mary's University,English,,,,,,,,﻿MD,,0.0,0.0,,,,,﻿l_prince_001,﻿Rev.,﻿L. Prince,﻿D.D.,,,﻿student,"﻿Number of students, 60",,1870.0,Baltimore
@@ -254,7 +254,7 @@
 ﻿bal.md.0145,﻿convent,﻿Convent of the Immaculate Conception,English,,﻿Poppleton street,,,,,﻿Baltimore,﻿MD,,39.2882372566029,-76.63187296642809,,,,,,﻿Sister,﻿Mary Alphonsus Atkinson,,,,,,,1870.0,Baltimore
 ﻿bal.md.0146,﻿convent,﻿Convent of Notre Dame,English,,,,,,,﻿Baltimore,﻿MD,,39.300877538867795,-76.60190086302259,,,,,,﻿Sister,﻿Augustine,,,,,,,1870.0,Baltimore
 ﻿bal.md.0147,"﻿academy, novitiate",﻿Mount St. Agnes,English,,,,,,﻿Mount Washington,﻿Mount Washington,﻿MD,,39.37000929018271,-76.6550088441873,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0148,﻿convent,﻿Convent of the Sisters of Mercy,English,,﻿St. Edward's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,,﻿Sister,﻿Mary Augustine Gwynn,,,,,,,1870.0,Baltimore
+﻿bal.md.0148_01,﻿convent,﻿Convent of the Sisters of Mercy,English,,﻿St. Edward's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,,﻿Sister,﻿Mary Augustine Gwynn,,,,,,,1870.0,Baltimore
 ﻿bal.md.0149,﻿convent,﻿St. Joseph's Sisterhood,English,,,,,,﻿Emmittsburgh,﻿Emmitsburg,﻿MD,,39.7045417,-77.3269306999999,,,,,,﻿Mother,﻿Mary Euphemia Blenkinsop,,,,,,,1870.0,Baltimore
 ﻿bal.md.0150,﻿convent,﻿School Sisters of Notre Dame,English,,"﻿Aisquith street, near St. James' Church",,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.300877538867795,-76.60190086302259,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0151,﻿convent,﻿St. Alphonsus' Convent of Notre Dame,English,,﻿102 W. Saratoga street,,,,,,﻿MD,,39.2929289389604,-76.61726381138601,,,,,,﻿Sister,﻿Anastasia,,,,,,,1870.0,Baltimore
@@ -288,79 +288,79 @@
 ﻿bal.md.0159,﻿college,﻿Borromeo College,English,,,,,,﻿Pikesville,﻿Pikesville,﻿MD,,39.3742729,-76.72247270000001,,,,,﻿e_q_waldron_001,﻿Rev.,﻿E. Q. S. Waldron,,,,,,,1870.0,Baltimore
 ﻿bal.md.0160,﻿college,﻿Calvert College,English,,,,,,﻿New Windsor,﻿New Windsor,﻿MD,,39.5420455,-77.10803759999999,,,,,﻿a_h_baker_001,﻿Mr.,﻿A. H. Baker,,,,,,,1870.0,Baltimore
 ﻿bal.md.0160,﻿college,﻿Calvert College,English,,,,,,﻿New Windsor,﻿New Windsor,﻿MD,,0.0,0.0,,,,,﻿t_otoole_001,﻿Rev.,﻿T. O'Toole,,,,,,,1870.0,Baltimore
-﻿bal.md.0161,﻿academy,﻿Academy of the Visitation,English,,﻿Fayette street,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9114749124294,-77.0690588116057,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0140_02,﻿academy,﻿Academy of the Visitation,English,,﻿Fayette street,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9114749124294,-77.0690588116057,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0162,﻿academy,﻿Academy of the Visitation,English,,﻿Park street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.2962704539138,-76.6183228740582,,,,,﻿tj_otoole_001,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0163,﻿academy,﻿Academy of the Visitation,English,,﻿near Catonsville,,,,﻿Mount de Sales,﻿Mount de Sales,﻿MD,,39.285847902002295,-76.7214019962836,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0164,﻿academy,﻿Academy of the Visitation,English,,,,,,﻿Frederick,﻿Frederick,﻿MD,,39.416134342050704,-77.4069614538584,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0143_02,﻿academy,﻿Academy of the Visitation,English,,,,﻿Frederick County,,﻿Frederick,﻿Frederick,﻿MD,,39.416134342050704,-77.4069614538584,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0165,﻿academy,﻿Academy of the Visitation,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.8983700854475,-77.0259977034935,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0166,﻿academy,﻿St. Joseph's Academy,English,,﻿near Emmittsburgh,,,,,,﻿MD,,39.7054956372214,-77.3261837646545,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0167,﻿academy,﻿Academy of Notre Dame,English,,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.300877538867795,-76.60190086302259,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0168,﻿academy,﻿Academy of Sisters of Mercy,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.2882492014994,-76.6318783649335,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0145_02,﻿academy,﻿Academy of Sisters of Mercy,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.2882492014994,-76.6318783649335,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0169,﻿academy,﻿Academy of the Holy Cross,English,,﻿Gough street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.287906332315295,-76.58745203149529,,,,,,﻿Sister,﻿M. Alphonsus,,,,,,,1870.0,Baltimore
 ﻿bal.md.0170,﻿academy,﻿Academy of Mount St. Agnes,English,,,,,,﻿Mount Washington,﻿Mount Washington,﻿MD,,39.37000929018271,-76.6550088441873,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0171,﻿academy,﻿St. Edward's Academy,English,,,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0172,﻿academy,﻿Academy of St. Joseph and Male Parish [School] of the Cathedral,English,,"﻿Calvert Hall, corner of Saratoga and Little Sharp streets",,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.292826904129,-76.61610388284831,,,,,,,,,,,,,﻿St. Joseph's Community of Brothers of the Christian Schools,1870.0,Baltimore
-﻿bal.md.0173,﻿school,﻿Female Parish School of the Cathedral,English,,"﻿St. Mary's Asylum, Franklin street",,,,,,﻿MD,,39.295258766063704,-76.6173750261253,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0174,﻿school,﻿Male Parish School of St. Alphonsus' Church,﻿German,,﻿Saratoga street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.293259258406,-76.6179521082722,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 400",,1870.0,Baltimore
-﻿bal.md.0175,﻿school,﻿Female Parish School of St. Alphonsus,English,,,,,,,,,,39.2928216433866,-76.6176297170427,,,,,,,,,,,﻿scholar,"﻿Number of scholars, 450",,1870.0,Baltimore
-﻿bal.md.0176,﻿school,﻿Male Parish School of St. Peter's,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.288035516543204,-76.63190716289691,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",,1870.0,Baltimore
-﻿bal.md.0177,﻿school,﻿Female Parish School of St. Peter's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.288035516543204,-76.63190716289691,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",,1870.0,Baltimore
-﻿bal.md.0178,﻿school,﻿Male Parish School of St. Vincent's,English,,﻿Front street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.291417717079504,-76.6061101424116,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",,1870.0,Baltimore
-﻿bal.md.0179,﻿school,﻿Female Parish School of St. Vincent's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.291417717079504,-76.6061101424116,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",,1870.0,Baltimore
-﻿bal.md.0180,﻿school,﻿Male Parish School of St. Patrick's Church,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.284963510082896,-76.56734049122579,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
-﻿bal.md.0181,﻿school,﻿Female Parish School of St. Patrick's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.284963510082896,-76.56734049122579,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
-﻿bal.md.0182,﻿school,﻿St. Bridget's Schools,English,,,,,,,,,,39.28207013364779,-76.5725668330293,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Baltimore
+﻿bal.md.0148_02,﻿academy,﻿St. Edward's Academy,English,,,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0001_03,﻿academy,﻿Academy of St. Joseph and Male Parish [School] of the Cathedral,English,,"﻿Calvert Hall, corner of Saratoga and Little Sharp streets",,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.292826904129,-76.61610388284831,,,,,,,,,,,,,﻿St. Joseph's Community of Brothers of the Christian Schools,1870.0,Baltimore
+﻿bal.md.0001_02,﻿school,﻿Female Parish School of the Cathedral,English,,"﻿St. Mary's Asylum, Franklin street",,,,,,﻿MD,,39.295258766063704,-76.6173750261253,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0010_02,﻿school,﻿Male Parish School of St. Alphonsus' Church,﻿German,,﻿Saratoga street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.293259258406,-76.6179521082722,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 400",,1870.0,Baltimore
+﻿bal.md.0010_03,﻿school,﻿Female Parish School of St. Alphonsus,English,,,,,,,,,,39.2928216433866,-76.6176297170427,,,,,,,,,,,﻿scholar,"﻿Number of scholars, 450",,1870.0,Baltimore
+﻿bal.md.0004_02,﻿school,﻿Male Parish School of St. Peter's,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.288035516543204,-76.63190716289691,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",,1870.0,Baltimore
+﻿bal.md.0004_03,﻿school,﻿Female Parish School of St. Peter's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.288035516543204,-76.63190716289691,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",,1870.0,Baltimore
+﻿bal.md.0003_02,﻿school,﻿Male Parish School of St. Vincent's,English,,﻿Front street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.291417717079504,-76.6061101424116,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",,1870.0,Baltimore
+﻿bal.md.0003_03,﻿school,﻿Female Parish School of St. Vincent's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.291417717079504,-76.6061101424116,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",,1870.0,Baltimore
+﻿bal.md.0002_02,﻿school,﻿Male Parish School of St. Patrick's Church,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.284963510082896,-76.56734049122579,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
+﻿bal.md.0002_03,﻿school,﻿Female Parish School of St. Patrick's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.284963510082896,-76.56734049122579,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
+﻿bal.md.0014_02,﻿school,﻿St. Bridget's Schools,English,,,,,,,,,,39.28207013364779,-76.5725668330293,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Baltimore
 ﻿bal.md.0183,﻿school,﻿St. Laurence's Schools,English,,,,,,,,,,39.140875715887496,-76.75766624378029,,,,,,,,,,,﻿pupil,"﻿Pupils, 75",,1870.0,Baltimore
-﻿bal.md.0184,﻿school,﻿St. Joseph's Male Parish School,English,,﻿79 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.283001730730604,-76.6160397963663,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
-﻿bal.md.0185,﻿school,﻿St. Joseph's Female Parish School,English,,﻿73 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.283002654037,-76.61601904726159,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",,1870.0,Baltimore
+﻿bal.md.0007_02,﻿school,﻿St. Joseph's Male Parish School,English,,﻿79 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.283001730730604,-76.6160397963663,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
+﻿bal.md.0007_03,﻿school,﻿St. Joseph's Female Parish School,English,,﻿73 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.283002654037,-76.61601904726159,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",,1870.0,Baltimore
 ﻿bal.md.0186,﻿school,﻿St. Mary's Parish School,English,,,,,,﻿Annapolis,﻿Annapolis,﻿MD,,38.9750975318096,-76.4878870111278,,,,,,﻿Sister,﻿Augustine,,,,﻿pupil,"﻿Pupils, 150",,1870.0,Baltimore
-﻿bal.md.0187,﻿school,﻿St. Michael's Male Parish School,English,,,,,,,,,,39.2906835525781,-76.5901181288635,,,,﻿one Sister of Notre Dame,,,,,,,﻿lay-teacher,﻿5 lay-teachers,,1870.0,Baltimore
-﻿bal.md.0187,﻿school,﻿St. Michael's Male Parish School,English,,,,,,,,,,0.0,0.0,,,,,,,,,,,﻿pupil,"﻿Pupils, 617",,1870.0,Baltimore
-﻿bal.md.0188,﻿school,﻿St. Michael's Female Parish School,English,,,,,,,,,,39.2906835525781,-76.5901181288635,,,,,,,,,,,﻿pupil,"﻿Pupils, 613",,1870.0,Baltimore
-﻿bal.md.0189,﻿school,﻿St. James' Male Parish School,English,,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.3017902917026,-76.6021436053547,,,,,,,,,,,﻿pupil,"﻿Pupils, 500",,1870.0,Baltimore
-﻿bal.md.0190,﻿school,﻿St. James' Female Parish School,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.3017902917026,-76.6021436053547,,,,,,,,,,,﻿pupil,"﻿Pupils, 450",,1870.0,Baltimore
+﻿bal.md.0011_02,﻿school,﻿St. Michael's Male Parish School,English,,,,,,,,,,39.2906835525781,-76.5901181288635,,,,﻿one Sister of Notre Dame,,,,,,,﻿lay-teacher,﻿5 lay-teachers,,1870.0,Baltimore
+﻿bal.md.0011_02,﻿school,﻿St. Michael's Male Parish School,English,,,,,,,,,,0.0,0.0,,,,,,,,,,,﻿pupil,"﻿Pupils, 617",,1870.0,Baltimore
+﻿bal.md.0011_03,﻿school,﻿St. Michael's Female Parish School,English,,,,,,,,,,39.2906835525781,-76.5901181288635,,,,,,,,,,,﻿pupil,"﻿Pupils, 613",,1870.0,Baltimore
+﻿bal.md.0012_02,﻿school,﻿St. James' Male Parish School,English,,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.3017902917026,-76.6021436053547,,,,,,,,,,,﻿pupil,"﻿Pupils, 500",,1870.0,Baltimore
+﻿bal.md.0012_03,﻿school,﻿St. James' Female Parish School,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.3017902917026,-76.6021436053547,,,,,,,,,,,﻿pupil,"﻿Pupils, 450",,1870.0,Baltimore
 ﻿bal.md.0191,﻿school,﻿School for Girls,English,,﻿at Church of Immaculate Conception,,,,,,,,39.3035786170361,-76.6307653377499,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0192,﻿school,﻿School for Boys,English,,,,,,,,,,39.3035786170361,-76.6307653377499,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0193,﻿school,﻿Holy Cross Schools for German Children,English,,﻿Federal Hill,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.276504097509296,-76.61053696613871,,,,,,,,,,,﻿pupil,﻿420,,1870.0,Baltimore
-﻿bal.md.0194,﻿school,﻿St. John's Male School,English,,,,,,,,,,39.3410833223662,-77.42755894711131,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
-﻿bal.md.0195,﻿school,﻿St. John's Female Parish School,English,,,,,,,,,,39.3410833223662,-77.42755894711131,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
-﻿bal.md.0196,﻿school,﻿School at St. Joseph's,﻿German and English,,﻿St. Joseph's,,,,,,﻿MD,,39.462999067665294,-76.63947987157229,,,,,,,,,,,﻿pupil,"﻿Pupils, 70",,1870.0,Baltimore
-﻿bal.md.0197,﻿school,﻿School at St. Augustine's,﻿German and English,,﻿St. Augustine's,,,,﻿Elkridge Landing,﻿Elkridge,﻿MD,,39.2114064954006,-76.7157053623651,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0198,﻿school,﻿School at SS. Peter and Paul's,﻿German,,﻿SS. Peter and Paul's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6528473805559,-78.7670915109892,,,,,,,,,,,﻿pupil,"﻿Pupils, 220",,1870.0,Baltimore
-﻿bal.md.0199,﻿school,﻿St. Aloysius' Parish Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.9015474919266,-77.009438647295,,,,,,,,,,,﻿pupil,"﻿Pupils, 600",,1870.0,Baltimore
+﻿bal.md.0005_03,﻿school,﻿St. John's Male School,English,,,,,,,,,,39.3410833223662,-77.42755894711131,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
+﻿bal.md.0005_02,﻿school,﻿St. John's Female Parish School,English,,,,,,,,,,39.3410833223662,-77.42755894711131,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
+﻿bal.md.0039_02,﻿school,﻿School at St. Joseph's,﻿German and English,,﻿St. Joseph's,,,,,,﻿MD,,39.462999067665294,-76.63947987157229,,,,,,,,,,,﻿pupil,"﻿Pupils, 70",,1870.0,Baltimore
+﻿bal.md.0086_02,﻿school,﻿School at St. Augustine's,﻿German and English,,﻿St. Augustine's,,,,﻿Elkridge Landing,﻿Elkridge,﻿MD,,39.2114064954006,-76.7157053623651,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0026_02,﻿school,﻿School at SS. Peter and Paul's,﻿German,,﻿SS. Peter and Paul's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6528473805559,-78.7670915109892,,,,,,,,,,,﻿pupil,"﻿Pupils, 220",,1870.0,Baltimore
+﻿bal.md.0122_02,﻿school,﻿St. Aloysius' Parish Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.9015474919266,-77.009438647295,,,,,,,,,,,﻿pupil,"﻿Pupils, 600",,1870.0,Baltimore
 ﻿bal.md.0200,﻿school,﻿St. Mary's Parish School,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.8994584197013,-77.0186429198488,,,,,,,,,,,﻿pupil,﻿110 Pupils,,1870.0,Baltimore
-﻿bal.md.0201,﻿school,﻿St. Matthew's Institute,English,,"﻿K street, between Fourteenth and Fifteenth streets",,,,﻿Washington,﻿Washington,﻿DC,,38.9028900168526,-77.03323482901101,,,,,,﻿Brother,﻿Tobias,,,,﻿student,﻿100 students,,1870.0,Baltimore
-﻿bal.md.0201,﻿school,﻿St. Matthew's Institute,English,,"﻿K street, between Fourteenth and Fifteenth streets",,,,﻿Washington,﻿Washington,﻿DC,,0.0,0.0,,,,,,,,,,,﻿student,﻿100 students,,1870.0,Baltimore
-﻿bal.md.0202,﻿school,﻿St. Matthew's Parochial School,English,,"﻿K street, between Fourteenth and Fifteenth streets",,,,﻿Washington,﻿Washington,﻿DC,,38.9028900168526,-77.03323482901101,,,,,,,,,,,﻿scholars,﻿100 scholars,,1870.0,Baltimore
-﻿bal.md.0203,﻿school,﻿St. Matthew's School for Girls,English,,"﻿Fifteenth street, near H",,,,﻿Washington,﻿Washington,﻿DC,,38.9004244274563,-77.0347813725904,,,,,,﻿Sister,﻿Sebastian,,,,﻿scholar,﻿100 scholars,,1870.0,Baltimore
-﻿bal.md.0204,﻿school,﻿School for Boys,English,,﻿at Trinity Church,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9071681960844,-77.06996883816741,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
+﻿bal.md.0117_02,﻿school,﻿St. Matthew's Institute,English,,"﻿K street, between Fourteenth and Fifteenth streets",,,,﻿Washington,﻿Washington,﻿DC,,38.9028900168526,-77.03323482901101,,,,,,﻿Brother,﻿Tobias,,,,﻿student,﻿100 students,,1870.0,Baltimore
+﻿bal.md.0117_02,﻿school,﻿St. Matthew's Institute,English,,"﻿K street, between Fourteenth and Fifteenth streets",,,,﻿Washington,﻿Washington,﻿DC,,0.0,0.0,,,,,,,,,,,﻿student,﻿100 students,,1870.0,Baltimore
+﻿bal.md.0117_05,﻿school,﻿St. Matthew's Parochial School,English,,"﻿K street, between Fourteenth and Fifteenth streets",,,,﻿Washington,﻿Washington,﻿DC,,38.9028900168526,-77.03323482901101,,,,,,,,,,,﻿scholars,﻿100 scholars,,1870.0,Baltimore
+﻿bal.md.0117_04,﻿school,﻿St. Matthew's School for Girls,English,,"﻿Fifteenth street, near H",,,,﻿Washington,﻿Washington,﻿DC,,38.9004244274563,-77.0347813725904,,,,,,﻿Sister,﻿Sebastian,,,,﻿scholar,﻿100 scholars,,1870.0,Baltimore
+﻿bal.md.0124_02,﻿school,﻿School for Boys,English,,﻿at Trinity Church,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9071681960844,-77.06996883816741,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
 ﻿bal.md.0205,﻿school,"﻿St. Vincent's School, for Girls",English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.8989646681079,-76.99268074656992,,,,,,﻿Sister,﻿Mary Blanche,,,,﻿pupil,"﻿Pupils, 260",,1870.0,Baltimore
 ﻿bal.md.0206,﻿school,"﻿St. Joseph's School, for Boys",English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.9002185807665,-76.9900134836203,,,,,,,,,,,﻿pupil,"﻿Pupils, 100",,1870.0,Baltimore
 ﻿bal.md.0207,﻿school,﻿Parochial School of St. Patrick,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.8979459404531,-77.02572017820779,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0208,﻿school,﻿St. Stephen's Parochial Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.9033216379892,-77.0531207538938,,,,,,,,,,,﻿boy,"﻿Boys, 150",,1870.0,Baltimore
 ﻿bal.md.0208,﻿school,﻿St. Stephen's Parochial Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,0.0,0.0,,,,,,,,,,,﻿girl,"﻿Girls, 100",,1870.0,Baltimore
 ﻿bal.md.0208,﻿school,﻿St. Stephen's Parochial Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,0.0,0.0,,,,,,,,,,,﻿student,"﻿Sunday-schools, 350 boys and girls",,1870.0,Baltimore
-﻿bal.md.0210,"﻿academy, school",﻿St. Edward's Academy and Parochial Schools,English,,﻿adjoining St. Patrick's Church,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0211,﻿school,﻿St. Patrick's Female Parish School,English,,,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553818863676,-78.7641644155079,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0025_03,"﻿academy, school",﻿St. Edward's Academy and Parochial Schools,English,,﻿adjoining St. Patrick's Church,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,,,,,,,,,,1870.0,Baltimore
+﻿bal.md.0025_02,﻿school,﻿St. Patrick's Female Parish School,English,,,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553818863676,-78.7641644155079,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0213,﻿academy,﻿Carroll Hall Academy,English,,,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6553358679809,-78.7644376701703,,,,,﻿joh_butler_001,﻿Professor,﻿John Butler,,,,,,,1870.0,Baltimore
 ﻿bal.md.0214,﻿school,﻿School at SS. Peter and Paul's,﻿German,,﻿SS. Peter and Paul's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,39.6528473805559,-78.7670915109892,,,,,,,,,,,﻿pupil,"﻿Pupils, 220",,1870.0,Baltimore
 ﻿bal.md.0215,﻿school,﻿St. Aloysius' Parish Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.9015474919266,-77.009438647295,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 600",,1870.0,Baltimore
-﻿bal.md.0218,﻿school,﻿School for Boys,English,,﻿at Trinity Church,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9071681960844,-77.06996883816741,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
-﻿bal.md.0219,﻿school,﻿School for Girls,English,,﻿at St. Joseph's,,,,﻿Emmittsburgh,﻿Emmittsburg,﻿MD,,39.7054956372214,-77.3261837646545,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Baltimore
-﻿bal.md.0220,﻿school,﻿St. Michael's Parish School,English,,,,,﻿Allegany County,﻿Frostburgh,﻿Frostburgh,﻿MD,,39.6570532050048,-78.9273026812395,,,,,,,,,,,﻿pupil,"﻿Pupils, 145",,1870.0,Baltimore
-﻿bal.md.0221,﻿school,﻿St. Peter's Parish School,English,,,,,,﻿Westernport,﻿Westernport,﻿MD,,39.4836279810551,-79.0437031563187,,,,,,,,,,,﻿pupil,"﻿Pupils, 115",,1870.0,Baltimore
-﻿bal.md.0222,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.90886679999999,-77.0694074,,,,,,,,,,,﻿pupil,"﻿Pupils, 125",,1870.0,Baltimore
-﻿bal.md.0223,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Frederick,﻿Frederick,﻿MD,,39.416134342050704,-77.4069614538584,,,,,,,,,,,﻿pupil,"﻿Pupils, 70",,1870.0,Baltimore
+﻿bal.md.0124_02,﻿school,﻿School for Boys,English,,﻿at Trinity Church,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9071681960844,-77.06996883816741,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1870.0,Baltimore
+﻿bal.md.0073_02,﻿school,﻿School for Girls,English,,﻿at St. Joseph's,,,,﻿Emmittsburgh,﻿Emmittsburg,﻿MD,,39.7054956372214,-77.3261837646545,,,,,,,,,,,﻿pupil,﻿60 pupils,,1870.0,Baltimore
+﻿bal.md.0029_02,﻿school,﻿St. Michael's Parish School,English,,,,,﻿Allegany County,﻿Frostburgh,﻿Frostburgh,﻿MD,,39.6570532050048,-78.9273026812395,,,,,,,,,,,﻿pupil,"﻿Pupils, 145",,1870.0,Baltimore
+﻿bal.md.0035_02,﻿school,﻿St. Peter's Parish School,English,,,,,,﻿Westernport,﻿Westernport,﻿MD,,39.4836279810551,-79.0437031563187,,,,,,,,,,,﻿pupil,"﻿Pupils, 115",,1870.0,Baltimore
+﻿bal.md.0140_03,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.90886679999999,-77.0694074,,,,,,,,,,,﻿pupil,"﻿Pupils, 125",,1870.0,Baltimore
+﻿bal.md.0143_03,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Frederick,﻿Frederick,﻿MD,,39.416134342050704,-77.4069614538584,,,,,,,,,,,﻿pupil,"﻿Pupils, 70",,1870.0,Baltimore
 ﻿bal.md.0224,﻿school,﻿School for Colored Children,English,,"﻿St. Martin's, 15th street",,,,﻿Washington,﻿Washington,﻿DC,,38.904201663266704,-77.0345058565902,,,,,,,,,,,,,,1870.0,Baltimore
 ﻿bal.md.0225,﻿school,﻿St. Mary's School for Colored Children,English,,,,,,﻿Washington,﻿Washington,﻿DC,,38.9071923,-77.03687070000001,,,,,,,,,,,﻿pupil,"﻿Pupils, 32",,1870.0,Baltimore
 ﻿bal.md.0226,﻿school,﻿St. Joseph's School of Industry,English,,"﻿Waverly Terrace, Franklin Square, corner of Carey and Lexington streets",,,,,,﻿MD,,39.2909419857593,-76.6383817748756,,,,,,﻿Sister,﻿Veronica,,,,,,,1870.0,Baltimore
-﻿bal.md.0227,﻿asylum,﻿St. Mary's Female Orphan Asylum,English,,﻿Franklin street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.295258766063704,-76.6173750261253,,,,,,﻿Sister,﻿Louise,,,,﻿orphan,"﻿Orphans, 125",,1870.0,Baltimore
-﻿bal.md.0228,﻿asylum,﻿St. Vincent's Male Orphan Asylum,English,,﻿Front street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.291417717079504,-76.6061101424116,,,,,,,,,,,﻿orphan,"﻿Orphans, 72",,1870.0,Baltimore
+﻿bal.md.0001_04,﻿asylum,﻿St. Mary's Female Orphan Asylum,English,,﻿Franklin street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.295258766063704,-76.6173750261253,,,,,,﻿Sister,﻿Louise,,,,﻿orphan,"﻿Orphans, 125",,1870.0,Baltimore
+﻿bal.md.0003_04,﻿asylum,﻿St. Vincent's Male Orphan Asylum,English,,﻿Front street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.291417717079504,-76.6061101424116,,,,,,,,,,,﻿orphan,"﻿Orphans, 72",,1870.0,Baltimore
 ﻿bal.md.0229,﻿school,﻿St. Mary's Industrial School for Boys,English,,"﻿near Frederick Road, two miles from the city",,,,,,﻿MD,,39.2746072259584,-76.6690606426845,,,,,,,,,,,,,,1870.0,Baltimore
-﻿bal.md.0230,﻿asylum,﻿Asylum for Boys,English,,﻿adjoining St. Patrick's Church,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.284963510082896,-76.56734049122579,,,,,,,,,,,﻿inmate,"﻿Number of inmates, 60",,1870.0,Baltimore
+﻿bal.md.0002_04,﻿asylum,﻿Asylum for Boys,English,,﻿adjoining St. Patrick's Church,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.284963510082896,-76.56734049122579,,,,,,,,,,,﻿inmate,"﻿Number of inmates, 60",,1870.0,Baltimore
 ﻿bal.md.0231,﻿asylum,﻿St. Anthony's Orphan Asylum,English,,﻿Central Avenue,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.3010108812653,-76.6000921565632,,,,,,﻿Sister,﻿Rosamunda,,,,﻿orphan,"﻿Orphans, boys and girls, 140",,1870.0,Baltimore
 ﻿bal.md.0232,﻿asylum,﻿St. Vincent's Female Asylum,English,,"﻿10th street, between F and G",,,,﻿Washington,﻿Washington,﻿DC,,38.8978901171577,-77.02575709014309,,,,,,﻿Sister,﻿Mary Blanche Rooney,,,,﻿orphan,"﻿Orphans, 145",,1870.0,Baltimore
-﻿bal.md.0233,﻿asylum,﻿St. Vincent's Infant Asylum,English,,﻿corner of Division and Townsend streets,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.302021305532705,-76.6306471795997,,,,,,﻿Sister,﻿Maria,,,,﻿infant,"﻿Number of infants, 70",,1870.0,Baltimore
+﻿bal.md.0003_05,﻿asylum,﻿St. Vincent's Infant Asylum,English,,﻿corner of Division and Townsend streets,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.302021305532705,-76.6306471795997,,,,,,﻿Sister,﻿Maria,,,,﻿infant,"﻿Number of infants, 70",,1870.0,Baltimore
 ﻿bal.md.0234,﻿asylum,﻿St. Joseph's Male Orphan Asylum,English,,﻿10th and F streets,,,,﻿Washington,﻿Washington,﻿DC,,38.8974008990823,-77.0261080725328,,,,,,﻿Sister,﻿Mary,﻿of the Circumcision,,,,,,1870.0,Baltimore
 ﻿bal.md.0235,﻿asylum,﻿Orphan Asylum for Colored Girls,English,,﻿Richmond street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.3259207649865,-76.57666454681281,,,,,,,,,,,﻿girl,"﻿Number of girls, 25",,1870.0,Baltimore
 ﻿bal.md.0236,﻿hospital,﻿St. Joseph's German Hospital,English,,﻿Caroline and Hoffman streets,,,,,,,,39.3065848757991,-76.59861290911509,,,,,,﻿Sister,﻿Clara,,,,,,,1870.0,Baltimore

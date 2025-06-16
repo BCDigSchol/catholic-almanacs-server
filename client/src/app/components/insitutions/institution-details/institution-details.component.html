@@ -68,6 +68,17 @@
                                 <div class="cell">{{data.affiliated}}</div>
                             </div>
                             <div class="row">
+                                <div class="cell">Relevant Institutions</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button color="primary" *ngFor="let item of data.relevantInstitutions" [matTooltip]="item?.instType || ''">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.relevantInstitutions.length === 0">None</div>
+                                </div>
+                            </div> 
+                            <div class="row">
                                 <div class="cell">Relevant People</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
