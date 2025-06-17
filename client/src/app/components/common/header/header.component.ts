@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
 
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatButtonModule} from '@angular/material/button'; 
-import {MatMenuModule} from '@angular/material/menu'; 
 
 import { Settings } from '../../../app.settings';
 
 @Component({
   selector: 'app-header',
   imports: [
-    MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule,
+    MatToolbarModule, MatIconModule, MatButtonModule,
     RouterLink, CommonModule
   ],
   templateUrl: './header.component.html',
@@ -20,6 +19,7 @@ import { Settings } from '../../../app.settings';
 })
 
 export class HeaderComponent implements OnInit {
+  @Output() navMenuToggle = new EventEmitter<boolean>();
   title = "Catholic Almanacs Database";
 
   navItems = [{
@@ -43,5 +43,9 @@ ngOnInit(): void {
         route: 'export'
       });
     }
+  };
+
+  toggleNav() {
+    this.navMenuToggle.emit(true);
   }
 }

@@ -1,0 +1,12 @@
+<div class="w-full h-full flex flex-col justify-start items-center">
+    <mat-list class="w-full">
+        <div *ngFor="let item of navItems">
+            <mat-list-item class="w-full text-center">
+                <button mat-button class="w-full" (click)="navigate(item.route)">
+                    {{ item.name }}
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+</div>
