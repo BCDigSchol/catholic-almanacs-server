@@ -98,5 +98,16 @@ export class MapComponent implements OnInit {
   hideInstDetail() {
     this.instDetailVisible = false;
     this.instDetailData = {};
+  };
+
+  getCircleColor (type: string) : string {
+    const colorMap : { [key: string] : string} = {
+      'cathedral': '#FF0000', // red
+      'church': '#FFFF00', // yellow
+      'convent': '#FFA500', // orange
+      'school': '#0000FF', // blue
+      'hospital': '#00FF00', // green
+    };
+    return colorMap[type] || '#FFFFFF'; // default to white if type not found
   }
 }

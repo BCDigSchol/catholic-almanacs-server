@@ -4,15 +4,21 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Settings } from '../../../app.settings';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ThemeService } from '../../../services/theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
-  imports: [MatListModule, CommonModule, MatButtonModule],
+  imports: [MatListModule, CommonModule, MatButtonModule, MatSlideToggleModule],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent implements OnInit {
   @Output() menuClicked = new EventEmitter<void>();
+
+  isDarkTheme$: Observable<boolean> = new Observable<boolean>();
+  isDarkTheme: boolean = false;
 
   navItems = [
     {
@@ -37,10 +43,14 @@ export class SidenavComponent implements OnInit {
     }
   ]
 
-  constructor (private _router: Router) {
+  constructor (private _router: Router, private themeService: ThemeService) { 
   }
 
   ngOnInit(): void {
+    this.isDarkTheme$ = this.themeService.isDarkTheme$;
+    this.isDarkTheme$.subscribe(values => {
+      this.isDarkTheme = values;
+    });
     if (Settings.exportEnabled) {
       this.navItems.push({
         name: 'Export',
@@ -53,5 +63,9 @@ export class SidenavComponent implements OnInit {
   navigate(path: string) {
     this._router.navigate([path]);
     this.menuClicked.emit();
+  }
+
+  toggleThemeState() {
+    this.themeService.setTheme(!this.isDarkTheme);
   }
 }

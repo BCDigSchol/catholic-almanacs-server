@@ -313,7 +313,7 @@ exports.findByID = async (req, res) => {
                     attributes: ['instName', 'instType'],
                 }]
             });
-            console.log('relevantInstitutions', relevantInstitutions);
+            //console.log('relevantInstitutions', relevantInstitutions);
             if (relevantInstitutions.length > 0) {
                 processedData.relevantInstitutions = relevantInstitutions.map(inst => {
                     return {

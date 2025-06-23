@@ -56,7 +56,7 @@ export class InstitutionDetailsComponent implements OnInit {
     this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
-      console.log(this.data.religiousOrder)
+      //console.log(this.data.religiousOrder)
     }
     );
   }

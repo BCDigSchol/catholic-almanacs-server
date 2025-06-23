@@ -8,5 +8,8 @@
             </mat-list-item>
             <mat-divider></mat-divider>
         </div>
+        <mat-slide-toggle (change)="toggleThemeState()">
+            {{ !isDarkTheme ? 'Light Theme' : 'Dark Theme' }}
+        </mat-slide-toggle>
     </mat-list>
 </div>

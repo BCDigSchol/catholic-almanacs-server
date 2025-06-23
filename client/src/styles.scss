@@ -48,17 +48,34 @@ body {
     font-size: 14px;
 }
 
-$custom-color: (
+$light-theme: (
+  color: (
+    theme-type: light,
     primary: theme-colors.$primary-palette,
     tertiary: theme-colors.$tertiary-palette,
+  ),
+  density: (
+    scale: 0
+  )
 );
 
-$custom-theme:(
-    color: $custom-color,
-    density: 0
+$dark-theme: (
+  color: (
+    theme-type: dark,
+    primary: theme-colors.$primary-palette,
+    tertiary: theme-colors.$tertiary-palette,
+  ),
+  density: (
+    scale: 0
+  )
 );
 
-html {
+:root {
     color-scheme: light dark;
-    @include mat.theme($custom-theme);
+    @include mat.theme($light-theme);
+}
+
+.dark-theme {
+    color-scheme: dark;
+    @include mat.theme($dark-theme);
 }
