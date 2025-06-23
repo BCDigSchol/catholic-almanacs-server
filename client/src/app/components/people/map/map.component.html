@@ -1,0 +1,45 @@
+<app-filter></app-filter>
+<mat-card>
+    <mat-card-content>
+        <div class="w-full flex flex-row justify-center items-center relative">
+            <div style="flex-shrink: 0;">
+            <google-map [options]="mapOptions" width = "900px" height="600px">
+                @for (item of data; track item) {
+                    <map-circle
+                        [center]="{lat: item.latitude, lng: item.longitude}"
+                        [radius]="300"
+                        [options]="{
+                            strokeColor: '#ff9600',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 2,
+                            fillColor: '#ff9600',
+                            fillOpacity: 0.35
+                        }"
+                        (circleClick)="clickMap(item)"
+                        (circleMouseover)="showPersDetail($event, item)"
+                        (circleMouseout)="hidePersDetail()"
+                    ></map-circle>
+                }
+            </google-map>
+            </div>
+            <div class="absolute top-0 right-50 m-2" style="width: 300px;">
+                <mat-card *ngIf="persDetailVisible">
+                    <mat-card-content>
+                        <div>
+                            <b>People: </b>
+                            @for (pers of persDetailData.personInAlmanacRecord; track $index; let last = $last) {
+                                {{ pers.title + ' ' + pers.name + ' ' + pers.suffix }} {{ last ? '' : ',' }}
+                            }
+                        </div>
+                        <div>
+                            <b>Institution Name: </b>{{persDetailData.instName}}
+                        </div>
+                        <div>
+                            <b>Year: </b>{{persDetailData.year}}
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

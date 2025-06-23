@@ -171,6 +171,7 @@ exports.findByID = async (req, res) => {
                 processedData.year.push(almanacRecord.year);
             }
         }
+        processedData.year.sort((a, b) => a - b);
         res.send(processedData);
     } else {
         res.status(404).send({

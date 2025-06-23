@@ -1,6 +1,6 @@
-<app-header (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when clicked, toggleNavMenu() is called-->
+<app-header (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when it emits a signal, toggleNavMenu() is called-->
 <mat-sidenav-container class="w-full h-full" autosize #sidenav>
-    <mat-sidenav #drawer mode="side" position="end" style="width: 200px">
+    <mat-sidenav #drawer mode="side" position="end" style="width: 200px;">
         <app-sidenav (menuClicked)="toggleNavMenu()">
         </app-sidenav>
     </mat-sidenav>

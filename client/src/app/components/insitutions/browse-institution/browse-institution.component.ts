@@ -54,7 +54,7 @@ export class BrowseInstitutionComponent implements OnInit {
     { type: 'input', label: 'Diocese', keyword: 'diocese', active: false },
     { type: 'input', label: 'Religious Order', keyword: 'religiousOrder', active: false },
     { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
-    { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1860, max:1870, active: false },
+    { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1830, max:1870, active: false },
   ]
   
 

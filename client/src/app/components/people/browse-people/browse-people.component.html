@@ -10,7 +10,7 @@
         </mat-paginator>
     </div>
 
-    <mat-card *ngFor="let item of data" class="my-5">
+    <mat-card *ngFor="let item of data" class="my-3">
         <mat-card-header [routerLink]="'/people/' + item.ID" style="cursor: pointer;">
             <mat-card-title>
                 {{ item.almanacRecords[item.almanacRecords.length - 1].personInAlmanacRecord.title + ' ' + item.almanacRecords[item.almanacRecords.length - 1]?.personInAlmanacRecord.name

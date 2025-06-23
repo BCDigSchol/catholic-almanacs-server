@@ -22,28 +22,8 @@ export class HeaderComponent implements OnInit {
   @Output() navMenuToggle = new EventEmitter<boolean>();
   title = "Catholic Almanacs Database";
 
-  navItems = [{
-    name: 'Home',
-    route: 'home'
-  }, {
-    name: 'Institutions',
-    route: 'institutions'
-  },{
-    name: 'People',
-    route: 'people'
-  },{
-    name: 'About',
-    route: 'about'
-  }];
-
-ngOnInit(): void {
-      if (Settings.exportEnabled) {
-      this.navItems.push({
-        name: 'Export',
-        route: 'export'
-      });
-    }
-  };
+  ngOnInit(): void {
+};
 
   toggleNav() {
     this.navMenuToggle.emit(true);

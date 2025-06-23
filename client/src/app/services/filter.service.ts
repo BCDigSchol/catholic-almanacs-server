@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 interface FilterField {
-  type: 'input' | 'range' | 'boolean' | 'dropdown';
+  type: 'input' | 'range' | 'boolean' | 'dropdown' | 'slider';
   label?: string;
   keyword: string;
   keywordStart?: string; 
@@ -11,6 +11,7 @@ interface FilterField {
   max?: number;
   active?: boolean;
   dropdown?: string[];
+  defaultValue?: any;
 }
 
 @Injectable({
@@ -39,6 +40,10 @@ export class FilterService {
     this.fields = [];
     for (let field of fields) {
       this.fields.push(field as FilterField);
+      // set the default value for the filter field if it exists
+      if (field.defaultValue && field.keyword) {
+        this.filterValues[field.keyword] = field.defaultValue;
+      }
     }
     this.filterValues = {};
   };

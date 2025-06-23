@@ -4,4 +4,5 @@ module.exports = app => {
     require('./export.routes.js')(app);
     require('./churchPerson.routes.js')(app);
     require('./churchChurch.routes.js')(app);
+    require('./maps.routes.js')(app);
 };

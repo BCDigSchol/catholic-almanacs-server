@@ -23,3 +23,10 @@
     color: #004346;
     background-color: #ceddde;
 }
+
+:host .cell {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+}

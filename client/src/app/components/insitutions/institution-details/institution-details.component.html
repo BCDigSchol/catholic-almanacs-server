@@ -119,7 +119,7 @@
                         </button>
                     </div>
                     <div class="w-full flex flex-col justify-center items-center">
-                        <google-map [options]="mapOptions" width="600px" heigh="350px">
+                        <google-map [options]="mapOptions" width="600px" height="350px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
                             <map-polygon></map-polygon> <!--could be an option-->

@@ -34,6 +34,11 @@
                             <input value="{{filter.max}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keywordEnd!]" matSliderEndThumb >
                         </mat-slider>
                     </div>
+                    <div *ngSwitchCase="filter.type == 'slider'">
+                        <mat-slider class="mx-2" style="width:200px" [min]="filter.min" [max]="filter.max" step="1" discrete>
+                            <input value="{{filter.min}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keyword!]" matSliderThumb >
+                        </mat-slider>
+                    </div>
                     <div *ngSwitchCase="filter.type == 'boolean'">
                       <mat-slide-toggle id="{{ filter.keyword }} + 'Filter'" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keyword!]">
                         {{ filter.label }}

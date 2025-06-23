@@ -48,7 +48,7 @@ export class FilterComponent implements OnInit{
   }
 
   updateFilter(filter: any) {
-    if (filter.type === 'input' || filter.type === 'dropdown' || filter.type === 'boolean') {
+    if (filter.type === 'input' || filter.type === 'dropdown' || filter.type === 'boolean' || filter.type === 'slider') {
       this.filterService.setFilterValue(filter.keyword, this.filterValues[filter.keyword]);
     } else if (filter.type === 'range') {
       this.filterService.setFilterValue(filter.keywordStart, this.filterValues[filter.keywordStart]);

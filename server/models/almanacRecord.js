@@ -60,10 +60,19 @@ module.exports = (sequelize, DataTypes) => {
         fields: ['instName'],
       },
       {
-        fields: ['instYear'],
+        fields: ['year'],
       },
       {
-        fields: ['instYear', 'instID'],
+        fields: ['year', 'instID'],
+      },
+      {
+        fields: ['instType'],
+      },
+      {
+        fields: ['year', 'instType'],
+      },
+      {
+        fields: ['year', 'instName']
       }
     ]
   });
