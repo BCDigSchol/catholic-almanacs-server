@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'attendedInstRecordID', as: 'attendedBy'});
       almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'attendingInstRecordID', as: 'attendingInstitutions'});
       almanacRecord.belongsTo(models.institution, { foreignKey: 'instID', as: 'institution' });
+      almanacRecord.hasMany(models.relatedInstitutions, { foreignKey: 'almanacRecordID', as: 'relatedInstitutions' });
     }
   }
   almanacRecord.init({

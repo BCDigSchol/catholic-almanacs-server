@@ -34,14 +34,14 @@
 ﻿stl.mo.0016,﻿church,﻿St. Malachy's,English,﻿residence adjoining,﻿Clark and Summit avenues,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.712000399999994,-90.24797840000001,,,,,﻿m_tobyn_001,﻿Rev.,﻿M. Tobyn,,,,,,,1866.0,StLouis
 ﻿stl.mo.0017,﻿church,﻿Annunciation,English,﻿residence adjoining,"﻿Sixth street, near Chouteau avenue",,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6237125,-90.2257213,,,,,﻿p_j_ryan_001,﻿Rev.,﻿P. J. Ryan,,,,,,,1866.0,StLouis
 ﻿stl.mo.0017,﻿church,﻿Annunciation,English,﻿residence adjoining,"﻿Sixth street, near Chouteau avenue",,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6237125,-90.2257213,,,,,﻿t_m_kavanaugh_001,﻿Rev.,﻿T. M. Kavanaugh,,,,,,,1866.0,StLouis
-﻿stl.mo.0018,﻿church,﻿Assumption,English,﻿residence adjoining,"﻿Sydney street, near Seventh street",,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6040286,-90.21901329999999,,,,,﻿m_riordan_003,﻿Rev.,﻿M. Riordan,,,,,,,1866.0,StLouis
+﻿stl.mo.0018,﻿church,﻿Assumption,English,﻿residence adjoining,"﻿Sydney street, near Seventh street",,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6040286,-90.21901329999999,,,,,﻿m_riordan_001,﻿Rev.,﻿M. Riordan,,,,,,,1866.0,StLouis
 ﻿stl.mo.0019,﻿church,﻿St. Theresa's,English,﻿(in progress),,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.5538158,-90.26841309999999,,,,,﻿g_gallagher_001,﻿Rev.,﻿G. Gallagher,,,,,,,1866.0,StLouis
 ﻿stl.mo.0025,﻿chapel,﻿Chapel of the St. Louis Hospital,English,,﻿St. Louis Hospital,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6218347,-90.23989549999999,,,,,﻿m_welby_001,﻿Rev.,﻿M. Welby,,,,,,,1866.0,StLouis
 ﻿stl.mo.0033,﻿church,﻿Holy Cross,English,,﻿near Calvary Cemetery (Baden P.O.),,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6947865,-90.23870749999999,﻿stl.mo.0006,﻿attended from Holy Trinity,,,,,,,,,,,,1866.0,StLouis
 ﻿stl.mo.0034,﻿church,﻿St. Thomas,English,,﻿Lowell,,,,﻿St. Louis,﻿St. Louis,﻿MO,,38.6270025,-90.1994042,,,,,﻿fel_l_verreydt_001,﻿Rev.,﻿Felix L. Verreydt,﻿S.J.,,,,,,1866.0,StLouis
 ﻿stl.mo.0037,﻿church,﻿St. Joseph's,English,,,,﻿Cape Girardeau County,﻿Perry County,﻿Apple Creek,﻿Apple Creek,﻿MO,,37.6128292,-89.75093509999999,,,,,﻿j_becker_001,﻿Rev.,﻿J. Becker,,,,,,,1866.0,StLouis
 ﻿stl.mo.0038,﻿church,﻿St. Patrick's,English,,,,﻿Franklin County,,﻿Armagh,﻿Armagh,﻿MO,,37.9642529,-91.83183340000001,,,,,﻿e_berry_001,﻿Rev.,﻿E. Berry,,,﻿(Catawissa P.O.),,,,1866.0,StLouis
-﻿stl.mo.0041,﻿church,﻿St. Mary's,English,,,,﻿Perry County,,﻿Barrens,﻿Barrens,﻿MO,,37.723555,-89.7755338,,,,,﻿p_mcmenomy_002,﻿Rev.,﻿P. McMenomy,﻿C.M.,,﻿and other priests of the congregation,,,,1866.0,StLouis
+﻿stl.mo.0041,﻿church,﻿St. Mary's,English,,,,﻿Perry County,,﻿Barrens,﻿Barrens,﻿MO,,37.723555,-89.7755338,,,,,﻿ber_p_mcmenomy_001,﻿Rev.,﻿P. McMenomy,﻿C.M.,,﻿and other priests of the congregation,,,,1866.0,StLouis
 ﻿stl.mo.0042,﻿church,not recorded,English,,,,﻿Cooper County,,﻿Boonville,﻿Boonville,﻿MO,,38.97363920000001,-92.74324179999999,,,,,﻿b_hillner_001,﻿Rev.,﻿B. Hillner,,,,,,,1866.0,StLouis
 ﻿stl.mo.0043,﻿church,not recorded,English,,,,﻿St. Louis County,,﻿Bridgetown,﻿Bridgetown,﻿MO,,38.7669954,-90.4115057,,,,,﻿j_m_jackson_001,﻿Rev.,﻿J. M. Jackson,,,﻿name is P. T. Ring in 1870- could maybe be same person??,,,,1866.0,StLouis
 ﻿stl.mo.0044,﻿church,not recorded,English,,,,﻿Ralls County,,﻿Brush Creek,﻿Brush Creek,﻿MO,,39.480497899999996,-91.42538559999998,﻿stl.mo.135,﻿Attended from St. Paul's,,,,,,,,,,,,1866.0,StLouis
@@ -101,7 +101,7 @@
 ﻿stl.mo.0127,﻿church,﻿St. Gertrude,English,,,,﻿Franklin County,,,,﻿MO,,38.4974505,-91.04941590000001,﻿stl.mo.0144,﻿Attended from Washington,,,,,,,,,,,,1866.0,StLouis
 ﻿stl.mo.0128,﻿church,﻿St. John,English,,﻿Gray Summit P.O.,,﻿Franklin County,,,,﻿MO,,38.5009625,-90.9425541,,,,,﻿t_a_stroombergen_001,﻿Rev.,﻿T. A. Stroombergen,,,,,,,1866.0,StLouis
 ﻿stl.mo.0129,﻿church,﻿St. Charles',English,,,,﻿St. Charles County,,﻿St. Charles,﻿St. Charles,﻿MO,,38.7881062,-90.4974359,,,,,﻿m_oakley_002,﻿Rev.,﻿M. Oakley,﻿S.J.,,,,,,1866.0,StLouis
-﻿stl.mo.0129,﻿church,﻿St. Charles',English,,,,﻿St. Charles County,,﻿St. Charles,﻿St. Charles,﻿MO,,38.7881062,-90.4974359,,,,,﻿joh_setters_002,﻿Rev.,﻿John Setters,﻿S.J.,,,,,,1866.0,StLouis
+﻿stl.mo.0129,﻿church,﻿St. Charles',English,,,,﻿St. Charles County,,﻿St. Charles,﻿St. Charles,﻿MO,,38.7881062,-90.4974359,,,,,﻿joh_setters_001,﻿Rev.,﻿John Setters,﻿S.J.,,,,,,1866.0,StLouis
 ﻿stl.mo.0129,﻿church,﻿St. Charles',English,,,,﻿St. Charles County,,﻿St. Charles,﻿St. Charles,﻿MO,,38.7881062,-90.4974359,,,,,﻿p_j_verhaegen_001,﻿Rev.,﻿P. J. Verhaegen,﻿S.J.,,,,,,1866.0,StLouis
 ﻿stl.mo.0130,﻿church,﻿St. Peter's,﻿German,,,,﻿St. Charles County,,﻿St. Charles,﻿St. Charles,﻿MO,,38.7666386,-90.610943,,,,,﻿p_vogg_001,﻿Rev.,﻿P. Vogg,,,,,,,1866.0,StLouis
 ﻿stl.mo.0130,﻿church,﻿St. Peter's,﻿German,,,,﻿St. Charles County,,﻿St. Charles,﻿St. Charles,﻿MO,,38.78015204087129,-90.70592424921871,,,,,﻿n_staundinger_001,﻿Rev.,﻿N. Staundinger,,,,,,,1866.0,StLouis

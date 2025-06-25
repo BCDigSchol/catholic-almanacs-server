@@ -171,9 +171,9 @@
 ﻿har.ct.0137,﻿church,not recorded,English,,,,,﻿Middlesex County,﻿Westbrook,﻿Westbrook,﻿CT,,41.2959741,-72.4641563,﻿har.ct.0043,﻿attended from Branford,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0138,﻿church,not recorded,English,,,,,﻿Middlesex County,﻿Westbrook,﻿Westbrook,﻿CT,,41.2959741,-72.4641563,﻿har.ct.0043,﻿attended from Branford,,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0139,﻿church,﻿Church of the Assumption,English,,,,,﻿Fairfield County,﻿Westport,﻿Westport,﻿CT,,41.1363191,-73.3652,﻿har.ct.0107,﻿attended from Norwalk,﻿twice a month,,,,,,,,,,,1870.0,Hartford
-﻿har.ct.0140,﻿church,﻿St. Joseph's Church,English,,,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.9213905,-73.0646739,,,,,﻿leo_da-saracena_001,﻿Rev.,﻿Leo da Saracena,﻿O.S.F.,﻿pastor,,,,,1870.0,Hartford
-﻿har.ct.0140,﻿church,﻿St. Joseph's Church,English,,,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.9213905,-73.0646739,,,,,﻿eug_pagani_001,﻿Rev.,﻿Eugene Pagani,﻿O.S.F.,,,,,,1870.0,Hartford
-﻿har.ct.0140,﻿church,﻿St. Joseph's Church,English,,,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.9213905,-73.0646739,,,,,﻿jer_collins_001,﻿Rev. Fr.,﻿Jerome Collins,﻿O.S.F.,,,,,,1870.0,Hartford
+﻿har.ct.0148_02,﻿church,﻿St. Joseph's Church,English,,﻿St. Joseph's Franciscan Convent,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.9213905,-73.0646739,,,,,﻿leo_da-saracena_001,﻿Rev.,﻿Leo da Saracena,﻿O.S.F.,﻿pastor,,,,,1870.0,Hartford
+﻿har.ct.0148_02,﻿church,﻿St. Joseph's Church,English,,﻿St. Joseph's Franciscan Convent,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.9213905,-73.0646739,,,,,﻿eug_pagani_001,﻿Rev.,﻿Eugene Pagani,﻿O.S.F.,,,,,,1870.0,Hartford
+﻿har.ct.0148_02,﻿church,﻿St. Joseph's Church,English,,﻿St. Joseph's Franciscan Convent,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.9213905,-73.0646739,,,,,﻿jer_collins_001,﻿Rev. Fr.,﻿Jerome Collins,﻿O.S.F.,,,,,,1870.0,Hartford
 ﻿har.ct.0141,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Hartford County,﻿Windsor,﻿Windsor,﻿CT,,41.8525984,-72.64370219999999,﻿har.ct.0142,﻿attended from Windsor Locks,﻿every Sunday,,,,,,,,,,,1870.0,Hartford
 ﻿har.ct.0142,﻿church,﻿St. Mary's,English,,,,,﻿Hartford County,﻿Windsor Locks,﻿Windsor Locks,﻿CT,,41.9301847,-72.6295369,,,,,﻿jam_smyth_001,﻿Rev.,﻿James Smyth,,﻿pastor,,,,,1870.0,Hartford
 ﻿har.ct.0142,﻿church,﻿St. Mary's,English,,,,,﻿Hartford County,﻿Windsor Locks,﻿Windsor Locks,﻿CT,,41.9301847,-72.6295369,,,,,﻿p_fay_001,﻿Rev.,﻿P. Fay,,,,,,,1870.0,Hartford
@@ -226,37 +226,37 @@
 ﻿har.ct.0165,﻿academy,﻿Academy of Immaculate Conception,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558152500000006,-73.0514965,,,,,,,,,,,﻿professed sister,"﻿professed sisters, 6",﻿under the charge of the Sisters of the Congregation,1870.0,Hartford
 ﻿har.ct.0166,﻿convent,﻿Convent of St. Margaret of Cortona,English,,,,,,﻿Winsted,﻿Winsted,﻿CT,,41.9237696,-73.0600121,,,,,,﻿Sister,﻿Mary Joseph Todd,,﻿Superior,,﻿postulant,"﻿postulants, 2",﻿Sisters of the Third Order of St. Francis,1870.0,Hartford
 ﻿har.ct.0167,﻿academy,﻿Academy of St. Margaret of Cortona,English,,,,,,﻿Winsted,﻿Winsted,﻿CT,,41.9237696,-73.0600121,,,,,,﻿Sister,﻿Seraphine,,﻿Superior,,﻿pupil,"﻿Pupils, 820",﻿under direction of the Sisters of the Third Order of St. Francis,1870.0,Hartford
-﻿har.ct.0168,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿under charge of the Sisters of Mercy. School for Christian Brothers about to be built,1870.0,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8193105,-71.41658309999998,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿under charge of the Sisters of Mercy. School for Christian Brothers about to be built,1870.0,Hartford
 ﻿har.ct.0169,﻿school,﻿School of the Holy Angels,English,,,,,,,﻿Providence,,﻿RI,41.82269836,-71.41227872,,,,,,,,,,,﻿pupil,"﻿Pupils, 325",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0170,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.83575689,-71.4171872,,,,,,,,,,,﻿pupil,"﻿Pupils, 500",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0171,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.872245299999996,-71.38935749999999,,,,,,,,,,,﻿pupil,"﻿Pupils 450, under charge of the Sisters of Mercy; 150 under charge of Mr. K. Delaney",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0172,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Newport,﻿Newport,﻿RI,,41.4838365,-71.3123959,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",,1870.0,Hartford
-﻿har.ct.0173,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.31192070000001,-72.92382370000001,,,,,,,,,,,﻿pupil,"﻿Pupils, 700",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0174,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.2967151,-72.94313079999999,,,,,,,,,,,﻿pupil,﻿Pupils 500 conducted by the Sisters of Mercy; and 400 conducted by the Christian Brothers,﻿under the charge of the Sisters of Mercy. conducted by the Christian Brothers,1870.0,Hartford
-﻿har.ct.0175,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.6828563,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿conducted by the Sisters of Mercy and by the Christian Brothers,1870.0,Hartford
-﻿har.ct.0176,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.7573218,-72.6742811,,,,,,,,,,,﻿boy,"﻿boys, 350",﻿under charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0177,﻿school,not recorded,English,"﻿Boys under charge of lay teachers, girls under charge of the Sisters of Charity",﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.751996000000005,-71.47536,,,,,,,,,,,﻿girl,"﻿girls, 400",﻿Sisters of Charity,1870.0,Hartford
-﻿har.ct.0177,﻿school,not recorded,English,"﻿Boys under charge of lay teachers, girls under charge of the Sisters of Charity",﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.751996000000005,-71.47536,,,,,,,,,,,﻿boy,﻿boys 100,﻿Sisters of Charity,1870.0,Hartford
-﻿har.ct.0178,﻿school,not recorded,English,,﻿St. Charles',,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008153799999995,-71.5139505,,,,,,,,,,,﻿girl,﻿girls 120,﻿under the charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0178,﻿school,not recorded,English,,﻿St. Charles',,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008153799999995,-71.5139505,,,,,,,,,,,﻿boy,﻿Boys 200,﻿under the charge of the Sisters of Mercy,1870.0,Hartford
-﻿har.ct.0179,﻿school,not recorded,English,"﻿Boys under the charge of lay teachers, girls under the direction of secular teachers",﻿Immaculate Conception,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558152500000006,-73.0514965,,,,,,,,,,,﻿girl,﻿girls 175,,1870.0,Hartford
-﻿har.ct.0179,﻿school,not recorded,English,"﻿Boys under the charge of lay teachers, girls under the direction of secular teachers",﻿Immaculate Conception,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558152500000006,-73.0514965,,,,,,,,,,,﻿boy,﻿Boys 175,,1870.0,Hartford
-﻿har.ct.0180,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.66977803,-72.7854653,,,,,,,,,,,﻿girl,﻿girls 132,,1870.0,Hartford
-﻿har.ct.0180,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.66977803,-72.7854653,,,,,,,,,,,﻿boy,﻿Boys 175,,1870.0,Hartford
-﻿har.ct.0181,﻿school,not recorded,English,﻿lay teachers,﻿St. Rose of Lima,,,,﻿Meriden,﻿Meriden,﻿CT,,41.5349562,-72.7930366,,,,,,,,,,,﻿girl,﻿girls 75,,1870.0,Hartford
-﻿har.ct.0181,﻿school,not recorded,English,﻿lay teachers,﻿St. Rose of Lima,,,,﻿Meriden,﻿Meriden,﻿CT,,41.5349562,-72.7930366,,,,,,,,,,,﻿boy,﻿Boys 45,,1870.0,Hartford
-﻿har.ct.0182,﻿school,not recorded,English,﻿lay teachers,﻿Most Holy Trinity,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.46252113,-72.82095100000001,,,,,,,,,,,﻿girl,﻿girls 45,,1870.0,Hartford
-﻿har.ct.0182,﻿school,not recorded,English,﻿lay teachers,﻿Most Holy Trinity,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.46252113,-72.82095100000001,,,,,,,,,,,﻿boy,﻿Boys 220,,1870.0,Hartford
-﻿har.ct.0183,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Middleton,﻿Middletown,﻿CT,,41.567417,-72.6528917,,,,,,,,,,,﻿girl,﻿girls 261,,1870.0,Hartford
-﻿har.ct.0183,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Middleton,﻿Middletown,﻿CT,,41.567417,-72.6528917,,,,,,,,,,,﻿boy,﻿Boys 125,,1870.0,Hartford
-﻿har.ct.0184,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Stamford,﻿Stamford,﻿CT,,41.0517121,-73.54017490000001,,,,,,,,,,,﻿girl,﻿girls 120,,1870.0,Hartford
-﻿har.ct.0184,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Stamford,﻿Stamford,﻿CT,,41.0517121,-73.54017490000001,,,,,,,,,,,﻿boy,﻿Boys 90,,1870.0,Hartford
-﻿har.ct.0185,﻿school,not recorded,English,﻿lay teachers,,,,,﻿Danbury,﻿Danbury,﻿CT,,41.394816999999996,-73.45401109999999,,,,,,,,,,,﻿girl,﻿girls 115,,1870.0,Hartford
-﻿har.ct.0185,﻿school,not recorded,English,﻿lay teachers,,,,,﻿Danbury,﻿Danbury,﻿CT,,41.394816999999996,-73.45401109999999,,,,,,,,,,,﻿boy,﻿Boys 120,,1870.0,Hartford
-﻿har.ct.0186,﻿school,not recorded,English,﻿lay teachers,﻿St. James',,,,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1792258,-73.18943840000001,,,,,,,,,,,﻿girl,﻿girls 130,,1870.0,Hartford
-﻿har.ct.0186,﻿school,not recorded,English,﻿lay teachers,﻿St. James',,,,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1792258,-73.18943840000001,,,,,,,,,,,﻿boy,﻿Boys 200,,1870.0,Hartford
-﻿har.ct.0187,﻿school,not recorded,English,﻿lay teachers,,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.308274,-72.9278835,,,,,,,,,,,﻿girl,﻿girls 200,,1870.0,Hartford
-﻿har.ct.0187,﻿school,not recorded,English,﻿lay teachers,,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.308274,-72.9278835,,,,,,,,,,,﻿boy,﻿Boys 75,,1870.0,Hartford
-﻿har.ct.0188,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿Norwalk,﻿Norwalk,﻿CT,,41.117744,-73.4081575,,,,,,,,,,,﻿girl,﻿girls 80,,1870.0,Hartford
-﻿har.ct.0188,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿Norwalk,﻿Norwalk,﻿CT,,41.117744,-73.4081575,,,,,,,,,,,﻿girls and boys,﻿200 girls and boys,,1870.0,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.83575689,-71.4171872,,,,,,,,,,,﻿pupil,"﻿Pupils, 500",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.872245299999996,-71.38935749999999,,,,,,,,,,,﻿pupil,"﻿Pupils 450, under charge of the Sisters of Mercy; 150 under charge of Mr. K. Delaney",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Newport,﻿Newport,﻿RI,,41.4838365,-71.3123959,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",,1870.0,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.31192070000001,-72.92382370000001,,,,,,,,,,,﻿pupil,"﻿Pupils, 700",﻿under the charge of the Sisters of Mercy,1870.0,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.2967151,-72.94313079999999,,,,,,,,,,,﻿pupil,﻿Pupils 500 conducted by the Sisters of Mercy; and 400 conducted by the Christian Brothers,﻿under the charge of the Sisters of Mercy. conducted by the Christian Brothers,1870.0,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.6828563,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿conducted by the Sisters of Mercy and by the Christian Brothers,1870.0,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.7573218,-72.6742811,,,,,,,,,,,﻿boy,"﻿boys, 350",﻿under charge of the Sisters of Mercy,1870.0,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,"﻿Boys under charge of lay teachers, girls under charge of the Sisters of Charity",﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.751996000000005,-71.47536,,,,,,,,,,,﻿girl,"﻿girls, 400",﻿Sisters of Charity,1870.0,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,"﻿Boys under charge of lay teachers, girls under charge of the Sisters of Charity",﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.751996000000005,-71.47536,,,,,,,,,,,﻿boy,﻿boys 100,﻿Sisters of Charity,1870.0,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,﻿St. Charles',,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008153799999995,-71.5139505,,,,,,,,,,,﻿girl,﻿girls 120,﻿under the charge of the Sisters of Mercy,1870.0,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,﻿St. Charles',,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008153799999995,-71.5139505,,,,,,,,,,,﻿boy,﻿Boys 200,﻿under the charge of the Sisters of Mercy,1870.0,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,"﻿Boys under the charge of lay teachers, girls under the direction of secular teachers",﻿Immaculate Conception,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558152500000006,-73.0514965,,,,,,,,,,,﻿girl,﻿girls 175,,1870.0,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,"﻿Boys under the charge of lay teachers, girls under the direction of secular teachers",﻿Immaculate Conception,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558152500000006,-73.0514965,,,,,,,,,,,﻿boy,﻿Boys 175,,1870.0,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.66977803,-72.7854653,,,,,,,,,,,﻿girl,﻿girls 132,,1870.0,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.66977803,-72.7854653,,,,,,,,,,,﻿boy,﻿Boys 175,,1870.0,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,﻿lay teachers,﻿St. Rose of Lima,,,,﻿Meriden,﻿Meriden,﻿CT,,41.5349562,-72.7930366,,,,,,,,,,,﻿girl,﻿girls 75,,1870.0,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,﻿lay teachers,﻿St. Rose of Lima,,,,﻿Meriden,﻿Meriden,﻿CT,,41.5349562,-72.7930366,,,,,,,,,,,﻿boy,﻿Boys 45,,1870.0,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,﻿lay teachers,﻿Most Holy Trinity,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.46252113,-72.82095100000001,,,,,,,,,,,﻿girl,﻿girls 45,,1870.0,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,﻿lay teachers,﻿Most Holy Trinity,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.46252113,-72.82095100000001,,,,,,,,,,,﻿boy,﻿Boys 220,,1870.0,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Middleton,﻿Middletown,﻿CT,,41.567417,-72.6528917,,,,,,,,,,,﻿girl,﻿girls 261,,1870.0,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Middleton,﻿Middletown,﻿CT,,41.567417,-72.6528917,,,,,,,,,,,﻿boy,﻿Boys 125,,1870.0,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Stamford,﻿Stamford,﻿CT,,41.0517121,-73.54017490000001,,,,,,,,,,,﻿girl,﻿girls 120,,1870.0,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,﻿lay teachers,﻿St. John's,,,,﻿Stamford,﻿Stamford,﻿CT,,41.0517121,-73.54017490000001,,,,,,,,,,,﻿boy,﻿Boys 90,,1870.0,Hartford
+﻿har.ct.0055_02,﻿school,not recorded,English,﻿lay teachers,,,,,﻿Danbury,﻿Danbury,﻿CT,,41.394816999999996,-73.45401109999999,,,,,,,,,,,﻿girl,﻿girls 115,,1870.0,Hartford
+﻿har.ct.0055_02,﻿school,not recorded,English,﻿lay teachers,,,,,﻿Danbury,﻿Danbury,﻿CT,,41.394816999999996,-73.45401109999999,,,,,,,,,,,﻿boy,﻿Boys 120,,1870.0,Hartford
+﻿har.ct.0039_02,﻿school,not recorded,English,﻿lay teachers,﻿St. James',,,,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1792258,-73.18943840000001,,,,,,,,,,,﻿girl,﻿girls 130,,1870.0,Hartford
+﻿har.ct.0039_02,﻿school,not recorded,English,﻿lay teachers,﻿St. James',,,,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.1792258,-73.18943840000001,,,,,,,,,,,﻿boy,﻿Boys 200,,1870.0,Hartford
+﻿har.ct.0099_02,﻿school,not recorded,English,﻿lay teachers,,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.308274,-72.9278835,,,,,,,,,,,﻿girl,﻿girls 200,,1870.0,Hartford
+﻿har.ct.0099_02,﻿school,not recorded,English,﻿lay teachers,,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.308274,-72.9278835,,,,,,,,,,,﻿boy,﻿Boys 75,,1870.0,Hartford
+﻿har.ct.0107_02,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿Norwalk,﻿Norwalk,﻿CT,,41.117744,-73.4081575,,,,,,,,,,,﻿girl,﻿girls 80,,1870.0,Hartford
+﻿har.ct.0107_02,﻿school,not recorded,English,﻿lay teachers,﻿St. Mary's,,,,﻿Norwalk,﻿Norwalk,﻿CT,,41.117744,-73.4081575,,,,,,,,,,,﻿girls and boys,﻿200 girls and boys,,1870.0,Hartford
 ﻿har.ct.0189,﻿school,not recorded,English,,﻿St. Anthony of Padua,,,,﻿Winsted,﻿Winsted,﻿CT,,41.92343709,-73.06437387,,,,,,,,,,,,,﻿under the charge of the Sisters of the Third Order of St. Francis,1870.0,Hartford

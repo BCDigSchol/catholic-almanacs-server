@@ -280,43 +280,43 @@
 ﻿bal.md.0167,﻿academy,﻿Academy of Notre Dame,English,,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,,,,1866.0,Baltimore
 ﻿bal.md.0145_02,﻿academy,﻿Academy of Sisters of Mercy,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,,,,1866.0,Baltimore
 ﻿bal.md.0169,﻿academy,﻿Academy of the Holy Cross,English,,﻿Gough street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,﻿Sister,﻿M. Alphonsus,,﻿Directress,,,,﻿Sisters of the Holy Cross,1866.0,Baltimore
-﻿bal.md.0001_03,﻿academy,﻿Academy of St. Joseph and Male Parish School of the Cathedral,English,,"﻿Calvert Hall, corner of Saratoga and Little Sharp streets",,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
-﻿bal.md.0001_02,﻿school,﻿Female Parish School of the Cathedral,English,,"﻿St. Mary's Asylum, Franklin street",,,,,,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 250",﻿Sisters of Charity,1866.0,Baltimore
-﻿bal.md.0010_02,﻿school,﻿Male Parish School of St. Alphonsus' Church,﻿German,,﻿Saratoga street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
-﻿bal.md.0010_03,﻿school,﻿Female Parish School of St. Alphonsus,English,,,,,,,,,,,,,,,,,,,,,,﻿scholar,"﻿Number of scholars, 300",﻿School Sisters of Notre Dame,1866.0,Baltimore
-﻿bal.md.0004_02,﻿school,﻿Male Parish School of St. Peter's,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
-﻿bal.md.0004_03,﻿school,﻿Female Parish School of St. Peter's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿Sisters of Mercy,1866.0,Baltimore
-﻿bal.md.0003_02,﻿school,﻿Male Parish School of St. Vincent's,English,,﻿Front street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
-﻿bal.md.0003_03,﻿school,﻿Female Parish School of St. Vincent's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿Sisters of Charity,1866.0,Baltimore
-﻿bal.md.0002_02,﻿school,﻿Male Parish School of St. Patrick's Church,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",﻿Brothers of the Holy Cross,1866.0,Baltimore
-﻿bal.md.0002_03,﻿school,﻿Female Parish School of St. Patrick's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",﻿Sisters of the Holy Cross,1866.0,Baltimore
-﻿bal.md.0014_02,﻿school,﻿St. Bridget's Schools,English,,,,,,,,,,,,,,,,,,,,,,﻿pupil,﻿100 pupils,,1866.0,Baltimore
-﻿bal.md.0183,﻿school,﻿St. Laurence's Schools,English,,,,,,,,,,,,,,,,,,,,,,﻿pupil,﻿75 pupils,,1866.0,Baltimore
-﻿bal.md.0007_02,﻿school,﻿St. Joseph's Male Parish School,English,,﻿79 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1866.0,Baltimore
-﻿bal.md.0007_03,﻿school,﻿St. Joseph's Female Parish School,English,,﻿73 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 250",﻿Sisters of Charity,1866.0,Baltimore
+﻿bal.md.0001_03,﻿academy,﻿Academy of St. Joseph and Male Parish School of the Cathedral,English,,"﻿Calvert Hall, corner of Saratoga and Little Sharp streets",,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Number of pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
+﻿bal.md.0001_02,﻿school,﻿Female Parish School of the Cathedral,English,,"﻿St. Mary's Asylum, Franklin street",,,,,,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Number of pupils, 250",﻿Sisters of Charity,1866.0,Baltimore
+﻿bal.md.0010_02,﻿school,﻿Male Parish School of St. Alphonsus' Church,﻿German,,﻿Saratoga street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Number of pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
+﻿bal.md.0010_03,﻿school,﻿Female Parish School of St. Alphonsus,English,,,,,,,,,,,,,,,,,,,,,,﻿student,"﻿Number of scholars, 300",﻿School Sisters of Notre Dame,1866.0,Baltimore
+﻿bal.md.0004_02,﻿school,﻿Male Parish School of St. Peter's,English,,﻿Poppleton street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
+﻿bal.md.0004_03,﻿school,﻿Female Parish School of St. Peter's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 250",﻿Sisters of Mercy,1866.0,Baltimore
+﻿bal.md.0003_02,﻿school,﻿Male Parish School of St. Vincent's,English,,﻿Front street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 300",﻿Brothers of the Christian Schools,1866.0,Baltimore
+﻿bal.md.0003_03,﻿school,﻿Female Parish School of St. Vincent's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 250",﻿Sisters of Charity,1866.0,Baltimore
+﻿bal.md.0002_02,﻿school,﻿Male Parish School of St. Patrick's Church,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 150",﻿Brothers of the Holy Cross,1866.0,Baltimore
+﻿bal.md.0002_03,﻿school,﻿Female Parish School of St. Patrick's,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 150",﻿Sisters of the Holy Cross,1866.0,Baltimore
+﻿bal.md.0014_02,﻿school,﻿St. Bridget's Schools,English,,,,,,,,,,,,,,,,,,,,,,﻿student,﻿100 pupils,,1866.0,Baltimore
+﻿bal.md.0183,﻿school,﻿St. Laurence's Schools,English,,,,,,,,,,,,,,,,,,,,,,﻿student,﻿75 pupils,,1866.0,Baltimore
+﻿bal.md.0007_02,﻿school,﻿St. Joseph's Male Parish School,English,,﻿79 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 150",,1866.0,Baltimore
+﻿bal.md.0007_03,﻿school,﻿St. Joseph's Female Parish School,English,,﻿73 Barre street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 250",﻿Sisters of Charity,1866.0,Baltimore
 ﻿bal.md.0011_02,﻿school,﻿St. Michael's Male Parish School,English,,﻿Fell's Point,,,,,,,,,,,,,,,,,,,,,,,1866.0,Baltimore
-﻿bal.md.0011_03,﻿school,﻿St. Michael's Female Parish School,English,,,,,,,,,,,,,,,,,,,,,,﻿pupil,"﻿Pupils in both schools (.0187 and .0188), 1100",﻿School Sisters of Notre Dame,1866.0,Baltimore
-﻿bal.md.0012_02,﻿school,﻿St. James' Male Parish School,English,﻿under three secular teachers,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 400",,1866.0,Baltimore
+﻿bal.md.0011_03,﻿school,﻿St. Michael's Female Parish School,English,,,,,,,,,,,,,,,,,,,,,,﻿student,"﻿Pupils in both schools (.0187 and .0188), 1100",﻿School Sisters of Notre Dame,1866.0,Baltimore
+﻿bal.md.0012_02,﻿school,﻿St. James' Male Parish School,English,﻿under three secular teachers,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 400",,1866.0,Baltimore
 ﻿bal.md.0012_02,﻿school,﻿St. James' Male Parish School,English,﻿under three secular teachers,﻿Aisquith street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿lay-teacher,﻿3 secular teachers,,1866.0,Baltimore
-﻿bal.md.0012_03,﻿school,﻿St. James' Female Parish School,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 400",﻿School Sisters of Notre Dame,1866.0,Baltimore
+﻿bal.md.0012_03,﻿school,﻿St. James' Female Parish School,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 400",﻿School Sisters of Notre Dame,1866.0,Baltimore
 ﻿bal.md.0012_03,﻿school,﻿St. James' Female Parish School,English,,,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿sisters,﻿three School Sisters of Notre Dame,﻿School Sisters of Notre Dame,1866.0,Baltimore
 ﻿bal.md.0191,﻿school,﻿School for Girls,English,,﻿at Church of Immaculate Conception,,,,,,,,,,,,,,,,,,,,,,﻿Sisters of Charity,1866.0,Baltimore
-﻿bal.md.0193,﻿school,﻿School for German Children,English,,﻿Federal Hill,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 170 boys, and 170 girls",,1866.0,Baltimore
-﻿bal.md.0005_02,﻿school,﻿St. John's Female Parish School,English,,,,,,,,,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",﻿Sisters of Charity,1866.0,Baltimore
-﻿bal.md.0039_02,﻿school,﻿School at St. Joseph's,﻿German and English,,﻿St. Joseph's,,﻿Baltimore County,,,,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, -----",,1866.0,Baltimore
+﻿bal.md.0193,﻿school,﻿School for German Children,English,,﻿Federal Hill,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 170 boys, and 170 girls",,1866.0,Baltimore
+﻿bal.md.0005_02,﻿school,﻿St. John's Female Parish School,English,,,,,,,,,,,,,,,,,,,,,,﻿student,"﻿Pupils, 150",﻿Sisters of Charity,1866.0,Baltimore
+﻿bal.md.0039_02,﻿school,﻿School at St. Joseph's,﻿German and English,,﻿St. Joseph's,,﻿Baltimore County,,,,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, -----",,1866.0,Baltimore
 ﻿bal.md.0086_02,﻿school,﻿School at St. Augustine's,﻿German and English,,﻿St. Augustine's,,,,﻿Elkridge Landing,﻿Elkridge,﻿MD,,,,,,,,,,,,,,,,,1866.0,Baltimore
-﻿bal.md.0026_02,﻿school,﻿School at SS. Peter and Paul's,﻿German,,﻿SS. Peter and Paul's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 220",,1866.0,Baltimore
-﻿bal.md.0122_02,﻿school,﻿St. Aloysius' Parish Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿pupil,"﻿Number of pupils, 600",,1866.0,Baltimore
-﻿bal.md.0200,﻿school,﻿St. Mary's Parish School,English,,,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿pupil,﻿110 Pupils,,1866.0,Baltimore
-﻿bal.md.0117_02,﻿institution,﻿St. Matthew's Institution for Boys,English,,,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 150",,1866.0,Baltimore
-﻿bal.md.0117_04,﻿school,﻿St. Matthew's Girls' School,English,,,,,,,﻿Washington,,﻿DC,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 110",,1866.0,Baltimore
-﻿bal.md.0124_02,﻿school,﻿School for Boys,English,,﻿at Trinity Church,,,,﻿Georgetown,﻿Georgetown,﻿DC,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 200",,1866.0,Baltimore
-﻿bal.md.0073_02,﻿school,﻿School for Girls,English,,﻿at St. Joseph's,,,,﻿Emmittsburgh,﻿Emmittsburg,﻿MD,,,,,,,,,,,,,,﻿pupil,﻿60 pupils,,1866.0,Baltimore
-﻿bal.md.0029_02,﻿school,﻿St. Michael's Parish School,English,,,,,,﻿Frostburgh,﻿Frostburgh,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 145",,1866.0,Baltimore
-﻿bal.md.0035_02,﻿school,﻿St. Peter's Parish School,English,,,,,,﻿Westernport,﻿Westernport,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 115",,1866.0,Baltimore
-﻿bal.md.0140_03,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Georgetown,﻿Georgetown,﻿DC,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 125",,1866.0,Baltimore
-﻿bal.md.0143_03,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Frederick,﻿Frederick,﻿MD,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 70",,1866.0,Baltimore
-﻿bal.md.0232_02,﻿school,﻿School for Girls,English,,﻿at St. Vincent's Asylum,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿pupil,"﻿Pupils, 300",﻿Sisters of Charity,1866.0,Baltimore
+﻿bal.md.0026_02,﻿school,﻿School at SS. Peter and Paul's,﻿German,,﻿SS. Peter and Paul's,,,,﻿Cumberland,﻿Cumberland,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 220",,1866.0,Baltimore
+﻿bal.md.0122_02,﻿school,﻿St. Aloysius' Parish Schools,English,,,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿student,"﻿Number of pupils, 600",,1866.0,Baltimore
+﻿bal.md.0200,﻿school,﻿St. Mary's Parish School,English,,,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿student,﻿110 Pupils,,1866.0,Baltimore
+﻿bal.md.0117_02,﻿institution,﻿St. Matthew's Institution for Boys,English,,,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿student,"﻿Pupils, 150",,1866.0,Baltimore
+﻿bal.md.0117_04,﻿school,﻿St. Matthew's Girls' School,English,,,,,,,﻿Washington,,﻿DC,,,,,,,,,,,,,﻿student,"﻿Pupils, 110",,1866.0,Baltimore
+﻿bal.md.0124_02,﻿school,﻿School for Boys,English,,﻿at Trinity Church,,,,﻿Georgetown,﻿Georgetown,﻿DC,,,,,,,,,,,,,,﻿student,"﻿Pupils, 200",,1866.0,Baltimore
+﻿bal.md.0073_02,﻿school,﻿School for Girls,English,,﻿at St. Joseph's,,,,﻿Emmittsburgh,﻿Emmittsburg,﻿MD,,,,,,,,,,,,,,﻿student,﻿60 pupils,,1866.0,Baltimore
+﻿bal.md.0029_02,﻿school,﻿St. Michael's Parish School,English,,,,,,﻿Frostburgh,﻿Frostburgh,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 145",,1866.0,Baltimore
+﻿bal.md.0035_02,﻿school,﻿St. Peter's Parish School,English,,,,,,﻿Westernport,﻿Westernport,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 115",,1866.0,Baltimore
+﻿bal.md.0140_03,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Georgetown,﻿Georgetown,﻿DC,,,,,,,,,,,,,,﻿student,"﻿Pupils, 125",,1866.0,Baltimore
+﻿bal.md.0143_03,﻿school,﻿Benevolent School for Girls,English,,﻿at the Visitation Convent,,,,﻿Frederick,﻿Frederick,﻿MD,,,,,,,,,,,,,,﻿student,"﻿Pupils, 70",,1866.0,Baltimore
+﻿bal.md.0232_02,﻿school,﻿School for Girls,English,,﻿at St. Vincent's Asylum,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,﻿student,"﻿Pupils, 300",﻿Sisters of Charity,1866.0,Baltimore
 ﻿bal.md.0246,﻿school,﻿School for Small Boys,English,,﻿14th and H streets,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,,,﻿Sisters of the Holy Cross,1866.0,Baltimore
 ﻿bal.md.0224,﻿school,﻿School for Colored Children,English,,﻿in St. Matthew's Parish,,,,﻿Washington,﻿Washington,﻿DC,,,,,,,,,,,,,,,,,1866.0,Baltimore
 ﻿bal.md.0001_04,﻿asylum,﻿St. Mary's Female Orphan Asylum,English,,﻿Franklin street,,,,﻿Baltimore,﻿Baltimore,﻿MD,,,,,,,,,﻿Sister,﻿Louise,,﻿Sister-Servant,,﻿orphan,"﻿Orphans, 110",﻿Sisters of Charity,1866.0,Baltimore

@@ -2,11 +2,13 @@ const db = require("../models");
 const getPagination = require("../utils/get-pagination");
 const Op = db.Sequelize.Op;
 const religiousOrderDict = require('../config/religiousOrderDict.json');
+const { where } = require("sequelize");
 
 const almanacRecord = db.almanacRecord;
 const person = db.person;
 const personInAlmanacRecord = db.personInAlmanacRecord;
 const institution = db.institution;
+const relatedInstitutions = db.relatedInstitutions;
 
 /*exports.create = (req, res) => {
     const churches = req.body;
@@ -200,7 +202,16 @@ exports.findByID = async (req, res) => {
                         model: personInAlmanacRecord,
                         attributes: ['name','title', 'suffix', 'role', 'note'],
                     }}]
-        }]
+        }, {
+            model: relatedInstitutions,
+            as: 'relatedFirst',
+            attributes: ['firstID', 'secondID', 'isSibling']
+        }, {
+            model: relatedInstitutions,
+            as: 'relatedSecond',
+            attributes: ['firstID', 'secondID', 'isSibling'],
+        }
+    ]
     });
     if (data) {
         let processedData = {
@@ -227,7 +238,7 @@ exports.findByID = async (req, res) => {
             religiousOrder: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].religiousOrder,
             attendingInstitutions: [],
             attendedBy: [],
-            relevantInstitutions: [],
+            relatedInstitutions: [],
             personInfo: [],
             // adding the info of the last record first so that the information of "all years" is the most up-to-date
         };
@@ -235,7 +246,9 @@ exports.findByID = async (req, res) => {
         let existingAttendingInstIDs = [];
         let existingAttendedByInstIDs = [];
         let existingPersonIDs = [];
+        let existingRelatedInstIDs = [];
 
+        // all the (unique) attending institutions, attended by institutions and persons
         for (let i = data.dataValues.almanacRecord.length - 1; i >= 0; i--) {
             let record = data.dataValues.almanacRecord[i];
             if (!processedData.year.includes(record.year)) {
@@ -300,53 +313,42 @@ exports.findByID = async (req, res) => {
                 }
             });
         };
-        
-        //console.log('instID', processedData.instID);
-        // if the institution is a "parent insitution"
-        if (!processedData.instID.includes('_')) {
-            const relevantInstitutions = await institution.findAll({
-                where: { ID: { [Op.like]: `${processedData.instID}%`, [Op.ne]: processedData.instID} },
+
+        // all the related institutions
+        const allRelatedInstitutions = [
+            ...data.dataValues.relatedFirst,
+            ...data.dataValues.relatedSecond
+        ];
+
+        const allRelatedInstIDs = new Set();
+
+        allRelatedInstitutions.forEach(relatedInst => {
+            allRelatedInstIDs.add(relatedInst.firstID);
+            allRelatedInstIDs.add(relatedInst.secondID);
+        });
+
+        const uniqueRelatedInstIDs = Array.from(allRelatedInstIDs);
+        existingRelatedInstIDs = uniqueRelatedInstIDs.filter(id => id !== data.dataValues.ID);
+        for (const relatedInstID of existingRelatedInstIDs) {
+            const relatedInstDetails = await institution.findAll({
+                where: { ID: relatedInstID },
                 attributes: ['ID'],
                 include: [{
                     model: almanacRecord,
                     as: 'almanacRecord',
-                    attributes: ['instName', 'instType'],
+                    attributes: ['instName', 'year', 'instType'],
                 }]
             });
-            //console.log('relevantInstitutions', relevantInstitutions);
-            if (relevantInstitutions.length > 0) {
-                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
-                    return {
-                        instID: inst.ID,
-                        instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
-                        instType: inst.almanacRecord[inst.almanacRecord.length - 1].instType,
-                    }
-                })
-            }
-        } 
-        // if the institution is a "child institution"
-        else {
-            const baseInstID = processedData.instID.split('_')[0];
-            console.log('baseInstID', baseInstID);
-            const relevantInstitutions = await institution.findAll({
-                where: { ID: { [Op.like]: `${baseInstID}%`, [Op.ne]: processedData.instID} },
-                attributes: ['ID'],
-                include: [{
-                    model: almanacRecord,
-                    as: 'almanacRecord',
-                    attributes: ['instName', 'instType']
-                }]
+            let latestInstName = relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instName;
+            let latestYear = relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].year;
+            processedData.relatedInstitutions.push({
+                instID: relatedInstID,
+                instName: latestInstName,
+                year: latestYear,
+                instType: relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instType,
             });
-            if (relevantInstitutions.length > 0) {
-                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
-                    return {
-                        instID: inst.ID,
-                        instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
-                        instType: inst.almanacRecord[inst.almanacRecord.length - 1].instType,
-                    }
-                })
-            }
         }
+
 
         processedData.year.reverse();
         res.send(processedData);
@@ -390,7 +392,15 @@ exports.findOne = async (req, res) => {
                     model: personInAlmanacRecord,
                     attributes: ['name','title', 'suffix', 'role', 'note'],
                 }}]
-        }]
+        }, {
+            model: relatedInstitutions,
+            as: 'relatedFirst',
+            attributes: ['firstID', 'secondID', 'isSibling']
+        }, {
+            model: relatedInstitutions,
+            as: 'relatedSecond',
+            attributes: ['firstID', 'secondID', 'isSibling']
+        }], 
 });
     if (data) {
         let processedData = {
@@ -416,7 +426,7 @@ exports.findOne = async (req, res) => {
             year: data.dataValues.almanacRecord[0].year,
             attendingInstitutions: [],
             attendedBy: [],
-            relevantInstitutions: [],
+            relatedInstitutions: [],
             personInfo: []
         };
         //console.log('processedData', data.dataValues.almanacRecord[0]);
@@ -469,50 +479,39 @@ exports.findOne = async (req, res) => {
             processedData.personInfo.push(person);
         };
 
-        if (!processedData.instID.includes('_')) {
-            const relevantInstitutions = await institution.findAll({
-                where: { ID: { [Op.like]: `${processedData.instID}%`, [Op.ne]: processedData.instID} },
-                attributes: ['ID'],
-                include: [{
-                    model: almanacRecord,
-                    where: { year: req.params.year },
-                    as: 'almanacRecord',
-                    attributes: ['instName', 'instType']
-                }]
-            });
-            if (relevantInstitutions.length > 0) {
-                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
-                    return {
-                        instID: inst.ID,
-                        instName: inst.almanacRecord[0].instName,
-                        instType: inst.almanacRecord[0].instType,
-                    }
-                })
-            };
-        }
-        else {
-            const baseInstID = processedData.instID.split('_')[0];
-            const relevantInstitutions = await institution.findAll({
-                where: { ID: { [Op.like]: `${baseInstID}%`, [Op.ne]: processedData.instID} },
-                attributes: ['ID'],
-                include: [{
-                    model: almanacRecord,
-                    where: { year: req.params.year },
-                    as: 'almanacRecord',
-                    attributes: ['instName', 'instType']
-                }]
-            });
-            if (relevantInstitutions.length > 0) {
-                processedData.relevantInstitutions = relevantInstitutions.map(inst => {
-                    return {
-                        instID: inst.ID,
-                        instName: inst.almanacRecord[0].instName,
-                        instType: inst.almanacRecord[0].instType,
-                    }
-                })
-            };
-        }
+        const allRelatedInstitutions = [
+            ...data.dataValues.relatedFirst,
+            ...data.dataValues.relatedSecond
+        ];
 
+        const allRelatedInstIDs = new Set();
+
+        allRelatedInstitutions.forEach(relatedInst => {
+            allRelatedInstIDs.add(relatedInst.firstID);
+            allRelatedInstIDs.add(relatedInst.secondID);
+        });
+
+        const uniqueRelatedInstIDs = Array.from(allRelatedInstIDs);
+        existingRelatedInstIDs = uniqueRelatedInstIDs.filter(id => id !== data.dataValues.ID);
+        for (const relatedInstID of existingRelatedInstIDs) {
+            const relatedInstDetails = await institution.findAll({
+                where: { ID: relatedInstID },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    where: { year: req.params.year },
+                    attributes: ['instName', 'year', 'instType'],
+                }]
+            });
+            if (relatedInstDetails.length !== 0) {
+            processedData.relatedInstitutions.push({
+                instID: relatedInstID,
+                instName: relatedInstDetails[0].almanacRecord[0].instName,
+                year: relatedInstDetails[0].almanacRecord[0].year,
+                instType: relatedInstDetails[0].almanacRecord[0].instType
+            })}
+        }
 
         res.send(processedData);}
     else {

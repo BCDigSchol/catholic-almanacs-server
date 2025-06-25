@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       institution.hasMany(models.almanacRecord, { foreignKey: 'instID', as: 'almanacRecord' });
+      institution.hasMany(models.relatedInstitutions, { foreignKey: 'firstID', as: 'relatedFirst' });
+      institution.hasMany(models.relatedInstitutions, { foreignKey: 'secondID', as: 'relatedSecond' });
     }
   }
   institution.init({

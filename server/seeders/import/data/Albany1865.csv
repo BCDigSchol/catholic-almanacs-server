@@ -63,7 +63,7 @@
 ﻿alb.ny.0084,﻿church,﻿St. Joseph's,English,,,,﻿Clinton County,﻿Clinton County,﻿Corbeau,﻿Coopersville,﻿NY,,44.9430949,-73.4079125,,,,,,﻿Rev.,,,,,,,,1865.0,Albany
 ﻿alb.ny.0085,﻿church,not recorded,English,,,,﻿Cortland County,﻿Cortland County,﻿Cortland,﻿Cortland,﻿NY,,42.6062596,-76.16004079999999,,,,,﻿edw_coleman_001,﻿Rev.,﻿Edward Coleman,,,,,,,1865.0,Albany
 ﻿alb.ny.0086,﻿church,﻿----,English,,,,﻿Greene County,﻿Greene County,﻿Coxsackie,﻿Coxsackie,﻿NY,,42.3533814,-73.8044957,,,,,﻿m_roche_001,﻿Rev.,﻿M. Roche,,,,,,,1865.0,Albany
-﻿alb.ny.0394,﻿church,﻿St. Stephen's,English,,,,﻿Lewis County,﻿Lewis County,﻿Croghan,,﻿NY,,42.3533814,-73.8044957,,,,,,﻿Rev.,﻿Clement Moutsaers,﻿O.M.C.,,,,,,1865.0,Albany
+﻿alb.ny.0394,﻿church,﻿St. Stephen's,English,,,,﻿Lewis County,﻿Lewis County,﻿Croghan,,﻿NY,,42.3533814,-73.8044957,,,,,﻿cle_moutsaers_001,﻿Rev.,﻿Clement Moutsaers,﻿O.M.C.,,,,,,1865.0,Albany
 ﻿alb.ny.0089,﻿church,not recorded,English,,,,﻿Essex County,﻿Essex County,﻿Crownpoint,﻿Crown Point,﻿NY,,43.9503352,-73.4370667,﻿alb.ny.0226,﻿attended from Port Henry,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0094,﻿church,not recorded,English,,,,﻿Lewis County,,﻿Daynesville,,﻿NY,,43.90319176,-75.49323367,﻿alb.ny.0088,﻿attended from Croghan,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0095,﻿church,﻿Holy Cross,English,,,,﻿Oneida County,﻿Oneida County,﻿Deerfield,﻿Deerfield,﻿NY,,43.189493799999994,-75.1428632,﻿alb.ny.0196,﻿attended from Newport,,,,,,,,,,,,1865.0,Albany
@@ -84,7 +84,7 @@
 ﻿alb.ny.0128,﻿church,﻿St. Mary's,﻿French,,,,﻿Warren County,﻿Warren County,﻿Glenn's Falls,﻿Glens Falls,﻿NY,,43.3095164,-73.6440058,,,,,﻿joh_murphy_002,﻿Rev.,﻿John Murphy,,,,,,,1865.0,Albany
 ﻿alb.ny.0131,﻿church,not recorded,English,,,,﻿Washington County,﻿Washington County,﻿Granville,﻿Granville,﻿NY,,43.4078495,-73.259553,﻿alb.ny.0312,﻿attended from Whitehall,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0132,﻿church,not recorded,English,,,,﻿Chenango County,﻿Chenango County,﻿Greene,﻿Greene,﻿NY,,42.3292408,-75.7699147,﻿alb.ny.0200,﻿attended from Norwich,,,,,,,,,,,,1865.0,Albany
-﻿alb.ny.0396,﻿church,not recorded,English,,﻿East-Albany,,﻿Rensselaer County,,﻿Greenbush,,﻿NY,,42.3292408,-75.7699147,,,,,,﻿Rev.,﻿E. Bayard,,,,,,,1865.0,Albany
+﻿alb.ny.0396,﻿church,not recorded,English,,﻿East-Albany,,﻿Rensselaer County,,﻿Greenbush,,﻿NY,,42.3292408,-75.7699147,,,,,﻿e_bayard_001,﻿Rev.,﻿E. Bayard,,,,,,,1865.0,Albany
 ﻿alb.ny.0133,﻿church,﻿--,English,,,,﻿Columbia County,,﻿Greenfield,,﻿NY,,42.31404598,-73.74542533,﻿alb.ny.0086,﻿attended from Coxsackie,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0139,﻿church,not recorded,English,,,,﻿Madison County,﻿Madison County,﻿Hamilton,﻿Hamilton,﻿NY,,42.8270136,-75.5446238,﻿alb.ny.0200,﻿attended from Norwich,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0140,﻿church,not recorded,English,,,,﻿Lewis County,﻿Lewis County,﻿Harrisburgh,﻿Harrisburg,﻿NY,,43.810902399999996,-75.64408420000001,﻿alb.ny.0059,﻿attended from Carthage,,,,,,,,,,,,1865.0,Albany
@@ -101,7 +101,7 @@
 ﻿alb.ny.0398,﻿church,not recorded,English,,,,﻿Jefferson County,,﻿Le Raysville,,﻿NY,,42.7845222,-73.6695624,,﻿attended from,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0399,﻿church,not recorded,English,,,,﻿Lewis County,,﻿Lewisburgh,,﻿NY,,42.7845222,-73.6695624,﻿alb.ny.0059,﻿attended from Carthage,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0166,﻿church,﻿St. Mary's,English,,,,﻿Herkimer County,﻿Herkimer County,﻿Little Falls,﻿Little Falls,﻿NY,,43.0434039,-74.8595957,,,,,﻿b_f_mcloghlin_001,﻿Rev.,﻿B. F. McLoughlin,,,,,,,1865.0,Albany
-﻿alb.ny.0168,﻿church,not recorded,English,,,,﻿Lewis County,﻿Lewis County,﻿Lowville,﻿Lowville,﻿NY,,43.786736,-75.4918505,,﻿attended from Croghan,,,,,,,,,,,,1865.0,Albany
+﻿alb.ny.0168,﻿church,not recorded,English,,,,﻿Lewis County,﻿Lewis County,﻿Lowville,﻿Lowville,﻿NY,,43.786736,-75.4918505,﻿alb.ny.0394,﻿attended from Croghan,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0171,﻿church,not recorded,English,,,,﻿Oneida County,﻿Oneida County,﻿McConnellsville,﻿McConnellsville,﻿NY,,43.2723805,-75.694317,﻿alb.ny.0113,﻿attended from Florence,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0172,﻿church,not recorded,English,,,,﻿Columbia County,﻿Columbia County,﻿Malden,﻿Malden,﻿NY,,42.367875899999994,-73.5594128,﻿alb.ny.0086,﻿attended from Coxsackie,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0173,﻿church,﻿St. Joseph's,English,,,,﻿Franklin County,﻿Franklin County,﻿Malone,﻿Malone,﻿NY,,44.8483135,-74.2993623,,,,,﻿edw_f_van-campenhoudt_001,﻿Rev.,﻿Edward Van Campenhoudt,,,,,,,1865.0,Albany
@@ -160,7 +160,7 @@
 ﻿alb.ny.0267,﻿church,not recorded,English,,,,﻿Broome County,,﻿Summit,,﻿NY,,42.1791865,-75.8533954,,,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0273,﻿church,﻿St. Mary's,English,,,,﻿Onondaga County,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.07997520000001,-76.1473443,,,,,﻿jam_ohara_001,﻿Rev.,﻿James O'Hara,,,,,,,1865.0,Albany
 ﻿alb.ny.0274,﻿church,﻿St. John's,English,,,,﻿Onondaga County,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.0683999,-76.15631359999999,,,,,﻿joh_mcmenomy_001,﻿Rev.,﻿John McMenomy,,,,,,,1865.0,Albany
-﻿alb.ny.0275,﻿church,﻿Church of the Assumption,English,,,,﻿Onondaga County,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.062549,-76.154036,,,,,﻿leo_b_moczygemba_001,﻿Very Rev.,﻿L. B. M. Moczygemba,"﻿D.D., O.M.C.",,,,,﻿Fathers of the Convent,1865.0,Albany
+﻿alb.ny.0320_02,﻿church,﻿Church of the Assumption,English,,,,﻿Onondaga County,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.062549,-76.154036,,,,,﻿leo_b_moczygemba_001,﻿Very Rev.,﻿L. B. M. Moczygemba,"﻿D.D., O.M.C.",,,,,﻿Fathers of the Convent,1865.0,Albany
 ﻿alb.ny.0277,﻿church,﻿St. John's,English,,,,﻿Onondaga County,﻿Onondaga County,﻿Salina,﻿Salina,﻿NY,,43.1071537,-76.1762045,,,,,﻿mau_sheehan_001,﻿Rev.,﻿Maurice Sheehan,,,,,,,1865.0,Albany
 ﻿alb.ny.0278,﻿church,not recorded,English,,,,﻿Oneida County,﻿Oneida County,﻿Taberg,﻿Taberg,﻿NY,,43.3036805,-75.616848,﻿alb.ny.0113,﻿attended from Florence,,,,,,,,,,,,1865.0,Albany
 ﻿alb.ny.0279,﻿church,not recorded,English,,,,﻿Essex County,﻿Essex County,﻿Ticonderoga,﻿Ticonderoga,﻿NY,,43.84867070000001,-73.42345309999999,,,,,,,,,,,,,,1865.0,Albany
@@ -203,7 +203,7 @@
 ﻿alb.ny.0319,﻿house,﻿Convent of the Oblates of Mary Immaculate,English,,,,,﻿Clinton County,﻿Plattsburgh,﻿Plattsburg,﻿NY,,44.699487299999994,-73.4529124,,,,,﻿a_a_sallier_001,﻿Rev.,﻿A. A. Sallier,,,,,,,1865.0,Albany
 ﻿alb.ny.0319,﻿house,﻿Convent of the Oblates of Mary Immaculate,English,,,,,﻿Clinton County,﻿Plattsburgh,﻿Plattsburg,﻿NY,,44.699487299999994,-73.4529124,,,,,﻿j_n_laverlochere_001,﻿Rev.,﻿J. N. Laverlochere,,,,,,,1865.0,Albany
 ﻿alb.ny.0319,﻿house,﻿Convent of the Oblates of Mary Immaculate,English,,,,,﻿Clinton County,﻿Plattsburgh,﻿Plattsburg,﻿NY,,44.699487299999994,-73.4529124,,,,,﻿c_f_sallaz_001,﻿Rev.,﻿C. F. M. Salazo,,﻿Superior,,,,,1865.0,Albany
-﻿alb.ny.0320,﻿convent,﻿Convent of the Assumption,English,,,,,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.0481723,-76.0633426,,,,,﻿leo_b_moczygemba_001,﻿Very Rev.,﻿Leopold B. M. Moczygemba,﻿D. D.,"﻿Commissary-General of the Minor Conventuals, and Visitor of the Brothers and Sisters of the Third Order of St. Francis",,﻿clerical student,﻿7 students,﻿Minor Conventuals of St. Francis of Assisium,1865.0,Albany
+﻿alb.ny.0320,﻿convent,﻿Convent of the Assumption,English,,,,,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.0481723,-76.0633426,,,,,﻿leo_b_moczygemba_001,﻿Very Rev.,﻿Leopold B. M. Moczygemba,﻿D.D.,"﻿Commissary-General of the Minor Conventuals, and Visitor of the Brothers and Sisters of the Third Order of St. Francis",,﻿clerical student,﻿7 students,﻿Minor Conventuals of St. Francis of Assisium,1865.0,Albany
 ﻿alb.ny.0320,﻿convent,﻿Convent of the Assumption,English,,,,,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.0481723,-76.0633426,,,,,﻿nor_stoller_001,﻿Rev.,﻿Norbert Stoller,,﻿Guardian,,﻿brother,﻿2 lay brothers,﻿Minor Conventuals of St. Francis of Assisium,1865.0,Albany
 ﻿alb.ny.0320,﻿convent,﻿Convent of the Assumption,English,,,,,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.0481723,-76.0633426,,,,,﻿ant_rossadowski_001,﻿Rev.,﻿Anthony Rossadowski,,,,﻿brother,﻿2 lay brothers,﻿Minor Conventuals of St. Francis of Assisium,1865.0,Albany
 ﻿alb.ny.0320,﻿convent,﻿Convent of the Assumption,English,,,,,﻿Onondaga County,﻿Syracuse,﻿Syracuse,﻿NY,,43.0481723,-76.0633426,,,,,﻿jos_butler_001,,﻿Joseph Butler,﻿O.M.C.,,,﻿brother,﻿2 lay brothers,﻿Minor Conventuals of St. Francis of Assisium,1865.0,Albany

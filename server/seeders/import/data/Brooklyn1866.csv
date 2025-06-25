@@ -71,43 +71,43 @@
 ﻿bro.ny.0064,﻿church,﻿St. Mary's,English,,,,﻿,,﻿Whitestone,﻿Whitestone,﻿NY,,40.79204489999999,-73.8095574,﻿bro.ny.0035,﻿Attended from Flushing,,,,,,,,,,,,1866.0,Brooklyn
 ﻿bro.ny.0067,"﻿convent, academy",﻿Convent of the Academy of the Visitation,English,,﻿corner of Johnson and Pearl streets,,,,﻿Brooklyn,,﻿NY,,40.699255900000004,-73.9877193,,,,,,﻿Mother,﻿Clotilda Smith,,﻿Superioress,,﻿pupil,﻿130 pupils,,1866.0,Brooklyn
 ﻿bro.ny.0068,﻿convent,﻿St. Francis of Assisium Convent of Sisters of Mercy,English,,,,,,,,﻿NY,,43.2994285,-74.21793259999998,,,,,,﻿Mother,﻿Mary Vincent Haire,,﻿Superioress,,﻿pupils,"﻿100 pupils, select school",﻿Sisters of Mercy,1866.0,Brooklyn
-﻿bro.ny.0069,﻿convent,﻿Convent of the Order of St. Dominic,English,,﻿Montrose and Graham avenue,,,,﻿Brooklyn,,﻿NY,,40.7073458,-73.9432067,,,,,﻿ser_staimer_001,,﻿Seraphina Staimer,,﻿Superior,,﻿professed,﻿10 professed,,1866.0,Brooklyn
-﻿bro.ny.0069,﻿convent,﻿Convent of the Order of St. Dominic,English,,﻿Montrose and Graham avenue,,,,﻿Brooklyn,,﻿NY,,40.7073458,-73.9432067,,,,,,,,,,,﻿novice,﻿2 novices,,1866.0,Brooklyn
-﻿bro.ny.0069,﻿convent,﻿Convent of the Order of St. Dominic,English,,﻿Montrose and Graham avenue,,,,﻿Brooklyn,,﻿NY,,40.7073458,-73.9432067,,,,,,,,,,,﻿postulant,﻿2 postulants,,1866.0,Brooklyn
+﻿bro.ny.0007_04,﻿convent,﻿Convent of the Order of St. Dominic,English,,﻿Montrose and Graham avenue,,,,﻿Brooklyn,,﻿NY,,40.7073458,-73.9432067,,,,,﻿ser_staimer_001,,﻿Seraphina Staimer,,﻿Superior,,﻿professed,﻿10 professed,,1866.0,Brooklyn
+﻿bro.ny.0007_04,﻿convent,﻿Convent of the Order of St. Dominic,English,,﻿Montrose and Graham avenue,,,,﻿Brooklyn,,﻿NY,,40.7073458,-73.9432067,,,,,,,,,,,﻿novice,﻿2 novices,,1866.0,Brooklyn
+﻿bro.ny.0007_04,﻿convent,﻿Convent of the Order of St. Dominic,English,,﻿Montrose and Graham avenue,,,,﻿Brooklyn,,﻿NY,,40.7073458,-73.9432067,,,,,,,,,,,﻿postulant,﻿2 postulants,,1866.0,Brooklyn
 ﻿bro.ny.0070,﻿academy,﻿St. Mary's Academy for Young Ladies,English,﻿Under the charge of the Sisters of St. Joseph,"﻿Grand street, near Graham avenue",,,,﻿Brooklyn,,﻿NY,,40.715653,-73.985078,,,,,,﻿Sister,﻿Mary de Sales,,﻿Superior,,﻿pupil,﻿100 pupils in select school,﻿Sisters of St. Joseph,1866.0,Brooklyn
 ﻿bro.ny.0071,﻿academy,﻿St. Joseph's Academy for Young Ladies,English,,﻿34 South-Third street,,,,﻿Brooklyn,,﻿NY,,40.7137009,-73.9668224,,,,,,﻿Sister,﻿Mary Ignatius,,﻿Directress,,﻿pupil,﻿130 pupils,﻿Sisters of St. Joseph,1866.0,Brooklyn
 ﻿bro.ny.0072,﻿convent,﻿Convent of the Visitation,English,﻿Boarding academy for young ladies,"﻿Villa de Sales, L.I.",,,,﻿New Utrecht,,﻿NY,,40.6131601,-73.9959724,,,,,,﻿Mother,﻿Mary Leonard Neale,,﻿Superioress,,﻿pupil,"﻿pupils, 32",,1866.0,Brooklyn
-﻿bro.ny.0072,﻿asylum,﻿Male Orphan Asylum,English,﻿temporary,﻿corner of Jay and Chapel streets,,,,﻿Brooklyn,,﻿NY,,40.6131601,-73.9959724,,,,,,,,,,,﻿boy,﻿204 boys,,1866.0,Brooklyn
+﻿bro.ny.0116,﻿asylum,﻿Male Orphan Asylum,English,﻿temporary,﻿corner of Jay and Chapel streets,,,,﻿Brooklyn,,﻿NY,,40.6131601,-73.9959724,,,,,,,,,,,﻿boy,﻿204 boys,,1866.0,Brooklyn
 ﻿bro.ny.0078,﻿asylum,﻿New Male Orphan,English,﻿commenced,﻿corner of Albany and Wyckoff avenues,,,,﻿Brooklyn,,﻿NY,,40.699943100000006,-73.91181479999999,,,,,,,,,,,,,,1866.0,Brooklyn
 ﻿bro.ny.0079,﻿asylum,﻿Female Orphan Asylum,English,﻿Under charge of Sisters of Charity;  Industrial school attached,﻿corner of Clinton and Congress streets,,,,﻿Brooklyn,,﻿NY,,40.688742,-73.9970785,,,,,,﻿Sister,﻿Constantia,,﻿Superior,,﻿girl,﻿400 girls,﻿Sisters of Charity,1866.0,Brooklyn
-﻿bro.ny.0106,﻿school,﻿Industrial School,English,﻿90 girls are steadily employed under the care of Sisters of Charity,﻿attached to Female Orphan Asylum,,,,,,,,40.688742,-73.9970785,,,,,,,,,,,,,﻿Sisters of Charity,1866.0,Brooklyn
+﻿bro.ny.0079_02,﻿school,﻿Industrial School,English,﻿90 girls are steadily employed under the care of Sisters of Charity,﻿attached to Female Orphan Asylum,,,,,﻿Brooklyn,,,40.688742,-73.9970785,,,,,,,,,,,,,﻿Sisters of Charity,1866.0,Brooklyn
 ﻿bro.ny.0082,"﻿academy, monastery",﻿Monastery and Academy of the Brothers of the Third Order of St. Francis,English,,﻿No. 22 East-Baltic street,,,,﻿Brooklyn,,﻿NY,,40.6882591,-74.00100429999999,,,,,,﻿Brother,﻿Paul St. Leger,,﻿Superior,,﻿professed brother,"﻿professed brothers, 15",﻿Brothers of the Third Order of St. Francis,1866.0,Brooklyn
 ﻿bro.ny.0082,"﻿academy, monastery",﻿Monastery and Academy of the Brothers of the Third Order of St. Francis,English,,﻿No. 22 East-Baltic street,,,,﻿Brooklyn,,﻿NY,,40.6882591,-74.00100429999999,,,,,,,,,,,﻿novice,"﻿novices, 4",﻿Brothers of the Third Order of St. Francis,1866.0,Brooklyn
 ﻿bro.ny.0082,"﻿academy, monastery",﻿Monastery and Academy of the Brothers of the Third Order of St. Francis,English,,﻿No. 22 East-Baltic street,,,,﻿Brooklyn,,﻿NY,,40.6882591,-74.00100429999999,,,,,,,,,,,﻿postulant,"﻿postulants, 4",﻿Brothers of the Third Order of St. Francis,1866.0,Brooklyn
 ﻿bro.ny.0082,"﻿academy, monastery",﻿Monastery and Academy of the Brothers of the Third Order of St. Francis,English,,﻿No. 22 East-Baltic street,,,,﻿Brooklyn,,﻿NY,,40.6882591,-74.00100429999999,,,,,,,,,,,﻿pupil,"﻿pupils, 150",﻿Brothers of the Third Order of St. Francis,1866.0,Brooklyn
 ﻿bro.ny.0085,﻿hospital,﻿Sisters of the Poor,English,"﻿7 professed sisters have care of the sick and infirm, and of destitute children",﻿corner of Warren and Hicks streets,,,,﻿Brooklyn,,﻿NY,,40.688742,-73.9970785,,,,,,﻿Sister,﻿Felicita,,﻿Superior,,,,,1866.0,Brooklyn
-﻿bro.ny.0086,﻿school,﻿Cathedral Parish School,English,﻿Under the Christian Brothers,,,,,,,﻿NY,,40.6970424008424,-73.98692863611629,,,,,,,,,,,﻿pupil,﻿410 pupils,﻿Christian Brothers,1866.0,Brooklyn
-﻿bro.ny.0087,﻿school,﻿St. Paul's,English,﻿under Franciscan Brothers,,,,,﻿New York City,,﻿NY,,40.688742,-73.9970785,,,,,,,,,,,﻿boy,﻿505 boys,﻿Franciscan Brothers,1866.0,Brooklyn
-﻿bro.ny.0089,﻿school,﻿Assumption of B.V. Mary,English,,,,,,﻿New York City,,﻿NY,,40.6978594,-73.98701390000001,,,,,,,,,,,﻿child,﻿800 children,,1866.0,Brooklyn
-﻿bro.ny.0091,﻿school,﻿St. Patrick's,English,,,,,,﻿New York City,,﻿NY,,40.6935219,-73.95219770000001,,,,,,,,,,,﻿boy,﻿250 boys,,1866.0,Brooklyn
-﻿bro.ny.0091,﻿school,﻿St. Patrick's,English,,,,,,﻿New York City,,﻿NY,,40.6935219,-73.95219770000001,,,,,,,,,,,﻿girl,﻿400 girls,,1866.0,Brooklyn
-﻿bro.ny.0092,﻿school,﻿SS. Peter and Paul's,English,﻿Taught by Sisters of St. Joseph,,,,,﻿New York City,,﻿NY,,40.7111104,-73.9587144,,,,,,,,,,,﻿girl,﻿500 girls,﻿Sisters of St. Joseph,1866.0,Brooklyn
-﻿bro.ny.0092,﻿school,﻿SS. Peter and Paul's,English,﻿Taught by Sisters of St. Joseph,,,,,﻿New York City,,﻿NY,,40.7111104,-73.9587144,,,,,,,,,,,﻿boy,﻿350 boys,﻿Sisters of St. Joseph,1866.0,Brooklyn
-﻿bro.ny.0108,﻿school,﻿Holy Trinity,English,,,,,,﻿New York City,,﻿NY,,40.707173600000004,-73.9449181,,,,,,,,,,,﻿boy,﻿600 boys,,1866.0,Brooklyn
-﻿bro.ny.0108,﻿school,﻿Holy Trinity,English,,,,,,﻿New York City,,﻿NY,,40.707173600000004,-73.9449181,,,,,,,,,,,﻿girl,﻿600 girls,,1866.0,Brooklyn
-﻿bro.ny.0094,﻿school,﻿St. Joseph's,English,,,,,,,,﻿NY,,43.2994285,-74.21793259999998,,,,,,,,,,,﻿boy,﻿420 boys,,1866.0,Brooklyn
-﻿bro.ny.0094,﻿school,﻿St. Joseph's,English,,,,,,,,﻿NY,,43.2994285,-74.21793259999998,,,,,,,,,,,﻿girl,﻿340 girls,,1866.0,Brooklyn
-﻿bro.ny.0095,﻿school,"﻿St. Mary's, Star of the Sea",English,,,,,,﻿New York City,,﻿NY,,40.6768146,-73.9983507,,,,,,,,,,,﻿boy,﻿200 boys,,1866.0,Brooklyn
-﻿bro.ny.0095,﻿school,"﻿St. Mary's, Star of the Sea",English,,,,,,﻿New York City,,﻿NY,,40.6768146,-73.9983507,,,,,,,,,,,﻿girl,﻿300 girls,,1866.0,Brooklyn
-﻿bro.ny.0093,﻿school,﻿St. Peter's,English,,,,,,﻿New York City,,﻿NY,,40.684600599999996,-73.9891355,,,,,,,,,,,﻿girl,﻿500 girls,,1866.0,Brooklyn
-﻿bro.ny.0109,﻿school,﻿St. John's,English,,,,,,﻿New York City,,﻿NY,,40.61892279999999,-73.9540515,,,,,,,,,,,﻿child,﻿130 children,,1866.0,Brooklyn
-﻿bro.ny.0110,﻿school,﻿Immaculate Conception,English,,,,,,,,﻿NY,,40.7105100595357,-73.94694128508,,,,,,,,,,,﻿boy,"﻿540 boys, under charge of Franciscan Brothers",﻿Franciscan Brothers,1866.0,Brooklyn
-﻿bro.ny.0110,﻿school,﻿Immaculate Conception,English,,,,,,,,﻿NY,,40.7105100595357,-73.94694128508,,,,,,,,,,,﻿girl,"﻿650 girls, under charge of Sisters of St. Joseph",﻿Sisters of St. Joseph,1866.0,Brooklyn
-﻿bro.ny.0111,﻿school,﻿Lady of Mercy,English,,,,,,﻿New York City,,﻿NY,,40.701648,-73.942261,,,,,,,,,,,﻿boy,﻿300 boys,,1866.0,Brooklyn
-﻿bro.ny.0111,﻿school,﻿Lady of Mercy,English,,,,,,﻿New York City,,﻿NY,,40.701648,-73.942261,,,,,,,,,,,﻿girl,﻿340 girls,,1866.0,Brooklyn
-﻿bro.ny.0097,﻿school,﻿St. Patrick's,English,,,,,,﻿Fort Hamilton,,﻿NY,,40.6094454,-74.0285434,,,,,,,,,,,﻿boy,﻿80 boys,,1866.0,Brooklyn
-﻿bro.ny.0097,﻿school,﻿St. Patrick's,English,,,,,,﻿Fort Hamilton,,﻿NY,,40.6094454,-74.0285434,,,,,,,,,,,﻿girl,﻿60 girls,,1866.0,Brooklyn
-﻿bro.ny.0098,﻿school,﻿St. Michael's,English,,,,,,﻿Flushing,,﻿NY,,40.7584318,-73.82750159999999,,,,,,﻿Brother,﻿Paul,,﻿Superior,,﻿girl,"﻿300 girls, taught by the Sisters of St. Joseph",﻿Sisters of St. Joseph,1866.0,Brooklyn
-﻿bro.ny.0098,﻿school,﻿St. Michael's,English,,,,,,﻿Flushing,,﻿NY,,40.7584318,-73.82750159999999,,,,,,,,,,,﻿boy,﻿200 boys,﻿Sisters of St. Joseph,1866.0,Brooklyn
-﻿bro.ny.0099,﻿school,﻿St. Boniface's,﻿German,,,,,,﻿New York City,,﻿NY,,40.692564000000004,-73.98453570000001,,,,,,,,,,,﻿child,﻿180 children,,1866.0,Brooklyn
-﻿bro.ny.0100,﻿school,﻿Annunciation of B.V. Mary,English,,,,,,﻿New York City,,﻿NY,,40.6696169,-73.9836934,,,,,,,,,,,﻿child,﻿150 children,,1866.0,Brooklyn
+﻿bro.ny.0001_02,﻿school,﻿Cathedral Parish School,English,﻿Under the Christian Brothers,,,,,,,﻿NY,,40.6970424008424,-73.98692863611629,,,,,,,,,,,﻿pupil,﻿410 pupils,﻿Christian Brothers,1866.0,Brooklyn
+﻿bro.ny.0002_02,﻿school,﻿St. Paul's,English,﻿under Franciscan Brothers,,,,,﻿New York City,,﻿NY,,40.688742,-73.9970785,,,,,,,,,,,﻿boy,﻿505 boys,﻿Franciscan Brothers,1866.0,Brooklyn
+﻿bro.ny.0003_02,﻿school,﻿Assumption of B.V. Mary,English,,,,,,﻿New York City,,﻿NY,,40.6978594,-73.98701390000001,,,,,,,,,,,﻿child,﻿800 children,,1866.0,Brooklyn
+﻿bro.ny.0004_02,﻿school,﻿St. Patrick's,English,,,,,,﻿New York City,,﻿NY,,40.6935219,-73.95219770000001,,,,,,,,,,,﻿boy,﻿250 boys,,1866.0,Brooklyn
+﻿bro.ny.0004_02,﻿school,﻿St. Patrick's,English,,,,,,﻿New York City,,﻿NY,,40.6935219,-73.95219770000001,,,,,,,,,,,﻿girl,﻿400 girls,,1866.0,Brooklyn
+﻿bro.ny.0005_02,﻿school,﻿SS. Peter and Paul's,English,﻿Taught by Sisters of St. Joseph,,,,,﻿New York City,,﻿NY,,40.7111104,-73.9587144,,,,,,,,,,,﻿girl,﻿500 girls,﻿Sisters of St. Joseph,1866.0,Brooklyn
+﻿bro.ny.0005_02,﻿school,﻿SS. Peter and Paul's,English,﻿Taught by Sisters of St. Joseph,,,,,﻿New York City,,﻿NY,,40.7111104,-73.9587144,,,,,,,,,,,﻿boy,﻿350 boys,﻿Sisters of St. Joseph,1866.0,Brooklyn
+﻿bro.ny.0007_02,﻿school,﻿Holy Trinity,English,,,,,,﻿New York City,,﻿NY,,40.707173600000004,-73.9449181,,,,,,,,,,,﻿boy,﻿600 boys,,1866.0,Brooklyn
+﻿bro.ny.0007_02,﻿school,﻿Holy Trinity,English,,,,,,﻿New York City,,﻿NY,,40.707173600000004,-73.9449181,,,,,,,,,,,﻿girl,﻿600 girls,,1866.0,Brooklyn
+﻿bro.ny.0008_02,﻿school,﻿St. Joseph's,English,,,,,,,﻿New York City,﻿NY,,43.2994285,-74.21793259999998,,,,,,,,,,,﻿boy,﻿420 boys,,1866.0,Brooklyn
+﻿bro.ny.0008_02,﻿school,﻿St. Joseph's,English,,,,,,,﻿New York City,﻿NY,,43.2994285,-74.21793259999998,,,,,,,,,,,﻿girl,﻿340 girls,,1866.0,Brooklyn
+﻿bro.ny.0009_02,﻿school,"﻿St. Mary's, Star of the Sea",English,,,,,,﻿New York City,,﻿NY,,40.6768146,-73.9983507,,,,,,,,,,,﻿boy,﻿200 boys,,1866.0,Brooklyn
+﻿bro.ny.0009_02,﻿school,"﻿St. Mary's, Star of the Sea",English,,,,,,﻿New York City,,﻿NY,,40.6768146,-73.9983507,,,,,,,,,,,﻿girl,﻿300 girls,,1866.0,Brooklyn
+﻿bro.ny.0010_02,﻿school,﻿St. Peter's,English,,,,,,﻿New York City,,﻿NY,,40.684600599999996,-73.9891355,,,,,,,,,,,﻿girl,﻿500 girls,,1866.0,Brooklyn
+﻿bro.ny.0011_02,﻿school,﻿St. John's,English,,,,,,﻿New York City,,﻿NY,,40.61892279999999,-73.9540515,,,,,,,,,,,﻿child,﻿130 children,,1866.0,Brooklyn
+﻿bro.ny.0012_02,﻿school,﻿Immaculate Conception,English,,,,,,,,﻿NY,,40.7105100595357,-73.94694128508,,,,,,,,,,,﻿boy,"﻿540 boys, under charge of Franciscan Brothers",﻿Franciscan Brothers,1866.0,Brooklyn
+﻿bro.ny.0012_02,﻿school,﻿Immaculate Conception,English,,,,,,,,﻿NY,,40.7105100595357,-73.94694128508,,,,,,,,,,,﻿girl,"﻿650 girls, under charge of Sisters of St. Joseph",﻿Sisters of St. Joseph,1866.0,Brooklyn
+﻿bro.ny.0017_02,﻿school,﻿Lady of Mercy,English,,,,,,﻿New York City,,﻿NY,,40.701648,-73.942261,,,,,,,,,,,﻿boy,﻿300 boys,,1866.0,Brooklyn
+﻿bro.ny.0017_02,﻿school,﻿Lady of Mercy,English,,,,,,﻿New York City,,﻿NY,,40.701648,-73.942261,,,,,,,,,,,﻿girl,﻿340 girls,,1866.0,Brooklyn
+﻿bro.ny.0036_02,﻿school,﻿St. Patrick's,English,,,,,,﻿Fort Hamilton,,﻿NY,,40.6094454,-74.0285434,,,,,,,,,,,﻿boy,﻿80 boys,,1866.0,Brooklyn
+﻿bro.ny.0036_02,﻿school,﻿St. Patrick's,English,,,,,,﻿Fort Hamilton,,﻿NY,,40.6094454,-74.0285434,,,,,,,,,,,﻿girl,﻿60 girls,,1866.0,Brooklyn
+﻿bro.ny.0035_02,﻿school,﻿St. Michael's,English,,,,,,﻿Flushing,,﻿NY,,40.7584318,-73.82750159999999,,,,,,﻿Brother,﻿Paul,,﻿Superior,,﻿girl,"﻿300 girls, taught by the Sisters of St. Joseph",﻿Sisters of St. Joseph,1866.0,Brooklyn
+﻿bro.ny.0035_02,﻿school,﻿St. Michael's,English,,,,,,﻿Flushing,,﻿NY,,40.7584318,-73.82750159999999,,,,,,,,,,,﻿boy,﻿200 boys,﻿Sisters of St. Joseph,1866.0,Brooklyn
+﻿bro.ny.0013_02,﻿school,﻿St. Boniface's,﻿German,,,,,,﻿New York City,,﻿NY,,40.692564000000004,-73.98453570000001,,,,,,,,,,,﻿child,﻿180 children,,1866.0,Brooklyn
+﻿bro.ny.0021_02,﻿school,﻿Annunciation of B.V. Mary,English,,,,,,﻿New York City,,﻿NY,,40.6696169,-73.9836934,,,,,,,,,,,﻿child,﻿150 children,,1866.0,Brooklyn

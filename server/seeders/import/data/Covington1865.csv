@@ -49,28 +49,28 @@
 ﻿cov.kt.0064,﻿college,﻿St. Stanislaus' College,English,﻿Now closed.,"﻿White Sulphur, P.O.",,﻿Scott County,,,,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
 ﻿cov.kt.0066,"﻿academy, boarding school",﻿St. Catherine's Female Academy and Boarding School,English,"﻿Music, drawing, embroidery, with all other usual branches of female education, are carefully taught",,,,,﻿Lexington,﻿Lexington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,﻿pupils,"﻿Usual number of pupils, about one hundred, a fourth of whom are boarders",﻿conducted by the Sisters of Charity of Nazareth,1865.0,Covington
 ﻿cov.kt.0069,﻿academy,﻿Academy of La Salette,English,"﻿Boarding and select day school, in which all the usual branches of female education are carefully taught",﻿Seventh street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,﻿cla_gardiner_001,﻿Sr.,﻿Clare Gardiner,,﻿Sup.,,,,﻿Conducted by the Sisters of Charity of Nazareth,1865.0,Covington
-﻿cov.kt.0068,"﻿school, academy",﻿Academy of the Benedictine Nuns,English,,﻿Twelfth street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0067,﻿convent,﻿Convent of the Benedictine Nuns,English,,"﻿Twelfth street, at St. Joseph's Church",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,﻿Mother,﻿Alexia Lechner,,﻿Superior,,,,,1865.0,Covington
-﻿cov.kt.0070,﻿academy,﻿Academy of the Mother of God,﻿German,,﻿Sixth street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by the Sisters of St. Francis,1865.0,Covington
+﻿cov.kt.0068,"﻿school, academy",﻿Academy of the Benedictine Nuns,English,,﻿Twelfth street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Benedictine Nuns,1865.0,Covington
+﻿cov.kt.0067_02,﻿convent,﻿Convent of the Benedictine Nuns,English,,"﻿Twelfth street, at St. Joseph's Church",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,﻿Mother,﻿Alexia Lechner,,﻿Superior,,,,﻿Benedictine Nuns,1865.0,Covington
+﻿cov.kt.0002_02,﻿academy,﻿Academy of the Mother of God,﻿German,,﻿Sixth street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by the Sisters of St. Francis,1865.0,Covington
 ﻿cov.kt.0071,﻿school,﻿Boarding and Day School,English,,,,,,﻿Frankfort,﻿Frankfort,﻿KY,,39.0889488,-84.5338321,,,,,,﻿Sister,﻿Frances Gardiner,,﻿Superior,,,,﻿Conducted by the Sisters of Charity of Nazareth,1865.0,Covington
-﻿cov.kt.0074,"﻿academy, school",﻿Academy and Boarding School of the Immaculate Conception,English,﻿All usual branches of female education carefully taught,,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,﻿Sister,﻿Helena Toomey,,﻿Superior,,,,﻿by the Sisters of Charity of Nazareth,1865.0,Covington
-﻿cov.kt.0108,﻿academy,﻿Academy and Boarding School,English,﻿for girls; all usual branches of female education are taught,,,,,﻿Ashland,,,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by the Sisters of St. Francis,1865.0,Covington
+﻿cov.kt.0036_02,"﻿academy, school",﻿Academy and Boarding School of the Immaculate Conception,English,﻿All usual branches of female education carefully taught,,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,﻿Sister,﻿Helena Toomey,,﻿Superior,,,,﻿by the Sisters of Charity of Nazareth,1865.0,Covington
+﻿cov.kt.0008_02,﻿academy,﻿Academy and Boarding School,English,﻿for girls; all usual branches of female education are taught,,,,,﻿Ashland,,,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by the Sisters of St. Francis,1865.0,Covington
 ﻿cov.kt.0075,"﻿academy, school",﻿Academy and Day-School,English,﻿for girls,,,,,﻿Carrollton,﻿Carrollton,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by Sisters of St. Francis,1865.0,Covington
-﻿cov.kt.0076,"﻿academy, school",﻿Select Academy and Day-School,English,﻿for girls,﻿St. Stephen's Church,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by Sisters of St. Francis,1865.0,Covington
+﻿cov.kt.0038_02,"﻿academy, school",﻿Select Academy and Day-School,English,﻿for girls,﻿St. Stephen's Church,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by Sisters of St. Francis,1865.0,Covington
 ﻿cov.kt.0077,﻿school,﻿Day School,English,﻿for girls of Cathedral,﻿Scott street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
 ﻿cov.kt.0078,﻿school,﻿Day School,English,﻿for boys of Cathedral,﻿Fifth street,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
 ﻿cov.kt.0079,﻿academy,﻿St. John's Academy,English,﻿for boys,﻿Walnut street,,,,﻿Lexington,﻿Lexington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0080,﻿school,﻿Day School,English,﻿for boys and girls,"﻿at St. John Evangelist's Church, Louisburgh",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0081,﻿school,﻿Day School,English,﻿for boys,"﻿Mother of God's Church, Sixth street",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0082,﻿school,﻿Day School,English,﻿for boys and girls,"﻿St. Joseph's Church, Twelfth street",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0084,﻿school,﻿Day School,English,﻿for boys,﻿Corpus Christi Church,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0085,﻿school,﻿Day School,English,﻿for girls,﻿Corpus Christi Church,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0086,﻿school,﻿Day School,English,﻿for boys and girls,﻿Immaculate Conception,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0087,﻿school,﻿Day School,English,﻿for boys and girls,﻿St. Francis of Assisium's,,,﻿Russell County,﻿Jamestown,﻿Jamestown,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0088,﻿school,﻿Day School,English,﻿for boys and girls,﻿St. John the Baptist's,,,,﻿St. John's Hill,﻿Wilder,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0089,﻿school,﻿Classical School,English,﻿for boys,﻿attached to St. Joseph's Church,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by the Benedictine Fathers,1865.0,Covington
-﻿cov.kt.0090,﻿school,﻿Day School,English,﻿for boys and girls,﻿St. Patrick's,,,,﻿Maysville,﻿Maysville,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0092,﻿school,﻿Day School,English,﻿for boys and girls,﻿Church of Four Mile,,,,﻿Four Mile,﻿Four Mile,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0093,﻿school,﻿Day School,English,﻿for boys and girls,﻿Church of Twelve Mile,,,,﻿Twelve Mile,,﻿KY,,38.8951891,-84.3962535,,,,,,,,,,,,,,1865.0,Covington
-﻿cov.kt.0091,﻿school,﻿Day School,English,﻿for boys and girls,﻿Church of Carrollton,,,,﻿Carrollton,﻿Carrollton,﻿KY,,38.8951891,-84.3962535,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0003_02,﻿school,﻿Day School,English,﻿for boys and girls,"﻿at St. John Evangelist's Church, Louisburgh",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0002_03,﻿school,﻿Day School,English,﻿for boys,"﻿Mother of God's Church, Sixth street",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0004_03,﻿school,﻿Day School,English,﻿for boys and girls,"﻿St. Joseph's Church, Twelfth street",,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0037_02,﻿school,﻿Day School,English,﻿for boys,﻿Corpus Christi Church,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0037_03,﻿school,﻿Day School,English,﻿for girls,﻿Corpus Christi Church,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0036_03,﻿school,﻿Day School,English,﻿for boys and girls,﻿Immaculate Conception,,,,﻿Newport,﻿Newport,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0027_02,﻿school,﻿Day School,English,﻿for boys and girls,﻿St. Francis of Assisium's,,,﻿Russell County,﻿Jamestown,﻿Jamestown,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0034_02,﻿school,﻿Day School,English,﻿for boys and girls,﻿St. John the Baptist's,,,,﻿St. John's Hill,﻿Wilder,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0004_02,﻿school,﻿Classical School,English,﻿for boys,﻿attached to St. Joseph's Church,,,,﻿Covington,﻿Covington,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,﻿Conducted by the Benedictine Fathers,1865.0,Covington
+﻿cov.kt.0030_02,﻿school,﻿Day School,English,﻿for boys and girls,﻿St. Patrick's,,,,﻿Maysville,﻿Maysville,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0022_02,﻿school,﻿Day School,English,﻿for boys and girls,﻿Church of Four Mile,,,,﻿Four Mile,﻿Four Mile,﻿KY,,39.0889488,-84.5338321,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0052_02,﻿school,﻿Day School,English,﻿for boys and girls,﻿Church of Twelve Mile,,,,﻿Twelve Mile,,﻿KY,,38.8951891,-84.3962535,,,,,,,,,,,,,,1865.0,Covington
+﻿cov.kt.0015_02,﻿school,﻿Day School,English,﻿for boys and girls,﻿Church of Carrollton,,,,﻿Carrollton,﻿Carrollton,﻿KY,,38.8951891,-84.3962535,,,,,,,,,,,,,,1865.0,Covington
 ﻿cov.kt.0109,"﻿hospital, asylum",﻿Hospital and Orphan Asylum,English,,﻿Seventh Street,,,,﻿Covington,,,,38.8951891,-84.3962535,,,,,,,,,,,,,﻿in the charge of the Sisters of the Poor,1865.0,Covington

@@ -1,0 +1,6 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿cha.sc.0001,﻿cathedral,﻿Finbar's Cathedral,English,,,,,,﻿Charleston,﻿Charleston,﻿SC,,32.7764958,-79.9344682,,,,,﻿p_n_lynch_001,﻿Rt. Rev.,﻿P. N. Lynch,﻿D.D.,,,,,,1865.0,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Finbar's Cathedral,English,,,,,,﻿Charleston,﻿Charleston,﻿SC,,32.7764958,-79.9344682,,,,,,﻿Rev.,﻿T. J. Sullivan,,,,,,,1865.0,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Finbar's Cathedral,English,,,,,,﻿Charleston,﻿Charleston,﻿SC,,32.7764958,-79.9344682,,,,,,﻿Rev.,﻿J. A. Corcoran,﻿D.D.,,,,,,1865.0,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Finbar's Cathedral,English,,,,,,﻿Charleston,﻿Charleston,﻿SC,,32.7764958,-79.9344682,,,,,,﻿Rev.,﻿L. Fillion,,,,,,,1865.0,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Finbar's Cathedral,English,,,,,,﻿Charleston,﻿Charleston,﻿SC,,32.7764958,-79.9344682,,,,,,﻿Rev.,﻿Felix J. Carr,,,,,,,1865.0,Charleston

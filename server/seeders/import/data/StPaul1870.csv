@@ -1,14 +1,14 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.94695,-93.109143,,,,,﻿tho_l_grace_001,﻿Rt. Rev.,﻿Thomas L. Grace,,﻿Bishop,,,,,1870.0,StPaul
-﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94695,-93.109143,,,,,﻿a_ravoux_001,﻿Very Rev.,﻿A. Ravoux,,,,,,,1870.0,StPaul
-﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94695,-93.109143,,,,,﻿joh_ireland_001,﻿Rev.,﻿John Ireland,,﻿Pastor of the Parish,,,,,1870.0,StPaul
-﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94695,-93.109143,,,,,﻿wil_riordan_001,﻿Rev.,﻿William Riordan,,﻿Assistant,,,,,1870.0,StPaul
-﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94695,-93.109143,,,,,﻿mau_murphy_001,﻿Rev.,﻿Maurice Murphy,,﻿Assistant,,,,,1870.0,StPaul
-﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94695,-93.109143,,,,,﻿d_reville_002,﻿Rev.,﻿D. Reville,﻿O.S.D.,﻿Assistant,,,,,1870.0,StPaul
-﻿stp.mn.0002,﻿church,﻿Assumption Church,﻿German,﻿St. Peter's Benevlolent Society,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.947550299999996,-93.09947290000001,,,,,﻿cle_staub_001,﻿Rev.,﻿Clement Staub,﻿O.S.B.,,,,,,1870.0,StPaul
-﻿stp.mn.0002,﻿church,﻿Assumption Church,﻿German,﻿St. Peter's Benevlolent Society,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.947550299999996,-93.09947290000001,,,,,﻿oth_wirz_001,﻿Rev.,﻿Othman Wirz,﻿O.S.B.,,,,,,1870.0,StPaul
-﻿stp.mn.0003,﻿church,﻿St. Mary's Church,English,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.9523479,-93.0885005,,,,,﻿l_caillet_001,﻿Rev.,﻿L. Caillet,,,,,,,1870.0,StPaul
-﻿stp.mn.0004,﻿church,﻿St. Louis's Church,﻿French,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.9678942,-93.0736898,,,,,﻿a_schirmer_001,﻿Rev.,﻿A. Schirmer,,,,,,,1870.0,StPaul
+﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.94591782,-93.09664594,,,,,﻿tho_l_grace_001,﻿Rt. Rev.,﻿Thomas L. Grace,,﻿Bishop,,,,,1870.0,StPaul
+﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94591782,-93.09664594,,,,,﻿a_ravoux_001,﻿Very Rev.,﻿A. Ravoux,,,,,,,1870.0,StPaul
+﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94591782,-93.09664594,,,,,﻿joh_ireland_001,﻿Rev.,﻿John Ireland,,﻿Pastor of the Parish,,,,,1870.0,StPaul
+﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94591782,-93.09664594,,,,,﻿wil_riordan_001,﻿Rev.,﻿William Riordan,,﻿Assistant,,,,,1870.0,StPaul
+﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94591782,-93.09664594,,,,,﻿mau_murphy_001,﻿Rev.,﻿Maurice Murphy,,﻿Assistant,,,,,1870.0,StPaul
+﻿stp.mn.0001,﻿cathedral,﻿Cathedral of St. Paul,English,,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94591782,-93.09664594,,,,,﻿d_reville_002,﻿Rev.,﻿D. Reville,﻿O.S.D.,﻿Assistant,,,,,1870.0,StPaul
+﻿stp.mn.0002,﻿church,﻿Assumption Church,﻿German,﻿St. Peter's Benevlolent Society,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.94852548,-93.09970652,,,,,﻿cle_staub_001,﻿Rev.,﻿Clement Staub,﻿O.S.B.,,,,,,1870.0,StPaul
+﻿stp.mn.0002,﻿church,﻿Assumption Church,﻿German,﻿St. Peter's Benevlolent Society,,,﻿,﻿,﻿St. Paul,﻿St. Paul,﻿MN,,44.94852548,-93.09970652,,,,,﻿oth_wirz_001,﻿Rev.,﻿Othman Wirz,﻿O.S.B.,,,,,,1870.0,StPaul
+﻿stp.mn.0003,﻿church,﻿St. Mary's Church,English,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.95555722,-93.08505984,,,,,﻿l_caillet_001,﻿Rev.,﻿L. Caillet,,,,,,,1870.0,StPaul
+﻿stp.mn.0004,﻿church,﻿St. Louis's Church,﻿French,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.95017135,-93.09659621,,,,,﻿a_schirmer_001,﻿Rev.,﻿A. Schirmer,,,,,,,1870.0,StPaul
 ﻿stp.mn.0005,﻿chapel,﻿Chapel of St. Joseph,English,,,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.9469765,-93.09998890000001,﻿stp.mn.0001,﻿Attended from the Cathedral,,,,,,,,,,,,1870.0,StPaul
 ﻿stp.mn.0006,﻿church,﻿St. Michael's Church,English,,﻿West St. Paul,,﻿Ramsey County,﻿Ramsey County,﻿St. Paul,﻿St. Paul,﻿MN,,44.9183814,-93.0711189,﻿stp.mn.0001,﻿Attended from the Cathedral,,,,,,,,,,,,1870.0,StPaul
 ﻿stp.mn.0007,﻿church,﻿St. John's Church,English,,,,,﻿Ramsey County,﻿New Canada,﻿Little Canada,﻿MN,,45.0274537,-93.08980179999999,,﻿,,,﻿j_goiffon_001,﻿Rev.,﻿J. Goiffon,,,,,,,1870.0,StPaul

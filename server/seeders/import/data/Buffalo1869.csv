@@ -162,11 +162,11 @@
 ﻿buf.ny.0122,"﻿college, convent",﻿Franciscan College and Convent,English,,,,﻿Cattaraugus County,,﻿Alleghany,,﻿NY,,,,,,,,﻿leo_mckeirnan_001,﻿Rev.,﻿Leonard McKeirnan,﻿O.S.F.,,,﻿student,﻿120 students,,1869.0,Buffalo
 ﻿buf.ny.0123,﻿academy,﻿St. Elizabeth's Academy,English,,,,﻿Cattaraugus County,,﻿Alleghany,,﻿NY,,,,,,,,,﻿Sister,﻿Theresa,,﻿Superior,,﻿pupil,﻿60 pupils,﻿under the Sisters of the Third Order of St. Francis,1869.0,Buffalo
 ﻿buf.ny.0124,﻿college,﻿St. Joseph's College,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,,,,,,,﻿boy,"﻿Boys, 450","﻿under care of Christian Brothers, and clergy-men for the classics",1869.0,Buffalo
-﻿buf.ny.0125,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿jb_hespelein_001,﻿Rev.,﻿J.B. Hespelein,﻿C.SS.R.,﻿Rector,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
-﻿buf.ny.0125,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿wil_luckam_001,﻿Rev.,"﻿William Luck,am",﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
-﻿buf.ny.0125,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿geo_beranek_001,﻿Rev.,﻿George Beranek,﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
-﻿buf.ny.0125,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿ber_klaphake_001,﻿Rev.,﻿Bernard Klaphake,﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
-﻿buf.ny.0125,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿fre_schauer_001,﻿Rev.,﻿Frederick Schauer,﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
+﻿buf.ny.0093_01,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿jb_hespelein_001,﻿Rev.,﻿J.B. Hespelein,﻿C.SS.R.,﻿Rector,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
+﻿buf.ny.0093_01,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿wil_luckam_001,﻿Rev.,"﻿William Luck,am",﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
+﻿buf.ny.0093_01,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿geo_beranek_001,﻿Rev.,﻿George Beranek,﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
+﻿buf.ny.0093_01,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿ber_klaphake_001,﻿Rev.,﻿Bernard Klaphake,﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
+﻿buf.ny.0093_01,﻿convent,﻿St. Mary's Convent of the Redemptorist,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,﻿fre_schauer_001,﻿Rev.,﻿Frederick Schauer,﻿C.SS.R.,,,﻿lay brother,﻿and 5 lay Brothers,,1869.0,Buffalo
 ﻿buf.ny.0198,﻿retreat,﻿St. Mary's Retreat (Passionist),English,,,,,,﻿Dunkirk,,﻿NY,,,,,,,,﻿gui_matassi_001,﻿Rev.,﻿Guido Matassi,,,,﻿cleric,﻿6 clerics,,1869.0,Buffalo
 ﻿buf.ny.0198,﻿retreat,﻿St. Mary's Retreat (Passionist),English,,,,,,﻿Dunkirk,,﻿NY,,,,,,,,﻿f_guido_001,﻿Rev.,﻿F. Guido,,﻿Rector,,﻿lay brother,﻿5 lay brothers,,1869.0,Buffalo
 ﻿buf.ny.0198,﻿retreat,﻿St. Mary's Retreat (Passionist),English,,,,,,﻿Dunkirk,,﻿NY,,,,,,,,﻿ang_ruger_001,﻿Rev.,﻿Angelo Ruger,,,,﻿lay brother,﻿5 lay brothers,,1869.0,Buffalo
@@ -176,10 +176,10 @@
 ﻿buf.ny.0198,﻿retreat,﻿St. Mary's Retreat (Passionist),English,,,,,,﻿Dunkirk,,﻿NY,,,,,,,,﻿hen_egler_001,﻿Rev.,﻿Henry Egler,,,,﻿lay brother,﻿5 lay brothers,,1869.0,Buffalo
 ﻿buf.ny.0198,﻿retreat,﻿St. Mary's Retreat (Passionist),English,,,,,,﻿Dunkirk,,﻿NY,,,,,,,,﻿wil_geagan_001,﻿Rev.,﻿William Geagan,,,,﻿lay brother,﻿5 lay brothers,,1869.0,Buffalo
 ﻿buf.ny.0198,﻿retreat,﻿St. Mary's Retreat (Passionist),English,,,,,,﻿Dunkirk,,﻿NY,,,,,,,,﻿arc_paganini_001,﻿Rev.,﻿Arcangelo Paganini,,,,﻿lay brother,﻿5 lay brothers,,1869.0,Buffalo
-﻿buf.ny.0199,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿a_tortel_001,﻿Rev.,﻿A. Tortel,﻿O.M.I,﻿Superior,,,,,1869.0,Buffalo
-﻿buf.ny.0199,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿f_mangin_001,﻿Rev.,﻿F. Mangin,﻿O.M.I,,,,,,1869.0,Buffalo
-﻿buf.ny.0199,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿jam_mcgrath_001,﻿Rev.,﻿James McGrath,﻿O.M.I,,,,,,1869.0,Buffalo
-﻿buf.ny.0199,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿e_cavanagh_001,﻿Rev.,﻿E. Cavanagh,﻿O.M.I,,,,,,1869.0,Buffalo
+﻿buf.ny.0005_01,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿a_tortel_001,﻿Rev.,﻿A. Tortel,﻿O.M.I,﻿Superior,,,,,1869.0,Buffalo
+﻿buf.ny.0005_01,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿f_mangin_001,﻿Rev.,﻿F. Mangin,﻿O.M.I,,,,,,1869.0,Buffalo
+﻿buf.ny.0005_01,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿jam_mcgrath_001,﻿Rev.,﻿James McGrath,﻿O.M.I,,,,,,1869.0,Buffalo
+﻿buf.ny.0005_01,﻿Community,﻿Community of the Missionary Oblates of Mary Immaculate,English,,"﻿Church of the Holy Angels, Buffalo",,﻿Erie County,,﻿Buffalo,,﻿NY,,,,,,,,﻿e_cavanagh_001,﻿Rev.,﻿E. Cavanagh,﻿O.M.I,,,,,,1869.0,Buffalo
 ﻿buf.ny.0201,﻿convent,﻿St. Gabriel's Convent,English,,,,﻿Niagara County,,﻿Niagra City,,﻿NY,,,,,,,,,,,,,,,,﻿Under the nuns of the visitation,1869.0,Buffalo
 ﻿buf.ny.0126,﻿convent,﻿Convent of St. Clare,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,,﻿Mother,﻿Mary Anne,,﻿Superior,,﻿female,﻿school attended by 180 females,﻿under care of the Sisters of the Third Order of St. Francis.,1869.0,Buffalo
 ﻿buf.ny.0126,﻿convent,﻿Convent of St. Clare,English,,,,,,﻿Buffalo,,﻿NY,,,,,,,,,﻿Sister,﻿Mary Colleta,,,,﻿female,﻿school attended by 180 females,﻿under care of the Sisters of the Third Order of St. Francis.,1869.0,Buffalo

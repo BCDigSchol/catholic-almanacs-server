@@ -358,30 +358,30 @@
 ﻿chi.il.0282,﻿school,﻿Cathedral School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.9146514,-87.6716945,,,,,,,,,,,﻿Select school,90,﻿Under the Sisters of Charity,1870.0,Chicago
 ﻿chi.il.0282,﻿school,﻿Cathedral School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.87942649,-87.6443372,,,,,,,,,,,﻿Free,230,﻿Under the Sisters of Charity,1870.0,Chicago
 ﻿chi.il.0283,﻿school,﻿Cathedral School,English,﻿for boys,﻿Corner of Cass and Chicago avenues,,,,﻿Chicago,﻿Chicago,﻿IL,,41.87761658,-87.81431939,,,,,,,,,,,,,﻿Under the charge of Christian Brothers,1870.0,Chicago
-﻿chi.il.0284,﻿school,﻿St. Mary's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88289691,-87.65204781,,,,,,,,,,,,,﻿Under Christian Brothers,1870.0,Chicago
-﻿chi.il.0285,﻿school,﻿St. Mary's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88289691,-87.65204781,,,,,,,,,,,,,﻿Under Sisters of Mercy,1870.0,Chicago
-﻿chi.il.0286,﻿school,﻿St. Patrick's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88289691,-87.65204781,,,,,,,,,,,,,﻿Under the Christian Brothers,1870.0,Chicago
-﻿chi.il.0287,﻿school,﻿St. Patrick's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.86739633,-87.65474471,,,,,,,,,,,,,﻿Under the Sisters of Loretto,1870.0,Chicago
+﻿chi.il.0284,﻿school,﻿St. Mary's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88289691,-87.65204781,,,,,,,,,,,﻿Student,﻿600 pupils,﻿Under Christian Brothers,1870.0,Chicago
+﻿chi.il.0285,﻿school,﻿St. Mary's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88289691,-87.65204781,,,,,,,,,,,﻿Student,﻿160 pupils,﻿Under Sisters of Mercy,1870.0,Chicago
+﻿chi.il.0286,﻿school,﻿St. Patrick's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88289691,-87.65204781,,,,,,,,,,,﻿Student,﻿440 pupils,﻿Under the Christian Brothers,1870.0,Chicago
+﻿chi.il.0287,﻿school,﻿St. Patrick's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.86739633,-87.65474471,,,,,,,,,,,﻿Student,﻿375 pupils,﻿Under the Sisters of Loretto,1870.0,Chicago
 ﻿chi.il.0288,﻿school,﻿Parochial School of Holy Family Church,English,﻿for boys,﻿On Morgan street,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88228297,-87.63145416,,,,,,﻿Brother,﻿O'Neil,﻿S.J.,﻿Superintendent,,﻿Lay Teacher,﻿23 lay teachers,,1870.0,Chicago
 ﻿chi.il.0288,﻿school,﻿Parochial School of Holy Family Church,English,﻿for boys,﻿On Morgan street,,,,﻿Chicago,﻿Chicago,﻿IL,,41.88228297,-87.63145416,,,,,﻿oneil_001,﻿Father,﻿O'Neil,﻿S.J.,﻿Director,,﻿Student,﻿2100 boys,,1870.0,Chicago
-﻿chi.il.0289,﻿school,﻿Parochial School of Holy Family Church,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.91309555,-87.64076883,,,,,,,,,,,,﻿853 girls,﻿Under the direction of the Ladies of the Sacred Heart,1870.0,Chicago
-﻿chi.il.0290,﻿school,﻿St. Aloysius' School,English,﻿for girls,﻿Church of the Holy Family,,,,﻿Chicago,﻿Chicago,﻿IL,,41.91309555,-87.64076883,,,,,,,,,,,,,﻿Under the care of the Sisters of Charity of the Blessed Virgin Mary,1870.0,Chicago
-﻿chi.il.0291,﻿school,﻿St. Peter's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.89673178,-87.62555666,,,,,,,,,,,,,﻿Under secular teachers,1870.0,Chicago
-﻿chi.il.0292,﻿school,﻿St. Peter's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.89673178,-87.62555666,,,,,,,,,,,,,﻿Under the Sisters of Notre Dame,1870.0,Chicago
-﻿chi.il.0293,﻿school,﻿St. Michael's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.8577813,-87.63023928,,,,,,,,,,,,,﻿Under secular teachers,1870.0,Chicago
-﻿chi.il.0294,﻿school,﻿St. Michael's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.8577813,-87.63023928,,,,,,,,,,,,,﻿Under the Sisters of Notre Dame,1870.0,Chicago
-﻿chi.il.0295,﻿school,﻿St. Joseph's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.86356598,-87.64789749,,,,,,,,,,,,,﻿Under lay teachers,1870.0,Chicago
-﻿chi.il.0296,﻿school,﻿St. Joseph's School,English,﻿for girls. Christian Brothers expected,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.89095906,-87.6695875,,,,,,,,,,,,,﻿Under the Sisters of St. Benedict. Christian Brothers.,1870.0,Chicago
-﻿chi.il.0297,﻿school,﻿St. John's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.84384284,-87.61745143,,,,,,,,,,,,,﻿Under lay teachers,1870.0,Chicago
-﻿chi.il.0298,﻿school,﻿St. John's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.86739633,-87.65474471,,,,,,,,,,,,,﻿Under the Sisters of Mercy,1870.0,Chicago
-﻿chi.il.0299,﻿school,﻿St. Francis' School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.7520183,-87.60007270000001,,,,,,,,,,,,,﻿Under lay teachers,1870.0,Chicago
-﻿chi.il.0300,﻿school,﻿St. Columbkille's School,English,,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.15631108,-87.8733378,,,,,,,,,,,,,﻿Sisters of Charity,1870.0,Chicago
-﻿chi.il.0301,﻿school,﻿St. James' School,English,﻿for boys and girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.15631108,-87.8733378,,,,,,,,,,,,,﻿Under the Sisters of Mercy,1870.0,Chicago
-﻿chi.il.0302,﻿school,﻿St. Stanislaus' School,English,,﻿Church of the Holy Family,,,,﻿Chicago,﻿Chicago,﻿IL,,42.28535298,-89.60634926,,,,,,,,,,,,,﻿Under the Sisters of Charity of the Blessed Virgin Mary,1870.0,Chicago
-﻿chi.il.0303,﻿school,﻿St. Francis' School,English,﻿for girls,,,,,﻿Bloomington,﻿Bloomington,﻿IL,,42.41912337,-90.42923658,,,,,,,,,,,,,﻿Under the Sisters of St. Francis,1870.0,Chicago
+﻿chi.il.0289,﻿school,﻿Parochial School of Holy Family Church,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.91309555,-87.64076883,,,,,,,,,,,﻿Student,﻿853 girls,﻿Under the direction of the Ladies of the Sacred Heart,1870.0,Chicago
+﻿chi.il.0290,﻿school,﻿St. Aloysius' School,English,﻿for girls,﻿Church of the Holy Family,,,,﻿Chicago,﻿Chicago,﻿IL,,41.91309555,-87.64076883,,,,,,,,,,,﻿Student,﻿850 pupils,﻿Under the care of the Sisters of Charity of the Blessed Virgin Mary,1870.0,Chicago
+﻿chi.il.0291,﻿school,﻿St. Peter's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.89673178,-87.62555666,,,,,,,,,,,﻿Student,﻿100 pupils,﻿Under secular teachers,1870.0,Chicago
+﻿chi.il.0292,﻿school,﻿St. Peter's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.89673178,-87.62555666,,,,,,,,,,,﻿Student,﻿300 pupils,﻿Under the Sisters of Notre Dame,1870.0,Chicago
+﻿chi.il.0293,﻿school,﻿St. Michael's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.8577813,-87.63023928,,,,,,,,,,,﻿Student,﻿500 pupils,﻿Under secular teachers,1870.0,Chicago
+﻿chi.il.0294,﻿school,﻿St. Michael's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.8577813,-87.63023928,,,,,,,,,,,﻿Student,﻿600 pupils,﻿Under the Sisters of Notre Dame,1870.0,Chicago
+﻿chi.il.0295,﻿school,﻿St. Joseph's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.86356598,-87.64789749,,,,,,,,,,,﻿Student,﻿250 pupils,﻿Under lay teachers,1870.0,Chicago
+﻿chi.il.0296,﻿school,﻿St. Joseph's School,English,﻿for girls. Christian Brothers expected,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.89095906,-87.6695875,,,,,,,,,,,﻿Student,﻿200 pupils,﻿Under the Sisters of St. Benedict. Christian Brothers.,1870.0,Chicago
+﻿chi.il.0297,﻿school,﻿St. John's School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.84384284,-87.61745143,,,,,,,,,,,﻿Student,﻿200 pupils,﻿Under lay teachers,1870.0,Chicago
+﻿chi.il.0298,﻿school,﻿St. John's School,English,﻿for girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.86739633,-87.65474471,,,,,,,,,,,﻿Student,﻿250 pupils,﻿Under the Sisters of Mercy,1870.0,Chicago
+﻿chi.il.0299,﻿school,﻿St. Francis' School,English,﻿for boys,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.7520183,-87.60007270000001,,,,,,,,,,,﻿Student,﻿300 pupils,﻿Under lay teachers,1870.0,Chicago
+﻿chi.il.0300,﻿school,﻿St. Columbkille's School,English,,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.15631108,-87.8733378,,,,,,,,,,,﻿Student,﻿300 pupils,﻿Sisters of Charity,1870.0,Chicago
+﻿chi.il.0301,﻿school,﻿St. James' School,English,﻿for boys and girls,,,,,﻿Chicago,﻿Chicago,﻿IL,,41.15631108,-87.8733378,,,,,,,,,,,﻿Student,﻿250 pupils,﻿Under the Sisters of Mercy,1870.0,Chicago
+﻿chi.il.0302,﻿school,﻿St. Stanislaus' School,English,,﻿Church of the Holy Family,,,,﻿Chicago,﻿Chicago,﻿IL,,42.28535298,-89.60634926,,,,,,,,,,,﻿Student,﻿450 pupils,﻿Under the Sisters of Charity of the Blessed Virgin Mary,1870.0,Chicago
+﻿chi.il.0303,﻿school,﻿St. Francis' School,English,﻿for girls,,,,,﻿Bloomington,﻿Bloomington,﻿IL,,42.41912337,-90.42923658,,,,,,,,,,,﻿Student,﻿200 pupils,﻿Under the Sisters of St. Francis,1870.0,Chicago
 ﻿chi.il.0304,﻿school,not recorded,English,"﻿for boys and girls.  Two schools, 40 and 45",﻿Parochial school,,,,﻿Bourbonnais Grove,﻿Bourbonnais,﻿IL,,41.10810877,-89.36352818,,,,,,,,,,,,,﻿Under the Sisters of the Congregation,1870.0,Chicago
-﻿chi.il.0305,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial school,,,,﻿Freeport,﻿Freeport,﻿IL,,41.10810877,-89.36352818,,,,,,,,,,,,,﻿Under the Sisters of the Congregation,1870.0,Chicago
-﻿chi.il.0306,﻿school,not recorded,﻿German,﻿for boys and girls,﻿Parochial schools,,,,﻿Galena,﻿Galena,﻿IL,,41.55042754,-88.12143239,,,,,,,,,,,,,﻿Under lay teachers,1870.0,Chicago
+﻿chi.il.0305,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial school,,,,﻿Freeport,﻿Freeport,﻿IL,,41.10810877,-89.36352818,,,,,,,,,,,﻿Student,﻿125 pupils,﻿Under the Sisters of the Congregation,1870.0,Chicago
+﻿chi.il.0306,﻿school,not recorded,﻿German,﻿for boys and girls,﻿Parochial schools,,,,﻿Galena,﻿Galena,﻿IL,,41.55042754,-88.12143239,,,,,,,,,,,﻿Student,﻿175 pupils,﻿Under lay teachers,1870.0,Chicago
 ﻿chi.il.0307,﻿school,not recorded,﻿German,﻿for boys and girls,﻿Parochial schools,,,,﻿Henry,﻿Henry,﻿IL,,41.55042754,-88.12143239,,,,,,,,,,,﻿Student,﻿94 pupils,﻿Under lay teachers,1870.0,Chicago
 ﻿chi.il.0308,﻿school,not recorded,﻿German,﻿for boys,﻿Parochial schools,,,,﻿Henry,﻿Henry,﻿IL,,41.55042754,-88.12143239,,,,,,,,,,,﻿Student,﻿100 pupils,﻿Under the Sisters of Notre Dame,1870.0,Chicago
 ﻿chi.il.0309,﻿school,not recorded,English,,﻿Parochial schools,,,,﻿Joliet,﻿Joliet,﻿IL,,41.55042754,-88.12143239,,,,,,,,,,,﻿Student,﻿190 pupils,﻿Under the Sisters of the Holy Cross,1870.0,Chicago
@@ -395,7 +395,7 @@
 ﻿chi.il.0317,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial schools,,,﻿La Salle County,﻿Ottawa,﻿Ottawa,﻿IL,,40.6960573,-89.5872995,,,,,,,,,,,﻿Student,﻿300 pupils,﻿Under Sisters of Mercy and Christian Brothers,1870.0,Chicago
 ﻿chi.il.0318,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial schools,,,,﻿Peoria,﻿Peoria,﻿IL,,40.6960573,-89.5872995,,,,,,,,,,,﻿Student,﻿160 pupils,﻿Under the Sisters of Mercy and St. Joseph,1870.0,Chicago
 ﻿chi.il.0319,﻿school,not recorded,﻿German church,﻿for boys and girls,﻿Parochial schools,,,,﻿Peoria,﻿Peoria,﻿IL,,41.3287833,-89.12874304,,,,,,,,,,,﻿Student,﻿130 pupils,﻿Under lay teachers,1870.0,Chicago
-﻿chi.il.0320,﻿school,not recorded,English,﻿for boys and girls. German church.,﻿Parochial schools,,,,﻿Peru,﻿Peru,﻿IL,,42.26864915,-89.10294173,,,,,,,,,,,﻿Studnet,﻿110 pupils,﻿Under lay teachers,1870.0,Chicago
+﻿chi.il.0320,﻿school,not recorded,English,﻿for boys and girls. German church.,﻿Parochial schools,,,,﻿Peru,﻿Peru,﻿IL,,42.26864915,-89.10294173,,,,,,,,,,,﻿Student,﻿110 pupils,﻿Under lay teachers,1870.0,Chicago
 ﻿chi.il.0321,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial schools,,,,﻿Rockford,﻿Rockford,﻿IL,,41.33869046,-89.09488745,,,,,,,,,,,﻿Student,﻿300 pupils,﻿Under lay teachers,1870.0,Chicago
 ﻿chi.il.0322,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial schools,,,,﻿La Salle,﻿La Salle,﻿IL,,41.79416218,-89.69887866,,,,,,,,,,,,,﻿Under lay teachers,1870.0,Chicago
 ﻿chi.il.0323,﻿school,not recorded,English,﻿for boys and girls,﻿Parochial schools,,,,﻿Sterling,﻿Sterling,﻿IL,,41.79416218,-89.69887866,,,,,,,,,,,﻿Student,﻿98 pupils,﻿Under lay teachers,1870.0,Chicago

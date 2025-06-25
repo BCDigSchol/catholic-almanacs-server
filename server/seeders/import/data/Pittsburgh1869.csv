@@ -10,7 +10,7 @@
 ﻿pit.pa.0004,﻿church,﻿St. Bridget's,English,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4406248,-79.9958864,,,,,﻿j_treacy_001,﻿Rev.,﻿J. Treacy,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0005,﻿church,﻿Holy Trinity,﻿German,,,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4406248,-79.9958864,,,,,﻿cel_engelbrecht_001,﻿Rev.,﻿Celestine Engelbrecht,﻿O.S.B.,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0006,﻿chapel,﻿St. Mary's Convent Chapel,English,,﻿St. Mary's Convent,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4964057,-80.0005656,﻿pit.pa.0001,﻿attended from the Cathedral,,,,,,,,,,,,1869.0,Pittsburgh
-﻿pit.pa.0006,﻿hospital,﻿Mercy Hospital,English,,﻿St. Mary's Convent,,﻿Allegheny County,,﻿Pittsburgh,﻿Pittsburgh,﻿PA,,40.4964057,-80.0005656,,,,,﻿m_j_mitchell_001,﻿Rev.,﻿M. J. Mitchell,,,,,,,1869.0,Pittsburgh
+﻿pit.pa.0115_02,﻿chapel,﻿Mercy Hospital,English,,,,﻿Allegheny County,,﻿Pittsburgh,,﻿PA,,40.4964057,-80.0005656,,,,,﻿m_j_mitchell_001,﻿Rev.,﻿M. J. Mitchell,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0008,﻿church,﻿St. Peter's,English,,,,﻿Allegheny County,,﻿Allegheny,﻿Allegheny,﻿PA,,40.3240983,-79.8661762,,,,,﻿r_phelan_001,﻿Rev.,﻿R. Phelan,,﻿Rector,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0009,﻿church,﻿St. Mary's,﻿German,,,,,,﻿Pittsburg,﻿Pittsburgh,﻿PA,,40.4964057,-80.0005656,,,,,﻿j_stibiel_001,﻿Very Rev.,﻿J. Stibiel,,﻿Rector,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0009,﻿church,﻿St. Mary's,﻿German,,,,,,﻿Pittsburg,﻿Pittsburgh,﻿PA,,40.4964057,-80.0005656,,,,,﻿j_reiser_001,﻿Rev.,﻿J. Reiser,,﻿Assistant,,,,,1869.0,Pittsburgh
@@ -95,7 +95,7 @@
 ﻿pit.pa.0082,﻿church,﻿Our Lady Help of Christians,English,,﻿Robinson Township,,﻿Allegheny County,,,﻿Rochester,﻿PA,,40.7022882,-80.2864509,,,,,﻿j_stillerich_001,﻿Rev.,﻿J. Stillerich,,,﻿Pittsburgh P.O.,,,,1869.0,Pittsburgh
 ﻿pit.pa.0083,﻿church,not recorded,English,,,,﻿Beaver County,,﻿Rochester,,﻿PA,,40.61303049,-78.57754182,,"﻿attended from St. Mary's, Allegheny",,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0084,﻿church,﻿St. Augustine's,English,,,,﻿Cambria County,,﻿St. Augustine,,﻿PA,,40.2353963,-79.4703885,,,,,﻿e_burns_001,﻿Rev.,﻿E. Burns,,"﻿Rector, pro tem",﻿pro tem,,,,1869.0,Pittsburgh
-﻿pit.pa.0154,﻿church,﻿St. Xavier's Convent of Mercy,English,,,,﻿Westmoreland County,,,,﻿PA,,40.2353963,-79.4703885,,﻿attended from St. Vincent's Abbey,,,,,,,,,,,,1869.0,Pittsburgh
+﻿pit.pa.0123_03,﻿church,﻿St. Xavier's Convent of Mercy,English,,,,﻿Westmoreland County,,,,﻿PA,,40.2353963,-79.4703885,,﻿attended from St. Vincent's Abbey,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0085,﻿church,﻿St. Matthew's,English,,,,﻿Indiana County,,﻿Saltsburgh,﻿Saltsburgh,﻿PA,,40.4873082,-79.4471165,﻿pit.pa.0108,﻿attended from St. Vincent's Abbey,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0086,﻿church,not recorded,English,,,,﻿Somerset County,,﻿Sand Patch,,﻿PA,,"﻿39.812702314512876, -78.9710710882938",-78.97107109,,,,,﻿p_brown_001,﻿Rev.,﻿P. Brown,,,﻿Cameron's Bottom,,,,1869.0,Pittsburgh
 ﻿pit.pa.0087,﻿church,﻿St. James',English,,,,﻿Allegheny County,,﻿Sewickly,﻿Sewickley,﻿PA,,40.5374069,-80.1842346,﻿pit.pa.0014,﻿attended from Beaver,,,,,,,,,,,,1869.0,Pittsburgh
@@ -105,7 +105,7 @@
 ﻿pit.pa.0091,﻿church,﻿St. Mary's,﻿German,,,,﻿Allegheny County,,﻿Sharpsburgh,﻿Sharpsburgh,﻿PA,,40.5050851,-79.93635570000001,,,,,﻿j_shell_001,﻿Rev.,﻿J. Shell,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0092,﻿church,﻿St. Patrick's,English,,﻿Foster Mills P.O.,,﻿Armstrong County,,﻿Sugar Creek,﻿Sugar Creek Township,﻿PA,,40.905064,-79.6339365,,,,,﻿jam_p_tahany_001,﻿Rev.,﻿James P. Tahany,,﻿Pastor,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0092,﻿church,﻿St. Patrick's,English,,﻿Foster Mills P.O.,,﻿Armstrong County,,﻿Sugar Creek,﻿Sugar Creek Township,﻿PA,,40.905064,-79.6339365,,,,,﻿j_cody_001,﻿Rev.,﻿J. Cody,,,,,,,1869.0,Pittsburgh
-﻿pit.pa.0094,﻿church,﻿Immaculate Conception,English,,,,﻿Cambria County,,﻿New-Germany or Summerhill,,﻿PA,,40.45730493,-78.57576788,﻿pit.pa.0108,﻿Benedictines from St. Vincent's Abbey,,,,,,,,,,,,1869.0,Pittsburgh
+﻿pit.pa.0094,﻿church,﻿Immaculate Conception,English,,,,﻿Cambria County,,﻿New-Germany or Summerhill,﻿Summerhill,﻿PA,,40.45730493,-78.57576788,﻿pit.pa.0108,﻿Benedictines from St. Vincent's Abbey,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0095,﻿church,﻿St. Aloysius',English,,,,﻿Cambria County,,﻿Summit,,﻿PA,,40.38951,-79.87532,,,,,﻿t_ryan_001,﻿Rev.,﻿T. Ryan,,﻿Rector,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0095,﻿church,﻿St. Aloysius',English,,,,﻿Cambria County,,﻿Summit,,﻿PA,,40.38951,-79.87532,,,,,﻿m_murphey_001,﻿Rev.,﻿M. Murphey,,﻿Assistant,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0096,﻿church,not recorded,English,,,,﻿Allegheny County,,﻿Tara Hill,﻿West End Village,﻿PA,,40.657222,-79.828611,,,,,﻿d_kearney_001,﻿Rev.,﻿D. Kearney,,,,,,,1869.0,Pittsburgh
@@ -123,14 +123,14 @@
 ﻿pit.pa.0107,﻿seminary,﻿St. Michael's Theological Seminary,English,,"﻿near Pittsburgh, Pittsburgh P.O.",,,,﻿Glenwood,﻿Pittsburgh,﻿PA,,40.4406248,-79.9958864,,,,,﻿j_wall_001,﻿Rev.,﻿J. Wall,,﻿President,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0107,﻿seminary,﻿St. Michael's Theological Seminary,English,,"﻿near Pittsburgh, Pittsburgh P.O.",,,,﻿Glenwood,﻿Pittsburgh,﻿PA,,40.4406248,-79.9958864,,,,,﻿joh_schmidt_001,﻿Rev.,﻿John Schmidt,,﻿Professor,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0107,﻿seminary,﻿St. Michael's Theological Seminary,English,,"﻿near Pittsburgh, Pittsburgh P.O.",,,,﻿Glenwood,﻿Pittsburgh,﻿PA,,40.4406248,-79.9958864,,,,,﻿p_ward_001,﻿Rev.,﻿P. Ward,,﻿Professor,,,,,1869.0,Pittsburgh
-﻿pit.pa.0108,﻿seminary,﻿St. Vincent's Seminary and College,English,,"﻿St. Vincent's P.O., attached to St. Vincent's Abbey",,,,,,﻿PA,,40.2933666,-79.4010168,,,,,﻿alp_heimler_001,﻿Rev.,﻿Alphonse Heimler,﻿O.S.B,﻿President,,,,,1869.0,Pittsburgh
-﻿pit.pa.0109,﻿academy,﻿St. Francis' Academy,English,﻿for boys,,,﻿Cambria County,,﻿Loretto,,﻿PA,,40.5097824,-78.6408793,,,,,,,,,,,,,﻿under the direction of the Franciscan Brothers,1869.0,Pittsburgh
-﻿pit.pa.0110,﻿college,﻿St. Francis' College,English,﻿for boys,,,,,,,﻿PA,,41.2033216,-77.1945247,,,,,﻿p_brown_001,﻿Rev.,﻿P. Brown,,﻿Director,,,,,1869.0,Pittsburgh
-﻿pit.pa.0110,﻿college,﻿St. Francis' College,English,﻿for boys,,,,,,,﻿PA,,41.2033216,-77.1945247,,,,,﻿f_shea_001,﻿Rev.,﻿F. Shea,,,,,,,1869.0,Pittsburgh
-﻿pit.pa.0111,﻿academy,﻿St. Xavier's Academy,English,﻿for young ladies,"﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,,,﻿PA,,40.2787335,-79.42231579999999,,,,,,﻿Sister,﻿Mary Liguori,,﻿Directress,,,,﻿conducted by the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0119_02,﻿seminary,﻿St. Vincent's Seminary and College,English,,"﻿St. Vincent's P.O., attached to St. Vincent's Abbey",,,,,,﻿PA,,40.2933666,-79.4010168,,,,,﻿alp_heimler_001,﻿Rev.,﻿Alphonse Heimler,﻿O.S.B,﻿President,,,,,1869.0,Pittsburgh
+﻿pit.pa.0122_02,﻿academy,﻿St. Francis' Academy,English,﻿for boys,,,﻿Cambria County,,﻿Loretto,,﻿PA,,40.5097824,-78.6408793,,,,,,,,,,,,,﻿under the direction of the Franciscan Brothers,1869.0,Pittsburgh
+﻿pit.pa.0122_03,﻿college,﻿St. Francis' College,English,﻿for boys,,,,,,,﻿PA,,41.2033216,-77.1945247,,,,,﻿p_brown_001,﻿Rev.,﻿P. Brown,,﻿Director,,,,,1869.0,Pittsburgh
+﻿pit.pa.0122_03,﻿college,﻿St. Francis' College,English,﻿for boys,,,,,,,﻿PA,,41.2033216,-77.1945247,,,,,﻿f_shea_001,﻿Rev.,﻿F. Shea,,,,,,,1869.0,Pittsburgh
+﻿pit.pa.0123_02,﻿academy,﻿St. Xavier's Academy,English,﻿for young ladies,"﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,,,﻿PA,,40.2787335,-79.42231579999999,,,,,,﻿Sister,﻿Mary Liguori,,﻿Directress,,,,﻿conducted by the Sisters of Mercy,1869.0,Pittsburgh
 ﻿pit.pa.0112,﻿academy,﻿St. Aloysius' Academy,English,﻿for young ladies,,,﻿Cambria County,,﻿Loretto,,﻿PA,,40.5031263,-78.630296,,,,,,﻿Sister,﻿Mary J. Evangelist,,﻿Directress,,,,,1869.0,Pittsburgh
-﻿pit.pa.0113,﻿asylum,﻿St. Paul's R.C. Orphan Asylum,English,﻿for boys and girls,﻿Tannehill street,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,﻿Sister,﻿M. Borgia,,﻿Superior,,,,,1869.0,Pittsburgh
-﻿pit.pa.0114,﻿asylum,﻿St. Joseph's Orphan Asylum,﻿German,,"﻿Troy Hill, near Allegheny City",,,,,,﻿PA,,40.4619227,-79.98500899999999,,,,,,,,,,,,,﻿Directed by the School Sisters of Notre Dame,1869.0,Pittsburgh
+﻿pit.pa.0124_02,﻿asylum,﻿St. Paul's R.C. Orphan Asylum,English,﻿for boys and girls,﻿Tannehill street,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,﻿Sister,﻿M. Borgia,,﻿Superior,,,,,1869.0,Pittsburgh
+﻿pit.pa.0011_02,﻿asylum,﻿St. Joseph's Orphan Asylum,﻿German,,"﻿Troy Hill, near Allegheny City",,,,,,﻿PA,,40.4619227,-79.98500899999999,,,,,,,,,,,,,﻿Directed by the School Sisters of Notre Dame,1869.0,Pittsburgh
 ﻿pit.pa.0115,﻿hospital,﻿The Mercy Hospital,English,,,,,,﻿Pittsburgh,,﻿PA,,40.4364439,-79.985575,,,,,,﻿Sister,﻿M. Isadore Fisher,,﻿Superior,,﻿patient,"﻿Number of patients per week, 50; number during the past year, 2680",﻿under the care of the Sisters of Mercy,1869.0,Pittsburgh
 ﻿pit.pa.0116,﻿house,﻿House of Industry,English,﻿There is an Industrial Sweing-School connected with this Institution,,,,,﻿Allegheny,,﻿PA,,41.2033216,-77.1945247,,,,,,﻿Sister,﻿M. Scholastica,,﻿Superior,,,,﻿directed by the Sisters of Mercy,1869.0,Pittsburgh
 ﻿pit.pa.0117,﻿asylum,﻿Orphan Asylum,English,﻿for larger boys,﻿(Strongtown P.O.),,﻿Indiana County,,﻿Cameron's Bottom,,﻿PA,,40.6850762,-79.1096901,,,,,,﻿Brother,﻿Giles Carroll,,﻿Superior,,,,﻿under the care of the Franciscan Brothers,1869.0,Pittsburgh
@@ -152,7 +152,7 @@
 ﻿pit.pa.0119,﻿abbey,﻿St. Vincent's Abbey of the Benedictine Order,English,"﻿The following priories are attached to the abbey: Carrolltown, Cambria Co., and Bulter, Butler Co. There are also houses at Pittsburgh, Indiana, Indiana Co., Greensburgh and Johnstown. The names of the resident Fathers are given in the Clergy List.","﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,,,﻿PA,,40.3211808,-79.37948109999999,,,,,﻿her_a_wolfe_001,﻿Rev.,﻿Hermann A. Wolfe,﻿O.S.B.,,,﻿lay brother,﻿70 lay brothers,,1869.0,Pittsburgh
 ﻿pit.pa.0119,﻿abbey,﻿St. Vincent's Abbey of the Benedictine Order,English,"﻿The following priories are attached to the abbey: Carrolltown, Cambria Co., and Bulter, Butler Co. There are also houses at Pittsburgh, Indiana, Indiana Co., Greensburgh and Johnstown. The names of the resident Fathers are given in the Clergy List.","﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,,,﻿PA,,40.3211808,-79.37948109999999,,,,,﻿mau_lynch_001,﻿Rev.,﻿Maurus Lynch,﻿O.S.B.,,,﻿lay brother,﻿70 lay brothers,,1869.0,Pittsburgh
 ﻿pit.pa.0119,﻿abbey,﻿St. Vincent's Abbey of the Benedictine Order,English,"﻿The following priories are attached to the abbey: Carrolltown, Cambria Co., and Bulter, Butler Co. There are also houses at Pittsburgh, Indiana, Indiana Co., Greensburgh and Johnstown. The names of the resident Fathers are given in the Clergy List.","﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,,,﻿PA,,40.3211808,-79.37948109999999,,,,,,﻿Rev.,﻿—,,﻿Chaplain to St. Xavier's Convent,,﻿lay brother,﻿70 lay brothers,,1869.0,Pittsburgh
-﻿pit.pa.0120,﻿convent,﻿Redemptorist Convent,English,,﻿St. Philomena's Church,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,﻿f_pitch_001,﻿Rev.,﻿F. Pitch,,﻿Rector,,,,,1869.0,Pittsburgh
+﻿pit.pa.0003_02,﻿convent,﻿Redemptorist Convent,English,,﻿St. Philomena's Church,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,﻿f_pitch_001,﻿Rev.,﻿F. Pitch,,﻿Rector,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0121,﻿monastery,﻿Blessed Paul's Monastery,English,"﻿with several students, lay brothers, and novices",﻿Buchanan P.O.,,﻿Allegheny County,,﻿Birmingham,,﻿PA,,40.4330891,-79.9734959,,,,,﻿ant_calandri_001,﻿Very Rev.,﻿Anthony Calandri,,﻿Provincial,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0121,﻿monastery,﻿Blessed Paul's Monastery,English,"﻿with several students, lay brothers, and novices",﻿Buchanan P.O.,,﻿Allegheny County,,﻿Birmingham,,﻿PA,,40.4330891,-79.9734959,,,,,﻿luk_baudinelli_001,﻿Very Rev.,﻿Luke Baudinelli,,﻿Provincial Consultor,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0121,﻿monastery,﻿Blessed Paul's Monastery,English,"﻿with several students, lay brothers, and novices",﻿Buchanan P.O.,,﻿Allegheny County,,﻿Birmingham,,﻿PA,,40.4330891,-79.9734959,,,,,﻿tho_stefanini_001,﻿Very Rev.,﻿Thomas Stefanini,,﻿Rector,,,,,1869.0,Pittsburgh
@@ -166,35 +166,34 @@
 ﻿pit.pa.0121,﻿monastery,﻿Blessed Paul's Monastery,English,"﻿with several students, lay brothers, and novices",﻿Buchanan P.O.,,﻿Allegheny County,,﻿Birmingham,,﻿PA,,40.4330891,-79.9734959,,,,,﻿phi_birk_001,﻿Rev.,﻿Philip Birk,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0122,﻿monastery,﻿St. Francis' Monastery,English,﻿Principal House,,,﻿Cambria County,,﻿Loretto,,﻿PA,,40.5097824,-78.6408793,,,,,,﻿Brother,﻿Bonaventure Lynch,,﻿Superior of the Order,,﻿professed brother,﻿twenty professed brothers,﻿Brothers of the Third Order of St. Francis.,1869.0,Pittsburgh
 ﻿pit.pa.0122,﻿monastery,﻿St. Francis' Monastery,English,﻿Principal House,,,﻿Cambria County,,﻿Loretto,,﻿PA,,40.5097824,-78.6408793,,,,,,,,,,,﻿novice,﻿three novices,﻿Brothers of the Third Order of St. Francis.,1869.0,Pittsburgh
-﻿pit.pa.0122,﻿monastery,﻿St. Francis' Monastery,English,﻿Monastery,,,﻿Indiana County,,﻿Cameron's Bottom,,﻿PA,,40.5262272,-78.97749259999999,,,,,,﻿Bro.,﻿Giles Carroll,,,,﻿professed brother,﻿six professed brothers,﻿Brothers of the Third Order of St. Francis.,1869.0,Pittsburgh
-﻿pit.pa.0122,﻿monastery,﻿St. Francis' Monastery,English,﻿Monastery,,,﻿Indiana County,,﻿Cameron's Bottom,,﻿PA,,40.5262272,-78.97749259999999,,,,,﻿ea_bush_001,﻿Rev.,﻿E.A. Bush,,﻿Eccles. Superior,,﻿professed brother,﻿six professed brothers,﻿Brothers of the Third Order of St. Francis.,1869.0,Pittsburgh
+﻿pit.pa.0163,﻿monastery,not recorded,English,,,,﻿Indiana County,,﻿Cameron's Bottom,,﻿PA,,40.5262272,-78.97749259999999,,,,,,﻿Bro.,﻿Giles Carroll,,,,﻿professed brother,﻿six professed brothers,﻿Brothers of the Third Order of St. Francis.,1869.0,Pittsburgh
+﻿pit.pa.0163,﻿monastery,not recorded,English,,,,﻿Indiana County,,﻿Cameron's Bottom,,﻿PA,,40.5262272,-78.97749259999999,,,,,﻿ea_bush_001,﻿Rev.,﻿E.A. Bush,,﻿Eccles. Superior,,﻿professed brother,﻿six professed brothers,﻿Brothers of the Third Order of St. Francis.,1869.0,Pittsburgh
 ﻿pit.pa.0123,﻿convent,﻿St. Xavier's,English,,"﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,,,﻿PA,,40.3211808,-79.37948109999999,,,,,,﻿Sister,﻿M. Xavier Maher,,﻿Superior,,,,﻿Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0123,﻿academy,﻿St. Aloysius's Academy,English,,"﻿near Latrobe, St. Vincent's P.O.",,﻿Westmoreland County,,﻿Loretto,,﻿PA,,40.3211808,-79.37948109999999,,,,,,﻿Sister,﻿M. J. Evangelist,,﻿Superior,,,,﻿Sisters of Mercy,1869.0,Pittsburgh
 ﻿pit.pa.0124,﻿convent,﻿St. Mary's Convent,English,,﻿Webster street,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,﻿Sister,﻿Stanislaus,,﻿Superior,,,,,1869.0,Pittsburgh
-﻿pit.pa.0125,﻿convent,﻿St. Mary's Convent,English,"﻿There are also under the care of the Sisters that educational and charitable institutions already mentioned, There are 122 Sisters in the diocese, including the novices.",,,,,﻿Hollidaysburgh,,﻿PA,,41.2033216,-77.1945247,,,,,,﻿Sister,﻿M. Strange,,﻿Superior,,﻿sister,﻿122 sisters,,1869.0,Pittsburgh
+﻿pit.pa.0052_02,﻿convent,﻿St. Mary's Convent,English,"﻿There are also under the care of the Sisters that educational and charitable institutions already mentioned, There are 122 Sisters in the diocese, including the novices.",,,,,﻿Hollidaysburgh,,﻿PA,,41.2033216,-77.1945247,,,,,,﻿Sister,﻿M. Strange,,﻿Superior,,﻿sister,﻿122 sisters,,1869.0,Pittsburgh
 ﻿pit.pa.0126,﻿convent,﻿St. Philomena's Convent,﻿German,,﻿Penn street,,,,﻿Pittsburgh,,﻿PA,,40.4960168,-79.9337708,,,,,,﻿Sister,﻿Romuilda,,﻿Superior,,,,﻿School Sisters of Notre Dame,1869.0,Pittsburgh
-﻿pit.pa.0127,﻿school,﻿St. Mary's,English,,﻿Webster street,,,,﻿Pittsburgh,,﻿PA,,40.4964057,-80.0005656,,,,,,,,,,,﻿pupil,﻿600 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0128,﻿school,﻿St. Patrick's,English,,,,,,﻿Pittsburgh,,﻿PA,,40.4495663,-79.9849717,,,,,,,,,,,﻿pupil,﻿450 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0124_03,﻿school,﻿St. Mary's,English,,﻿Webster street,,,,﻿Pittsburgh,,﻿PA,,40.4964057,-80.0005656,,,,,,,,,,,﻿pupil,﻿600 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0002_02,﻿school,﻿St. Patrick's,English,,,,,,﻿Pittsburgh,,﻿PA,,40.4495663,-79.9849717,,,,,,,,,,,﻿pupil,﻿450 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
 ﻿pit.pa.0129,﻿school,﻿St. John's,English,,,,,,﻿Birmingham,,﻿PA,,40.4285188442348,-79.9921041061545,,,,,,,,,,,﻿pupil,﻿250 pupils,﻿under the Franciscan Sisters,1869.0,Pittsburgh
-﻿pit.pa.0130,﻿school,﻿St. Peter's,English,,,,,,﻿Allegheny,,﻿PA,,40.4450813,-80.0087746,,,,,,,,,,,﻿pupil,﻿200 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0131,﻿school,﻿St. Mary's,﻿German,,,,,,﻿Allegheny,,﻿PA,,40.4450813,-80.0087746,,,,,,,,,,,﻿pupil,﻿750 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0132,﻿school,﻿St. Mary's,English,,,,,,﻿Hollidaysburgh,,﻿PA,,40.4298852,-78.3884724,,,,,,,,,,,﻿pupil,﻿250 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0133,﻿school,﻿St. Mary's,English,,,,,,﻿Loretto,,﻿PA,,40.5048834,-78.63327559999999,,,,,,,,,,,﻿pupil,﻿60 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0134,﻿academy,﻿St. Mary's Academy,English,,﻿Webster street,,,,,,﻿PA,,40.4520758,-79.96793149999999,,,,,,,,,,,﻿pupil,﻿140 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0008_02,﻿school,﻿St. Peter's,English,,,,,,﻿Allegheny,,﻿PA,,40.4450813,-80.0087746,,,,,,,,,,,﻿pupil,﻿200 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0009_02,﻿school,﻿St. Mary's,﻿German,,,,,,﻿Allegheny,,﻿PA,,40.4450813,-80.0087746,,,,,,,,,,,﻿pupil,﻿750 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0052_03,﻿school,﻿St. Mary's,English,,,,,,﻿Hollidaysburgh,,﻿PA,,40.4298852,-78.3884724,,,,,,,,,,,﻿pupil,﻿250 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0067_02,﻿school,﻿St. Mary's,English,,,,,,﻿Loretto,,﻿PA,,40.5048834,-78.63327559999999,,,,,,,,,,,﻿pupil,﻿60 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0124_04,﻿academy,﻿St. Mary's Academy,English,,﻿Webster street,,,,,,﻿PA,,40.4520758,-79.96793149999999,,,,,,,,,,,﻿pupil,﻿140 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
 ﻿pit.pa.0135,﻿school,﻿St. Bridget's,English,,,,,,,,﻿PA,,41.2033216,-77.1945247,,,,,,,,,,,﻿pupil,﻿150 pupils,﻿under the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0136,﻿school,﻿St. Paul's School,English,﻿for boys,,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,﻿Sister,﻿Regina,,﻿Superioress,,﻿pupil,﻿600 pupils,﻿Directed by the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0137,﻿school,﻿St. Philomena's,﻿German,﻿for boys,,,,,﻿Pittsburgh,,﻿PA,,40.5004334,-80.0679863,,,,,,﻿Brother,﻿Francis Hessdorfer,,﻿Director,,﻿pupil,﻿350 pupils,﻿under the care of the Brothers of Our Lady,1869.0,Pittsburgh
-﻿pit.pa.0138,﻿school,﻿St. Philomena's School,English,﻿for girls,,,,,﻿Pittsburgh,,﻿PA,,40.5004334,-80.0679863,,,,,,,,,,,,,﻿Directed by school sisters of Notre Dame,1869.0,Pittsburgh
-﻿pit.pa.0139,﻿institute,﻿St. Paul's Catholic Institute,English,,﻿Wylie street,,,,﻿Pittsburgh,,﻿PA,,40.4475384,-79.949826,,,,,,,,,,,﻿pupil,﻿60 pupils,,1869.0,Pittsburgh
-﻿pit.pa.0140,﻿school,﻿St. Bridget's,English,﻿lay teachers and Sisters of Mercy,,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,,,,,,,,﻿Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0141,﻿school,﻿Holy Trinity,﻿German,﻿2 lay teachers,,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,,,,,,﻿pupil,﻿300 pupils,,1869.0,Pittsburgh
-﻿pit.pa.0142,﻿school,﻿St. Peter's,English,﻿boys' school,,,,,﻿Allegheny,,﻿PA,,40.4450813,-80.0087746,,,,,,,,,,,﻿pupil,﻿140 pupils,﻿taught by the Sisters of Mercy,1869.0,Pittsburgh
-﻿pit.pa.0143,﻿school,﻿St. Michael's,﻿German,﻿school taught by lay teachers,,,,,﻿Birmingham,,﻿PA,,41.2033216,-77.1945247,,,,,,,,,,,,,,1869.0,Pittsburgh
+﻿pit.pa.0001_02,﻿school,﻿St. Paul's School,English,﻿for boys,,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,﻿Sister,﻿Regina,,﻿Superioress,,﻿pupil,﻿600 pupils,﻿Directed by the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0137_01,﻿school,﻿St. Philomena's,﻿German,﻿for boys,,,,,﻿Pittsburgh,,﻿PA,,40.5004334,-80.0679863,,,,,,﻿Brother,﻿Francis Hessdorfer,,﻿Director,,﻿pupil,﻿350 pupils,﻿under the care of the Brothers of Our Lady,1869.0,Pittsburgh
+﻿pit.pa.0137_02,﻿school,﻿St. Philomena's School,English,﻿for girls,,,,,﻿Pittsburgh,,﻿PA,,40.5004334,-80.0679863,,,,,,,,,,,,,﻿Directed by school sisters of Notre Dame,1869.0,Pittsburgh
+﻿pit.pa.0001_03,﻿institute,﻿St. Paul's Catholic Institute,English,,﻿Wylie street,,,,﻿Pittsburgh,,﻿PA,,40.4475384,-79.949826,,,,,,,,,,,﻿pupil,﻿60 pupils,,1869.0,Pittsburgh
+﻿pit.pa.0004_02,﻿school,﻿St. Bridget's,English,﻿lay teachers and Sisters of Mercy,,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,,,,,,,,﻿Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0005_02,﻿school,﻿Holy Trinity,﻿German,﻿2 lay teachers,,,,,﻿Pittsburgh,,﻿PA,,40.4406248,-79.9958864,,,,,,,,,,,﻿pupil,﻿300 pupils,,1869.0,Pittsburgh
+﻿pit.pa.0008_03,﻿school,﻿St. Peter's,English,﻿boys' school,,,,,﻿Allegheny,,﻿PA,,40.4450813,-80.0087746,,,,,,,,,,,﻿pupil,﻿140 pupils,﻿taught by the Sisters of Mercy,1869.0,Pittsburgh
+﻿pit.pa.0017_02,﻿school,﻿St. Michael's,﻿German,﻿school taught by lay teachers,,,,,﻿Birmingham,,﻿PA,,41.2033216,-77.1945247,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0144,﻿school,not recorded,﻿English and German,﻿school taught by lay teachers,,,,,﻿Lawrenceville,,﻿PA,,41.9975739,-77.1260829,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0145,﻿school,not recorded,﻿German,﻿school taught by lay teachers,﻿South Pittsburgh,,,,﻿Pittsburgh,,﻿PA,,40.4292359,-79.9858859,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0146,﻿school,not recorded,﻿German,﻿school taught by lay teachers,,,,,﻿East Liberty,,﻿PA,,40.4643479,-79.926266,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0147,﻿school,not recorded,﻿German,﻿school taught by lay teachers,,,,,﻿Butler,,﻿PA,,40.8611755,-79.89533279999999,,,,,,,,,,,,,,1869.0,Pittsburgh
-﻿pit.pa.0148,﻿school,﻿Our Lady Help of Christians,﻿German,﻿school taught by lay teachers,,,﻿Allegheny County,,﻿Robinson Township,,﻿PA,,40.4657924,-80.1316927,,,,,,,,,,,,,,1869.0,Pittsburgh
+﻿pit.pa.0082_02,﻿school,﻿Our Lady Help of Christians,﻿German,﻿school taught by lay teachers,,,﻿Allegheny County,,﻿Robinson Township,﻿Rochester,﻿PA,,40.4657924,-80.1316927,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0149,﻿school,not recorded,English,﻿school taught by lay teachers,,,,,﻿Blairsville,,﻿PA,,40.4311796,-79.260869,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0150,﻿school,not recorded,English,﻿school taught by lay teachers,,,,,﻿Altoona,,﻿PA,,40.5186809,-78.3947359,,,,,,,,,,,,,,1869.0,Pittsburgh
 ﻿pit.pa.0151,﻿school,not recorded,English,﻿school taught by lay teachers,,,,,﻿Latrobe,,﻿PA,,40.3211808,-79.37948109999999,,,,,,,,,,,,,,1869.0,Pittsburgh

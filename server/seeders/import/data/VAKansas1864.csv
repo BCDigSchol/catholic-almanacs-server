@@ -1,0 +1,92 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿kc.ks.0001,﻿church,﻿Church of the Immaculate Conception,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,﻿Rt. Rev.,﻿J.B. Miege,"﻿S.J., D.D.",,,,,,1864,VAKansas
+﻿kc.ks.0001,﻿church,﻿Church of the Immaculate Conception,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,﻿Rev.,﻿Theodore Heimann,,,,,,,1864,VAKansas
+﻿kc.ks.0001,﻿church,﻿Church of the Immaculate Conception,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,﻿Rev.,﻿F.X. De Coen,﻿S.J.,,,,,,1864,VAKansas
+﻿kc.ks.0002,﻿church,﻿St. Joseph's Church,﻿German,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,﻿Rev.,﻿Antony Kuhls,,,,,,,1864,VAKansas
+﻿kc.ks.0005,﻿church,﻿SS. Peter and Paul's,English,,,,﻿Atchison County,,﻿Atchison,,﻿KS,,,,,,,,,﻿Very Rev.,﻿Augustine Wirth,﻿O.S.B.,﻿Prior,,,,,1864,VAKansas
+﻿kc.ks.0006,﻿church,not recorded,English,,,,,,﻿Monrovia,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0007,﻿church,not recorded,English,,,,﻿Atchison County,,﻿Mooney Creek,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0007,﻿church,not recorded,English,,,,﻿Atchison County,,﻿Ellwood,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0017,﻿church,not recorded,English,,,,,,﻿Belmont,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0017,﻿church,not recorded,English,,,,,,﻿Palermo,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0019,﻿church,not recorded,English,,,,,,﻿Wolf River,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0019,﻿church,not recorded,English,,,,,,﻿Troy,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0022,﻿church,not recorded,English,,,,﻿Doniphan County,,﻿Iowa Point,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0091,﻿church,﻿St. Peter's,English,,,,﻿Douglas County,,﻿Big Springs,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0047,﻿church,﻿St. Columbkil's,English,,,,﻿Johnson County,,﻿Bull Creek,,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0092,﻿church,not recorded,English,,,,﻿Coffey County,,﻿Burlington,,﻿KS,,,,,﻿Attended from St. Boniface,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0036,﻿church,not recorded,English,,,,﻿Dickinson County,,﻿Chapman's Creek,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0014,﻿church,﻿St. John's,English,,,,﻿Doniphan County,,﻿Doniphan,,﻿KS,,,,,﻿Visited from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0003,﻿church,not recorded,English,,,,,,﻿Fort Leavenworth,,﻿KS,,,,,﻿Attended from Leavenworth City,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0037,﻿church,not recorded,English,,,,﻿Riley County,,﻿Fort Riley,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0026,﻿church,not recorded,English,,,,﻿Bourbon County,,﻿Fort Scott,,﻿KS,,,,,﻿Attended from the Osage Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0097,﻿church,not recorded,English,,,,﻿Jackson County,,﻿Holton,,﻿KS,,,,,﻿Attended from Seneca,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0033,﻿church,not recorded,English,,,,﻿Allen County,,﻿Humboldt,,﻿KS,,,,,﻿Attended from St. Boniface,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0098,﻿church,not recorded,English,,,,﻿Shawnee County,,﻿Indianola,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0072,﻿church,not recorded,English,,,,﻿Jefferson County,,﻿Indian Mill,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0035,﻿church,not recorded,English,,,,﻿Riley County,,﻿Junction City,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0038,﻿church,﻿St. John the Evangelist,English,,,,﻿Douglas County,,﻿Lawrence,,﻿KS,,,,,,,,,﻿Rev.,﻿Sebastian Favre,,,,,,,1864,VAKansas
+﻿kc.ks.0099,﻿church,not recorded,English,,,,﻿Coffey County,,﻿Le Roy,,﻿KS,,,,,﻿Attended from St. Boniface,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0106,﻿church,not recorded,English,,,,﻿Marshall County,,﻿Marysville,,﻿KS,,,,,﻿Attended from Seneca,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0100,﻿church,not recorded,English,,,,﻿Miami County,,﻿Middle Creek,,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0051,﻿church,﻿Church of the Seven Dolors,English,,﻿Potawotomie Reserve,,,,﻿Mission Creek,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0052,﻿church,not recorded,English,,,,﻿Riley County,,﻿Ogden,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0064,﻿church,not recorded,English,,,,﻿Johnson County,,﻿Olathe,,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0039,﻿church,﻿St. Francis de Hieronymo,English,,,,﻿Neosho County,,﻿Osage Indian Mission,,﻿KS,,,,,,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0039,﻿church,﻿St. Francis de Hieronymo,English,,,,﻿Neosho County,,﻿Osage Indian Mission,,﻿KS,,,,,,﻿The Indian villages are visited monthly,,,﻿Rev.,﻿John Schoenmakers,﻿S.J.,﻿Superior,,,,,1864,VAKansas
+﻿kc.ks.0039,﻿church,﻿St. Francis de Hieronymo,English,,,,﻿Neosho County,,﻿Osage Indian Mission,,﻿KS,,,,,,,,,﻿Rev.,﻿Paul Ponziglione,﻿S.J.,,,,,,1864,VAKansas
+﻿kc.ks.0039,﻿church,﻿St. Francis de Hieronymo,English,,,,﻿Neosho County,,﻿Osage Indian Mission,,﻿KS,,,,,,,,,﻿Rev.,﻿Adrian Hoecken,﻿S.J.,,,,,,1864,VAKansas
+﻿kc.ks.0073,﻿church,﻿St. Mary Magdalen,English,,,,﻿Jefferson County,,﻿Osaukee,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0048,﻿church,not recorded,English,,,,﻿Miami County,,﻿Osawatomie City,,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0034,﻿church,not recorded,English,,,,﻿Allen County,,﻿Owl Creek,,﻿KS,,,,,﻿Attended from St. Boniface,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0046,﻿church,﻿Trinity,English,,,,﻿Miami County,,﻿Peola,﻿Paola,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0103,﻿church,﻿St. Boniface,English,,,,﻿Anderson County,,﻿Potawotomie Creek,,﻿KS,,,,,,,,,﻿Rev.,﻿Aloysius Mayers,,,,,,,1864,VAKansas
+﻿kc.ks.0050,﻿church,﻿St. Mary's,English,,,,﻿Potawotomie County,,﻿Potawotomie Mission,,﻿KS,,,,,,,,,﻿Rev.,﻿John Fr. Diels,﻿S.J.,﻿Superior,,,,,1864,VAKansas
+﻿kc.ks.0050,﻿church,﻿St. Mary's,English,,,,﻿Potawotomie County,,﻿Potawotomie Mission,,﻿KS,,,,,,,,,﻿Rev.,﻿M. Gailland,﻿S.J.,,,,,,1864,VAKansas
+﻿kc.ks.0050,﻿church,﻿St. Mary's,English,,,,﻿Potawotomie County,,﻿Potawotomie Mission,,﻿KS,,,,,,,,,﻿Rev.,﻿Aug. Due Mortier,﻿S.J.,,,,,,1864,VAKansas
+﻿kc.ks.0050,﻿church,﻿St. Mary's,English,,,,﻿Potawotomie County,,﻿Potawotomie Mission,,﻿KS,,,,,,,,,﻿Rev.,﻿A. Laigneil,﻿S.J.,,,,,,1864,VAKansas
+﻿kc.ks.0055,﻿church,﻿Church of the Annunciation,English,,,,﻿Douglas County,,﻿Prairie City,,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0053,﻿church,not recorded,English,,,,﻿Potawotomie County,,﻿Rock Creek,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0096,﻿church,﻿St. John the Baptist,English,,,,﻿Jefferson County,,﻿Sauterelle Falls,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0010,﻿church,﻿St. Mary's,English,,,,﻿Nemaha County,,﻿Seneca,,﻿KS,,,,,,,,,﻿Rev.,﻿John Meurs,,,,,,,1864,VAKansas
+﻿kc.ks.0015,﻿church,not recorded,English,,,,﻿Doniphan County,,﻿St. Benedict's Settlement,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0058,﻿church,﻿St. Bridget's,English,,,,﻿Marshall County,,,,﻿KS,,,,,﻿Attended from Seneca,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0058,﻿church,﻿St. Joseph's,English,,,,﻿Nemaha County,,,,﻿KS,,,,,﻿Attended from Seneca,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0058,﻿church,﻿St. Joseph's,English,,,,﻿Anderson County,,﻿St. Patrick's Settlement,,﻿KS,,,,,﻿Attended from St. Boniface,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0058,﻿church,﻿St. Patrick's,English,,,,﻿Marshall County,,﻿St. Patrick's Settlement,,﻿KS,,,,,﻿Visited from Seneca,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0009,﻿church,﻿St. Patrick's,English,,,,﻿Atchison County,,﻿St. Patrick's Settlement,,﻿KS,,,,,﻿Visited from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0016,﻿church,﻿St. Thomas',English,﻿frame church,,,﻿Doniphan County,,,,﻿KS,,,,,﻿Attended from Atchison,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0054,﻿church,not recorded,English,,,,,,﻿Settlement on the Republican,,﻿KS,,,,,﻿Visited from Seneca,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0045,﻿church,not recorded,English,,,,,,﻿Settlement on the Verdegris,,﻿KS,,,,,﻿Visited from St. Boniface,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0108,﻿chapel,﻿St. Joseph's Chapel,English,,,,,,﻿Shungamon Creek,,﻿KS,,,,,﻿Visited from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0075,﻿church,not recorded,English,,,,﻿Shawnee County,,﻿Tecumseh,,﻿KS,,,,,﻿Visited from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0071,﻿church,﻿Church of the Assumption,English,,,,﻿Shawnee County,,﻿Topeka,,﻿KS,,,,,,,,,﻿Rev.,﻿James Defouri,,,,,,,1864,VAKansas
+﻿kc.ks.0076,﻿church,﻿St. Henry's,English,,,,﻿Douglas County,,﻿Twin Mounds,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0054,﻿church,not recorded,English,,,,﻿Chase County,,﻿Wabaunsee,,﻿KS,,,,,﻿Attended from St. Mary's Mission,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0049,﻿church,not recorded,English,,,,﻿Miami County,,﻿Wea Creek,,﻿KS,,,,,﻿Attended from Lawrence,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0079,﻿church,﻿St. Mary's,English,,,,﻿Wyandott County,,﻿Wyandott,,﻿KS,,,,,﻿Attended from Kansas City,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0077,﻿church,not recorded,English,,,,﻿Osage County,,110,,﻿KS,,,,,﻿Attended from Topeka,,,,,,,,,,,,1864,VAKansas
+﻿kc.ks.0104,﻿priory,﻿Benedictine Priory,English,,,,,,﻿Atchison City,,﻿KS,,,,,,,,,﻿Very Rev.,﻿Augustine Wirth,﻿O.S.B.,﻿Prior,,﻿lay brother,﻿4 lay brothers,,1864,VAKansas
+﻿kc.ks.0104,﻿priory,﻿Benedictine Priory,English,,,,,,﻿Atchison City,,﻿KS,,,,,,,,,﻿Rev.,﻿Thomas Bartl,﻿O.S.B.,,,﻿lay brother,﻿4 lay brothers,,1864,VAKansas
+﻿kc.ks.0104,﻿priory,﻿Benedictine Priory,English,,,,,,﻿Atchison City,,﻿KS,,,,,,,,,﻿Rev.,﻿Emmanuel Hartig,﻿O.S.B.,,,﻿lay brother,﻿4 lay brothers,,1864,VAKansas
+﻿kc.ks.0104,﻿priory,﻿Benedictine Priory,English,,,,,,﻿Atchison City,,﻿KS,,,,,,,,,﻿Rev.,﻿Timothy M. Luber,﻿O.S.B.,,,﻿lay brother,﻿4 lay brothers,,1864,VAKansas
+﻿kc.ks.0104,﻿priory,﻿Benedictine Priory,English,,,,,,﻿Atchison City,,﻿KS,,,,,,,,,﻿Rev.,﻿Bernard M. Lesker,﻿O.S.B.,,,﻿lay brother,﻿4 lay brothers,,1864,VAKansas
+﻿kc.ks.0050_01,﻿priory,﻿Residence of the Society of Jesus,English,,﻿St. Mary's Mission,,,,,,,,,,,,,,,﻿Rev.,﻿J.F. Diels,﻿S.J.,﻿Superior,,,,,1864,VAKansas
+﻿kc.ks.0039_01,﻿priory,﻿Residence of the Society of Jesus,English,,﻿St. Francis de Hieronymo,,,,,,,,,,,,,,,﻿Rev.,﻿J. Schoenmakers,﻿S.J.,﻿Superior,,,,,1864,VAKansas
+﻿kc.ks.0080,﻿college,﻿St. Benedict's College,English,,,,,,﻿Atchison City,,﻿KS,,,,,,,,,﻿Very Rev.,﻿Augustine Wirth,﻿O.S.B.,﻿President,,,,﻿Under the charge of the Fathers of the Order of St. Benedict,1864,VAKansas
+﻿kc.ks.0082,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,﻿Mother,﻿Mary Vincent Karney,,﻿Superior,,﻿boarders,﻿60 boarders,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0082,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,,,,,,﻿sisters,﻿22 professed sisters,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0082,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,,,,,,﻿novices,﻿3 novices,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0082,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Leavenworth City,,﻿KS,,,,,,,,,,,,,,﻿postulants,﻿4 postulants,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0083,﻿school,not recorded,English,,,,,,,,,,,,,,,,,,,,,,﻿pupils,﻿300 pupils,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0084,﻿hospital,not recorded,English,,,,,,,,,,,,,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0085,﻿asylum,﻿Female Orphan Asylum,English,,,,,,,,,,,,,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,1864,VAKansas
+﻿kc.ks.0050_03,﻿convent,﻿Convent of the Ladies of the Sacred Heart,English,,﻿St. Mary's Mission,,,,,,,,,,,,,,,﻿Madame,﻿Lucille Matheron,,﻿Superior,,,,,1864,VAKansas
+﻿kc.ks.0039_02,﻿convent,﻿Convent of the Sisters of Loretto,English,,﻿St. Francis de Hieronymo,,,,,,,,,,,,,,,﻿Mother,﻿Mary Concordia,,﻿Superior,,,,,1864,VAKansas
+﻿kc.ks.0039_02,﻿convent,﻿Benedictine Nunnery,English,"﻿Opened December 1863, for boarding and day scholars",﻿St. Francis de Hieronymo,,,,﻿Atchison,,﻿KS,,,,,,,,,,,,,,,,﻿Under the Benedictine Sisters,1864,VAKansas
+﻿kc.ks.0050_02,﻿school,﻿Potawotomie Indian Manual Labor School,English,﻿The male department is under the charge of the Fathers of the Society of Jesus. The female department is conducted by the Ladies of the Sacred Heart,﻿St. Mary's Mission,,,,,,,,,,,,,,,,,,,,﻿lay brother,﻿8 lay brothers,﻿under the charge of the Fathers of the Society of Jesus and the Ladies of the Sacred Heart,1864,VAKansas
+﻿kc.ks.0050_02,﻿school,﻿Potawotomie Indian Manual Labor School,English,﻿The male department is under the charge of the Fathers of the Society of Jesus. The female department is conducted by the Ladies of the Sacred Heart,﻿St. Mary's Mission,,,,,,,,,,,,,,,,,,,,﻿Indian boys,﻿125 Indian boys,﻿under the charge of the Fathers of the Society of Jesus and the Ladies of the Sacred Heart,1864,VAKansas
+﻿kc.ks.0050_02,﻿school,﻿Potawotomie Indian Manual Labor School,English,﻿The male department is under the charge of the Fathers of the Society of Jesus. The female department is conducted by the Ladies of the Sacred Heart,﻿St. Mary's Mission,,,,,,,,,,,,,,,,,,,,﻿Indian girls,﻿100 Indian girls,﻿under the charge of the Fathers of the Society of Jesus and the Ladies of the Sacred Heart,1864,VAKansas
+﻿kc.ks.0039_03,﻿school,﻿Osage Indian Manual Labor School,English,﻿Male department under charge of the Fathers of the Society of Jesus. The female department is conducted by the Sisters of Loretto,,,,,,,,,,,,,,,,,,,,,﻿lay brother,﻿9 lay brothers,﻿under charge of the Fathers of the Society of Jesus and the Sisters of Loretto,1864,VAKansas
+﻿kc.ks.0039_03,﻿school,﻿Osage Indian Manual Labor School,English,﻿Male department under charge of the Fathers of the Society of Jesus. The female department is conducted by the Sisters of Loretto,,,,,,,,,,,,,,,,,,,,,﻿Indian boys,﻿105 Indian boys,﻿under charge of the Fathers of the Society of Jesus and the Sisters of Loretto,1864,VAKansas
+﻿kc.ks.0039_03,﻿school,﻿Osage Indian Manual Labor School,English,﻿Male department under charge of the Fathers of the Society of Jesus. The female department is conducted by the Sisters of Loretto,,,,,,,,,,,,,,,,,,,,,﻿Indian girls,﻿95 Indian girls,﻿under charge of the Fathers of the Society of Jesus and the Sisters of Loretto,1864,VAKansas

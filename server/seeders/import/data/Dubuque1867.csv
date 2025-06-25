@@ -4,7 +4,7 @@
 ﻿dub.ia.0001,﻿cathedral,﻿St. Raphael's,English,,,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.495194700000006,-90.6668325,,,,,﻿mau_flavin_001,﻿Rev.,﻿Maurice Flavin,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0001,﻿cathedral,﻿St. Raphael's,English,,,,,,﻿Dubuque,﻿Dubuque,﻿IA,,42.495194700000006,-90.6668325,,,,,﻿p_mclaughlin_001,﻿Rev.,﻿P. McLaughlin,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0002,﻿church,﻿St. Patrick's,English,,,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.506691,-90.6692977,,,,,﻿fra_walsh_001,﻿Rev.,﻿Francis Walsh,,,,,,,1867.0,Dubuque
-﻿dub.ia.0003,﻿church,﻿Holy Trinity,﻿German,,,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.50767966,-90.66700683,,,,,﻿t_j_donaghoe_001,﻿Rev.,﻿Aloysius Meiss,,,,,,,1867.0,Dubuque
+﻿dub.ia.0003,﻿church,﻿Holy Trinity,﻿German,,,,,,﻿Dubuque City,﻿Dubuque,﻿IA,,42.50767966,-90.66700683,,,,,﻿a_meiss_001,﻿Rev.,﻿Aloysius Meiss,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0004,﻿church,﻿St. Joseph's,English,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.5831975,-90.8836303,,,,,﻿t_j_donaghoe_001,﻿Very Rev.,﻿T. J. Donaghoe,,﻿V.G.,,,,,1867.0,Dubuque
 ﻿dub.ia.0005,﻿church,﻿St. Catherine's,English,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.4059085,-90.5919455,﻿dub.ia.0006,﻿attended from St. Donatus,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0006,﻿church,﻿St. Donatus,﻿German,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.3608433,-90.53929509999999,,,,,﻿mic_flammang_001,﻿Rev.,﻿Michael Flammang,,,,,,,1867.0,Dubuque
@@ -12,8 +12,8 @@
 ﻿dub.ia.0262,﻿church,﻿St. Joseph Calasanctius',English,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.4793917955546,-90.7052328787665,﻿dub.ia.0001,﻿attended from Dubuque,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0008,﻿church,﻿St. Philomena's,English,,,,﻿Dubuque County,﻿Dubuque County,,,﻿IA,,42.4694679,-90.8294002,,,,,﻿fra_walsh_001,﻿Rev.,﻿Francis Walsh,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0263,﻿church,not recorded,English,,,,﻿Dallas County,﻿Dallas County,﻿Adel,﻿Adel,﻿IA,,41.6156864954524,-94.01713602803909,﻿dub.ia.0048,﻿attended from Des Moines,,,,,,,,,,,,1867.0,Dubuque
-﻿dub.ia.0238,﻿church,not recorded,English,,,,﻿Des Moines County,﻿Des Moines County,﻿Augusta,﻿Augusta,﻿IA,,40.75632184,-91.27609959,﻿dub.ia.0012,﻿attended from Burlington,,,﻿cha_mcgauran_001,,,,,,,,,1867.0,Dubuque
-﻿dub.ia.0067,﻿church,not recorded,English,,,,﻿Dubuque County,﻿Dubuque County,﻿Banxton Settlement,﻿Bankston,﻿IA,,42.51862172,-90.96190177,,,,,﻿cha_mcgovern_001,﻿Rev.,﻿Charles McGovern,,,,,,,1867.0,Dubuque
+﻿dub.ia.0238,﻿church,not recorded,English,,,,﻿Des Moines County,﻿Des Moines County,﻿Augusta,﻿Augusta,﻿IA,,40.75632184,-91.27609959,﻿dub.ia.0012,﻿attended from Burlington,,,,,,,,,,,,1867.0,Dubuque
+﻿dub.ia.0067,﻿church,not recorded,English,,,,﻿Dubuque County,﻿Dubuque County,﻿Banxton Settlement,﻿Bankston,﻿IA,,42.51862172,-90.96190177,,,,,﻿cha_mcgauran_001,﻿Rev.,﻿Charles McGovern,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0009,﻿church,not recorded,English,,,,﻿Jackson County,﻿Jackson County,﻿Belleview,﻿Bellevue,﻿IA,,42.259487899999996,-90.4282878,,,,,﻿jam_harding_001,﻿Rev.,﻿James Harding,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0014,﻿church,not recorded,English,,,,﻿Boone County,﻿Boone County,﻿Boonesboro,﻿Boone,﻿IA,,42.059704700000005,-93.88022729999999,﻿dub.ia.0063,﻿attended from Fort Dodge,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0012,﻿church,﻿St. Paul's Church,English,,,,﻿Des Moines County,﻿Des Moines County,﻿Burlington,﻿Burlington,﻿IA,,40.81205870000001,-91.10304920000002,,,,,﻿jam_b_donelan_001,﻿Rev.,﻿James B. Donelan,,,,,,,1867.0,Dubuque
@@ -52,11 +52,11 @@
 ﻿dub.ia.0068,﻿church,not recorded,English,,,,﻿Jackson County,﻿Jackson County,﻿Garryowen,﻿Garry Owen,﻿IA,,42.2846715,-90.846469,,,,,﻿mic_kinsella_001,﻿Rev.,﻿Michael Kinsella,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0199,﻿station,not recorded,English,,,,﻿Black Hawk County,﻿Black Hawk County,﻿Gilbertsville,﻿Gilbertsville,﻿IA,,42.41617019,-92.21476839,,﻿attended from Cedar Falls,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0069,﻿church,﻿Holy Cross,English,,,,﻿Dubuque County,﻿Dubuque County,﻿Glassnevin,﻿Holy Cross,﻿IA,,42.60108451,-90.9970882,,,,,﻿dan_molony_001,﻿Rev.,﻿Daniel Molony,,,,,,,1867.0,Dubuque
-﻿dub.ia.0072,﻿church,not recorded,English,,,,﻿Monroe County,﻿Monroe County,﻿Georgetown,﻿Georgetown,﻿IA,,41.01381097,-92.95568514,,,,,﻿con_schultz_001,﻿Rev.,﻿P. McMenomy,,,,,,,1867.0,Dubuque
+﻿dub.ia.0072,﻿church,not recorded,English,,,,﻿Monroe County,﻿Monroe County,﻿Georgetown,﻿Georgetown,﻿IA,,41.01381097,-92.95568514,,,,,﻿ber_p_mcmenomy_001,﻿Rev.,﻿P. McMenomy,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0084,﻿church,not recorded,English,,,,﻿Clayton County,﻿Clayton County,﻿Guttenberg,﻿Guttenberg,﻿IA,,42.78998970000001,-91.1029068,,,,,﻿con_schultz_001,﻿Rev.,﻿Conrad Schultz,,,,,,,1867.0,Dubuque
-﻿dub.ia.0085,﻿church,not recorded,English,,,,﻿Buchanan County,﻿Buchanan County,﻿Independence,﻿Independence,﻿IA,,42.47006257,-91.89009739,,,,,﻿wil_emmonds_001,﻿Rev.,﻿John Gosker,,,,,,,1867.0,Dubuque
-﻿dub.ia.0088,﻿church,not recorded,English,,,,﻿Johnson County,﻿Johnson County,﻿Iowa City,﻿Iowa City,﻿IA,,41.657825700000004,-91.53461690000002,,,,,﻿a_urban_001,﻿Rev.,﻿William Emonds,,,,,,,1867.0,Dubuque
-﻿dub.ia.0264,﻿church,not recorded,﻿German,,,,﻿Johnson County,﻿Johnson County,﻿Iowa City,﻿Iowa City,﻿IA,,41.6526080330875,-91.5239260142152,,,,,﻿ant_urban_002,﻿Rev.,﻿Ant. Urban,,,,,,,1867.0,Dubuque
+﻿dub.ia.0085,﻿church,not recorded,English,,,,﻿Buchanan County,﻿Buchanan County,﻿Independence,﻿Independence,﻿IA,,42.47006257,-91.89009739,,,,,﻿joh_gosker_001,﻿Rev.,﻿John Gosker,,,,,,,1867.0,Dubuque
+﻿dub.ia.0088,﻿church,not recorded,English,,,,﻿Johnson County,﻿Johnson County,﻿Iowa City,﻿Iowa City,﻿IA,,41.657825700000004,-91.53461690000002,,,,,﻿wil_emmonds_001,﻿Rev.,﻿William Emonds,,,,,,,1867.0,Dubuque
+﻿dub.ia.0264,﻿church,not recorded,﻿German,,,,﻿Johnson County,﻿Johnson County,﻿Iowa City,﻿Iowa City,﻿IA,,41.6526080330875,-91.5239260142152,,,,,﻿a_urban_001,﻿Rev.,﻿Ant. Urban,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0089,﻿church,not recorded,English,,,,﻿Linn County,,﻿Irish Valley,,﻿IA,,42.0659844,-91.67606909999999,﻿dub.ia.0088,﻿attended from Iowa City,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0090,﻿church,not recorded,English,,,,﻿Lee County,﻿Lee County,﻿Keokuk,﻿Keokuk,﻿IA,,40.404473100000004,-91.39639659999999,,,,,﻿lou_decailly_001,﻿Rev.,﻿Louis Decailly,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0092,﻿church,not recorded,English,,,,﻿Alamakee County,﻿Allamakee County,﻿Lansing,﻿Lansing,﻿IA,,43.3609053,-91.21876800000001,﻿dub.ia.0134,﻿attended from Wexford,,,,,,,,,,,,1867.0,Dubuque
@@ -74,12 +74,12 @@
 ﻿dub.ia.0249,﻿church,not recorded,English,,,,﻿Dubuque County,,﻿O'Connel's Settlement,,﻿IA,,42.52929285,-91.07859508,﻿dub.ia.0067,﻿attended from Banxton's Settlement,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0265,﻿church,not recorded,English,,,,﻿Iowa County,,﻿Old Man's Creek,,﻿IA,,41.6039080066998,-91.8314962501168,,,,,﻿pet_sullivan_001,﻿Rev.,﻿Peter Sullivan,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0113,﻿church,not recorded,English,﻿(Festina P.O.),,,﻿Winneshiek County,﻿Winneshiek County,﻿Old Mission,,﻿IA,,43.12409736,-91.90216195,,,,,﻿fre_hannasch_001,﻿Rev.,﻿Frederick Hannasch,,,,,,,1867.0,Dubuque
-﻿dub.ia.0114,﻿church,not recorded,English,,,,﻿Mahaska County,﻿Mahaska County,﻿Oscaloosa,﻿Oskaloosa,﻿IA,,41.29472039,-92.6418045,,,,,﻿joh_krekel_001,﻿Rev.,﻿P. McCabe,,,,,,,1867.0,Dubuque
-﻿dub.ia.0119,﻿church,not recorded,English,,,,﻿Wapello County,﻿Wapello County,﻿Ottumwa,﻿Ottumwa,﻿IA,,41.02149376,-92.41074297,,,,,,﻿Rev.,﻿John Kreckel,,,,,,,1867.0,Dubuque
+﻿dub.ia.0114,﻿church,not recorded,English,,,,﻿Mahaska County,﻿Mahaska County,﻿Oscaloosa,﻿Oskaloosa,﻿IA,,41.29472039,-92.6418045,,,,,,﻿Rev.,﻿P. McCabe,,,,,,,1867.0,Dubuque
+﻿dub.ia.0119,﻿church,not recorded,English,,,,﻿Wapello County,﻿Wapello County,﻿Ottumwa,﻿Ottumwa,﻿IA,,41.02149376,-92.41074297,,,,,﻿joh_krekel_001,﻿Rev.,﻿John Kreckel,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0136,﻿church,not recorded,English,,,,﻿Alamakee County,﻿Allamakee County,﻿Paint Rock,,﻿IA,,43.17953825,-91.19181075,﻿dub.ia.0134,﻿attended from Wexford,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0204,﻿church,not recorded,English,,,,﻿Palo Alto County,﻿Palo Alto County,﻿Palo Alto,,﻿IA,,43.11047624,-94.67527892,﻿dub.ia.0063,﻿attended from Fort Dodge,,,,,,,,,,,,1867.0,Dubuque
-﻿dub.ia.0126,﻿church,not recorded,English,﻿and missions,,,﻿Washington County,﻿Washington County,﻿Richmond,,﻿IA,,41.44826917,-91.70421148,,,,,﻿con_seifmacher_001,﻿Rev.,﻿John Fendricks,,,,,,,1867.0,Dubuque
-﻿dub.ia.0126,﻿church,not recorded,English,﻿and missions,,,﻿Washington County,﻿Washington County,﻿Richmond,,﻿IA,,41.44826917,-91.70421148,,,,,﻿seifmacher_001,﻿Rev.,﻿---- Seifmacher,,,,,,,1867.0,Dubuque
+﻿dub.ia.0126,﻿church,not recorded,English,﻿and missions,,,﻿Washington County,﻿Washington County,﻿Richmond,,﻿IA,,41.44826917,-91.70421148,,,,,﻿joh_fendricks_001,﻿Rev.,﻿John Fendricks,,,,,,,1867.0,Dubuque
+﻿dub.ia.0126,﻿church,not recorded,English,﻿and missions,,,﻿Washington County,﻿Washington County,﻿Richmond,,﻿IA,,41.44826917,-91.70421148,,,,,﻿con_seifmacher_001,﻿Rev.,﻿---- Seifmacher,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0206,﻿church,not recorded,English,,,,﻿Jackson County,﻿Jackson County,﻿Sabula,﻿Sabula,﻿IA,,42.07072959,-90.17310073,﻿dub.ia.0009,﻿attended from Bellevue,,,,,,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0207,﻿church,not recorded,English,,,,﻿Winneshiek County,﻿Winneshiek County,﻿Spillville,﻿Spillville,﻿IA,,43.20475216,-91.95128918,,,,,﻿mikota_001,﻿Rev.,﻿----- Mikota,,,,,,,1867.0,Dubuque
 ﻿dub.ia.0250,﻿church,﻿St. Cyprian,English,,,,﻿Alamakee County,,,,﻿IA,,43.20475216,-91.95128918,﻿dub.ia.0139,﻿attended from Waukon,,,,,,,,,,,,1867.0,Dubuque
