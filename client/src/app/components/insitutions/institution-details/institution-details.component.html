@@ -67,17 +67,58 @@
                                 <div class="cell">Affiliated</div>
                                 <div class="cell">{{data.affiliated}}</div>
                             </div>
-                            <div class="row">
+                            @if (data.relatedInstitutions) {
+                                <div class="row">
                                 <div class="cell">Relevant Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.relevantInstitutions" [matTooltip]="item?.instType || ''">
+                                        <button mat-button color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
                                             <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                         </button>
                                     </div>
-                                    <div *ngIf="data.relevantInstitutions.length === 0">None</div>
+                                    <div *ngIf="data.relatedInstitutions.length === 0">None</div>
                                 </div>
-                            </div> 
+                            </div>
+                            }
+                            @if (data.parentInstitutions) {
+                                <div class="row">
+                                <div class="cell">Parent Institutions</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.parentInstitutions.length === 0">None</div>
+                                </div>
+                            </div>
+                            }
+                            @if (data.childInstitutions) {
+                                <div class="row">
+                                <div class="cell">Child Institutions</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.childInstitutions.length === 0">None</div>
+                                </div>
+                            </div>
+                            }
+                            @if (data.siblingInstitutions) {
+                                <div class="row">
+                                <div class="cell">Sibling Institutions</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.siblingInstitutions.length === 0">None</div>
+                                </div>
+                            </div>
+                            }
                             <div class="row">
                                 <div class="cell">Relevant People</div>
                                 <div class="cell">

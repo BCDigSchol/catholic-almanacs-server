@@ -1,7 +1,31 @@
 <app-filter></app-filter>
 <mat-card>
     <mat-card-content>
-        <div class="w-full flex flex-row justify-center items-center relative">
+        <div class="w-full flex flex-row justify-around items-center relative">
+            <mat-card>
+                <mat-card-content>
+                    <div class="flex flex-col justify-center items-center">
+                    <div class="border border-black border-solid my-2 rounded-xl p-3">
+                        <span>Year: {{year}}</span>
+                    </div>
+                    @if (!isPlaying) {
+                        <button mat-fab class="flex flex-col" (click)="togglePlay()">
+                            <mat-icon>play_arrow</mat-icon>
+                            <span>Play</span>
+                        </button>
+                    }
+                    @else {
+                        <button mat-fab class="flex flex-col" (click)="togglePlay()">
+                            <mat-icon>pause</mat-icon>
+                            <span>Pause</span>
+                        </button>
+                    }
+                    <mat-slider class="mx-2" style="width:200px" [min]="yearMin" [max]="yearMax" step="1" discrete>
+                        <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
+                    </mat-slider>
+                    </div>
+                </mat-card-content>
+            </mat-card>
             <div style="flex-shrink: 0;">
             <google-map [options]="mapOptions" width = "900px" height="600px">
                 @for (item of data; track item) {

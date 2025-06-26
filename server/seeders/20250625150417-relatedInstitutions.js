@@ -51,7 +51,68 @@ async function importData(data) {
   for (const currentItem of uniqueRelatedInstInfo) {
     const currentInstID = currentItem.instID;
 
+    if (!currentInstID.includes('_')) {
+      const matches = uniqueRelatedInstInfo.filter(item => 
+        item.instID.startsWith(currentInstID + '_')
+      );
+      for (const match of matches) {
+        // Create relationship key based only on institution IDs (sorted to avoid duplicates)
+        const ids = [currentItem.instID, match.instID].sort();
+        const relationshipKey = `${ids[0]}-${ids[1]}`;
+        
+        if (!createdRelationships.has(relationshipKey)) {
+          try {
+            await relatedInstitutions.create({
+              almanacRecordID: currentItem.almanacRecordID,
+              firstID: currentItem.instID,
+              secondID: match.instID,
+              isSibling: false
+            });
+            createdRelationships.add(relationshipKey);
+          } catch (error) {
+            console.error(`Error creating relationship ${relationshipKey}:`, error);
+          };
+          createdRelationships.add(relationshipKey);
+        }
+      }
+    }
+  }
+
+  for (const currentItem of uniqueRelatedInstInfo) {
+    const currentInstID = currentItem.instID;
+
     if (currentInstID.includes('_')) {
+        const baseID = currentInstID.split('_')[0];
+        const matches = uniqueRelatedInstInfo.filter(item => 
+        item.instID.startsWith(baseID) && 
+        item.instID !== currentInstID &&
+        item.instID !== baseID
+      );
+
+    for (const match of matches) {
+        // Create relationship key based only on institution IDs (sorted to avoid duplicates)
+        const ids = [currentItem.instID, match.instID].sort();
+        const relationshipKey = `${ids[0]}-${ids[1]}`;
+        
+        if (!createdRelationships.has(relationshipKey)) {
+          try {
+            await relatedInstitutions.create({
+              almanacRecordID: currentItem.almanacRecordID,
+              firstID: currentItem.instID,
+              secondID: match.instID,
+              isSibling: true
+            });
+            createdRelationships.add(relationshipKey);
+          } catch (error) {
+            console.error(`Error creating relationship ${relationshipKey}:`, error);
+          };
+          createdRelationships.add(relationshipKey);
+        }
+      }
+  }}
+
+
+    /**if (currentInstID.includes('_')) {
       const baseID = currentInstID.split('_')[0];
       const matches = uniqueRelatedInstInfo.filter(item => 
         item.instID.startsWith(baseID) && 
@@ -103,6 +164,6 @@ async function importData(data) {
         }
       }
     }
-  };
+  }; */
   console.log(`Finished processing relatedInstitutions`);
 }

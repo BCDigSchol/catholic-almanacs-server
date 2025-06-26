@@ -426,7 +426,9 @@ exports.findOne = async (req, res) => {
             year: data.dataValues.almanacRecord[0].year,
             attendingInstitutions: [],
             attendedBy: [],
-            relatedInstitutions: [],
+            parentInstitutions: [],
+            childInstitutions: [],
+            siblingInstitutions: [],
             personInfo: []
         };
         //console.log('processedData', data.dataValues.almanacRecord[0]);
@@ -479,39 +481,94 @@ exports.findOne = async (req, res) => {
             processedData.personInfo.push(person);
         };
 
-        const allRelatedInstitutions = [
-            ...data.dataValues.relatedFirst,
-            ...data.dataValues.relatedSecond
-        ];
+        const parentInstitutions = [
+            ...data.dataValues.relatedSecond.filter(rel => rel.isSibling === false)
+        ]
 
-        const allRelatedInstIDs = new Set();
+        const childInstitutions = [
+            ...data.dataValues.relatedFirst.filter(rel => rel.isSibling === false)
+        ]
 
-        allRelatedInstitutions.forEach(relatedInst => {
-            allRelatedInstIDs.add(relatedInst.firstID);
-            allRelatedInstIDs.add(relatedInst.secondID);
+        const siblingInstitutions = [
+            ...data.dataValues.relatedFirst.filter(rel => rel.isSibling === true),
+            ...data.dataValues.relatedSecond.filter(rel => rel.isSibling === true)
+        ]
+
+        const allParentInstIDs = new Set(parentInstitutions.map(rel => rel.firstID));
+        const allChildInstIDs = new Set(childInstitutions.map(rel => rel.secondID));
+        const allSiblingInstIDs = new Set();
+
+        siblingInstitutions.forEach(rel => {
+            allSiblingInstIDs.add(rel.firstID);
+            allSiblingInstIDs.add(rel.secondID);
         });
 
-        const uniqueRelatedInstIDs = Array.from(allRelatedInstIDs);
-        existingRelatedInstIDs = uniqueRelatedInstIDs.filter(id => id !== data.dataValues.ID);
-        for (const relatedInstID of existingRelatedInstIDs) {
-            const relatedInstDetails = await institution.findAll({
-                where: { ID: relatedInstID },
+        const uniqueParentInstIDs = Array.from(allParentInstIDs).filter(id => id !== data.dataValues.ID);
+        const uniqueChildInstIDs = Array.from(allChildInstIDs).filter(id => id !== data.dataValues.ID);
+        const uniqueSiblingInstIDs = Array.from(allSiblingInstIDs).filter(id => id !== data.dataValues.ID);
+
+        for (const parentInstID of uniqueParentInstIDs) {
+            const parentInstDetails = await institution.findAll({
+                where: { ID: parentInstID },
                 attributes: ['ID'],
                 include: [{
                     model: almanacRecord,
                     as: 'almanacRecord',
-                    where: { year: req.params.year },
+                    where: {year: req.params.year},
                     attributes: ['instName', 'year', 'instType'],
                 }]
             });
-            if (relatedInstDetails.length !== 0) {
-            processedData.relatedInstitutions.push({
-                instID: relatedInstID,
-                instName: relatedInstDetails[0].almanacRecord[0].instName,
-                year: relatedInstDetails[0].almanacRecord[0].year,
-                instType: relatedInstDetails[0].almanacRecord[0].instType
-            })}
+            if (parentInstDetails.length !== 0) {
+                processedData.parentInstitutions.push({
+                    instID: parentInstID,
+                    instName: parentInstDetails[0].almanacRecord[0].instName,
+                    year: parentInstDetails[0].almanacRecord[0].year,
+                    instType: parentInstDetails[0].almanacRecord[0].instType
+                });
         }
+        }
+
+        for (const childInstID of uniqueChildInstIDs) {
+            const childInstDetails = await institution.findAll({
+                where: { ID: childInstID },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    where: {year: req.params.year},
+                    attributes: ['instName', 'year', 'instType'],
+                }]
+            });
+            if (childInstDetails.length !== 0) {
+                processedData.childInstitutions.push({
+                    instID: childInstID,
+                    instName: childInstDetails[0].almanacRecord[0].instName,
+                    year: childInstDetails[0].almanacRecord[0].year,
+                    instType: childInstDetails[0].almanacRecord[0].instType
+                });
+        }
+        };
+
+        for (const siblingInstID of uniqueSiblingInstIDs) {
+            const siblingInstDetails = await institution.findAll({
+                where: { ID: siblingInstID },
+                attributes: ['ID'],
+                include: [{
+                    model: almanacRecord,
+                    as: 'almanacRecord',
+                    where: {year: req.params.year},
+                    attributes: ['instName', 'year', 'instType'],
+                }]
+            });
+            if (siblingInstDetails.length !== 0) {
+                processedData.siblingInstitutions.push({
+                    instID: siblingInstID,
+                    instName: siblingInstDetails[0].almanacRecord[0].instName,
+                    year: siblingInstDetails[0].almanacRecord[0].year,
+                    instType: siblingInstDetails[0].almanacRecord[0].instType
+                });
+        }
+        };
 
         res.send(processedData);}
     else {
