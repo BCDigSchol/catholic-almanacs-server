@@ -1,0 +1,44 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿sav.ga.0003,﻿church,﻿Holy Trinity Church,English,,,,,﻿Richmond County,﻿Augusta,﻿Augusta,﻿GA,﻿GA,33.47167613,-81.9668056,,,,,,﻿Rev.,﻿John Barry,,,,,,,1870,Charleston
+﻿sav.ga.0010,﻿church,not recorded,English,,,,﻿Wilson County,﻿Henry County,﻿Locust Grove,﻿Locust Grove,﻿GA,﻿GA,33.54252264,-82.77668703,,,,,,﻿Rev.,﻿M. D. O'Reilly,,,,,,,1870,Charleston
+﻿sav.ga.9000,﻿church,﻿St. Mary's,English,,,,,,,,﻿GA,,33.54252264,-82.77668703,,,,,,﻿Rev.,﻿Ed. Mayne,,,"﻿dw. at St. Augustine, Florida",,,,1870,Charleston
+﻿sav.ga.0001,﻿church,﻿St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,﻿GA,32.0733565,-81.0909827,,,,,,﻿Rev.,﻿Joseph Stokes,,,,,,,1870,Charleston
+﻿sav.ga.9001,﻿station,not recorded,English,,,,,,﻿Louisville,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.0004,﻿station,not recorded,English,,,,,,﻿Macon,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9002,﻿station,not recorded,English,,,,,,﻿Fayetteville,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.0012,﻿station,not recorded,English,,,,,,﻿Sparta,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9003,﻿station,not recorded,English,,,,,,﻿Clinton,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9004,﻿station,not recorded,English,,,,,,﻿Gainsville,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.0016,﻿station,not recorded,English,,,,,,﻿Milledgeville,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.0006,﻿station,not recorded,English,,,,,,﻿Columbus,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9005,﻿station,not recorded,English,,,,,,﻿Covington,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9006,﻿station,not recorded,English,,,,,,﻿Madison,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9007,﻿station,not recorded,English,,,,,,﻿Madison Springs,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9008,﻿station,not recorded,English,,,,,,﻿Beaver Dam,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9009,﻿station,not recorded,English,,,,,,﻿Montgomery,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9010,﻿station,not recorded,English,,,,,,﻿Rural Hall,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9011,﻿station,not recorded,English,,,,,,﻿Warrenton,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.0011,﻿station,not recorded,English,,,,,,﻿Washington,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿sav.ga.9012,﻿station,not recorded,English,,,,,,﻿Fishing Creek,,﻿GA,,32.0733565,-81.0909827,,,,,,,,,,,,,,1870,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.77642653,-79.93453937,,,,,,﻿Right Rev.,﻿John England,﻿D. D.,,,,,,1870,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.77642653,-79.93453937,,,,,,﻿Rev.,﻿Andrew Byrne,,,,,,,1870,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.77642653,-79.93453937,,,,,,﻿Rev.,﻿John Fielding,,,,,,,1870,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.77642653,-79.93453937,,,,,,﻿Rev.,﻿James Hayes,,,,,,,1870,Charleston
+﻿cha.sc.0002,﻿church,﻿St. Mary's,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.78189079,-79.93286629,,,,,,﻿Rev.,﻿Robert Brown,,,,,,,1870,Charleston
+﻿cha.sc.0002,﻿church,﻿St. Mary's,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.78189079,-79.93286629,,,,,,﻿Rev.,﻿John Healy,,,,,,,1870,Charleston
+﻿cha.sc.0025,﻿church,﻿St. Peter's,English,,,,,﻿Richland County,﻿Columbia,﻿Columbia,﻿SC,﻿SC,34.00550865,-81.03810855,,,,,,﻿Rev.,﻿Tim. Birmingham,,,,,,,1870,Charleston
+﻿cha.sc.0015,﻿church,﻿St. Andrew's,English,,,,,,﻿Barnwell,﻿Barnwell,﻿SC,,33.2448733,-81.3587177,﻿cha.sc.0001,,﻿visited occasionally from Charleston,,,,,,,,,,,1870,Charleston
+﻿cha.sc.9003,﻿church,﻿St. James',English,,,,﻿Colleton District,﻿Colleton County,,,﻿SC,﻿SC,33.2448733,-81.3587177,,,﻿visited occasionally from Charleston,,,,,,,,,,,1870,Charleston
+"﻿After the above cluster, almanac says ""Six or eight other stations in this State are visited by the Bishop, or one of his Clergymen.",﻿church,not recorded,English,,,,,,,,,,33.2448733,-81.3587177,,,,,,,,,,,,,,1870,Charleston
+﻿vic.nc.0002,﻿church,﻿St. Patrick's,English,﻿Mass on Sundays during every second month,,,,﻿Cumberland County,﻿Fayetteville,﻿Fayetteville,﻿NC,﻿NC,35.05259752,-78.87660777,,,,,,﻿Rev.,﻿Peter Whelan,,,,,,,1870,Charleston
+﻿ral.nc.0011,﻿church,not recorded,English,,,﻿Lincoln & Mecklenberg Counties,﻿Mecklenburg County,﻿Mecklenburg County,﻿Charlotte,﻿Charlotte,﻿NC,﻿NC,35.05259752,-78.87660777,,,﻿visited by John McGinnis,,,,,,,,,,,1870,Charleston
+﻿vic.nc.9003,﻿church,not recorded,English,,,,,,﻿Lincoln,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by John McGinnis,,,,,,,,,,,1870,Charleston
+﻿ral.nc.0015,﻿church,not recorded,English,,,,,,﻿Salisbury,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by John McGinnis,,,,,,,,,,,1870,Charleston
+﻿ral.nc.0018,﻿church,not recorded,English,,,,,,﻿Raleigh,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by P. Whelan,,,,,,,,,,,1870,Charleston
+﻿ral.nc.0001,﻿church,not recorded,English,,,,,,﻿Wilmington,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by P. Whelan,,,,,,,,,,,1870,Charleston
+﻿vic.nc.9004,﻿church,not recorded,English,,,,,,﻿Oak Island,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by P. Whelan,,,,,,,,,,,1870,Charleston
+﻿vic.nc.9000,﻿church,﻿St. John's,English,﻿Mass is celebrated on the Sundays of every alternate month,,,﻿Beaufort County,﻿Beaufort County,﻿Washington,﻿Washington,﻿NC,﻿NC,35.55017389,-77.05105976,,,,,,﻿Rev.,﻿R. S. Baker,,,,,,,1870,Charleston
+﻿vic.nc.0004,﻿church,not recorded,English,,,,,﻿Craven County,﻿Newbern,﻿New Bern,﻿NC,﻿NC,35.08457487,-77.06842929999999,,,,,,﻿Rev.,﻿R. S. Baker,,,,,,,1870,Charleston
+﻿vic.nc.9005,﻿church,not recorded,English,,,,,,﻿Greenville,,﻿NC,,35.08457487,-77.06842929999999,,,,,,﻿Rev.,﻿R. S. Baker,,,,,,,1870,Charleston
+﻿ral.nc.0009,﻿church,not recorded,English,,,,,,﻿Halifax,,﻿NC,,35.08457487,-77.06842929999999,,,,,,﻿Rev.,﻿R. S. Baker,,,,,,,1870,Charleston
+﻿vic.nc.9006,﻿church,not recorded,English,,,,,,﻿Murfreesborough,,﻿NC,,35.08457487,-77.06842929999999,,,,,,﻿Rev.,﻿R. S. Baker,,,,,,,1870,Charleston

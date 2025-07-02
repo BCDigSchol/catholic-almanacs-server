@@ -1,0 +1,28 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿High Mass at 9 o'clock for the Germans; and at 11 for the French. Sermons in German, French and English",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,﻿MI,42.320833,-83.076667,,,,,﻿fre_réze_001,﻿Right Rev.,﻿Frederick Réze,﻿D.D.,,,,,,1835,Detroit
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿High Mass at 9 o'clock for the Germans; and at 11 for the French. Sermons in German, French and English",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,﻿vin_badin_001,﻿Rev.,﻿Vin. Badin,,,,,,,1835,Detroit
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿High Mass at 9 o'clock for the Germans; and at 11 for the French. Sermons in German, French and English",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,﻿mar_kundig_001,﻿Rev.,﻿Martin Kundig,,,,,,,1835,Detroit
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿High Mass at 9 o'clock for the Germans; and at 11 for the French. Sermons in German, French and English",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,﻿bonduel_001,﻿Rev. Mr.,﻿Bonduel,,,,,,,1835,Detroit
+﻿det.mi.9007,﻿church,﻿Trinity Church,English,,,,,,﻿Detroit,,﻿MI,,42.320833,-83.076667,,,,,﻿ber_ocavanagh_001,﻿Rev.,﻿Ber. O'Cavanagh,,,,,,,1835,Detroit
+﻿det.mi.0114,﻿church,not recorded,English,﻿High Mass at 10,,,,﻿Monroe County,﻿Monroe,﻿Monroe,﻿MI,﻿MI,41.9185513506712,-83.3968562355573,,,,,﻿carabin_001,﻿Rev. Mr.,﻿Carabin,,,,,,,1835,Detroit
+﻿det.mi.9001,﻿church,﻿St. Joseph's,﻿Indian and French,﻿High Mass at 10. Instruction in Indian and French.,,,,,,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,﻿st_badin_001,﻿Rev.,﻿S.T. Badin,,,,,,,1835,Detroit
+﻿det.mi.9001,﻿church,﻿St. Joseph's,﻿Indian and French,﻿High Mass at 10. Instruction in Indian and French.,,,,,,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,﻿deseilles_001,﻿Rev. Mr.,﻿Deseilles,,,,,,,1835,Detroit
+﻿det.mi.0083,﻿church,﻿St. Paul,English,,,,,,,,﻿MI,,42.3861485,-82.91185909999999,,,﻿Visited alternately,,﻿boheme_001,﻿Rev. Mr.,﻿Boheme,,,,,,,1835,Detroit
+﻿det.mi.9002,﻿church,﻿St. Felicite,English,,,,,,,,﻿MI,,42.3861485,-82.91185909999999,,,﻿Visited alternately,,﻿boheme_001,﻿Rev. Mr.,﻿Boheme,,,,,,,1835,Detroit
+﻿det.mi.9003,﻿church,﻿St. Francis,English,,,,,,,,﻿MI,,42.3861485,-82.91185909999999,,,﻿Visited alternately,,﻿boheme_001,﻿Rev. Mr.,﻿Boheme,,,,,,,1835,Detroit
+﻿det.mi.9004,﻿church,﻿St. Felicite,English,,﻿St. Claire's River,,,,,,﻿MI,,42.3861485,-82.91185909999999,,,,,﻿visyoyky_001,﻿Rev. Mr.,﻿Visyoyky,,,,,,,1835,Detroit
+﻿mar.mi.9002,﻿church,not recorded,﻿English and French,﻿Instructions in English and French,﻿Island of Michillimachinac,,,,,,﻿MI,,42.3861485,-82.91185909999999,,,,,﻿lostrie_001,﻿Rev. Mr.,﻿Lostrie,,,,,,,1835,Detroit
+﻿mar.mi.9000,﻿church,not recorded,English,,,,,,﻿Arbre Croche,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,﻿sim_lauderle_001,﻿Rev.,﻿Simon Lauderle,﻿Cong. St. Liguori,,,,,,1835,Detroit
+﻿det.mi.9005,﻿church,not recorded,﻿Indian,﻿Instructions in Indian,,,,,﻿Grand River,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,﻿boraga_001,﻿Rev. Mr.,﻿Boraga,,,,,,,1835,Detroit
+﻿det.mi.0018,﻿church,not recorded,English,,,,,,﻿Ann Harbour,﻿Ann Arbor,﻿MI,,42.2857551,-83.7413768,,,,,﻿kelly_001,﻿Rev. Mr.,﻿Kelly,,,,,,,1835,Detroit
+﻿det.mi.9006,﻿church,﻿Winebago Church,﻿Winebago,﻿Instructions in the Winebago language,,﻿N. West Territory,,,,,﻿MI,,42.2857551,-83.7413768,,,,,﻿s_mazzuchelli_001,﻿Rev.,﻿S. Mazzuchelli,,,,,,,1835,Detroit
+﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿High Mass at 10. Sermons in French and Menomony.,,,,﻿Brown County,﻿Green Bay,﻿Green Bay,﻿MI,﻿WI,44.508541015782605,-88.01525684610941,,,,,﻿vandepool_001,﻿Rev. Messrs.,﻿Vandepool,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1835,Detroit
+﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿High Mass at 10. Sermons in French and Menomony.,,,,﻿Brown County,﻿Green Bay,﻿Green Bay,﻿MI,,44.508541015782605,-88.01525684610941,,,,,﻿vanderbrock_001,﻿Rev. Messrs.,﻿Vanderbrock,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1835,Detroit
+﻿mar.mi.0082,﻿church,not recorded,English,,,,,,﻿Sault Ste. Marie,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,﻿hatscher_001,﻿Rev. Mr.,﻿Hatscher,"﻿Lig,",,,,,,1835,Detroit
+﻿mar.mi.0082,﻿convent,﻿St. Clare's Convent,English,,,,,,﻿Green Bay,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,,1835,Detroit
+﻿mar.mi.0082,﻿convent,﻿Convent,English,,,,,,﻿Detroit,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,﻿Sisters of St. Clare,1835,Detroit
+﻿mar.mi.0082,﻿female academy,﻿Female Academy,English,,,,,,﻿Detroit,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,﻿Sisters of St. Clare,1835,Detroit
+﻿mar.mi.0082,﻿school,﻿Female Indian School,English,,﻿St. Joseph's,,,,﻿Detroit,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,﻿Sisters of St. Clare,1835,Detroit
+﻿mar.mi.0082,﻿school,﻿Female Indian School,English,,﻿St. Joseph's,,,,﻿Grand River,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,﻿Sisters of St. Clare,1835,Detroit
+﻿mar.mi.0082,﻿school,﻿Female Indian School,English,,﻿St. Joseph's,,,,﻿Arbre Croche,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,﻿Sisters of St. Clare,1835,Detroit
+﻿mar.mi.0082,﻿school,﻿Female Indian School,English,,﻿St. Joseph's,,,,﻿Green Bay,,﻿MI,,44.508541015782605,-88.01525684610941,,,,,,,,,,,,,﻿Sisters of St. Clare,1835,Detroit

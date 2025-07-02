@@ -1,0 +1,46 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,﻿KY,37.8107095032586,-85.47136896058329,,,,,,﻿Right Rev.,﻿Ben J. Flaget,﻿D.D.,,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Right Rev.,﻿G. J. Chabrat,﻿D.D.,,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Rev.,﻿Ig. A. Reynolds,,﻿Codaj.,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Right Rev.,﻿John B. David,﻿D.D.,,﻿who has resigned the Coadjutorship,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Rev.,﻿L. Picot,,,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Rev.,﻿Wm. E. Clark,,,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Rev.,﻿Anthony Ganhil,,,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿cathedral,﻿Cathedral of St. Joseph,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,﻿Rev.,﻿George A. M. Elder,,,,,,,1835,Bardstown
+﻿lou.kt.9000,﻿cathedral,not recorded,English,,,,﻿Breckinridge County,,,,﻿KY,,37.8107095032586,-85.47136896058329,,,,,﻿#REF!,﻿Rev.,﻿Joseph Rogers,,,,,,,1835,Bardstown
+﻿lou.kt.9001,﻿cathedral,not recorded,English,,,,﻿Bullet County,﻿Bullitt County,,,﻿KY,,37.8107095032586,-85.47136896058329,,,,,﻿#REF!,﻿Rev.,﻿David Debarcq,,,,,,,1835,Bardstown
+﻿lou.kt.0031,﻿cathedral,not recorded,English,,﻿Clear Creek,,,,,,﻿KY,,37.8107095032586,-85.47136896058329,,,,,,,,,,,,,,1835,Bardstown
+﻿cov.kt.0001,﻿cathedral,not recorded,English,﻿3d and 4th Sundays,,,,,﻿Covington,,﻿KY,,38.5731349,-82.8301677,,﻿attended from the Cathedral of Cincinnati,,,,,,,,,,,,1835,Bardstown
+﻿lou.kt.0034,﻿church,﻿St. Patrick's,English,,,,﻿Mercer County,﻿Boyle County,﻿Danville,﻿Danville,﻿KY,﻿KY,37.646077327506,-84.7706978496893,,,,,,﻿Rev.,﻿David Debarcq,,,,,,,1835,Bardstown
+﻿lou.kt.9003,﻿church,not recorded,English,,,,﻿Davies County,,,,﻿KY,,37.646077327506,-84.7706978496893,,,,,﻿#REF!,﻿Rev.,﻿John Wathan,,,,,,,1835,Bardstown
+﻿lou.kt.9004,﻿church,not recorded,English,,,,﻿Hardin County,﻿Hardin County,﻿Elizabethtown,﻿Elizabethtown,﻿KY,﻿KY,37.6999545682083,-85.87335512817579,,,,,﻿#REF!,﻿Rev.,﻿Ed. A. Clark,,,,,,,1835,Bardstown
+﻿lou.kt.0038,﻿church,﻿St. Michael's,English,﻿Mass at 11,,,﻿Nelson County,﻿Nelson County,﻿Fairfield,﻿Fairfield,﻿KY,﻿KY,37.93178213,-85.38291799,,,,,,﻿Rev.,﻿J. Elliott,,,,,,,1835,Bardstown
+﻿lou.kt.0045,﻿church,not recorded,English,,,,,,﻿Hendersonville,﻿Henderson,﻿KY,﻿KY,37.83895375,-87.58671155,,,,,,﻿-,﻿-,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿church,﻿Holy Cross,English,,,,﻿Washington County,,,,﻿KY,,37.83895375,-87.58671155,,,,,,﻿Rev.,﻿D. Debarcq,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿convent,﻿Holy Cross,English,﻿Jesuits,,,﻿Washington County,,﻿Lebanon,,﻿KY,,37.83895375,-87.58671155,,,,,,﻿Rev.,﻿Chazelle,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿convent,﻿Holy Cross,English,﻿Jesuits,,,﻿Washington County,,﻿Lebanon,,﻿KY,,37.83895375,-87.58671155,,,,,,,﻿Petit,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿convent,﻿Holy Cross,English,﻿Jesuits,,,﻿Washington County,,﻿Lebanon,,﻿KY,,37.83895375,-87.58671155,,,,,,,﻿Gouet,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿convent,﻿Holy Cross,English,﻿Jesuits,,,﻿Washington County,,﻿Lebanon,,﻿KY,,37.83895375,-87.58671155,,,,,,,﻿Fouché,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿convent,﻿Holy Cross,English,﻿Jesuits,,,﻿Washington County,,﻿Lebanon,,﻿KY,,37.83895375,-87.58671155,,,,,,,﻿Evremont,,,,,,,1835,Bardstown
+﻿lou.kt.9005,﻿convent,﻿Holy Cross,English,﻿Jesuits,,,﻿Washington County,,﻿Lebanon,,﻿KY,,37.83895375,-87.58671155,,,,,,,﻿Coomes,,,,,,,1835,Bardstown
+﻿cov.kt.0028,﻿church,﻿St. Peter's,English,﻿Mass at 11,,,﻿Fayette County,﻿Fayette County,﻿Lexington,﻿Lexington,﻿KY,,38.04673404,-84.49459291,,,,,,﻿Rev.,﻿E. McMahon,,,,,,,1835,Bardstown
+﻿lou.kt.0048,﻿church,not recorded,English,,,,,﻿Marion County,﻿Loretto,﻿Loretto,﻿KY,﻿KY,37.6728593,-85.44784585,,,,,,﻿Rev. Dr.,﻿Chabrat,,﻿Sup. of the Convent,,,,,1835,Bardstown
+﻿lou.kt.0016,﻿church,﻿St. Louis's,English,﻿Mass at 11,,,﻿Jefferson County,﻿Jefferson County,﻿Louisville,﻿Louisville,﻿KY,﻿KY,38.23690764,-85.76363854,,,,,,﻿Rev.,﻿Robert A. Abell,,,,,,,1835,Bardstown
+﻿lou.kt.0059,﻿church,not recorded,English,,,,﻿Union County,﻿Union County,﻿Morganfield,﻿Morganfield,﻿KY,﻿KY,37.682562969809204,-87.9215951978104,,,,,﻿#REF!,﻿Rev.,﻿Elisha Durbin,,,,,,,1835,Bardstown
+﻿lou.kt.0059,﻿church,not recorded,English,,,,﻿Union County,﻿Union County,﻿Morganfield,﻿Morganfield,﻿KY,,37.682562969809204,-87.9215951978104,,,,,,﻿Rev.,﻿Edward Clark,,,,,,,1835,Bardstown
+﻿lou.kt.9008,﻿church,﻿St. Benedict,English,,,,﻿Nelson County,,,,﻿KY,,37.682562969809204,-87.9215951978104,,,,,﻿#REF!,﻿Rev.,﻿Walter Coomes,,,,,,,1835,Bardstown
+﻿lou.kt.9009,﻿church,﻿St. Charles's,English,,,,﻿Washington County,,,,﻿KY,,37.682562969809204,-87.9215951978104,,,,,﻿#REF!,﻿Rev.,﻿F. X. Evremont,,,,,,,1835,Bardstown
+﻿lou.kt.0020,﻿church,﻿St. Joseph's,English,,,,,﻿Nelson County,﻿Bardstown,﻿Bardstown,﻿KY,,37.8104203519326,-85.4716490055571,,,,,﻿#REF!,,,,,,,,,1835,Bardstown
+﻿cov.kt.0023,﻿church,﻿St. Pius,English,,,,﻿Scott County,,﻿Frankfort,,﻿KY,,37.8104203519326,-85.4716490055571,,,,,﻿#REF!,﻿Rev.,﻿G. Hayden,,,,,,,1835,Bardstown
+﻿lou.kt.9010,﻿church,﻿St. Rose,English,﻿Here is a convent of Dominicans,,,﻿Washington County,﻿Washington County,﻿Springfield,﻿Springfield,﻿KY,﻿KY,37.6931850437086,-85.2623889702797,,,,,﻿#REF!,﻿Rev.,﻿Miles,,,,,,,1835,Bardstown
+﻿lou.kt.9010,﻿church,﻿St. Rose,English,﻿Here is a convent of Dominicans,,,﻿Washington County,﻿Washington County,﻿Springfield,﻿Springfield,﻿KY,,37.6931850437086,-85.2623889702797,,,,,,﻿Rev.,﻿Jarboe,,,,,,,1835,Bardstown
+﻿lou.kt.9010,﻿church,﻿St. Rose,English,﻿Here is a convent of Dominicans,,,﻿Washington County,﻿Washington County,﻿Springfield,﻿Springfield,﻿KY,,37.6931850437086,-85.2623889702797,,,,,,﻿Rev.,﻿Montgomery,,,,,,,1835,Bardstown
+﻿lou.kt.9010,﻿church,﻿St. Rose,English,﻿Here is a convent of Dominicans,,,﻿Washington County,﻿Washington County,﻿Springfield,﻿Springfield,﻿KY,,37.6931850437086,-85.2623889702797,,,,,,﻿Rev.,﻿Polin,,,,,,,1835,Bardstown
+﻿lou.kt.9010,﻿church,﻿St. Rose,English,﻿Here is a convent of Dominicans,,,﻿Washington County,﻿Washington County,﻿Springfield,﻿Springfield,﻿KY,,37.6931850437086,-85.2623889702797,,,,,,﻿Rev.,﻿Bowling,,,,,,,1835,Bardstown
+﻿lou.kt.0091,﻿church,﻿St. Thomas,English,﻿the Seminary of the Brothers of the Mission,,,,,,﻿Bardstown,﻿KY,﻿KY,37.76659691,-85.48401476,,,,,,﻿Rev.,﻿Walter Coomes,,,,,,,1835,Bardstown
+﻿lou.kt.0102,﻿church,not recorded,English,,,,﻿Spencer County,﻿Spencer County,,﻿Taylorsville,﻿KY,﻿KY,38.03301884995879,-85.34467740897921,,,,,﻿#REF!,﻿Rev.,﻿J. Elliott,,,,,,,1835,Bardstown
+﻿lou.kt.0102,﻿church,not recorded,English,,,,﻿Meade County,﻿Spencer County,,﻿Taylorsville,﻿KY,,38.03301884995879,-85.34467740897921,,,,,,﻿Rev.,﻿Chas. J. Coomes,,,,,,,1835,Bardstown
+﻿lou.kt.0102,﻿church,not recorded,English,,,,﻿Perry County,﻿Spencer County,,﻿Taylorsville,﻿KY,,38.03301884995879,-85.34467740897921,,,,,,﻿Rev.,﻿Chas. J. Coomes,,,,,,,1835,Bardstown
+﻿lou.kt.0102,﻿church,not recorded,English,,,,﻿Grayson County,﻿Spencer County,,﻿Taylorsville,﻿KY,,38.03301884995879,-85.34467740897921,,,,,,﻿Rev.,﻿Ed. A. Clark,,,,,,,1835,Bardstown
+﻿lou.kt.0102,﻿church,not recorded,English,,﻿Rude's Creek,,﻿Grayson County,﻿Spencer County,,﻿Taylorsville,﻿KY,,38.03301884995879,-85.34467740897921,,,,,,﻿Rev.,﻿Ed. A. Clark,,,,,,,1835,Bardstown
+﻿nash.tn.9000,﻿church,not recorded,English,,,,,,﻿Nashville,,﻿TN,,36.1665207837827,-86.78395778096692,,,,﻿vacant,﻿#REF!,,,,,,,,,1835,Bardstown

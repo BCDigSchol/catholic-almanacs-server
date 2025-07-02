@@ -1,13 +1,13 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿aug_vérot_001,﻿Rt. Rev.,﻿A. Vérot,﻿D.D.,,,,,,1865.0,Savannah
-﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿j_f_oneill_001,﻿Very Rev.,﻿J. F. O'Neill,﻿Jr.,﻿V.G.,,,,,1865.0,Savannah
-﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿p_whelan_001,﻿Rev.,﻿P. Whelan,,,,,,,1865.0,Savannah
-﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿c_c_prendergast_001,﻿Very Rev.,﻿C. Prendergast,,,,,,,1865.0,Savannah
-﻿sav.ga.0003,﻿church,﻿Church of the Most Holy Trinity,English,,,,,,﻿Augusta,﻿Augusta,﻿GA,,33.4715171,-81.96679350000001,,,,,﻿g_duggan_001,﻿Rev.,﻿G. Duggan,,,,,,,1865.0,Savannah
-﻿sav.ga.0003,﻿church,﻿Church of the Most Holy Trinity,English,,,,,,﻿Augusta,﻿Augusta,﻿GA,,33.4715171,-81.96679350000001,,,,,﻿joh_kirby_001,﻿Rev.,﻿J. Kirby,,,,,,,1865.0,Savannah
-﻿sav.ga.0005,﻿church,﻿Church of the Immaculate Conception,English,,,,,,﻿Atlanta,﻿Atlanta,﻿GA,,33.748752,-84.38768449999999,,,,,﻿tho_oreilly_001,﻿Rev.,﻿T. O'Reilly,,,,,,,1865.0,Savannah
-﻿sav.ga.0004,﻿church,﻿Church of the Assumption,English,,,,,,﻿Macon,﻿Macon,﻿GA,,32.8406946,-83.6324022,,,,,﻿w_j_hamilton_001,﻿Rev.,﻿William Hamilton,,,,,,,1865.0,Savannah
-﻿sav.ga.0006,﻿church,﻿Church of St. Philip and St. James,English,,,,,,﻿Columbus,﻿Columbus,﻿GA,,32.4609764,-84.9877094,,,,,﻿mic_cullinan_001,﻿Rev.,﻿Michael Cullimore,,,,,,,1865.0,Savannah
-﻿sav.ga.0010,﻿church,﻿Purification of the B.V.M.,English,,,,﻿Henry County,﻿Henry County,﻿Locust Grove,﻿Locust Grove,﻿GA,,33.345949499999996,-84.109083,﻿sav.ga.0003,﻿visited from Augusta,,,,,,,,,,,,1865.0,Savannah
-﻿sav.ga.0029,﻿convent,﻿Convent of the Sisters of Our Lady of Mercy,English,,,,,,﻿Savannah,,﻿GA,,32.0808989,-81.09120300000001,,,,,,,,,,,,,,1865.0,Savannah
-﻿sav.ga.0029,﻿convent,﻿Convent of our Lady of Mercy,English,,,,,,﻿Augusta,﻿Augusta,﻿GA,,33.4914202445054,-82.005867034787,,,,,,,,,,,,,,1865.0,Savannah
+﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿aug_vérot_001,﻿Rt. Rev.,﻿A. Vérot,﻿D.D.,,,,,,1865,Savannah
+﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿j_f_oneill_001,﻿Very Rev.,﻿J. F. O'Neill,﻿Jr.,﻿V.G.,,,,,1865,Savannah
+﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿p_whelan_001,﻿Rev.,﻿P. Whelan,,,,,,,1865,Savannah
+﻿sav.ga.0001,﻿cathedral,﻿Cathedral of St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,,32.0733565,-81.0909827,,,,,﻿c_c_prendergast_001,﻿Very Rev.,﻿C. Prendergast,,,,,,,1865,Savannah
+﻿sav.ga.0003,﻿church,﻿Church of the Most Holy Trinity,English,,,,,,﻿Augusta,﻿Augusta,﻿GA,,33.4715171,-81.96679350000001,,,,,﻿g_duggan_001,﻿Rev.,﻿G. Duggan,,,,,,,1865,Savannah
+﻿sav.ga.0003,﻿church,﻿Church of the Most Holy Trinity,English,,,,,,﻿Augusta,﻿Augusta,﻿GA,,33.4715171,-81.96679350000001,,,,,﻿joh_kirby_001,﻿Rev.,﻿J. Kirby,,,,,,,1865,Savannah
+﻿sav.ga.0005,﻿church,﻿Church of the Immaculate Conception,English,,,,,,﻿Atlanta,﻿Atlanta,﻿GA,,33.748752,-84.38768449999999,,,,,﻿tho_oreilly_001,﻿Rev.,﻿T. O'Reilly,,,,,,,1865,Savannah
+﻿sav.ga.0004,﻿church,﻿Church of the Assumption,English,,,,,,﻿Macon,﻿Macon,﻿GA,,32.8406946,-83.6324022,,,,,﻿w_j_hamilton_001,﻿Rev.,﻿William Hamilton,,,,,,,1865,Savannah
+﻿sav.ga.0006,﻿church,﻿Church of St. Philip and St. James,English,,,,,,﻿Columbus,﻿Columbus,﻿GA,,32.4609764,-84.9877094,,,,,﻿mic_cullinan_001,﻿Rev.,﻿Michael Cullimore,,,,,,,1865,Savannah
+﻿sav.ga.0010,﻿church,﻿Purification of the B.V.M.,English,,,,﻿Henry County,﻿Henry County,﻿Locust Grove,﻿Locust Grove,﻿GA,,33.345949499999996,-84.109083,﻿sav.ga.0003,﻿visited from Augusta,,,,,,,,,,,,1865,Savannah
+﻿sav.ga.0029,﻿convent,﻿Convent of the Sisters of Our Lady of Mercy,English,,,,,,﻿Savannah,,﻿GA,,32.0808989,-81.09120300000001,,,,,,,,,,,,,,1865,Savannah
+﻿sav.ga.0029,﻿convent,﻿Convent of our Lady of Mercy,English,,,,,,﻿Augusta,﻿Augusta,﻿GA,,33.4914202445054,-82.005867034787,,,,,,,,,,,,,,1865,Savannah

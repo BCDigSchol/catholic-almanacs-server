@@ -219,7 +219,7 @@ exports.findByID = async (req, res) => {
             year: [],
             instName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instName,
             language: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].language,
-            diocese: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].diocese,
+            diocese: [],
             instType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instType,
             instNote: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instNote,
             placeName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].placeName,
@@ -247,6 +247,13 @@ exports.findByID = async (req, res) => {
         let existingAttendedByInstIDs = [];
         let existingPersonIDs = [];
         let existingRelatedInstIDs = [];
+
+        // all the (unique) dioceses
+        for (const record of data.dataValues.almanacRecord) {
+            if (!processedData.diocese.includes(record.diocese)) {
+                processedData.diocese.push(record.diocese);
+            }
+        };
 
         // all the (unique) attending institutions, attended by institutions and persons
         for (let i = data.dataValues.almanacRecord.length - 1; i >= 0; i--) {
@@ -431,7 +438,8 @@ exports.findOne = async (req, res) => {
             siblingInstitutions: [],
             personInfo: []
         };
-        //console.log('processedData', data.dataValues.almanacRecord[0]);
+
+        // attending institutions, attended by institutions and persons
         for (const attendingInst of data.dataValues.almanacRecord[0].attendingInstitutions) {
             const instDetails = await institution.findAll({
                 where: { ID: attendingInst.instID },
@@ -477,6 +485,7 @@ exports.findOne = async (req, res) => {
                 latestYear: latestYear
             });}
 
+        // related institutions
         for (const person of data.dataValues.almanacRecord[0].personInfo) {
             processedData.personInfo.push(person);
         };
@@ -569,7 +578,6 @@ exports.findOne = async (req, res) => {
                 });
         }
         };
-
         res.send(processedData);}
     else {
         res.status(404).send({

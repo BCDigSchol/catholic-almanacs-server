@@ -1,0 +1,37 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿har.ct.0132,﻿church,﻿Holy Trinity,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,﻿CT,41.7691004025693,-72.6784361285108,,,,,﻿jam_fitton_001,﻿Rev.,﻿James Fitton,,,,,,,1835,Boston
+﻿har.ct.0132,﻿church,﻿Holy Trinity,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,,41.7691004025693,-72.6784361285108,,,,,﻿fra_kiernan_001,﻿Rev.,﻿Francis Kiernan,,,,,,,1835,Boston
+﻿har.ct.9000,﻿church,﻿Christ's Church,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,﻿CT,41.3121734425384,-72.9322694,,,,,﻿mcdermott_001,﻿Rev. Mr.,﻿McDermott,,,,,,,1835,Boston
+﻿har.ct.9001,﻿church,﻿Worcester Congregation,English,,,,,,,,﻿CT,,41.3121734425384,-72.9322694,,,,,﻿jam_fitton_001,﻿Rev.,﻿James Fitton,,,,,,,1835,Boston
+﻿har.ct.0001,﻿church,not recorded,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,﻿RI,41.8192563523806,-71.4165555927615,,,,,﻿con_lee_001,﻿Rev.,﻿Constantine Lee,,,,,,,1835,Boston
+﻿bos.ma.0054,﻿church,not recorded,English,,,,,,﻿Canton,,﻿RI,﻿MA,41.8192563523806,-71.4165555927615,,,,,﻿con_lee_001,﻿Rev.,﻿Constantine Lee,,,,,,,1835,Boston
+﻿bos.ma.0074,﻿church,not recorded,English,,,,,,﻿Fall River,﻿Fall River,﻿RI,﻿MA,41.8192563523806,-71.4165555927615,,,,,﻿con_lee_001,﻿Rev.,﻿Constantine Lee,,,,,,,1835,Boston
+﻿har.ct.0026,﻿church,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,﻿RI,41.8192563523806,-71.4165555927615,,,,,﻿con_lee_001,﻿Rev.,﻿Constantine Lee,,,,,,,1835,Boston
+﻿har.ct.0025,﻿church,not recorded,English,﻿every other Sunday,,,,,﻿Newport,﻿Newport,﻿RI,﻿RI,41.4839326092396,-71.31239368789609,,,,,﻿joh_corry_001,﻿Rev.,﻿John Corry,,,,,,,1835,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,﻿MA,42.3407786836978,-71.06950954047551,,,,,﻿ben_fenwick_001,﻿Right Rev.,﻿Benedict Fenwick,﻿D. D.,,,,,,1835,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,﻿wm_tyler_001,﻿Very Rev.,﻿Wm. Tyler,,,,,,,1835,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,﻿mic_healy_001,﻿Very Rev.,﻿Michael Healy,,,,,,,1835,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,﻿curtin_001,﻿Rev. Mr.,﻿Curtin,,,,,,,1835,Boston
+﻿bos.ma.9001,﻿chapel,﻿St. Aloysius' Chapel,English,"﻿under the Cathedral, is appropriated exclusively to the use of the children of the Congregation",,,,,﻿Boston,,﻿MA,﻿MA,42.3407786836978,-71.06950954047551,,﻿is served by one of the above-mentioned clergymen,,,,,,,,,,,,1835,Boston
+﻿bos.ma.0012,﻿church,﻿St. Augustin's Church,English,,﻿South Boston,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,﻿MA,42.334167,-71.049444,,,,,﻿tho_lynch_001,﻿Rev.,﻿Thomas Lynch,,,,,,,1835,Boston
+﻿bos.ma.0055,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Charlestown,﻿Charlestown,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,,﻿ed_j_mccool_001,﻿Rev.,﻿Ed. J. McCool,,,,,,,1835,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,﻿Middlesex County,﻿Lowell,﻿Lowell,﻿MA,﻿MA,42.645237513059996,-71.3177197413205,,,,,﻿j_mahoney_001,﻿Rev.,﻿J. Mahoney,,,,,,,1835,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,﻿Middlesex County,﻿Lowell,﻿Lowell,﻿MA,,42.645237513059996,-71.3177197413205,,,,,﻿conolly_001,﻿Rev. Mr.,﻿Conolly,,,,,,,1835,Boston
+﻿bos.ma.0129,﻿church,not recorded,English,﻿every other Sun.,,,,﻿Bristol County,﻿New Bedford,﻿New Bedford,﻿MA,﻿MA,41.63779641229671,-70.9597371308124,,,,,﻿p_canavan_001,﻿Rev.,﻿P. Canavan,,,,,,,1835,Boston
+﻿bos.ma.0152,﻿church,﻿St. Mary's,English,,,,,﻿Essex County,﻿Salem,﻿Salem,﻿MA,﻿MA,42.5212836936131,-70.8898947395781,,,,,﻿wm_wiley_001,﻿Rev.,﻿Wm. Wiley,,,,,,,1835,Boston
+﻿bos.ma.0154,﻿church,﻿St. Peter's,English,﻿3d Sun.,,,,﻿Barnstable County,﻿Sandwich,﻿Sandwich,﻿MA,﻿MA,41.7614069400496,-70.4931098280286,,,,,﻿p_canavan_001,﻿Rev.,﻿P. Canavan,,,,,,,1835,Boston
+﻿bos.ma.0170,﻿church,﻿St. Mary's,English,﻿2d Sun.,,,,﻿Bristol County,﻿Taunton,﻿Taunton,﻿MA,﻿MA,41.9073059522244,-71.09254200986891,,,,,﻿j_corry_001,﻿Rev.,﻿J. Corry,,,,,,,1835,Boston
+﻿bos.ma.0179,﻿church,not recorded,English,﻿once a month,,,,﻿Middlesex County,﻿Waltham,﻿Waltham,﻿MA,﻿MA,42.3784456815446,-71.2370622237897,,,,,﻿tho_lynch_001,﻿Rev.,﻿Thomas Lynch,,,,,,,1835,Boston
+﻿bos.ma.9002,﻿church,not recorded,English,﻿every other Sund.,,,,,﻿Wareham,,﻿MA,,42.3784456815446,-71.2370622237897,,,,,﻿p_canavan_001,﻿Rev.,﻿P. Canavan,,,,,,,1835,Boston
+﻿por.me.0007,﻿church,not recorded,English,,,,,,﻿Bangor,,﻿ME,,44.80387965,-68.76104988,,,,,﻿p_mcnamee_001,﻿Rev.,﻿P. McNamee,,,,,,,1835,Boston
+﻿por.me.0018,﻿church,not recorded,English,,,,,﻿Washington County,﻿Eastport,﻿Eastport,﻿ME,﻿ME,44.906479986015206,-66.991127646257,,,﻿occasionally,,﻿sim_walsh_001,﻿Rev.,﻿Simon Walsh,,,,,,,1835,Boston
+﻿por.me.0023,﻿church,﻿St. Ann's,English,,,,,﻿Penobscot County,﻿Indian Old Town,﻿Old Town,﻿ME,﻿ME,44.942660343140204,-68.6521877375997,,,,,﻿jam_conway_001,﻿Rev.,﻿James Conway,,,,,,,1835,Boston
+﻿por.me.0080,﻿church,not recorded,English,,,,,,﻿North Whitefield,,﻿ME,,44.942660343140204,-68.6521877375997,,,,,﻿p_ryan_001,﻿Rev.,﻿P. Ryan,,,,,,,1835,Boston
+﻿por.me.9002,﻿church,not recorded,English,,,,,,﻿New Castle,,﻿ME,,44.942660343140204,-68.6521877375997,,,﻿occasionally,,﻿cha_french_001,﻿Rev.,﻿Chas. French,,,,,,,1835,Boston
+﻿por.me.0002,﻿church,﻿St. Dominick's,English,,,,,﻿Cumberland County,﻿Portland,﻿Portland,﻿ME,﻿ME,43.6503245767494,-70.2626408952102,,,,,﻿cha_french_001,﻿Rev.,﻿Chas. French,,,,,,,1835,Boston
+﻿por.me.0032,﻿church,not recorded,English,,,,,﻿Washington County,﻿Pleasant Point,﻿Sipayik,﻿ME,﻿ME,44.957351749508106,-67.0453747203092,,,,,﻿desmilliers_001,﻿Rev. Mr.,﻿Desmilliers,,,,,,,1835,Boston
+﻿por.me.0041,﻿church,not recorded,English,,,,,﻿Sullivan County,﻿Claremont,﻿Claremont,﻿NH,﻿NH,43.3748795356664,-72.341915207252,,,,,﻿j_brady_001,﻿Rev.,﻿J. Brady,,,,,,,1835,Boston
+﻿por.me.0044,﻿church,﻿St. Aloysius,English,,,,,﻿Strafford County,﻿Dover,﻿Dover,﻿NH,﻿NH,43.1989317260965,-70.877090592035,,,,,﻿wm_wiley_001,﻿Rev.,﻿Wm. Wiley,,,,,,,1835,Boston
+﻿bur.vt.0001,﻿church,﻿St. Mary's,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,﻿VT,44.483453348186394,-73.2147437334854,,,,,﻿jer_ocalaghan_001,﻿Rev.,﻿Jer. O'Calaghan,,,,,,,1835,Boston
+﻿bos.ma.9000,﻿community,﻿Ursuline Community,English,,﻿Mount Benedict,,,﻿Suffolk County,﻿Charlestown,﻿Charlestown,﻿MA,﻿MA,42.3877742377881,-71.0833549943424,,,,,,,,,,,,,,1835,Boston
+﻿bos.ma.9000,﻿school,﻿Free School,English,,﻿Mount Benedict,,,﻿Suffolk County,﻿Boston,﻿Charlestown,﻿MA,,42.3877742377881,-71.0833549943424,,,,,,,,,,,﻿sisters,﻿4 sisters,﻿Sisters of Charity,1835,Boston

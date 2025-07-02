@@ -1,12 +1,13 @@
-<div style="display: flex; flex-wrap: nowrap; gap: 8px;">
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
     <button mat-button 
-    *ngFor="let year of years" 
-    class="custom-button" 
+    *ngFor="let year of years"
+    class="!text-xs md:!text-sm"
     [class.clicked]="year === selectedYear"
     (click)="onYearClick(year)">
     {{ year }}
     </button>
     <button mat-button
+    class="!text-xs md:!text-sm"
     [class.clicked]="selectedYear === 'All'"
     (click)="onAllYearsClick()">
     All

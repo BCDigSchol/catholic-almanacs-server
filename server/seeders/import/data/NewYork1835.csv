@@ -1,0 +1,67 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,﻿NY,40.7584564342135,-73.976185726484,,,,,﻿joh_dubois_001,﻿Right Rev.,﻿John Dubois,﻿D. D.,,,,,,1835,NewYork
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7584564342135,-73.976185726484,,,,,﻿tho_c_levins_001,﻿Rev.,﻿Thomas C. Levins,,,,,,,1835,NewYork
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7584564342135,-73.976185726484,,,,,﻿joh_conroy_001,﻿Rev.,﻿John Conroy,,,,,,,1835,NewYork
+﻿nyc.ny.0042,﻿church,﻿St. Peter's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,﻿NY,40.7124315661469,-74.00954445155,,,,,﻿joh_power_001,﻿Very Rev.,﻿John Power,﻿D. D.,,,,,,1835,NewYork
+﻿nyc.ny.0042,﻿church,﻿St. Peter's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7124315661469,-74.00954445155,,,,,﻿j_neale_001,﻿Rev.,﻿J. Neale,,,,,,,1835,NewYork
+﻿nyc.ny.9000,﻿church,﻿Christ Church,English,,,,,,﻿New York,﻿New York City,﻿NY,﻿NY,40.714802996414,-73.99912387310358,,,,,﻿fel_varela_001,﻿Rev.,﻿Felix Varela,,,,,,,1835,NewYork
+﻿nyc.ny.0043,﻿church,﻿St. Mary's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,﻿NY,40.71581795595829,-73.98511226029609,,,,,﻿wil_quarters_001,﻿Rev.,﻿William Quarters,,,,,,,1835,NewYork
+﻿nyc.ny.0043,﻿church,﻿St. Mary's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.71581795595829,-73.98511226029609,,,,,﻿pat_danaher_001,﻿Rev.,﻿Patrick Danaher,,,,,,,1835,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. Joseph's,English,,,,,,﻿New York,,﻿NY,﻿NY,40.7324967,-74.000619,,,,,﻿jam_cummiskey_001,﻿Rev.,﻿James Cummiskey,,,,,,,1835,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. Joseph's,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,﻿c_c_pise_002,﻿Rev.,﻿C. C. Pise,﻿D. D.,,,,,,1835,NewYork
+﻿nyc.ny.9004,﻿church,﻿Dutch Church,English,,,,,,﻿New York,,﻿NY,﻿NY,40.7324967,-74.000619,,,,,﻿raffiner_001,﻿Rev. Mr.,﻿Raffiner,,,,,,,1835,NewYork
+﻿nyc.ny.9004,﻿church,﻿Dutch Church,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,﻿cha_smith_001,﻿Rev.,﻿Charles Smith,,,,,,,1835,NewYork
+﻿alb.ny.0003,﻿church,not recorded,English,,,,,,﻿Albany,﻿Albany,﻿NY,﻿NY,42.65181928627371,-73.75279366723659,,,,,﻿cha_smith_001,﻿Rev.,﻿Charles Smith,,,,,,,1835,NewYork
+﻿bro.ny.0001,﻿church,﻿St. James,English,"﻿""L.I.""",,,,,﻿Brooklyn,﻿Brooklyn,﻿NY,﻿NY,40.697055999999996,-73.98666700000001,,,,,﻿joh_walsh_001,﻿Rev.,﻿John Walsh,,,,,,,1835,NewYork
+﻿buf.ny.0006,﻿church,not recorded,English,,,,,﻿Erie County,﻿Buffalo,﻿Buffalo,﻿NY,﻿NY,42.895428,-78.871729,,,,,﻿n_mertz_001,﻿Rev.,﻿N. Mertz,,,,,,,1835,NewYork
+﻿nyc.ny.0123,﻿church,not recorded,English,,,,,,﻿Cold Springs,,﻿NY,,42.895428,-78.871729,,,,,﻿p_oreilly_902,﻿Rev.,﻿P. O'Reilly,,,,,,,1835,NewYork
+﻿alb.ny.9003,﻿church,not recorded,English,,,,,,﻿Auburn,,﻿NY,,42.895428,-78.871729,,﻿visited by Rev. J. O'Donoghue,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.0059,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Carthage,﻿Carthage,﻿NY,﻿NY,43.978264913479606,-75.60778008184391,,﻿visited by Rev. J. O'Donoghue,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.9004,﻿church,not recorded,English,,,,,,﻿Geneva,,﻿NY,,43.978264913479606,-75.60778008184391,,﻿visited by Rev. J. O'Donoghue,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.9005,﻿church,not recorded,English,,,,,,﻿Oswego,,﻿NY,,43.978264913479606,-75.60778008184391,,﻿visited by Rev. J. O'Donoghue,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.0277,﻿church,not recorded,English,,,,,﻿Onondaga County,﻿Salina,﻿Salina,﻿NY,﻿NY,43.0687283112554,-76.1574936052735,,﻿visited by Rev. J. O'Donoghue,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.0241,﻿church,not recorded,English,,,,,,﻿Sackett's Harbour,,﻿NY,,43.9461707,-76.1190929,,﻿visited by Rev. J. O'Donoghue,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.9006,﻿church,not recorded,English,,,,,,﻿Cherry,,﻿NY,,43.9461707,-76.1190929,,,,,﻿dugass_001,﻿Rev. Mr.,﻿Dugass,,,,,,,1835,NewYork
+﻿alb.ny.0064,﻿church,not recorded,English,,,,,,﻿Champlain,,﻿NY,,44.986427299999995,-73.44652509999999,,,,,﻿dugass_001,﻿Rev. Mr.,﻿Dugass,,,,,,,1835,NewYork
+﻿alb.ny.9007,﻿church,not recorded,English,,,,,,﻿China,,﻿NY,,44.986427299999995,-73.44652509999999,,,,,﻿mangan_001,﻿Rev. Mr.,﻿Mangan,,,﻿dw. at Rochester,,,,1835,NewYork
+﻿roc.ny.0014,﻿church,﻿St. Ambrose's,English,,,,,﻿Monroe County,﻿Greece,﻿Greece,﻿NY,﻿NY,43.2527098938266,-77.6589525727407,,,,,﻿p_oreilly_001,﻿Rev.,﻿P. O'Reilly,,,,,,,1835,NewYork
+﻿nyc.ny.9005,﻿church,not recorded,English,,,,,,﻿Harlem,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,﻿jam_oburne_001,﻿Rev.,﻿James O'Burne,,,,,,,1835,NewYork
+﻿alb.ny.0144,﻿church,not recorded,English,﻿once a month,,,,,﻿Hudson,,﻿NY,,42.367875899999994,-73.5594128,,,,,﻿cha_smith_001,﻿Rev.,﻿Charles Smith,,,,,,,1835,NewYork
+﻿alb.ny.0284,﻿church,not recorded,English,,,,,﻿Rensselaer County,﻿Lansingburg,﻿Troy,﻿NY,﻿NY,42.7815415964388,-73.6641135370187,,,,,﻿joh_shanahan_901,﻿Rev.,﻿John Shanahan,,,,,,,1835,NewYork
+﻿alb.ny.9008,﻿church,not recorded,English,,,,,,﻿Lockport,,﻿NY,,42.7815415964388,-73.6641135370187,,,,,﻿mangan_001,﻿Rev. Mr.,﻿Mangan,,,,,,,1835,NewYork
+﻿alb.ny.9009,﻿church,not recorded,English,,,,,,﻿Medina,,﻿NY,,42.7815415964388,-73.6641135370187,,,,,﻿mangan_001,﻿Rev. Mr.,﻿Mangan,,,,,,,1835,NewYork
+﻿nyc.ny.0161,﻿church,not recorded,English,,,,,,﻿Newberg,,﻿NY,,42.7815415964388,-73.6641135370187,,,,,﻿p_oreilly_902,﻿Rev.,﻿P. O'Reily,,,,,,,1835,NewYork
+﻿nyc.ny.9006,﻿church,not recorded,English,,,,,,﻿Nyack,,﻿NY,,42.7815415964388,-73.6641135370187,,,,,﻿joh_mcgerry_001,﻿Rev.,﻿John McGerry,,,,,,,1835,NewYork
+﻿nyc.ny.9006,﻿church,not recorded,English,,,,,,﻿Nyack,,﻿NY,,42.7815415964388,-73.6641135370187,,,,,﻿mcclosky_001,﻿Rev. Mr.,﻿McClosky,,,,,,,1835,NewYork
+﻿nyc.ny.0175,﻿church,not recorded,English,,,,,﻿Dutchess County,﻿Poughkeepsie,﻿Poughkeepsie,﻿NY,﻿NY,41.7092507787965,-73.93694957643491,,,,,﻿reily_001,﻿Rev. Mr.,﻿Reily,,,,,,,1835,NewYork
+﻿alb.ny.0223,﻿church,not recorded,English,,,,,﻿Clinton County,﻿Plattsburg,﻿Plattsburg,﻿NY,﻿NY,44.6995117768828,-73.4588568540315,,,,,﻿rog_rogers _001,﻿Rev. Mr.,﻿Rogers,,,,,,,1835,NewYork
+﻿roc.ny.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Rochester,,﻿NY,,44.6995117768828,-73.4588568540315,,,,,﻿p_oreilly_901,﻿Rev.,﻿P. O'Reily,,,,,,,1835,NewYork
+﻿roc.ny.0003,﻿church,﻿St. Mary's,English,,,,,,﻿Rochester,,﻿NY,,44.6995117768828,-73.4588568540315,,,,,﻿foley_001,﻿Rev. Mr.,﻿Foley,,,,,,,1835,NewYork
+﻿alb.ny.0244,﻿church,not recorded,English,,,,,,﻿Sandy Hill,,﻿NY,,43.300628100000004,-73.5859487,,,,,﻿joh_kelly_001,﻿Rev.,﻿John Kelly,,,,,,,1835,NewYork
+﻿alb.ny.0245,﻿church,not recorded,English,,,,,,﻿Saratoga,,﻿NY,,43.300628100000004,-73.5859487,,,,,﻿joh_kelly_001,﻿Rev.,﻿John Kelly,,,,,,,1835,NewYork
+﻿bro.ny.0054,﻿church,not recorded,English,,,,,,﻿Sagharbour,,﻿NY,,43.300628100000004,-73.5859487,,﻿visited from N. York and Brooklyn,,,,,,,,,,,,1835,NewYork
+﻿bro.ny.0054,﻿church,not recorded,English,,,,,,﻿Rome,,﻿NY,,43.300628100000004,-73.5859487,,﻿visited by Rev. W. J. Quarters,,,,,,,,,,,,1835,NewYork
+﻿bro.ny.0054,﻿church,not recorded,English,,,,,,﻿Utica,,﻿NY,,43.300628100000004,-73.5859487,,﻿visited by Rev. W. J. Quarters,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.0300,﻿church,not recorded,English,,,,,,﻿Verona,,﻿NY,,43.1381455,-75.5706945,,﻿visited by Rev. W. J. Quarters,,,,,,,,,,,,1835,NewYork
+﻿alb.ny.9001,﻿church,not recorded,English,,,,,,﻿Troy,,﻿NY,,43.1381455,-75.5706945,,,,,﻿joh_shanahan_901,﻿Rev.,﻿J. Shanahan,,,,,,,1835,NewYork
+﻿nyc.ny.0199,﻿church,not recorded,English,,,,,,﻿West Point,,﻿NY,,41.391482700000005,-73.9559721,,,,,﻿p_oreilly_902,﻿Rev.,﻿P. O'Reilly,,,,,,,1835,NewYork
+﻿alb.ny.9010,﻿church,not recorded,English,,,,,,﻿Williamsville,,﻿NY,,41.391482700000005,-73.9559721,,,,,﻿wyatt_001,﻿Rev. Mr.,﻿Wyatt,,,,,,,1835,NewYork
+﻿alb.ny.9010,﻿church,not recorded,English,,,,,,﻿Ogdensburg,,﻿NY,,41.391482700000005,-73.9559721,,,,,,,,,,﻿no fixed clergymen,,,,1835,NewYork
+﻿alb.ny.0302,﻿church,not recorded,English,,,,,,﻿Waddington,,﻿NY,,44.8644999,-75.20410190000001,,,,,,,,,,﻿no fixed clergymen,,,,1835,NewYork
+﻿alb.ny.9011,﻿church,not recorded,English,,,,,,﻿French Mills,,﻿NY,,44.8644999,-75.20410190000001,,,,,,,,,,﻿no fixed clergymen,,,,1835,NewYork
+﻿alb.ny.0173,﻿church,not recorded,English,,,,,,﻿Malone Town,,﻿NY,,44.8483135,-74.2993623,,,,,,,,,,﻿no fixed clergymen,,,,1835,NewYork
+﻿new.nj.9001,﻿church,not recorded,English,,,,,,﻿Bottle Hill,,﻿NJ,,44.8483135,-74.2993623,,,,,﻿herard_001,﻿Rev. Mr.,﻿Herard,,,,,,,1835,NewYork
+﻿new.nj.0003,﻿church,not recorded,English,,,,,,﻿Newark,,﻿NJ,,44.8483135,-74.2993623,,,,,﻿moran_001,﻿Rev. Mr.,﻿Moran,,,,,,,1835,NewYork
+﻿new.nj.0067,﻿church,not recorded,English,,,,,,﻿New-Brunswick,,﻿NJ,,40.4862157,-74.4518188,,,,,,,,,,,,,,1835,NewYork
+﻿new.nj.0067,﻿church,not recorded,English,,,,,,﻿Jersey City,,﻿NJ,,40.4862157,-74.4518188,,,,,﻿wm_burns_001,﻿Rev.,﻿Wm. Burns,,,,,,,1835,NewYork
+﻿new.nj.9002,﻿church,not recorded,English,,,,,,﻿Patterson,,﻿NJ,,40.4862157,-74.4518188,,,,,﻿p_duffy_001,﻿Rev.,﻿P. Duffy,,,,,,,1835,NewYork
+﻿new.nj.9002,﻿academy,﻿St. Joseph's Academy,English,,,,,,﻿Patterson,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿4 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿school,﻿St. Peter's Free School,English,,,,,,﻿Patterson,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿3 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿asylum,﻿Roman Catholic Asylum,English,,,,,,﻿Patterson,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿10 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿free school,﻿Roman Catholic Free School,English,,,,,,﻿Patterson,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿13 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿school,﻿St. Mary's School,English,,,,,,﻿Patterson,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿4 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿asylum,﻿Roman Catholic Half-Orphan Asylum,English,,,,,,﻿Patterson,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿asylum,﻿St. Mary's Asylum,English,,,﻿Long Island,,,﻿Brooklyn,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿3 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿asylum,﻿St. Joseph's Asylum,English,,,﻿Long Island,,,﻿Albany,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿day school,﻿St. Joseph's Day School,English,,,﻿Long Island,,,﻿Albany,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1835,NewYork
+﻿new.nj.9002,﻿asylum,﻿St. Joseph's Day School,English,,,﻿Long Island,,,﻿Utica,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,﻿sisters,﻿3 sisters,﻿Sisters of Charity,1835,NewYork

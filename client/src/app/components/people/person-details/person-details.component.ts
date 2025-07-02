@@ -32,7 +32,7 @@ export class PersonDetailsComponent implements OnInit{
 
   mapOptions: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 4,
+    zoom: 3.7,
     disableDefaultUI: true,
     clickableIcons: false
   };

@@ -1,16 +1,16 @@
 <div *ngIf="!loading">
-    <mat-card class="mx-2">
+    <mat-card class="max-md:mt-2 mt-5">
         <mat-card-header>
             <mat-card-title>
                 {{data.instName}}
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="w-full flex flex-row justify-center items-start">
+            <div class="w-full flex flex-col md:flex-row justify-center items-start">
                 <div class="w-full flex flex-col justify-center items-start">
                     <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
                     <div class="table formatted-table custom-font">
-                        <div class="table-body">
+                        <div class="table-body text-xs md:text-sm">
                             <div class="row">
                                 <div class="cell">Institution ID</div>
                                 <div class="cell">{{data.instID}}</div>
@@ -25,7 +25,9 @@
                             </div>
                             <div class="row">
                                 <div class="cell">Diocese</div>
-                                <div class="cell">{{data.diocese}}</div>
+                                <div class="cell">
+                                    {{data.diocese}}
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="cell">Notes</div>
@@ -72,7 +74,7 @@
                                 <div class="cell">Relevant Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
                                             <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                         </button>
                                     </div>
@@ -85,7 +87,7 @@
                                 <div class="cell">Parent Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
+                                        <button mat-button class="!text-xs md:!text-sm" class="text-xs md:text-sm" color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
                                             <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                         </button>
                                     </div>
@@ -98,7 +100,7 @@
                                 <div class="cell">Child Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
                                             <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                         </button>
                                     </div>
@@ -111,7 +113,7 @@
                                 <div class="cell">Sibling Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
                                             <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                         </button>
                                     </div>
@@ -123,7 +125,7 @@
                                 <div class="cell">Relevant People</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
                                             <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
                                         </button>
                                     </div>
@@ -134,7 +136,7 @@
                                 <div class="cell">Attending Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                             <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                         </button>
                                     </div>
@@ -145,7 +147,7 @@
                                 <div class="cell">Attended By</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                             <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                         </button>
                                     </div>
@@ -154,19 +156,19 @@
                             </div>
                         </div>
                         </div>
-                        <button mat-button class="tertiary-btn" (click)="goBack()">
-                            <mat-icon>arrow_back</mat-icon>
-                            Back
-                        </button>
                     </div>
-                    <div class="w-full flex flex-col justify-center items-center">
-                        <google-map [options]="mapOptions" width="600px" height="350px">
+                    <div class="map-container w-full md:w-auto mt-5">
+                        <google-map [options]="mapOptions" width="500px" height="350px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
                             <map-polygon></map-polygon> <!--could be an option-->
                         </google-map>
                     </div>
                 </div>
+                <button mat-button class="tertiary-btn" (click)="goBack()">
+                    <mat-icon>arrow_back</mat-icon>
+                    Back
+                </button>
         </mat-card-content>
     </mat-card>
 </div>

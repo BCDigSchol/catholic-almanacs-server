@@ -1,131 +1,131 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿for.in.0001,﻿cathedral,﻿Cathedral of the Immaculate Conception,English,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,﻿joh_h_luers_001,﻿Rt. Rev.,﻿John H. Luers,﻿D.D.,,,,,,1865.0,FortWayne
-﻿for.in.0001,﻿cathedral,﻿Cathedral of the Immaculate Conception,English,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,﻿jul_benoit_001,﻿Very Rev.,﻿Julian Benoit,,"﻿Pastor, V.G.",,,,,1865.0,FortWayne
-﻿for.in.0001,﻿cathedral,﻿Cathedral of the Immaculate Conception,English,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,,﻿Rev.,﻿P.J. Madden,﻿D.D.,,,,,,1865.0,FortWayne
-﻿for.in.0002,﻿church,﻿Mother of God,﻿German,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,﻿jos_weutz_001,﻿Rev.,﻿Joseph Weutz,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0005,﻿church,not recorded,English,﻿church building,,,﻿Allen County,﻿Allen County,﻿Arcola,﻿Arcola,﻿IN,,,,﻿for.in.0001,﻿Attended from Fort Wayne,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0006,﻿church,﻿St. Francis',English,,,,﻿Fountain County,﻿Fountain County,﻿Attica,﻿Attica,﻿IN,,,,,,,,﻿jos_rademacher_001,﻿Rev.,﻿Joseph Rademacher,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0007,﻿church,﻿St. Mary's,English,,,,﻿Noble County,﻿Noble County,﻿Avilla,﻿Avilla,﻿IN,,,,,,,,﻿joh_wernhoff_001,﻿Rev.,﻿John Wernhoff,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0009,﻿church,﻿St. Mary's,English,,,,﻿Madison County,﻿Madison County,﻿Anderson,﻿Anderson,﻿IN,,,,,,,,﻿joh_mcmahon_001,﻿Rev.,﻿John McMahon,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0010,﻿church,﻿St. Aloysius',English,,,,﻿Allen County,﻿Allen County,﻿Besançon,﻿New Haven,﻿IN,,,,,,,,,﻿Rev.,﻿Louis Grevin,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0013,﻿church,not recorded,English,,,,﻿White County,﻿White County,﻿Brookston,﻿Brookston,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0014,﻿church,not recorded,English,,,,﻿Wells County,﻿Wells County,﻿Blufton,﻿Bluffton,﻿IN,,,,﻿for.in.0034,﻿atteneded from Decatur,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0185,﻿church,not recorded,English,,,,﻿Noble County,﻿Noble County,﻿Blue River,﻿Blue River,﻿IN,,,,﻿for.in.0007,﻿attended from Avilla,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0016,﻿church,not recorded,English,,,,﻿Marshall County,﻿Marshall County,﻿Bourbon,﻿Bourbon,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0017,﻿church,not recorded,English,,,,﻿Elkhart County,﻿Elkhart County,﻿Bristol,﻿Bristol,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0020,﻿church,﻿St. Patrick's,English,,,,﻿Porter County,﻿Porter County,﻿Calumet,﻿Chesterton,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0186,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Calumet Station,﻿Calumet Station,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0021,﻿church,not recorded,English,,,,﻿Jay County,﻿Jay County,﻿Camden,﻿Pennville,﻿IN,,,,﻿for.in.0034,﻿attended from Decatur,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0022,﻿church,not recorded,English,,,,﻿St. Joseph's County,﻿St. Joseph's County,﻿Carlisle,﻿Carlisle,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0023,﻿church,﻿St. Mary's,English,,,,﻿Whitley County,﻿Whitley County,﻿Columbia City,﻿Columbia City,﻿IN,,,,﻿for.in.0103,﻿attended from New Haven,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0187,﻿church,not recorded,English,,,,﻿Newton County,﻿Newton County,﻿Carpenter's Station,﻿Carpenter's Station,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0188,﻿church,not recorded,English,,,,﻿Hamilton County,﻿Hamilton County,﻿Cicero,﻿Cicero,﻿IN,,,,﻿for.in.0109,﻿attended from Peru,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0189,﻿church,not recorded,English,,,,﻿White County,﻿White County,﻿Chalmers,﻿Chalmers,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0031,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Crown Point,﻿Crown Point,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0028,﻿church,not recorded,English,﻿church building,,,﻿Fountain County,﻿Fountain County,﻿Covington,﻿Covington,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0029,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Cedar Lake,﻿Cedar Lake,﻿IN,,,,﻿for.in.0150,﻿attended from West-Creek,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0030,﻿church,﻿St. Bernard's,English,,,,﻿Montgomery County,﻿Montgomery County,﻿Crawfordsville,﻿Crawfordsville,﻿IN,,,,,,,,﻿cha_maugin_001,﻿Rev.,﻿Charles Maugin,,,,,,,1865.0,FortWayne
-﻿for.in.0034,﻿church,﻿St. Mary's,English,﻿vacant,,,﻿Adams County,﻿Adams County,﻿Decatur,﻿Decatur,﻿IN,,,,,,,,﻿jul_becks_001,﻿Rev.,﻿Julius Becks,,,,,,,1865.0,FortWayne
-﻿for.in.0035,﻿church,﻿St. Joseph's,English,,,,﻿Carroll County,﻿Carroll County,﻿Delphi,﻿Delphi,﻿IN,,,,,,,,﻿aug_oechtering_001,﻿Rev.,﻿August Oechtering,,,,,,,1865.0,FortWayne
-﻿for.in.0037,﻿church,not recorded,English,,,,﻿Elkhart County,﻿Elkhart County,﻿Elkhart,﻿Elkhart,﻿IN,,,,﻿for.in.0085,﻿attended from Mishawaka,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0039,﻿church,not recorded,English,,,,﻿Clinton County,﻿Clinton County,﻿Frankfort,﻿Frankfort,﻿IN,,,,﻿for.in.0035,﻿attended from Delphi,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0041,﻿church,not recorded,English,﻿church building,,,﻿White County,,﻿Francisville,﻿Francesville,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0045,﻿church,﻿St. John's,English,,,,﻿Elkhart County,﻿Elkhart County,﻿Goshen,﻿Goshen,﻿IN,,,,,,,,﻿f_w_holz_001,﻿Rev.,﻿F. Wm. Holz,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0046,﻿church,not recorded,English,,,,﻿Marshall County,﻿Starke County,﻿Grovertown,﻿Grovertown,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0047,﻿church,not recorded,English,,,,﻿Laporte County,﻿LaPorte County,﻿Hanna,﻿Hanna,﻿IN,,,,﻿for.in.0146,﻿attended from Valparaiso,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0048,﻿church,﻿St. Elizabeth's,English,,,,﻿Cass County,﻿Cass County,﻿Harrison Township,﻿Harrison Township,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0049,﻿church,not recorded,English,,,,﻿Blackford County,﻿Blackford County,﻿Hartford,﻿Hartford City,﻿IN,,,,﻿for.in.0034,﻿attended from Decatur,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0051,﻿church,﻿St. Joseph's,English,,,,﻿Allen County,﻿Allen County,﻿Hesse Cassel,﻿Hessen Cassel,﻿IN,,,,,,,,﻿hen_schaefer_001,﻿Rev.,﻿Henry Schaefer,,,,,,,1865.0,FortWayne
-﻿for.in.0052,﻿church,not recorded,English,,,,﻿Porter County,﻿Lake County,﻿Hobart,﻿Hobart,﻿IN,,,,﻿for.in.0146,﻿attended from Valparaiso,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0054,﻿church,﻿St. Mary's,English,,,,﻿Huntington County,﻿Huntington County,﻿Huntington,﻿Huntington,﻿IN,,,,,,,,﻿jac_mayer_001,﻿Rev.,﻿Jacob Mayer,,,,,,,1865.0,FortWayne
-﻿for.in.0056,﻿church,not recorded,English,,,,﻿Grant County,﻿Grant County,﻿Jonesboro,﻿Jonesboro,﻿IN,,,,﻿for.in.0079,﻿attended from Lagro,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0055,﻿church,not recorded,English,,,,﻿Warren County,﻿Warren County,﻿Independence,﻿Independence,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0058,﻿church,﻿St. Patrick's,English,,,,﻿Howard County,﻿Howard County,﻿Kokomo,﻿Kokomo,﻿IN,,,,﻿for.in.0109,﻿attended from Peru,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0059,﻿church,not recorded,English,﻿church building,,,﻿Newton County,﻿Newton County,﻿Kent,﻿Kentland,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0060,﻿church,not recorded,English,,,,﻿Noble County,﻿Noble County,﻿Kendallville,﻿Kendallville,﻿IN,,,,﻿for.in.0007,﻿attended from Avilla,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0062,﻿church,﻿St. Mary's,English,﻿new church building,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,﻿geo_a_hamilton_001,﻿Rev.,﻿Geo. A. Hamilton,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0062,﻿church,﻿St. Mary's,English,﻿new church building,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,,﻿Rev.,﻿E.B. Kilroy,,,,,,,1865.0,FortWayne
-﻿for.in.0063,﻿church,﻿St. Boniface's,﻿German,,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,﻿f_deipenbrock_001,﻿Rev.,﻿F. Deipenbrock,,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0063,﻿church,﻿St. Boniface's,﻿German,,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,,﻿Rev.,﻿Jos. A. Stephan,,,﻿for the time being,,,,1865.0,FortWayne
-﻿for.in.0065,﻿church,﻿St. Charles Borromeo's,English,,,,﻿Boone County,﻿Boone County,﻿Lebanon,﻿Lebanon,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0067,﻿church,﻿St. Martin's,English,,,,﻿Stark County,﻿LaPorte County,﻿La Croix,﻿La Crosse,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0069,﻿church,﻿Nativity B.V.,English,,,,﻿Laporte County,﻿LaPorte County,﻿Laporte,﻿La Porte,﻿IN,,,,,,,,﻿fra_lawler_001,﻿Rev.,﻿Francis Lawler,,,,,,,1865.0,FortWayne
-﻿for.in.0070,﻿church,﻿St. Joseph's,English,,,,﻿Laporte County,﻿LaPorte County,﻿Laporte,﻿La Porte,﻿IN,,,,,,,,﻿mar_scherer_001,﻿Rev.,﻿Martin Scherer,,,,,,,1865.0,FortWayne
-﻿for.in.0077,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Lowell,﻿Lowell,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0078,﻿church,﻿St. Joseph's,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Lowell,﻿South Bend,﻿IN,,,,,,,,,﻿Rev.,﻿J. Le Moniere,﻿C.SS.C,,,,,,1865.0,FortWayne
-﻿for.in.0079,﻿church,﻿St. Patrick's,English,,,,﻿Wabash County,﻿Wabash County,﻿Lagro,﻿Lagro,﻿IN,,,,,,,,﻿joh_ryan_001,﻿Rev.,﻿John Ryan,,,,,,,1865.0,FortWayne
-﻿for.in.0193,﻿church,﻿St. Mary's,English,,,,﻿Allen County,﻿Allen County,﻿Leo,﻿Leo,﻿IN,,,,﻿for.in.0102,﻿attended from New France,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0080,﻿church,not recorded,English,﻿church building,,,﻿Noble County,﻿Noble County,﻿Ligonier,﻿Ligonier,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0081,﻿church,﻿St. Vincent de Paul's,English,,,,﻿Cass County,﻿Cass County,﻿Logansport,﻿Logansport,﻿IN,,,,,,,,﻿jos_b_force_001,﻿Rev.,﻿Jos. B. Force,,,,,,,1865.0,FortWayne
-﻿for.in.0083,﻿church,﻿St. Joseph's,English,,,,﻿Porter County,﻿Lake County,﻿Lake Station,﻿Lake Station,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0084,﻿church,not recorded,English,,,,﻿Lake County,,﻿Miller's Station,﻿Gary,﻿IN,,,,﻿for.in.0069,﻿Attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0085,﻿church,﻿St. Joseph's,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Mishawaka,﻿Mishawaka,﻿IN,,,,,,,,﻿hen_koening_001,﻿Rev.,﻿Henry Koening,,,,,,,1865.0,FortWayne
-﻿for.in.0086,﻿church,﻿St. Ambrose's,English,,,,﻿Laporte County,﻿LaPorte County,﻿Michigan City,﻿Michigan City,﻿IN,,,,,,,,﻿geo_steiner_001,﻿Rev.,﻿George Steiner,,,,,,,1865.0,FortWayne
-﻿for.in.0190,﻿church,﻿St. Joseph's,English,,,,﻿Laporte County,﻿LaPorte County,﻿Michigan City,﻿Michigan City,﻿IN,,,,,,,,﻿geo_steiner_001,﻿Rev.,﻿George Steiner,,,,,,,1865.0,FortWayne
-﻿for.in.0087,﻿church,not recorded,English,﻿church building,,,﻿Grant County,﻿Grant County,﻿Marion,﻿Marion,﻿IN,,,,﻿for.in.0079,﻿attended from Lagro,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0092,﻿church,not recorded,English,,,,﻿White County,﻿White County,﻿Monticello,﻿Monticello,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0093,﻿church,not recorded,English,,,,﻿Laporte County,﻿La Porte County,﻿Morgan,,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0094,﻿church,not recorded,English,﻿church building,,,﻿Warren County,﻿Warren County,﻿Mansfield,,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0095,﻿church,not recorded,English,﻿church building,,,﻿Delaware County,﻿Delaware County,﻿Muncietown,﻿Muncie,﻿IN,,,,﻿for.in.0009,﻿attended from Anderson,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0096,﻿church,﻿St. Ann's,English,,,,﻿Pulaski County,﻿Pulaski County,﻿Monterey,﻿Monterey,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0100,﻿church,not recorded,English,,,,﻿Stark County,,﻿Madeiraville,﻿Medaryville,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0101,﻿church,not recorded,English,﻿church building,,,﻿Noble County,,﻿Millersburg,﻿Millersburg,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0102,﻿church,﻿St. Vincent de Paul's,English,,,,﻿Allen County,﻿Allen County,﻿New France,﻿New Haven,﻿IN,,,,,,,,,﻿Rev.,﻿August Adam,,,,,,,1865.0,FortWayne
-﻿for.in.0103,﻿church,﻿St. John the Baptist's,English,,,,﻿Allen County,﻿Allen County,﻿New Haven,﻿New Haven,﻿IN,,,,,,,,﻿wol_giedl_001,﻿Rev.,﻿Wolfgang Giedl,,,,,,,1865.0,FortWayne
-﻿for.in.0104,﻿church,﻿St. Catharine's,English,,,,﻿Whitley County,﻿Whitley County,﻿Nix Settlement,﻿Columbia City,﻿IN,,,,﻿for.in.0054,﻿attended from Huntington,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0106,﻿church,﻿Sacred Heart of Jesus,English,,,,﻿St. Joseph County,﻿St. Joseph County,﻿Notre Dame du Lac,,﻿IN,,,,,,,,﻿a_granger_001,﻿Rev.,﻿A. Granger,﻿C.S.S.C.,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0107,﻿church,not recorded,English,,,,﻿Hamilton County,﻿Hamilton County,﻿Nobleville,﻿Noblesville,﻿IN,,,,﻿for.in.0109,﻿attended from Peru,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0108,﻿church,not recorded,English,﻿church building,,,﻿Benton County,﻿Benton County,﻿Oxford,﻿Oxford,﻿IN,,,,﻿for.in.0062,﻿attended from Lafayette,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0109,﻿church,﻿St. Charles Borromeo's,English,,,,﻿Miami County,﻿Miami County,﻿Peru,﻿Peru,﻿IN,,,,,,,,﻿ber_kroeger_001,﻿Rev.,﻿Bernard Kroeger,,,,,,,1865.0,FortWayne
-﻿for.in.0111,﻿church,﻿St. Michael's,English,,,,﻿Marshall County,﻿Marshall County,﻿Plymouth,﻿Plymouth,﻿IN,,,,,,,,,﻿Rev.,﻿Gabriel Volkert,,,,,,,1865.0,FortWayne
-﻿for.in.0112,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Pine Station,,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0113,﻿church,not recorded,English,,,,﻿Pulaski County,﻿Pulaski County,﻿Lower Settlement,,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0114,﻿church,not recorded,English,,,,﻿Kosciusko County,﻿Kosciusko County,﻿Pierceton,﻿Pierceton,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0115,﻿church,﻿St. Ann's,English,,,,﻿Fulton County,﻿Fulton County,﻿Pleasant Grove,﻿Kewanna,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0116,﻿church,﻿St. Aloysius',English,,,,﻿Allen County,﻿Allen County,﻿Pleasant Township,﻿Pleasant Township,﻿IN,,,,﻿for.in.0051,﻿attended from Hesse Cassel,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0123,﻿church,﻿St. Anthony's,English,,,,﻿White County,﻿White County,﻿Reynolds,﻿Reynolds,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0124,﻿church,not recorded,English,,,,﻿Huntington County,﻿Huntington County,﻿Roanoke,﻿Roanoke,﻿IN,,,,﻿for.in.0054,﻿attended from Huntington,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0125,﻿church,not recorded,English,,,,﻿Carroll County,﻿Carroll County,﻿Rock Creek Township,﻿Rock Creek Township,﻿IN,,,,﻿for.in.0035,﻿attended from Delphi,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0126,﻿church,not recorded,English,,,,﻿Jasper County,﻿Jasper County,﻿Rensselaer,﻿Rensselaer,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0127,﻿church,﻿St. Patrick's,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿South Bend,﻿South Bend,﻿IN,,,,,,,,,﻿Rev.,﻿P. Carroll,﻿C.S.S.C.,﻿Pastor,,,,,1865.0,FortWayne
-﻿for.in.0128,﻿church,﻿St. John's,English,,,,﻿Stark County,﻿Starke County,﻿San Pierre,﻿San Pierre,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0129,﻿church,﻿St. John Evangelist's,English,,,,﻿Lake County,﻿Lake County,﻿St. John's,,﻿IN,,,,,,,,﻿b_rachor_001,﻿Rev.,﻿B. Rachor,,,,,,,1865.0,FortWayne
-﻿for.in.0130,﻿church,not recorded,English,,,,﻿Carroll County,﻿Carroll County,﻿Sugar Creek,,﻿IN,,,,﻿for.in.0035,﻿attended from Delphi,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0134,﻿church,not recorded,English,,,,﻿Warren County,﻿Warren County,﻿State Line,﻿State Line City,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0135,﻿church,﻿St. Joseph's,English,,﻿St. Mary's Home,,﻿Jay County,﻿Jay County,,,﻿IN,,,,,,,,﻿eng_ruff_002,﻿Rev.,﻿Englebert Ruff,﻿C.PP.S.,,,,,,1865.0,FortWayne
-﻿for.in.0136,﻿church,not recorded,English,,,,﻿Porter County,﻿Porter County,﻿Stark,,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0142,﻿church,not recorded,English,,,,﻿St. Joseph's County,,﻿Terre Coupee,,﻿IN,,,,﻿for.in.0069,﻿Attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0137,﻿church,not recorded,English,,,,﻿Boone County,﻿Boone County,﻿Thornton,﻿Thorntown,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0138,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Tolleston,﻿Tolleston,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0139,﻿church,﻿SS. Peter and Paul,English,﻿new church building,﻿Merrillsville P.O.,,﻿Lake County,﻿Lake County,﻿Turkey Creek,﻿Merrillville,﻿IN,,,,,,,,,﻿Rev.,﻿Paul Mary Wehrle,,,,,,,1865.0,FortWayne
-﻿for.in.0145,﻿church,not recorded,English,﻿church building,,,﻿Randolph County,﻿Randolph County,﻿Union,﻿Union City,﻿IN,,,,﻿for.in.0009,﻿attended from Anderson,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0146,﻿church,﻿St. Paul's,English,,,,﻿Porter County,﻿Porter County,﻿Valparaiso,﻿Valparaiso,﻿IN,,,,,,,,﻿mic_oreilly_001,﻿Rev.,﻿Michael O'Reilly,,,,,,,1865.0,FortWayne
-﻿for.in.0147,﻿church,not recorded,English,,,,﻿Kosciusko County,﻿Kosciusko County,﻿Warsaw,﻿Warsaw,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0148,﻿church,not recorded,English,,,,﻿De Kalb County,﻿DeKalb County,﻿Waterloo City,﻿Waterloo,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0149,﻿church,not recorded,English,,,,﻿Wabash County,﻿Wabash County,﻿Wabash,﻿Wabash,﻿IN,,,,﻿for.in.0079,﻿attended from Lagro,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0150,﻿church,﻿St. Anthony's,English,,﻿Brunswick P.O.,,﻿Lake County,﻿Lake County,﻿West Creek,﻿West Creek Township,﻿IN,,,,,,,,﻿mar_kink_001,﻿Rev.,﻿Martin Kink,,,,,,,1865.0,FortWayne
-﻿for.in.0151,﻿church,not recorded,English,,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿West Point,﻿West Point,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0153,﻿church,not recorded,English,,,,﻿Randolph County,﻿Randolph County,﻿Winchester,﻿Winchester,﻿IN,,,,﻿for.in.0009,﻿attended from Anderson,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0154,﻿church,not recorded,English,﻿church building,,,﻿Pulaski County,﻿Pulaski County,﻿Winamac,﻿Winamac,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0155,﻿church,not recorded,English,,,,﻿Warren County,﻿Warren County,﻿Williamsport,﻿Williamsport,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Very Rev.,﻿E. Sorin,﻿C.S.C,﻿Superior,,,,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿A. Granger,﻿C.S.C,"﻿Master of Novices, novitiate of St. Aloysius",,﻿scholastic,﻿12 scholastics and novices,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿L. J. Letourneau,﻿C.S.C,﻿Master of Novices,,﻿lay brother,﻿73 professed lay brothers,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Very Rev.,﻿P. Dillon,﻿C.S.C,,,﻿novice,﻿51 novices,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿J. Dillon,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿W. Corby,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿Thomas Carroll,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿P. Cooney,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿J. A. Carriere,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿Paul E. Gillen,﻿C.S.C.,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿A. Lemonnier,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿P. Lemonnier,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1865.0,FortWayne
-﻿for.in.0169,﻿university,﻿University of Notre Dame,English,,,,,,,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1865.0,FortWayne
-﻿for.in.0171,﻿school,﻿Manual Labor School,English,,,,,,,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1865.0,FortWayne
-﻿for.in.0200,﻿school,﻿Day School,English,,,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1865.0,FortWayne
-﻿for.in.0201,﻿school,﻿Day School,English,,,,,,﻿Lowell,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1865.0,FortWayne
-﻿for.in.0180,﻿academy,﻿St. Augustine's Academy,English,,,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,﻿Sister,﻿Vincent,,﻿Superior,,﻿pupils,﻿150 pupils,﻿kept by the Sisters of Providence,1865.0,FortWayne
-﻿for.in.0202,﻿institute,﻿St. Mary's Female Institute,﻿German,,,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,﻿Sister,﻿Catharine,,﻿Superior,,﻿pupils,﻿120 pupils,,1865.0,FortWayne
-﻿for.in.0181,﻿academy,﻿St. Ignatius' Academy,English,,,,,,﻿Lafayette,,﻿IN,,,,,,,,,﻿Sister,﻿Eugenia,,﻿Superior,,,,﻿kept by the Sisters of Providence,1865.0,FortWayne
-﻿for.in.0199,﻿academy,﻿Poor Sisters of St. Francis,English,,,,,,﻿Hesse Cassel,,﻿IN,,,,,,,,,﻿Sister,﻿Hildegard,,﻿Superior,,,,,1865.0,FortWayne
-﻿for.in.0182,﻿convent,﻿Convent Sisters of Precious Blood,English,,﻿St. Mary's Home,,﻿Jay County,,,,﻿IN,,,,,,,,,,,,,,,,,1865.0,FortWayne
+﻿for.in.0001,﻿cathedral,﻿Cathedral of the Immaculate Conception,English,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,﻿joh_h_luers_001,﻿Rt. Rev.,﻿John H. Luers,﻿D.D.,,,,,,1864,FortWayne
+﻿for.in.0001,﻿cathedral,﻿Cathedral of the Immaculate Conception,English,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,﻿jul_benoit_001,﻿Very Rev.,﻿Julian Benoit,,"﻿Pastor, V.G.",,,,,1864,FortWayne
+﻿for.in.0001,﻿cathedral,﻿Cathedral of the Immaculate Conception,English,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,,﻿Rev.,﻿P.J. Madden,﻿D.D.,,,,,,1864,FortWayne
+﻿for.in.0002,﻿church,﻿Mother of God,﻿German,,,,﻿Allen County,﻿Allen County,﻿Fort Wayne,﻿Fort Wayne,﻿IN,,,,,,,,﻿jos_weutz_001,﻿Rev.,﻿Joseph Weutz,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0005,﻿church,not recorded,English,﻿church building,,,﻿Allen County,﻿Allen County,﻿Arcola,﻿Arcola,﻿IN,,,,﻿for.in.0001,﻿Attended from Fort Wayne,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0006,﻿church,﻿St. Francis',English,,,,﻿Fountain County,﻿Fountain County,﻿Attica,﻿Attica,﻿IN,,,,,,,,﻿jos_rademacher_001,﻿Rev.,﻿Joseph Rademacher,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0007,﻿church,﻿St. Mary's,English,,,,﻿Noble County,﻿Noble County,﻿Avilla,﻿Avilla,﻿IN,,,,,,,,﻿joh_wernhoff_001,﻿Rev.,﻿John Wernhoff,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0009,﻿church,﻿St. Mary's,English,,,,﻿Madison County,﻿Madison County,﻿Anderson,﻿Anderson,﻿IN,,,,,,,,﻿joh_mcmahon_001,﻿Rev.,﻿John McMahon,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0010,﻿church,﻿St. Aloysius',English,,,,﻿Allen County,﻿Allen County,﻿Besançon,﻿New Haven,﻿IN,,,,,,,,,﻿Rev.,﻿Louis Grevin,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0013,﻿church,not recorded,English,,,,﻿White County,﻿White County,﻿Brookston,﻿Brookston,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0014,﻿church,not recorded,English,,,,﻿Wells County,﻿Wells County,﻿Blufton,﻿Bluffton,﻿IN,,,,﻿for.in.0034,﻿atteneded from Decatur,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0185,﻿church,not recorded,English,,,,﻿Noble County,﻿Noble County,﻿Blue River,﻿Blue River,﻿IN,,,,﻿for.in.0007,﻿attended from Avilla,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0016,﻿church,not recorded,English,,,,﻿Marshall County,﻿Marshall County,﻿Bourbon,﻿Bourbon,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0017,﻿church,not recorded,English,,,,﻿Elkhart County,﻿Elkhart County,﻿Bristol,﻿Bristol,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0020,﻿church,﻿St. Patrick's,English,,,,﻿Porter County,﻿Porter County,﻿Calumet,﻿Chesterton,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0186,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Calumet Station,﻿Calumet Station,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0021,﻿church,not recorded,English,,,,﻿Jay County,﻿Jay County,﻿Camden,﻿Pennville,﻿IN,,,,﻿for.in.0034,﻿attended from Decatur,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0022,﻿church,not recorded,English,,,,﻿St. Joseph's County,﻿St. Joseph's County,﻿Carlisle,﻿Carlisle,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0023,﻿church,﻿St. Mary's,English,,,,﻿Whitley County,﻿Whitley County,﻿Columbia City,﻿Columbia City,﻿IN,,,,﻿for.in.0103,﻿attended from New Haven,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0187,﻿church,not recorded,English,,,,﻿Newton County,﻿Newton County,﻿Carpenter's Station,﻿Carpenter's Station,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0188,﻿church,not recorded,English,,,,﻿Hamilton County,﻿Hamilton County,﻿Cicero,﻿Cicero,﻿IN,,,,﻿for.in.0109,﻿attended from Peru,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0189,﻿church,not recorded,English,,,,﻿White County,﻿White County,﻿Chalmers,﻿Chalmers,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0031,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Crown Point,﻿Crown Point,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0028,﻿church,not recorded,English,﻿church building,,,﻿Fountain County,﻿Fountain County,﻿Covington,﻿Covington,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0029,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Cedar Lake,﻿Cedar Lake,﻿IN,,,,﻿for.in.0150,﻿attended from West-Creek,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0030,﻿church,﻿St. Bernard's,English,,,,﻿Montgomery County,﻿Montgomery County,﻿Crawfordsville,﻿Crawfordsville,﻿IN,,,,,,,,﻿cha_maugin_001,﻿Rev.,﻿Charles Maugin,,,,,,,1864,FortWayne
+﻿for.in.0034,﻿church,﻿St. Mary's,English,﻿vacant,,,﻿Adams County,﻿Adams County,﻿Decatur,﻿Decatur,﻿IN,,,,,,,,﻿jul_becks_001,﻿Rev.,﻿Julius Becks,,,,,,,1864,FortWayne
+﻿for.in.0035,﻿church,﻿St. Joseph's,English,,,,﻿Carroll County,﻿Carroll County,﻿Delphi,﻿Delphi,﻿IN,,,,,,,,﻿aug_oechtering_001,﻿Rev.,﻿August Oechtering,,,,,,,1864,FortWayne
+﻿for.in.0037,﻿church,not recorded,English,,,,﻿Elkhart County,﻿Elkhart County,﻿Elkhart,﻿Elkhart,﻿IN,,,,﻿for.in.0085,﻿attended from Mishawaka,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0039,﻿church,not recorded,English,,,,﻿Clinton County,﻿Clinton County,﻿Frankfort,﻿Frankfort,﻿IN,,,,﻿for.in.0035,﻿attended from Delphi,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0041,﻿church,not recorded,English,﻿church building,,,﻿White County,,﻿Francisville,﻿Francesville,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0045,﻿church,﻿St. John's,English,,,,﻿Elkhart County,﻿Elkhart County,﻿Goshen,﻿Goshen,﻿IN,,,,,,,,﻿f_w_holz_001,﻿Rev.,﻿F. Wm. Holz,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0046,﻿church,not recorded,English,,,,﻿Marshall County,﻿Starke County,﻿Grovertown,﻿Grovertown,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0047,﻿church,not recorded,English,,,,﻿Laporte County,﻿LaPorte County,﻿Hanna,﻿Hanna,﻿IN,,,,﻿for.in.0146,﻿attended from Valparaiso,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0048,﻿church,﻿St. Elizabeth's,English,,,,﻿Cass County,﻿Cass County,﻿Harrison Township,﻿Harrison Township,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0049,﻿church,not recorded,English,,,,﻿Blackford County,﻿Blackford County,﻿Hartford,﻿Hartford City,﻿IN,,,,﻿for.in.0034,﻿attended from Decatur,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0051,﻿church,﻿St. Joseph's,English,,,,﻿Allen County,﻿Allen County,﻿Hesse Cassel,﻿Hessen Cassel,﻿IN,,,,,,,,﻿hen_schaefer_001,﻿Rev.,﻿Henry Schaefer,,,,,,,1864,FortWayne
+﻿for.in.0052,﻿church,not recorded,English,,,,﻿Porter County,﻿Lake County,﻿Hobart,﻿Hobart,﻿IN,,,,﻿for.in.0146,﻿attended from Valparaiso,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0054,﻿church,﻿St. Mary's,English,,,,﻿Huntington County,﻿Huntington County,﻿Huntington,﻿Huntington,﻿IN,,,,,,,,﻿jac_mayer_001,﻿Rev.,﻿Jacob Mayer,,,,,,,1864,FortWayne
+﻿for.in.0056,﻿church,not recorded,English,,,,﻿Grant County,﻿Grant County,﻿Jonesboro,﻿Jonesboro,﻿IN,,,,﻿for.in.0079,﻿attended from Lagro,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0055,﻿church,not recorded,English,,,,﻿Warren County,﻿Warren County,﻿Independence,﻿Independence,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0058,﻿church,﻿St. Patrick's,English,,,,﻿Howard County,﻿Howard County,﻿Kokomo,﻿Kokomo,﻿IN,,,,﻿for.in.0109,﻿attended from Peru,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0059,﻿church,not recorded,English,﻿church building,,,﻿Newton County,﻿Newton County,﻿Kent,﻿Kentland,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0060,﻿church,not recorded,English,,,,﻿Noble County,﻿Noble County,﻿Kendallville,﻿Kendallville,﻿IN,,,,﻿for.in.0007,﻿attended from Avilla,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0062,﻿church,﻿St. Mary's,English,﻿new church building,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,﻿geo_a_hamilton_001,﻿Rev.,﻿Geo. A. Hamilton,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0062,﻿church,﻿St. Mary's,English,﻿new church building,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,,﻿Rev.,﻿E.B. Kilroy,,,,,,,1864,FortWayne
+﻿for.in.0063,﻿church,﻿St. Boniface's,﻿German,,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,﻿f_deipenbrock_001,﻿Rev.,﻿F. Deipenbrock,,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0063,﻿church,﻿St. Boniface's,﻿German,,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿Lafayette,﻿Lafayette,﻿IN,,,,,,,,,﻿Rev.,﻿Jos. A. Stephan,,,﻿for the time being,,,,1864,FortWayne
+﻿for.in.0065,﻿church,﻿St. Charles Borromeo's,English,,,,﻿Boone County,﻿Boone County,﻿Lebanon,﻿Lebanon,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0067,﻿church,﻿St. Martin's,English,,,,﻿Stark County,﻿LaPorte County,﻿La Croix,﻿La Crosse,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0069,﻿church,﻿Nativity B.V.,English,,,,﻿Laporte County,﻿LaPorte County,﻿Laporte,﻿La Porte,﻿IN,,,,,,,,﻿fra_lawler_001,﻿Rev.,﻿Francis Lawler,,,,,,,1864,FortWayne
+﻿for.in.0070,﻿church,﻿St. Joseph's,English,,,,﻿Laporte County,﻿LaPorte County,﻿Laporte,﻿La Porte,﻿IN,,,,,,,,﻿mar_scherer_001,﻿Rev.,﻿Martin Scherer,,,,,,,1864,FortWayne
+﻿for.in.0077,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Lowell,﻿Lowell,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0078,﻿church,﻿St. Joseph's,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Lowell,﻿South Bend,﻿IN,,,,,,,,,﻿Rev.,﻿J. Le Moniere,﻿C.SS.C,,,,,,1864,FortWayne
+﻿for.in.0079,﻿church,﻿St. Patrick's,English,,,,﻿Wabash County,﻿Wabash County,﻿Lagro,﻿Lagro,﻿IN,,,,,,,,﻿joh_ryan_001,﻿Rev.,﻿John Ryan,,,,,,,1864,FortWayne
+﻿for.in.0193,﻿church,﻿St. Mary's,English,,,,﻿Allen County,﻿Allen County,﻿Leo,﻿Leo,﻿IN,,,,﻿for.in.0102,﻿attended from New France,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0080,﻿church,not recorded,English,﻿church building,,,﻿Noble County,﻿Noble County,﻿Ligonier,﻿Ligonier,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0081,﻿church,﻿St. Vincent de Paul's,English,,,,﻿Cass County,﻿Cass County,﻿Logansport,﻿Logansport,﻿IN,,,,,,,,﻿jos_b_force_001,﻿Rev.,﻿Jos. B. Force,,,,,,,1864,FortWayne
+﻿for.in.0083,﻿church,﻿St. Joseph's,English,,,,﻿Porter County,﻿Lake County,﻿Lake Station,﻿Lake Station,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0084,﻿church,not recorded,English,,,,﻿Lake County,,﻿Miller's Station,﻿Gary,﻿IN,,,,﻿for.in.0069,﻿Attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0085,﻿church,﻿St. Joseph's,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Mishawaka,﻿Mishawaka,﻿IN,,,,,,,,﻿hen_koening_001,﻿Rev.,﻿Henry Koening,,,,,,,1864,FortWayne
+﻿for.in.0086,﻿church,﻿St. Ambrose's,English,,,,﻿Laporte County,﻿LaPorte County,﻿Michigan City,﻿Michigan City,﻿IN,,,,,,,,﻿geo_steiner_001,﻿Rev.,﻿George Steiner,,,,,,,1864,FortWayne
+﻿for.in.0190,﻿church,﻿St. Joseph's,English,,,,﻿Laporte County,﻿LaPorte County,﻿Michigan City,﻿Michigan City,﻿IN,,,,,,,,﻿geo_steiner_001,﻿Rev.,﻿George Steiner,,,,,,,1864,FortWayne
+﻿for.in.0087,﻿church,not recorded,English,﻿church building,,,﻿Grant County,﻿Grant County,﻿Marion,﻿Marion,﻿IN,,,,﻿for.in.0079,﻿attended from Lagro,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0092,﻿church,not recorded,English,,,,﻿White County,﻿White County,﻿Monticello,﻿Monticello,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0093,﻿church,not recorded,English,,,,﻿Laporte County,﻿La Porte County,﻿Morgan,,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0094,﻿church,not recorded,English,﻿church building,,,﻿Warren County,﻿Warren County,﻿Mansfield,,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0095,﻿church,not recorded,English,﻿church building,,,﻿Delaware County,﻿Delaware County,﻿Muncietown,﻿Muncie,﻿IN,,,,﻿for.in.0009,﻿attended from Anderson,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0096,﻿church,﻿St. Ann's,English,,,,﻿Pulaski County,﻿Pulaski County,﻿Monterey,﻿Monterey,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0100,﻿church,not recorded,English,,,,﻿Stark County,,﻿Madeiraville,﻿Medaryville,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0101,﻿church,not recorded,English,﻿church building,,,﻿Noble County,,﻿Millersburg,﻿Millersburg,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0102,﻿church,﻿St. Vincent de Paul's,English,,,,﻿Allen County,﻿Allen County,﻿New France,﻿New Haven,﻿IN,,,,,,,,,﻿Rev.,﻿August Adam,,,,,,,1864,FortWayne
+﻿for.in.0103,﻿church,﻿St. John the Baptist's,English,,,,﻿Allen County,﻿Allen County,﻿New Haven,﻿New Haven,﻿IN,,,,,,,,﻿wol_giedl_001,﻿Rev.,﻿Wolfgang Giedl,,,,,,,1864,FortWayne
+﻿for.in.0104,﻿church,﻿St. Catharine's,English,,,,﻿Whitley County,﻿Whitley County,﻿Nix Settlement,﻿Columbia City,﻿IN,,,,﻿for.in.0054,﻿attended from Huntington,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0106,﻿church,﻿Sacred Heart of Jesus,English,,,,﻿St. Joseph County,﻿St. Joseph County,﻿Notre Dame du Lac,,﻿IN,,,,,,,,﻿a_granger_001,﻿Rev.,﻿A. Granger,﻿C.S.S.C.,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0107,﻿church,not recorded,English,,,,﻿Hamilton County,﻿Hamilton County,﻿Nobleville,﻿Noblesville,﻿IN,,,,﻿for.in.0109,﻿attended from Peru,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0108,﻿church,not recorded,English,﻿church building,,,﻿Benton County,﻿Benton County,﻿Oxford,﻿Oxford,﻿IN,,,,﻿for.in.0062,﻿attended from Lafayette,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0109,﻿church,﻿St. Charles Borromeo's,English,,,,﻿Miami County,﻿Miami County,﻿Peru,﻿Peru,﻿IN,,,,,,,,﻿ber_kroeger_001,﻿Rev.,﻿Bernard Kroeger,,,,,,,1864,FortWayne
+﻿for.in.0111,﻿church,﻿St. Michael's,English,,,,﻿Marshall County,﻿Marshall County,﻿Plymouth,﻿Plymouth,﻿IN,,,,,,,,,﻿Rev.,﻿Gabriel Volkert,,,,,,,1864,FortWayne
+﻿for.in.0112,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Pine Station,,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0113,﻿church,not recorded,English,,,,﻿Pulaski County,﻿Pulaski County,﻿Lower Settlement,,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0114,﻿church,not recorded,English,,,,﻿Kosciusko County,﻿Kosciusko County,﻿Pierceton,﻿Pierceton,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0115,﻿church,﻿St. Ann's,English,,,,﻿Fulton County,﻿Fulton County,﻿Pleasant Grove,﻿Kewanna,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0116,﻿church,﻿St. Aloysius',English,,,,﻿Allen County,﻿Allen County,﻿Pleasant Township,﻿Pleasant Township,﻿IN,,,,﻿for.in.0051,﻿attended from Hesse Cassel,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0123,﻿church,﻿St. Anthony's,English,,,,﻿White County,﻿White County,﻿Reynolds,﻿Reynolds,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0124,﻿church,not recorded,English,,,,﻿Huntington County,﻿Huntington County,﻿Roanoke,﻿Roanoke,﻿IN,,,,﻿for.in.0054,﻿attended from Huntington,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0125,﻿church,not recorded,English,,,,﻿Carroll County,﻿Carroll County,﻿Rock Creek Township,﻿Rock Creek Township,﻿IN,,,,﻿for.in.0035,﻿attended from Delphi,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0126,﻿church,not recorded,English,,,,﻿Jasper County,﻿Jasper County,﻿Rensselaer,﻿Rensselaer,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0127,﻿church,﻿St. Patrick's,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿South Bend,﻿South Bend,﻿IN,,,,,,,,,﻿Rev.,﻿P. Carroll,﻿C.S.S.C.,﻿Pastor,,,,,1864,FortWayne
+﻿for.in.0128,﻿church,﻿St. John's,English,,,,﻿Stark County,﻿Starke County,﻿San Pierre,﻿San Pierre,﻿IN,,,,﻿for.in.0086,﻿attended from Michigan City,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0129,﻿church,﻿St. John Evangelist's,English,,,,﻿Lake County,﻿Lake County,﻿St. John's,,﻿IN,,,,,,,,﻿b_rachor_001,﻿Rev.,﻿B. Rachor,,,,,,,1864,FortWayne
+﻿for.in.0130,﻿church,not recorded,English,,,,﻿Carroll County,﻿Carroll County,﻿Sugar Creek,,﻿IN,,,,﻿for.in.0035,﻿attended from Delphi,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0134,﻿church,not recorded,English,,,,﻿Warren County,﻿Warren County,﻿State Line,﻿State Line City,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0135,﻿church,﻿St. Joseph's,English,,﻿St. Mary's Home,,﻿Jay County,﻿Jay County,,,﻿IN,,,,,,,,﻿eng_ruff_002,﻿Rev.,﻿Englebert Ruff,﻿C.PP.S.,,,,,,1864,FortWayne
+﻿for.in.0136,﻿church,not recorded,English,,,,﻿Porter County,﻿Porter County,﻿Stark,,﻿IN,,,,﻿for.in.0111,﻿attended from Plymouth,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0142,﻿church,not recorded,English,,,,﻿St. Joseph's County,,﻿Terre Coupee,,﻿IN,,,,﻿for.in.0069,﻿Attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0137,﻿church,not recorded,English,,,,﻿Boone County,﻿Boone County,﻿Thornton,﻿Thorntown,﻿IN,,,,﻿for.in.0030,﻿attended from Crawfordsville,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0138,﻿church,not recorded,English,,,,﻿Lake County,﻿Lake County,﻿Tolleston,﻿Tolleston,﻿IN,,,,﻿for.in.0139,﻿attended from Turkey Creek,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0139,﻿church,﻿SS. Peter and Paul,English,﻿new church building,﻿Merrillsville P.O.,,﻿Lake County,﻿Lake County,﻿Turkey Creek,﻿Merrillville,﻿IN,,,,,,,,,﻿Rev.,﻿Paul Mary Wehrle,,,,,,,1864,FortWayne
+﻿for.in.0145,﻿church,not recorded,English,﻿church building,,,﻿Randolph County,﻿Randolph County,﻿Union,﻿Union City,﻿IN,,,,﻿for.in.0009,﻿attended from Anderson,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0146,﻿church,﻿St. Paul's,English,,,,﻿Porter County,﻿Porter County,﻿Valparaiso,﻿Valparaiso,﻿IN,,,,,,,,﻿mic_oreilly_001,﻿Rev.,﻿Michael O'Reilly,,,,,,,1864,FortWayne
+﻿for.in.0147,﻿church,not recorded,English,,,,﻿Kosciusko County,﻿Kosciusko County,﻿Warsaw,﻿Warsaw,﻿IN,,,,﻿for.in.0069,﻿attended from Laporte,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0148,﻿church,not recorded,English,,,,﻿De Kalb County,﻿DeKalb County,﻿Waterloo City,﻿Waterloo,﻿IN,,,,﻿for.in.0045,﻿attended from Goshen,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0149,﻿church,not recorded,English,,,,﻿Wabash County,﻿Wabash County,﻿Wabash,﻿Wabash,﻿IN,,,,﻿for.in.0079,﻿attended from Lagro,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0150,﻿church,﻿St. Anthony's,English,,﻿Brunswick P.O.,,﻿Lake County,﻿Lake County,﻿West Creek,﻿West Creek Township,﻿IN,,,,,,,,﻿mar_kink_001,﻿Rev.,﻿Martin Kink,,,,,,,1864,FortWayne
+﻿for.in.0151,﻿church,not recorded,English,,,,﻿Tippecanoe County,﻿Tippecanoe County,﻿West Point,﻿West Point,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0153,﻿church,not recorded,English,,,,﻿Randolph County,﻿Randolph County,﻿Winchester,﻿Winchester,﻿IN,,,,﻿for.in.0009,﻿attended from Anderson,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0154,﻿church,not recorded,English,﻿church building,,,﻿Pulaski County,﻿Pulaski County,﻿Winamac,﻿Winamac,﻿IN,,,,﻿for.in.0081,﻿attended from Logansport,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0155,﻿church,not recorded,English,,,,﻿Warren County,﻿Warren County,﻿Williamsport,﻿Williamsport,﻿IN,,,,﻿for.in.0006,﻿attended from Attica,,,,,,,,,,,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Very Rev.,﻿E. Sorin,﻿C.S.C,﻿Superior,,,,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿A. Granger,﻿C.S.C,"﻿Master of Novices, novitiate of St. Aloysius",,﻿scholastic,﻿12 scholastics and novices,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿L. J. Letourneau,﻿C.S.C,﻿Master of Novices,,﻿lay brother,﻿73 professed lay brothers,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Very Rev.,﻿P. Dillon,﻿C.S.C,,,﻿novice,﻿51 novices,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿J. Dillon,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿W. Corby,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿Thomas Carroll,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿P. Cooney,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿J. A. Carriere,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿Paul E. Gillen,﻿C.S.C.,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿A. Lemonnier,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0198,﻿church,﻿Congregation of Holy Cross,English,,,,﻿St. Joseph's County,﻿St. Joseph County,﻿Notre Dame,﻿Notre Dame,﻿IN,,,,,,,,,﻿Rev.,﻿P. Lemonnier,﻿C.S.C,,,﻿postulant,﻿11 postulants,,1864,FortWayne
+﻿for.in.0169,﻿university,﻿University of Notre Dame,English,,,,,,,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1864,FortWayne
+﻿for.in.0171,﻿school,﻿Manual Labor School,English,,,,,,,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1864,FortWayne
+﻿for.in.0200,﻿school,﻿Day School,English,,,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1864,FortWayne
+﻿for.in.0201,﻿school,﻿Day School,English,,,,,,﻿Lowell,,﻿IN,,,,,,,,,,,,,,,,﻿conducted by the Rev. Fathers of the Congregation of Holy Cross.,1864,FortWayne
+﻿for.in.0180,﻿academy,﻿St. Augustine's Academy,English,,,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,﻿Sister,﻿Vincent,,﻿Superior,,﻿pupils,﻿150 pupils,﻿kept by the Sisters of Providence,1864,FortWayne
+﻿for.in.0202,﻿institute,﻿St. Mary's Female Institute,﻿German,,,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,﻿Sister,﻿Catharine,,﻿Superior,,﻿pupils,﻿120 pupils,,1864,FortWayne
+﻿for.in.0181,﻿academy,﻿St. Ignatius' Academy,English,,,,,,﻿Lafayette,,﻿IN,,,,,,,,,﻿Sister,﻿Eugenia,,﻿Superior,,,,﻿kept by the Sisters of Providence,1864,FortWayne
+﻿for.in.0199,﻿academy,﻿Poor Sisters of St. Francis,English,,,,,,﻿Hesse Cassel,,﻿IN,,,,,,,,,﻿Sister,﻿Hildegard,,﻿Superior,,,,,1864,FortWayne
+﻿for.in.0182,﻿convent,﻿Convent Sisters of Precious Blood,English,,﻿St. Mary's Home,,﻿Jay County,,,,﻿IN,,,,,,,,,,,,,,,,,1864,FortWayne
