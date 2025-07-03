@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="cell">Diocese</div>
                                 <div class="cell">
-                                    {{data.diocese}}
+                                    {{data.diocese?.join(', ' )}}
                                 </div>
                             </div>
                             <div class="row">
@@ -157,8 +157,15 @@
                         </div>
                         </div>
                     </div>
-                    <div class="map-container w-full md:w-auto mt-5">
-                        <google-map [options]="mapOptions" width="500px" height="350px">
+                    <div class="map-container w-full mt-5 md:!hidden flex justify-center items-center">
+                        <google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
+                            </map-marker>
+                            <map-polygon></map-polygon> <!--could be an option-->
+                        </google-map>
+                    </div>
+                    <div class="map-container w-full md:w-auto mt-5 !hidden md:!block">
+                        <google-map [options]="mapOptionsWide" width="500px" height="350px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
                             <map-polygon></map-polygon> <!--could be an option-->

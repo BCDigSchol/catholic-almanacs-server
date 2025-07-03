@@ -5,4 +5,5 @@ module.exports = app => {
     require('./churchPerson.routes.js')(app);
     require('./churchChurch.routes.js')(app);
     require('./maps.routes.js')(app);
+    require('./searchAll.routes.js')(app);
 };

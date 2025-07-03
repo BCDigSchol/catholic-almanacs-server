@@ -28,9 +28,16 @@ export class InstitutionDetailsComponent implements OnInit {
   loading = true;
   itemId: any;
   data: any = [];
-  mapOptions: google.maps.MapOptions = {
+  mapOptionsWide: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
     zoom: 3.7,
+    disableDefaultUI: true,
+    clickableIcons: false
+  };
+
+  mapOptionsSmall: google.maps.MapOptions = {
+    center: { lat: 39.8283, lng: -98.5795 },
+    zoom: 3.4,
     disableDefaultUI: true,
     clickableIcons: false
   };

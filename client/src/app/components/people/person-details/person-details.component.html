@@ -44,9 +44,18 @@
                             </div>
                         </div>
                     </div>
-                    </div> 
-                    <div class="map-container w-full md:w-auto mt-5">
-                        <google-map [options]="mapOptions" width="500px" height="350px">
+                    </div>
+                    <div class="map-container w-full mt-5 md:!hidden flex justify-center items-center">
+                        <google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                            <ng-container *ngFor="let item of data.almanacRecords">
+                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
+                                </map-marker>
+                            </ng-container>
+                            <map-polygon></map-polygon> <!--could be an option-->
+                        </google-map>
+                    </div>
+                    <div class="map-container w-full md:w-auto mt-5 !hidden md:!block">
+                        <google-map [options]="mapOptionsWide" width="500px" height="350px">
                             <ng-container *ngFor="let item of data.almanacRecords">
                                 <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
                                 </map-marker>

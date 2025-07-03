@@ -414,7 +414,7 @@ exports.findOne = async (req, res) => {
             instID: data.dataValues.ID,
             instName: data.dataValues.almanacRecord[0].instName,
             language: data.dataValues.almanacRecord[0].language,
-            diocese: data.dataValues.almanacRecord[0].diocese,
+            diocese: [data.dataValues.almanacRecord[0].diocese],
             instType: data.dataValues.almanacRecord[0].instType,
             instNote: data.dataValues.almanacRecord[0].instNote,
             placeName: data.dataValues.almanacRecord[0].placeName,

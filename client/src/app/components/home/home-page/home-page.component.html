@@ -1,0 +1,12 @@
+<div class="flex flex-col w-full justify-center items-center">
+    <mat-form-field style="width:600px" class="mt-20">
+        <mat-label>Search for Institutions and People</mat-label>
+        <input matInput [(ngModel)]="inputName">
+        <button mat-icon-button matSuffix class="mx-3" style="cursor:pointer;" (click) = "getData()">
+            <mat-icon fontIcon="search"></mat-icon>
+        </button>
+    </mat-form-field>
+    <div class="w-full flex flex-col justify-center items-center">
+        <div class="text-2xl mt-10">Welcome to the Home Page</div>
+        <div class="text-lg mt-2">Search for institutions and people using the search bar above.</div>
+</div>
