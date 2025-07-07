@@ -89,6 +89,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
+      diocese_reg: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       religiousOrder: {
         type: Sequelize.STRING,
         allowNull: true

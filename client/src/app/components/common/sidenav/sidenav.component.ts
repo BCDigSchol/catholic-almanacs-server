@@ -40,7 +40,11 @@ export class SidenavComponent implements OnInit {
     {
       name: 'People Map',
       route: 'people/map'
-    }
+    },
+    {
+      name: 'Dioceses Map',
+      route: 'dioceses/map'
+    },
   ]
 
   constructor (private _router: Router, private themeService: ThemeService) { 

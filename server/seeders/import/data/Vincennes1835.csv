@@ -1,0 +1,11 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
+﻿vinc.in.0001,﻿church,﻿St. Frances Xavier,English,,,,,,﻿Vincennes,,﻿IN,,,,,,,,﻿sim_g_bruté_001,﻿Right Rev.,﻿Simon G. Bruté,﻿D. D.,,,,,,1835,﻿Vincennes,Vincennes
+﻿vinc.in.0001,﻿church,﻿St. Frances Xavier,English,,,,﻿Davies County,,﻿Black Oak Ridge,,﻿IN,,,,,,,,﻿sim_lalumiere_001,﻿Rev.,﻿Simon Lalumiere,,,,,,,1835,﻿Vincennes,Vincennes
+﻿vinc.in.0001,﻿church,﻿St. Frances Xavier,English,,﻿Duchee River,,﻿Davies County,,﻿Black Oak Ridge,,﻿IN,,,,,,,,,,,,,,,,,1835,﻿Vincennes,Vincennes
+﻿for.in.0081,﻿church,not recorded,English,,,,,,﻿Logansport,,﻿IN,,,,,,﻿occasionally,,﻿s_t_badin_001,﻿Rev.,﻿S. T. Badin,,,,,,,1835,﻿Vincennes,Vincennes
+﻿for.in.0001,﻿church,not recorded,English,﻿church not yet dedicated,,,,,﻿Fort Wayne,,﻿IN,,,,,﻿visited by the Rev. S. T. Badin,﻿occasionally,,,,,,,,,,,1835,﻿Vincennes,Vincennes
+﻿for.in.0001,﻿church,not recorded,English,﻿church not yet dedicated,﻿Racoon Creek,,,,﻿Fort Wayne,,﻿IN,,,,,,,,,,,,,﻿Vacant,,,,1835,﻿Vincennes,Vincennes
+﻿for.in.0055,﻿church,not recorded,English,,,,,,﻿Independence,,﻿IN,,,,,,,,,,,,,﻿Vacant,,,,1835,﻿Vincennes,Vincennes
+﻿for.in.0055,﻿church,not recorded,English,,,,,,﻿Mossissinoway,,﻿IN,,,,,,,,,,,,,﻿Vacant,,,,1835,﻿Vincennes,Vincennes
+﻿vinc.in.0093,﻿church,not recorded,English,,,,,,﻿Mount Pleasant,,﻿IN,,,,,,,,,,,,,,,,,1835,﻿Vincennes,Vincennes
+﻿vinc.in.9000,﻿convent,﻿St. Clare's Convent,English,,,,,,﻿Vincennes,,﻿IN,,,,,,,,,,,,,,,,﻿manage[d] and govern[ed] [by] Sisters of Charity,1835,﻿Vincennes,Vincennes

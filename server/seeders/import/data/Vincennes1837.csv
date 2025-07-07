@@ -1,0 +1,50 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
+﻿vinc.in.0001,﻿cathederal,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,,,,,,,,﻿Right Rev.,﻿Simon G. Bruté,﻿D. D.,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0001,﻿cathederal,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,,,,,,,,﻿Rev.,﻿Celestine De la Hailandiere,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0001,﻿cathederal,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,,,,,,,,﻿Rev.,﻿James Corbe,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0001,﻿church,﻿St. Peter's,English,,,,﻿Davies County,﻿Knox County,﻿Black Oak Ridge,﻿Montgomery,﻿IN,,,,,,,,,﻿Rev.,﻿Simon Lalumiere,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0001,﻿church,﻿St. Mary's,English,,,,﻿Davies County,﻿Knox County,﻿Black Oak Ridge,﻿Montgomery,﻿IN,,,,,,,,,﻿Rev.,﻿Maurice St. Palais,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0001,﻿church,﻿St. Mary's,English,,﻿an Indian Village on the Tippecanoa,,﻿Davies County,﻿Knox County,﻿Chicocos,﻿Montgomery,﻿IN,,,,,,,,,﻿Rev. Mr.,﻿Deseille,,,﻿of Michigan,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0001,﻿church,﻿St. Mary's,English,,﻿Duchee River,,﻿Davies County,﻿Knox County,﻿Chicocos,﻿Montgomery,﻿IN,,,,,,﻿occasionally,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0033,﻿church,﻿St. John's,English,﻿every other Sunday,,,﻿Dearborn County,,﻿Dover,,﻿IN,,,,,,,,,﻿Rev.,﻿Joseph Ferneding,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0033,﻿church,﻿St. Joseph's,English,﻿every other Sunday,,,﻿Allen County,,﻿Fort Wayne,,﻿IN,,,,,,,,,﻿Rev.,﻿Francis J. Claude,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0033,﻿church,﻿St. Mary's,English,﻿every other Sunday,,,﻿Allen County,,﻿Fort Wayne,,﻿IN,,,,,,,,,﻿Rev.,﻿Lewis Muller,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0033,﻿church,﻿St. Mary's,English,﻿every other Sunday,,,﻿Allen County,,﻿Huntingdon,,﻿IN,,,,,﻿attended from Fort Wayne,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,not recorded,English,,,,﻿Cass County,,﻿Logansport,,﻿IN,,,,,,,,,﻿Rev.,﻿Patrick O'Beirne,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,not recorded,English,,,,﻿Cass County,,﻿Mount Pleasant,,﻿IN,,,,,,,,,﻿Rev.,﻿Patrick O'Beirne,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,not recorded,English,,,,﻿Cass County,,﻿Madison,,﻿IN,,,,,,,,,﻿Rev.,﻿Patrick O'Beirne,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Dearborn County,,﻿New Alsace,,﻿IN,,,,,,﻿attended every other Sunday,,,﻿Rev.,﻿Joseph Ferneding,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿New Albany,,﻿IN,,,,,,﻿attended occasionally,,,﻿Rev.,﻿Ignatius Reynolds,,,﻿of Ky.,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿New Albany,,﻿IN,,,,,,,,,﻿Rev.,﻿Joseph Ferneding,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿the Knobs,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿Ignatius Reynolds,,,﻿of Ky.,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿the Knobs,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿Ignatius Reynolds,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Peru,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Miamiport,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Wabashtown,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Salomic,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Gros,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Rising Sun,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿for.in.0081,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Floyd County,,﻿Richmond,﻿Floyds Knobs,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,not recorded,English,,,,,,﻿Shelbyville,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,not recorded,English,,,,,,﻿Columbus,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,not recorded,English,,,,,,﻿Indianapolis,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,not recorded,English,,,,﻿St. Joseph County,,﻿Southbend,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿S. T. Badin,,,﻿of Mich.,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,,,﻿St. Joseph County,,﻿Southbend,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿S. T. Badin,,,﻿of Mich.,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿station,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿St. Joseph County,,﻿Southbend,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,"﻿visited by Rev. Elisha Durbin and Rev. Charles Coomes, of Kentucky.",,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿St. Joseph County,,﻿Terrehaute,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿St. Joseph County,,﻿Merom,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿St. Joseph County,,﻿Lafayette,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿St. Joseph County,,﻿Shaker's Prairie,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,﻿occasionally attended,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿Davies County,,﻿Washington,,﻿IN,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿Simon Lalumiere,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿Davies County,,﻿Chicago,,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿Irenceus St. Cyr,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿Davies County,,﻿Chicago,,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Rev.,﻿Bernard Shaffer,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Ohio River,,﻿Edgar County,,﻿Paris Prairie,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Vincennes,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Thrawl's Station,,﻿Edgar County,,﻿Paris Prairie,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Vincennes,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Riviere Au Chat,,﻿Edgar County,,﻿Paris Prairie,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Vincennes,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Riviere Au Chat,,﻿Edgar County,,﻿Coffee Town,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Vincennes,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Riviere Au Chat,,﻿Edgar County,,﻿Lawrenceville,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Vincennes,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Riviere Au Chat,,﻿Edgar County,,﻿Shawneytown,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Ky. by Rev. Elisha Durbin,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Riviere Au Chat,,﻿Edgar County,,﻿Carmi,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Ky. by Rev. Elisha Durbin,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.0127,﻿church,﻿St. Mary's of the Lake,English,,﻿Riviere Au Chat,,﻿Edgar County,,﻿Albion,﻿Paris,﻿IL,,﻿38°19′27″N,﻿85°52′26″W,,﻿visited from Ky. by Rev. Elisha Durbin,,,,,,,,,,,,1837,﻿vincennes,Vincennes
+﻿vinc.in.9000,﻿convent,﻿St. Clare's Convent,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,﻿IN,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Right Rev.,﻿Bishop,,﻿Superintendent,﻿resides in Vincennes,,,﻿manage[d] and govern[ed] [by] Sisters of Charity,1837,﻿vincennes,Vincennes
+﻿vinc.in.9000,﻿academy,﻿St. Clare's Female Academy,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,﻿IN,﻿38°19′27″N,﻿85°52′26″W,,,,,,﻿Right Rev.,﻿Bishop,,﻿Superintendent,﻿resides in Vincennes,,,﻿manage[d] and govern[ed] [by] Sisters of Charity,1837,﻿vincennes,Vincennes

@@ -10,6 +10,7 @@ import { PersonDetailsComponent } from './components/people/person-details/perso
 import { ExportComponent } from './components/export/export.component';
 import { MapComponent as InstitutionMapComponent } from './components/insitutions/map/map.component';
 import { MapComponent as PeopleMapComponent } from './components/people/map/map.component';
+import { MapComponent as DioceseMapComponent } from './components/dioceses/map/map.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'people', component: BrowsePeopleComponent},
     { path: 'people/map', component: PeopleMapComponent },
     { path: 'people/:id', component: PersonDetailsComponent }, 
+    { path: 'dioceses/map', component: DioceseMapComponent },
     { path: 'export', component: ExportComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' }

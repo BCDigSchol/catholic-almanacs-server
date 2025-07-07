@@ -74,4 +74,34 @@ exports.findAllPeople = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
+};
+
+exports.findAllDioceses = async (req, res) => {
+    try {
+        where = {};
+        let {year} = req.query;
+        if (year) {
+          where.year = { [Op.eq]: year };
+        };
+        if (!year) {
+          return res.status(400).json({ message: "Year is required" });
+        };
+
+        const data = await db.diocese.findAndCountAll({
+            distinct: true,
+            attributes: ['diocese'],
+            include: [
+                {
+                    model: almanacRecord,
+                    as: 'almanacRecords',
+                    required: Object.keys(where).length > 0,
+                    attributes: ['instID', 'instName', 'year', 'latitude', 'longitude', 'diocese_reg', 'diocese'],
+                    where: where,
+                }
+            ]
+        });
+        res.send(data);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
 }

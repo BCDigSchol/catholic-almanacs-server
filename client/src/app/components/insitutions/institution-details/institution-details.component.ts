@@ -27,7 +27,7 @@ import { ApiService } from '../../../services/api.service';
 export class InstitutionDetailsComponent implements OnInit {
   loading = true;
   itemId: any;
-  data: any = [];
+  data: any = {};
   mapOptionsWide: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
     zoom: 3.7,
@@ -53,10 +53,8 @@ export class InstitutionDetailsComponent implements OnInit {
     // refresh the page whenever the parameter changes
     // this._route.paramMap is an observable that emits whenever the route parameters change
     // and when a new value is emitted, .subscribe is called
-    this._route.paramMap.subscribe(params => {
-      this.itemId = params.get('id');
+      this.itemId = this._route.snapshot.paramMap.get('id');
       this.getData();
-    });
   }
 
   getData () {

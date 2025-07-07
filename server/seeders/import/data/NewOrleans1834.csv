@@ -1,45 +1,45 @@
-﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,29.95794292,-90.06372788,,,,,,﻿Very Rev.,﻿Ant. Blanc,,,,,,,1834,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Very Rev.,﻿V. Ladaviere,﻿SJ,,,,,,1834,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿Al. Moni,,,,,,,1834,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿B. Permoli,,,,,,,1834,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿D. De l'Hoste,,,,,,,1834,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿Aug. Mascaroni,,,,,,,1834,NewOrleans
-﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿Aug. Jeanjean,,,,,,,1834,NewOrleans
-﻿new.la.0002,﻿cathedral,﻿St. Mary's,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿C. Maenhaut,,,,,,,1834,NewOrleans
-﻿new.la.9000,﻿cathedral,﻿St. Margaret's,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿--,,,,,,,1834,NewOrleans
-﻿new.la.9010,﻿cathedral,﻿St. Patrick's,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿W. Kindelon,,,,,,,1834,NewOrleans
-﻿new.la.9011,﻿cathedral,﻿St. Antonio,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿P. Ascensio,,,,,,,1834,NewOrleans
-﻿new.la.9001,﻿cathedral,not recorded,English,,,,﻿Assumption Parish,﻿Assumption Parish,,,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿B. de St. Aubin,,,,,,,1834,NewOrleans
-﻿new.la.0078,﻿church,﻿St. Martin's,English,,,,﻿Attakapas Parish,﻿St. Martin Parish,,﻿St. Martinville,﻿LA,﻿LA,30.12302632,-91.82874083,,,,,,﻿Rev. Mr.,﻿Borella,,,,,,,1834,NewOrleans
-﻿nat.la.0023,﻿church,﻿St. Paul's,English,,,,﻿Avoyelles Parish,﻿Avoyelles Parish,,﻿Mansura,﻿LA,﻿LA,31.06064291,-92.04960097,,,,,,﻿Rev.,﻿John Martin,,,,,,,1834,NewOrleans
-﻿new.la.0028,﻿church,﻿St. Joseph's,English,,,,,﻿East Baton Rouge Parish,﻿Baton Rouge,﻿Baton Rouge,﻿LA,﻿LA,30.45189019,-91.18698575,,,,,,﻿Rev.,﻿H. Brassac,,,,,,,1834,NewOrleans
-﻿new.la.0029,﻿church,not recorded,English,,﻿W[est],,,﻿West Baton Rogue Parish,﻿Baton Rouge,﻿Brusly,﻿LA,﻿LA,30.38506811,-91.23639256,,,﻿twice a month,,,﻿Rev.,﻿H. Brassac,,,,,,,1834,NewOrleans
-﻿new.la.9002,﻿church,﻿St. John's,English,,﻿E[ast],,,,﻿Baton Rouge,,﻿LA,,30.38506811,-91.23639256,,,,,,﻿Rev.,﻿H. Brassac,,,,,,,1834,NewOrleans
-﻿new.la.0032,﻿church,﻿St. John Baptist,English,,﻿Bonnet Carrè,,,﻿St. John the Baptist Parish,,﻿Edgard,﻿LA,﻿LA,30.04468524,-90.55754782,,,,,,﻿Rev.,﻿V. M. Mina,,,,,,,1834,NewOrleans
-﻿new.la.0044,﻿church,not recorded,English,,,,,﻿Ascension Parish,﻿Donaldsonville,﻿Donaldsonville,﻿LA,﻿LA,30.10405485,-90.98368459,,,,,,﻿Rev.,﻿Joseph Tichitoli,,,,,,,1834,NewOrleans
-﻿new.la.0045,﻿church,not recorded,English,,,,,﻿Pointe Coupee Parish,﻿Fausse Riviere,﻿New Roads,﻿LA,﻿LA,30.69330483,-91.43584638,,,,,,﻿Rev.,﻿D. De l'Hoste,,,,,,,1834,NewOrleans
-﻿new.la.0048,﻿church,﻿St. Charles Borromeo,English,,,,,﻿St. Landry Parish,﻿Grand Coteau,﻿Grand Coteau,﻿LA,﻿LA,30.42011404,-92.04449518,,,,,,﻿Rev.,﻿J. Rosti,,,,,,,1834,NewOrleans
-﻿new.la.0052,﻿church,﻿St. Gabriel's,English,,,,,﻿Iberville Parish,﻿Iberville,﻿St. Gabriel,﻿LA,﻿LA,30.25456526,-91.10210636,,,,,,﻿Rev.,﻿A. Anduze,,,,,,,1834,NewOrleans
-﻿new.la.0056,﻿church,not recorded,English,,,,﻿Lafourche Parish,﻿Lafourche Parish,,﻿Plattenville,﻿LA,﻿LA,29.99066747,-91.02365392,,,,,,﻿Rev.,﻿J. Caretta,,,,,,,1834,NewOrleans
-﻿new.la.9003,﻿church,﻿St. Francis of Assissium,English,,,,﻿Natchitoches Parish,﻿Natchitoches Parish,,,﻿LA,﻿LA,29.99066747,-91.02365392,,,,,,﻿Rev.,﻿E. D. Hamo,,,,,,,1834,NewOrleans
-﻿new.la.0063,﻿church,﻿St. Landry,English,,,,,﻿St. Landry Parish,﻿Opelousas,﻿Opelousas,﻿LA,﻿LA,30.54340651,-92.07908905,,,,,,﻿Rev.,﻿F. Rosti,,,,,,,1834,NewOrleans
-﻿new.la.0071,﻿church,﻿St. Francis,English,﻿W.B.,,,﻿Pointe Coupèe Parish,﻿Pointe Coupèe Parish,,﻿New Roads,﻿LA,﻿LA,30.72923499,-91.48667682,,,,,,﻿Rev.,﻿D. De L'hoste,,,,,,,1834,NewOrleans
-﻿new.la.9004,﻿church,﻿St. Bernard,English,,,,﻿St. Bernard Parish,﻿St. Bernard Parish,,,﻿LA,﻿LA,30.72923499,-91.48667682,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.0047,﻿church,﻿St. Charles,English,,﻿E. bank of Miss.,,﻿St. Charles Parish,﻿St. Charles Parish,,﻿Destrehan,﻿LA,﻿LA,29.95038417,-90.37528297,,,,,,﻿Rev.,﻿Aug. de Angelis,,,,,,,1834,NewOrleans
-﻿new.la.9005,﻿church,not recorded,English,,,,﻿St. Helena Parish,﻿St. Helena Parish,,,﻿LA,﻿LA,29.95038417,-90.37528297,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.9006,﻿church,not recorded,English,,,,﻿St. Johns Parish,﻿St. John the Baptist Parish,,,﻿LA,﻿LA,29.95038417,-90.37528297,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.0072,﻿church,not recorded,English,,﻿W. bank of Miss.,,﻿St. James Parish,﻿St. James Parish,,﻿St. James,﻿LA,﻿LA,30.01591994,-90.84262784,,,,,,,,,,﻿vacant,,,,1834,NewOrleans
-﻿new.la.0080,﻿church,﻿St. Joseph's,English,,,,,﻿Lafourche Parish,﻿Thibadeauxville,﻿Thibodaux,﻿LA,﻿LA,29.79346434,-90.81966683,,,,,,﻿Rev.,﻿J. Andizio,,,,,,,1834,NewOrleans
-﻿new.la.0078,﻿church,﻿St. Martin de Tours,English,,,,﻿Attakapas Parish,﻿St. Martin Parish,﻿St. Martinsville,﻿St. Martinville,﻿LA,﻿LA,30.12305334,-91.82877797,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.9007,﻿church,﻿St. Michaels,English,,﻿E. bank,,,﻿St. James Parish,,﻿Convent,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,﻿Rev.,﻿Chas. de la Croix,,,,,,,1834,NewOrleans
-﻿new.la.0041,﻿church,not recorded,English,,,,﻿St. Tammany Parish,﻿St. Tammany Parish,,﻿Covington,﻿LA,﻿LA,30.47357662,-90.10147008,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.0079,﻿church,﻿St. Bernard,English,,,,,﻿St. Bernard Parish,﻿Terre aux bœufs,﻿St. Bernard,﻿LA,﻿LA,29.86739158,-89.81809799,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,29.96083079,-90.06070140000001,,,,,,﻿Rev.,﻿N. Benniot,,,,,,,1834,NewOrleans
-﻿new.la.0082,﻿church,﻿St. John Baptist,English,,,,,﻿Lafayette Parish,﻿Vermillionville,﻿Lafayette,﻿LA,﻿LA,30.22284666,-92.02353985,,,,,,﻿Rev.,﻿L. Peyretti,,,,,,,1834,NewOrleans
-﻿nat.ms.0001,﻿church,﻿Church of the Holy Family,English,,,,,﻿Adams County,﻿Natches,﻿Natchez,﻿MS,﻿MS,31.55865469,-91.40131775,,,,,,,,,,﻿Vacant,,,,1834,NewOrleans
-﻿new.la.9008,﻿seminary,not recorded,English,,,,﻿Iberville Parish,,,,﻿LA,﻿LA,31.55865469,-91.40131775,,,,,,,,,,,,,,1834,NewOrleans
-﻿new.la.9009,﻿academy,﻿Young Ladies' Academy,English,,﻿Grand Coteau,,,﻿St. Landry Parish,﻿Opeloussas,﻿Opelousas,﻿LA,﻿LA,31.55865469,-91.40131775,,,,,,,,,,,,,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans
-﻿new.la.9012,﻿convent and academy,not recorded,English,,﻿at St. James,,,﻿St. James Parish,,﻿Convent,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,,,,,,,,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans
-﻿new.la.9013,﻿asylum,﻿Poydras Asylum,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,,,,,,﻿sisters,﻿7 sisters,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans
-﻿new.la.9014,﻿hospital,﻿Charity Hospital,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,,,,,,﻿sisters,﻿10 sisters,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,29.95794292,-90.06372788,,,,,,﻿Very Rev.,﻿Ant. Blanc,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Very Rev.,﻿V. Ladaviere,﻿SJ,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿Al. Moni,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿B. Permoli,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿D. De l'Hoste,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿Aug. Mascaroni,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0001,﻿cathedral,﻿Cathedral of St Louis,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,,29.95794292,-90.06372788,,,,,,﻿Rev.,﻿Aug. Jeanjean,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0002,﻿cathedral,﻿St. Mary's,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿C. Maenhaut,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9000,﻿cathedral,﻿St. Margaret's,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿--,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9010,﻿cathedral,﻿St. Patrick's,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿W. Kindelon,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9011,﻿cathedral,﻿St. Antonio,English,,,,,﻿Orleans Parish,﻿New Orelans,﻿New Orleans,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿P. Ascensio,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9001,﻿cathedral,not recorded,English,,,,﻿Assumption Parish,﻿Assumption Parish,,,﻿LA,﻿LA,29.951065999999997,-90.07153199999999,,,,,,﻿Rev.,﻿B. de St. Aubin,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0078,﻿church,﻿St. Martin's,English,,,,﻿Attakapas Parish,﻿St. Martin Parish,,﻿St. Martinville,﻿LA,﻿LA,30.12302632,-91.82874083,,,,,,﻿Rev. Mr.,﻿Borella,,,,,,,1834,NewOrleans,NewOrleans
+﻿nat.la.0023,﻿church,﻿St. Paul's,English,,,,﻿Avoyelles Parish,﻿Avoyelles Parish,,﻿Mansura,﻿LA,﻿LA,31.06064291,-92.04960097,,,,,,﻿Rev.,﻿John Martin,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0028,﻿church,﻿St. Joseph's,English,,,,,﻿East Baton Rouge Parish,﻿Baton Rouge,﻿Baton Rouge,﻿LA,﻿LA,30.45189019,-91.18698575,,,,,,﻿Rev.,﻿H. Brassac,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0029,﻿church,not recorded,English,,﻿W[est],,,﻿West Baton Rogue Parish,﻿Baton Rouge,﻿Brusly,﻿LA,﻿LA,30.38506811,-91.23639256,,,﻿twice a month,,,﻿Rev.,﻿H. Brassac,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9002,﻿church,﻿St. John's,English,,﻿E[ast],,,,﻿Baton Rouge,,﻿LA,,30.38506811,-91.23639256,,,,,,﻿Rev.,﻿H. Brassac,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0032,﻿church,﻿St. John Baptist,English,,﻿Bonnet Carrè,,,﻿St. John the Baptist Parish,,﻿Edgard,﻿LA,﻿LA,30.04468524,-90.55754782,,,,,,﻿Rev.,﻿V. M. Mina,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0044,﻿church,not recorded,English,,,,,﻿Ascension Parish,﻿Donaldsonville,﻿Donaldsonville,﻿LA,﻿LA,30.10405485,-90.98368459,,,,,,﻿Rev.,﻿Joseph Tichitoli,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0045,﻿church,not recorded,English,,,,,﻿Pointe Coupee Parish,﻿Fausse Riviere,﻿New Roads,﻿LA,﻿LA,30.69330483,-91.43584638,,,,,,﻿Rev.,﻿D. De l'Hoste,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0048,﻿church,﻿St. Charles Borromeo,English,,,,,﻿St. Landry Parish,﻿Grand Coteau,﻿Grand Coteau,﻿LA,﻿LA,30.42011404,-92.04449518,,,,,,﻿Rev.,﻿J. Rosti,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0052,﻿church,﻿St. Gabriel's,English,,,,,﻿Iberville Parish,﻿Iberville,﻿St. Gabriel,﻿LA,﻿LA,30.25456526,-91.10210636,,,,,,﻿Rev.,﻿A. Anduze,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0056,﻿church,not recorded,English,,,,﻿Lafourche Parish,﻿Lafourche Parish,,﻿Plattenville,﻿LA,﻿LA,29.99066747,-91.02365392,,,,,,﻿Rev.,﻿J. Caretta,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9003,﻿church,﻿St. Francis of Assissium,English,,,,﻿Natchitoches Parish,﻿Natchitoches Parish,,,﻿LA,﻿LA,29.99066747,-91.02365392,,,,,,﻿Rev.,﻿E. D. Hamo,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0063,﻿church,﻿St. Landry,English,,,,,﻿St. Landry Parish,﻿Opelousas,﻿Opelousas,﻿LA,﻿LA,30.54340651,-92.07908905,,,,,,﻿Rev.,﻿F. Rosti,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0071,﻿church,﻿St. Francis,English,﻿W.B.,,,﻿Pointe Coupèe Parish,﻿Pointe Coupèe Parish,,﻿New Roads,﻿LA,﻿LA,30.72923499,-91.48667682,,,,,,﻿Rev.,﻿D. De L'hoste,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9004,﻿church,﻿St. Bernard,English,,,,﻿St. Bernard Parish,﻿St. Bernard Parish,,,﻿LA,﻿LA,30.72923499,-91.48667682,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0047,﻿church,﻿St. Charles,English,,﻿E. bank of Miss.,,﻿St. Charles Parish,﻿St. Charles Parish,,﻿Destrehan,﻿LA,﻿LA,29.95038417,-90.37528297,,,,,,﻿Rev.,﻿Aug. de Angelis,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9005,﻿church,not recorded,English,,,,﻿St. Helena Parish,﻿St. Helena Parish,,,﻿LA,﻿LA,29.95038417,-90.37528297,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9006,﻿church,not recorded,English,,,,﻿St. Johns Parish,﻿St. John the Baptist Parish,,,﻿LA,﻿LA,29.95038417,-90.37528297,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0072,﻿church,not recorded,English,,﻿W. bank of Miss.,,﻿St. James Parish,﻿St. James Parish,,﻿St. James,﻿LA,﻿LA,30.01591994,-90.84262784,,,,,,,,,,﻿vacant,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0080,﻿church,﻿St. Joseph's,English,,,,,﻿Lafourche Parish,﻿Thibadeauxville,﻿Thibodaux,﻿LA,﻿LA,29.79346434,-90.81966683,,,,,,﻿Rev.,﻿J. Andizio,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0078,﻿church,﻿St. Martin de Tours,English,,,,﻿Attakapas Parish,﻿St. Martin Parish,﻿St. Martinsville,﻿St. Martinville,﻿LA,﻿LA,30.12305334,-91.82877797,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9007,﻿church,﻿St. Michaels,English,,﻿E. bank,,,﻿St. James Parish,,﻿Convent,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,﻿Rev.,﻿Chas. de la Croix,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0041,﻿church,not recorded,English,,,,﻿St. Tammany Parish,﻿St. Tammany Parish,,﻿Covington,﻿LA,﻿LA,30.47357662,-90.10147008,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0079,﻿church,﻿St. Bernard,English,,,,,﻿St. Bernard Parish,﻿Terre aux bœufs,﻿St. Bernard,﻿LA,﻿LA,29.86739158,-89.81809799,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0106,﻿convent,﻿Ursuline Convent,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,29.96083079,-90.06070140000001,,,,,,﻿Rev.,﻿N. Benniot,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.0082,﻿church,﻿St. John Baptist,English,,,,,﻿Lafayette Parish,﻿Vermillionville,﻿Lafayette,﻿LA,﻿LA,30.22284666,-92.02353985,,,,,,﻿Rev.,﻿L. Peyretti,,,,,,,1834,NewOrleans,NewOrleans
+﻿nat.ms.0001,﻿church,﻿Church of the Holy Family,English,,,,,﻿Adams County,﻿Natches,﻿Natchez,﻿MS,﻿MS,31.55865469,-91.40131775,,,,,,,,,,﻿Vacant,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9008,﻿seminary,not recorded,English,,,,﻿Iberville Parish,,,,﻿LA,﻿LA,31.55865469,-91.40131775,,,,,,,,,,,,,,1834,NewOrleans,NewOrleans
+﻿new.la.9009,﻿academy,﻿Young Ladies' Academy,English,,﻿Grand Coteau,,,﻿St. Landry Parish,﻿Opeloussas,﻿Opelousas,﻿LA,﻿LA,31.55865469,-91.40131775,,,,,,,,,,,,,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans,NewOrleans
+﻿new.la.9012,﻿convent and academy,not recorded,English,,﻿at St. James,,,﻿St. James Parish,,﻿Convent,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,,,,,,,,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans,NewOrleans
+﻿new.la.9013,﻿asylum,﻿Poydras Asylum,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,,,,,,﻿sisters,﻿7 sisters,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans,NewOrleans
+﻿new.la.9014,﻿hospital,﻿Charity Hospital,English,,,,,﻿Orleans Parish,﻿New Orleans,﻿New Orleans,﻿LA,﻿LA,30.00991905,-90.82733222,,,,,,,,,,,﻿sisters,﻿10 sisters,﻿conducted by the Ladies of the Sacred Heart,1834,NewOrleans,NewOrleans

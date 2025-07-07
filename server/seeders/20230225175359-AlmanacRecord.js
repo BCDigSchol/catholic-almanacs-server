@@ -8,6 +8,7 @@ const path = require('path');
 const csv = require('csv-parser');
 const{ almanacRecord, institution } = require('../models');
 const{ loadData } = require('../utils/data-preprocess');
+const diocese = require('../models/diocese');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
 
 async function importData(data) {
 
-  const instKeys = ['uniqueInstID', 'instID', 'instYear', 'church_type', 'instName', 'language', 'instNote', 'placeName', 'region', 'county_orig', 'county_reg', 'city_orig', 'city_reg', 'state_orig', 'state_reg', 'latitude', 'longitude', 'memberType', 'member', 'affiliated', 'diocese', 'religiousOrder'];
+  const instKeys = ['uniqueInstID', 'instID', 'instYear', 'church_type', 'instName', 'language', 'instNote', 'placeName', 'region', 'county_orig', 'county_reg', 'city_orig', 'city_reg', 'state_orig', 'state_reg', 'latitude', 'longitude', 'memberType', 'member', 'affiliated', 'diocese', 'diocese_reg', 'religiousOrder'];
 
   const keyMapping = {
     uniqueInstID: 'ID',
@@ -50,6 +51,7 @@ async function importData(data) {
     member: 'member',
     affiliated: 'affiliated',
     diocese: 'diocese',
+    diocese_reg: 'diocese_reg',  
     religiousOrder: 'religiousOrder'
   };
 
