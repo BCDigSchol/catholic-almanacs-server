@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       person.belongsToMany(models.almanacRecord, { through: models.personInAlmanacRecord, foreignKey: 'persID', as: 'almanacRecords' });
+      person.belongsToMany(models.almanacRecord, { through: models.attendingPeople, foreignKey: 'attendingPersID', as: 'attendingAlmanacRecords' });
   }
 }
   person.init({

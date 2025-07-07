@@ -99,7 +99,7 @@ export class MapComponent {
       for (let item of res.rows) {
         for (let almanacRecord of item.almanacRecords) {
           if (almanacRecord.latitude && almanacRecord.longitude) {
-            institutionData.push(Object.assign(almanacRecord, {id: item.ID}));
+            institutionData.push(Object.assign(almanacRecord));
           }
         }
       };
@@ -109,7 +109,7 @@ export class MapComponent {
   };
 
   clickMap(item: any) {
-    this._router.navigate(['/institutions', item.id]);
+    this._router.navigate(['/institutions', item.instID]);
   };
 
   instDetailVisible: boolean = false;

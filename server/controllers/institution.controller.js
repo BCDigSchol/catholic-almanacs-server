@@ -485,7 +485,6 @@ exports.findOne = async (req, res) => {
                 latestYear: latestYear
             });}
 
-        // related institutions
         for (const person of data.dataValues.almanacRecord[0].personInfo) {
             processedData.personInfo.push(person);
         };
