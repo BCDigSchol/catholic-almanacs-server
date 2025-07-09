@@ -12,12 +12,23 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       attendingPeople.belongsTo(models.person, {foreignKey: 'attendingPersID', as: 'attendingPerson'});
-      attendingPeople.belongsTo(models.almanacRecord, {foreignKey: 'almanacRecordID', as: 'almanacRecord'});
+      attendingPeople.belongsTo(models.almanacRecord, {foreignKey: 'almanacRecordID', as: 'attendingAlmanacRecord'});
     }
   }
   attendingPeople.init({
-    attendingPersID: DataTypes.STRING,
-    almanacRecordID: DataTypes.STRING
+    attendingPersID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    almanacRecordID: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    name: DataTypes.STRING,
+    title: DataTypes.STRING,
+    suffix: DataTypes.STRING,
+    role: DataTypes.STRING,
+    note: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'attendingPeople',

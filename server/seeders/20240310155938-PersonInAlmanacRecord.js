@@ -23,10 +23,11 @@ module.exports = {
 
 async function importData(data) {
 
-  const personInAlmanacRecordKeys = ['uniqueInstID', 'persID', 'persName', 'persTitle', 'persSuffix', 'persRole', 'persNote'];
+  const personInAlmanacRecordKeys = ['uniqueInstID', 'attendingChurch', 'persID', 'persName', 'persTitle', 'persSuffix', 'persRole', 'persNote'];
 
   const keyMapping = {
     uniqueInstID: 'almanacRecordID',
+    attendingChurch: 'attendingChurch',
     persID: 'persID',
     persName: 'name',
     persTitle: 'title',
@@ -61,12 +62,20 @@ async function importData(data) {
       }
     };
     
-    if (item.almanacRecordID && item.persID) {
+    if (item.almanacRecordID && item.persID && !item.attendingChurch) {
       //console.log(item);
       try {
         await personInAlmanacRecord.findOrCreate({
           where: { almanacRecordID: item.almanacRecordID, persID: item.persID },
-          defaults: item,
+          defaults: {
+            almanacRecordID: item.almanacRecordID,
+            persID: item.persID,
+            name: item.name,
+            title: item.title,
+            suffix: item.suffix,
+            role: item.role,
+            note: item.note
+          }
         });
       //console.log(`Created personInAlmanacRecord:${item.instID}, ${item.uniquePersID}`);
       } catch (error) {

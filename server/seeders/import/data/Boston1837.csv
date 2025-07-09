@@ -1,43 +1,43 @@
-﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
-﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,﻿MA,42.3407786836978,-71.06950954047551,,,,,,﻿Rt Rev.,﻿Benedict Fenwick,﻿D. D.,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿V. Rev.,﻿William Tyler,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿V. Rev.,﻿Michael Healy,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0001,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿Rev.,﻿William Wiley,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0001,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿Rev.,﻿Patrick Byrne,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.9001,﻿chapel,﻿St. Aloysius' Chapel,English,"﻿under the Cathedral, is appropriated exclusively to the use of the male children of the Congregation",,,,,﻿Boston,,﻿MA,﻿MA,42.3407786836978,-71.06950954047551,,,,,,﻿Rev.,﻿James Conway,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0012,﻿church,﻿St. Augustin's,English,,﻿South Boston,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,﻿MA,42.334167,-71.049444,,,,,,﻿Rev.,﻿John Mahony,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0055,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Charlestown,﻿Charlestown,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,,,﻿Rev.,﻿P. Byrne,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0054,﻿church,not recorded,English,﻿once a month,,,,,﻿Canton,﻿Canton,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,,,﻿Rev.,﻿J. Mahony,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0074,﻿church,not recorded,English,﻿once a month,,,,,﻿Fall River,﻿Fall River,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,,,﻿Rev.,﻿John Corry,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,﻿Middlesex County,﻿Lowell,﻿Lowell,﻿MA,﻿MA,42.645237513059996,-71.3177197413205,,,,,,﻿Rev.,﻿Edward McCool,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,﻿once a month,,,,﻿Middlesex County,﻿Lynn,﻿Lowell,﻿MA,,42.645237513059996,-71.3177197413205,,,,,,﻿Rev.,﻿John D. Brady,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,﻿once a month,,,,﻿Middlesex County,﻿Newburyport,﻿Lowell,﻿MA,,42.645237513059996,-71.3177197413205,,,,,,﻿Rev.,﻿P. Canavan,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0129,﻿church,not recorded,English,,,,,﻿Bristol County,﻿New Bedford,﻿New Bedford,﻿MA,﻿MA,41.63779641229671,-70.9597371308124,,,,,,﻿Rev.,﻿John Brady,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0154,﻿church,﻿St. Peter's,English,,,,,﻿Barnstable County,﻿Sandwich,﻿Sandwich,﻿MA,﻿MA,41.7614069400496,-70.4931098280286,,,,,,﻿Rev.,﻿John Brady,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0152,﻿church,﻿St. Mary's,English,,,,,﻿Essex County,﻿Salem,﻿Salem,﻿MA,﻿MA,42.5212836936131,-70.8898947395781,,,,,,﻿Rev.,﻿John D. Brady,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0170,﻿church,﻿St. Mary's,English,,,,,﻿Bristol County,﻿Taunton,﻿Taunton,﻿MA,﻿MA,41.9073059522244,-71.09254200986891,,,,,,﻿Rev.,﻿John Corry,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0179,﻿church,not recorded,English,﻿once a month,,,,﻿Middlesex County,﻿Waltham,﻿Waltham,﻿MA,﻿MA,42.3784456815446,-71.2370622237897,,,,,,﻿Rev.,﻿Thomas Lynch,,,,,,,1837,﻿boston,Boston
-﻿bos.ma.0179,﻿church,﻿Worcester church,English,﻿once a month,,,,﻿Middlesex County,﻿Waltham,﻿Waltham,﻿MA,,42.3784456815446,-71.2370622237897,,,,,,﻿Rev.,﻿James Fitton,,,,,,,1837,﻿boston,Boston
-﻿har.ct.0132,﻿church,﻿Holy Trinity,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,﻿CT,41.7691004025693,-72.6784361285108,,,,,,﻿Rev. Mr.,﻿Walsh,,,,,,,1837,﻿boston,Boston
-﻿har.ct.9000,﻿church,﻿Christ Church,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,﻿CT,41.3121734425384,-72.9322694,,,,,,﻿Rev.,﻿James McDermott,,,,,,,1837,﻿boston,Boston
-﻿har.ct.9000,﻿church,﻿Christ Church,English,,,,,﻿New Haven County,﻿Augusta,﻿New Haven,﻿ME,,41.3121734425384,-72.9322694,,,,,,,,,,﻿Vacant,,,,1837,﻿boston,Boston
-﻿por.me.0007,﻿church,not recorded,English,,,,,,﻿Bangor,,﻿ME,,44.80387965,-68.76104988,,,,,,﻿Rev.,﻿Michael Lynch,,,,,,,1837,﻿boston,Boston
-﻿por.me.0018,﻿church,﻿St. Joseph's,English,,,,,﻿Washington County,﻿Eastport,﻿Eastport,﻿ME,﻿ME,44.906479986015206,-66.991127646257,,,,,,﻿Rev.,﻿Francis Kiernan,,,,,,,1837,﻿boston,Boston
-﻿por.me.0023,﻿church,﻿St. Ann's,English,,,,,﻿Penobscot County,﻿Indian Old Town,﻿Old Town,﻿ME,﻿ME,44.942660343140204,-68.6521877375997,,,,,,﻿Rev.,﻿A. Petithomme,,,,,,,1837,﻿boston,Boston
-﻿por.me.0080,﻿church,not recorded,English,,,,,,﻿North Whitefield,,﻿ME,,44.942660343140204,-68.6521877375997,,,,,,﻿Rev.,﻿P. Ryan,,,,,,,1837,﻿boston,Boston
-﻿por.me.9002,﻿church,not recorded,English,,,,,,﻿New Castle,,﻿ME,,44.942660343140204,-68.6521877375997,,,﻿occasionally,,,﻿Rev.,﻿P. Ryan,,,,,,,1837,﻿boston,Boston
-﻿por.me.0002,﻿church,﻿St. Dominick's,English,,,,,﻿Cumberland County,﻿Portland,﻿Portland,﻿ME,﻿ME,43.6503245767494,-70.2626408952102,,,,,,﻿Rev.,﻿Charles French,,,,,,,1837,﻿boston,Boston
-﻿por.me.0032,﻿church,not recorded,English,,,,,﻿Washington County,﻿Pleasant Point,﻿Sipayik,﻿ME,﻿ME,44.957351749508106,-67.0453747203092,,,,,,﻿Rev. Mr.,﻿Desmilliers,,,,,,,1837,﻿boston,Boston
-﻿por.me.0041,﻿church,not recorded,English,,,,,﻿Sullivan County,﻿Claremont,﻿Claremont,﻿NH,﻿NH,43.3748795356664,-72.341915207252,,,,,,,,,,﻿Vacant,,,,1837,﻿boston,Boston
-﻿por.me.0044,﻿church,﻿St. Aloysius,English,,,,,﻿Strafford County,﻿Dover,﻿Dover,﻿NH,﻿NH,43.1989317260965,-70.877090592035,,,,,,﻿Rev.,﻿P. Canavan,,,,,,,1837,﻿boston,Boston
-﻿bur.vt.0001,﻿church,﻿St. Mary's,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,﻿VT,44.483453348186394,-73.2147437334854,,,,,,,,,,﻿Vacant,,,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿church,not recorded,English,,,,,,﻿Pittsford,,﻿VT,﻿VT,43.7020659,-73.0121647,,,,,,﻿Rev.,﻿Jeremiah O'Callaghan,,,,,,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Seminary of the Holy Cross,English,,﻿Franklin Street,,,,﻿Boston,,﻿MA,,43.7020659,-73.0121647,,,,,,﻿Right Rev.,﻿B. Fenwick,,,,﻿Bishop of Boston,,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Seminary of the Holy Cross,English,,﻿Franklin Street,,,,﻿Boston,,﻿MA,,43.7020659,-73.0121647,,,,,,,,,,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,﻿Rev.,﻿James Fitton,,﻿President,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Joseph Brigden,,﻿Principal,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,﻿Rt. Rev.,﻿B. J. Fenwick,﻿D. D.,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,﻿Very Rev.,﻿Wm. Tyler,,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,﻿Very Rev.,﻿Michal Healy,,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,﻿Rev.,﻿Wm. Wiley,,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿boston,Boston
-﻿bur.vt.0041,﻿school,﻿Free School,English,,﻿Franklin Street,,,,﻿Boston,,﻿MA,,43.7020659,-73.0121647,,,,,,,,,,,﻿sisters,﻿4 sisters,﻿Sisters of Charity,1837,﻿boston,Boston
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingPersID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,﻿MA,42.3407786836978,-71.06950954047551,,,,,,﻿ben_fenwick_901,﻿Rt Rev.,﻿Benedict Fenwick,﻿D. D.,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿wil_tyler_901,﻿V. Rev.,﻿William Tyler,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿mic_healy_901,﻿V. Rev.,﻿Michael Healy,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0001,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿wil_wiley_901,﻿Rev.,﻿William Wiley,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0001,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,,42.3407786836978,-71.06950954047551,,,,,,﻿pat_byrne_901,﻿Rev.,﻿Patrick Byrne,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.9001,﻿chapel,﻿St. Aloysius' Chapel,English,"﻿under the Cathedral, is appropriated exclusively to the use of the male children of the Congregation",,,,,﻿Boston,,﻿MA,﻿MA,42.3407786836978,-71.06950954047551,,,,,,﻿jam_conway_901,﻿Rev.,﻿James Conway,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0012,﻿church,﻿St. Augustin's,English,,﻿South Boston,,,﻿Suffolk County,﻿Boston,﻿Boston,﻿MA,﻿MA,42.334167,-71.049444,,,,,,﻿joh_mahony_901,﻿Rev.,﻿John Mahony,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0055,﻿church,﻿St. Mary's,English,,,,,﻿Suffolk County,﻿Charlestown,﻿Charlestown,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,,,﻿p_byrne_901,﻿Rev.,﻿P. Byrne,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0054,﻿church,not recorded,English,,,,,,﻿Canton,﻿Canton,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,﻿once a month,,﻿j_mahony_901,﻿Rev.,﻿J. Mahony,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0074,﻿church,not recorded,English,,,,,,﻿Fall River,﻿Fall River,﻿MA,﻿MA,42.373402898102704,-71.0644585070973,,,,﻿once a month,,﻿joh_corry_901,﻿Rev.,﻿John Corry,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,﻿Middlesex County,﻿Lowell,﻿Lowell,﻿MA,﻿MA,42.645237513059996,-71.3177197413205,,,,,,﻿edw_mccool_901,﻿Rev.,﻿Edward McCool,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,﻿Middlesex County,﻿Lynn,﻿Lowell,﻿MA,,42.645237513059996,-71.3177197413205,,,,﻿once a month,,,﻿Rev.,﻿John D. Brady,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,﻿Middlesex County,﻿Newburyport,﻿Lowell,﻿MA,,42.645237513059996,-71.3177197413205,,,,﻿once a month,,﻿p_canavan_901,﻿Rev.,﻿P. Canavan,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0129,﻿church,not recorded,English,,,,,﻿Bristol County,﻿New Bedford,﻿New Bedford,﻿MA,﻿MA,41.63779641229671,-70.9597371308124,,,,,,﻿joh_brady_901,﻿Rev.,﻿John Brady,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0154,﻿church,﻿St. Peter's,English,,,,,﻿Barnstable County,﻿Sandwich,﻿Sandwich,﻿MA,﻿MA,41.7614069400496,-70.4931098280286,,,,,,﻿joh_brady_901,﻿Rev.,﻿John Brady,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0152,﻿church,﻿St. Mary's,English,,,,,﻿Essex County,﻿Salem,﻿Salem,﻿MA,﻿MA,42.5212836936131,-70.8898947395781,,,,,,﻿joh_d_brady_901,﻿Rev.,﻿John D. Brady,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0170,﻿church,﻿St. Mary's,English,,,,,﻿Bristol County,﻿Taunton,﻿Taunton,﻿MA,﻿MA,41.9073059522244,-71.09254200986891,,,,,,﻿joh_corry_901,﻿Rev.,﻿John Corry,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0179,﻿church,not recorded,English,,,,,﻿Middlesex County,﻿Waltham,﻿Waltham,﻿MA,﻿MA,42.3784456815446,-71.2370622237897,,,,﻿once a month,,﻿tho_lynch_901,﻿Rev.,﻿Thomas Lynch,,,,,,,1837,﻿Boston,Boston
+﻿bos.ma.0179,﻿church,﻿Worcester church,English,,,,,﻿Middlesex County,﻿Waltham,﻿Waltham,﻿MA,,42.3784456815446,-71.2370622237897,,,,,,﻿jam_fitton_901,﻿Rev.,﻿James Fitton,,,,,,,1837,﻿Boston,Boston
+﻿har.ct.0132,﻿church,﻿Holy Trinity,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,﻿CT,41.7691004025693,-72.6784361285108,,,,,,﻿walsh_901,﻿Rev. Mr.,﻿Walsh,,,,,,,1837,﻿Boston,Boston
+﻿har.ct.9000,﻿church,﻿Christ Church,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,﻿CT,41.3121734425384,-72.9322694,,,,,,﻿jam_mcdermott_901,﻿Rev.,﻿James McDermott,,,,,,,1837,﻿Boston,Boston
+﻿har.ct.9000,﻿church,﻿Christ Church,English,,,,,﻿New Haven County,﻿Augusta,﻿New Haven,﻿ME,,41.3121734425384,-72.9322694,,,,,,,,,,,﻿Vacant,,,,1837,﻿Boston,Boston
+﻿por.me.0007,﻿church,not recorded,English,,,,,,﻿Bangor,,﻿ME,,44.80387965,-68.76104988,,,,,,﻿mic_lynch_901,﻿Rev.,﻿Michael Lynch,,,,,,,1837,﻿Boston,Boston
+﻿por.me.0018,﻿church,﻿St. Joseph's,English,,,,,﻿Washington County,﻿Eastport,﻿Eastport,﻿ME,﻿ME,44.906479986015206,-66.991127646257,,,,,,﻿fra_kiernan_901,﻿Rev.,﻿Francis Kiernan,,,,,,,1837,﻿Boston,Boston
+﻿por.me.0023,﻿church,﻿St. Ann's,English,,,,,﻿Penobscot County,﻿Indian Old Town,﻿Old Town,﻿ME,﻿ME,44.942660343140204,-68.6521877375997,,,,,,﻿a_petithomme_901,﻿Rev.,﻿A. Petithomme,,,,,,,1837,﻿Boston,Boston
+﻿por.me.0080,﻿church,not recorded,English,,,,,,﻿North Whitefield,,﻿ME,,44.942660343140204,-68.6521877375997,,,,,,﻿p_ryan_901,﻿Rev.,﻿P. Ryan,,,,,,,1837,﻿Boston,Boston
+﻿por.me.9002,﻿church,not recorded,English,,,,,,﻿New Castle,,﻿ME,,44.942660343140204,-68.6521877375997,,,,﻿occasionally,,﻿p_ryan_901,﻿Rev.,﻿P. Ryan,,,,,,,1837,﻿Boston,Boston
+﻿por.me.0002,﻿church,﻿St. Dominick's,English,,,,,﻿Cumberland County,﻿Portland,﻿Portland,﻿ME,﻿ME,43.6503245767494,-70.2626408952102,,,,,,﻿cha_french_901,﻿Rev.,﻿Charles French,,,,,,,1837,﻿Boston,Boston
+﻿por.me.0032,﻿church,not recorded,English,,,,,﻿Washington County,﻿Pleasant Point,﻿Sipayik,﻿ME,﻿ME,44.957351749508106,-67.0453747203092,,,,,,﻿desmilliers_901,﻿Rev. Mr.,﻿Desmilliers,,,,,,,1837,﻿Boston,Boston
+﻿por.me.0041,﻿church,not recorded,English,,,,,﻿Sullivan County,﻿Claremont,﻿Claremont,﻿NH,﻿NH,43.3748795356664,-72.341915207252,,,,,,,,,,,﻿Vacant,,,,1837,﻿Boston,Boston
+﻿por.me.0044,﻿church,﻿St. Aloysius,English,,,,,﻿Strafford County,﻿Dover,﻿Dover,﻿NH,﻿NH,43.1989317260965,-70.877090592035,,,,,,﻿p_canavan_901,﻿Rev.,﻿P. Canavan,,,,,,,1837,﻿Boston,Boston
+﻿bur.vt.0001,﻿church,﻿St. Mary's,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,﻿VT,44.483453348186394,-73.2147437334854,,,,,,,,,,,﻿Vacant,,,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿church,not recorded,English,,,,,,﻿Pittsford,,﻿VT,﻿VT,43.7020659,-73.0121647,,,,,,﻿jer_ocallaghan_901,﻿Rev.,﻿Jeremiah O'Callaghan,,,,,,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Seminary of the Holy Cross,English,,﻿Franklin Street,,,,﻿Boston,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Right Rev.,﻿B. Fenwick,,,,﻿Bishop of Boston,,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Seminary of the Holy Cross,English,,﻿Franklin Street,,,,﻿Boston,,﻿MA,,43.7020659,-73.0121647,,,,,,,,,,,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Rev.,﻿James Fitton,,﻿President,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,,﻿Joseph Brigden,,﻿Principal,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Rt. Rev.,﻿B. J. Fenwick,﻿D. D.,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Very Rev.,﻿Wm. Tyler,,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Very Rev.,﻿Michal Healy,,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿seminary,﻿Mount St. James' Seminary,English,,﻿Franklin Street,,,,﻿Worcester,,﻿MA,,43.7020659,-73.0121647,,,,,,,﻿Rev.,﻿Wm. Wiley,,﻿Reference,,﻿clergy,﻿two or more of his clergy,,1837,﻿Boston,Boston
+﻿bur.vt.0041,﻿school,﻿Free School,English,,﻿Franklin Street,,,,﻿Boston,,﻿MA,,43.7020659,-73.0121647,,,,,,,,,,,,﻿sisters,﻿4 sisters,﻿Sisters of Charity,1837,﻿Boston,Boston

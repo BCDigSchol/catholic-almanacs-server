@@ -10,10 +10,32 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       attendingPersID: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       almanacRecordID: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      title: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      suffix: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      note: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,

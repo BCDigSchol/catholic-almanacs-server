@@ -9,6 +9,7 @@ const person = db.person;
 const personInAlmanacRecord = db.personInAlmanacRecord;
 const institution = db.institution;
 const relatedInstitutions = db.relatedInstitutions;
+const attendingPeople = db.attendingPeople;
 
 /*exports.create = (req, res) => {
     const churches = req.body;
@@ -201,7 +202,16 @@ exports.findByID = async (req, res) => {
                     through: {
                         model: personInAlmanacRecord,
                         attributes: ['name','title', 'suffix', 'role', 'note'],
-                    }}]
+                    }}
+                    ,{
+                    model: person,
+                    as: 'attendingPers',
+                    attributes: ['ID'],
+                    through: {
+                        model: attendingPeople,
+                        attributes: ['name', 'title', 'suffix']
+                    }}
+                ]
         }, {
             model: relatedInstitutions,
             as: 'relatedFirst',
@@ -240,6 +250,7 @@ exports.findByID = async (req, res) => {
             attendedBy: [],
             relatedInstitutions: [],
             personInfo: [],
+            attendingPeople: [],
             // adding the info of the last record first so that the information of "all years" is the most up-to-date
         };
         
@@ -247,6 +258,7 @@ exports.findByID = async (req, res) => {
         let existingAttendedByInstIDs = [];
         let existingPersonIDs = [];
         let existingRelatedInstIDs = [];
+        let existingAttendingPeopleIDs = [];
 
         // all the (unique) dioceses
         for (const record of data.dataValues.almanacRecord) {
@@ -319,6 +331,18 @@ exports.findByID = async (req, res) => {
                     processedData.personInfo.push(person);
                 }
             });
+
+            record.attendingPers.forEach(attendingPerson => {
+                if (!existingAttendingPeopleIDs.includes(attendingPerson.ID)) {
+                    existingAttendingPeopleIDs.push(attendingPerson.ID);
+                    processedData.attendingPeople.push({
+                        ID: attendingPerson.ID,
+                        name: attendingPerson.attendingPeople.name,
+                        title: attendingPerson.attendingPeople.title,
+                        suffix: attendingPerson.attendingPeople.suffix
+                    });
+                }
+            });
         };
 
         // all the related institutions
@@ -355,7 +379,7 @@ exports.findByID = async (req, res) => {
                 instType: relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instType,
             });
         }
-
+    
 
         processedData.year.reverse();
         res.send(processedData);
@@ -398,7 +422,17 @@ exports.findOne = async (req, res) => {
                 through: {
                     model: personInAlmanacRecord,
                     attributes: ['name','title', 'suffix', 'role', 'note'],
-                }}]
+                }}
+                ,{
+                    model: person,
+                    as: 'attendingPers',
+                    attributes: ['ID'],
+                    through: {
+                        model: attendingPeople,
+                        attributes: ['name', 'title', 'suffix']
+                    }
+                }
+            ]
         }, {
             model: relatedInstitutions,
             as: 'relatedFirst',
@@ -436,7 +470,8 @@ exports.findOne = async (req, res) => {
             parentInstitutions: [],
             childInstitutions: [],
             siblingInstitutions: [],
-            personInfo: []
+            personInfo: [],
+            attendingPeople: [],
         };
 
         // attending institutions, attended by institutions and persons
@@ -577,6 +612,35 @@ exports.findOne = async (req, res) => {
                 });
         }
         };
+
+        if (data.dataValues.almanacRecord[0].attendingPers.length > 0) {
+            for (const attendingPerson of data.dataValues.almanacRecord[0].attendingPers) {
+                const affiliatedInst = await institution.findAll({
+                    attributes: ['ID'],
+                    include: [{
+                        model: almanacRecord,
+                        as: 'almanacRecord',
+                        where: { year: req.params.year },
+                        attributes: ['instName', 'instID', 'year'],
+                        include: [{
+                            model: person,
+                            as: 'personInfo',
+                            where: { ID: attendingPerson.ID },
+                            attributes: ['ID'],
+                            through: {
+                                model: personInAlmanacRecord,
+                                attributes: ['name', 'title', 'suffix']
+                            }
+                        }]
+                    }]
+                })
+                processedData.attendingPeople.push({
+                    attendingPerson: attendingPerson,
+                    affiliatedInst: affiliatedInst[0].almanacRecord[0]
+                })
+            }
+            }
+
         res.send(processedData);}
     else {
         res.status(404).send({

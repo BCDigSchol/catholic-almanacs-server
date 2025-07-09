@@ -17,7 +17,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   personInAlmanacRecord.init({
     almanacRecordID: DataTypes.STRING,
-    persID: DataTypes.STRING,
+    persID: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     name: DataTypes.STRING,
     title: DataTypes.STRING,
     suffix: DataTypes.STRING,

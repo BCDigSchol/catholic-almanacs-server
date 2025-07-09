@@ -132,6 +132,54 @@
                                     <div *ngIf="data.personInfo.length === 0">None</div>
                                 </div>
                             </div>
+                            @if (data.attendingPeople && !data.attendingPeople[0].attendingPerson) { <!--for the all-years page-->
+                            <div class="row">
+                                <div class="cell">Attending People</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingPeople">
+                                            <div [routerLink]="'/people/' + item.ID">{{item.title + ' ' + item.name + ' ' + item.suffix}}</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">Attended From</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.attendedBy.length === 0">None</div>
+                                </div>
+                            </div>
+                            }
+                            @if (data.attendingPeople && data.attendingPeople[0].attendingPerson) { <!--for the one-year page-->
+                            <div class="row">
+                                @if (data.attendingPeople[0].affiliatedInst) {
+                                    <div class="cell">Attending From</div>
+                                }
+                                @else {
+                                    <div class="cell">Attending By</div>
+                                }
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                                        <ng-container>
+                                            <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingPeople">
+                                                <div [routerLink]="'/institutions/' + item.affiliatedInst.instID">{{ item.affiliatedInst.instName }}</div>
+                                            </button>
+                                        </ng-container>
+                                        <span *ngIf="data.attendingPeople.length > 0">by</span>
+                                        <ng-container>
+                                            <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingPeople">
+                                                <div [routerLink]="'/people/' + item.attendingPerson.ID">{{item.attendingPerson.attendingPeople.title + ' ' + item.attendingPerson.attendingPeople.name + ' ' + item.attendingPerson.attendingPeople.suffix}}</div>
+                                            </button>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            }
                             <div class="row">
                                 <div class="cell">Attending Institutions</div>
                                 <div class="cell">
@@ -141,17 +189,6 @@
                                         </button>
                                     </div>
                                     <div *ngIf="data.attendingInstitutions.length === 0">None</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">Attended By</div>
-                                <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
-                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                        </button>
-                                    </div>
-                                    <div *ngIf="data.attendedBy.length === 0">None</div>
                                 </div>
                             </div>
                         </div>

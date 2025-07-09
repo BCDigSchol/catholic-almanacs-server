@@ -1,38 +1,38 @@
-﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
-﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿Sermons in German, French and English.",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,﻿MI,42.320833,-83.076667,,,,,,﻿Right Rev.,﻿Frederick Rézé,﻿D.D.,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿Sermons in German, French and English.",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,,﻿Rev.,﻿Vincent Badin,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿Sermons in German, French and English.",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,,﻿Rev.,﻿Martin Kundig,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9007,﻿church,﻿Trinity Church,English,,,,,,﻿Detroit,,﻿MI,,42.320833,-83.076667,,,,,,﻿Rev.,﻿Bernard O'Cavanagh,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9007,﻿church,﻿St. Clare's,English,,,,,,﻿Detroit,,﻿MI,,42.320833,-83.076667,,,,,,﻿Rev.,﻿S A. Bernier,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.0018,﻿church,not recorded,English,,,,,,﻿Ann Arbour,﻿Ann Arbor,﻿MI,,42.2857551,-83.7413768,,,,,,﻿Rev. Mr.,﻿Kelly,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.0018,﻿church,not recorded,English,,,,,,﻿Ann Arbour,﻿Ann Arbor,﻿MI,,42.2857551,-83.7413768,,,,,,﻿Rev. Mr.,﻿Morrissey,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.9000,﻿church,not recorded,English,,,,,﻿Emmet County,﻿Arbre Croche,,﻿MI,﻿MI,45.626436918453905,-85.0710526564355,,,,,,,,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.9000,﻿church,not recorded,English,,,,﻿Munroe County,﻿Emmet County,﻿Bay Settlement,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,﻿Rev. Mr.,﻿Warlop,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,,,﻿Munroe County,﻿Emmet County,﻿Bertrand,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,﻿Rev. Mr.,﻿Alwill,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,﻿Fond du lac Superieur,,﻿Munroe County,﻿Emmet County,﻿Bertrand,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,﻿Rev. Mr.,﻿Pierz,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,﻿A la Croix,,﻿Munroe County,﻿Emmet County,﻿Bertrand,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,﻿Rev. Mr.,﻿Pierz,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,﻿once in two months,﻿A la Croix,,﻿Munroe County,﻿Emmet County,﻿Fort Winebago,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,﻿Rev.,﻿Theod. J. Vanden Broek,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9005,﻿church,not recorded,English,﻿Instructions in the English language,﻿Grand River,,,,,,﻿MI,﻿MI,45.626436918453905,-85.0710526564355,,,,,,﻿Rev. Mr.,﻿Vizosky,,,,,,,1837,﻿detroit,Detroit
-﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿Sermons in French and Menomony.,,,,﻿Brown County,﻿Green Bay,﻿Green Bay,,﻿WI,44.508541015782605,-88.01525684610941,,,,,,﻿Rev. Mr.,﻿Hetscher,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1837,﻿detroit,Detroit
-﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿Sermons in French and Menomony.,﻿Little Shoot Cockalin,,,﻿Brown County,﻿Green Bay,﻿Green Bay,,,44.508541015782605,-88.01525684610941,,,,,,﻿Rev.,﻿Theodore J. Vanden Broek,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1837,﻿detroit,Detroit
-﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿Sermons in French and Menomony.,﻿Little Shoot Cockalin,,,﻿Brown County,﻿Machinac,﻿Green Bay,,,44.508541015782605,-88.01525684610941,,,,,,﻿Rev.,﻿F. Bonduel,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1837,﻿detroit,Detroit
-﻿det.mi.0114,﻿church,not recorded,English,,,,,﻿Monroe County,﻿Monroe,﻿Monroe,﻿MI,﻿MI,41.9185513506712,-83.3968562355573,,,,,,﻿Rev. Mr.,﻿Carabin,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.0114,﻿church,not recorded,English,,,,,﻿Monroe County,﻿Prairie du Chien,﻿Monroe,﻿WI,,41.9185513506712,-83.3968562355573,,,,,,﻿Rev.,﻿S. Mazzuchelli,,,,,,,1837,﻿detroit,Detroit
-﻿mar.mi.0082,﻿church,not recorded,English,,,,,,﻿Sault Ste. Marie,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,,﻿Rev. Mr.,﻿Hetscher,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9001,﻿church,﻿St. Joseph's,English,,,,,,,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,,﻿Rev.,﻿S.T. Badin,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9001,﻿church,﻿St. Joseph's,English,,,,,,,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,,﻿Rev. Mr.,﻿Deseilles,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.0083,﻿church,﻿St. Paul,English,,,,,,,,,,42.3861485,-82.91185909999999,,﻿Visited alternately by Rev. Mr. Bohemes,,,,,,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9002,﻿church,﻿St. Felicite,English,,,,,,,,,,42.3861485,-82.91185909999999,,﻿Visited alternately by Rev. Mr. Bohemes,,,,,,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿church,﻿St. Francis,English,,,,,,,,,,42.3861485,-82.91185909999999,,﻿Visited alternately by Rev. Mr. Bohemes,,,,,,,,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿church,﻿St. Francis,English,,,,,,,,,,42.3861485,-82.91185909999999,,,,,,﻿Rev. Mr.,﻿Bowens,,﻿General Missionary,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿college,﻿St. Philip's College (Cote Du Nord-est),English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,﻿Right Rev. Dr.,﻿RESE,,﻿Bishop of Detroit,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿college,﻿St. Philip's College (Cote Du Nord-est),English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,﻿Rev. Mr.,﻿Vandenpoel,,﻿Superior of the Institution,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿college,﻿St. Philip's College (Cote Du Nord-est),English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,﻿Rev. Mr.,﻿De Bruyn,,﻿President of Studies,,,,,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿convent,﻿Convent,English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿female academy,﻿Female Academy,English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿convent,﻿St. Clare's Convent,English,,,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,﻿WI,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Grand River,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Arbre Croche,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
-﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿Little Shoot Cockalin,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿detroit,Detroit
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingPersID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,diocese,diocese_reg
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿Sermons in German, French and English.",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,﻿MI,42.320833,-83.076667,,,,,,﻿fre_rézé_901,﻿Right Rev.,﻿Frederick Rézé,﻿D.D.,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿Sermons in German, French and English.",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,,﻿vin_badin_901,﻿Rev.,﻿Vincent Badin,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.0002,﻿Cathedral,﻿Cathedral of St. Ann,"﻿German, French, English","﻿Sermons in German, French and English.",,,,﻿Wayne County,﻿Detroit,﻿Detroit,﻿MI,,42.320833,-83.076667,,,,,,﻿mar_kundig_901,﻿Rev.,﻿Martin Kundig,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9007,﻿church,﻿Trinity Church,English,,,,,,﻿Detroit,,﻿MI,,42.320833,-83.076667,,,,,,﻿ber_ocavanagh_901,﻿Rev.,﻿Bernard O'Cavanagh,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9007,﻿church,﻿St. Clare's,English,,,,,,﻿Detroit,,﻿MI,,42.320833,-83.076667,,,,,,,﻿Rev.,﻿S A. Bernier,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.0018,﻿church,not recorded,English,,,,,,﻿Ann Arbour,﻿Ann Arbor,﻿MI,,42.2857551,-83.7413768,,,,,,﻿kelly_901,﻿Rev. Mr.,﻿Kelly,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.0018,﻿church,not recorded,English,,,,,,﻿Ann Arbour,﻿Ann Arbor,﻿MI,,42.2857551,-83.7413768,,,,,,,﻿Rev. Mr.,﻿Morrissey,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.9000,﻿church,not recorded,English,,,,,﻿Emmet County,﻿Arbre Croche,,﻿MI,﻿MI,45.626436918453905,-85.0710526564355,,,,,,,,,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.9000,﻿church,not recorded,English,,,,﻿Munroe County,﻿Emmet County,﻿Bay Settlement,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,,﻿Rev. Mr.,﻿Warlop,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,,,﻿Munroe County,﻿Emmet County,﻿Bertrand,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,,﻿Rev. Mr.,﻿Alwill,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,﻿Fond du lac Superieur,,﻿Munroe County,﻿Emmet County,﻿Bertrand,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,,﻿Rev. Mr.,﻿Pierz,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,﻿A la Croix,,﻿Munroe County,﻿Emmet County,﻿Bertrand,,﻿MI,,45.626436918453905,-85.0710526564355,,,,,,,﻿Rev. Mr.,﻿Pierz,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.9000,﻿church,﻿St. Joseph's,English,,﻿A la Croix,,﻿Munroe County,﻿Emmet County,﻿Fort Winebago,,﻿MI,,45.626436918453905,-85.0710526564355,,,,﻿once in two months,,,﻿Rev.,﻿Theod. J. Vanden Broek,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9005,﻿church,not recorded,English,﻿Instructions in the English language,﻿Grand River,,,,,,﻿MI,﻿MI,45.626436918453905,-85.0710526564355,,,,,,﻿vizosky_901,﻿Rev. Mr.,﻿Vizosky,,,,,,,1837,﻿Detroit,Detroit
+﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿Sermons in French and Menomony.,,,,﻿Brown County,﻿Green Bay,﻿Green Bay,,﻿WI,44.508541015782605,-88.01525684610941,,,,,,﻿hetscher_901,﻿Rev. Mr.,﻿Hetscher,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1837,﻿Detroit,Detroit
+﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿Sermons in French and Menomony.,﻿Little Shoot Cockalin,,,﻿Brown County,﻿Green Bay,﻿Green Bay,,,44.508541015782605,-88.01525684610941,,,,,,,﻿Rev.,﻿Theodore J. Vanden Broek,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1837,﻿Detroit,Detroit
+﻿gre.wi.0002,﻿church,not recorded,﻿French and Menomony,﻿Sermons in French and Menomony.,﻿Little Shoot Cockalin,,,﻿Brown County,﻿Machinac,﻿Green Bay,,,44.508541015782605,-88.01525684610941,,,,,,,﻿Rev.,﻿F. Bonduel,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",1837,﻿Detroit,Detroit
+﻿det.mi.0114,﻿church,not recorded,English,,,,,﻿Monroe County,﻿Monroe,﻿Monroe,﻿MI,﻿MI,41.9185513506712,-83.3968562355573,,,,,,﻿carabin_901,﻿Rev. Mr.,﻿Carabin,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.0114,﻿church,not recorded,English,,,,,﻿Monroe County,﻿Prairie du Chien,﻿Monroe,﻿WI,,41.9185513506712,-83.3968562355573,,,,,,,﻿Rev.,﻿S. Mazzuchelli,,,,,,,1837,﻿Detroit,Detroit
+﻿mar.mi.0082,﻿church,not recorded,English,,,,,,﻿Sault Ste. Marie,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,,﻿hetscher_901,﻿Rev. Mr.,﻿Hetscher,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9001,﻿church,﻿St. Joseph's,English,,,,,,,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,,﻿st_badin_901,﻿Rev.,﻿S.T. Badin,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9001,﻿church,﻿St. Joseph's,English,,,,,,,,﻿MI,,41.9185513506712,-83.3968562355573,,,,,,,﻿Rev. Mr.,﻿Deseilles,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.0083,﻿church,﻿St. Paul,English,,,,,,,,,,42.3861485,-82.91185909999999,,,﻿Visited alternately by Rev. Mr. Bohemes,,,,,,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9002,﻿church,﻿St. Felicite,English,,,,,,,,,,42.3861485,-82.91185909999999,,,﻿Visited alternately by Rev. Mr. Bohemes,,,,,,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿church,﻿St. Francis,English,,,,,,,,,,42.3861485,-82.91185909999999,,,﻿Visited alternately by Rev. Mr. Bohemes,,,,,,,,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿church,﻿St. Francis,English,,,,,,,,,,42.3861485,-82.91185909999999,,,,,,,﻿Rev. Mr.,﻿Bowens,,﻿General Missionary,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿college,﻿St. Philip's College (Cote Du Nord-est),English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,﻿Right Rev. Dr.,﻿RESE,,﻿Bishop of Detroit,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿college,﻿St. Philip's College (Cote Du Nord-est),English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,﻿Rev. Mr.,﻿Vandenpoel,,﻿Superior of the Institution,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿college,﻿St. Philip's College (Cote Du Nord-est),English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,﻿Rev. Mr.,﻿De Bruyn,,﻿President of Studies,,,,,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿convent,﻿Convent,English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿female academy,﻿Female Academy,English,,,,,,﻿Detroit,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿convent,﻿St. Clare's Convent,English,,,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,﻿WI,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Grand River,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Arbre Croche,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿St. Joseph's,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
+﻿det.mi.9003,﻿school,﻿Indian School,English,,﻿Little Shoot Cockalin,﻿N. W. Territory,,,﻿Green Bay,,﻿MI,,42.3861485,-82.91185909999999,,,,,,,,,,,,,,﻿Sisters of St. Clare,1837,﻿Detroit,Detroit
