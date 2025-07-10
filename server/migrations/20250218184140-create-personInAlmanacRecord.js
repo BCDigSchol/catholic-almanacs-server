@@ -38,6 +38,15 @@ module.exports = {
         type: Sequelize.STRING(1024),
         allowNull: true
       },
+      isAttending: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
+      },
+      attendingInstID: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

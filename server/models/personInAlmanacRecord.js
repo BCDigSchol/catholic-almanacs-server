@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       personInAlmanacRecord.belongsTo(models.almanacRecord, { foreignKey: 'almanacRecordID', as: 'institution'});
       personInAlmanacRecord.belongsTo(models.person, { foreignKey: 'persID', as: 'person'});
+      personInAlmanacRecord.belongsTo(models.institution, { foreignKey: 'attendingInstID', as: 'attendingPersonsInstitution' });
     }
   }
   personInAlmanacRecord.init({
@@ -26,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     suffix: DataTypes.STRING,
     role: DataTypes.STRING,
     note: DataTypes.STRING,
+    isAttending: DataTypes.BOOLEAN,
+    attendingInstID: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'personInAlmanacRecord',

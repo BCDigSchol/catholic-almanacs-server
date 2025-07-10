@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       institution.hasMany(models.almanacRecord, { foreignKey: 'instID', as: 'almanacRecord' });
       institution.hasMany(models.relatedInstitutions, { foreignKey: 'firstID', as: 'relatedFirst' });
       institution.hasMany(models.relatedInstitutions, { foreignKey: 'secondID', as: 'relatedSecond' });
+      institution.hasMany(models.personInAlmanacRecord, { foreignKey: 'attendingInstID', as: 'attendingInstitutionsPerson' });
     }
   }
   institution.init({

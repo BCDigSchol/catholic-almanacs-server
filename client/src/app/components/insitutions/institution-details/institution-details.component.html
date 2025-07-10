@@ -29,21 +29,22 @@
                                     {{data.diocese?.join(', ' )}}
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="cell">Notes</div>
-                                <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">Place Name</div>
-                                <div class="cell">{{data.placeName}}</div>
-                            </div>
-                            <div class="row">
+                            @if (data.instNote) {
+                                <div class="row">
+                                    <div class="cell">Notes</div>
+                                    <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
+                                </div>
+                            }
+                            @if (data.region) {
+                                <div class="row">
                                 <div class="cell">Region</div>
                                 <div class="cell">{{data.region}}</div>
                             </div>
+                            }
                             <div class="row">
                                 <div class="cell">Location (Original)</div>
                                 <div class="cell">
+                                    {{data.placeName ? data.placeName + ', ' : ''}}
                                     {{data.countyOrig ? data.countyOrig + ', ' : ''}}
                                     {{data.cityOrig ? data.cityOrig + ', ' : ''}}
                                     {{data.stateOrig ? data.stateOrig : data.stateReg}}
@@ -57,19 +58,51 @@
                                     {{data.stateReg ? data.stateReg : data.stateOrig}}
                                 </div>
                             </div>
+                            @if (data.member) {
+                                <div class="row">
+                                    <div class="cell">Member</div>
+                                    <div class="cell">{{data.member}}</div>
+                                </div>
+                            }
+                            @if (data.affiliated) {
+                                <div class="row">
+                                    <div class="cell">Affiliated</div>
+                                    <div class="cell">{{data.affiliated}}</div>
+                                </div>
+                            }
+                            @if (data.residingPersonInfo && data.residingPersonInfo.length > 0) {
                             <div class="row">
-                                <div class="cell">Member</div>
-                                <div class="cell">{{data.member}}</div>
+                                <div class="cell">Residing People</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.residingPersonInfo">
+                                            <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
+                            }
+                            @if (data.visitingPersonInfo && data.visitingPersonInfo.length > 0) {
                             <div class="row">
-                                <div class="cell">Member Type</div>
-                                <div class="cell">{{data.memberType}}</div>
+                                <div class="cell">Visiting People</div>
+                                <div class="cell">
+                                    @for (item of data.visitingPersonInfo; track item.ID) {
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+                                        <button mat-button class="!text-xs md:!text-sm" color="primary">
+                                            <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
+                                        </button>
+                                        @if (item.personInAlmanacRecord.attendingInstID) {
+                                            <p>from</p>
+                                            <button mat-button class="!text-xs md:!text-sm" color="primary">
+                                                <div [routerLink]="'/institutions/' + item.personInAlmanacRecord.attendingInstID">{{item.personInAlmanacRecord.attendingInstName}}</div>
+                                            </button>
+                                        }
+                                    </div>
+                                }
+                                </div>
                             </div>
-                            <div class="row">
-                                <div class="cell">Affiliated</div>
-                                <div class="cell">{{data.affiliated}}</div>
-                            </div>
-                            @if (data.relatedInstitutions) {
+                            }
+                            @if (data.relatedInstitutions && data.relatedInstitutions.length > 0) {
                                 <div class="row">
                                 <div class="cell">Relevant Institutions</div>
                                 <div class="cell">
@@ -82,7 +115,7 @@
                                 </div>
                             </div>
                             }
-                            @if (data.parentInstitutions) {
+                            @if (data.parentInstitution && data.parentInstitutions.length > 0) {
                                 <div class="row">
                                 <div class="cell">Parent Institutions</div>
                                 <div class="cell">
@@ -95,7 +128,7 @@
                                 </div>
                             </div>
                             }
-                            @if (data.childInstitutions) {
+                            @if (data.childInstitutions && data.childInstitutions.length > 0) {
                                 <div class="row">
                                 <div class="cell">Child Institutions</div>
                                 <div class="cell">
@@ -108,7 +141,7 @@
                                 </div>
                             </div>
                             }
-                            @if (data.siblingInstitutions) {
+                            @if (data.siblingInstitutions && data.siblingInstitutions.length > 0) {
                                 <div class="row">
                                 <div class="cell">Sibling Institutions</div>
                                 <div class="cell">
@@ -121,28 +154,20 @@
                                 </div>
                             </div>
                             }
-                            <div class="row">
-                                <div class="cell">Relevant People</div>
-                                <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.personInfo" [matTooltip]="item.personInAlmanacRecord?.role || ''">
-                                            <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
-                                        </button>
-                                    </div>
-                                    <div *ngIf="data.personInfo.length === 0">None</div>
-                                </div>
-                            </div>
-                            @if (data.attendingPeople && !data.attendingPeople[0].attendingPerson) { <!--for the all-years page-->
-                            <div class="row">
-                                <div class="cell">Attending People</div>
-                                <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingPeople">
-                                            <div [routerLink]="'/people/' + item.ID">{{item.title + ' ' + item.name + ' ' + item.suffix}}</div>
-                                        </button>
+                            @if (data.attendingInstitutions && data.attendingInstitutions.length > 0) {
+                                <div class="row">
+                                    <div class="cell">Attending Institutions</div>
+                                    <div class="cell">
+                                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                            <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                                <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                            </button>
+                                        </div>
+                                        <div *ngIf="data.attendingInstitutions.length === 0">None</div>
                                     </div>
                                 </div>
-                            </div>
+                            }
+                            @if (data.attendedBy && data.attendedBy.length > 0) {
                             <div class="row">
                                 <div class="cell">Attended From</div>
                                 <div class="cell">
@@ -154,43 +179,7 @@
                                     <div *ngIf="data.attendedBy.length === 0">None</div>
                                 </div>
                             </div>
-                            }
-                            @if (data.attendingPeople && data.attendingPeople[0].attendingPerson) { <!--for the one-year page-->
-                            <div class="row">
-                                @if (data.attendingPeople[0].affiliatedInst) {
-                                    <div class="cell">Attending From</div>
-                                }
-                                @else {
-                                    <div class="cell">Attending By</div>
-                                }
-                                <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-                                        <ng-container>
-                                            <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingPeople">
-                                                <div [routerLink]="'/institutions/' + item.affiliatedInst.instID">{{ item.affiliatedInst.instName }}</div>
-                                            </button>
-                                        </ng-container>
-                                        <span *ngIf="data.attendingPeople.length > 0">by</span>
-                                        <ng-container>
-                                            <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingPeople">
-                                                <div [routerLink]="'/people/' + item.attendingPerson.ID">{{item.attendingPerson.attendingPeople.title + ' ' + item.attendingPerson.attendingPeople.name + ' ' + item.attendingPerson.attendingPeople.suffix}}</div>
-                                            </button>
-                                        </ng-container>
-                                    </div>
-                                </div>
-                            </div>
-                            }
-                            <div class="row">
-                                <div class="cell">Attending Institutions</div>
-                                <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
-                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                        </button>
-                                    </div>
-                                    <div *ngIf="data.attendingInstitutions.length === 0">None</div>
-                                </div>
-                            </div>
+                        }
                         </div>
                         </div>
                     </div>

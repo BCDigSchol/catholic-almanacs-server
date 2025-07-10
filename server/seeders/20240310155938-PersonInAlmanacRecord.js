@@ -23,7 +23,7 @@ module.exports = {
 
 async function importData(data) {
 
-  const personInAlmanacRecordKeys = ['uniqueInstID', 'attendingChurch', 'persID', 'persName', 'persTitle', 'persSuffix', 'persRole', 'persNote'];
+  const personInAlmanacRecordKeys = ['uniqueInstID', 'attendingChurch', 'persID', 'persName', 'persTitle', 'persSuffix', 'persRole', 'persNote', 'attendingInstID'];
 
   const keyMapping = {
     uniqueInstID: 'almanacRecordID',
@@ -33,7 +33,8 @@ async function importData(data) {
     persTitle: 'title',
     persSuffix: 'suffix',
     persRole: 'role',
-    persNote: 'note'
+    persNote: 'note',
+    attendingInstID: 'attendingInstID'
   };
 
   const personInAlmanacRecordInfo = data
@@ -44,6 +45,7 @@ async function importData(data) {
           filteredRow[keyMapping[key]] = row[key]; 
         }
       });
+      filteredRow.isAttending = !!filteredRow.attendingChurch && filteredRow.attendingChurch.trim() !== '';
       return filteredRow;
     });
   
@@ -62,7 +64,7 @@ async function importData(data) {
       }
     };
     
-    if (item.almanacRecordID && item.persID && !item.attendingChurch) {
+    if (item.almanacRecordID && item.persID) {
       //console.log(item);
       try {
         await personInAlmanacRecord.findOrCreate({
@@ -74,7 +76,9 @@ async function importData(data) {
             title: item.title,
             suffix: item.suffix,
             role: item.role,
-            note: item.note
+            note: item.note,
+            isAttending: item.isAttending,
+            attendingInstID: item.attendingInstID
           }
         });
       //console.log(`Created personInAlmanacRecord:${item.instID}, ${item.uniquePersID}`);

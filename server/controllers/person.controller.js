@@ -126,7 +126,7 @@ exports.findByID = async (req, res) => {
                 attributes: ['instID','instName','year','cityReg', 'diocese', 'latitude', 'longitude'],
                 through: {
                     model: personInAlmanacRecord,
-                    attributes: ['name', 'title', 'suffix', 'role', 'note']
+                    attributes: ['name', 'title', 'suffix', 'role', 'note', 'isAttending', 'attendingInstID']
                 }
             }]}
     );
@@ -138,7 +138,8 @@ exports.findByID = async (req, res) => {
             suffix: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.suffix,
             note: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.note,
             role: [],
-            almanacRecords: [],
+            residingInstitutions: [],
+            visitingInstitutions: [],
             year: [],
         }
         let existingAlmanacRecords = [];
@@ -148,16 +149,29 @@ exports.findByID = async (req, res) => {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
                 existingAlmanacRecords.push(almanacRecord.instID);
-                processedData.almanacRecords.push({
-                    instID: almanacRecord.instID,
-                    instName: almanacRecord.instName,
-                    year: almanacRecord.year,
-                    cityReg: almanacRecord.cityReg,
-                    diocese: almanacRecord.diocese,
-                    latitude: almanacRecord.latitude,
-                    longitude: almanacRecord.longitude,
-                    personInAlmanacRecord: almanacRecord.personInAlmanacRecord
+                if (almanacRecord.personInAlmanacRecord.isAttending) {
+                    processedData.visitingInstitutions.push({
+                        instID: almanacRecord.instID,
+                        instName: almanacRecord.instName,
+                        year: almanacRecord.year,
+                        cityReg: almanacRecord.cityReg,
+                        diocese: almanacRecord.diocese,
+                        latitude: almanacRecord.latitude,
+                        longitude: almanacRecord.longitude,
+                        personInAlmanacRecord: almanacRecord.personInAlmanacRecord
                 })
+                } else {
+                    processedData.residingInstitutions.push({
+                        instID: almanacRecord.instID,
+                        instName: almanacRecord.instName,
+                        year: almanacRecord.year,
+                        cityReg: almanacRecord.cityReg,
+                        diocese: almanacRecord.diocese,
+                        latitude: almanacRecord.latitude,
+                        longitude: almanacRecord.longitude,
+                        personInAlmanacRecord: almanacRecord.personInAlmanacRecord
+                    });
+                }
             }
             if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
                 existingRoles.push(almanacRecord.personInAlmanacRecord.role);
@@ -191,7 +205,7 @@ exports.findOne = async (req, res) => {
             through: {
                 model: personInAlmanacRecord,
                 where: { persID: req.params.id },
-                attributes: ['name', 'title', 'suffix', 'role', 'note']
+                attributes: ['name', 'title', 'suffix', 'role', 'note', 'isAttending', 'attendingInstID']
             }
         }]
     });
@@ -202,16 +216,44 @@ exports.findOne = async (req, res) => {
             title: data.dataValues.almanacRecords[0].personInAlmanacRecord.title,
             suffix: data.dataValues.almanacRecords[0].personInAlmanacRecord.suffix,
             note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note,
-            almanacRecords: data.dataValues.almanacRecords,
+            residingInstitutions: [],
+            visitingInstitutions: [],
             year: data.dataValues.almanacRecords[0].year,
             role: [],
         }
         let existingRoles = [];
+        let existingAlmanacRecords = [];
         for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
                 existingRoles.push(almanacRecord.personInAlmanacRecord.role);
                 processedData.role.push(almanacRecord.personInAlmanacRecord.role);
+            }
+            if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
+                existingAlmanacRecords.push(almanacRecord.instID);
+                if (almanacRecord.personInAlmanacRecord.isAttending) {
+                    processedData.visitingInstitutions.push({
+                        instID: almanacRecord.instID,
+                        instName: almanacRecord.instName,
+                        year: almanacRecord.year,
+                        cityReg: almanacRecord.cityReg,
+                        diocese: almanacRecord.diocese,
+                        latitude: almanacRecord.latitude,
+                        longitude: almanacRecord.longitude,
+                        personInAlmanacRecord: almanacRecord.personInAlmanacRecord
+                    });
+                } else {
+                    processedData.residingInstitutions.push({
+                        instID: almanacRecord.instID,
+                        instName: almanacRecord.instName,
+                        year: almanacRecord.year,
+                        cityReg: almanacRecord.cityReg,
+                        diocese: almanacRecord.diocese,
+                        latitude: almanacRecord.latitude,
+                        longitude: almanacRecord.longitude,
+                        personInAlmanacRecord: almanacRecord.personInAlmanacRecord
+                    });
+                }
             }
         };
         res.send(processedData);
