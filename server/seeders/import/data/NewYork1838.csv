@@ -1,0 +1,81 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingPersID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,order,diocese,diocese_reg
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,﻿NY,40.7584564342135,-73.976185726484,,,,,,,﻿Right Rev.,﻿John Dubois,﻿D. D.,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7584564342135,-73.976185726484,,,,,,,﻿Rev.,﻿John Urquart,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7584564342135,-73.976185726484,,,,,,,﻿Rev.,﻿William Starr,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7584564342135,-73.976185726484,,,,,,,﻿Rev.,﻿John Conroy,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0041,﻿cathedral,﻿Cathedral of St. Patrick,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.7584564342135,-73.976185726484,,,,,,,﻿Rev.,﻿John McCloskey,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0042,﻿church,﻿St. Peter's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,﻿NY,40.7124315661469,-74.00954445155,,,,,,,﻿Very Rev.,﻿John Power,﻿D. D.,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0043,﻿church,﻿St. Mary's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,﻿NY,40.71581795595829,-73.98511226029609,,,,,,,﻿Rev.,﻿William Quarters,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0043,﻿church,﻿St. Mary's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.71581795595829,-73.98511226029609,,,,,,,﻿Rev.,﻿Patrick Danaher,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0043,﻿church,﻿St. Mary's,English,,,,,﻿New York County,﻿New York,﻿New York City,﻿NY,,40.71581795595829,-73.98511226029609,,,,,,,﻿Rev.,﻿Dominick Teixchira,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. Joseph's,English,,,,,,﻿New York,,﻿NY,﻿NY,40.7324967,-74.000619,,,,,,,﻿Rev.,﻿Charles C. Pise,﻿D. D.,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. Joseph's,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev.,﻿Richard Hardey,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿Transfiguration,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev.,﻿Felix Varela,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿Transfiguration,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev.,﻿John Freitas,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿Transfiguration,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev. Mr.,﻿Terhykowioh,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. James' Church,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev.,﻿Andrew Byrne,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. James' Church,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev. Mr.,﻿McGinnis,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿St. James' Church,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev. Mr.,﻿Gillbride,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0052,﻿church,﻿German Church,English,,,,,,﻿New York,,﻿NY,,40.7324967,-74.000619,,,,,,,﻿Rev.,﻿John Raffeiner,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0003,﻿church,﻿St. Mary's,English,,,,,,﻿Albany,﻿Albany,﻿NY,﻿NY,42.65181928627371,-73.75279366723659,,,,,,,﻿Rev.,﻿Joseph Schneller,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0003,﻿church,﻿St. Mary's,English,,,,,,﻿Albany,﻿Albany,﻿NY,,42.65181928627371,-73.75279366723659,,,,,,,﻿Rev. Mr.,﻿Haes,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0003,﻿chapel,﻿New Chapel,English,,,,,,﻿Albany,﻿Albany,﻿NY,,42.65181928627371,-73.75279366723659,,,,,,,﻿Rev.,﻿John Kelly,,,,,,,1838,,1837.0,NewYork
+﻿bro.ny.0001,﻿church,﻿St. James,English,"﻿""L.I.""",,,,,﻿Brooklyn,﻿Brooklyn,﻿NY,﻿NY,40.697055999999996,-73.98666700000001,,,,,,,﻿Rev.,﻿John Walsh,,,,,,,1838,,1837.0,NewYork
+﻿bro.ny.0001,﻿church,﻿St. James,English,"﻿""L.I.""",,,,,﻿Brooklyn,﻿Brooklyn,﻿NY,,40.697055999999996,-73.98666700000001,,,,,,,﻿Rev. Mr.,﻿Waters,,,,,,,1838,,1837.0,NewYork
+﻿buf.ny.0006,﻿church,﻿Lamb of God,English,,,,,﻿Erie County,﻿Buffaloe,﻿Buffalo,﻿NY,﻿NY,42.895428,-78.871729,,,,,,,﻿Rev.,﻿Nicholas Mertz,,,,,,,1838,,1837.0,NewYork
+﻿buf.ny.0006,﻿church,﻿Lamb of God,English,,,,,﻿Erie County,﻿Buffaloe,﻿Buffalo,﻿NY,,42.895428,-78.871729,,,,,,,﻿Rev.,﻿Charles Smith,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0059,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Carthage,﻿Carthage,﻿NY,﻿NY,43.978264913479606,-75.60778008184391,,,,,,,,,,,﻿Vacant,,,,1838,,1837.0,NewYork
+﻿alb.ny.0059,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Leraysville,﻿Carthage,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,,,,,﻿Vacant,,,,1838,,1837.0,NewYork
+﻿alb.ny.0059,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Watertown,﻿Carthage,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,,,,,﻿Vacant,,,,1838,,1837.0,NewYork
+﻿alb.ny.9003,﻿church,not recorded,English,,,,,,﻿Auburn,,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,,,,,﻿Vacant,,,,1838,,1837.0,NewYork
+﻿alb.ny.9007,﻿church,not recorded,English,,,,,,﻿China,,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,﻿Rev.,﻿Charles Smith,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9007,﻿church,﻿Coldsprings Church,English,,,,,,﻿China,,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,﻿Rev.,﻿Patrick Duffy,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9007,﻿church,﻿Sogerties Church,English,,,,,,﻿China,,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,﻿Rev.,﻿Patrick Duffy,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0161,﻿chapel,﻿Newberg Chapel,English,,,,,,,,﻿NY,,43.978264913479606,-75.60778008184391,,,,,,,﻿Rev.,﻿Patrick Duffy,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0199,﻿church,﻿Westpoint Chapel,English,,,,,,,,﻿NY,,41.391482700000005,-73.9559721,,,,,,,﻿Rev.,﻿Patrick Duffy,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0175,﻿church,﻿Poughkeepsie Church,English,,,,,﻿Dutchess County,﻿Poughkeepsie,﻿Poughkeepsie,﻿NY,﻿NY,41.7092507787965,-73.93694957643491,,,,,,,﻿Rev.,﻿Philip O'Reilly,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0175,﻿church,﻿Poughkeepsie Church,English,,﻿near Buffaloe,,,﻿Dutchess County,﻿Eden,﻿Poughkeepsie,﻿NY,,41.7092507787965,-73.93694957643491,,,,,,,﻿Rev. Mr.,﻿Pax,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0175,﻿church,﻿Poughkeepsie Church,English,,﻿near Buffaloe,,,﻿Dutchess County,﻿Flushing,﻿Poughkeepsie,﻿NY,,41.7092507787965,-73.93694957643491,,,,,,,﻿Rev. Mr.,﻿Bradley,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0175,﻿church,﻿Poughkeepsie Church,English,,﻿Staten Island,,,﻿Dutchess County,﻿Flushing,﻿Poughkeepsie,﻿NY,,41.7092507787965,-73.93694957643491,,,,,,,﻿Rev. Mr.,﻿Bradley,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.0175,﻿church,﻿Poughkeepsie Church,English,,﻿Staten Island,,,﻿Dutchess County,﻿Williamsburg,﻿Poughkeepsie,﻿NY,,41.7092507787965,-73.93694957643491,,,,,,,﻿Rev. Mr.,﻿Bradley,,,,,,,1838,,1837.0,NewYork
+﻿roc.ny.0014,﻿church,﻿St. Ambrose,English,,,,,﻿Monroe County,﻿Greece,﻿Greece,﻿NY,﻿NY,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿Bernard O'Reilly,,,,,,,1838,,1837.0,NewYork
+﻿roc.ny.0014,﻿church,﻿Hogansburg Church,English,,,,,﻿Monroe County,﻿Greece,﻿Greece,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿J. M'Nulty,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿St. Paul's Church,English,,,,,,﻿Harlem,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿Michael Curran,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿St. Paul's Church,English,,,,,,﻿Harlem,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev. Mr.,﻿Downing,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿St. Paul's Church,English,,,,,,﻿Lockport,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿P. Costello,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿St. Paul's Church,English,,﻿near Buffalo,,,,﻿Northwood,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿John Newman,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿St. Paul's Church,English,,﻿near Buffalo,,,,﻿Nyack,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿Francis Marshall,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿St. Paul's Church,English,,﻿Sing Sing,,,,﻿Nyack,,﻿NY,,43.2527098938266,-77.6589525727407,,,,,,,﻿Rev.,﻿Francis Marshall,,,,,,,1838,,1837.0,NewYork
+﻿nyc.ny.9005,﻿church,﻿Ogdensburg Church,English,,﻿Sing Sing,,,,﻿Ogdensburg,,﻿NY,,43.2527098938266,-77.6589525727407,,,,﻿alternately,,,﻿Rev. Mr.,﻿Foley,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0302,﻿church,﻿Waddington Church,English,,,,,,﻿Waddington,,﻿NY,,44.8644999,-75.20410190000001,,,,﻿alternately,,,﻿Rev. Mr.,﻿Foley,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9005,﻿church,﻿Oswego Church,English,,,,,,﻿Oswego,,﻿NY,,44.8644999,-75.20410190000001,,,,,,,﻿Rev. Mr.,﻿Rogers,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9004,﻿church,﻿Geneva Church,English,,,,,,﻿Geneva,,﻿NY,,44.8644999,-75.20410190000001,,,,,,,﻿Rev. Mr.,﻿Rogers,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9004,﻿church,﻿Seneca Falls Church,English,,,,,,﻿Seneca Falls,,﻿NY,,44.8644999,-75.20410190000001,,,,,,,﻿Rev. Mr.,﻿Rogers,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0223,﻿church,not recorded,English,,,,,﻿Clinton County,﻿Plattsburg,﻿Plattsburg,﻿NY,﻿NY,44.6995117768828,-73.4588568540315,,,,,,,﻿Rev. Mr.,﻿Drummond,,,,,,,1838,,1837.0,NewYork
+﻿roc.ny.0001,﻿church,not recorded,English,,,,,,﻿Rochester,,﻿NY,,44.6995117768828,-73.4588568540315,,,,,,,﻿Rev.,﻿Bernard O'Reilly,,,,,,,1838,,1837.0,NewYork
+﻿roc.ny.0001,﻿church,not recorded,English,,,,,,﻿Rome,,﻿NY,,44.6995117768828,-73.4588568540315,,,,,,,﻿Rev. Mr.,﻿Beauchamp,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0300,﻿church,not recorded,English,,,,,,﻿Verona,,﻿NY,,43.1381455,-75.5706945,,,,,,,﻿Rev. Mr.,﻿Beauchamp,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0277,﻿church,not recorded,English,,,,,,﻿Salina,﻿Salina,﻿NY,﻿NY,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev.,﻿P. O'Donnell,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.0277,﻿church,not recorded,English,,,,,,﻿Syracuse,﻿Salina,﻿NY,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev.,﻿P. O'Donnell,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9001,﻿church,not recorded,English,,,,,,﻿Troy,,﻿NY,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev.,﻿J. Shanahan,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9001,﻿church,not recorded,English,,,,,,﻿Troy,,﻿NY,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev.,﻿J. Quinn,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9001,﻿church,not recorded,English,,,,,,﻿Utica,,﻿NY,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev.,﻿Walter Quarters,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9010,﻿church,not recorded,English,,,,,,﻿Williamsville,,﻿NY,,43.0687283112554,-76.1574936052735,,,,﻿alternately,,,﻿Rev. Mr.,﻿Lutgen,,,,,,,1838,,1837.0,NewYork
+﻿alb.ny.9010,﻿church,not recorded,English,,,,,,﻿Lancaster,,﻿NY,,43.0687283112554,-76.1574936052735,,,,﻿alternately,,,﻿Rev. Mr.,﻿Lutgen,,,,,,,1838,,1837.0,NewYork
+﻿new.nj.9001,﻿church,not recorded,English,,,,,,﻿Bottle Hill,,﻿NJ,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev.,﻿Francis Guth,,,,,,,1838,,1837.0,NewYork
+﻿new.nj.9001,﻿church,not recorded,English,,,,,,﻿Belleville,,﻿NJ,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev. Mr.,﻿Moran,,,,,,,1838,,1837.0,NewYork
+﻿new.nj.0003,﻿church,not recorded,English,,,,,,﻿Newark,,﻿NJ,,43.0687283112554,-76.1574936052735,,,,,,,﻿Rev. Mr.,﻿Moran,,,,,,,1838,,1837.0,NewYork
+﻿new.nj.0067,﻿church,﻿New Brunswick Church,English,,,,,,﻿New Brunswick,,﻿NJ,,40.4862157,-74.4518188,,,,,,,﻿Rev. Mr.,﻿McArdle,,,,,,,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿church,﻿Patterson Church,English,,,,,,﻿Patterson,,﻿NJ,,40.4862157,-74.4518188,,,,,,,﻿Rev.,﻿P. O'Reilly,,,,,,,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿school,﻿St. Mary's Select School for Young Ladies,English,,﻿No. 415 Grand Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿school,﻿St. Mary's Select School for Young Ladies,English,,﻿No. 415 Grand Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿young ladies,﻿about 60 young ladies,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿school,﻿St. Mary's Select School for Young Ladies,English,,﻿No. 415 Grand Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿poor children,﻿seldom less than 300 poor children,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿school,﻿St. Joseph's School for Young Ladies,English,,﻿No. 23 Oliver Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿asylum,﻿Roman Catholic Asylum,English,,﻿No. 23 Oliver Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿15 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿asylum,﻿Roman Catholic Asylum,English,,﻿No. 23 Oliver Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿orphans,﻿upwards of 200,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿asylum,﻿Roman Catholic Half-Orphan Asylum,English,,﻿No. 23 Oliver Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿7 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿school,﻿St. Peter's Free School,English,,﻿No. 23 Oliver Street,,,,﻿New York,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿3 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿asylum,﻿St. Mary's Asylum,English,,﻿No. 23 Oliver Street,﻿Long Island,,,﻿Brooklyn,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿asylum,﻿St. Joseph's Asylum,English,,﻿No. 23 Oliver Street,﻿Long Island,,,﻿Albany,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿day school,﻿St. Joseph's Day School,English,,﻿No. 23 Oliver Street,﻿Long Island,,,﻿Albany,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork
+﻿new.nj.9002,﻿asylum,﻿St. Joseph's Day School,English,,﻿No. 23 Oliver Street,﻿Long Island,,,﻿Utica,,﻿NY,,40.4862157,-74.4518188,,,,,,,,,,,,﻿sisters,﻿5 sisters,﻿Sisters of Charity,1838,,1837.0,NewYork

@@ -1,0 +1,45 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingPersID,attendingChurch,attendingChurchFrequency,attendingChurchNote,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,year,order,diocese,diocese_reg
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.77642653,-79.93453937,,,,,,﻿joh_england_902,﻿Right Rev.,﻿John England,﻿D. D.,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.77642653,-79.93453937,,,,,,﻿wm_clancey_901,﻿Rt. Rev.,﻿Wm. Clancey,﻿D. D.,﻿Coadj.,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0001,﻿cathedral,﻿Cathedral of St. Finbar,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.77642653,-79.93453937,,,,,,﻿and_byrne_902,﻿Rev.,﻿Andrew Byrne,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0002,﻿church,﻿St. Mary's,English,﻿District of,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.78189079,-79.93286629,,,,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0003,﻿church,﻿St. Patrick's,English,﻿[check page 79 in almanac for lingering info about roles and people?],,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.7882253,-79.9403921,,,,,,,﻿Rev.,﻿Robert Browne,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0003,﻿church,﻿St. Patrick's,English,﻿[check page 79 in almanac for lingering info about roles and people?],,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,,32.7882253,-79.9403921,,,,,,,﻿Rev.,﻿Thomas Murphy,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.9004,﻿church,not recorded,English,,,,,,﻿Aiken,,﻿SC,,32.7882253,-79.9403921,,,,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0023,﻿church,not recorded,English,,,,,,﻿Beaufort,,﻿SC,,32.439429,-80.67054300000001,,,,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0015,﻿church,﻿St. Andrew's,English,,,,,,﻿Barnwell,﻿Barnwell,﻿SC,,33.2448733,-81.3587177,﻿cha.sc.0001,,﻿visited occasionally from Charleston,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.9003,﻿church,﻿St. James',English,,,,﻿Colleton District,﻿Colleton County,,,﻿SC,﻿SC,33.2448733,-81.3587177,,,﻿visited occasionally from Charleston,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.9003,﻿station,﻿St. James',English,﻿other stations in the Eastern part of the State,,,﻿Colleton District,﻿Colleton County,,,﻿SC,,33.2448733,-81.3587177,,,﻿attended in turn by Rev. John Maginnis,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0025,﻿church,﻿St. Peter's,English,,,,,﻿Richland County,﻿Columbia,﻿Columbia,﻿SC,﻿SC,34.00550865,-81.03810855,,,﻿visited by Rev. John Bermingham,,,﻿jam_wallace_901,﻿Rev.,﻿James Wallace,,,"﻿voluntarily assists in Columbia, and supplies the place of the pastor, when absent",,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.9005,﻿church,not recorded,English,,,,,,﻿Chester,,﻿SC,,34.00550865,-81.03810855,,,﻿visited by Rev. John Bermingham,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0034,﻿church,not recorded,English,,,,,,﻿Sumpter,,﻿SC,,34.00550865,-81.03810855,,,﻿visited by Rev. John Bermingham,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0034,﻿station,not recorded,English,﻿other stations in the N. Western part of the State,,,,,﻿Fairfield,,﻿SC,,34.00550865,-81.03810855,,,﻿visited by Rev. John Bermingham,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿vic.nc.9003,﻿station,not recorded,English,,,,,,﻿Lincoln,,﻿NC,,34.00550865,-81.03810855,,,﻿visited by Rev. John Bermingham,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿ral.nc.0011,﻿station,not recorded,English,,,,,﻿Mecklenburg County,﻿Charlotte,﻿Charlotte,﻿NC,﻿NC,34.00550865,-81.03810855,,,﻿visited by Rev. John Bermingham,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿ral.nc.0011,﻿station,not recorded,English,﻿other stations,,,,﻿Mecklenburg County,﻿Charlotte,﻿Charlotte,﻿SC,,34.00550865,-81.03810855,,,﻿occasionally visited from the city of Charleston,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0035,﻿church,not recorded,English,,,,,,﻿Cheraw,,﻿SC,,34.6933706,-79.89188,,,﻿visited by Rev. Patrick Hackett,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿vic.nc.0002,﻿church,﻿St. Patrick's,English,﻿Mass on Sundays during every second month,,,,﻿Cumberland County,﻿Fayetteville,﻿Fayetteville,﻿NC,﻿NC,35.05259752,-78.87660777,,,﻿visited by Rev. Patrick Hackett,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿ral.nc.0018,﻿church,not recorded,English,,,,,,﻿Raleigh,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by Rev. Patrick Hackett,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿ral.nc.0001,﻿church,not recorded,English,,,,,,﻿Wilmington,,﻿NC,,35.05259752,-78.87660777,,,﻿visited by Rev. Patrick Hackett,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿ral.nc.0001,﻿station,not recorded,English,﻿other stations,,,,,﻿Wilmington,,﻿NC,,35.05259752,-78.87660777,,,﻿attended by Rev. Patrick Hackett,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿vic.nc.9005,﻿station,not recorded,English,,,,,,﻿Greenville,,﻿NC,,35.05259752,-78.87660777,,,﻿attended by Rev. Philip Gillick,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿ral.nc.0009,﻿station,not recorded,English,,,,,,﻿Halifax,,﻿NC,,35.05259752,-78.87660777,,,﻿attended by Rev. Philip Gillick,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿vic.nc.0004,﻿church,not recorded,English,,,,,﻿Craven County,﻿Newbern,﻿New Bern,﻿NC,﻿NC,35.08457487,-77.06842929999999,,,﻿attended by Rev. Philip Gillick,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿vic.nc.9007,﻿church,﻿St. John the Evangelist,English,,,,,,﻿Washington,,,,35.08457487,-77.06842929999999,,,﻿attended by Rev. Philip Gillick,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0003,﻿church,﻿Holy Trinity Church,English,,,,,﻿Richmond County,﻿Augusta,﻿Augusta,﻿GA,﻿GA,33.47167613,-81.9668056,,,﻿attended by John Barry,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.9006,﻿church,not recorded,English,,,,,,﻿Hamburg,,﻿SC,﻿SC,33.47167613,-81.9668056,,,﻿attended by John Barry,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0021,﻿church,not recorded,English,,,,,,﻿Edgefield,,﻿SC,,33.47167613,-81.9668056,,,﻿attended by John Barry,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0006,﻿church,﻿Church of St. Philip and St. James,English,,,,,,﻿Columbus,﻿Columbus,﻿GA,,32.4609764,-84.9877094,,,﻿attended by Rev. Peter Whelan,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0004,﻿church,not recorded,English,,,,,,﻿Macon,﻿Macon,﻿GA,,32.8406946,-83.6324022,,,﻿attended by Rev. Peter Whelan,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0004,﻿church,not recorded,English,,,﻿Western Counties,,,﻿Macon,﻿Macon,﻿GA,,32.8406946,-83.6324022,,,﻿attended by Rev. Peter Whelan,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0010,﻿church,﻿Church of the Purification,English,,,,﻿Warren County,﻿Henry County,﻿Locust Grove,﻿Locust Grove,﻿GA,﻿GA,33.54252264,-82.77668703,,,﻿attended by M. D. O'Reilly,,,﻿m_d_oreilly_901,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.9001,﻿station,not recorded,English,,,,,,﻿Louisville,,﻿GA,,33.54252264,-82.77668703,,,﻿attended by M. D. O'Reilly,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0012,﻿station,not recorded,English,,,,,,﻿Sparta,,﻿GA,,33.54252264,-82.77668703,,,﻿attended by M. D. O'Reilly,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0016,﻿station,not recorded,English,﻿&c.,,,,,﻿Milledgeville,,﻿GA,,33.54252264,-82.77668703,,,﻿attended by M. D. O'Reilly,,,,,,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.0001,﻿church,﻿St. John the Baptist,English,,,,,﻿Chatham County,﻿Savannah,﻿Savannah,﻿GA,﻿GA,32.0733565,-81.0909827,,,,,,,﻿Rev.,﻿J. F. O'Neil,,,,,,,1836,,﻿Charleston,Charleston
+﻿sav.ga.9000,﻿church,﻿St. Mary's,English,﻿and the South Eastern Counties,,,,,,,﻿GA,,32.0733565,-81.0909827,,,,,,,﻿Rev.,﻿John Fielding,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.9000,﻿seminary,﻿Seminary of St. John the Baptist,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.78424666,-79.93682791,,,,,,﻿ric_s_baker_901,﻿Rev.,﻿Richard S. Baker,,,,,,,1836,,﻿Charleston,Charleston
+﻿cha.sc.0038,﻿convent,not recorded,English,﻿recently commenced,,,,,,,,,32.78424666,-79.93682791,,,,,,,,,,,,,,﻿conducted by the Sisters of Our Lady of Mercy,1836,,﻿Charleston,Charleston
+﻿cha.sc.9002,﻿academy,﻿Young Ladies' French and English Academy,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.78424666,-79.93682791,,,,,,,,﻿Madame Hery du Jarday,,﻿Lady Superiour,,,,﻿conducted by Les Dames de la Retraite,1836,,﻿Charleston,Charleston
+﻿cha.sc.9007,﻿novitiate,not recorded,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.78424666,-79.93682791,,,,,,,,,,,,﻿sister,﻿5 sisters,﻿under the Sisters of Mercy,1836,,﻿Charleston,Charleston
+﻿cha.sc.0039,﻿academy,not recorded,English,,,,,﻿Charleston County,﻿Charleston,﻿Charleston,﻿SC,﻿SC,32.7797301152356,-79.9381811293793,,,,,,,,,,,,,,﻿under the Sisters of Mercy,1836,,﻿Charleston,Charleston

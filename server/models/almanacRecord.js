@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       almanacRecord.belongsTo(models.institution, { foreignKey: 'instID', as: 'institution' });
       almanacRecord.hasMany(models.relatedInstitutions, { foreignKey: 'almanacRecordID', as: 'relatedInstitutions' });
       almanacRecord.belongsTo(models.diocese, { foreignKey: 'diocese_reg', as: 'dioceseInfo' });
+      almanacRecord.belongsToMany(models.order, { through: models.orderInAlmanacRecord, foreignKey: 'almanacRecordID', as: 'orders' });
+
     }
   }
   almanacRecord.init({
@@ -47,8 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     member: DataTypes.STRING,
     affiliated: DataTypes.STRING,
     diocese: DataTypes.STRING,
-    diocese_reg: DataTypes.STRING,
-    religiousOrder: DataTypes.STRING,
+    diocese_reg: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'almanacRecord',

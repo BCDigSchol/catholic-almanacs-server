@@ -93,10 +93,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
-      religiousOrder: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE

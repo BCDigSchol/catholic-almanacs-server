@@ -1,7 +1,6 @@
 const db = require("../models");
 const getPagination = require("../utils/get-pagination");
 const Op = db.Sequelize.Op;
-const religiousOrderDict = require('../config/religiousOrderDict.json');
 const { where } = require("sequelize");
 
 const almanacRecord = db.almanacRecord;
@@ -9,6 +8,8 @@ const person = db.person;
 const personInAlmanacRecord = db.personInAlmanacRecord;
 const institution = db.institution;
 const relatedInstitutions = db.relatedInstitutions;
+const order = db.order;
+const orderInAlmanacRecord = db.orderInAlmanacRecord;
 
 /*exports.create = (req, res) => {
     const churches = req.body;
@@ -45,6 +46,7 @@ exports.findAll = async (req, res) => {
         let {limit, offset} = getPagination(page, size);
         let where = {};
         let persWhere = {};
+        let orderWhere = {};
         let { instName, countyReg, cityReg, stateReg, diocese, instStartYear, instEndYear, language, instType, persName, instID, religiousOrder } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
@@ -87,24 +89,8 @@ exports.findAll = async (req, res) => {
             where.instID = { [Op.like]: `%${instID}%` };
         };
         if (religiousOrder) {
-        let equivalents = null;
-        for (const [key, group] of Object.entries(religiousOrderDict)) {
-            if (group.includes(religiousOrder)) {
-                equivalents = [...group, key];
-                console.log(group)
-                break;
-            }
-        }
-        if (!equivalents && religiousOrderDict[religiousOrder]) {
-            equivalents = religiousOrderDict[religiousOrder];
-        }
-        if (!equivalents) {
-            equivalents = [religiousOrder];
-        }
-        where.religiousOrder = {
-            [Op.or]: equivalents.map(order => ({ [Op.like]: `%${order}%` }))
-        };  
-    };
+            orderWhere.order = { [Op.like]: `%${religiousOrder}%` };
+        };
         //console.log('-----------where', where);
         const data = await institution.findAndCountAll({
             limit: limit,
@@ -115,7 +101,7 @@ exports.findAll = async (req, res) => {
                 model: almanacRecord,
                 as: 'almanacRecord',
                 where: where,
-                required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0,
+                required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0 || Object.keys(orderWhere).length > 0,
                 attributes: ['instName', 'year','instType', 'diocese'],
                 include: [{
                     model: almanacRecord,
@@ -129,8 +115,7 @@ exports.findAll = async (req, res) => {
                     attributes: ['instID', 'instName', 'year'],
                     through: {
                         attributes: ['attendingFrequency', 'note']
-                    }}
-                    ,{
+                    }},{
                     model: person,
                     as: 'personInfo',
                     required: Object.keys(persWhere).length > 0,
@@ -139,8 +124,17 @@ exports.findAll = async (req, res) => {
                         model: personInAlmanacRecord,
                         where: persWhere,
                         attributes: ['name','title', 'suffix', 'role', 'note'],
+                    }}, {
+                    model: order,
+                    as: 'orders',
+                    required: Object.keys(orderWhere).length > 0,
+                    attributes: ['order'],
+                    where: orderWhere,
+                    through: {
+                        model: orderInAlmanacRecord,
+                        attributes: ['order', 'almanacRecordID']
                     }
-                }
+                    }
     ]}]});
         /*if (data) {
             const personData = await person.findAll({

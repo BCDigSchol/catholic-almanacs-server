@@ -74,21 +74,6 @@ async function preprocessCSV(filePath) {
             row['latitude'] = Number(row['latitude']);
           }
         }
-
-        /**
-         * Combine 'persSuffix' and 'affiliated' into 'religiousOrder' for filtering purposes
-         */
-        const suffix = row['persSuffix'] || '';
-        const affiliated = row['affiliated'] || '';
-        if (suffix && affiliated) {
-          row['religiousOrder'] = `${suffix} ${affiliated}`.trim();
-        } else if (suffix) {
-          row['religiousOrder'] = suffix;
-        } else if (affiliated) {
-          row['religiousOrder'] = affiliated;
-        } else {
-          row['religiousOrder'] = '';
-        }
     };
     return data;
 }
