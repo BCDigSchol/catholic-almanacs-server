@@ -173,7 +173,7 @@ exports.findByID = async (req, res) => {
                 model: almanacRecord,
                 as: 'almanacRecord',
                 attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude',
-                    'member', 'memberType', 'affiliated', 'religiousOrder'
+                    'member', 'memberType', 'affiliated'
                 ],
                 include: [{
                     model: almanacRecord,
@@ -195,6 +195,13 @@ exports.findByID = async (req, res) => {
                     through: {
                         model: personInAlmanacRecord,
                         attributes: ['name','title', 'suffix', 'role', 'note', 'isAttending', 'attendingInstID'],
+                    }},{
+                    model: order,
+                    as: 'orders',
+                    attributes: ['order'],
+                    through: {
+                        model: orderInAlmanacRecord,
+                        attributes: ['order', 'almanacRecordID']
                     }}
                 ]
         }, {
@@ -208,6 +215,7 @@ exports.findByID = async (req, res) => {
         }
     ]
     });
+    console.log('data', data);
     if (data) {
         let processedData = {
             instID: data.dataValues.ID,
@@ -230,9 +238,9 @@ exports.findByID = async (req, res) => {
             member: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].member,
             memberType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].memberType,
             affiliated: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].affiliated,
-            religiousOrder: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].religiousOrder,
-            attendingInstitutions: [],
+            order: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].orders.map(order => order.order).join(', '),
             attendedBy: [],
+            attendingInstitutions: [],
             relatedInstitutions: [],
             residingPersonInfo: [],
             visitingPersonInfo: [],
@@ -418,8 +426,14 @@ exports.findOne = async (req, res) => {
                 through: {
                     model: personInAlmanacRecord,
                     attributes: ['name','title', 'suffix', 'role', 'note', 'isAttending', 'attendingInstID'],
-                }
-            }
+                }}, {
+                model: order,
+                as: 'orders',
+                attributes: ['order'],
+                through: {
+                    model: orderInAlmanacRecord,
+                    attributes: ['order', 'almanacRecordID']
+                }}
             ]
         }, {
             model: relatedInstitutions,
@@ -453,6 +467,7 @@ exports.findOne = async (req, res) => {
             memberType: data.dataValues.almanacRecord[0].memberType,
             affiliated: data.dataValues.almanacRecord[0].affiliated,
             year: data.dataValues.almanacRecord[0].year,
+            order: data.dataValues.almanacRecord[0].orders.map(order => order.order).join(', '),
             attendingInstitutions: [],
             attendedBy: [],
             parentInstitutions: [],
