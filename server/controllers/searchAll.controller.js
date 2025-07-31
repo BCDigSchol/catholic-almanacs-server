@@ -23,7 +23,7 @@ exports.findAllInfo = async (req, res) => {
                     model: almanacRecord,
                     as: 'almanacRecord',
                     required: Object.keys(instWhere).length > 0,
-                    attributes: ['instName', 'latitude', 'longitude', 'diocese', 'instType', 'year'],
+                    attributes: ['instID', 'instName', 'diocese', 'year'],
                     where: instWhere,
                 }
             ]
@@ -36,20 +36,54 @@ exports.findAllInfo = async (req, res) => {
                     model: almanacRecord,
                     as: 'almanacRecords',
                     required: Object.keys(persWhere).length > 0,
-                    attributes: ['instID', 'year'],
+                    attributes: ['instID', 'year', 'diocese'],
                     through: {
                         model: personInAlmanacRecord,
                         where: persWhere,
-                        attributes: ['persID', 'name', 'title', 'suffix', 'role']
+                        attributes: ['persID', 'name', 'title', 'suffix']
                     }
                 }
             ]
         });
 
-        res.json({
-            institutions: instData,
-            persons: persData
-        })
+        allData = [];
+        instData.rows.forEach(inst => {
+            if (inst.almanacRecord) {
+                allData.push({
+                    instID: inst.ID,
+                    instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
+                    diocese: inst.almanacRecord[inst.almanacRecord.length - 1].diocese,
+                    type: 'institution'
+                });
+            }
+        });
+        persData.rows.forEach(pers => {
+            if (pers.almanacRecords) {
+                allData.push({
+                    persID: pers.ID,
+                    name: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.name,
+                    title: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.title,
+                    suffix: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.suffix,
+                    diocese: pers.almanacRecords[pers.almanacRecords.length - 1].diocese,
+                    type: 'person'
+                });
+            }
+        });
+        allData.sort((a, b) => {
+            const getKey = x => x.type === 'institution' ? x.instName : x.name;
+            const isAlpha = str => /^[A-Za-z]/.test(str);
+
+            const aKey = getKey(a);
+            const bKey = getKey(b);
+
+            const aAlpha = isAlpha(aKey);
+            const bAlpha = isAlpha(bKey);
+
+            if (aAlpha && !bAlpha) return -1;
+            if (!aAlpha && bAlpha) return 1;
+            return aKey.localeCompare(bKey);
+        });
+        res.send(allData);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

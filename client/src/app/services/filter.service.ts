@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 interface FilterField {
-  type: 'input' | 'range' | 'boolean' | 'dropdown' | 'slider';
+  type: 'input' | 'range' | 'boolean' | 'dropdown' | 'slider' | 'autocomplete';
   label?: string;
   keyword: string;
   keywordStart?: string; 
@@ -11,7 +11,9 @@ interface FilterField {
   max?: number;
   active?: boolean;
   dropdown?: string[];
+  autocompleteOptions?: string[];
   defaultValue?: any;
+  filteredOptions?: string[];
 }
 
 @Injectable({
@@ -70,6 +72,9 @@ export class FilterService {
           this.filterValues[filter.keywordStart] = filter.min || 1860;
           this.filterValues[filter.keywordEnd] = filter.max || 1870;
         }
+      } else if (filter.type === 'autocomplete') {
+        this.filterValues[filter.keyword] = '';
+        filter.filteredOptions = filter.autocompleteOptions || [];
       }
     }
     this._filterValues.next(this.filterValues);

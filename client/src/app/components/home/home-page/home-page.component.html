@@ -1,12 +1,40 @@
 <div class="flex flex-col w-full justify-center items-center">
-    <mat-form-field style="width:600px" class="mt-20">
+    <mat-form-field style="width:600px" class="mt-10">
         <mat-label>Search for Institutions and People</mat-label>
-        <input matInput [(ngModel)]="inputName">
-        <button mat-icon-button matSuffix class="mx-3" style="cursor:pointer;" (click) = "getData()">
+        <input matInput (input)="getData()" [(ngModel)]="inputName">
+        <button mat-icon-button matSuffix class="mx-3" style="cursor:pointer;" (click)="getData()">
             <mat-icon fontIcon="search"></mat-icon>
         </button>
     </mat-form-field>
-    <div class="w-full flex flex-col justify-center items-center">
-        <div class="text-2xl mt-10">Welcome to the Home Page</div>
-        <div class="text-lg mt-2">Search for institutions and people using the search bar above.</div>
+    <div class="flex flex-row items-center justify-center mt-1">
+        <mat-card style="width:500px; height:300px" appearance="outlined" class="mr-5">
+            <mat-card-content class="scrollable-content">
+            @for (item of data; track item.ID) {
+                <mat-card *ngIf="item.type === 'institution'" class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined" [routerLink]="'/institutions/' + item.instID">
+                    <div class="flex flex-row items-center justify-between w-full">
+                        <div class="flex flex-row items-center">
+                        <mat-icon class="mr-3">church</mat-icon>
+                        <span>{{item.instName}}</span>
+                    </div>
+                        <span class="text-sm text-gray-600">{{item.diocese}}</span>
+                    </div>
+                </mat-card>
+            }
+            </mat-card-content>
+        </mat-card>
+        <mat-card style="width:350px; height:300px" appearance="outlined">
+            <mat-card-content class="scrollable-content">
+            @for (item of data; track item.ID) {
+                <mat-card *ngIf="item.type === 'person'" class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined" [routerLink]="'/people/' + item.persID">
+                    <div class="flex flex-row items-center justify-between w-full">
+                        <div class="flex flex-row items-center">
+                            <mat-icon class="mr-2">person</mat-icon>
+                            <span>{{item.name}}</span>
+                        </div>
+                            <span class="text-sm text-gray-600">{{item.diocese}}</span>
+                    </div>
+                </mat-card>
+            }
+            </mat-card-content>
+        </mat-card>
 </div>

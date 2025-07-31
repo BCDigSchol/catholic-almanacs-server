@@ -51,6 +51,15 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
+                    <div *ngSwitchCase="filter.type == 'autocomplete'">
+                        <mat-form-field>
+                            <mat-label>{{filter.label}}</mat-label>
+                            <input matInput [matAutocomplete]="auto" (input)="onAutocompleteInput($event, filter)" [(ngModel)]="filterValues[filter.keyword!]">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="updateFilter(filter)">
+                                <mat-option *ngFor="let option of filter.filteredOptions" [value]="option">{{ option }}</mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
                 </ng-container>
                 <button mat-icon-button color="warn" type="button" class="custom-button" (click)="toggleFilter(index)">
                     <mat-icon fontIcon="close"></mat-icon>

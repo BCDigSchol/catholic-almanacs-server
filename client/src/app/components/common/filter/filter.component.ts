@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { FilterService } from '../../../services/filter.service';
 
@@ -19,7 +20,7 @@ import { FilterService } from '../../../services/filter.service';
   selector: 'app-filter',
   imports: [MatExpansionModule, CommonModule, MatChipsModule, MatIconModule, 
     MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatIcon,
-    MatSliderModule, MatSelectModule, MatSlideToggleModule],
+    MatSliderModule, MatSelectModule, MatSlideToggleModule, MatAutocompleteModule],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'
 })
@@ -48,12 +49,25 @@ export class FilterComponent implements OnInit{
   }
 
   updateFilter(filter: any) {
-    if (filter.type === 'input' || filter.type === 'dropdown' || filter.type === 'boolean' || filter.type === 'slider') {
+    if (filter.type === 'input' || filter.type === 'dropdown' || filter.type === 'boolean' || filter.type === 'slider' || filter.type === 'autocomplete') {
       this.filterService.setFilterValue(filter.keyword, this.filterValues[filter.keyword]);
     } else if (filter.type === 'range') {
       this.filterService.setFilterValue(filter.keywordStart, this.filterValues[filter.keywordStart]);
       this.filterService.setFilterValue(filter.keywordEnd, this.filterValues[filter.keywordEnd]);
     }
+  }
+
+  onAutocompleteInput(event: any, filter: any) {
+    const value = typeof event === 'string' ? event : event.target.value;
+    if (filter.autocompleteOptions) {
+      filter.filteredOptions = filter.autocompleteOptions.filter((option: string) =>
+        option.toLowerCase().includes(value.toLowerCase())
+      );
+      //console.log(filter.filteredOptions);
+    } else {
+      filter.filteredOptions = [];
+    }
+    this.updateFilter(filter);
   }
 
 }

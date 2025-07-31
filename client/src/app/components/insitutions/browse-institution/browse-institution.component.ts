@@ -19,6 +19,20 @@ import { FilterComponent } from '../../common/filter/filter.component';
 import { ApiService } from '../../../services/api.service'; 
 import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
+import { HttpClient } from '@angular/common/http';
+
+interface FilterField {
+    type: string;
+    label?: string;
+    keyword?: string;
+    active?: boolean;
+    autocompleteOptions?: string[];
+    keywordStart?: string;
+    keywordEnd?: string;
+    min?: number; 
+    max?: number; 
+    filteredOptions?: string[];
+  }
 
 @Component({
   selector: 'app-browse-institution',
@@ -43,16 +57,16 @@ export class BrowseInstitutionComponent implements OnInit {
   filterValues$!: Observable<any>; //! = can be null
   filterValues: any = {
   };
-  
-  filterFields = [
+
+  filterFields: FilterField[] = [
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
     { type: 'input', label: 'Language', keyword: 'language', active: false },
     { type: 'input', label: 'Institution Type', keyword: 'instType', active: false },
     { type: 'input', label: 'County', keyword: 'countyReg', active: false },
     { type: 'input', label: 'City', keyword: 'cityReg', active: false },
     { type: 'input', label: 'State', keyword: 'stateReg', active: false },
-    { type: 'input', label: 'Diocese', keyword: 'diocese', active: false },
-    { type: 'input', label: 'Religious Order', keyword: 'religiousOrder', active: false },
+    { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: [] },
+    { type: 'autocomplete', label: 'Religious Order', keyword: 'religiousOrder', active: false, autocompleteOptions: []},
     { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
     { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1830, max:1870, active: false },
   ]
@@ -62,12 +76,31 @@ export class BrowseInstitutionComponent implements OnInit {
     public apiService: ApiService, 
     public filterService: FilterService,
     private navigationService: NavigationService,
+    private http: HttpClient,
   ) {
     
   }
 
   ngOnInit () {
     //console.log(this.navigationService.lastNavigationTrigger);
+    this.http.get('/order.csv', { responseType: 'text' }).subscribe((data) => {
+      const orders = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const orderFilter = this.filterFields.find(field => field.keyword === 'religiousOrder');
+      if (orderFilter) {
+        orderFilter.autocompleteOptions = orders;
+        orderFilter.filteredOptions = orders;
+      }
+    });
+
+    this.http.get('/diocese.csv', { responseType: 'text' }).subscribe((data) => {
+      const dioceses = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const dioceseFilter = this.filterFields.find(field => field.keyword === 'diocese');
+      if (dioceseFilter) {
+        dioceseFilter.autocompleteOptions = dioceses;
+        dioceseFilter.filteredOptions = dioceses;
+      }
+    });
+
     if (this.navigationService.lastNavigationTrigger !== 'popstate') {
       this.filterService.clearFilters();
       this.filterService.setFields(this.filterFields);
