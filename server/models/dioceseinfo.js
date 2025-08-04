@@ -3,32 +3,29 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class diocese extends Model {
+  class dioceseInfo extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      diocese.hasMany(models.almanacRecord, { foreignKey: 'diocese_reg', as: 'almanacRecords' });
-      diocese.hasMany(models.dioceseInfo, { foreignKey: 'diocese', as: 'dioceseInfos' });
+      dioceseInfo.belongsTo(models.diocese, { foreignKey: 'diocese', as: 'dioceseDetails' });
     }
   }
-  diocese.init({
-    diocese: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true,
-    }
+  dioceseInfo.init({
+    diocese: DataTypes.STRING,
+    year: DataTypes.INTEGER,
+    dioceseInfo: DataTypes.TEXT
   }, {
     sequelize,
-    modelName: 'diocese',
+    modelName: 'dioceseInfo',
     indexes: [
       {
-        fields: ['diocese'],
+        fields: ['diocese', 'year'],
         unique: true
       }
     ]
   });
-  return diocese;
+  return dioceseInfo;
 };

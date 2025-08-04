@@ -3,7 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-const{ diocese } = require('../models');
+const { diocese } = require('../models');
+const { dioceseInfo } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -34,9 +35,45 @@ module.exports = {
     }
   }
     console.log(`Inserted ${dioceses.length} dioceses into the database.`);
+
+    const dioceseInfoData = [];
+    const dioceseFilePath = path.join(__dirname, 'import', 'others', 'diocese_info.csv');
+    await new Promise((resolve, reject) => {
+        fs.createReadStream(dioceseFilePath)
+        .pipe(csv())
+        .on('data', (row) => {
+            dioceseInfoData.push(row);
+        })
+        .on('end', () => {
+        resolve();
+        })
+        .on('error', (error) => {
+        reject(error);
+        });
+    });
+
+    if (dioceseInfoData.length > 0) {
+      for (const row of dioceseInfoData) {
+        const dioceseName = row['diocese'];
+        const year = parseInt(row['year']);
+        const info = row['dioceseInfo'];
+
+        await dioceseInfo.findOrCreate({
+          where: { diocese: dioceseName, year: year },
+          defaults: {
+            diocese: dioceseName,
+            year: year,
+            dioceseInfo: info
+          }
+        });
+        //console.log(`Processed diocese info for ${dioceseName} in year ${year}`);
+      }
+    };
+    console.log(`Inserted ${dioceseInfoData.length} diocese info records into the database.`);
 },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('dioceseInfos', null, {});
     await queryInterface.bulkDelete('dioceses', null, {});
   }
 };

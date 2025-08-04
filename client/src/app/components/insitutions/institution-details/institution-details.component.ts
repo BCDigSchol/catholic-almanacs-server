@@ -12,6 +12,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { Location } from '@angular/common';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { DialogComponent } from '../../common/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -19,7 +21,7 @@ import { ApiService } from '../../../services/api.service';
   selector: 'app-institution-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
             RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIcon,
-            MatIconModule
+            MatIconModule, DialogComponent
   ],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
@@ -28,6 +30,7 @@ export class InstitutionDetailsComponent implements OnInit {
   loading = true;
   itemId: any;
   data: any = {};
+  dioceseInfo: any = [];
   mapOptionsWide: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
     zoom: 3.7,
@@ -46,7 +49,8 @@ export class InstitutionDetailsComponent implements OnInit {
     private _route: ActivatedRoute,
     private _api: ApiService,
     private _location: Location,
-    private _router: Router
+    private _router: Router,
+    private _dialog: MatDialog
   ) { }
 
   ngOnInit () {
@@ -75,6 +79,7 @@ export class InstitutionDetailsComponent implements OnInit {
   onYearSelected (year: number | string) {
     //this.loading = true;
     if (year === 'All') {
+      this.dioceseInfo = [];
       this.getData();
     } else {
       this._api.getTypeRequest('institution/' + this.data.instID + '/' + year).subscribe((res: any) => {
@@ -83,7 +88,9 @@ export class InstitutionDetailsComponent implements OnInit {
       this.data = res;
       this.data.year = allYears;
       this.itemId = this.data.instID;
-    })};
+      this._api.getTypeRequest('diocese?diocese=' + this.data.diocese[0] + '&year=' + year).subscribe((dioceseInfoData: any) => {
+        this.dioceseInfo = dioceseInfoData;
+    })});}
   };
 
   clickMap (event: google.maps.MapMouseEvent) {
@@ -94,6 +101,18 @@ export class InstitutionDetailsComponent implements OnInit {
       this._location.back();
     } else {
       this._router.navigate(['/institutions']);
+    }
+  };
+
+  displayDioceseInfo () {
+    if (this.dioceseInfo.length > 0) {
+      const dialogRef = this._dialog.open(DialogComponent, {
+        data: {
+          diocese: this.dioceseInfo[0].diocese,
+          year: this.dioceseInfo[0].year,
+          dioceseInfo: this.dioceseInfo[0].dioceseInfo
+        }
+      });
     }
   }
 }
