@@ -92,9 +92,7 @@ exports.findAll = async (req, res) => {
             orderWhere.order = { [Op.like]: `%${religiousOrder}%` };
         };
         //console.log('-----------where', where);
-        const data = await institution.findAndCountAll({
-            limit: limit,
-            offset: offset,
+        const data = await institution.findAll({
             distinct: true,
             attributes: ['ID'],
             include: [{
@@ -133,32 +131,29 @@ exports.findAll = async (req, res) => {
                     through: {
                         model: orderInAlmanacRecord,
                         attributes: ['order', 'almanacRecordID']
-                    }
-                    }
-    ]}]});
-        /*if (data) {
-            const personData = await person.findAll({
-                attributes: ['persID'],
-                include: [{
-                    model: almanacRecord,
-                    where: where,
-                    as: 'institution',
-                    attributes: ['uniqueInstID'], // one more redundant field
-                    through:{
-                        model: personInAlmanacRecord,
-                        where: persWhere,
-                        attributes: ['persYear', 'persName', 'persTitle', 'persSuffix', 'persNote']
-                    }
-                }]
-            });
-            data.rows.forEach(churchRecord => {
-                churchRecord.dataValues.personInfo = personData;
-            });*/
-            res.send(data);
-        //} else {
-        //    return res.status(404).json({ message: "No churches found." });
-        //};
-
+                    }}]}],
+    });
+        data.forEach(inst => {
+            if (inst.almanacRecord && Array.isArray(inst.almanacRecord)) {
+                inst.almanacRecord.sort((a, b) => a.year - b.year)
+            }
+        });
+        data.sort((a, b) => {
+            const aName = a.almanacRecord.length > 0 ? a.almanacRecord[a.almanacRecord.length - 1].instName : '';
+            const bName = b.almanacRecord.length > 0 ? b.almanacRecord[b.almanacRecord.length - 1].instName : '';
+            const aAlpha = /^[A-Za-z]/.test(aName);
+            const bAlpha = /^[A-Za-z]/.test(bName);
+            if (aAlpha && !bAlpha) return -1;
+            if (!aAlpha && bAlpha) return 1;
+            return aName.localeCompare(bName);
+        });
+        const start = offset;
+        const end = offset + limit;
+        const paginatedRows = data.slice(start, end);
+        res.send({
+            count: data.length,
+            rows: paginatedRows,
+        });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

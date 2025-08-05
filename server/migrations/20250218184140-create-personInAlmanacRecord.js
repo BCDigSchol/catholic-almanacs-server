@@ -75,6 +75,10 @@ module.exports = {
 
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeConstraint('personInAlmanacRecords', 'unique_personInAlmanacRecord_constraint');
+    await queryInterface.removeIndex('personInAlmanacRecords', 'idx_personInAlmanacRecords_almanacRecordID_persID');
+    await queryInterface.removeIndex('personInAlmanacRecords', 'idx_personInAlmanacRecords_name');
+    await queryInterface.removeIndex('personInAlmanacRecords', 'idx_personInAlmanacRecords_persID');
     await queryInterface.dropTable('personInAlmanacRecords');
   }
 };

@@ -8,8 +8,8 @@
     </mat-form-field>
     <div class="flex flex-row items-center justify-center mt-1">
         <div class="flex flex-col justify-center">
-            <a [routerLink]="'/institutions'" style="display: block; text-align: center;">
-                <div style="position: relative; width: 500px; height: 250px;" class="mb-5">
+            <a (click)="navigateToInstitutions()" style="display: block; text-align: center;">
+                <div style="position: relative; width: 500px; height: 250px; cursor:pointer" class="mb-5">
                     <img src="st nacho.jpg" alt="institution" style="width:100%; height:100%; opacity:0.4;">
                     <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:black; opacity:0.5"></div>
                     <div style="position: absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: center; 
@@ -19,25 +19,33 @@
                 </div>
             </a>
             <mat-card style="width:500px; height:300px" appearance="outlined" class="mr-5">
-                <mat-card-content class="scrollable-content">
-                @for (item of data; track item.ID) {
-                    <mat-card *ngIf="item.type === 'institution'" class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined" [routerLink]="'/institutions/' + item.instID">
-                        <div class="flex flex-row items-center justify-between w-full">
-                            <div class="flex flex-row items-center">
-                            <mat-icon class="mr-3">church</mat-icon>
-                            <span>{{item.instName}}</span>
-                        </div>
-                            <span class="text-sm text-gray-600">{{item.diocese}}</span>
-                        </div>
-                    </mat-card>
-                }
+                <mat-card-content class="scrollable-content" style="height: 100%; overflow-y: auto;">
+                @if (loading) {
+                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <mat-spinner></mat-spinner>
+                    </div>
+                } @else {
+                    @if (institutions.length === 0) {
+                        <div style="text-align: center; color: gray;">No Results Found</div>
+                    } @else {
+                        @for (item of institutions; track item) {
+                            <mat-card class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined" [routerLink]="'/institutions/' + item.instID">
+                                <div class="flex flex-row items-center justify-between w-full">
+                                    <div class="flex flex-row items-center">
+                                        <mat-icon class="mr-3">church</mat-icon>
+                                        <span>{{item.instName}}</span>
+                            </div>
+                                <span class="text-sm text-gray-600">{{item.diocese}}</span>
+                            </div>
+                        </mat-card>
+                    }}}
                 </mat-card-content>
         </mat-card>
         </div>
         <div class="flex flex-col justify-center">
             <div class="flex flex-col justify-center">
-                <a [routerLink]="'/people'" style="display: block; text-align: center;">
-                    <div style="position: relative; width: 350px; height: 250px;" class="mb-5">
+                <a (click)="navigateToPeople()" style="display: block; text-align: center;">
+                    <div style="position: relative; width: 350px; height: 250px; cursor: pointer;" class="mb-5">
                         <img src="John_Bapst_standing_cropped.jpg" alt="institution" style="width:350px; height:250px; opacity:0.4;" class="mb-5">
                         <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:black; opacity:0.4"></div>
                         <div style="position:absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: center; 
@@ -48,17 +56,25 @@
                 </a>
                 <mat-card style="width:350px; height:300px" appearance="outlined">
                     <mat-card-content class="scrollable-content">
-                    @for (item of data; track item.ID) {
-                        <mat-card *ngIf="item.type === 'person'" class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined" [routerLink]="'/people/' + item.persID">
-                            <div class="flex flex-row items-center justify-between w-full">
-                                <div class="flex flex-row items-center">
-                                    <mat-icon class="mr-2">person</mat-icon>
-                                    <span>{{item.name}}</span>
-                                </div>
-                                    <span class="text-sm text-gray-600">{{item.diocese}}</span>
-                            </div>
-                        </mat-card>
-                    }
+                    @if (loading) {
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <mat-spinner></mat-spinner>
+                        </div>
+                    } @else {
+                        @if (people.length === 0) {
+                            <div style="text-align: center; color: gray;">No Results Found</div>
+                        } @else {
+                            @for (item of people; track item) {
+                                <mat-card class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined" [routerLink]="'/people/' + item.persID">
+                                    <div class="flex flex-row items-center justify-between w-full">
+                                        <div class="flex flex-row items-center">
+                                            <mat-icon class="mr-2">person</mat-icon>
+                                            <span>{{item.name}}</span>
+                                        </div>
+                                            <span class="text-sm text-gray-600">{{item.diocese}}</span>
+                                    </div>
+                                </mat-card>
+                            }}}
                     </mat-card-content>
                 </mat-card>
             </div> 

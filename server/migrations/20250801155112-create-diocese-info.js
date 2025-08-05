@@ -27,13 +27,18 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-    await queryInterface.addIndex('dioceseInfos', ['diocese', 'year'], {
-      unique: true,
+    await queryInterface.addConstraint('dioceseInfos', {
+      fields: ['diocese', 'year'],
+      type: 'unique',
       name: 'diocese_year_unique_index'
+    });
+    await queryInterface.addIndex('dioceseInfos', ['diocese'], {
+      name: 'diocese_index'
     });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeConstraint('dioceseInfos', 'diocese_year_unique_index');
+    await queryInterface.removeIndex('dioceseInfos', 'diocese_index');
     await queryInterface.dropTable('dioceseInfos');
-    await queryInterface.removeIndex('dioceseInfos', 'diocese_year_unique_index');
   }
 };

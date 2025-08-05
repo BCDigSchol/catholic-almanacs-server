@@ -24,7 +24,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('dioceses');
     await queryInterface.removeIndex('dioceses', 'dioceses_diocese_index');
+    await queryInterface.dropTable('dioceses');
   }
 };

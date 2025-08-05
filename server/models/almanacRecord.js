@@ -77,6 +77,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       {
         fields: ['year', 'instName']
+      },
+      {
+        fields: ['diocese'],
+      },
+      {
+        fields: ['diocese_reg'],
       }
     ]
   });

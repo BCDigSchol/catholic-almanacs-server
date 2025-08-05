@@ -12,13 +12,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Location } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-person-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIconModule, MatIcon
+    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIconModule, 
+    MatIcon, MatProgressSpinnerModule
 ],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
@@ -57,6 +59,7 @@ export class PersonDetailsComponent implements OnInit{
   }
 
   getData () {
+    this.loading = true;
     this._api.getTypeRequest('person/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;

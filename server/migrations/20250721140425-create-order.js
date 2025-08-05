@@ -6,7 +6,8 @@ module.exports = {
       order: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        primaryKey: true
       },
       createdAt: {
         allowNull: false,
@@ -22,7 +23,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('orders');
     await queryInterface.removeIndex('orders', ['order']);
+    await queryInterface.dropTable('orders');
   }
 };

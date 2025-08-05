@@ -15,11 +15,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { FilterComponent } from '../../common/filter/filter.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ApiService } from '../../../services/api.service'; 
 import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 interface FilterField {
     type: string;
@@ -38,7 +40,7 @@ interface FilterField {
   selector: 'app-browse-institution',
   imports: [CommonModule, MatCardModule, MatListModule, MatIconModule,
     MatPaginatorModule, MatInputModule, FormsModule, MatFormFieldModule,
-    RouterLink, MatSliderModule, MatButtonModule, FilterComponent
+    RouterLink, MatSliderModule, MatButtonModule, FilterComponent, MatProgressSpinnerModule
   ],
   templateUrl: './browse-institution.component.html',
   styleUrl: './browse-institution.component.scss'
@@ -77,13 +79,14 @@ export class BrowseInstitutionComponent implements OnInit {
     public filterService: FilterService,
     private navigationService: NavigationService,
     private http: HttpClient,
+    private route: ActivatedRoute,
   ) {
     
   }
 
   ngOnInit () {
     //console.log(this.navigationService.lastNavigationTrigger);
-    this.http.get('/order.csv', { responseType: 'text' }).subscribe((data) => {
+    this.http.get('order.csv', { responseType: 'text' }).subscribe((data) => {
       const orders = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
       const orderFilter = this.filterFields.find(field => field.keyword === 'religiousOrder');
       if (orderFilter) {
@@ -92,7 +95,7 @@ export class BrowseInstitutionComponent implements OnInit {
       }
     });
 
-    this.http.get('/diocese.csv', { responseType: 'text' }).subscribe((data) => {
+    this.http.get('diocese.csv', { responseType: 'text' }).subscribe((data) => {
       const dioceses = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
       const dioceseFilter = this.filterFields.find(field => field.keyword === 'diocese');
       if (dioceseFilter) {
@@ -105,6 +108,18 @@ export class BrowseInstitutionComponent implements OnInit {
       this.filterService.clearFilters();
       this.filterService.setFields(this.filterFields);
     }
+
+    this.route.queryParams.subscribe(params => {
+      const instNameQuery = params['name'];
+      if (instNameQuery) {
+        this.filterService.setFilterValue('instName', instNameQuery);
+        const instNameField = this.filterFields.find(field => field.keyword === 'instName');
+        if (instNameField) {
+          instNameField.active = true;
+        }
+      }
+    });
+
     this.filterValues$ = this.filterService.filterValues$;
     this.filterValues$.subscribe(values => {
       this.filterValues = values;
@@ -116,7 +131,7 @@ export class BrowseInstitutionComponent implements OnInit {
    * fetches data from api service and stores it in .data
    */
   getData () {
-
+    this.loading = true;
     let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
     queryString += this.filterValues.instName ? `&instName=${this.filterValues.instName}` : '';
     queryString += this.filterValues.persName ? `&persName=${this.filterValues.persName}` : '';

@@ -26,13 +26,16 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-    await queryInterface.addIndex('orderInAlmanacRecords', ['order', 'almanacRecordID'], {
-      unique: true,
+    await queryInterface.addConstraint('orderInAlmanacRecords', {
+      fields: ['order', 'almanacRecordID'],
+      type: 'unique',
       name: 'unique_order_almanac_record'
     });
+    await queryInterface.addIndex('orderInAlmanacRecords', ['order']);
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeConstraint('orderInAlmanacRecords', 'unique_order_almanac_record');
+    await queryInterface.removeIndex('orderInAlmanacRecords', ['order']);
     await queryInterface.dropTable('orderInAlmanacRecords');
-    await queryInterface.removeIndex('orderInAlmanacRecords', 'unique_order_almanac_record');
   }
 };

@@ -1,4 +1,3 @@
-<div *ngIf="!loading">
 <!--
     <div class="flex flex-row justify-start items-center">
         <mat-card class="w-full">
@@ -58,45 +57,48 @@
     </div>
 -->
 
-    <app-filter></app-filter>
-    
-    <div>
-        <mat-paginator (page)="changePage($event)"
-        [length]="totalItems"
-        [pageSize]="itemsPerPage"
-        [pageIndex]="currentPage"
-        [showFirstLastButtons]="true"
-        [pageSizeOptions]="[5, 10, 25, 50]">
-        </mat-paginator>
-    </div>
+<app-filter></app-filter>
 
-    <mat-card *ngFor="let item of data" class="my-3">
-        <mat-card-header [routerLink]="'/institutions/' + item.ID" style="cursor: pointer;">
-            <mat-card-title>
-                {{ item.almanacRecord[item.almanacRecord.length - 1]?.instName }}
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-list>
-                <mat-list-item>
-                    <mat-icon matListItemIcon>description</mat-icon>
-                    <div matListItemTitle>
-                        ID: {{ item.ID }}
-                    </div>
-                    <div matListItemLine>
-                        Years In Records:
-                        <span *ngFor="let c of item.almanacRecord">
-                            {{ c.year }} 
-                        </span>
-                    </div>
-                    <div matListItemLine>
-                        Institution Type: {{ item.almanacRecord[item.almanacRecord.length - 1]?.instType }}
-                    </div>
-                    <div matListItemLine>
-                        Diocese (in {{item.almanacRecord[item.almanacRecord.length - 1].year}}): {{ item.almanacRecord[item.almanacRecord.length - 1]?.diocese }}
-                    </div>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
-    </mat-card>
+<div>
+    <mat-paginator (page)="changePage($event)"
+    [length]="totalItems"
+    [pageSize]="itemsPerPage"
+    [pageIndex]="currentPage"
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 25, 50]">
+    </mat-paginator>
 </div>
+@if (loading) {
+    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+    <mat-spinner></mat-spinner>
+    </div>
+} @else {
+<mat-card *ngFor="let item of data" class="my-3">
+    <mat-card-header [routerLink]="'/institutions/' + item.ID" style="cursor: pointer;">
+        <mat-card-title>
+            {{ item.almanacRecord[item.almanacRecord.length - 1]?.instName }}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                <mat-icon matListItemIcon>description</mat-icon>
+                <div matListItemTitle>
+                    ID: {{ item.ID }}
+                </div>
+                <div matListItemLine>
+                    Years In Records:
+                    <span *ngFor="let c of item.almanacRecord">
+                        {{ c.year }} 
+                    </span>
+                </div>
+                <div matListItemLine>
+                    Institution Type: {{ item.almanacRecord[item.almanacRecord.length - 1]?.instType }}
+                </div>
+                <div matListItemLine>
+                    Diocese (in {{item.almanacRecord[item.almanacRecord.length - 1].year}}): {{ item.almanacRecord[item.almanacRecord.length - 1]?.diocese }}
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>}

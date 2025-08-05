@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -21,7 +22,7 @@ import { ApiService } from '../../../services/api.service';
   selector: 'app-institution-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
             RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIcon,
-            MatIconModule, DialogComponent
+            MatIconModule, DialogComponent, MatProgressSpinnerModule
   ],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
@@ -64,6 +65,7 @@ export class InstitutionDetailsComponent implements OnInit {
   }
 
   getData () {
+    this.loading = true;
     this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;

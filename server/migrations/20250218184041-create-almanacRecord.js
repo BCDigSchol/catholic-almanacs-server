@@ -127,6 +127,12 @@ module.exports = {
     await queryInterface.addIndex('almanacRecords', ['year', 'instName'], {
       name: 'almanacRecords_instYear_instName_index',
     });
+    await queryInterface.addIndex('almanacRecords', ['diocese'], {
+      name: 'almanacRecords_diocese_index',
+    });
+    await queryInterface.addIndex('almanacRecords', ['diocese_reg'], {
+      name: 'almanacRecords_diocese_reg_index',
+    });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.removeIndex('almanacRecords', 'almanacRecords_instID_index');
@@ -137,6 +143,8 @@ module.exports = {
     await queryInterface.removeIndex('almanacRecords', 'almanacRecords_instType_index');
     await queryInterface.removeIndex('almanacRecords', 'almanacRecords_year_instType_index');
     await queryInterface.removeIndex('almanacRecords', 'almanacRecords_year_instName_index');
+    await queryInterface.removeIndex('almanacRecords', 'almanacRecords_diocese_index');
+    await queryInterface.removeIndex('almanacRecords', 'almanacRecords_diocese_reg_index');
     await queryInterface.dropTable('almanacRecords');
   }
 };

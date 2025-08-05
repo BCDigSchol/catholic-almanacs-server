@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from  '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -18,12 +19,15 @@ import { NavigationService } from '../../../services/navigation.service';
 @Component({
   selector: 'app-map',
   imports: [GoogleMapsModule, FilterComponent, MatCardModule, CommonModule, 
-    MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule],
+    MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule,
+    MatProgressSpinnerModule
+  ],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
 export class MapComponent implements OnInit {
 
+  loading: boolean = true;
   data: any[] = [];
   isPlaying: boolean = false;
   year: number = 1834;
@@ -78,6 +82,7 @@ export class MapComponent implements OnInit {
 
   getData() {
     
+    this.loading = true;
     let queryString = '';
     //if (this.filterValues.year) {
     //  queryString = `?year=${this.filterValues.year}`;
@@ -100,6 +105,7 @@ export class MapComponent implements OnInit {
         }
       };
       this.data = institutionData;
+      this.loading = false;
       //console.log(this.data);
     })
   };

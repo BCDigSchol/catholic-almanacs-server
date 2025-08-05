@@ -47,9 +47,11 @@ exports.findAllInfo = async (req, res) => {
         });
 
         allData = [];
+        instResults = [];
+        persResults = [];
         instData.rows.forEach(inst => {
             if (inst.almanacRecord) {
-                allData.push({
+                instResults.push({
                     instID: inst.ID,
                     instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
                     diocese: inst.almanacRecord[inst.almanacRecord.length - 1].diocese,
@@ -59,7 +61,7 @@ exports.findAllInfo = async (req, res) => {
         });
         persData.rows.forEach(pers => {
             if (pers.almanacRecords) {
-                allData.push({
+                persResults.push({
                     persID: pers.ID,
                     name: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.name,
                     title: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.title,
@@ -69,20 +71,23 @@ exports.findAllInfo = async (req, res) => {
                 });
             }
         });
-        allData.sort((a, b) => {
-            const getKey = x => x.type === 'institution' ? x.instName : x.name;
-            const isAlpha = str => /^[A-Za-z]/.test(str);
-
-            const aKey = getKey(a);
-            const bKey = getKey(b);
-
-            const aAlpha = isAlpha(aKey);
-            const bAlpha = isAlpha(bKey);
-
-            if (aAlpha && !bAlpha) return -1;
-            if (!aAlpha && bAlpha) return 1;
-            return aKey.localeCompare(bKey);
+        instResults.sort((a, b) => {
+            const isAlphabetical = str => /^[a-zA-Z]/.test(str);
+            const aAlphabetical = isAlphabetical(a.instName);
+            const bAlphabetical = isAlphabetical(b.instName);
+            if (aAlphabetical && !bAlphabetical) return -1;
+            if (!aAlphabetical && bAlphabetical) return 1;
+            return a.instName.localeCompare(b.instName);
         });
+        persResults.sort((a, b) => {
+            const isAlphabetical = str => /^[a-zA-Z]/.test(str);
+            const aAlphabetical = isAlphabetical(a.name);
+            const bAlphabetical = isAlphabetical(b.name);
+            if (aAlphabetical && !bAlphabetical) return -1;
+            if (!aAlphabetical && bAlphabetical) return 1;
+            return a.name.localeCompare(b.name);
+        })
+        allData = instResults.slice(0, 30).concat(persResults.slice(0, 30));
         res.send(allData);
     } catch (error) {
         return res.status(500).json({ message: error.message });

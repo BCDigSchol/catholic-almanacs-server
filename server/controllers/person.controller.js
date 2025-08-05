@@ -87,9 +87,7 @@ exports.findAll = (req, res) => {
         };  
     };
 
-    person.findAndCountAll({
-        limit: limit,
-        offset: offset,
+    person.findAll({
         distinct: true,
         attributes: ['ID'],
         include: [
@@ -106,7 +104,27 @@ exports.findAll = (req, res) => {
             }
         ]
     }).then(data => {
-        res.send(data);
+        data.forEach(person => {
+            if (person.almanacRecords && Array.isArray(person.almanacRecords)) {
+                person.almanacRecords.sort((a, b) => a.year - b.year);
+            }
+        });
+        data.sort((a, b) => {
+            const aName = a.almanacRecords.length > 0 ? a.almanacRecords[a.almanacRecords.length - 1].personInAlmanacRecord.name : '';
+            const bName = b.almanacRecords.length > 0 ? b.almanacRecords[b.almanacRecords.length - 1].personInAlmanacRecord.name : '';
+            const aAlpha = /^[A-Za-z]/.test(aName);
+            const bAlpha = /^[A-Za-z]/.test(bName);
+            if (aAlpha && !bAlpha) return -1;
+            if (!aAlpha && bAlpha) return 1;
+            return aName.localeCompare(bName);
+        });
+        const start = offset;
+        const end = offset + limit;
+        const paginatedRows = data.slice(start, end);
+        res.send({
+            count: data.length,
+            rows: paginatedRows,
+        });
     }).catch(err => {
         res.status(500).send({
             message: err.message || "An error occurred while retrieving people."
