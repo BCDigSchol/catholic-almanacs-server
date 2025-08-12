@@ -81,10 +81,10 @@ async function preprocessCSV(filePath) {
 async function loadData(directoryPath) {
   let csvFilePath;
   if (process.env.NODE_ENV === 'test') {
-    csvFilePath = path.join(directoryPath, 'import', 'test-data');
+    csvFilePath = path.join(directoryPath, 'import', 'processed');
   }
   else {
-    csvFilePath = path.join(directoryPath, 'import', 'data');
+    csvFilePath = path.join(directoryPath, 'stable', 'data');
   }
   const files = fs.readdirSync(csvFilePath).filter(file => file.endsWith('.csv'));
   let data = [];

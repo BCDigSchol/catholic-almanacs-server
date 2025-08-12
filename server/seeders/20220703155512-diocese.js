@@ -10,7 +10,7 @@ const { dioceseInfo } = require('../models');
 module.exports = {
   async up (queryInterface, Sequelize) {
     const dioceses = [];
-    const filePath = path.join(__dirname, 'import', 'others', 'diocese.csv');
+    const filePath = path.join(__dirname, 'stable', 'others', 'diocese.csv');
     await new Promise((resolve, reject) => {
         fs.createReadStream(filePath)
         .pipe(csv())
@@ -37,7 +37,7 @@ module.exports = {
     console.log(`Inserted ${dioceses.length} dioceses into the database.`);
 
     const dioceseInfoData = [];
-    const dioceseFilePath = path.join(__dirname, 'import', 'others', 'diocese_info.csv');
+    const dioceseFilePath = path.join(__dirname, 'stable', 'others', 'diocese_info.csv');
     await new Promise((resolve, reject) => {
         fs.createReadStream(dioceseFilePath)
         .pipe(csv())
