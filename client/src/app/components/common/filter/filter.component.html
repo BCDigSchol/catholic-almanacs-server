@@ -1,5 +1,5 @@
-<mat-accordion>
-    <mat-expansion-panel [expanded]="isOpen"> 
+<mat-accordion style="width:260px">
+    <mat-expansion-panel [expanded]="isOpen" style="width:100%"> 
         <mat-expansion-panel-header>
             <div>
                 <mat-panel-title>
@@ -7,10 +7,11 @@
                 </mat-panel-title>
             </div>
         </mat-expansion-panel-header>
-        <mat-chip-listbox class="w-full">
+        <mat-chip-listbox class="w-full"
+            style="display: flex; flex-direction: column; width: 100%; align-items: stretch;">
             <ng-container *ngFor="let filter of filterService.fields; let index = index">
-            <mat-chip  *ngIf="!filter.active" (click)="toggleFilter(index)">
-            <mat-icon fontIcon="filter_alt"></mat-icon>
+            <mat-chip (click)="toggleFilter(index)"
+                style="width: 100%; height: 37px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
                 {{ filter.label }}
             </mat-chip>
             </ng-container>

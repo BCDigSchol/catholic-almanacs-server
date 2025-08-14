@@ -62,15 +62,15 @@ export class BrowseInstitutionComponent implements OnInit {
 
   filterFields: FilterField[] = [
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
-    { type: 'input', label: 'Language', keyword: 'language', active: false },
     { type: 'input', label: 'Institution Type', keyword: 'instType', active: false },
+    { type: 'input', label: 'Language', keyword: 'language', active: false },
     { type: 'input', label: 'County', keyword: 'countyReg', active: false },
     { type: 'input', label: 'City', keyword: 'cityReg', active: false },
     { type: 'input', label: 'State', keyword: 'stateReg', active: false },
     { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: [] },
     { type: 'autocomplete', label: 'Religious Order', keyword: 'religiousOrder', active: false, autocompleteOptions: []},
     { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
-    { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1830, max:1870, active: false },
+    { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1830, max:1870, active: true },
   ]
   
 

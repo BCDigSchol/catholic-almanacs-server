@@ -13,8 +13,7 @@ import { MapComponent as PeopleMapComponent } from './components/people/map/map.
 import { MapComponent as DioceseMapComponent } from './components/dioceses/map/map.component';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'institutions', component: BrowseInstitutionComponent },
     { path: 'institutions/map', component: InstitutionMapComponent },

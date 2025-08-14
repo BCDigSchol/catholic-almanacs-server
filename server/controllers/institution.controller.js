@@ -102,18 +102,6 @@ exports.findAll = async (req, res) => {
                 required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0 || Object.keys(orderWhere).length > 0,
                 attributes: ['instName', 'year','instType', 'diocese'],
                 include: [{
-                    model: almanacRecord,
-                    as: 'attendingInstitutions',
-                    attributes: ['instID', 'instName', 'year'],
-                    through: {
-                        attributes: ['attendingFrequency', 'note']
-                    }}, {
-                    model: almanacRecord,
-                    as: 'attendedBy',
-                    attributes: ['instID', 'instName', 'year'],
-                    through: {
-                        attributes: ['attendingFrequency', 'note']
-                    }},{
                     model: person,
                     as: 'personInfo',
                     required: Object.keys(persWhere).length > 0,
