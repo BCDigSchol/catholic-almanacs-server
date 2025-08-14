@@ -1,81 +1,87 @@
-<app-filter></app-filter>
-<mat-card>
-    <mat-card-content>
-        <div class="w-full flex flex-row justify-around items-center relative">
-            <mat-card>
+<div style="font-size: 30px; margin-bottom: 10px; margin-top: 20px; margin-left: 20px; font-family: 'Open Sans', sans-serif;">
+    Institutions Map
+</div>
+<div class="flex flex-row w-full justify-start items-start">
+    <div style="width: 300px;" class="ml-3">
+        <app-filter></app-filter>
+    </div>
+    <div class="w-full flex flex-col justify-around items-center relative">
+        <div style="flex-shrink: 0;">
+        <google-map [options]="mapOptions" width = "1000px" height="600px">
+            @for (item of data; track item) {
+                <map-circle
+                    [center]="{lat: item.latitude, lng: item.longitude}"
+                    [radius]="300"
+                    [options]="{
+                        strokeColor: getCircleColor(item.instType),
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: getCircleColor(item.instType),
+                        fillOpacity: 0.8
+                    }"
+                    (circleClick)="clickMap(item)"
+                    (circleMouseover)="showInstDetail($event, item)"
+                    (circleMouseout)="hideInstDetail()"
+                ></map-circle>
+            }
+        </google-map>
+        </div>
+        <div class="absolute top-0 right-50 m-2" style="width: 300px;">
+            <mat-card *ngIf="instDetailVisible">
                 <mat-card-content>
-                    <div class="flex flex-col justify-center items-center">
-                    <div class="border border-black border-solid my-2 rounded-xl p-3">
-                        <span>Year: {{year}}</span>
+                    <div>
+                        <b>Institution Name:</b> {{ instDetailData.instName }}
                     </div>
-                    @if (!isPlaying) {
-                        <button mat-fab class="flex flex-col" (click)="togglePlay()">
-                            <mat-icon>play_arrow</mat-icon>
-                            <span>Play</span>
-                        </button>
-                    }
-                    @else {
-                        <button mat-fab class="flex flex-col" (click)="togglePlay()">
-                            <mat-icon>pause</mat-icon>
-                            <span>Pause</span>
-                        </button>
-                    }
-                    <mat-slider class="mx-2" style="width:200px" [min]="yearMin" [max]="yearMax" step="1" discrete>
-                        <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
-                    </mat-slider>
+                    <div>
+                        <b>Institution Type:</b> {{ instDetailData.instType }}
+                    </div>
+                    <div>
+                        <b>Diocese:</b> {{ instDetailData.diocese }}
+                    </div>
+                    <div>
+                        <b>Year:</b> {{ instDetailData.year }}
                     </div>
                 </mat-card-content>
             </mat-card>
-            <div style="flex-shrink: 0;">
-            <google-map [options]="mapOptions" width = "900px" height="600px">
-                @for (item of data; track item) {
-                    <!--
-                    <map-marker 
-                    [position]="{lat: item.latitude, lng: item.longitude}" 
-                    [title]="item.instName + ' (' + item.diocese + ')'" 
-                    (mapClick)="clickMap(item)"
-                    [options]="{
-                        icon: {
-                            url: 'map-icon.png'
-                        }
-                    }"
-                    >
-                    </map-marker> -->
-                    <map-circle
-                        [center]="{lat: item.latitude, lng: item.longitude}"
-                        [radius]="300"
-                        [options]="{
-                            strokeColor: getCircleColor(item.instType),
-                            strokeOpacity: 0.8,
-                            strokeWeight: 2,
-                            fillColor: getCircleColor(item.instType),
-                            fillOpacity: 0.8
-                        }"
-                        (circleClick)="clickMap(item)"
-                        (circleMouseover)="showInstDetail($event, item)"
-                        (circleMouseout)="hideInstDetail()"
-                    ></map-circle>
-                }
-            </google-map>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+        <div>
+            <div class="flex flex-row justify-center items-center">
+            <div>
+                <span>Year: {{year}}</span>
             </div>
-            <div class="absolute top-0 right-50 m-2" style="width: 300px;">
-                <mat-card *ngIf="instDetailVisible">
-                    <mat-card-content>
-                        <div>
-                            <b>Institution Name:</b> {{ instDetailData.instName }}
-                        </div>
-                        <div>
-                            <b>Institution Type:</b> {{ instDetailData.instType }}
-                        </div>
-                        <div>
-                            <b>Diocese:</b> {{ instDetailData.diocese }}
-                        </div>
-                        <div>
-                            <b>Year:</b> {{ instDetailData.year }}
-                        </div>
-                    </mat-card-content>
-                </mat-card>
+            @if (!isPlaying) {
+                <button mat-fab class="flex flex-col mx-3" (click)="togglePlay()">
+                    <mat-icon>play_arrow</mat-icon>
+                </button>
+            }
+            @else {
+                <button mat-fab class="flex flex-col" (click)="togglePlay()">
+                    <mat-icon>pause</mat-icon>
+                </button>
+            }
+            <div>
+            <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
+                <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
+            </mat-slider>
+            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
+                <span>{{ yearMin }}</span>
+                <span>{{ (yearMax - yearMin) / 3 + yearMin}}</span>
+                <span>{{ (yearMax - yearMin) / 3 * 2 + yearMin}}</span>
+                <span>{{ yearMax }}</span>
+            </div>
             </div>
         </div>
-    </mat-card-content>
-</mat-card>
+        <!--
+        <div style="width:600px">
+            <mat-progress-bar mode="determinate" [value]="(year - yearMin) / (yearMax - yearMin) * 100"></mat-progress-bar>
+            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
+                <span>{{ yearMin }}</span>
+                <span>{{ (yearMin + yearMax) / 2 | number:'1.0-0' }}</span>
+                <span>{{ yearMax }}</span>
+            </div>
+        </div>
+        -->
+        </div>
+    </div>
+</div>

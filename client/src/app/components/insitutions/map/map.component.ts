@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from  '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { ApiService } from '../../../services/api.service';
 import { FilterService } from '../../../services/filter.service';
@@ -20,7 +21,7 @@ import { NavigationService } from '../../../services/navigation.service';
   selector: 'app-map',
   imports: [GoogleMapsModule, FilterComponent, MatCardModule, CommonModule, 
     MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule, MatProgressBarModule
   ],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
@@ -36,7 +37,7 @@ export class MapComponent implements OnInit {
 
   mapOptions: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 4,
+    zoom: 4.5,
     disableDefaultUI: true,
     clickableIcons: false
   };
@@ -47,8 +48,8 @@ export class MapComponent implements OnInit {
 
   filterFields = [
     //{ type: 'slider', label: 'Year', keyword: 'year', min: 1830, max: 1870, active: true, defaultValue: '1864'},
-    { type: 'input', label: 'Institution Type', keyword: 'instType', active: true},
-    { type: 'input', label: 'Institution Name', keyword: 'instName', active: true},
+    { type: 'input', label: 'Institution Type', keyword: 'instType', active: false},
+    { type: 'input', label: 'Institution Name', keyword: 'instName', active: false},
   ]
 
   constructor(

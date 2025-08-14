@@ -1,5 +1,5 @@
-<app-filter></app-filter>
-<div>
+<div class="flex flex-col justify-center items-center w-full">
+<div style="width:100%">
     <mat-paginator (page)="changePage($event)"
     [length]="totalItems"
     [pageSize]="itemsPerPage"
@@ -8,38 +8,45 @@
     [pageSizeOptions]="[5, 10, 25, 50]">
     </mat-paginator>
 </div>
-
-@if (loading) {
-    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-        <mat-spinner></mat-spinner>
+<div class="flex flex-row w-full justify-start items-start">
+    <div style="width:300px; min-width: 250px; margin-right: 20px" class="my-3 mr-3">
+        <app-filter></app-filter>
     </div>
-} @else {
-    <mat-card *ngFor="let item of data" class="my-3">
-    <mat-card-header [routerLink]="'/people/' + item.ID" style="cursor: pointer;">
-        <mat-card-title>
-            {{ item.almanacRecords[item.almanacRecords.length - 1].personInAlmanacRecord.title + ' ' + item.almanacRecords[item.almanacRecords.length - 1]?.personInAlmanacRecord.name
-            + ' ' + item.almanacRecords[item.almanacRecords.length - 1].personInAlmanacRecord.suffix }}
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-list>
-            <mat-list-item>
-                <mat-icon matListItemIcon>description</mat-icon>
-                <div matListItemTitle>
-                    ID: {{ item.ID }}
-                </div>
-                <div matListItemLine>
-                    Years In Records:
-                    <span *ngFor="let year of getUniqueYears(item.almanacRecords)">
-                        {{ year }} 
-                    </span>
-                </div>
-                <div matListItemLine>
-                    Diocese (in {{item.almanacRecords[item.almanacRecords.length - 1].year}}):
-                    {{ item.almanacRecords[item.almanacRecords.length - 1].diocese }}
-                </div>
-            </mat-list-item>
-        </mat-list>
-    </mat-card-content>
-    </mat-card>
-}
+    <div class="flex flex-col w-full">
+    @if (loading) {
+        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+            <mat-spinner></mat-spinner>
+        </div>
+    } @else {
+        <mat-card *ngFor="let item of data" class="my-3" style="width:100%">
+        <mat-card-header [routerLink]="'/people/' + item.ID" style="cursor: pointer;">
+            <mat-card-title>
+                {{ item.almanacRecords[item.almanacRecords.length - 1].personInAlmanacRecord.title + ' ' + item.almanacRecords[item.almanacRecords.length - 1]?.personInAlmanacRecord.name
+                + ' ' + item.almanacRecords[item.almanacRecords.length - 1].personInAlmanacRecord.suffix }}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>description</mat-icon>
+                    <div matListItemTitle>
+                        ID: {{ item.ID }}
+                    </div>
+                    <div matListItemLine>
+                        Years In Records:
+                        <span *ngFor="let year of getUniqueYears(item.almanacRecords)">
+                            {{ year }} 
+                        </span>
+                    </div>
+                    <div matListItemLine>
+                        Diocese (in {{item.almanacRecords[item.almanacRecords.length - 1].year}}):
+                        {{ item.almanacRecords[item.almanacRecords.length - 1].diocese }}
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+        </mat-card>
+    }
+</div>
+</div>
+</div>

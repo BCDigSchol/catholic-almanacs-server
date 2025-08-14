@@ -52,7 +52,7 @@ exports.findAll = async (req, res) => {
             where.instName = { [Op.like]: `%${instName}%` };
         };
         if (diocese) {
-            where.diocese = { [Op.like]: `%${diocese}%` };
+            where.diocese_reg = { [Op.like]: `%${diocese}%` };
         };
         if (instStartYear && instEndYear) {
             where.year = {

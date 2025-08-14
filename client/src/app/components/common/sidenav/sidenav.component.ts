@@ -23,7 +23,7 @@ export class SidenavComponent implements OnInit {
   navItems = [
     {
       name: 'Home',
-      route: 'home'
+      route: ''
     },
     {
       name: 'Institutions',
