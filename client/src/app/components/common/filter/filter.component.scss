@@ -18,3 +18,13 @@
     align-items: center;
     gap: 1px
 }
+
+:host .filter-form-field {
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px;
+}

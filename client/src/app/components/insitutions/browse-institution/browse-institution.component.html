@@ -18,7 +18,7 @@
         <mat-spinner></mat-spinner>
         </div>
     } @else {
-    <mat-card *ngFor="let item of data" class="my-3" style="width:100%">
+    <mat-card *ngFor="let item of data" class="my-2" style="width:100%">
         <mat-card-header [routerLink]="'/institutions/' + item.ID" style="cursor: pointer;">
             <mat-card-title>
                 {{ item.almanacRecord[item.almanacRecord.length - 1]?.instName }}

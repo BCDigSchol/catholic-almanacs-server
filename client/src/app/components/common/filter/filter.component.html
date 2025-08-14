@@ -2,41 +2,40 @@
     <mat-expansion-panel [expanded]="isOpen" style="width:100%"> 
         <mat-expansion-panel-header>
             <div>
-                <mat-panel-title>
+                <mat-panel-title style="color:#422a26">
                 Filter by:
                 </mat-panel-title>
             </div>
         </mat-expansion-panel-header>
-        <mat-chip-listbox class="w-full"
-            style="display: flex; flex-direction: column; width: 100%; align-items: stretch;">
+        <mat-chip-listbox style="display: flex; flex-direction: column; width: 100%; align-items: stretch;">
             <ng-container *ngFor="let filter of filterService.fields; let index = index">
+            @if (!filter.active){
             <mat-chip (click)="toggleFilter(index)"
-                style="width: 100%; height: 37px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                style="width: 100%; max-width: 200px; height: 37px; display: flex; align-items: center; justify-content: center; margin: 2 auto;">
                 {{ filter.label }}
             </mat-chip>
-            </ng-container>
-        </mat-chip-listbox>
-
-        <div class="flex flex-row flex-wrap justify-start items-center">
-            <div *ngFor="let filter of filterService.fields; let index = index" class="filter-form mr-2 mt-2">
-                <ng-container *ngIf="filter.active">
+            } @else {
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
                 <ng-container [ngSwitch]="true">
                     <div *ngSwitchCase="filter.type == 'input'">
-                        <mat-form-field style="width:190px">
-                            <mat-label>{{filter.label}}</mat-label>
-                            <input matInput placeholder="filter by {{ filter.label }}"
+                        <mat-form-field appearance="fill" class="filter-form-field" subscriptSizing="dynamic">
+                            <mat-label style="font-size:14px;">{{filter.label}}</mat-label>
+                            <input matInput
                             (input)="updateFilter(filter)"
                             [(ngModel)]="filterValues[filter.keyword!]">
+                            <mat-icon matSuffix style="cursor: pointer; font-size:16px; display:flex; align-items: center; justify-content: center;" (click)="toggleFilter(index)">close</mat-icon>
                         </mat-form-field>
                     </div>
                     <div *ngSwitchCase="filter.type == 'range'">
-                        <mat-slider class="mx-2" style="width:200px" [min]="filter.min" [max]="filter.max" step="1" discrete>
+                        <div class="mt-3" style="color:#422a26; font-size:14px">Year</div>
+                        <mat-slider class="mx-2" style="width:190px" [min]="filter.min" [max]="filter.max" step="1" discrete>
                             <input value="{{filter.min}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keywordStart!]" matSliderStartThumb >
                             <input value="{{filter.max}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keywordEnd!]" matSliderEndThumb >
                         </mat-slider>
+                        <div style="color:#422a26; font-size:14px">{{filterValues[filter.keywordStart!]}} - {{filterValues[filter.keywordEnd!]}}</div>
                     </div>
                     <div *ngSwitchCase="filter.type == 'slider'">
-                        <mat-slider class="mx-2" style="width:200px" [min]="filter.min" [max]="filter.max" step="1" discrete>
+                        <mat-slider class="mx-2" style="width:190px" [min]="filter.min" [max]="filter.max" step="1" discrete>
                             <input value="{{filter.min}}" (change)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keyword!]" matSliderThumb >
                         </mat-slider>
                     </div>
@@ -50,23 +49,24 @@
                             <mat-select placeholder="{{filter.label}}" class="border border-gray-300 rounded-lg" id="{{ filter.keyword }} + 'Filter'" (selectionChange)="updateFilter(filter)" [(ngModel)]="filterValues[filter.keyword!]">
                             <mat-option *ngFor="let option of filter.dropdown" [value]="option">{{ option }}</mat-option>
                             </mat-select>
+                            <button mat-icon-button  matSuffix color="warn" type="button" class="custom-button" (click)="toggleFilter(index)">
+                                <mat-icon fontIcon="close"></mat-icon>
+                            </button>
                         </mat-form-field>
                     </div>
                     <div *ngSwitchCase="filter.type == 'autocomplete'">
-                        <mat-form-field>
-                            <mat-label>{{filter.label}}</mat-label>
+                        <mat-form-field class="filter-form-field" subscriptSizing="dynamic">
+                            <mat-label style="font-size: 14px">{{filter.label}}</mat-label>
                             <input matInput [matAutocomplete]="auto" (input)="onAutocompleteInput($event, filter)" [(ngModel)]="filterValues[filter.keyword!]">
                             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="updateFilter(filter)">
                                 <mat-option *ngFor="let option of filter.filteredOptions" [value]="option">{{ option }}</mat-option>
                             </mat-autocomplete>
+                            <mat-icon matSuffix style="cursor: pointer; font-size:16px; display:flex; align-items: center; justify-content: center;" (click)="toggleFilter(index)">close</mat-icon>
                         </mat-form-field>
                     </div>
                 </ng-container>
-                <button mat-icon-button color="warn" type="button" class="custom-button" (click)="toggleFilter(index)">
-                    <mat-icon fontIcon="close"></mat-icon>
-                </button>
+                </div>}
                 </ng-container>
-            </div>
-        </div>
+        </mat-chip-listbox>
     </mat-expansion-panel>
 </mat-accordion>

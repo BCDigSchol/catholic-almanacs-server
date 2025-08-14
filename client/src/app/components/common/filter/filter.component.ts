@@ -38,6 +38,16 @@ export class FilterComponent implements OnInit{
     this.filterValues$ = this.filterService.filterValues$;
     this.filterValues$.subscribe(values => {
       this.filterValues = values;
+      this.filterService.fields.forEach(filter => {
+      if (filter.type === 'range') {
+        if (this.filterValues[filter.keywordStart!] === undefined) {
+          this.filterValues[filter.keywordStart!] = filter.min;
+        }
+        if (this.filterValues[filter.keywordEnd!] === undefined) {
+          this.filterValues[filter.keywordEnd!] = filter.max;
+        }
+      }
+    });
     })
   }
 
