@@ -69,9 +69,13 @@ export class InstitutionDetailsComponent implements OnInit {
     this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
-      //console.log(this.data.religiousOrder)
-    }
-    );
+      const center = { lat: this.data.latitude, lng: this.data.longitude };
+      if (window.innerWidth < 768) {
+        this.mapOptionsSmall = { ...this.mapOptionsSmall, center, zoom: 7 };
+      } else {
+        this.mapOptionsWide = { ...this.mapOptionsWide, center, zoom: 7 };
+      }
+    });
   }
 
   /**

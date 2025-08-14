@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -21,19 +22,24 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
 
   inputName: string = '';
   institutions: any[] = [];
   people: any[] = [];
   data: any[] = [];
   loading: boolean = true;
+  isEmbedded: boolean = false;
 
-  constructor(private apiService: ApiService, private router: Router) { 
-    this.getData();
+  constructor(private apiService: ApiService, private router: Router, private _route: ActivatedRoute) {
   };
 
   ngOnInit() {
+    this._route.queryParamMap.subscribe(params => {
+      if (params.get('embed') && params.get('embed') === 'true') {
+        this.isEmbedded = true;
+      }
+    });
     this.getData();
   };
 
@@ -49,10 +55,18 @@ export class HomePageComponent {
   };
 
   navigateToInstitutions() {
-    this.router.navigate(['/institutions'], { queryParams: { name: this.inputName } });
+    if (this.isEmbedded){
+      window.open(`/institutions?name=${encodeURIComponent(this.inputName)}`, '_blank');
+    } else {
+      this.router.navigate(['/institutions'], { queryParams: { name: this.inputName } });
+    }
   };
 
   navigateToPeople() {
-    this.router.navigate(['/people'], { queryParams: { name: this.inputName } });
+    if (this.isEmbedded){
+      window.open(`/people?name=${encodeURIComponent(this.inputName)}`, '_blank');
+    } else {
+      this.router.navigate(['/people'], { queryParams: { name: this.inputName } });
+    }
   }
 }

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatButtonModule} from '@angular/material/button'; 
+import { ActivatedRoute } from '@angular/router';
 
 import { Settings } from '../../../app.settings';
 
@@ -21,8 +22,18 @@ import { Settings } from '../../../app.settings';
 export class HeaderComponent implements OnInit {
   @Output() navMenuToggle = new EventEmitter<boolean>();
   title = "Catholic Almanacs Database";
+  isEmbedded = false;
+
+  constructor(private _route: ActivatedRoute){
+
+  }
 
   ngOnInit(): void {
+    this._route.queryParamMap.subscribe(params => {
+      if (params.get('embed') && params.get('embed') === 'true') {
+        this.isEmbedded = true;
+      }
+    })
 };
 
   toggleNav() {

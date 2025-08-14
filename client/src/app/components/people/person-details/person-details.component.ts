@@ -63,8 +63,15 @@ export class PersonDetailsComponent implements OnInit{
     this._api.getTypeRequest('person/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
-    }
-    );}
+      //console.log(this.data)
+      //const center = { lat: this.data.residingInstitutions[0].latitude, lng: this.data.residingInstitutions[0].longitude };
+      //if (window.innerWidth < 768) {
+      //  this.mapOptionsSmall = { ...this.mapOptionsSmall, center, zoom: 7 };
+      //} else {
+      //  this.mapOptionsWide = { ...this.mapOptionsWide, center, zoom: 7 };
+      //}
+    });
+  }
 
   onYearSelected (year: number | string) {
     //this.loading = true;
