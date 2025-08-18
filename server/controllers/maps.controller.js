@@ -88,14 +88,19 @@ exports.findAllPeople = async (req, res) => {
 exports.findAllDioceses = async (req, res) => {
     try {
         where = {};
-        let {year} = req.query;
+        let {year, instName, instType} = req.query;
         if (year) {
           where.year = { [Op.eq]: year };
         };
         if (!year) {
           return res.status(400).json({ message: "Year is required" });
         };
-
+        if (instName) {
+            where.instName = { [Op.like]: `%${instName}%` };
+        };
+        if (instType) {
+            where.instType = { [Op.like]: `%${instType}%` };
+        };
         const data = await db.diocese.findAndCountAll({
             distinct: true,
             attributes: ['diocese'],
@@ -104,7 +109,7 @@ exports.findAllDioceses = async (req, res) => {
                     model: almanacRecord,
                     as: 'almanacRecords',
                     required: Object.keys(where).length > 0,
-                    attributes: ['instID', 'instName', 'year', 'latitude', 'longitude', 'diocese_reg', 'diocese'],
+                    attributes: ['instID', 'instName', 'year', 'instType', 'latitude', 'longitude', 'diocese_reg', 'diocese'],
                     where: where,
                 }
             ]

@@ -1,33 +1,13 @@
-<app-filter></app-filter>
-<mat-card>
-    <mat-card-content>
-        <div class="w-full flex flex-row justify-around items-center relative">
-            <mat-card>
-                <mat-card-content>
-                    <div class="flex flex-col justify-center items-center">
-                    <div class="border border-black border-solid my-2 rounded-xl p-3">
-                        <span>Year: {{year}}</span>
-                    </div>
-                    @if (!isPlaying) {
-                        <button mat-fab class="flex flex-col" (click)="togglePlay()">
-                            <mat-icon>play_arrow</mat-icon>
-                            <span>Play</span>
-                        </button>
-                    }
-                    @else {
-                        <button mat-fab class="flex flex-col" (click)="togglePlay()">
-                            <mat-icon>pause</mat-icon>
-                            <span>Pause</span>
-                        </button>
-                    }
-                    <mat-slider class="mx-2" style="width:200px" [min]="yearMin" [max]="yearMax" step="1" discrete>
-                        <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
-                    </mat-slider>
-                    </div>
-                </mat-card-content>
-            </mat-card>
+<div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">
+    Dioceses Map
+</div>
+<div class="flex flex-row w-full justify-start items-start mt-5">
+    <div style="width: 300px;" class="ml-3">
+        <app-filter></app-filter>
+    </div>
+        <div class="w-full flex flex-col justify-around items-center relative">
             <div style="flex-shrink: 0;">
-            <google-map [options]="mapOptions" width = "900px" height="600px">
+            <google-map [options]="mapOptions" width = "1000px" height="600px">
                 @for (item of data; track item) {
                     <!--
                     <map-marker 
@@ -76,6 +56,33 @@
                     </mat-card-content>
                 </mat-card>
             </div>
+            <div class="flex flex-col justify-center items-center">
+        <div>
+            <div class="flex flex-row justify-center items-center">
+            <div>
+                <span>Year: {{year}}</span>
+            </div>
+            @if (!isPlaying) {
+                <button mat-fab class="flex flex-col mx-5" (click)="togglePlay()">
+                    <mat-icon>play_arrow</mat-icon>
+                </button>
+            }
+            @else {
+                <button mat-fab class="flex flex-col" (click)="togglePlay()">
+                    <mat-icon>pause</mat-icon>
+                </button>
+            }
+            <div>
+            <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
+                <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
+            </mat-slider>
+            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
+                <span>{{ yearMin }}</span>
+                <span>{{ (yearMax - yearMin) / 3 + yearMin}}</span>
+                <span>{{ (yearMax - yearMin) / 3 * 2 + yearMin}}</span>
+                <span>{{ yearMax }}</span>
+            </div>
+            </div>
         </div>
-    </mat-card-content>
-</mat-card>
+        </div>
+</div>

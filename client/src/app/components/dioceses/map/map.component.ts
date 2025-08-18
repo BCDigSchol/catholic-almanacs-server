@@ -44,8 +44,8 @@ export class MapComponent {
 
   filterFields = [
     //{ type: 'slider', label: 'Year', keyword: 'year', min: 1830, max: 1870, active: true, defaultValue: '1864'},
-    { type: 'input', label: 'Institution Type', keyword: 'instType', active: true},
-    { type: 'input', label: 'Institution Name', keyword: 'instName', active: true},
+    { type: 'input', label: 'Institution Type', keyword: 'instType', active: false},
+    { type: 'input', label: 'Institution Name', keyword: 'instName', active: false},
   ]
 
   constructor(
