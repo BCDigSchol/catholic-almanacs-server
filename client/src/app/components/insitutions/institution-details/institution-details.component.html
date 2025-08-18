@@ -1,4 +1,4 @@
-<mat-card class="max-md:mt-2 mt-5">
+<mat-card class="max-md:mt-2 mt-2">
     @if (loading) {
         <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
             <mat-spinner></mat-spinner>
@@ -13,8 +13,8 @@
         <div class="w-full flex flex-col md:flex-row justify-center items-start">
             <div class="w-full flex flex-col justify-center items-start">
                 <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
-                <div class="table formatted-table custom-font">
-                    <div class="table-body text-xs md:text-sm">
+                <div class="table formatted-table">
+                    <div class="table-body text-xs md:text-sm custom-font">
                         <div class="row">
                             <div class="cell">Institution ID</div>
                             <div class="cell">{{data.instID}}</div>
@@ -94,7 +94,7 @@
                             <div class="cell">Residing People</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.residingPersonInfo">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font custom-font" color="primary" *ngFor="let item of data.residingPersonInfo">
                                         <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
                                     </button>
                                 </div>
@@ -107,12 +107,12 @@
                             <div class="cell">
                                 @for (item of data.visitingPersonInfo; track item.ID) {
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
-                                    <button mat-button class="!text-xs md:!text-sm" color="primary">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary">
                                         <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
                                     </button>
                                     @if (item.personInAlmanacRecord.attendingInstID) {
                                         <p>from</p>
-                                        <button mat-button class="!text-xs md:!text-sm" color="primary">
+                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary">
                                             <div [routerLink]="'/institutions/' + item.personInAlmanacRecord.attendingInstID">{{item.personInAlmanacRecord.attendingInstName}}</div>
                                         </button>
                                     }
@@ -126,7 +126,7 @@
                             <div class="cell">Relevant Institutions</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
                                         <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                     </button>
                                 </div>
@@ -139,7 +139,7 @@
                             <div class="cell">Parent Institutions</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" class="text-xs md:text-sm" color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
                                         <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                     </button>
                                 </div>
@@ -152,7 +152,7 @@
                             <div class="cell">Child Institutions</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
                                         <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                     </button>
                                 </div>
@@ -165,7 +165,7 @@
                             <div class="cell">Sibling Institutions</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
                                         <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                     </button>
                                 </div>
@@ -178,7 +178,7 @@
                                 <div class="cell">Attending Institutions</div>
                                 <div class="cell">
                                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                             <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                         </button>
                                     </div>
@@ -191,7 +191,7 @@
                             <div class="cell">Attended From</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                         <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                     </button>
                                 </div>
@@ -217,7 +217,7 @@
                     </google-map>
                 </div>
             </div>
-            <button mat-button class="tertiary-btn" (click)="goBack()">
+            <button mat-button class="tertiary-btn custom-font" (click)="goBack()">
                 <mat-icon>arrow_back</mat-icon>
                 Back
             </button>

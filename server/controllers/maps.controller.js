@@ -9,7 +9,7 @@ const institution = db.institution;
 exports.findAllInstitutions = async (req, res) => {
     try {
         where = {};
-        let {year, instType, instName} = req.query;
+        let {year, instType, instName, diocese} = req.query;
         if (year) {
           where.year = { [Op.eq]: year };
         };
@@ -22,7 +22,9 @@ exports.findAllInstitutions = async (req, res) => {
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
-
+        if (diocese) {
+            where.diocese_reg = { [Op.like]: `%${diocese}%` };
+        };
         const data = await institution.findAndCountAll({
             distinct: true,
             attributes: ['ID'],
@@ -44,15 +46,21 @@ exports.findAllInstitutions = async (req, res) => {
 
 exports.findAllPeople = async (req, res) => {
     try {
-        where = {};
-        let {year} = req.query;
+        instWhere = {};
+        persWhere = {};
+        let {year, persName, diocese} = req.query;
         if (year) {
-          where.year = { [Op.eq]: year };
+          instWhere.year = { [Op.eq]: year };
         };
         if (!year) {
           return res.status(400).json({ message: "Year is required" });
         };
-
+        if (persName) {
+            persWhere.name = { [Op.like]: `%${persName}%` };
+        };
+        if (diocese) {
+            instWhere.diocese_reg = { [Op.like]: `%${diocese}%` };
+        };
         const data = await person.findAndCountAll({
             distinct: true,
             attributes: ['ID'],
@@ -60,12 +68,13 @@ exports.findAllPeople = async (req, res) => {
                 {
                     model: almanacRecord,
                     as: 'almanacRecords',
-                    required: Object.keys(where).length > 0,
-                    attributes: ['instID', 'instName', 'year', 'latitude', 'longitude'],
-                    where: where,
+                    required: Object.keys(instWhere).length > 0,
+                    attributes: ['instID', 'instName', 'year', 'diocese', 'latitude', 'longitude'],
+                    where: instWhere,
                     through: {
                         model: personInAlmanacRecord,
-                        attributes: ['name', 'title', 'suffix', 'role']
+                        attributes: ['name', 'title', 'suffix', 'role'],
+                        where: persWhere
                     }
                 }
             ]

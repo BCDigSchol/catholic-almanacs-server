@@ -102,7 +102,7 @@ async function importData(data) {
   const uniqueInstInfo = Array.from(instInfoMap.values());
 
   // remove duplicates
-  //const uniqueInstInfo = Array.from(new Map(instInfo.map(item => [item.ID, item])).values());
+  // const uniqueInstInfo = Array.from(new Map(instInfo.map(item => [item.ID, item])).values());
   // mapping the items in instInfo to tuples of [instID, item]
   // creating a new Map object which automatically removes duplicates
   // converting the Map back to an array of values
@@ -121,7 +121,7 @@ async function importData(data) {
       }
     }
     if (item.instID) {
-      try{
+      try {
         await institution.findOrCreate({
           where: { ID: item.instID }
         });

@@ -2,12 +2,14 @@
     <button mat-button 
     *ngFor="let year of years"
     class="!text-xs md:!text-sm"
+    style="font-family:'Open Sans', sans-serif"
     [class.clicked]="year === selectedYear"
     (click)="onYearClick(year)">
     {{ year }}
     </button>
     <button mat-button
     class="!text-xs md:!text-sm"
+    style="font-family:'Open Sans', sans-serif"
     [class.clicked]="selectedYear === 'All'"
     (click)="onAllYearsClick()">
     All

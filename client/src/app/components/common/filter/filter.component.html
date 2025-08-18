@@ -2,7 +2,7 @@
     <mat-expansion-panel [expanded]="isOpen" style="width:100%"> 
         <mat-expansion-panel-header>
             <div>
-                <mat-panel-title style="color:#101b32">
+                <mat-panel-title style="color:#101b32" class="custom-font-filter">
                 Filter by:
                 </mat-panel-title>
             </div>
@@ -11,7 +11,8 @@
             <ng-container *ngFor="let filter of filterService.fields; let index = index">
             @if (!filter.active){
             <mat-chip (click)="toggleFilter(index)"
-                style="width: 100%; max-width: 200px; height: 37px; display: flex; align-items: center; justify-content: center; margin: 2 auto;">
+                style="width: 100%; max-width: 200px; height: 37px; display: flex; align-items: center; justify-content: center; margin: 2 auto; font-family:'Open Sans', sans-serif;">
+                 +
                 {{ filter.label }}
             </mat-chip>
             } @else {

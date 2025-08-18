@@ -1,7 +1,7 @@
-<div style="font-size: 30px; margin-bottom: 10px; margin-top: 20px; margin-left: 20px; font-family: 'Open Sans', sans-serif;">
+<div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">
     Institutions Map
 </div>
-<div class="flex flex-row w-full justify-start items-start">
+<div class="flex flex-row w-full justify-start items-start mt-5">
     <div style="width: 300px;" class="ml-3">
         <app-filter></app-filter>
     </div>
@@ -51,7 +51,7 @@
                 <span>Year: {{year}}</span>
             </div>
             @if (!isPlaying) {
-                <button mat-fab class="flex flex-col mx-3" (click)="togglePlay()">
+                <button mat-fab class="flex flex-col mx-5" (click)="togglePlay()">
                     <mat-icon>play_arrow</mat-icon>
                 </button>
             }

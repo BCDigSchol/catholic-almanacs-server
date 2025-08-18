@@ -14,6 +14,20 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
+import { HttpClient } from '@angular/common/http';
+
+interface FilterField {
+    type: string;
+    label?: string;
+    keyword?: string;
+    active?: boolean;
+    autocompleteOptions?: string[];
+    keywordStart?: string;
+    keywordEnd?: string;
+    min?: number; 
+    max?: number; 
+    filteredOptions?: string[];
+  }
 
 @Component({
   selector: 'app-map',
@@ -32,7 +46,7 @@ export class MapComponent implements OnInit {
 
   mapOptions: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 4,
+    zoom: 4.5,
     disableDefaultUI: true,
     clickableIcons: false
   };
@@ -41,19 +55,28 @@ export class MapComponent implements OnInit {
   filterValues: any = {
   };
 
-  filterFields = [
-    //{ type: 'slider', label: 'Year', keyword: 'year', min: 1830, max: 1870, active: true, defaultValue: '1864'}
-    // Add more filter fields as needed
+  filterFields: FilterField [] = [
+    { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
+    { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false}
   ]
 
   constructor(
     private _api: ApiService, 
     private filterService: FilterService, 
     private _router:Router,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.http.get('diocese.csv', { responseType: 'text' }).subscribe((data) => {
+      const dioceses = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const dioceseFilter = this.filterFields.find(field => field.keyword === 'diocese');
+      if (dioceseFilter) {
+        dioceseFilter.autocompleteOptions = dioceses;
+        dioceseFilter.filteredOptions = dioceses;
+      }
+    });
     if (this.navigationService.lastNavigationTrigger !== 'popstate') {
     this.filterService.clearFilters();
     this.filterService.setFields(this.filterFields);
@@ -78,6 +101,12 @@ export class MapComponent implements OnInit {
   getData() {
     
     let queryString = `?year=${this.year}`;
+    if (this.filterValues.persName) {
+      queryString += `&persName=${this.filterValues.persName}`;
+    }
+    if (this.filterValues.diocese) {
+      queryString += `&diocese=${this.filterValues.diocese}`;
+    }
 
     this._api.getTypeRequest('maps/people' + queryString).subscribe((res: any) => {
       let peopleData: any[] = [];

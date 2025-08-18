@@ -56,11 +56,12 @@ exports.findAllInfo = async (req, res) => {
                     instName: inst.almanacRecord[inst.almanacRecord.length - 1].instName,
                     diocese: inst.almanacRecord[inst.almanacRecord.length - 1].diocese,
                     type: 'institution'
-                });
+                })
             }
         });
         persData.rows.forEach(pers => {
-            if (pers.almanacRecords) {
+            try {
+                if (pers.almanacRecords) {
                 persResults.push({
                     persID: pers.ID,
                     name: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.name,
@@ -69,6 +70,12 @@ exports.findAllInfo = async (req, res) => {
                     diocese: pers.almanacRecords[pers.almanacRecords.length - 1].diocese,
                     type: 'person'
                 });
+            }} catch (err) {
+                console.error('error processing person:', {
+                    persID: pers.ID,
+                    almanacRecords: pers.almanacRecords,
+                    error: err.message
+                })
             }
         });
         instResults.sort((a, b) => {

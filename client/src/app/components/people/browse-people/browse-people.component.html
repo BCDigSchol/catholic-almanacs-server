@@ -1,13 +1,16 @@
 <div class="flex flex-col justify-center items-center w-full">
-<div style="width:100%">
-    <mat-paginator (page)="changePage($event)"
-    [length]="totalItems"
-    [pageSize]="itemsPerPage"
-    [pageIndex]="currentPage"
-    [showFirstLastButtons]="true"
-    [pageSizeOptions]="[5, 10, 25, 50]">
-    </mat-paginator>
-</div>
+    <div class="flex flex-row justify-start items-start w-full">
+    <div class="text-lg font-semibold mt-4 ml-10" style="font-size: 24px; font-family:'Lato', sans-serif">People</div>
+    <div style="width:100%">
+        <mat-paginator (page)="changePage($event)"
+        [length]="totalItems"
+        [pageSize]="itemsPerPage"
+        [pageIndex]="currentPage"
+        [showFirstLastButtons]="true"
+        [pageSizeOptions]="[5, 10, 25, 50]">
+        </mat-paginator>
+    </div>
+    </div>
 <div class="flex flex-row w-full justify-start items-start">
     <div style="width:300px; min-width: 250px; margin-right: 20px" class="my-3 mr-3">
         <app-filter></app-filter>
@@ -28,7 +31,6 @@
         <mat-card-content>
             <mat-list>
                 <mat-list-item>
-                    <mat-icon matListItemIcon>description</mat-icon>
                     <div matListItemTitle>
                         ID: {{ item.ID }}
                     </div>

@@ -1,4 +1,4 @@
-<mat-card class="max-md:mt-2 mt-5">
+<mat-card class="max-md:mt-2 mt-2">
     @if (loading) {
         <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
             <mat-spinner></mat-spinner>
@@ -11,7 +11,7 @@
     </mat-card-header>
     <mat-card-content>
         <div class="w-full flex flex-col md:flex-row justify-center items-start">
-            <div class="w-full flex flex-col justify-center items-start">
+            <div class="w-full flex flex-col justify-center items-start custom-font">
                 <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
                 <div class="table formatted-table custom-font">
                     <div class="table-body text-xs md:text-sm">
@@ -46,7 +46,7 @@
                             <div class="cell">Residing In</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" *ngFor="let item of data.residingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" *ngFor="let item of data.residingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
                                         <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                     </button>
                                 </div>
@@ -58,7 +58,7 @@
                             <div class="cell">Visiting</div>
                             <div class="cell">
                                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm" *ngFor="let item of data.visitingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" *ngFor="let item of data.visitingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
                                         <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
                                     </button>
                                 </div>
@@ -92,7 +92,7 @@
                 </div>
         </div>
         <div>
-        <button mat-button class="tertiary-btn !text-xs md:!text-sm" (click)="goBack()">
+        <button mat-button class="tertiary-btn !text-xs md:!text-sm custom-font" (click)="goBack()">
             <mat-icon>arrow_back</mat-icon>
             Back
         </button>

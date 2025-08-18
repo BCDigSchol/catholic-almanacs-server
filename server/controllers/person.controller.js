@@ -66,7 +66,7 @@ exports.findAll = (req, res) => {
         instWhere.year = { [Op.lte]: instEndYear };
     };
     if (diocese) {
-        instWhere.diocese = { [Op.like]: `%${diocese}%` };
+        instWhere.diocese_reg = { [Op.like]: `%${diocese}%` };
     };
     if (religiousOrder) {
         let equivalents = null;

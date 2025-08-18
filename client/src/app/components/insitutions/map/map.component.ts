@@ -16,6 +16,20 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ApiService } from '../../../services/api.service';
 import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
+import { HttpClient } from '@angular/common/http';
+
+interface FilterField {
+    type: string;
+    label?: string;
+    keyword?: string;
+    active?: boolean;
+    autocompleteOptions?: string[];
+    keywordStart?: string;
+    keywordEnd?: string;
+    min?: number; 
+    max?: number; 
+    filteredOptions?: string[];
+  }
 
 @Component({
   selector: 'app-map',
@@ -46,20 +60,31 @@ export class MapComponent implements OnInit {
   filterValues: any = {
   };
 
-  filterFields = [
+  filterFields: FilterField[] = [
     //{ type: 'slider', label: 'Year', keyword: 'year', min: 1830, max: 1870, active: true, defaultValue: '1864'},
     { type: 'input', label: 'Institution Type', keyword: 'instType', active: false},
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false},
+    { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false}
   ]
 
   constructor(
     private _api: ApiService, 
     private filterService: FilterService, 
     private _router:Router,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.http.get('diocese.csv', { responseType: 'text' }).subscribe((data) => {
+      const dioceses = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const dioceseFilter = this.filterFields.find(field => field.keyword === 'diocese');
+      if (dioceseFilter) {
+        dioceseFilter.autocompleteOptions = dioceses;
+        dioceseFilter.filteredOptions = dioceses;
+      }
+    });
+
     if (this.navigationService.lastNavigationTrigger !== 'popstate') {
     this.filterService.clearFilters();
     this.filterService.setFields(this.filterFields);
@@ -95,7 +120,9 @@ export class MapComponent implements OnInit {
     if (this.filterValues.instName) {
       queryString += queryString ? `&instName=${this.filterValues.instName}` : `?instName=${this.filterValues.instName}`;
     };
-
+    if (this.filterValues.diocese) {
+      queryString += queryString ? `&diocese=${this.filterValues.diocese}` : `?diocese=${this.filterValues.diocese}`;
+    }
     this._api.getTypeRequest('maps/institutions' + queryString).subscribe((res: any) => {
       let institutionData: any[] = [];
       for (let item of res.rows) {

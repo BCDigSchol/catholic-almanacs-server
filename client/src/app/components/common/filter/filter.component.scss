@@ -12,6 +12,11 @@
     font-size: 18px,
 }
 
+:host .custom-font-filter {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600
+}
+
 :host .filter-form {
     display: flex;
     flex-direction: column;
