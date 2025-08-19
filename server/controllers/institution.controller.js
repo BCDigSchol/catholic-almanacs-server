@@ -1,4 +1,5 @@
 const db = require("../models");
+const { Sequelize } = db.sequelize;
 const getPagination = require("../utils/get-pagination");
 const Op = db.Sequelize.Op;
 const { where } = require("sequelize");
@@ -99,7 +100,6 @@ exports.findAll = async (req, res) => {
                 model: almanacRecord,
                 as: 'almanacRecord',
                 where: where,
-                order: ['instName', 'ASC'],
                 required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0 || Object.keys(orderWhere).length > 0,
                 attributes: ['instName', 'year','instType', 'diocese'],
                 include: [{
@@ -121,6 +121,28 @@ exports.findAll = async (req, res) => {
                         model: orderInAlmanacRecord,
                         attributes: ['order', 'almanacRecordID']
                     }}]}],
+            order: [[
+                Sequelize.literal(`(
+                        CASE 
+                            WHEN (
+                            SELECT \`instName\`
+                            FROM \`almanacRecords\` ar
+                            WHERE ar.\`instID\` = \`institution\`.\`ID\`
+                            ORDER BY ar.\`year\` DESC
+                            LIMIT 1
+                            ) REGEXP '^[A-Za-z]' THEN 0
+                            ELSE 1
+                        END
+                )`), 'ASC'
+            ], [
+                Sequelize.literal(`(
+                    SELECT \`instName\`
+                    FROM \`almanacRecords\` ar
+                    WHERE ar.\`instID\` = \`institution\`.\`ID\`
+                    ORDER BY ar.\`year\` DESC
+                    LIMIT 1
+                )`), 'ASC'
+            ]],
             limit,
             offset
     });

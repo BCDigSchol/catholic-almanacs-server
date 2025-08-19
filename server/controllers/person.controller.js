@@ -1,6 +1,7 @@
 const { where } = require("sequelize");
 const db = require("../models");
 const Op = db.Sequelize.Op;
+const { Sequelize } = db.sequelize;
 
 const getPagination = require("../utils/get-pagination");
 const religiousOrderDict = require('../config/religiousOrderDict.json')
@@ -87,7 +88,7 @@ exports.findAll = (req, res) => {
         };  
     };
 
-    person.findAll({
+    person.findAndCountAll({
         distinct: true,
         attributes: ['ID'],
         include: [
@@ -102,9 +103,37 @@ exports.findAll = (req, res) => {
                     attributes: ['name', 'title', 'suffix', 'role', 'note']
                 }
             }
+        ],
+        order: [[
+            Sequelize.literal(`(
+                CASE 
+                    WHEN (
+                    SELECT pir.\`name\`
+                    FROM \`personInAlmanacRecords\` pir
+                    JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
+                    WHERE pir.\`persID\` = \`person\`.\`ID\`
+                    ORDER BY ar.\`year\` DESC
+                    LIMIT 1
+                    ) REGEXP '^[A-Za-z]' THEN 0
+                    ELSE 1
+                END
+            )`), 'ASC'
+        ], [
+                Sequelize.literal(`(
+                    SELECT pir.\`name\`
+                    FROM \`personInAlmanacRecords\` pir
+                    JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
+                    WHERE pir.\`persID\` = \`person\`.\`ID\`
+                    ORDER BY ar.\`year\` DESC
+                    LIMIT 1
+                    )`), 'ASC'
         ]
-    }).then(data => {
-        data.forEach(person => {
+    ],
+        limit,
+        offset
+    }).then(
+        data => {
+        /**data.forEach(person => {
             if (person.almanacRecords && Array.isArray(person.almanacRecords)) {
                 person.almanacRecords.sort((a, b) => a.year - b.year);
             }
@@ -120,10 +149,10 @@ exports.findAll = (req, res) => {
         });
         const start = offset;
         const end = offset + limit;
-        const paginatedRows = data.slice(start, end);
+        const paginatedRows = data.slice(start, end); */
         res.send({
-            count: data.length,
-            rows: paginatedRows,
+            count: data.count,
+            rows: data.rows,
         });
     }).catch(err => {
         res.status(500).send({

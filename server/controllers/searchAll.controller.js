@@ -1,5 +1,6 @@
 const db = require("../models");
 const Op = db.Sequelize.Op;
+const { Sequelize } = db.sequelize;
 
 const almanacRecord = db.almanacRecord;
 const person = db.person;
@@ -26,8 +27,31 @@ exports.findAllInfo = async (req, res) => {
                     attributes: ['instID', 'instName', 'diocese', 'year'],
                     where: instWhere,
                 }
-            ]
+            ],
+            order: [[
+                Sequelize.literal(`(
+                        CASE 
+                            WHEN (
+                            SELECT \`instName\`
+                            FROM \`almanacRecords\` ar
+                            WHERE ar.\`instID\` = \`institution\`.\`ID\`
+                            ORDER BY ar.\`year\` DESC
+                            LIMIT 1
+                            ) REGEXP '^[A-Za-z]' THEN 0
+                            ELSE 1
+                        END
+                )`), 'ASC'
+            ], [
+                Sequelize.literal(`(
+                    SELECT \`instName\`
+                    FROM \`almanacRecords\` ar
+                    WHERE ar.\`instID\` = \`institution\`.\`ID\`
+                    ORDER BY ar.\`year\` DESC
+                    LIMIT 1
+                )`), 'ASC'
+            ]]
         });
+
         const persData = await person.findAndCountAll({
             distinct: true,
             attributes: ['ID'],
@@ -43,7 +67,31 @@ exports.findAllInfo = async (req, res) => {
                         attributes: ['persID', 'name', 'title', 'suffix']
                     }
                 }
-            ]
+            ],
+            order: [[
+                Sequelize.literal(`(
+                    CASE 
+                        WHEN (
+                        SELECT pir.\`name\`
+                        FROM \`personInAlmanacRecords\` pir
+                        JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
+                        WHERE pir.\`persID\` = \`person\`.\`ID\`
+                        ORDER BY ar.\`year\` DESC
+                        LIMIT 1
+                        ) REGEXP '^[A-Za-z]' THEN 0
+                        ELSE 1
+                    END
+                )`), 'ASC'
+            ], [
+                Sequelize.literal(`(
+                    SELECT pir.\`name\`
+                    FROM \`personInAlmanacRecords\` pir
+                    JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
+                    WHERE pir.\`persID\` = \`person\`.\`ID\`
+                    ORDER BY ar.\`year\` DESC
+                    LIMIT 1
+                    )`), 'ASC'
+            ]]
         });
 
         allData = [];
@@ -78,7 +126,7 @@ exports.findAllInfo = async (req, res) => {
                 })
             }
         });
-        instResults.sort((a, b) => {
+        /**instResults.sort((a, b) => {
             const isAlphabetical = str => /^[a-zA-Z]/.test(str);
             const aAlphabetical = isAlphabetical(a.instName);
             const bAlphabetical = isAlphabetical(b.instName);
@@ -93,7 +141,7 @@ exports.findAllInfo = async (req, res) => {
             if (aAlphabetical && !bAlphabetical) return -1;
             if (!aAlphabetical && bAlphabetical) return 1;
             return a.name.localeCompare(b.name);
-        })
+        })*/
         allData = instResults.slice(0, 30).concat(persResults.slice(0, 30));
         res.send(allData);
     } catch (error) {

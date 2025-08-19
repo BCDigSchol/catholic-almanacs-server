@@ -64,7 +64,7 @@ async function importData(data) {
       }
     };
     
-    if (item.almanacRecordID && item.persID) {
+    if (item.almanacRecordID && item.persID && item.name) {
       //console.log(item);
       try {
         await personInAlmanacRecord.findOrCreate({
