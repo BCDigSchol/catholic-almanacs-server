@@ -5,12 +5,12 @@
         </div>
     } @else {
     <mat-card-header>
-        <mat-card-title class="!text-lg md:!text-xl font-bold">
+        <mat-card-title>
             {{data.title + ' ' + data.name + ' ' + data.suffix}}
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div class="w-full flex flex-col md:flex-row justify-center items-start">
+        <div class="w-full flex flex-col md:flex-row justify-start items-start">
             <div class="w-full flex flex-col justify-center items-start custom-font">
                 <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
                 <div class="table formatted-table custom-font">
@@ -19,20 +19,21 @@
                             <div class="cell">Person ID</div>
                             <div class="cell">{{data.persID}}</div>
                         </div>
+                        @if (data.title) {
                         <div class="row">
                             <div class="cell">Title</div>
                             <div class="cell">{{data.title}}</div>
-                        </div>
+                        </div>}
                         @if (data.suffix) {
                             <div class="row">
                             <div class="cell">Suffix</div>
                             <div class="cell">{{data.suffix}}</div>
                             </div>
                         }
-                        @if (data.role) {
+                        @if (data.role[0]) {
                             <div class="row">
                             <div class="cell">Role</div>
-                            <div class="cell">{{data.role}}</div>
+                            <div class="cell">{{data.role.join(', ')}}</div>
                         </div>
                         }
                         @if (data.note) {
@@ -68,27 +69,32 @@
                     </div>
                 </div>
                 </div>
-                <div class="map-container w-full mt-5 md:!hidden flex justify-center items-center">
-                    <google-map [options]="mapOptionsSmall" width="400px" height="250px">
-                        <ng-container *ngFor="let item of data.almanacRecords">
-                            <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
-                            </map-marker>
-                        </ng-container>
-                        <map-polygon></map-polygon> <!--could be an option-->
-                    </google-map>
-                </div>
-                <div class="map-container w-full md:w-auto mt-5 !hidden md:!block">
-                    <google-map [options]="mapOptionsWide" width="500px" height="350px">
-                        <ng-container *ngFor="let item of data.residingInstitutions">
-                            <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
-                            </map-marker>
-                        </ng-container>
-                        <ng-container *ngFor="let item of data.visitingInstitutions">
-                            <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
-                            </map-marker>
-                        </ng-container>
-                        <map-polygon></map-polygon> <!--could be an option-->
-                    </google-map>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <div class="text-center w-full flex justify-center mb-2">
+                        <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, this window is temporary</span>
+                    </div>
+                    <div class="map-container w-full md:!hidden flex justify-center items-center">
+                        <google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                            <ng-container *ngFor="let item of data.almanacRecords">
+                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
+                                </map-marker>
+                            </ng-container>
+                            <map-polygon></map-polygon> <!--could be an option-->
+                        </google-map>
+                    </div>
+                    <div class="map-container w-full md:w-auto !hidden md:!flex">
+                        <google-map [options]="mapOptionsWide" width="500px" height="350px">
+                            <ng-container *ngFor="let item of data.residingInstitutions">
+                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
+                                </map-marker>
+                            </ng-container>
+                            <ng-container *ngFor="let item of data.visitingInstitutions">
+                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
+                                </map-marker>
+                            </ng-container>
+                            <map-polygon></map-polygon> <!--could be an option-->
+                        </google-map>
+                    </div>
                 </div>
         </div>
         <div>

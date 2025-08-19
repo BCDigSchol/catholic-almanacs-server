@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
     indexes:[
       {
         fields: ['ID'],
+        unique: true
       },
       {
         fields: ['instID'],

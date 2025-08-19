@@ -99,6 +99,7 @@ exports.findAll = async (req, res) => {
                 model: almanacRecord,
                 as: 'almanacRecord',
                 where: where,
+                order: ['instName', 'ASC'],
                 required: Object.keys(persWhere).length > 0 || Object.keys(where).length > 0 || Object.keys(orderWhere).length > 0,
                 attributes: ['instName', 'year','instType', 'diocese'],
                 include: [{
@@ -120,6 +121,9 @@ exports.findAll = async (req, res) => {
                         model: orderInAlmanacRecord,
                         attributes: ['order', 'almanacRecordID']
                     }}]}],
+            //order: [[{ model: almanacRecord, as: 'almanacRecord' }, 'instName', 'ASC']],
+            //limit,
+            //offset
     });
         data.forEach(inst => {
             if (inst.almanacRecord && Array.isArray(inst.almanacRecord)) {
@@ -141,7 +145,8 @@ exports.findAll = async (req, res) => {
         res.send({
             count: data.length,
             rows: paginatedRows,
-        });
+        })
+        //res.send(data);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

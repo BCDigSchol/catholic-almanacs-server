@@ -202,19 +202,24 @@
                     </div>
                     </div>
                 </div>
-                <div class="map-container w-full mt-5 md:!hidden flex justify-center items-center">
-                    <google-map [options]="mapOptionsSmall" width="400px" height="250px">
-                        <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
-                        </map-marker>
-                        <!--<map-polygon></map-polygon> could be an option-->
-                    </google-map>
-                </div>
-                <div class="map-container w-full md:w-auto mt-5 !hidden md:!block">
-                    <google-map [options]="mapOptionsWide" width="500px" height="350px">
-                        <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
-                        </map-marker>
-                        <!--<map-polygon></map-polygon> could be an option-->
-                    </google-map>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <div class="w-full text-center flex justify-center mb-2">
+                        <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, this window is temporary</span>
+                    </div>
+                    <div class="map-container w-full md:!hidden flex justify-center items-center">
+                        <google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
+                            </map-marker>
+                            <!--<map-polygon></map-polygon> could be an option-->
+                        </google-map>
+                    </div>
+                    <div class="map-container md:w-auto !hidden md:!flex">
+                        <google-map [options]="mapOptionsWide" width="500px" height="350px">
+                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
+                            </map-marker>
+                            <!--<map-polygon></map-polygon> could be an option-->
+                        </google-map>
+                    </div>
                 </div>
             </div>
             <button mat-button class="tertiary-btn custom-font" (click)="goBack()">
