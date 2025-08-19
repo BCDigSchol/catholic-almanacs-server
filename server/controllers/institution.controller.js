@@ -92,7 +92,7 @@ exports.findAll = async (req, res) => {
             orderWhere.order = { [Op.like]: `%${religiousOrder}%` };
         };
         //console.log('-----------where', where);
-        const data = await institution.findAll({
+        const data = await institution.findAndCountAll({
             distinct: true,
             attributes: ['ID'],
             include: [{
@@ -121,11 +121,10 @@ exports.findAll = async (req, res) => {
                         model: orderInAlmanacRecord,
                         attributes: ['order', 'almanacRecordID']
                     }}]}],
-            //order: [[{ model: almanacRecord, as: 'almanacRecord' }, 'instName', 'ASC']],
-            //limit,
-            //offset
+            limit,
+            offset
     });
-        data.forEach(inst => {
+        /**data.forEach(inst => {
             if (inst.almanacRecord && Array.isArray(inst.almanacRecord)) {
                 inst.almanacRecord.sort((a, b) => a.year - b.year)
             }
@@ -145,8 +144,11 @@ exports.findAll = async (req, res) => {
         res.send({
             count: data.length,
             rows: paginatedRows,
+        });*/
+        res.send({
+            count: data.count,
+            rows: data.rows
         })
-        //res.send(data);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
