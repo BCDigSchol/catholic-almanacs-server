@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { OnInit } from '@angular/core';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,7 +31,12 @@ export class HomePageComponent implements OnInit {
   loading: boolean = true;
   isEmbedded: boolean = false;
 
-  constructor(private apiService: ApiService, private router: Router, private _route: ActivatedRoute) {
+  constructor(
+    private apiService: ApiService, 
+    private router: Router, 
+    private _route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
+  ) {
   };
 
   ngOnInit() {
@@ -56,7 +61,9 @@ export class HomePageComponent implements OnInit {
 
   navigateToInstitutions() {
     if (this.isEmbedded){
-      window.open(`/institutions?name=${encodeURIComponent(this.inputName)}`, '_blank');
+      const baseHref = this.document.getElementsByTagName('base')[0].href || '/';
+      const url = baseHref.replace(/\/$/, '') + '/institutions?name=' + encodeURIComponent(this.inputName);
+      window.open(url, '_blank');
     } else {
       this.router.navigate(['/institutions'], { queryParams: { name: this.inputName } });
     }
@@ -64,7 +71,9 @@ export class HomePageComponent implements OnInit {
 
   navigateToPeople() {
     if (this.isEmbedded){
-      window.open(`/people?name=${encodeURIComponent(this.inputName)}`, '_blank');
+      const baseHref = this.document.getElementsByTagName('base')[0].href || '/';
+      const url = baseHref.replace(/\/$/, '') + '/people?name=' + encodeURIComponent(this.inputName);
+      window.open(url, '_blank');
     } else {
       this.router.navigate(['/people'], { queryParams: { name: this.inputName } });
     }

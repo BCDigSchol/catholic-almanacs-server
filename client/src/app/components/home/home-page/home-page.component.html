@@ -29,7 +29,7 @@
                         <div style="text-align: center; color: gray;">No Results Found</div>
                     } @else {
                         @for (item of institutions; track item) {
-                            <a [href]="'/institutions/' + item.instID" [target]="isEmbedded ? '_blank' : '_self'">
+                            <a [routerLink]="'/institutions/' + item.instID" [target]="isEmbedded ? '_blank' : '_self'">
                                 <mat-card class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined">
                                     <div class="flex flex-row items-center justify-between w-full custom-font">
                                         <div class="flex flex-row items-center">
@@ -67,7 +67,7 @@
                             <div style="text-align: center; color: gray;">No Results Found</div>
                         } @else {
                             @for (item of people; track item) {
-                                <a [href]="'/people/' + item.persID" [target]="isEmbedded ? '_blank' : '_self'">
+                                <a [routerLink]="'/people/' + item.persID" [target]="isEmbedded ? '_blank' : '_self'">
                                     <mat-card class="mb-2 custom-font" style="padding: 1%; cursor: pointer" appearance="outlined">
                                         <div class="flex flex-row items-center justify-between w-full">
                                             <div class="flex flex-row items-center">
