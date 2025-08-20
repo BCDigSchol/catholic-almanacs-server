@@ -61,9 +61,9 @@ totalItems = 0;
 
 filterFields: FilterField[] = [
   { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
-  { type: 'input', label: 'County', keyword: 'countyReg', active: false },
-  { type: 'input', label: 'City', keyword: 'cityReg', active: false },
-  { type: 'input', label: 'State', keyword: 'stateReg', active: false },
+  { type: 'input', label: 'County', keyword: 'countyOrig', active: false },
+  { type: 'input', label: 'City', keyword: 'cityOrig', active: false },
+  { type: 'autocomplete', label: 'State', keyword: 'stateOrig', active: false },
   { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: [] },
   { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
   { type: 'range', keywordStart: 'instStartYear', keywordEnd: 'instEndYear', label: 'Year', min: 1834, max: 1870, active: true },
@@ -85,6 +85,14 @@ ngOnInit () {
         dioceseFilter.autocompleteOptions = dioceses;
         dioceseFilter.filteredOptions = dioceses;
       }
+  });
+  this.http.get('states.csv', { responseType: 'text' }).subscribe((data) => {
+    const states = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    const stateFilter = this.filterFields.find(field => field.keyword === 'stateOrig');
+    if (stateFilter) {
+      stateFilter.autocompleteOptions = states;
+      stateFilter.filteredOptions = states;
+    }
   });
   if (this.navigationService.lastNavigationTrigger !== 'popstate') {
     this.filterService.clearFilters();
@@ -114,9 +122,9 @@ getData () {
   this.loading = true;
   let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
   queryString += this.filterValues.persName ? `&persName=${this.filterValues.persName}` : '';
-  queryString += this.filterValues.countyReg ? `&countyReg=${this.filterValues.countyReg}` : '';
-  queryString += this.filterValues.cityReg ? `&cityReg=${this.filterValues.cityReg}` : '';
-  queryString += this.filterValues.stateReg ? `&stateReg=${this.filterValues.stateReg}` : '';
+  queryString += this.filterValues.countyOrig ? `&countyOrig=${this.filterValues.countyOrig}` : '';
+  queryString += this.filterValues.cityOrig ? `&cityOrig=${this.filterValues.cityOrig}` : '';
+  queryString += this.filterValues.stateOrig ? `&stateOrig=${this.filterValues.stateOrig}` : '';
   queryString += this.filterValues.diocese ? `&diocese=${this.filterValues.diocese}` : '';
   queryString += this.filterValues.instName ? `&instName=${this.filterValues.instName}` : '';
   queryString += this.filterValues.instStartYear  ? `&instStartYear=${this.filterValues.instStartYear}` : '';

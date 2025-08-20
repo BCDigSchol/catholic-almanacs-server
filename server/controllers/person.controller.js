@@ -43,21 +43,21 @@ exports.findAll = (req, res) => {
     let {limit, offset} = getPagination(page, size);
     let persWhere = {};
     let instWhere = {};
-    let { persName, instName, diocese, countyReg, cityReg, stateReg, instStartYear, instEndYear, religiousOrder } = req.query;
+    let { persName, instName, diocese, countyOrig, cityOrig, stateOrig, instStartYear, instEndYear, religiousOrder } = req.query;
     if (persName) {
         persWhere.name = { [Op.like]: `%${persName}%` };
     };
     if (instName) {
         instWhere.instName = { [Op.like]: `%${instName}%` };
     };
-    if (countyReg) {
-        instWhere.countyReg = { [Op.like]: `%${countyReg}%` };
+    if (countyOrig) {
+        instWhere.countyOrig = { [Op.like]: `%${countyOrig}%` };
     };
-    if (cityReg) {
-        instWhere.cityReg = { [Op.like]: `%${cityReg}%` };
+    if (cityOrig) {
+        instWhere.cityOrig = { [Op.like]: `%${cityOrig}%` };
     };
-    if (stateReg) {
-        instWhere.stateReg = { [Op.like]: `%${stateReg}%` };
+    if (stateOrig) {
+        instWhere.stateOrig = { [Op.like]: `%${stateOrig}%` };
     };
     if (instStartYear && instEndYear) {
         instWhere.year = { [Op.between]: [instStartYear, instEndYear] };
@@ -150,6 +150,11 @@ exports.findAll = (req, res) => {
         const start = offset;
         const end = offset + limit;
         const paginatedRows = data.slice(start, end); */
+        data.rows.forEach(person => {
+            if (person.almanacRecords && Array.isArray(person.almanacRecords)) {
+                person.almanacRecords.sort((a, b) => a.year - b.year);
+            }
+        });
         res.send({
             count: data.count,
             rows: data.rows,

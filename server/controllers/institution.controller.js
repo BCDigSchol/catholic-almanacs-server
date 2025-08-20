@@ -48,7 +48,7 @@ exports.findAll = async (req, res) => {
         let where = {};
         let persWhere = {};
         let orderWhere = {};
-        let { instName, countyReg, cityReg, stateReg, diocese, instStartYear, instEndYear, language, instType, persName, instID, religiousOrder } = req.query;
+        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, persName, instID, religiousOrder } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
@@ -68,14 +68,14 @@ exports.findAll = async (req, res) => {
               [Op.lte]: instEndYear
             };
         };
-        if (countyReg) {
-            where.countyReg = { [Op.like]: `%${countyReg}%` };
+        if (countyOrig) {
+            where.countyOrig = { [Op.like]: `%${countyOrig}%` };
         };
-        if (cityReg) {
-            where.cityReg = { [Op.like]: `%${cityReg}%` };
+        if (cityOrig) {
+            where.cityOrig = { [Op.like]: `%${cityOrig}%` };
         };
-        if (stateReg) {
-            where.stateReg = { [Op.like]: `%${stateReg}%` };
+        if (stateOrig) {
+            where.stateOrig = { [Op.like]: `%${stateOrig}%` };
         };
         if (language) {
             where.language = { [Op.like]: `%${language}%` };
@@ -167,6 +167,11 @@ exports.findAll = async (req, res) => {
             count: data.length,
             rows: paginatedRows,
         });*/
+        data.rows.forEach(inst => {
+            if (inst.almanacRecord && Array.isArray(inst.almanacRecord)) {
+                inst.almanacRecord.sort((a, b) => a.year - b.year)
+            }
+        });
         res.send({
             count: data.count,
             rows: data.rows

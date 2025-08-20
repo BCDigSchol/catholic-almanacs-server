@@ -64,9 +64,9 @@ export class BrowseInstitutionComponent implements OnInit {
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
     { type: 'input', label: 'Institution Type', keyword: 'instType', active: false },
     { type: 'input', label: 'Language', keyword: 'language', active: false },
-    { type: 'input', label: 'County', keyword: 'countyReg', active: false },
-    { type: 'input', label: 'City', keyword: 'cityReg', active: false },
-    { type: 'input', label: 'State', keyword: 'stateReg', active: false },
+    { type: 'input', label: 'County', keyword: 'countyOrig', active: false },
+    { type: 'input', label: 'City', keyword: 'cityOrig', active: false },
+    { type: 'autocomplete', label: 'State', keyword: 'stateOrig', active: false },
     { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: [] },
     { type: 'autocomplete', label: 'Religious Order', keyword: 'religiousOrder', active: false, autocompleteOptions: []},
     { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
@@ -104,6 +104,15 @@ export class BrowseInstitutionComponent implements OnInit {
       }
     });
 
+    this.http.get('states.csv', { responseType: 'text' }).subscribe((data) => {
+      const states = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const stateFilter = this.filterFields.find(field => field.keyword === 'stateOrig');
+      if (stateFilter) {
+        stateFilter.autocompleteOptions = states;
+        stateFilter.filteredOptions = states;
+      }
+    });
+
     if (this.navigationService.lastNavigationTrigger !== 'popstate') {
       this.filterService.clearFilters();
       this.filterService.setFields(this.filterFields);
@@ -138,9 +147,9 @@ export class BrowseInstitutionComponent implements OnInit {
     queryString += this.filterValues.diocese ? `&diocese=${this.filterValues.diocese}` : '';
     queryString += this.filterValues.language ? `&language=${this.filterValues.language}` : '';
     queryString += this.filterValues.instType ? `&instType=${this.filterValues.instType}` : '';
-    queryString += this.filterValues.countyReg ? `&countyReg=${this.filterValues.countyReg}` : '';
-    queryString += this.filterValues.cityReg ? `&cityReg=${this.filterValues.cityReg}` : '';
-    queryString += this.filterValues.stateReg ? `&stateReg=${this.filterValues.stateReg}` : '';
+    queryString += this.filterValues.countyOrig ? `&countyOrig=${this.filterValues.countyOrig}` : '';
+    queryString += this.filterValues.cityOrig ? `&cityOrig=${this.filterValues.cityOrig}` : '';
+    queryString += this.filterValues.stateOrig ? `&stateOrig=${this.filterValues.stateOrig}` : '';
     queryString += this.filterValues.instStartYear ? `&instStartYear=${this.filterValues.instStartYear}` : '';
     queryString += this.filterValues.instEndYear ? `&instEndYear=${this.filterValues.instEndYear}` : '';
     queryString += this.filterValues.religiousOrder ? `&religiousOrder=${this.filterValues.religiousOrder}` : '';
