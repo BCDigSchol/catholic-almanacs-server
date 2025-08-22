@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -21,6 +22,7 @@ import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { PaginationService } from '../../../services/pagination.service';
 
 interface FilterField {
     type: string;
@@ -55,6 +57,9 @@ filterValues: any = {};
 private wasNavigatedToByBackButton = false;
 
 // paginator variables, default values
+itemsPerPage$!: Observable<any>;
+currentPage$!: Observable<any>;
+
 itemsPerPage = 5;
 currentPage = 0;
 totalItems = 0;
@@ -74,7 +79,8 @@ constructor(
   public filterService: FilterService,
   public navigationService: NavigationService,
   private http: HttpClient,
-  private route: ActivatedRoute
+  private route: ActivatedRoute,
+  public paginationService: PaginationService
 ) {}
 
 ngOnInit () {
@@ -108,9 +114,17 @@ ngOnInit () {
       }
     }
   })
+  this.currentPage$ = this.paginationService.currentPage$;
+  this.itemsPerPage$ = this.paginationService.pageSize$;
   this.filterValues$ = this.filterService.filterValues$;
-  this.filterValues$.subscribe(values => {
-    this.filterValues = values;
+  combineLatest([
+    this.currentPage$,
+    this.itemsPerPage$,
+    this.filterValues$
+  ]).subscribe(([currentPage, itemsPerPage, filterValues]) => {
+    this.currentPage = currentPage;
+    this.itemsPerPage = itemsPerPage;
+    this.filterValues = filterValues;
     this.getData();
   });
 }
@@ -142,18 +156,10 @@ getData () {
  * @param e page event object
  */
 changePage (e: PageEvent) {
-  this.currentPage = e.pageIndex;
-  this.itemsPerPage = e.pageSize;
+  this.paginationService.setPageSize(e.pageSize);
+  this.paginationService.setCurrentPage(e.pageIndex);
   this.getData();
 }
-
-/** 
- * when filter is updated, reset current page
-*/
-updateFilter () {
-    this.currentPage = 0;
-    this.getData();
-  }
 
 /**
  * return unique years to be displayed for each person

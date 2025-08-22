@@ -193,10 +193,12 @@ exports.findByID = async (req, res) => {
             residingInstitutions: [],
             visitingInstitutions: [],
             year: [],
+            dioceses: []
         }
         let existingAlmanacRecords = [];
         let existingYears = [];
         let existingRoles = [];
+        let existingDioceses = [];
         for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
@@ -235,6 +237,10 @@ exports.findByID = async (req, res) => {
             if (!existingYears.includes(almanacRecord.year)){
                 existingYears.push(almanacRecord.year);
                 processedData.year.push(almanacRecord.year);
+            };
+            if (!existingDioceses.includes(almanacRecord.diocese)) {
+                existingDioceses.push(almanacRecord.diocese);
+                processedData.dioceses.push(almanacRecord.diocese);
             }
         }
         processedData.year.sort((a, b) => a - b);
@@ -271,16 +277,18 @@ exports.findOne = async (req, res) => {
             residingInstitutions: [],
             visitingInstitutions: [],
             year: data.dataValues.almanacRecords[0].year,
+            dioceses: [],
             role: [],
         }
         let existingRoles = [];
         let existingAlmanacRecords = [];
+        let existingDioceses = [];
         for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
                 existingRoles.push(almanacRecord.personInAlmanacRecord.role);
                 processedData.role.push(almanacRecord.personInAlmanacRecord.role);
-            }
+            };
             if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
                 existingAlmanacRecords.push(almanacRecord.instID);
                 if (almanacRecord.personInAlmanacRecord.isAttending) {
@@ -306,8 +314,15 @@ exports.findOne = async (req, res) => {
                         personInAlmanacRecord: almanacRecord.personInAlmanacRecord
                     });
                 }
-            }
+            };
         };
+        for (let i = 0; i < data.dataValues.almanacRecords.length; i++) {
+            let almanacRecord = data.dataValues.almanacRecords[i];
+            if (!existingDioceses.includes(almanacRecord.diocese)) {
+                existingDioceses.push(almanacRecord.diocese);
+                processedData.dioceses.push(almanacRecord.diocese);
+            }
+        }
         res.send(processedData);
     } else {
         res.status(404).send({

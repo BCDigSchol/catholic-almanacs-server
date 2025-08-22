@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { PaginationService } from './pagination.service';
 
 interface FilterField {
   type: 'input' | 'range' | 'boolean' | 'dropdown' | 'slider' | 'autocomplete';
@@ -36,7 +37,7 @@ export class FilterService {
   readonly filterValues$ = this._filterValues.asObservable();
   private filterValues: any = {};
 
-  constructor() { }
+  constructor(private paginationService: PaginationService) { }
 
   setFields(fields: any[]) {
     this.fields = [];
@@ -52,6 +53,7 @@ export class FilterService {
 
   setFilterValue(keyword: string, value: any) {
     this.filterValues[keyword] = value;
+    this.paginationService.setCurrentPage(0);
     this._filterValues.next(this.filterValues); // signal the change to subscribers
   };
 

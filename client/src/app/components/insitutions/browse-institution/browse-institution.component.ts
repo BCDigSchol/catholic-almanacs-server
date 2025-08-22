@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
+import { combineLatest } from 'rxjs';
 import { Location } from '@angular/common';
 
 import { MatCardModule } from '@angular/material/card';
@@ -22,6 +23,7 @@ import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { PaginationService } from '../../../services/pagination.service';
 
 interface FilterField {
     type: string;
@@ -52,6 +54,9 @@ export class BrowseInstitutionComponent implements OnInit {
   private wasNavigatedToByBackButton = false;
 
   // paginator variables, default values
+  currentPage$!: Observable<any>;
+  itemsPerPage$!: Observable<any>;
+
   itemsPerPage = 5;
   currentPage = 0;
   totalItems = 0;
@@ -80,6 +85,7 @@ export class BrowseInstitutionComponent implements OnInit {
     private navigationService: NavigationService,
     private http: HttpClient,
     private route: ActivatedRoute,
+    public paginationService: PaginationService,
   ) {
     
   }
@@ -129,9 +135,18 @@ export class BrowseInstitutionComponent implements OnInit {
       }
     });
 
+    this.currentPage$ = this.paginationService.currentPage$;
+    this.itemsPerPage$ = this.paginationService.pageSize$;
     this.filterValues$ = this.filterService.filterValues$;
-    this.filterValues$.subscribe(values => {
-      this.filterValues = values;
+
+    combineLatest([
+      this.currentPage$,
+      this.itemsPerPage$,
+      this.filterValues$
+    ]).subscribe(([currentPage, itemsPerPage, filterValues]) => {
+      this.currentPage = currentPage;
+      this.itemsPerPage = itemsPerPage;
+      this.filterValues = filterValues;
       this.getData();
     });
   }
@@ -162,20 +177,12 @@ export class BrowseInstitutionComponent implements OnInit {
   }
 
   /**
-   * when the filter is updated, reset the current page
-   */
-  updateFilter () {
-    this.currentPage = 0;
-    this.getData();
-  }
-
-  /**
    * fires when mat-paginator changes the page
    * @param e page event object
    */
   changePage (e: PageEvent) {
-    this.currentPage = e.pageIndex;
-    this.itemsPerPage = e.pageSize;
+    this.paginationService.setPageSize(e.pageSize);
+    this.paginationService.setCurrentPage(e.pageIndex);
     this.getData();
   }
 }

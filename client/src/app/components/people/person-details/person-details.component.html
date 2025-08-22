@@ -30,6 +30,11 @@
                             <div class="cell">{{data.suffix}}</div>
                             </div>
                         }
+                        @if (data.dioceses && data.dioceses.length > 0) {
+                            <div class="row">
+                            <div class="cell">Diocese(s)</div>
+                            <div class="cell">{{data.dioceses.join(', ')}}</div>
+                        </div>}
                         @if (data.role[0]) {
                             <div class="row">
                             <div class="cell">Role</div>
