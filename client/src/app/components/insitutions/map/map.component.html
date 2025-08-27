@@ -18,10 +18,10 @@
                     [center]="{lat: item.latitude, lng: item.longitude}"
                     [radius]="300"
                     [options]="{
-                        strokeColor: getCircleColor(item.instType),
+                        strokeColor: getCircleColor(item.instFunction),
                         strokeOpacity: 0.8,
                         strokeWeight: 2,
-                        fillColor: getCircleColor(item.instType),
+                        fillColor: getCircleColor(item.instFunction),
                         fillOpacity: 0.8
                     }"
                     (circleClick)="clickMap(item)"

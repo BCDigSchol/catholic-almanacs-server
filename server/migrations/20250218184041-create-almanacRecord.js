@@ -25,6 +25,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
+      instFunction: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       language: {
         type: Sequelize.STRING,
         allowNull: true
@@ -78,7 +82,7 @@ module.exports = {
         allowNull: true
       },
       member: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       affiliated: {

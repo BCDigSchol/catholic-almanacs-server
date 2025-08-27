@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     instID: DataTypes.STRING,
     instName: DataTypes.STRING,
     instType: DataTypes.STRING,
+    instFunction: DataTypes.STRING,
     language: DataTypes.STRING,
     instNote: DataTypes.TEXT,
     year: DataTypes.INTEGER,
@@ -44,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     latitude: DataTypes.DOUBLE,
     longitude: DataTypes.DOUBLE,
     memberType: DataTypes.STRING,
-    member: DataTypes.STRING,
+    member: DataTypes.TEXT,
     affiliated: DataTypes.STRING,
     diocese: DataTypes.STRING,
     diocese_reg: DataTypes.STRING

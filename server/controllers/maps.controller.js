@@ -9,7 +9,7 @@ const institution = db.institution;
 exports.findAllInstitutions = async (req, res) => {
     try {
         where = {};
-        let {year, instType, instName, diocese} = req.query;
+        let {year, instType, instName, diocese, instFunction} = req.query;
         if (year) {
           where.year = { [Op.eq]: year };
         };
@@ -18,6 +18,9 @@ exports.findAllInstitutions = async (req, res) => {
         };
         if (instType) {
             where.instType = { [Op.like]: `%${instType}%` };
+        };
+        if (instFunction) {
+            where.instFunction = { [Op.like]: `%${instFunction}%` };
         };
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
@@ -33,7 +36,7 @@ exports.findAllInstitutions = async (req, res) => {
                     model: almanacRecord,
                     as: 'almanacRecord',
                     required: Object.keys(where).length > 0,
-                    attributes: ['instName', 'latitude', 'longitude', 'diocese', 'instType', 'year'],
+                    attributes: ['instName', 'latitude', 'longitude', 'diocese', 'instType', 'instFunction', 'year'],
                     where: where,
                 }
             ]

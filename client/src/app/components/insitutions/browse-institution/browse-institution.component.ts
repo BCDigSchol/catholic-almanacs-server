@@ -68,6 +68,7 @@ export class BrowseInstitutionComponent implements OnInit {
   filterFields: FilterField[] = [
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
     { type: 'input', label: 'Institution Type', keyword: 'instType', active: false },
+    { type: 'autocomplete', label: 'Institution Function', keyword: 'instFunction', active: false, autocompleteOptions: [] },
     { type: 'input', label: 'Language', keyword: 'language', active: false },
     { type: 'input', label: 'County', keyword: 'countyOrig', active: false },
     { type: 'input', label: 'City', keyword: 'cityOrig', active: false },
@@ -116,6 +117,15 @@ export class BrowseInstitutionComponent implements OnInit {
       if (stateFilter) {
         stateFilter.autocompleteOptions = states;
         stateFilter.filteredOptions = states;
+      }
+    });
+
+    this.http.get('functions.csv', { responseType: 'text' }).subscribe((data) => {
+      const functions = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const functionFilter = this.filterFields.find(field => field.keyword === 'instFunction');
+      if (functionFilter) {
+        functionFilter.autocompleteOptions = functions;
+        functionFilter.filteredOptions = functions;
       }
     });
 
@@ -168,6 +178,7 @@ export class BrowseInstitutionComponent implements OnInit {
     queryString += this.filterValues.instStartYear ? `&instStartYear=${this.filterValues.instStartYear}` : '';
     queryString += this.filterValues.instEndYear ? `&instEndYear=${this.filterValues.instEndYear}` : '';
     queryString += this.filterValues.religiousOrder ? `&religiousOrder=${this.filterValues.religiousOrder}` : '';
+    queryString += this.filterValues.instFunction ? `&instFunction=${this.filterValues.instFunction}` : '';
 
     this.apiService.getTypeRequest('institution'+ queryString).subscribe((res:any) => {
       this.data  = res.rows;

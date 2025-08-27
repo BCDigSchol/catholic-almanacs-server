@@ -48,7 +48,7 @@ exports.findAll = async (req, res) => {
         let where = {};
         let persWhere = {};
         let orderWhere = {};
-        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, persName, instID, religiousOrder } = req.query;
+        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder } = req.query;
         if (instName) {
             where.instName = { [Op.like]: `%${instName}%` };
         };
@@ -82,6 +82,9 @@ exports.findAll = async (req, res) => {
         };
         if (instType) {
             where.instType = { [Op.like]: `%${instType}%` };
+        };
+        if (instFunction) {
+            where.instFunction = { [Op.like]: `%${instFunction}%` };
         };
         if (persName) {
             persWhere.name = { [Op.like]: `%${persName}%` };

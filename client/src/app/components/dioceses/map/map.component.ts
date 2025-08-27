@@ -33,7 +33,7 @@ export class MapComponent {
 
   mapOptions: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 4,
+    zoom: 4.5,
     disableDefaultUI: true,
     clickableIcons: false
   };

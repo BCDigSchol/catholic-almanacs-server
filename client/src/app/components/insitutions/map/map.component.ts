@@ -157,11 +157,11 @@ export class MapComponent implements OnInit {
 
   getCircleColor (type: string) : string {
     const colorMap : { [key: string] : string} = {
-      'cathedral': '#FF0000', // red
-      'church': '#FFFF00', // yellow
-      'convent': '#FFA500', // orange
-      'school': '#0000FF', // blue
-      'hospital': '#00FF00', // green
+      'consecrated life institutions': '#FF0000', // red
+      'religious institutions': '#FFFF00', // yellow
+      'educational institutions': '#b300ffff', // orange
+      'healthcare institutions': '#0000FF', // blue
+      'charitable institutions': '#00FF00', // green
     };
     return colorMap[type] || '#FFFFFF'; // default to white if type not found
   };
