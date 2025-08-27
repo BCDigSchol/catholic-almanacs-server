@@ -228,8 +228,10 @@ exports.findByID = async (req, res) => {
                 }
             }
             if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
-                existingRoles.push(almanacRecord.personInAlmanacRecord.role);
-                processedData.role.push(almanacRecord.personInAlmanacRecord.role);
+                if (almanacRecord.personInAlmanacRecord.role) {
+                    existingRoles.push(almanacRecord.personInAlmanacRecord.role);
+                    processedData.role.push(almanacRecord.personInAlmanacRecord.role);
+                }
             }
         }
         for (let i = 0; i < data.dataValues.almanacRecords.length; i++) {

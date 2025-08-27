@@ -31,9 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     instName: DataTypes.STRING,
     instType: DataTypes.STRING,
     language: DataTypes.STRING,
-    instNote: {
-      type: DataTypes.STRING(1024),
-    },
+    instNote: DataTypes.TEXT,
     year: DataTypes.INTEGER,
     placeName: DataTypes.STRING,
     region: DataTypes.STRING,
