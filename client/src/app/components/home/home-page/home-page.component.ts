@@ -30,6 +30,7 @@ export class HomePageComponent implements OnInit {
   data: any[] = [];
   loading: boolean = true;
   isEmbedded: boolean = false;
+  fileDates: any = {};
 
   constructor(
     private apiService: ApiService, 
@@ -44,6 +45,9 @@ export class HomePageComponent implements OnInit {
       if (params.get('embed') && params.get('embed') === 'true') {
         this.isEmbedded = true;
       }
+    });
+    this.apiService.getTypeRequest('getFileDate').subscribe((res: any) => {
+      this.fileDates = res;
     });
     this.getData();
   };

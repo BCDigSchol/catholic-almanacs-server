@@ -7,4 +7,5 @@ module.exports = app => {
     require('./maps.routes.js')(app);
     require('./searchAll.routes.js')(app);
     require('./dioceseInfo.routes.js')(app);
+    require('./getFileDate.routes.js')(app);
 };
