@@ -1,4 +1,4 @@
 export const Settings = {
-    apiUrl: 'http://localhost:8080/api/',
+    apiUrl: 'https://praetor.bc.edu/development/api/',
     exportEnabled: false,
 }
