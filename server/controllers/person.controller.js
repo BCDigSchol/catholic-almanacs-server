@@ -185,7 +185,7 @@ exports.findByID = async (req, res) => {
     if (data) {
         let processedData = {
             persID: data.dataValues.ID,
-            name: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.name || '(not recorded)',
+            name: [],
             title: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.title,
             suffix: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.suffix,
             note: data.dataValues.almanacRecords[data.dataValues.almanacRecords.length - 1].personInAlmanacRecord.note,
@@ -199,6 +199,7 @@ exports.findByID = async (req, res) => {
         let existingYears = [];
         let existingRoles = [];
         let existingDioceses = [];
+        let existingNames = [];
         for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingAlmanacRecords.includes(almanacRecord.instID)) {
@@ -243,6 +244,10 @@ exports.findByID = async (req, res) => {
             if (!existingDioceses.includes(almanacRecord.diocese)) {
                 existingDioceses.push(almanacRecord.diocese);
                 processedData.dioceses.push(almanacRecord.diocese);
+            };
+            if (!existingNames.includes(almanacRecord.personInAlmanacRecord.name)) {
+                existingNames.push(almanacRecord.personInAlmanacRecord.name);
+                processedData.name.push(almanacRecord.personInAlmanacRecord.name);
             }
         }
         processedData.year.sort((a, b) => a - b);
@@ -272,7 +277,7 @@ exports.findOne = async (req, res) => {
     if (data) {
         let processedData = {
             persID: data.dataValues.ID,
-            name: data.dataValues.almanacRecords[0].personInAlmanacRecord.name || '(not recorded)',
+            name: [data.dataValues.almanacRecords[0].personInAlmanacRecord.name],
             title: data.dataValues.almanacRecords[0].personInAlmanacRecord.title,
             suffix: data.dataValues.almanacRecords[0].personInAlmanacRecord.suffix,
             note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note,
