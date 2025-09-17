@@ -81,7 +81,11 @@
                                                 <mat-icon class="mr-2">person</mat-icon>
                                                 <span>{{item.name}}</span>
                                             </div>
-                                                <span class="text-sm text-gray-600">{{item.diocese}}</span>
+                                            @if (item.yearStart === item.yearEnd) {
+                                                <span class="text-sm text-gray-600">{{item.yearStart}}</span>
+                                            } @else {
+                                                <span class="text-sm text-gray-600">{{item.yearStart}} - {{item.yearEnd}}</span>
+                                            }
                                         </div>
                                     </mat-card>
                                 </a>

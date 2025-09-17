@@ -1,17 +1,26 @@
 <div class="flex flex-col w-full justify-center items-center">
     <div class="flex flex-row w-full justify-start items-start">
         <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">Institutions</div>
-        <div class="w-full ml-30">
-            <p class="mt-5 italic text-gray-500 text-md" style="font-family: 'Open Sans', sans-serif">*** This site is in development ***</p>
+        <div class="ml-30" style="width: 40%; display: flex; align-items: center;">
+            <p class="mt-6 italic text-gray-500 text-md" style="font-family: 'Open Sans', sans-serif">*** This site is in development ***</p>
         </div>
-        <div style="width: 100%">
+        <div style="display:flex; align-items: center; width: 100%; justify-content: flex-end;" class="flex flex-row justify-center items-start">
             <mat-paginator (page)="changePage($event)"
             [length]="totalItems"
             [pageSize]="itemsPerPage"
             [pageIndex]="currentPage"
             [showFirstLastButtons]="true"
+            [disabled]="loading"
             [pageSizeOptions]="[5, 10, 25, 50]">
             </mat-paginator>
+            <mat-form-field appearance="outline" style="width: 100px;" class="mt-2">
+                <mat-label>Go to Page</mat-label>
+                <input matInput
+                    [ngModel]="currentPage + 1"
+                    (ngModelChange)="onPageInputChange($event)"
+                    [disabled]="loading"
+                    style="font-size: 13px; text-align: center;"/>
+            </mat-form-field>
         </div>
     </div>
     <div class="flex flex-row w-full justify-start items-start">

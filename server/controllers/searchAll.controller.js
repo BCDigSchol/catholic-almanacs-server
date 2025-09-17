@@ -109,15 +109,18 @@ exports.findAllInfo = async (req, res) => {
         });
         persData.rows.forEach(pers => {
             try {
-                if (pers.almanacRecords) {
-                persResults.push({
-                    persID: pers.ID,
-                    name: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.name,
-                    title: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.title,
-                    suffix: pers.almanacRecords[pers.almanacRecords.length - 1].personInAlmanacRecord.suffix,
-                    diocese: pers.almanacRecords[pers.almanacRecords.length - 1].diocese,
-                    type: 'person'
-                });
+                if (pers.almanacRecords && pers.almanacRecords.length > 0) {
+                    const sortedByYearRecords = pers.almanacRecords.sort((a, b) => a.year - b.year);
+                    persResults.push({
+                        persID: pers.ID,
+                        name: sortedByYearRecords[sortedByYearRecords.length - 1].personInAlmanacRecord.name,
+                        title: sortedByYearRecords[sortedByYearRecords.length - 1].personInAlmanacRecord.title,
+                        suffix: sortedByYearRecords[sortedByYearRecords.length - 1].personInAlmanacRecord.suffix,
+                        diocese: sortedByYearRecords[sortedByYearRecords.length - 1].diocese,
+                        yearStart: sortedByYearRecords[0].year,
+                        yearEnd: sortedByYearRecords[sortedByYearRecords.length - 1].year,
+                        type: 'person'
+                    });
             }} catch (err) {
                 console.error('error processing person:', {
                     persID: pers.ID,

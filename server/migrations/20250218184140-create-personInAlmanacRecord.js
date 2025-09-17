@@ -22,6 +22,10 @@ module.exports = {
         allowNull: true,
         defaultValue: '(name not recorded)'
       },
+      lastName: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       title: {
         type: Sequelize.STRING,
         allowNull: true

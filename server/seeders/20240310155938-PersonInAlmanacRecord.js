@@ -7,6 +7,26 @@ const csv = require('csv-parser');
 const{ person, personInAlmanacRecord } = require('../models');
 const{ loadData } = require('../utils/data-preprocess');
 
+function extractLastName(fullName) {
+  if (!fullName) return null;
+  const lastNamePrefixes = [
+    'van der', 'von der', 'de la', 'du von', 'van den', 'van de',
+    'von', 'de', 'la', 'der', 'van', 'du', 'da', 'di', 'le'
+  ];
+  const wordsInName = fullName.trim().split(/\s+/);
+  if (wordsInName.length === 1) {
+    return wordsInName[0];
+  }
+
+  for (let i = Math.min(3, wordsInName.length - 1); i > 0; i--) {
+    const potentialPrefix = wordsInName.slice(-i - 1).join(' ').toLowerCase();
+    if (lastNamePrefixes.includes(potentialPrefix)) {
+      return wordsInName.slice(-i - 1).join(' ');
+    }
+  }
+  return wordsInName[wordsInName.length - 1];
+}
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -66,6 +86,7 @@ async function importData(data) {
     
     if (item.almanacRecordID && item.persID && item.name) {
       //console.log(item);
+      const lastName = extractLastName(item.name);
       try {
         await personInAlmanacRecord.findOrCreate({
           where: { almanacRecordID: item.almanacRecordID, persID: item.persID },
@@ -73,6 +94,7 @@ async function importData(data) {
             almanacRecordID: item.almanacRecordID,
             persID: item.persID,
             name: item.name,
+            lastName: lastName,
             title: item.title,
             suffix: item.suffix,
             role: item.role,

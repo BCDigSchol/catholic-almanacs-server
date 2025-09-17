@@ -166,7 +166,7 @@ export class BrowseInstitutionComponent implements OnInit {
    */
   getData () {
     this.loading = true;
-    let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
+    let queryString = `?page=${this.currentPage + 1}&size=${this.itemsPerPage}`;
     queryString += this.filterValues.instName ? `&instName=${this.filterValues.instName}` : '';
     queryString += this.filterValues.persName ? `&persName=${this.filterValues.persName}` : '';
     queryString += this.filterValues.diocese ? `&diocese=${this.filterValues.diocese}` : '';
@@ -187,6 +187,18 @@ export class BrowseInstitutionComponent implements OnInit {
     })
   }
 
+  onPageInputChange(page: number) {
+    let inputPage = Number(page);
+    if (inputPage < 1) {
+      inputPage = 1;
+    } else if (inputPage > Math.ceil(this.totalItems / this.itemsPerPage)) {
+      inputPage = Math.ceil(this.totalItems / this.itemsPerPage);
+    }
+    this.currentPage = inputPage - 1;
+    this.paginationService.setCurrentPage(this.currentPage);
+    //this.getData();
+  }
+
   /**
    * fires when mat-paginator changes the page
    * @param e page event object
@@ -194,6 +206,6 @@ export class BrowseInstitutionComponent implements OnInit {
   changePage (e: PageEvent) {
     this.paginationService.setPageSize(e.pageSize);
     this.paginationService.setCurrentPage(e.pageIndex);
-    this.getData();
+    //this.getData();
   }
 }
