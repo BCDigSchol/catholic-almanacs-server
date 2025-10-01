@@ -18,12 +18,15 @@ function extractLastName(fullName) {
     return wordsInName[0];
   }
 
-  for (let i = Math.min(3, wordsInName.length - 1); i > 0; i--) {
-    const potentialPrefix = wordsInName.slice(-i - 1).join(' ').toLowerCase();
-    if (lastNamePrefixes.includes(potentialPrefix)) {
-      return wordsInName.slice(-i - 1).join(' ');
+  for (let prefixLen = Math.min(3, wordsInName.length - 1); prefixLen > 0; prefixLen--) {
+    const prefixStart = wordsInName.length - (prefixLen + 1);
+    if (prefixStart < 0) continue;
+    const prefix = wordsInName.slice(prefixStart, prefixStart + prefixLen).join(' ').toLowerCase();
+    if (lastNamePrefixes.includes(prefix)) {
+      return wordsInName.slice(prefixStart).join(' ');
     }
   }
+
   return wordsInName[wordsInName.length - 1];
 }
 

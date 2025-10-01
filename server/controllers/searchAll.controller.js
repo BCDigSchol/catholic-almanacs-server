@@ -64,7 +64,7 @@ exports.findAllInfo = async (req, res) => {
                     through: {
                         model: personInAlmanacRecord,
                         where: persWhere,
-                        attributes: ['persID', 'name', 'title', 'suffix']
+                        attributes: ['persID', 'name', 'lastName', 'title', 'suffix']
                     }
                 }
             ],
@@ -72,7 +72,7 @@ exports.findAllInfo = async (req, res) => {
                 Sequelize.literal(`(
                     CASE 
                         WHEN (
-                        SELECT pir.\`name\`
+                        SELECT pir.\`lastName\`
                         FROM \`personInAlmanacRecords\` pir
                         JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
                         WHERE pir.\`persID\` = \`person\`.\`ID\`
@@ -84,7 +84,7 @@ exports.findAllInfo = async (req, res) => {
                 )`), 'ASC'
             ], [
                 Sequelize.literal(`(
-                    SELECT pir.\`name\`
+                    SELECT pir.\`lastName\`
                     FROM \`personInAlmanacRecords\` pir
                     JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
                     WHERE pir.\`persID\` = \`person\`.\`ID\`
