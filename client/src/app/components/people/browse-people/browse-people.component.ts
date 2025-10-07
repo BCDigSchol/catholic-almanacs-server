@@ -129,12 +129,26 @@ ngOnInit () {
   });
 }
 
+
+onPageInputChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    let inputPage = Number(input.value);
+    if (inputPage < 1) {
+      inputPage = 1;
+    } else if (inputPage > Math.ceil(this.totalItems / this.itemsPerPage)) {
+      inputPage = Math.ceil(this.totalItems / this.itemsPerPage);
+    }
+    this.currentPage = inputPage - 1;
+    this.paginationService.setCurrentPage(this.currentPage);
+    //this.getData();
+  }
+
 /**
  * fetches data from api service and stores it in .data
  */
 getData () {
   this.loading = true;
-  let queryString = `?page=${this.currentPage}&size=${this.itemsPerPage}`;
+  let queryString = `?page=${this.currentPage + 1}&size=${this.itemsPerPage}`;
   queryString += this.filterValues.persName ? `&persName=${this.filterValues.persName}` : '';
   queryString += this.filterValues.countyOrig ? `&countyOrig=${this.filterValues.countyOrig}` : '';
   queryString += this.filterValues.cityOrig ? `&cityOrig=${this.filterValues.cityOrig}` : '';

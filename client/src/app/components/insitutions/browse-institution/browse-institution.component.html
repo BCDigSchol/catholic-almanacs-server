@@ -17,7 +17,7 @@
                 <mat-label>Go to Page</mat-label>
                 <input matInput
                     [ngModel]="currentPage + 1"
-                    (ngModelChange)="onPageInputChange($event)"
+                    (keydown.enter)="onPageInputChange($event)"
                     [disabled]="loading"
                     style="font-size: 13px; text-align: center;"/>
             </mat-form-field>

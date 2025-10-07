@@ -10,3 +10,7 @@
     font-weight: 400;
     font-style: normal;
 }
+
+::ng-deep .mdc-notched-outline__notch { 
+    border-right: none;
+}

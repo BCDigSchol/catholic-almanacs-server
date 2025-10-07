@@ -187,8 +187,9 @@ export class BrowseInstitutionComponent implements OnInit {
     })
   }
 
-  onPageInputChange(page: number) {
-    let inputPage = Number(page);
+  onPageInputChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    let inputPage = Number(input.value);
     if (inputPage < 1) {
       inputPage = 1;
     } else if (inputPage > Math.ceil(this.totalItems / this.itemsPerPage)) {

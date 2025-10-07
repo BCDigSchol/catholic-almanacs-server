@@ -35,7 +35,7 @@ exports.findAll = (req, res) => {
     let {page, size} = req.query;
     console.log(req.query);
     if (!page) {
-        page = 0;
+        page = 1;
     };
     if (!size) {
         size = 3;
