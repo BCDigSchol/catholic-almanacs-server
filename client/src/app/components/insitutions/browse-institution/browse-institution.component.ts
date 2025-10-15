@@ -67,12 +67,12 @@ export class BrowseInstitutionComponent implements OnInit {
 
   filterFields: FilterField[] = [
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false },
-    { type: 'input', label: 'Institution Type', keyword: 'instType', active: false },
+    { type: 'autocomplete', label: 'Institution Type', keyword: 'instType', active: false, autocompleteOptions: [] },
     { type: 'autocomplete', label: 'Institution Function', keyword: 'instFunction', active: false, autocompleteOptions: [] },
     { type: 'input', label: 'Language', keyword: 'language', active: false },
     { type: 'input', label: 'County', keyword: 'countyOrig', active: false },
     { type: 'input', label: 'City', keyword: 'cityOrig', active: false },
-    { type: 'autocomplete', label: 'State', keyword: 'stateOrig', active: false },
+    { type: 'autocomplete', label: 'State', keyword: 'stateOrig', active: false, autocompleteOptions: [] },
     { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: [] },
     { type: 'autocomplete', label: 'Religious Order', keyword: 'religiousOrder', active: false, autocompleteOptions: []},
     { type: 'input', label: 'Person Name', keyword: 'persName', active: false },
@@ -126,6 +126,15 @@ export class BrowseInstitutionComponent implements OnInit {
       if (functionFilter) {
         functionFilter.autocompleteOptions = functions;
         functionFilter.filteredOptions = functions;
+      }
+    });
+
+    this.http.get('types.csv', { responseType: 'text' }).subscribe((data) => {
+      const types = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const typeFilter = this.filterFields.find(field => field.keyword === 'instType');
+      if (typeFilter) {
+        typeFilter.autocompleteOptions = types;
+        typeFilter.filteredOptions = types;
       }
     });
 

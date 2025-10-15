@@ -31,6 +31,10 @@ export class PersonDetailsComponent implements OnInit{
   loading = true;
   itemId: any;
   data: any = [];
+  get longestName(): string {
+    if (!this.data?.name || !Array.isArray(this.data.name)) return '';
+    return this.data.name.reduce((a: string, b: string) => a.length > b.length ? a : b, '');
+  }
 
   mapOptionsWide: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },

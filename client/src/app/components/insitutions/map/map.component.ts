@@ -62,9 +62,9 @@ export class MapComponent implements OnInit {
 
   filterFields: FilterField[] = [
     //{ type: 'slider', label: 'Year', keyword: 'year', min: 1830, max: 1870, active: true, defaultValue: '1864'},
-    { type: 'input', label: 'Institution Type', keyword: 'instType', active: false},
+    { type: 'autocomplete', label: 'Institution Type', keyword: 'instType', active: false, autocompleteOptions: []},
     { type: 'input', label: 'Institution Name', keyword: 'instName', active: false},
-    { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false}
+    { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: []}
   ]
 
   constructor(
@@ -82,6 +82,15 @@ export class MapComponent implements OnInit {
       if (dioceseFilter) {
         dioceseFilter.autocompleteOptions = dioceses;
         dioceseFilter.filteredOptions = dioceses;
+      }
+    });
+
+    this.http.get('types.csv', { responseType: 'text' }).subscribe((data) => {
+      const types = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      const typeFilter = this.filterFields.find(field => field.keyword === 'instType');
+      if (typeFilter) {
+        typeFilter.autocompleteOptions = types;
+        typeFilter.filteredOptions = types;
       }
     });
 

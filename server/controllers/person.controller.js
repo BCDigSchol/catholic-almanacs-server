@@ -277,7 +277,7 @@ exports.findOne = async (req, res) => {
     if (data) {
         let processedData = {
             persID: data.dataValues.ID,
-            name: [data.dataValues.almanacRecords[0].personInAlmanacRecord.name],
+            name: [],
             title: data.dataValues.almanacRecords[0].personInAlmanacRecord.title,
             suffix: data.dataValues.almanacRecords[0].personInAlmanacRecord.suffix,
             note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note,
@@ -290,6 +290,7 @@ exports.findOne = async (req, res) => {
         let existingRoles = [];
         let existingAlmanacRecords = [];
         let existingDioceses = [];
+        let existingNames = [];
         for (let i = data.dataValues.almanacRecords.length - 1; i >= 0; i--) {
             let almanacRecord = data.dataValues.almanacRecords[i];
             if (!existingRoles.includes(almanacRecord.personInAlmanacRecord.role)) {
@@ -322,6 +323,10 @@ exports.findOne = async (req, res) => {
                     });
                 }
             };
+            if (!existingNames.includes(almanacRecord.personInAlmanacRecord.name)) {
+                existingNames.push(almanacRecord.personInAlmanacRecord.name);
+                processedData.name.push(almanacRecord.personInAlmanacRecord.name);
+            }
         };
         for (let i = 0; i < data.dataValues.almanacRecords.length; i++) {
             let almanacRecord = data.dataValues.almanacRecords[i];

@@ -1,4 +1,5 @@
-<div class="flex flex-col w-full justify-center items-center">
+<!-- Wide Display -->
+<div class="flex flex-col w-full justify-center items-center wide-display">
     <div class="flex flex-row w-full justify-start items-start">
         <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">Institutions</div>
         <div class="ml-30" style="width: 40%; display: flex; align-items: center;">
@@ -24,6 +25,74 @@
         </div>
     </div>
     <div class="flex flex-row w-full justify-start items-start">
+    <div style="width: 300px; min-width: 250px; margin-right: 20px" class="my-3 ml-3">
+        <app-filter></app-filter>
+    </div>
+    <div class="flex flex-col w-full">
+    @if (loading) {
+        <div style="height: 100%; display: flex; align-items: center; justify-content: center; width: 100%;">
+        <mat-spinner></mat-spinner>
+        </div>
+    } @else {
+    <mat-card *ngFor="let item of data" class="my-1" style="width:100%;">
+        <mat-card-header [routerLink]="'/institutions/' + item.ID" style="cursor: pointer;">
+            <mat-card-title>
+                {{ item.almanacRecord[item.almanacRecord.length - 1]?.instName }}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <div matListItemTitle>
+                        ID: {{ item.ID }}
+                    </div>
+                    <div matListItemLine>
+                        Years In Records:
+                        <span *ngFor="let c of item.almanacRecord">
+                            {{ c.year }} 
+                        </span>
+                    </div>
+                    <div matListItemLine>
+                        Institution Type: {{ item.almanacRecord[item.almanacRecord.length - 1]?.instType }}
+                    </div>
+                    <div matListItemLine>
+                        Diocese (in {{item.almanacRecord[item.almanacRecord.length - 1].year}}): {{ item.almanacRecord[item.almanacRecord.length - 1]?.diocese }}
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>}
+    </div>
+    </div>
+</div>
+
+<!-- Mobile Display -->
+<div class="flex flex-col w-full justify-center items-center mobile-display">
+    <div class="flex flex-col w-full justify-start items-start">
+        <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">Institutions</div>
+        <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+            <p class="mt-6 italic text-gray-500 text-md" style="font-family: 'Open Sans', sans-serif">*** This site is in development ***</p>
+        </div>
+        <div style="display:flex; align-items: center; width: 100%; justify-content: flex-end;" class="flex flex-row justify-center items-start">
+            <mat-paginator (page)="changePage($event)"
+            [length]="totalItems"
+            [pageSize]="itemsPerPage"
+            [pageIndex]="currentPage"
+            [showFirstLastButtons]="true"
+            [disabled]="loading"
+            [pageSizeOptions]="[5, 10, 25, 50]">
+            </mat-paginator>
+            <mat-form-field appearance="outline" style="width: 100px;" class="mt-2">
+                <mat-label>Go to Page</mat-label>
+                <input matInput
+                    [ngModel]="currentPage + 1"
+                    (keydown.enter)="onPageInputChange($event)"
+                    [disabled]="loading"
+                    style="font-size: 13px; text-align: center;"/>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="flex flex-col w-full justify-start items-start">
     <div style="width: 300px; min-width: 250px; margin-right: 20px" class="my-3 ml-3">
         <app-filter></app-filter>
     </div>
