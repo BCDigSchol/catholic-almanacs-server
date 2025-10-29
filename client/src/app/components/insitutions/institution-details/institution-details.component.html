@@ -207,18 +207,38 @@
                         <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, the warning message is temporary</span>
                     </div>
                     <div class="map-container w-full md:!hidden flex justify-center items-center">
-                        <google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                        <!--<google-map [options]="mapOptionsSmall" width="400px" height="250px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
-                            <!--<map-polygon></map-polygon> could be an option-->
-                        </google-map>
+                        </google-map> -->
+                        <app-map [data]="data" 
+                            [markerMode]="'icon'"
+                            [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: data.latitude || 30, 
+                                lng: data.longitude || -80
+                            },
+                            size: {width: '400px', height: '250px'}
+                        }">
+                        </app-map>
                     </div>
                     <div class="map-container md:w-auto !hidden md:!flex">
-                        <google-map [options]="mapOptionsWide" width="500px" height="350px">
+                        <!--<google-map [options]="mapOptionsWide" width="500px" height="350px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
-                            <!--<map-polygon></map-polygon> could be an option-->
-                        </google-map>
+                        </google-map>-->
+                        <app-map [data]="data" 
+                            [markerMode]="'icon'"
+                            [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: data.latitude || 30, 
+                                lng: data.longitude || -80
+                            },
+                            size: {width: '500px', height: '400px'}
+                        }">
+                        </app-map>
                     </div>
                 </div>
             </div>

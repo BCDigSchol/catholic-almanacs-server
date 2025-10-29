@@ -84,16 +84,25 @@
                         <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, the warning message is temporary</span>
                     </div>
                     <div class="map-container w-full md:!hidden flex justify-center items-center">
-                        <google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                        <!--<google-map [options]="mapOptionsSmall" width="400px" height="250px">
                             <ng-container *ngFor="let item of data.almanacRecords">
                                 <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
                                 </map-marker>
                             </ng-container>
-                            <map-polygon></map-polygon> <!--could be an option-->
-                        </google-map>
+                            <map-polygon></map-polygon>
+                        </google-map>--->
+                        <app-map [data]="data.residingInstitutions.concat(data.visitingInstitutions)" [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: (data.residingInstitutions[0]?.latitude || data.visitingInstitutions[0]?.latitude || 0), 
+                                lng: (data.residingInstitutions[0]?.longitude || data.visitingInstitutions[0]?.longitude || 0)
+                            },
+                            size: {width: '400px', height: '250px'}
+                        }">
+                        </app-map>
                     </div>
                     <div class="map-container w-full md:w-auto !hidden md:!flex">
-                        <google-map [options]="mapOptionsWide" width="500px" height="350px">
+                        <!--<google-map [options]="mapOptionsWide" width="500px" height="350px">
                             <ng-container *ngFor="let item of data.residingInstitutions">
                                 <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
                                 </map-marker>
@@ -102,8 +111,17 @@
                                 <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
                                 </map-marker>
                             </ng-container>
-                            <map-polygon></map-polygon> <!--could be an option-->
-                        </google-map>
+                            <map-polygon></map-polygon>
+                        </google-map> -->
+                        <app-map [data]="data.residingInstitutions.concat(data.visitingInstitutions)" [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: (data.residingInstitutions[0]?.latitude || data.visitingInstitutions[0]?.latitude || 0), 
+                                lng: (data.residingInstitutions[0]?.longitude || data.visitingInstitutions[0]?.longitude || 0)
+                            },
+                            size: {width: '500px', height: '400px'}
+                        }">
+                        </app-map>
                     </div>
                 </div>
         </div>

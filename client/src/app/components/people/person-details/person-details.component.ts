@@ -13,15 +13,15 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Location } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MapComponent } from '../../common/map/map.component';
 
 import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-person-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIconModule, 
-    MatIcon, MatProgressSpinnerModule
-],
+    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIconModule,
+    MatIcon, MatProgressSpinnerModule, MapComponent],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
 })
@@ -35,20 +35,6 @@ export class PersonDetailsComponent implements OnInit{
     if (!this.data?.name || !Array.isArray(this.data.name)) return '';
     return this.data.name.reduce((a: string, b: string) => a.length > b.length ? a : b, '');
   }
-
-  mapOptionsWide: google.maps.MapOptions = {
-    center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 3.7,
-    disableDefaultUI: true,
-    clickableIcons: false
-  };
-
-  mapOptionsSmall: google.maps.MapOptions = {
-    center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 3.4,
-    disableDefaultUI: true,
-    clickableIcons: false
-  };
 
   constructor(
     private _route: ActivatedRoute,
@@ -67,13 +53,6 @@ export class PersonDetailsComponent implements OnInit{
     this._api.getTypeRequest('person/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
-      //console.log(this.data)
-      //const center = { lat: this.data.residingInstitutions[0].latitude, lng: this.data.residingInstitutions[0].longitude };
-      //if (window.innerWidth < 768) {
-      //  this.mapOptionsSmall = { ...this.mapOptionsSmall, center, zoom: 7 };
-      //} else {
-      //  this.mapOptionsWide = { ...this.mapOptionsWide, center, zoom: 7 };
-      //}
     });
   }
 

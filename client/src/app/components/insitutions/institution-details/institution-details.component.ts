@@ -15,6 +15,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MapComponent } from '../../common/map/map.component';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -22,7 +23,7 @@ import { ApiService } from '../../../services/api.service';
   selector: 'app-institution-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
             RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIcon,
-            MatIconModule, DialogComponent, MatProgressSpinnerModule
+            MatIconModule, DialogComponent, MatProgressSpinnerModule, MapComponent
   ],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'

@@ -12,7 +12,7 @@
     </div>
     <div class="w-full flex flex-col justify-around items-center relative">
         <div style="flex-shrink: 0;">
-        <google-map [options]="mapOptions" width = "1000px" height="600px">
+        <!--<google-map [options]="mapOptions" width = "1000px" height="600px">
             @for (item of data; track item) {
                 <map-circle
                     [center]="{lat: item.latitude, lng: item.longitude}"
@@ -29,7 +29,15 @@
                     (circleMouseout)="hideInstDetail()"
                 ></map-circle>
             }
-        </google-map>
+        </google-map> -->
+        <app-map [data]="data" 
+            [markerMode]="'circle'"
+            [options]="{
+                zoom: 4.4,
+                center: { lat: 39, lng: -98 },
+                size: { width: '1000px', height: '600px' }
+            }">
+        </app-map>
         </div>
         <div class="absolute top-0 right-50 m-2" style="width: 300px;">
             <mat-card *ngIf="instDetailVisible">
