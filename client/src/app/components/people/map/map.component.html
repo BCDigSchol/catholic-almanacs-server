@@ -12,7 +12,7 @@
     </div>
         <div class="w-full flex flex-row justify-around items-center relative">
             <div style="flex-shrink: 0;">
-            <google-map [options]="mapOptions" width = "1000px" height="600px">
+            <!--<google-map [options]="mapOptions" width = "1000px" height="600px">
                 @for (item of data; track item) {
                     <map-circle
                         [center]="{lat: item.latitude, lng: item.longitude}"
@@ -29,7 +29,15 @@
                         (circleMouseout)="hidePersDetail()"
                     ></map-circle>
                 }
-            </google-map>
+            </google-map> -->
+            <app-map [data]="data"
+                [markerMode]="'circle'"
+                [options]="{
+                    zoom: 4.4,
+                    center: { lat: 39, lng: -98 },
+                    size: { width: '1000px', height: '600px' }
+                }">
+            </app-map>
             <div class="absolute top-0 right-50 m-2" style="width: 300px;">
                 <mat-card *ngIf="persDetailVisible">
                     <mat-card-content>
@@ -51,7 +59,7 @@
                     </mat-card-content>
                 </mat-card>
             </div>
-            <div class="flex flex-col justify-center items-center">
+            <div class="flex flex-col justify-center items-center" style="position: relative; z-index: 1000;">
             <div>
                 <div class="flex flex-row justify-center items-center">
                 <div>
@@ -67,7 +75,7 @@
                         <mat-icon>pause</mat-icon>
                     </button>
                 }
-                <div>
+                <div style="position: relative; z-index: 1001;">
                 <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
                     <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
                 </mat-slider>

@@ -100,9 +100,6 @@ export class InstitutionDetailsComponent implements OnInit {
     })});}
   };
 
-  clickMap (event: google.maps.MapMouseEvent) {
-  };
-
   goBack (): void {
     if (window.history.length > 1) {
       this._location.back();

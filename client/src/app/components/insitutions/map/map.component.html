@@ -39,7 +39,7 @@
             }">
         </app-map>
         </div>
-        <div class="absolute top-0 right-50 m-2" style="width: 300px;">
+        <div class="absolute top-0 right-50 m-2" style="width: 300px; z-index: 1000;">
             <mat-card *ngIf="instDetailVisible">
                 <mat-card-content>
                     <div>
@@ -59,7 +59,7 @@
         </div>
         <div class="flex flex-col justify-center items-center">
         <div>
-            <div class="flex flex-row justify-center items-center">
+            <div class="flex flex-row justify-center items-center" >
             <div>
                 <span>Year: {{year}}</span>
             </div>
@@ -73,7 +73,7 @@
                     <mat-icon>pause</mat-icon>
                 </button>
             }
-            <div>
+            <div style="position: relative; z-index: 1001;">
             <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
                 <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
             </mat-slider>

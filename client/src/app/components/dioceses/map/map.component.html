@@ -12,20 +12,8 @@
     </div>
         <div class="w-full flex flex-col justify-around items-center relative">
             <div style="flex-shrink: 0;">
+            <!--
             <google-map [options]="mapOptions" width = "1000px" height="600px">
-                @for (item of data; track item) {
-                    <!--
-                    <map-marker 
-                    [position]="{lat: item.latitude, lng: item.longitude}" 
-                    [title]="item.instName + ' (' + item.diocese + ')'" 
-                    (mapClick)="clickMap(item)"
-                    [options]="{
-                        icon: {
-                            url: 'map-icon.png'
-                        }
-                    }"
-                    >
-                    </map-marker> -->
                     <map-circle
                         [center]="{lat: item.latitude, lng: item.longitude}"
                         [radius]="300"
@@ -41,7 +29,16 @@
                         (circleMouseout)="hideInstDetail()"
                     ></map-circle>
                 }
-            </google-map>
+            </google-map> -->
+            <app-map [data]="data"
+                [markerMode]="'circle'"
+                [colorMode]="'diocese'"
+                [options]="{
+                    zoom: 4.4,
+                    center: { lat: 39, lng: -98 },
+                    size: { width: '1000px', height: '600px' }
+                }">
+            </app-map>
             </div>
             <div class="absolute top-0 right-50 m-2" style="width: 300px;">
                 <mat-card *ngIf="instDetailVisible">
@@ -62,7 +59,7 @@
                 </mat-card>
             </div>
             <div class="flex flex-col justify-center items-center">
-        <div>
+        <div style="position: relative; z-index: 1000;">
             <div class="flex flex-row justify-center items-center">
             <div>
                 <span>Year: {{year}}</span>
@@ -78,7 +75,7 @@
                 </button>
             }
             <div>
-            <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
+            <mat-slider class="mx-2" style="width:200px; width:600px; position: relative; z-index: 1001;" [min]="yearMin" [max]="yearMax" step="1" discrete>
                 <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
             </mat-slider>
             <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">

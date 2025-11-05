@@ -10,15 +10,17 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { FormsModule } from  '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MapComponent as CommonMapComponent} from '../../common/map/map.component';
 
 import { ApiService } from '../../../services/api.service';
 import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
-  selector: 'app-map',
+  selector: 'app-diocese-map',
   imports: [GoogleMapsModule, FilterComponent, MatCardModule, CommonModule, 
-    MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule],
+    MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule,
+    CommonMapComponent],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })

@@ -84,40 +84,28 @@
                         <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, the warning message is temporary</span>
                     </div>
                     <div class="map-container w-full md:!hidden flex justify-center items-center">
-                        <!--<google-map [options]="mapOptionsSmall" width="400px" height="250px">
-                            <ng-container *ngFor="let item of data.almanacRecords">
-                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
-                                </map-marker>
-                            </ng-container>
-                            <map-polygon></map-polygon>
-                        </google-map>--->
-                        <app-map [data]="data.residingInstitutions.concat(data.visitingInstitutions)" [options]="{
+                        <app-map 
+                        [data]="data.allInstitutions" 
+                        [markerMode]="'icon'"
+                        [options]="{
                             zoom:6, 
                             center: {
-                                lat: (data.residingInstitutions[0]?.latitude || data.visitingInstitutions[0]?.latitude || 0), 
-                                lng: (data.residingInstitutions[0]?.longitude || data.visitingInstitutions[0]?.longitude || 0)
+                                lat: (data.allInstitutions[0]?.latitude || 0), 
+                                lng: (data.allInstitutions[0]?.longitude || 0)
                             },
                             size: {width: '400px', height: '250px'}
                         }">
                         </app-map>
                     </div>
                     <div class="map-container w-full md:w-auto !hidden md:!flex">
-                        <!--<google-map [options]="mapOptionsWide" width="500px" height="350px">
-                            <ng-container *ngFor="let item of data.residingInstitutions">
-                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
-                                </map-marker>
-                            </ng-container>
-                            <ng-container *ngFor="let item of data.visitingInstitutions">
-                                <map-marker [position]="{lat: item.latitude, lng: item.longitude}" [title]="item.instName" (mapClick)="clickMap($event, item.instID)">
-                                </map-marker>
-                            </ng-container>
-                            <map-polygon></map-polygon>
-                        </google-map> -->
-                        <app-map [data]="data.residingInstitutions.concat(data.visitingInstitutions)" [options]="{
+                        <app-map 
+                            [data]="data.allInstitutions" 
+                            [markerMode]="'icon'"
+                            [options]="{
                             zoom:6, 
                             center: {
-                                lat: (data.residingInstitutions[0]?.latitude || data.visitingInstitutions[0]?.latitude || 0), 
-                                lng: (data.residingInstitutions[0]?.longitude || data.visitingInstitutions[0]?.longitude || 0)
+                                lat: (data.allInstitutions[0]?.latitude || 0), 
+                                lng: (data.allInstitutions[0]?.longitude || 0)
                             },
                             size: {width: '500px', height: '400px'}
                         }">
@@ -133,39 +121,3 @@
         </div>
         </mat-card-content>}
 </mat-card>
-            <!--
-            <table>
-                <tbody>
-                    <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
-                    <tr>
-                        <td class="custom-td">Person ID</td>
-                        <td>{{data.persID}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Title</td>
-                        <td>{{data.title}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Suffix</td>
-                        <td>{{data.suffix}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Notes</td>
-                        <td>{{data.note}}</td>
-                    </tr>
-                    <tr>
-                        <td class="custom-td">Relevant Institutions</td>
-                        <td>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <button mat-button class="custom-button" *ngFor="let item of data.almanacRecords">
-                                    <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                </button>
-                            </div>
-                            <div *ngIf="data.almanacRecords.length === 0">None</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </mat-card-content>
-    </mat-card>
-</div> -->

@@ -72,7 +72,7 @@ exports.findAllPeople = async (req, res) => {
                     model: almanacRecord,
                     as: 'almanacRecords',
                     required: Object.keys(instWhere).length > 0,
-                    attributes: ['instID', 'instName', 'year', 'diocese', 'latitude', 'longitude'],
+                    attributes: ['instID', 'instName', 'year', 'diocese', 'latitude', 'longitude', 'instFunction'],
                     where: instWhere,
                     through: {
                         model: personInAlmanacRecord,

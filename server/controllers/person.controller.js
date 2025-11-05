@@ -192,6 +192,7 @@ exports.findByID = async (req, res) => {
             role: [],
             residingInstitutions: [],
             visitingInstitutions: [],
+            allInstitutions: [],
             year: [],
             dioceses: []
         }
@@ -251,6 +252,7 @@ exports.findByID = async (req, res) => {
             }
         }
         processedData.year.sort((a, b) => a - b);
+        processedData.allInstitutions = [...processedData.residingInstitutions, ...processedData.visitingInstitutions];
         res.send(processedData);
     } else {
         res.status(404).send({
@@ -283,6 +285,7 @@ exports.findOne = async (req, res) => {
             note: data.dataValues.almanacRecords[0].personInAlmanacRecord.note,
             residingInstitutions: [],
             visitingInstitutions: [],
+            allInstitutions: [],
             year: data.dataValues.almanacRecords[0].year,
             dioceses: [],
             role: [],
@@ -335,6 +338,7 @@ exports.findOne = async (req, res) => {
                 processedData.dioceses.push(almanacRecord.diocese);
             }
         }
+        processedData.allInstitutions = [...processedData.residingInstitutions, ...processedData.visitingInstitutions];
         res.send(processedData);
     } else {
         res.status(404).send({

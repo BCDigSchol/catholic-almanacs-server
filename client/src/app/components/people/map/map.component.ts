@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { FilterComponent } from '../../common/filter/filter.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +9,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MapComponent as CommonMapComponent} from '../../common/map/map.component';
 
 import { ApiService } from '../../../services/api.service';
 import { FilterService } from '../../../services/filter.service';
@@ -30,9 +30,9 @@ interface FilterField {
   }
 
 @Component({
-  selector: 'app-map',
-  imports: [GoogleMapsModule, FilterComponent, MatCardModule, CommonModule, MatButtonModule, 
-    MatIconModule, MatInputModule, FormsModule, MatSliderModule],
+  selector: 'app-people-map',
+  imports: [FilterComponent, MatCardModule, CommonModule, MatButtonModule, 
+    MatIconModule, MatInputModule, FormsModule, MatSliderModule, CommonMapComponent],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })

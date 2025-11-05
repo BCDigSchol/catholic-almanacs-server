@@ -9,7 +9,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { SelectYearComponent } from '../../common/select-year/select-year.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Location } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -17,10 +16,11 @@ import { MapComponent } from '../../common/map/map.component';
 
 import { ApiService } from '../../../services/api.service';
 
+
 @Component({
   selector: 'app-person-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-    RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIconModule,
+    RouterLink, SelectYearComponent, MatTooltipModule, MatIconModule,
     MatIcon, MatProgressSpinnerModule, MapComponent],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
@@ -53,6 +53,7 @@ export class PersonDetailsComponent implements OnInit{
     this._api.getTypeRequest('person/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
+      //console.log(this.data);
     });
   }
 
@@ -69,10 +70,6 @@ export class PersonDetailsComponent implements OnInit{
       this.itemId = this.data.persID;
       });
   }};
-
-  clickMap (event: google.maps.MapMouseEvent, instID: string) {
-    this._router.navigate(['/institutions', instID]);
-  };
 
   goBack (): void {
     if (window.history.length > 1) {
