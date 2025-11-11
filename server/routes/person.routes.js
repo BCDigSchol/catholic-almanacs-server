@@ -1,9 +1,10 @@
 module.exports = app => {
     const controller = require('../controllers/person.controller');
     var router = require('express').Router();
-    router.post('/', controller.create);
+    //router.post('/', controller.create);
     router.get('/', controller.findAll);
-    router.get('/:persID', controller.findOne);
-    router.delete('/:persID', controller.delete);
+    router.get('/:id', controller.findByID);
+    router.get('/:id/:year', controller.findOne);
+    router.delete('/:id', controller.delete);
     app.use('/api/person', router);
 }

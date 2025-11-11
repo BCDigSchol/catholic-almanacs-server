@@ -1,0 +1,99 @@
+<div class="flex flex-col w-full justify-center items-center">
+    <div>
+        <p class="mt-5 italic text-gray-500 text-md" style="font-family: 'Open Sans', sans-serif">*** This site is in development ***</p>
+    </div>
+    <div class="flex flex-row w-full justify-center items-center">
+    <div>
+        <div class="flex w-full justify-center">
+            <mat-form-field style="width: 80%; max-width:600px" class="mt-5 custom-font">
+                <mat-label>Search for Institutions and People</mat-label>
+                <input matInput (input)="getData()" [(ngModel)]="inputName">
+                <button mat-icon-button matSuffix class="mx-3" style="cursor:pointer;" (click)="getData()">
+                    <mat-icon fontIcon="search"></mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    <div class="flex flex-col md:flex-row items-center justify-center mt-1">
+        <div class="flex flex-col justify-center">
+            <a (click)="navigateToInstitutions()" style="display: block; text-align: center;">
+                <div style="position: relative; width: 100%; max-width:500px; aspect-ratio: 2/1; cursor:pointer" class="mb-5">
+                    <img src="st nacho.jpg" alt="institution" style="width:100%; height:100%; opacity:0.4;">
+                    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:black; opacity:0.5"></div>
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: flex-start; 
+                    justify-content: center; font-size: 20px; color:rgb(240, 240, 240); text-decoration:underline; font-family:'Lato', sans-serif; padding-top: 170px;">
+                        Browse Institutions
+                    </div>
+                </div>
+            </a>
+            <mat-card style="width:100%; max-width:500px; height: 100%; max-height:300px" appearance="outlined" class="mr-5 mb-5 md:mb-0">
+                <mat-card-content class="scrollable-content" style="height: 100%; overflow-y: auto;">
+                @if (loading) {
+                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <mat-spinner></mat-spinner>
+                    </div>
+                } @else {
+                    @if (institutions.length === 0) {
+                        <div style="text-align: center; color: gray;">No Results Found</div>
+                    } @else {
+                        @for (item of institutions; track item) {
+                            <a [routerLink]="'/institutions/' + item.instID" [target]="isEmbedded ? '_blank' : '_self'">
+                                <mat-card class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined">
+                                    <div class="flex flex-row items-center justify-between w-full custom-font">
+                                        <div class="flex flex-row items-center">
+                                            <mat-icon class="mr-3">church</mat-icon>
+                                            <span>{{item.instName}}</span>
+                                </div>
+                                    <span class="text-sm text-gray-600">{{item.diocese}}</span>
+                                </div>
+                                </mat-card>
+                            </a>
+                    }}}
+                </mat-card-content>
+        </mat-card>
+        </div>
+        <div class="flex flex-col justify-center">
+            <div class="flex flex-col justify-center">
+                <a (click)="navigateToPeople()" style="display: block; text-align: center;">
+                    <div style="position: relative; width: 100%; max-width:500px; aspect-ratio: 2/1; cursor: pointer;" class="mb-5">
+                        <img src="John_Bapst_standing_cropped.jpg" alt="institution" style="width:350px; height:250px; object-fit: cover; opacity:0.4;" class="mb-5">
+                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:black; opacity:0.4"></div>
+                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: flex-start; 
+                        justify-content: center; font-size: 20px; color:rgb(255, 255, 255); text-decoration:underline; font-family: 'Lato', sans-serif; padding-top: 170px">
+                            Browse People
+                        </div>
+                    </div>
+                </a>
+                <mat-card style="width:100%; max-width:500px; height: 100%; max-height:300px" appearance="outlined">
+                    <mat-card-content class="scrollable-content">
+                    @if (loading) {
+                        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <mat-spinner></mat-spinner>
+                        </div>
+                    } @else {
+                        @if (people.length === 0) {
+                            <div style="text-align: center; color: gray;">No Results Found</div>
+                        } @else {
+                            @for (item of people; track item) {
+                                <a [routerLink]="'/people/' + item.persID" [target]="isEmbedded ? '_blank' : '_self'">
+                                    <mat-card class="mb-2 custom-font" style="padding: 1%; cursor: pointer" appearance="outlined">
+                                        <div class="flex flex-row items-center justify-between w-full">
+                                            <div class="flex flex-row items-center">
+                                                <mat-icon class="mr-2">person</mat-icon>
+                                                <span>{{item.name}}</span>
+                                            </div>
+                                            @if (item.yearStart === item.yearEnd) {
+                                                <span class="text-sm text-gray-600">{{item.yearStart}}</span>
+                                            } @else {
+                                                <span class="text-sm text-gray-600">{{item.yearStart}} - {{item.yearEnd}}</span>
+                                            }
+                                        </div>
+                                    </mat-card>
+                                </a>
+                            }}}
+                    </mat-card-content>
+                </mat-card>
+            </div> 
+        </div> 
+    </div>
+    </div>
+</div>

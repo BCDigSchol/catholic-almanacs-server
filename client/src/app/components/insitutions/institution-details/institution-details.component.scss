@@ -1,0 +1,58 @@
+:host mat-card-title{
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+:host table {
+    width: 100%;
+    border-collapse: collapse;
+    line-height: 2.0; 
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px; 
+}
+
+:host .custom-td {
+    font-weight: bold;
+    font-size: 15px;
+    width: 150px;
+    padding-right: 20px;
+}
+
+:host .custom-font {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
+:host .tertiary-btn {
+    color: #ffffff;
+    background-color: #6c7792;
+}
+
+:host .cell {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+:host .map-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width:767px) {
+    :host .map-container google-map {
+        width: 100% !important;
+        max-width: 400px;
+        height: 300px !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1023px) {
+    :host .map-container google-map {
+        width: 500px !important;
+        height: 350px !important;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="w-full h-full" [ngClass]="{'dark-theme': isDarkTheme}">
+    <app-header (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when it emits a signal, toggleNavMenu() is called-->
+    <mat-sidenav-container class="w-full h-full" autosize #sidenav>
+        <mat-sidenav #drawer mode="side" position="end" class="!w-38 md:!w-55">
+            <app-sidenav (menuClicked)="toggleNavMenu()">
+            </app-sidenav>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

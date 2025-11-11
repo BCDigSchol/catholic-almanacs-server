@@ -1,0 +1,51 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿j_b_purcell_002,﻿Most Rev.,﻿J. B. Purcell,﻿D.D.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Right Rev.,﻿S. H. Rosecrans,﻿D.D.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿e_parcell_001,﻿Very Rev.,﻿E. Parcell,﻿V.G.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿c_h_borgess_002,﻿Rev.,﻿C. H. Borgess,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿w_j_hally_001,﻿Rev.,﻿J. W. Hally,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿Peter McMahon,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0001,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿David Whelan,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0002,﻿church,not recorded,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿Charles Driscoll,﻿S.J.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0002,﻿church,not recorded,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿H. Baselmans,﻿S.J.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0002,﻿church,not recorded,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿G. F. Boex,﻿S.J.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0003,﻿church,﻿St. Thomas',English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,﻿Attended from St. Francis Xavier's,,,,,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0004,﻿church,﻿St. Patrick's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿Richard Gilmour,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0004,﻿church,﻿St. Patrick's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿F. Cubero,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0005,﻿church,﻿Holy Trinity,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿ber_hengehold_002,﻿Rev.,﻿B. Hengehold,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0005,﻿church,﻿Holy Trinity,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿ric_bröring_001,﻿Rev.,﻿Richard Bröring,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0005,﻿church,﻿Holy Trinity,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿j_h_ridder_001,﻿Rev.,﻿J. H. Ridder,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0006,﻿church,﻿St. Mary's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿ber_elkmann_002,﻿Rev.,﻿J. B. Elkmann,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0006,﻿church,﻿St. Mary's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿hen_jacobs_002,﻿Rev.,﻿Henry Jacobs,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0007,﻿church,﻿St. John's,English,,,,,,﻿Cincinnati,,﻿OH,,40.9160716,-84.706147,,,,﻿ott_j_custos_001,﻿Very Rev.,﻿Otto Jair,﻿O.S.F.,﻿Superior,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0007,﻿church,﻿St. John's,English,,,,,,﻿Cincinnati,,﻿OH,,40.9160716,-84.706147,,,,﻿fra_d_kolb_002,﻿Rev.,﻿Fran. de P. Kolb,﻿O.S.F.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0007,﻿church,﻿St. John's,English,,,,,,﻿Cincinnati,,﻿OH,,40.9160716,-84.706147,,,,,﻿Rev.,﻿Bonav. Hammer,﻿O.S.F.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0008,﻿church,﻿St. Paul's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿jos_ferneding_002,﻿Very Rev.,﻿Joseph Ferneding,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0008,﻿church,﻿St. Paul's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿her_ferneding_002,﻿Rev.,﻿Herm. Ferneding,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0008,﻿church,﻿St. Paul's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿a_schwenniger_002,﻿Rev.,﻿H. Schwenniger,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0009,﻿church,﻿St. Joseph's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿eng_stehle_002,﻿Rev.,﻿Engb. Stehle,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0009,﻿church,﻿St. Joseph's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿g_h_schumacher_001,﻿Rev.,﻿G. H. Schumacher,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0010,﻿church,﻿St. Philomena's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿aug_m_többé_001,﻿Rev.,﻿A. H. Többé,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0010,﻿church,﻿St. Philomena's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿— Thien,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0010,﻿church,﻿St. Michael's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿Math. Desalaers,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0011,﻿church,﻿St. Augustin's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿ber_m_mengé_001,﻿Rev.,﻿B. J. Menge,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0011,﻿church,﻿St. Augustin's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿h_kemper_002,﻿Rev.,﻿H. Kemper,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0012,﻿church,﻿St. Francis',English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿uba_webersinke_002,﻿Rev.,﻿Ubaldus Webersinke,﻿O.S.F,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0012,﻿church,﻿St. Francis',English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿Anth. Becker,﻿O.S.F,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0012,﻿church,﻿St. Francis',English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿Luke Gottlehoede,﻿O.S.F,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0012,﻿church,﻿St. Peter's,English,,﻿Lick Run,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,﻿Attended from St. Francis' Church,,,,,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0013,﻿church,﻿St. Anthony's,English,,,,,,﻿Cincinnati,,﻿OH,,39.1029756,-84.5395146,,,,﻿ger_uhling_002,﻿Rev.,﻿G. Uhling,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0013,﻿church,﻿St. Anthony's,English,,,,,,﻿Cincinnati,,﻿OH,,39.1029756,-84.5395146,,,,,﻿Rev.,﻿Julius Voet,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0014,﻿church,﻿St. Edward's,English,,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿fre_bender_002,﻿Rev.,﻿Fred. Bender,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0015,﻿church,﻿All Saints',English,,,,,,﻿Cincinnati,,﻿OH,,40.4625607,-82.8287895,,,,﻿jam_f_callahan_002,﻿Rev.,﻿James F. P. Callahan,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0016,﻿church,﻿Holy Angels',English,,,,,,﻿Cincinnati,,﻿OH,,40.4625607,-82.8287895,,,,﻿mic_oneil_002,﻿Rev.,﻿M. O'Neil,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0016,﻿church,﻿Immaculate Conception,English,,,,,,﻿Cincinnati,,﻿OH,,40.4625607,-82.8287895,,,,,﻿Rev.,﻿B. Gelss,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0016,﻿church,﻿St. Francis of Sales',English,,,,,,﻿Cincinnati,,﻿OH,,40.4625607,-82.8287895,,,,,﻿Rev.,﻿J. J. Menge,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0018,﻿church,﻿St. Ann's,English,﻿for colored people,,,,,﻿Cincinnati,,﻿OH,,40.4172871,-82.907123,,,,﻿a_hoeckens_002,﻿Rev.,﻿A. Hoeckens,﻿S.J.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0026,﻿church,﻿St. Clement's,English,,,,,,﻿St. Bernard,,﻿OH,,40.4172871,-82.907123,,,,﻿lou_haverbeck_003,﻿Rev.,﻿Louis Haverbeck,﻿O.S.F.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0027,﻿church,﻿St. Aloysius',English,,,,,,﻿Cumminsville,,﻿OH,,40.4172871,-82.907123,,,,﻿dav_b_walker_002,﻿Rev.,﻿David B. Walker,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0028,﻿church,﻿St. Boniface's,English,,,,,,﻿Cumminsville,,﻿OH,,40.4172871,-82.907123,,,,﻿bon_g_topmöller_001,﻿Rev.,﻿Godf. Topmöller,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0029,﻿church,﻿St. James',English,,,,,,﻿Mt. Airy,,﻿OH,,40.662003,-82.8290697,,,,﻿j_c_krämer_001,﻿Rev.,﻿J. C. Kramer,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0030,﻿church,﻿St. John's,English,,,,,,﻿Dry Ridge,,﻿OH,,40.4172871,-82.907123,,,,﻿geb_egger_002,﻿Rev.,﻿Gebhard Egger,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0031,﻿church,﻿Our Lady of Victories,English,,,,,,﻿Delhi,,﻿OH,,40.4172871,-82.907123,,,,,﻿Rev.,﻿G. H. Kuhr,﻿D.D.,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati
+﻿cin.oh.0032,﻿church,﻿St. Vincent of Paul's,English,,,﻿The Vicinity of the City of Cincinnati,,,﻿Sedamsville,,﻿OH,,40.4172871,-82.907123,,,,﻿hen_koering_001,﻿Rev.,﻿Henry Koering,,,,,,,,1868,﻿,﻿,Cincinnati,Cincinnati

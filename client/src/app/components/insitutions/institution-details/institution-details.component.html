@@ -1,0 +1,250 @@
+<mat-card class="max-md:mt-2 mt-2">
+    @if (loading) {
+        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+            <mat-spinner></mat-spinner>
+        </div>
+    } @else {
+    <mat-card-header>
+        <mat-card-title>
+            {{data.instName}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="w-full flex flex-col md:flex-row justify-center items-start">
+            <div class="w-full flex flex-col justify-center items-start">
+                <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
+                <div class="table formatted-table">
+                    <div class="table-body text-xs md:text-sm custom-font">
+                        <div class="row">
+                            <div class="cell">Institution ID</div>
+                            <div class="cell">{{data.instID}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="cell">Institution Type</div>
+                            <div class="cell">{{data.instType}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="cell">Language</div>
+                            <div class="cell">{{data.language}}</div>
+                        </div>
+                        @if (dioceseInfo.length == 0) {
+                            <div class="row">
+                                <div class="cell">Diocese</div>
+                                <div class="cell">
+                                    {{data.diocese?.join(', ' )}}
+                                </div>
+                            </div>
+                        } @else {
+                            <div class="row">
+                                <div class="cell">Diocese</div>
+                                <div class="cell">
+                                    <button mat-button class="!text-xs md:!text-sm" (click)="displayDioceseInfo()">{{data.diocese}}</button>
+                                </div>
+                            </div>
+                        }
+                        @if (data.instNote) {
+                            <div class="row">
+                                <div class="cell">Notes</div>
+                                <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
+                            </div>
+                        }
+                        @if (data.region) {
+                            <div class="row">
+                            <div class="cell">Region</div>
+                            <div class="cell">{{data.region}}</div>
+                        </div>
+                        }
+                        <div class="row">
+                            <div class="cell">Location (Original)</div>
+                            <div class="cell">
+                                {{data.placeName ? data.placeName + ', ' : ''}}
+                                {{data.countyOrig ? data.countyOrig + ', ' : ''}}
+                                {{data.cityOrig ? data.cityOrig + ', ' : ''}}
+                                {{data.stateOrig ? data.stateOrig : data.stateReg}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="cell">Location (Regular)</div>
+                            <div class="cell">
+                                {{data.countyReg ? data.countyReg + ', ' : ''}}
+                                {{data.cityReg ? data.cityReg + ', ' : ''}}
+                                {{data.stateReg ? data.stateReg : data.stateOrig}}
+                            </div>
+                        </div>
+                        @if (data.member) {
+                            <div class="row">
+                                <div class="cell">Member</div>
+                                <div class="cell">{{data.member}}</div>
+                            </div>
+                        }
+                        @if (data.affiliated) {
+                            <div class="row">
+                                <div class="cell">Affiliated</div>
+                                <div class="cell">{{data.affiliated}}</div>
+                            </div>
+                        }
+                        @if (data.order.length > 0) {
+                            <div class="row">
+                                <div class="cell">Order</div>
+                                <div class="cell">{{data.order}}</div>
+                            </div>
+                        }
+                        @if (data.residingPersonInfo && data.residingPersonInfo.length > 0) {
+                        <div class="row">
+                            <div class="cell">Residing People</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font custom-font" color="primary" *ngFor="let item of data.residingPersonInfo">
+                                        <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        @if (data.visitingPersonInfo && data.visitingPersonInfo.length > 0) {
+                        <div class="row">
+                            <div class="cell">Visiting People</div>
+                            <div class="cell">
+                                @for (item of data.visitingPersonInfo; track item.ID) {
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary">
+                                        <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
+                                    </button>
+                                    @if (item.personInAlmanacRecord.attendingInstID) {
+                                        <p>from</p>
+                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary">
+                                            <div [routerLink]="'/institutions/' + item.personInAlmanacRecord.attendingInstID">{{item.personInAlmanacRecord.attendingInstName}}</div>
+                                        </button>
+                                    }
+                                </div>
+                            }
+                            </div>
+                        </div>
+                        }
+                        @if (data.relatedInstitutions && data.relatedInstitutions.length > 0) {
+                            <div class="row">
+                            <div class="cell">Relevant Institutions</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                    </button>
+                                </div>
+                                <div *ngIf="data.relatedInstitutions.length === 0">None</div>
+                            </div>
+                        </div>
+                        }
+                        @if (data.parentInstitutions && data.parentInstitutions.length > 0) {
+                            <div class="row">
+                            <div class="cell">Parent Institutions</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                    </button>
+                                </div>
+                                <div *ngIf="data.parentInstitutions.length === 0">None</div>
+                            </div>
+                        </div>
+                        }
+                        @if (data.childInstitutions && data.childInstitutions.length > 0) {
+                            <div class="row">
+                            <div class="cell">Child Institutions</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                    </button>
+                                </div>
+                                <div *ngIf="data.childInstitutions.length === 0">None</div>
+                            </div>
+                        </div>
+                        }
+                        @if (data.siblingInstitutions && data.siblingInstitutions.length > 0) {
+                            <div class="row">
+                            <div class="cell">Sibling Institutions</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                    </button>
+                                </div>
+                                <div *ngIf="data.siblingInstitutions.length === 0">None</div>
+                            </div>
+                        </div>
+                        }
+                        @if (data.attendingInstitutions && data.attendingInstitutions.length > 0) {
+                            <div class="row">
+                                <div class="cell">Attending Institutions</div>
+                                <div class="cell">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="data.attendingInstitutions.length === 0">None</div>
+                                </div>
+                            </div>
+                        }
+                        @if (data.attendedBy && data.attendedBy.length > 0) {
+                        <div class="row">
+                            <div class="cell">Attended From</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
+                                    </button>
+                                </div>
+                                <div *ngIf="data.attendedBy.length === 0">None</div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                    </div>
+                </div>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <div class="w-full text-center flex justify-center mb-2">
+                        <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, the warning message is temporary</span>
+                    </div>
+                    <div class="map-container w-full md:!hidden flex justify-center items-center">
+                        <!--<google-map [options]="mapOptionsSmall" width="400px" height="250px">
+                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
+                            </map-marker>
+                        </google-map> -->
+                        <app-map [data]="data" 
+                            [markerMode]="'icon'"
+                            [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: data.latitude || 30, 
+                                lng: data.longitude || -80
+                            },
+                            size: {width: '400px', height: '250px'}
+                        }">
+                        </app-map>
+                    </div>
+                    <div class="map-container md:w-auto !hidden md:!flex">
+                        <!--<google-map [options]="mapOptionsWide" width="500px" height="350px">
+                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
+                            </map-marker>
+                        </google-map>-->
+                        <app-map [data]="data" 
+                            [markerMode]="'icon'"
+                            [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: data.latitude || 30, 
+                                lng: data.longitude || -80
+                            },
+                            size: {width: '500px', height: '400px'}
+                        }">
+                        </app-map>
+                    </div>
+                </div>
+            </div>
+            <button mat-button class="tertiary-btn custom-font" (click)="goBack()">
+                <mat-icon>arrow_back</mat-icon>
+                Back
+            </button>
+    </mat-card-content>}
+</mat-card>

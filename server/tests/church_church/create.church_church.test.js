@@ -5,16 +5,15 @@ const requestWithSupertest = supertest(app);
 describe('CREATE methods for the ChurchChurch model', () => {
 
     afterAll( async () => {
-        await requestWithSupertest.delete('/api/church_church/test-inst1/test-attendingInst1');
+        await requestWithSupertest.delete('/api/churchChurch/test-inst1/test-attendingInst1');
     });
 
     it('should create a new ChurchChurch', async () => {
-        const res = await requestWithSupertest.post('/api/church_church')
+        const res = await requestWithSupertest.post('/api/churchChurch')
             .send([{
                 instID: 'test-inst1',
-                instYear: 1870,
                 attendingInstID: 'test-attendingInst1',
-                attendingInstYear: 1870
+                year: 1870,
         }]);
         expect(res.status).toEqual(200);
         expect(res.body[0]).toHaveProperty('instID');
@@ -30,23 +29,21 @@ describe('CREATE methods for the ChurchChurch model', () => {
     });
 
     it('should not create a new ChurchChurch with the same instID and instYear', async () => {
-        const res = await requestWithSupertest.post('/api/church_church')
+        const res = await requestWithSupertest.post('/api/churchChurch')
             .send([{
                 instID: 'test-inst1',
-                instYear: 1870,
                 attendingInstID: 'test-attendingInst1',
-                attendingInstYear: 1870
+                year: 1870,
         }]);
         expect(res.status).toEqual(500);
     });
 
     it('should create a new ChurchChurch with the same instYear and different instID', async () => {
-        const res = await requestWithSupertest.post('/api/church_church')
+        const res = await requestWithSupertest.post('/api/churchChurch')
             .send([{
                 instID: 'test-inst2',
-                instYear: 1870,
                 attendingInstID: 'test-attendingInst1',
-                attendingInstYear: 1870
+                year: 1870,
         }]);
     });
 

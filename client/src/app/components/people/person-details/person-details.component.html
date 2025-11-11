@@ -1,0 +1,123 @@
+<mat-card class="max-md:mt-2 mt-2">
+    @if (loading) {
+        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+            <mat-spinner></mat-spinner>
+        </div>
+    } @else {
+    <mat-card-header>
+        <mat-card-title>
+            {{data.title + ' ' + longestName + ' ' + data.suffix}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="w-full flex flex-col md:flex-row justify-start items-start">
+            <div class="w-full flex flex-col justify-center items-start custom-font">
+                <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
+                <div class="table formatted-table custom-font">
+                    <div class="table-body text-xs md:text-sm">
+                        <div class="row">
+                            <div class="cell">Person ID</div>
+                            <div class="cell">{{data.persID}}</div>
+                        </div>
+                        @if (data.title) {
+                        <div class="row">
+                            <div class="cell">Title</div>
+                            <div class="cell">{{data.title}}</div>
+                        </div>}
+                        @if (data.name) {
+                            <div class="row">
+                            <div class="cell">Name(s)</div>
+                            <div class="cell">{{data.name.join(', ')}}</div>
+                        </div>}
+                        @if (data.suffix) {
+                            <div class="row">
+                            <div class="cell">Suffix</div>
+                            <div class="cell">{{data.suffix}}</div>
+                            </div>
+                        }
+                        @if (data.dioceses && data.dioceses.length > 0) {
+                            <div class="row">
+                            <div class="cell">Diocese(s)</div>
+                            <div class="cell">{{data.dioceses.join(', ')}}</div>
+                        </div>}
+                        @if (data.role[0]) {
+                            <div class="row">
+                            <div class="cell">Role</div>
+                            <div class="cell">{{data.role.join(', ')}}</div>
+                        </div>
+                        }
+                        @if (data.note) {
+                            <div class="row">
+                            <div class="cell">Notes</div>
+                            <div class="cell">{{data.note}}</div>
+                        </div>
+                        }
+                        @if (data.residingInstitutions && data.residingInstitutions.length > 0) {
+                            <div class="row">
+                            <div class="cell">Residing In</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" *ngFor="let item of data.residingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        @if (data.visitingInstitutions && data.visitingInstitutions.length > 0) {
+                            <div class="row">
+                            <div class="cell">Visiting</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" *ngFor="let item of data.visitingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
+                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                </div>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <div class="text-center w-full flex justify-center mb-2">
+                        <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, the warning message is temporary</span>
+                    </div>
+                    <div class="map-container w-full md:!hidden flex justify-center items-center">
+                        <app-map 
+                        [data]="data.allInstitutions" 
+                        [markerMode]="'icon'"
+                        [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: (data.allInstitutions[0]?.latitude || 0), 
+                                lng: (data.allInstitutions[0]?.longitude || 0)
+                            },
+                            size: {width: '400px', height: '250px'}
+                        }">
+                        </app-map>
+                    </div>
+                    <div class="map-container w-full md:w-auto !hidden md:!flex">
+                        <app-map 
+                            [data]="data.allInstitutions" 
+                            [markerMode]="'icon'"
+                            [options]="{
+                            zoom:6, 
+                            center: {
+                                lat: (data.allInstitutions[0]?.latitude || 0), 
+                                lng: (data.allInstitutions[0]?.longitude || 0)
+                            },
+                            size: {width: '500px', height: '400px'}
+                        }">
+                        </app-map>
+                    </div>
+                </div>
+        </div>
+        <div>
+        <button mat-button class="tertiary-btn !text-xs md:!text-sm custom-font" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+            Back
+        </button>
+        </div>
+        </mat-card-content>}
+</mat-card>

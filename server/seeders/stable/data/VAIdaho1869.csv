@@ -1,0 +1,28 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿boi.id.0001,﻿church,not recorded,English,,,﻿District of Boise,,﻿Boise County,﻿Idaho City,﻿Idaho City,﻿ID,,46.589145,-112.039106,,,,﻿l_lootens_001,﻿Rt. Rev.,﻿L. Lootens,﻿DD,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿https://digital.library.villanova.edu/Item/vudl:815456#?xywh=-3080%2C0%2C7868%2C2914&cv=310,﻿church,not recorded,English,,,,,,,,,,45.630699,-122.673328,,,,﻿a_z_poulin_002,﻿Very Rev.,﻿A. Z. Poulin,,﻿Pastor,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿https://digital.library.villanova.edu/Item/vudl:815456#?xywh=-3080%2C0%2C7868%2C2914&cv=310,﻿church,not recorded,English,,,,,,,,,,45.630699,-122.673328,,,,﻿a_perret_001,﻿Rev.,﻿A. Perret,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0003,﻿church,﻿St. Thomas',English,,,﻿District of Boise,,﻿Boise County,﻿Placerville,﻿Placerville,﻿ID,,46.589145,-112.039106,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0004,﻿church,﻿St. Dominick's,English,,,﻿District of Boise,,﻿Boise County,﻿Centreville,﻿Centerville,﻿ID,,46.589145,-112.039106,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0005,﻿church,﻿St. Francis',English,,,﻿District of Boise,,﻿Boise County,﻿Pioneer City,﻿Pioneerville,﻿ID,,46.589145,-112.039106,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0002,﻿church,not recorded,English,,,﻿District of Boise,,﻿Ada County,﻿Boise City,﻿Boise,﻿ID,,46.589145,-112.039106,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0012,﻿church,not recorded,English,,,﻿District of Boise,,﻿Elmore County,﻿Rocky Car,﻿Rocky Bar,﻿ID,,46.589145,-112.039106,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0013,﻿church,not recorded,English,,,﻿District of Boise,,,﻿Yuba,,﻿ID,,46.589145,-112.039106,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0007,﻿church,﻿St. Andrew's,English,,,﻿District of Owyhee,,﻿Owyhee County,﻿Silver City,﻿Silver City,﻿ID,,46.589145,-112.039106,,,,﻿t_mesplie_001,﻿Rev.,﻿T. Mesplie,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0007,﻿church,﻿St. Andrew's,English,,,﻿District of Owyhee,,﻿Owyhee County,﻿Silver City,﻿Silver City,﻿ID,,46.589145,-112.039106,,,,﻿kil_coll_001,﻿Rev.,﻿Kil. Coll.,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0014,﻿church,not recorded,English,,﻿Jordan Valley,﻿District of Owyhee,,﻿Owyhee County,﻿Owyhee City,﻿Owyhee,﻿ID,,46.589145,-112.039106,,,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0015,﻿church,not recorded,English,,,﻿District of Idaho,,﻿Nez Perce,﻿Lewiston,﻿Lewiston,﻿ID,,46.589145,-112.039106,,,,﻿cataldo_001,﻿Rev. Father,﻿Cataldo,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0016,﻿church,not recorded,English,,,﻿District of Idaho,,﻿Clearwater County,﻿Orofino,﻿Orofino,﻿ID,,46.589145,-112.039106,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0017,﻿church,not recorded,English,,,﻿District of Idaho,,﻿Idaho County,﻿Elk City,﻿Elk City,﻿ID,,46.589145,-112.039106,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0010,﻿church,not recorded,English,,,﻿District of Idaho,,﻿Idaho County,﻿Florence,﻿Florence,﻿ID,,46.589145,-112.039106,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0011,﻿church,not recorded,English,,,﻿District of Idaho,,﻿Idaho County,﻿Warren,﻿Warren,﻿ID,,46.589145,-112.039106,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0018,﻿mission,"﻿Cœur de'Alène Mission, Sacred Heart",English,,,,,﻿Kootenai County,﻿Cœur de'Alène,﻿Coeur d'Alene,﻿ID,,46.589145,-112.039106,,,,﻿g_gazzoli_002,﻿Rev.,﻿G. Gazzoli,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0018,﻿mission,"﻿Cœur de'Alène Mission, Sacred Heart",English,,,,,﻿Kootenai County,﻿Cœur de'Alène,﻿Coeur d'Alene,﻿ID,,46.589145,-112.039106,,,,﻿jm_caruana_002,﻿Rev.,﻿J.M. Caruana,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿Pend'Oreille Mission,English,,,,,,,,,,46.589145,-112.039106,,,,﻿jos_grassi_002,﻿Rev.,﻿Jos. Grassi,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿Pend'Oreille Mission,English,,,,,,,,,,46.589145,-112.039106,,,,﻿jos_venzina_001,﻿Rev.,﻿Jos. Venzina,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿Pend'Oreille Mission,English,,,,,,,,,,46.589145,-112.039106,,,,﻿f_cazeau_001,﻿Rev.,﻿F. Cazeau,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0020,﻿mission,﻿Spokan Mission,English,,,,,﻿Spokane County,﻿Spokan,﻿Spokane,,﻿WA,46.589145,-112.039106,﻿boi.id.0018,﻿Atended from Cœur de'Alène,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0021,﻿mission,not recorded,English,,,,,﻿Pend Oreille County,﻿Kalispel,﻿Kalispell,,﻿MT,46.589145,-112.039106,,﻿from St. Ignatius,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0024,﻿mission,﻿Indian Mission of the Rocky Mountains,English,,,,,,﻿need to search history for location,,,,46.589145,-112.039106,,,,﻿j_jiorda_001,﻿Rev. Father,﻿J. Jiorda,,﻿Superior,,,,﻿the Jesuit Fathers,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0022,﻿school,﻿Providence School,English,,,,,,﻿need to search history for location,,,,46.589145,-112.039106,,,,,,,,,,,,﻿conducted by the Sisters of Charity,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0023,﻿school,﻿St. Mary's Academy,English,,,,,﻿Boise County,﻿Idaho City,﻿Idaho City,﻿ID,,46.589145,-112.039106,,,,,,,,,,,,﻿conducted by the Sisters of the Holy Names of Jesus and Mary,,1869,﻿,﻿,﻿VAIdaho,VAIdaho

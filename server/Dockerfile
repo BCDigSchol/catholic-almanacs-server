@@ -9,6 +9,6 @@ RUN npm install
 #RUN apk add dos2unix
 #RUN dos2unix /server/migrate.sh
 
-EXPOSE ${NODE_DOCKER_PORT}
+EXPOSE 8080
 
 CMD npm start

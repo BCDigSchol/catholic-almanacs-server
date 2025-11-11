@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+:host mat-card-title{
+    font-family: "Lato", sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 19px;  
+}
+
+:host mat-label, button, mat-paginator {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:host div[matListItemLine]{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:host paginator-input {
+    width: 50px; 
+    font-size: 15px;
+}
+
+::ng-deep .mdc-notched-outline__notch { 
+    border-right: none;
+}
+
+@media screen and (min-width: 601px) {
+  .wide-display {
+    display: block !important;
+  }
+  .mobile-display {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wide-display {
+    display: none !important;
+  }
+  .mobile-display {
+    display: block !important;
+  }
+}

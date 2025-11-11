@@ -1,0 +1,199 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,"﻿High Mass, at a quarter past ten A.M.  Vespers, at three o'clock P.M.",,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,﻿f_p_mcfarland_001,﻿Rt. Rev.,﻿F. P. McFarland,﻿D.D.,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,"﻿High Mass, at a quarter past ten A.M.  Vespers, at three o'clock P.M.",,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,﻿pat_j_odwyer_001,﻿Rev.,﻿P. J. O'Dwyer,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,"﻿High Mass, at a quarter past ten A.M.  Vespers, at three o'clock P.M.",,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,﻿ric_ogorman_001,﻿Rev.,﻿Richard O'Gorman,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,"﻿High Mass, at a quarter past ten A.M.  Vespers, at three o'clock P.M.",,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,﻿jos_obrien_001,﻿Rev.,﻿Joseph O'Brien,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,"﻿High Mass, at a quarter past ten A.M.  Vespers, at three o'clock P.M.",,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,﻿mic_ryan_001,﻿Rev.,﻿Michael Ryan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002,﻿church,﻿St. Patrick's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,﻿pat_lambe_001,﻿Rev.,﻿Patrick Lambe,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002,﻿church,﻿St. Patrick's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,﻿hug_t_brady_001,﻿Rev.,﻿H. T. Brady,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0003,﻿church,﻿St. Joseph's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,﻿pet_kelly_001,﻿Rev.,﻿Peter Kelly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005,﻿church,﻿Immaculate Conception,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿edw_j_cooney_001,﻿Rev.,﻿E. J. Cooney,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0006,﻿church,﻿St. Bernard's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿mic_a_wallace_001,﻿Rev.,﻿M. A. Wallace,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0004,﻿church,﻿St. Mary's,English,﻿new church building,,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿joh_quinn_001,﻿Rev.,﻿John Quinn,﻿D.D.,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0004,﻿church,﻿St. Mary's,English,﻿new church building,,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿jam_oreilly_003,﻿Rev.,﻿James O'Reilly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0008,﻿chapel,﻿St. Catharine's Chapel,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.821092,-71.414004,﻿har.ct.0001,﻿attended from Cathedral,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157_02,﻿chapel,﻿St. Aloysius' Chapel,English,,﻿Orphan Asylum,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.769265,-72.678812,﻿har.ct.0006,﻿attended from St. Bernard's,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0009,﻿church,not recorded,English,,,,﻿Providence County,﻿Providence County,﻿Albion,﻿Albion,﻿RI,,41.9533,-71.458136,﻿har.ct.0031,﻿attended from Valley Falls,﻿every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0012,﻿church,not recorded,English,,,,,﻿Bristol County,﻿Bristol,﻿Bristol,﻿RI,,41.671182,-71.270735,﻿har.ct.0033,﻿attended from Warren,﻿Mass every Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0015,﻿church,not recorded,English,,,,,,﻿Coal Mines,,﻿RI,,41.580095,-71.477429,﻿har.ct.0025,﻿attended from Newport,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0016,﻿church,﻿St. Anne's,English,,,,,﻿Providence County,﻿Cranston,﻿Cranston,﻿RI,,41.779823,-71.43728,,,,﻿phi_grace_001,﻿Rev.,﻿Philip Grace,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0017,﻿church,﻿Our Lady of Mount Carmel,English,,,,,﻿Kent County,﻿Crompton,﻿Crompton,﻿RI,,41.68472,-71.51417,,,,﻿jam_p_gibson_001,﻿Rev.,﻿James P. Gibson,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0020,﻿church,﻿Holy Name of Jesus,English,,,,,﻿Kent County,﻿Greenwich,﻿East Greenwich,﻿RI,,41.654058,-71.457672,﻿har.ct.0027,﻿attended from Phoenixville,﻿Mass every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0021,﻿church,﻿St. Philip Neri,English,,,,,﻿Providence County,﻿Greenville,﻿Greenville,﻿RI,,41.873398,-71.559435,,,,﻿phi_gillick_001,﻿Rev.,﻿Philip Gillick,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0022,﻿church,﻿St. Patrick's,English,,,,,﻿Providence County,﻿Harrisville,﻿Harrisville,﻿RI,,41.967481,-71.678025,,,,﻿wil_e_duffy_001,﻿Rev.,﻿William E. Duffy,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0023,﻿church,not recorded,English,,,,,﻿Providence County,﻿Manville,﻿Manville,﻿RI,,41.968135,-71.474944,﻿har.ct.0031,﻿attended from Valley Falls,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025,﻿church,﻿Our Lady of the Isle,English,,,,,﻿Newport County,﻿Newport,﻿Newport,﻿RI,,41.484199,-71.308439,,,,﻿wil_oreilly_001,﻿Very Rev.,﻿Wm. O'Reilly,﻿V.G.,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025,﻿church,﻿Our Lady of the Isle,English,,,,,﻿Newport County,﻿Newport,﻿Newport,﻿RI,,41.484199,-71.308439,,,,﻿jam_mccarten_001,﻿Rev.,﻿James McCarten,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026,﻿church,﻿Immaculate Conception,English,,,,,﻿Providence County,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.878711,-71.382556,,,,﻿p_g_delaney_001,﻿Rev.,﻿Patrick G. Delany,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0027,﻿church,﻿SS. Peter and Paul,English,,,,,﻿Kent County,﻿Phoenixville,﻿West Warwick,﻿RI,,41.721302,-71.529526,,,,﻿joh_a_couch_001,﻿Rev.,﻿John A. Couch,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0028,﻿church,not recorded,English,,,,,﻿Kent County,﻿Pontiac,﻿Pontiac,﻿RI,,41.657915,-71.714795,﻿har.ct.0027,﻿attended from Phoenixville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0028,﻿church,not recorded,English,,﻿Military Hospital,,,﻿Kent County,﻿Portsmouth Grove,﻿Pontiac,﻿RI,,41.657915,-71.714795,﻿har.ct.0025,﻿attended from Newport,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0030,﻿church,not recorded,English,,,,,﻿Providence County,﻿Slatersville,﻿Slatersville,﻿RI,,42.00057,-71.580172,﻿har.ct.0022,﻿attended from Harrisville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0031,﻿church,﻿St. Patrick's,English,,,,,﻿Providence County,﻿Valley Falls,﻿Valley Falls,﻿RI,,41.906766,-71.390612,,,,﻿dan_mullen_001,﻿Rev.,﻿Daniel Mullen,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0032,﻿church,﻿St. Francis',English,,,,,﻿Washington County,﻿Wakefield,﻿Wakefield,﻿RI,,41.438172,-71.501555,﻿har.ct.0020,﻿attended from Westerly,﻿Mass once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0033,﻿church,﻿St. Mary's,English,,,,,﻿Bristol County,﻿Warren,﻿Warren,﻿RI,﻿MA,41.730379,-71.282549,,,,﻿mic_mccallion_001,﻿Rev.,﻿Michael McCallion,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0034,﻿church,not recorded,English,,,,,﻿Washington County,﻿Wickford,﻿Wickford,﻿RI,,41.57226,-71.448489,﻿har.ct.0027,﻿attended from Phoenixville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035,﻿church,﻿St. Charles Borromeo,English,,,,﻿Cumberland Co.,﻿Providence County,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008323,-71.513785,,,,﻿mic_mccabe_001,﻿Rev.,﻿M. McCabe,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0037,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Avon,﻿Avon,﻿CT,,41.80962,-72.830515,﻿har.ct.0052,﻿attended from Collinsville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0039,﻿church,﻿St. James',English,﻿new church building,,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.180428,-73.19661,,,,﻿tho_j_sinnott_001,﻿Rev.,﻿Thos. J. Sinnott,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0040,﻿church,﻿St. Mary's,English,,﻿East-Bridgeport,,,﻿Fairfield County,﻿Bridgeport,﻿Bridgeport,﻿CT,,41.181461,-73.178874,,,,﻿fra_j_lenihan_001,﻿Rev.,﻿Francis J. Lenihan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0041,﻿church,﻿Immaculate Conception,English,,,,,﻿New Haven County,﻿Birmingham,﻿Derby,﻿CT,,41.320652,-73.088997,,,,﻿joh_sheridan_001,﻿Rev.,﻿John Sheridan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0042,﻿church,not recorded,English,,,,,﻿New London County,﻿Bozrah,﻿Bozrah,﻿CT,,41.560443,-72.163596,﻿har.ct.0050,﻿attended from Colchester,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0043,﻿church,﻿Immaculate Conception,English,,,,,﻿New Haven County,﻿Branford,﻿Branford,﻿CT,,41.279903,-72.814118,,,,﻿tho_quinn_003,﻿Rev.,﻿Thomas Quinn,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0044,﻿church,﻿St. Joseph's,English,,,,,﻿Hartford County,﻿Bristol,﻿Bristol,﻿CT,,41.677574,-72.938515,,,,﻿mic_rodden_001,﻿Rev.,﻿Michael B. Rodden,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0045,﻿church,﻿St. Catharine's,English,,,,﻿Tolland Co.,﻿Hartford County,﻿Broadbrook,﻿Broad Brook,﻿CT,,41.91232,-72.545087,﻿har.ct.0130,﻿attended from Thompsonville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0046,﻿church,not recorded,English,,,,﻿Fairfield Co.,﻿Fairfield County,﻿Brookfield,﻿Brookfield,﻿CT,,41.482595,-73.409565,﻿har.ct.0103,﻿attended from Newtown,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0047,﻿church,﻿St. Bridget's,English,,,,,﻿New Haven County,﻿Cheshire,﻿Cheshire,﻿CT,,41.502835,-72.904413,,,,﻿tho_drea_001,﻿Rev.,﻿Thomas Drea,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0048,﻿church,﻿St. Joseph's,English,,,,﻿New Haven Co.,﻿Middlesex County,﻿Chester,﻿Chester,﻿CT,,41.40114,-72.441381,﻿har.ct.0050,﻿attended from Colchester,﻿Mass once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0049,﻿church,not recorded,English,,,,﻿New Haven Co.,﻿Middlesex County,﻿Clinton,﻿Clinton,﻿CT,,41.288221,-72.528803,﻿har.ct.0119,﻿attended from Saybrook,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0050,﻿church,not recorded,English,﻿church not dedicated,,,,﻿New London County,﻿Colchester,﻿Colchester,﻿CT,,41.574211,-72.327698,,,,﻿pat_creighton_001,﻿Rev.,﻿P. Creighton,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0051,﻿church,not recorded,English,,,,,﻿Litchfield County,﻿Coalbrook,﻿Colebrook,﻿CT,,41.991407,-73.095676,﻿har.ct.0140,﻿attended from Winsted,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0052,﻿church,﻿St. Patrick's,English,,,,,﻿Hartford County,﻿Collinsville,﻿Collinsville,﻿CT,,41.812876,-72.920102,,,,﻿jno_fagan_001,﻿Rev.,﻿John Fagan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0053,﻿church,﻿St. Bridget's,English,,,,,﻿Litchfield County,﻿Cornwall,﻿Cornwall,﻿CT,,41.786629,-73.276536,﻿har.ct.0059,﻿attended from Falls Village,﻿Mass once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0055,﻿church,﻿St. Peter's,English,,,,,﻿Fairfield County,﻿Danbury,﻿Danbury,﻿CT,,41.392058,-73.448883,,,,﻿amb_manahan_001,﻿Rev.,﻿Ambrose Manahan,﻿D.D.,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0056,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Windham County,﻿Danielsonville,﻿Danielson,﻿CT,,41.802637,-71.884735,﻿har.ct.0090,﻿attended from Moosup,﻿Mass every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0057,﻿church,﻿St. Thomas Aquinas',English,,,,,﻿Fairfield County,﻿Fairfield,﻿Fairfield,﻿CT,,41.140725,-73.261772,﻿har.ct.0039,"﻿attended from St. James', Bridgeport",,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0059,﻿church,﻿St. Patrick's,English,,,,,﻿Litchfield County,﻿Falls Village,﻿Falls Village,﻿CT,,41.95502,-73.365058,,,,﻿mic_oreilly_004,﻿Rev.,﻿Michael O'Reilly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0060,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Farmington,﻿Farmington,﻿CT,,41.736031,-72.795027,﻿har.ct.0012,﻿attended from New-Britain,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0062,﻿church,not recorded,English,,,,,﻿New London County,﻿Fitchville,﻿Bozrah,﻿CT,,41.560443,-72.163596,﻿har.ct.0050,﻿attended from Colchester,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0063,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Glastenbury,﻿Glastonbury,﻿CT,,41.686179,-72.545078,﻿har.ct.0077,"﻿attended from St. Peter's, Hartford",﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0064,﻿church,﻿St. Columbkille,English,,,,,﻿Litchfield County,﻿Goshen,﻿Goshen,﻿CT,,41.831519,-73.224895,﻿har.ct.0059,﻿attended from Falls Village,﻿Mass once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0065,﻿church,﻿St. Mary's,English,,,,,﻿Fairfield County,﻿Greenwich,﻿Greenwich,﻿CT,,41.026242,-73.628196,﻿har.ct.0020,﻿attended from Stamford,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0066,﻿church,﻿St. George's,English,,,,,﻿New Haven County,﻿Guilford,﻿Guilford,﻿CT,,41.299241,-72.687839,﻿har.ct.0119,﻿attended from Saybrook,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0073,﻿church,not recorded,English,,,,,﻿Middlesex County,﻿Haddam,﻿Haddam,﻿CT,,41.477143,-72.512276,﻿har.ct.0050,﻿attended from Colchester,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0074,﻿church,﻿Our Lady of Mount Carmel,English,,,,,﻿New Haven County,﻿Hampden,﻿Hamden,﻿CT,,41.39915,-72.896813,﻿har.ct.0127,﻿attended from Southington,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0075,﻿church,not recorded,English,,,,,﻿Windham County,﻿Hampton,﻿Hampton,﻿CT,,41.783987,-72.054798,﻿har.ct.0090,﻿attended from Moosup,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076,﻿church,﻿St. Patrick's,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.682856,,,,﻿jam_hughes_001,﻿Rev.,﻿James Hughes,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076,﻿church,﻿St. Patrick's,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.682856,,,,﻿joh_ofarrell_001,﻿Rev.,﻿John O'Farrell,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076,﻿church,﻿St. Patrick's,English,,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.682856,,,,﻿jno_smith_001,﻿Rev.,﻿John Smith,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077,﻿church,﻿St. Peter's,English,﻿new church building,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,﻿joh_lynch_001,﻿Rev.,﻿John Lynch,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077,﻿church,﻿St. Peter's,English,﻿new church building,,,,﻿Hartford County,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,﻿hug_mallon_001,﻿Rev.,﻿Hugh Mallon,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0078,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Hartford County,﻿Hazardville,﻿Hazardville,﻿CT,,41.987319,-72.544809,,,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0079,﻿church,not recorded,English,﻿church not dedicated,,,,﻿New London County,﻿Jewett City,﻿Jewett City,﻿CT,,41.606765,-71.980908,﻿har.ct.0090,﻿attended from Moosup,﻿every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0080,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Litchfield County,﻿Litchfield,﻿Litchfield,﻿CT,,41.747264,-73.188716,﻿har.ct.0140,﻿attended from Winsted,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0081,﻿church,not recorded,English,,,,,﻿New London County,﻿Lyme,﻿Lyme,﻿CT,,41.400812,-72.342952,﻿har.ct.0119,﻿attended from Saybrook,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0082,﻿church,not recorded,English,,,,,﻿New Haven County,﻿Madison,﻿Madison,﻿CT,,41.295991,-72.575415,﻿har.ct.0119,﻿attended from Saybrook,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0083,﻿church,﻿St. Mary's,English,,,,,﻿Hartford County,﻿Manchester,﻿Manchester,﻿CT,,41.800189,-72.521592,﻿har.ct.0118,﻿attended from Rockville,﻿Mass every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086,﻿church,﻿St. Rose of Lima,English,,,,,﻿New Haven County,﻿Meriden,﻿Meriden,﻿CT,,41.534956,-72.793037,,,,﻿tho_walsh_002,﻿Rev.,﻿Thomas Walsh,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086,﻿church,﻿St. Rose of Lima,English,,,,,﻿New Haven County,﻿Meriden,﻿Meriden,﻿CT,,41.534956,-72.793037,,,,﻿edw_oconnor_002,﻿Rev.,﻿Edward O'Connor,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086,﻿church,﻿St. Rose of Lima,English,,,,,﻿Middlesex County,﻿Middle-Haddam,﻿Middletown,﻿CT,,41.534956,-72.793037,﻿har.ct.0050,﻿attended from Colchester,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087,﻿church,﻿St. John's,English,,,,,﻿Middlesex County,﻿Middletown,﻿Middletown,﻿CT,,41.567417,-72.652892,,,,﻿jas_lynch_001,﻿Rev.,﻿James Lynch,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0088,﻿church,﻿St. Mary's,English,,,,,﻿New Haven County,﻿Milford,﻿Milford,﻿CT,,41.326215,-72.922908,﻿har.ct.0040,﻿attended from East-Bridgeport,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0089,﻿church,not recorded,English,,,,,﻿Middlesex County,﻿Moodus,﻿Moodus,﻿CT,,41.502877,-72.450087,﻿har.ct.0050,﻿attended from Colchester,﻿Mass once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0090,﻿church,﻿All Hallows,English,,,,﻿Windham County,﻿Windham County,﻿Moosup,﻿Moosup,﻿CT,,41.713381,-71.885798,,,,﻿jam_quinn_001,﻿Rev.,﻿James Quinn,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0091,﻿church,not recorded,English,,,,,﻿New London County,﻿Mystic,﻿Mystic,﻿CT,,41.354266,-71.966462,﻿har.ct.0136,﻿attended from Westerly,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0092,﻿church,﻿St. Anne's,English,,,,,﻿New Haven County,﻿Naugatuck,﻿Naugatuck,﻿CT,,41.492961,-73.054852,﻿har.ct.0133,﻿attended from Waterbury,﻿Mass every Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093,﻿church,﻿St. Mary's,English,,,,,﻿Hartford County,﻿New Britain,﻿New Britain,﻿CT,,41.672076,-72.78271,,,,﻿luk_daly_001,﻿Rev.,﻿Luke Daly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0094,﻿church,﻿St. Peter's,English,,,,,﻿Fairfield County,﻿New Canaan,﻿New Canaan,﻿CT,,41.145283,-73.494018,﻿har.ct.0107,﻿attended from Norwalk,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0095,﻿church,﻿St. Patrick's,English,,,,,﻿New London County,﻿New London,﻿New London,﻿CT,,41.355654,-72.099521,,,,﻿pat_a_gaynor_001,﻿Rev.,﻿P. A. Gaynor,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0096,﻿church,not recorded,English,,,,﻿Hartford County,﻿Litchfield County,﻿New Hartford,﻿New Hartford,﻿CT,,41.873501,-72.967025,﻿har.ct.0052,﻿attended from Collinsville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097,﻿church,﻿St. Mary's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.311921,-72.923824,,,,﻿e_j_obrien_001,﻿Rev.,﻿E. J. O'Brien,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098,﻿church,﻿St. Patrick's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,﻿mat_hart_001,﻿Rev.,﻿Matthew Hart,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098,﻿church,﻿St. Patrick's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,﻿wm_hart_001,﻿Rev.,﻿William Hart,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0099,﻿church,﻿St. John's,English,,,,,﻿New Haven County,﻿New Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,﻿hug_carmody_001,﻿Rev.,﻿Hugh Carmody,﻿D.D.,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0101,﻿church,not recorded,English,,,,,﻿Fairfield County,﻿New Fairfield,﻿New Fairfield,﻿CT,,41.466099,-73.485646,﻿har.ct.0055,﻿attended from Danbury,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0102,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Litchfield County,﻿New Milford,﻿New Milford,﻿CT,,41.581076,-73.411529,﻿har.ct.0103,﻿attended from Newtown,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0103,﻿church,﻿St. Rose of Lima,English,,,,,﻿Fairfield County,﻿Newtown,﻿Newtown,﻿CT,,41.415571,-73.297756,,,,﻿jam_daly_002,﻿Rev.,﻿James Daly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0104,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Litchfield County,﻿Norfolk,﻿Norfolk,﻿CT,,41.994506,-73.201566,﻿har.ct.0140,﻿attended from Winsted,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0106,﻿church,not recorded,English,,,,,﻿Litchfield County,﻿North Canaan,﻿North Canaan,﻿CT,,42.024179,-73.324084,﻿har.ct.0059,﻿attended from Falls Village,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0107,﻿church,﻿St. Mary's,English,,,,,﻿Fairfield County,﻿Norwalk,﻿Norwalk,﻿CT,,41.117744,-73.408157,,,,﻿pet_a_smith_001,﻿Rev.,﻿P. A. Smith,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0108,﻿church,﻿St. Mary's,English,,,,,﻿New London County,﻿Norwich,﻿Norwich,﻿CT,,41.529754,-72.059916,,,,﻿dan_kelly_001,﻿Rev.,﻿Daniel Kelly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0109,﻿church,not recorded,English,,,,,﻿Windham County,﻿Onico,﻿Oneco,﻿CT,,41.693585,-71.81303,﻿har.ct.0090,﻿attended from Moosup,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0110,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Plainville,﻿Plainville,﻿CT,,41.675746,-72.863363,﻿har.ct.0093,﻿attended from New Britain,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0111,﻿church,not recorded,English,,,,,﻿Litchfield County,﻿Plymouth,﻿Plymouth,﻿CT,,41.672042,-73.052885,﻿har.ct.0012,﻿attended from Bristol,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0113,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Poquonock,﻿Poquonock,﻿CT,,41.904885,-72.679049,﻿har.ct.0142,﻿attended from Windsor Locks,﻿twice a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0114,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Windham County,﻿Putnam,﻿Putnam,﻿CT,,41.904601,-71.868992,﻿har.ct.0022,﻿attended from Harrisville,﻿Mass every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0115,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Rainbow,﻿Rainbow,﻿CT,,41.925237,-72.703068,﻿har.ct.0142,﻿attended from Windsor Locks,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0116,﻿church,not recorded,English,,,,,﻿Fairfield County,﻿Reading Ridge,﻿Redding,﻿CT,,41.30454,-73.392898,﻿har.ct.0055,﻿attended from Danbury,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0117,﻿church,not recorded,English,,,,,﻿Fairfield County,﻿Ridgefield,﻿Ridgefield,﻿CT,,41.284063,-73.497541,﻿har.ct.0055,﻿attended from Danbury,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0118,﻿church,﻿St. Bernard's,English,,,,,﻿Tolland County,﻿Rockville,﻿Rockville,﻿CT,,41.868512,-72.446764,,,,﻿h_j_oreilly_001,﻿Rev.,﻿Hugh T. O'Reilly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0119,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Middlesex County,﻿Saybrook,﻿Old Saybrook,﻿CT,,41.296016,-72.38453,,,,﻿tho_quinn_003,﻿Rev.,﻿Thomas Quinn,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0121,﻿church,﻿St. Augustine's,English,,,,,﻿New Haven County,﻿Seymour,﻿Seymour,﻿CT,,41.391945,-73.072226,﻿har.ct.0041,﻿attended from Birmingham,﻿Mass every Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0122,﻿church,not recorded,English,,,,,﻿Litchfield County,﻿Sharon,﻿Sharon,﻿CT,,41.879375,-73.47687,﻿har.ct.0059,﻿attended from Falls Village,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0123,﻿church,not recorded,English,,,,,﻿Tolland County,﻿Stafford,﻿Stafford,﻿CT,,41.955238,-72.308115,﻿har.ct.0143,﻿attended from Willimantic,﻿once a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124,﻿church,﻿St. John's,English,,,,,﻿Fairfield County,﻿Stamford,﻿Stamford,﻿CT,,41.051736,-73.539738,,,,﻿jam_oneill_001,﻿Rev.,﻿James H. O'Neill,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0125,﻿church,﻿St. Mary's,English,,,,,﻿New London County,﻿Stonington,﻿Stonington,﻿CT,,41.347784,-71.916121,﻿har.ct.0136,﻿attended from Westerly,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0126,﻿church,not recorded,English,,,,,﻿Fairfield County,﻿Stratford,﻿Stratford,﻿CT,,41.184541,-73.133165,﻿har.ct.0040,﻿attended from East-Bridgeport,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0127,﻿church,﻿St. Thomas',English,,,,,﻿Hartford County,﻿Southington,﻿Southington,﻿CT,,41.595891,-72.882129,,,,﻿tho_drea_001,﻿Rev.,﻿Thomas Drea,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0128,﻿church,﻿St. Paul's,English,,,,,﻿Hartford County,﻿Tariffville,﻿Tariffville,﻿CT,,41.908709,-72.760095,﻿har.ct.0052,﻿attended from Collinsville,﻿Mass every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0129,﻿church,not recorded,English,,,,﻿Hartford County,﻿Litchfield County,﻿Terryville,﻿Terryville,﻿CT,,41.678153,-73.010939,﻿har.ct.0012,﻿attended from Bristol,﻿Mass every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0130,﻿church,﻿St. Patrick's,English,,,,,﻿Hartford County,﻿Thompsonville,﻿Thompsonville,﻿CT,,41.991177,-72.597888,,,,﻿ber_tully_001,﻿Rev.,﻿Bernard Tully,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132,﻿church,﻿Most Holy Trinity,English,,,,,﻿New Haven County,﻿Wallingford,﻿Wallingford,﻿CT,,41.455541,-72.819185,﻿har.ct.0086,﻿attended from Meriden,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133,﻿church,﻿Immaculate Conception,English,,,,,﻿New Haven County,﻿Waterbury,﻿Waterbury,﻿CT,,41.558153,-73.051496,,,,﻿tho_f_hendricken_001,﻿Rev.,﻿Thos. F. Hendricken,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133,﻿church,﻿Immaculate Conception,English,,,,,﻿New Haven County,﻿Waterbury,﻿Waterbury,﻿CT,,41.558153,-73.051496,,,,﻿jam_f_campbell_001,﻿Rev.,﻿James F. Campbell,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0134,﻿church,not recorded,English,,,,,﻿Litchfield County,﻿Watertown,﻿Watertown,﻿CT,,41.606204,-73.11834,﻿har.ct.0133,﻿attended from Waterbury,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0136,﻿church,﻿St. Michael's,English,,,,﻿New-London Co.,﻿Washington County,﻿Westerly,﻿Westerly,﻿RI,,41.356064,-71.81157,,,,﻿pat_sherry_001,﻿Rev.,﻿P. Sherry,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0139,﻿church,﻿Church of the Assumption,English,,,,,﻿Fairfield County,﻿Westport,﻿Westport,﻿CT,,41.136319,-73.3652,﻿har.ct.0107,﻿attended from Norwalk,﻿twice a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0148_02,﻿church,﻿St. Joseph's,English,,﻿St. Joseph's Convent,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.769203,-72.67853,,,,﻿phi_sheridan_001,﻿Rev.,﻿P. Sheridan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0142,﻿church,﻿St. Mary's,English,,,,,﻿Hartford County,﻿Windsor Locks,﻿Windsor Locks,﻿CT,,41.930185,-72.629537,,,,﻿jam_smyth_001,﻿Rev.,﻿James Smyth,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0143,﻿church,﻿St. Joseph's,English,,,,,﻿Windham County,﻿Willimantic,﻿Willimantic,﻿CT,,41.713293,-72.207127,,,,﻿flo_de-bruycker_001,﻿Rev.,﻿F. de Bruycker,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0143,﻿church,﻿St. Joseph's,English,,,,,﻿Windham County,﻿Willimantic,﻿Willimantic,﻿CT,,41.713293,-72.207127,,,,﻿eug_j_vygen_001,﻿Rev.,﻿Eugene I. Vygen,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0144,﻿church,not recorded,English,﻿church not dedicated,,,,﻿Litchfield County,﻿Wolcotville,﻿Torrington,﻿CT,,41.800305,-73.121171,﻿har.ct.0140,﻿attended from Winsted,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0145,﻿church,not recorded,English,,,,﻿New Haven Co.,﻿Litchfield County,﻿Woodbury,﻿Woodbury,﻿CT,,41.54454,-73.209002,﻿har.ct.0133,﻿attended from Waterbury,﻿every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0146,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Wethersfield,﻿Wethersfield,﻿CT,,41.706354,-72.659624,﻿har.ct.0077,"﻿attended from St. Peter's, Hartford",﻿twice a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0147,﻿church,not recorded,English,,,,,﻿New London County,﻿Uncas,﻿Uncasville,﻿CT,,41.431721,-72.110094,﻿har.ct.0095,﻿attended from New London,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0131,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Unionsville,﻿Unionville,﻿CT,,41.760237,-72.888846,﻿har.ct.0052,﻿attended from Collinsville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0150,"﻿convent, academy",﻿St. Francis Xavier's Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818852,-71.415268,,,,,﻿Sister,﻿M. Bernard Reade,,﻿Superior,,﻿religious,﻿28 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0150,"﻿convent, academy",﻿St. Francis Xavier's Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818852,-71.415268,,,,,,,,,,﻿pupil,﻿75 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0151,"﻿convent, academy",﻿St. Francis Xavier's Academy and Boarding-School,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818965,-71.415015,,,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0158,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.769265,-72.678812,,,,,﻿Sister,﻿Pauline Maher,,﻿Superior,,﻿religious,﻿16 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0158,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.769265,-72.678812,,,,,,,,,,﻿pupil,﻿17 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0162,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿New Haven,﻿New Haven,﻿CT,,41.308085,-72.936739,,,,,﻿Sister,﻿M. Borgia Douglas,,﻿Superior,,﻿religious,﻿12 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0162,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿New Haven,﻿New Haven,﻿CT,,41.308085,-72.936739,,,,,,,,,,﻿pupil,﻿80 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0152,﻿convent,﻿Convent of the Sisters of Mercy,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.490102,-71.312828,,,,,﻿Sister,﻿M. De Pazzi Tobin,,﻿Superior,,﻿religious,﻿6 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0154,﻿convent,﻿Convent of the Sisters of Mercy,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.876689,-71.402059,,,,,﻿Sister,﻿M. Camilla Purcell,,﻿Superior,,﻿religious,﻿6 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿St. Aloysius' Orphan Asylum,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.801422,-71.4134,,,,,﻿Sister,﻿M. Angela Fitzgerald,,﻿Superior,,﻿boy,﻿102 boys,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿St. Aloysius' Orphan Asylum,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.801422,-71.4134,,,,,,,,,,﻿girl,﻿100 girls,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.801422,-71.4134,,,,,,,,,,﻿orphan boy,﻿25 boys,﻿directed by Sisters of Mercy,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.801422,-71.4134,,,,,,,,,,﻿orphan girl,﻿55 girls,﻿directed by Sisters of Mercy,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿Female Orphan Asylum,English,,,,,,﻿New Haven,﻿Hartford,﻿CT,,41.801422,-71.4134,,,,,﻿Sister,﻿M. Ulrica,,﻿Sister-Servant,,﻿orphan girl,"﻿orphan girls, 80",﻿directed by Sisters of Charity,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿boy,"﻿boys, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿girl,"﻿girls, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 1000",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.801769,-71.413499,,,,,,,,,,﻿boy,"﻿boys, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.801769,-71.413499,,,,,,,,,,﻿girl,"﻿girls, 375",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.801769,-71.413499,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 700",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,,,,,,,﻿boy,"﻿boys, 130",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,,,,,,,﻿girl,"﻿girls, 145",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.721302,-71.529526,,,,,,,,,,﻿boy,"﻿boys, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.721302,-71.529526,,,,,,,,,,﻿girl,"﻿girls, 225",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.721302,-71.529526,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,41.349737,-73.079691,,,,,,,,,,﻿boy,"﻿boys, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,41.349737,-73.079691,,,,,,,,,,﻿girl,"﻿girls, 175",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,41.349737,-73.079691,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿boy,"﻿boys, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿girl,"﻿girls, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿boy,"﻿boys, 250",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿girl,"﻿girls, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 550",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,,,,,,,﻿boy,"﻿boys, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,,,,,,,﻿girl,"﻿girls, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 800",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿boy,"﻿boys, 325",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿girl,"﻿girls, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-schol, 850",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.987319,-72.544809,,,,,,,,,,﻿boy,"﻿boys, 170",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.987319,-72.544809,,,,,,,,,,﻿girl,"﻿girls, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.987319,-72.544809,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 440",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.606204,-73.11834,,,,,,,,,,﻿boy,"﻿boys, 320",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.606204,-73.11834,,,,,,,,,,﻿girl,"﻿girls, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.606204,-73.11834,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 800",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.145283,-73.494018,,,,,,,,,,﻿boy,"﻿boys, 120",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.145283,-73.494018,,,,,,,,,,﻿girl,"﻿girls, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.145283,-73.494018,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿boy,"﻿boys, 70",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿girl,"﻿girls, 75",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 250",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿boy,"﻿boys, 60",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿girl,"﻿girls, 70",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿boy,"﻿boys, 130",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿girl,"﻿girls, 125",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 375",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Portland,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿boy,"﻿boys, 90",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Portland,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿girl,"﻿girls, 100",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.347784,-71.916121,,,,,,,,,,﻿boy,"﻿boys, 75",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.347784,-71.916121,,,,,,,,,,﻿girl,"﻿girls, 80",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.347784,-71.916121,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 200",,,1865,﻿,﻿,﻿Hartford,Hartford

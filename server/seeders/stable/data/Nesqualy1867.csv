@@ -1,0 +1,55 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿nes.wa.0001,﻿church,﻿St. Augustine and St. James' Cathedral,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.630699,-122.673328,,,,﻿a_m_blanchet_001,﻿Rt. Rev.,﻿A. M. A. Blanchet,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0001,﻿church,﻿St. Augustine and St. James' Cathedral,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.630699,-122.673328,,,,﻿aeg_junger_001,﻿Rev.,﻿Aegidius Junger,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0001,﻿church,﻿St. Augustine and St. James' Cathedral,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.630699,-122.673328,,,,﻿p_a_mans_001,﻿Rev.,﻿P. A. Mans,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0002,﻿church,not recorded,English,,,,,﻿Pacific County,﻿Cape Disappointment,﻿Cape Disappointment,﻿WA,,46.289822,-124.060432,﻿nes.wa.0001,﻿attended from Vancouver,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0003,﻿church,not recorded,English,,,,,﻿Pacific County,﻿Chinook Point,﻿Chinook Point,﻿WA,,46.251492,-123.921814,﻿nes.wa.0001,﻿attended from Vancouver,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0004,﻿church,not recorded,English,,,,,,﻿Cascades,,﻿WA,,47.751074,-120.740139,﻿nes.wa.0001,﻿attended from Vancouver,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0048,﻿church,not recorded,English,,,,,,﻿Simcoe,﻿White Swan,﻿WA,,45.523698,-122.689059,﻿nes.wa.0001,﻿attended from Vancouver,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0006,﻿church,﻿St. Francis Xavier's,English,,,,,﻿Cowlitz County,﻿Cowlitz,,﻿WA,,46.303639,-122.790635,,,,﻿ch_a_richard_001,﻿Rev.,﻿Ch. A. Richard,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0007,﻿church,﻿Immaculate Conception,English,,,,,﻿Pierce County,﻿Steilacoom,﻿Steilacoom,﻿WA,,47.171183,-122.595084,,,,﻿c_vary_001,﻿Rev.,﻿C. Vary,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0008,﻿church,not recorded,English,,,,,﻿Grays Harbor County,﻿Gray's Harbor,﻿Hoquiam,﻿WA,,46.939726,-123.994026,﻿nes.wa.0007,﻿attended from Steilacoom,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0009,﻿church,﻿St. Michael's,English,,,,,﻿Thurston County,﻿Olympia,﻿Olympia,﻿WA,,47.040836,-122.885902,﻿nes.wa.0007,﻿attended from Steilacoom,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0010,﻿church,not recorded,English,,,,,﻿King County,﻿Seattle,﻿Seattle,﻿WA,,47.606139,-122.332848,﻿nes.wa.0007,﻿attended from Steilacoom,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0015,﻿church,not recorded,English,,,,,﻿Kitsap County,﻿Port Gamble,﻿Port Gamble,﻿WA,,47.854261,-122.583758,﻿nes.wa.0007,﻿attended from Steilacoom,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0011,﻿church,not recorded,English,,,,,﻿Jefferson County,﻿Port Townsend,﻿Port Townsend,﻿WA,,48.117039,-122.760447,,,,﻿fx_préfontaine_001,﻿Rev.,﻿Fr. X. Préfontaine,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0012,﻿church,not recorded,English,,,,,﻿Clallam County,﻿New-Dungenness,﻿Dungeness,﻿WA,,47.751074,-120.740139,﻿nes.wa.0011,﻿attended from Port Townsend,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0013,﻿church,not recorded,English,,,,,﻿Clallam County,﻿Port Angeles,﻿Port Angeles,﻿WA,,48.118146,-123.430741,﻿nes.wa.0011,﻿attended from Port Townsend,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0014,﻿church,not recorded,English,,,,,﻿Island County,﻿Whitby Island,﻿Whidbey Island,﻿WA,,47.998276,-122.439503,﻿nes.wa.0011,﻿attended from Port Townsend,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0016,﻿church,not recorded,English,,,,,﻿Kitsap County,﻿Port Madison,﻿Suquamish,﻿WA,,47.702778,-122.523056,﻿nes.wa.0011,﻿attended from Port Townsend,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0049,﻿church,not recorded,English,,,,,﻿Whatcom County,﻿Whatcom,﻿South Hill,,,45.523698,-122.689059,﻿nes.wa.0011,﻿attended from Port Townsend,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0017,﻿church,not recorded,English,,﻿San Juan Island,,,﻿San Juan County,﻿Penn's Cove,﻿Penn Cove,﻿WA,,48.22082,-122.690132,﻿nes.wa.0011,﻿attended from Port Townsend,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0018,﻿church,﻿St. Ann's,English,,﻿Snohomish Indian Reservation,,,﻿Snohomish County,﻿Tulalip,﻿Tulalip Bay,﻿WA,,48.061821,-122.277326,,,,﻿e_c_chirouze_001,﻿Rev.,﻿E. C. Chirouze,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0018,﻿church,﻿St. Ann's,English,,﻿Snohomish Indian Reservation,,,﻿Snohomish County,﻿Tulalip,﻿Tulalip Bay,﻿WA,,48.061821,-122.277326,,,,﻿‒_beaudre_001,﻿Rev.,﻿‒ Beaudre,﻿O.M.I.,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0019,﻿church,﻿St. Joachim's,English,,﻿Lamy's Indian Reservation,,,﻿Whatcom County,,﻿Bellingham,﻿WA,,47.751074,-120.740139,﻿nes.wa.0018,﻿attended from St. Ann's,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0020,﻿church,﻿St. Peter's,English,,﻿Indian Reservation,,,﻿Whatcom County,,﻿Deming,﻿WA,,47.751074,-120.740139,﻿nes.wa.0018,﻿attended from St. Ann's,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0021,﻿church,﻿St. Patrick's,English,,,,,﻿Walla Walla County,﻿Walla Walla,﻿Walla Walla,﻿WA,,46.063383,-118.344025,,,,﻿dav_j_halde_001,﻿Rev.,﻿Dav. J. Halde,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0022,﻿church,﻿St. Rosa's,English,,,,,﻿Walla Walla County,﻿Walla Walla,﻿Walla Walla,﻿WA,,46.064581,-118.343021,﻿nes.wa.0021,﻿attended from Walla Walla,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0036,﻿church,not recorded,English,,,,,﻿Nez Perce County,﻿Lewiston,﻿Lewiston,﻿WA,﻿ID,45.523698,-122.689059,﻿nes.wa.0021,﻿attended from Walla Walla,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0037,﻿church,not recorded,English,,,,,﻿Clearwater County,﻿Orofino,﻿Orofino,﻿WA,﻿ID,45.523698,-122.689059,﻿nes.wa.0021,﻿attended from Walla Walla,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0038,﻿church,not recorded,English,,,,,﻿Idaho County,﻿Elk City,﻿Elk City,﻿WA,﻿ID,45.523698,-122.689059,﻿nes.wa.0021,﻿attended from Walla Walla,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0039,﻿mission,﻿Sacred Heart,English,﻿Coeur d'Alène Mission,,,,﻿Kootenai County,﻿Coeur d'Alène,﻿Coeur d'Alène,﻿WA,﻿ID,45.523698,-122.689059,,,,﻿jm_caruana_001,﻿Rev.,﻿J.M. Caruana,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0039,﻿mission,﻿Sacred Heart,English,﻿Coeur d'Alène Mission,,,,﻿Kootenai County,﻿Coeur d'Alène,﻿Coeur d'Alène,﻿WA,,45.523698,-122.689059,,,,﻿g_gazzoli_001,﻿Rev.,﻿G. Gazzoli,﻿S.J.,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0040,﻿mission,not recorded,English,,,,,,﻿Spokan,﻿Spokane,,﻿WA,45.523698,-122.689059,,﻿attended from Coeur d'Alène,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0023,﻿church,﻿St. Paul's,English,﻿Indian Mission,,,,﻿Stevens County,﻿Colville,﻿Colville,﻿WA,,48.540372,-117.90323,,,,﻿am_menotrey_001,﻿Rev.,﻿A.M. Menetrey,﻿S.J.,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0024,﻿church,﻿Immaculate Conception,English,,,,,﻿Stevens County,﻿Colville,﻿Colville,﻿WA,,48.544997,-117.900954,,,,﻿j_joset_001,﻿Rev.,﻿J. Joset,﻿S.J.,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0025,﻿mission,﻿Old St. Ignatius' Mission,English,,,,,﻿Flathead County,﻿Kalispels,﻿Kalispell,﻿WA,﻿MT,47.314605,-114.103023,﻿nes.wa.0024,﻿attended from Colville,,,,,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0041,﻿mission,﻿St. Ignatius',English,﻿Pend'Oreille Mission,,,,﻿Lake County,,﻿St. Ignatius,,﻿MT,45.523698,-122.689059,,,,﻿wj_grassi_001,﻿Very Rev.,﻿W.J. Grassi,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0041,﻿mission,﻿St. Ignatius',English,﻿Pend'Oreille Mission,,,,﻿Lake County,,﻿St. Ignatius,,,45.523698,-122.689059,,,,﻿jl_vanzina_001,﻿Rev.,﻿J.L. Vanzina,﻿S.J.,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0042,﻿mission,not recorded,English,﻿Mission,,,,﻿Boundary County,﻿Cootenay,﻿Bonners Ferry,,﻿ID,45.523698,-122.689059,,,,﻿r_de-ryckere_001,﻿Rev.,﻿R. De Ryckere,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0043,﻿mission,not recorded,English,﻿Mission,,,,,﻿Blackfoot City,,,,45.523698,-122.689059,,,,﻿r_de-ryckere_001,﻿Rev.,﻿R. De Ryckere,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0044,﻿mission,not recorded,English,,,,,,﻿Bitter Root,,,,45.523698,-122.689059,,,,﻿r_de-ryckere_001,﻿Rev.,﻿R. De Ryckere,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0045,﻿mission,not recorded,English,,,,,﻿Missoula County,﻿Hellgate,﻿Missoula,,﻿MT,45.523698,-122.689059,,,,﻿r_de-ryckere_001,﻿Rev.,﻿R. De Ryckere,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0046,﻿mission,not recorded,English,,,,,﻿Granite County,﻿Reynold City,﻿Drummond,,﻿MT,45.523698,-122.689059,,,,﻿r_de-ryckere_001,﻿Rev.,﻿R. De Ryckere,,,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0026,﻿college,﻿Holy Angels' College,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.628028,-122.673865,,,,﻿p_a_mans_001,﻿Rev.,﻿P. A. Mans,,﻿Prefect,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0026,﻿college,﻿Holy Angels' College,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.628028,-122.673865,,,,﻿ln_s_onge_001,﻿Rev.,﻿P.S. St. Onge,,﻿Assistant,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0026,﻿college,﻿Holy Angels' College,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.628028,-122.673865,,,,﻿l_brant_001,﻿Mr.,﻿L. Boulet,,﻿Assistant,,,,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0034,﻿convent,﻿Convent of the Sisters of Charity of the House of Providence,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.523698,-122.689059,,,,,,,,,,﻿sister,﻿35 sisters,,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0027,﻿school,﻿Providence Academy,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.619337,-122.534665,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0028,﻿hospital,﻿St. Joseph's Hospital,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.628028,-122.673865,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0029,﻿asylum,﻿St. Vincent's Female Orphan Asylum,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.628028,-122.673865,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0030,﻿asylum,﻿St. Vincent's Male Orphan Asylum,English,,,,,﻿Clark County,﻿Vancouver,﻿Vancouver,﻿WA,,45.628028,-122.673865,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0031,﻿academy,﻿St. Vincent's Academy,English,,,,,﻿Walla Walla County,﻿Walla Walla,﻿Walla Walla,﻿WA,,46.064581,-118.343021,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0035,﻿school,﻿Providence School,English,,﻿Pend'Oreille Mission,,,﻿Lake County,,﻿St. Ignatius,,﻿MT,45.523698,-122.689059,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0032,﻿academy,﻿St. Joseph's Academy,English,,,,,﻿Pierce County,﻿Steilacoom,﻿Steilacoom,﻿WA,,47.16982,-122.602627,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1867,﻿,﻿,﻿Nesqualy,Nesqualy
+﻿nes.wa.0033,﻿school,not recorded,English,,,,,﻿Snohomish County,﻿Tulalip,﻿Tulalip Bay,﻿WA,,48.065556,-122.286944,,,,,,,,,,﻿boarders,"﻿30 Indian boys, boarders",﻿Conducted by the Reverend Father Oblates,,1867,﻿,﻿,﻿Nesqualy,Nesqualy

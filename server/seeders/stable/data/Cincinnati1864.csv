@@ -1,0 +1,23 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,,,,,,,,,,﻿j_b_purcell_003,﻿Most Rev.,﻿J. B. Purcell,﻿D.D.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,,,,,,,,,,﻿s_h_rosecrans_002,﻿Rt. Rev.,﻿S. H. Rosecrans,﻿D.D.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,,,,,,,,,,﻿e_t_collins_001,﻿V. Rev.,﻿E. T. Collins,﻿V.G.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,,,,,,,,,,﻿e_parcell_001,﻿V. Rev.,﻿E. Parcell,﻿V.G.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,,,,,,,,,,﻿c_h_borgess_002,﻿Rev.,﻿C. H. Borgess,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿cathedral,﻿St. Peter's Cathedral,English,,,,,,,,,,,,,,,﻿w_j_hally_001,﻿Rev.,﻿W. J. Hally,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿cha_driscol_001,﻿Rev.,﻿Charles Driscol,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿joh_de-blieck_001,﻿Rev.,﻿John De Blieck,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿f_acmal_001,﻿Rev.,﻿F. Acmal,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿h_baselmans_002,﻿Rev.,﻿H. Baselmans,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿p_a_nogues_002,﻿Rev.,﻿P. A. Nogues,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿w_schmidt_002,﻿Rev.,﻿W. Schmidt,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿jos_zealand_002,﻿Rev.,﻿Jos. Zealand,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Francis Xavier's,English,,,,,,,,,,,,,,,﻿a_oneill_001,﻿Rev.,﻿A. O'Neill,﻿S.J.,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Thomas's,English,,,,,,,,,,,,,﻿Attended from St. Xavier's,,,,,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Patrick's,English,,,,,,,,,,,,,,,﻿ric_gilmore_001,﻿Rev.,﻿Richard Gilmore,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Patrick's,English,,,,,,,,,,,,,,,﻿f_cubero_002,﻿Rev.,﻿F. Cubero,﻿O.S.D,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿Holy Trinity's,English,,,,,,,,,,,,,,,﻿b_hengehold_001,﻿Rev.,﻿B. Hengehold,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿Holy Trinity's,English,,,,,,,,,,,,,,,﻿j_h_ridder_001,﻿Rev.,﻿J. H. Ridder,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿Holy Trinity's,English,,,,,,,,,,,,,,,﻿ric_broering_001,﻿Rev.,﻿Rich. Broering,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Mary's,English,,,,,,,,,,,,,,,﻿j_b_elkmann_001,﻿Rev.,﻿J. B. Elkmann,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati
+,﻿church,﻿St. Mary's,English,,,,,,,,,,,,,,,﻿ger_uhling_002,﻿Rev.,﻿Gerhard Uhling,,,,,,,,1864,﻿,﻿,Cincinnati,Cincinnati

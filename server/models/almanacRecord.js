@@ -1,0 +1,90 @@
+// church in a year
+
+'use strict';
+const { Model } = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class almanacRecord extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      almanacRecord.belongsToMany(models.person, { through: models.personInAlmanacRecord, foreignKey: 'almanacRecordID', as: 'personInfo' });
+      almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'attendedInstRecordID', as: 'attendedBy'});
+      almanacRecord.belongsToMany(models.almanacRecord, { through: models.attendingInstitution, foreignKey: 'attendingInstRecordID', as: 'attendingInstitutions'});
+      almanacRecord.belongsTo(models.institution, { foreignKey: 'instID', as: 'institution' });
+      almanacRecord.hasMany(models.relatedInstitutions, { foreignKey: 'almanacRecordID', as: 'relatedInstitutions' });
+      almanacRecord.belongsTo(models.diocese, { foreignKey: 'diocese_reg', as: 'dioceseInfo' });
+      almanacRecord.belongsToMany(models.order, { through: models.orderInAlmanacRecord, foreignKey: 'almanacRecordID', as: 'orders' });
+
+    }
+  }
+  almanacRecord.init({
+    ID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true
+    },
+    instID: DataTypes.STRING,
+    instName: DataTypes.STRING,
+    instType: DataTypes.STRING,
+    instFunction: DataTypes.STRING,
+    language: DataTypes.STRING,
+    instNote: DataTypes.TEXT,
+    year: DataTypes.INTEGER,
+    placeName: DataTypes.STRING,
+    region: DataTypes.STRING,
+    countyOrig: DataTypes.STRING,
+    countyReg: DataTypes.STRING,
+    cityOrig: DataTypes.STRING,
+    cityReg: DataTypes.STRING,
+    stateOrig: DataTypes.STRING,
+    stateReg: DataTypes.STRING,
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE,
+    memberType: DataTypes.STRING,
+    member: DataTypes.TEXT,
+    affiliated: DataTypes.STRING,
+    diocese: DataTypes.STRING,
+    diocese_reg: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'almanacRecord',
+    indexes:[
+      {
+        fields: ['ID'],
+        unique: true
+      },
+      {
+        fields: ['instID'],
+      },
+      {
+        fields: ['instName'],
+      },
+      {
+        fields: ['year'],
+      },
+      {
+        fields: ['year', 'instID'],
+      },
+      {
+        fields: ['instType'],
+      },
+      {
+        fields: ['year', 'instType'],
+      },
+      {
+        fields: ['year', 'instName']
+      },
+      {
+        fields: ['diocese'],
+      },
+      {
+        fields: ['diocese_reg'],
+      }
+    ]
+  });
+  return almanacRecord;
+};

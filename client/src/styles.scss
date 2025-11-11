@@ -1,0 +1,83 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'sass:map';
+@use 'app_theme-colors' as theme-colors;
+@use "tailwindcss" as *;
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Tagesschrift&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: "Rubik", sans-serif;
+}
+
+
+.table {
+    display: table;
+    border-spacing: 10px;
+}
+
+.table .table-body {
+    display: table-row-group;
+}
+
+.table .row {
+    display: table-row;
+}
+
+.table .row .cell {
+    display: table-cell;
+}
+
+.formatted-table .row .cell:nth-child(1) {
+    width: 200px;
+    font-weight: bold;
+}
+
+.custom-font {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+$light-theme: (
+  color: (
+    theme-type: light,
+    primary: theme-colors.$primary-palette,
+    tertiary: theme-colors.$tertiary-palette,
+  ),
+  density: (
+    scale: 0
+  )
+);
+
+$dark-theme: (
+  color: (
+    theme-type: dark,
+    primary: theme-colors.$primary-palette,
+    tertiary: theme-colors.$tertiary-palette,
+  ),
+  density: (
+    scale: 0
+  )
+);
+
+:root {
+    color-scheme: light dark;
+    @include mat.theme($light-theme);
+}
+
+.dark-theme {
+    color-scheme: dark;
+    @include mat.theme($dark-theme);
+}
