@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { FilterComponent } from '../../common/filter/filter.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +17,7 @@ import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-diocese-map',
-  imports: [GoogleMapsModule, FilterComponent, MatCardModule, CommonModule, 
+  imports: [FilterComponent, MatCardModule, CommonModule, 
     MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule,
     CommonMapComponent],
   templateUrl: './map.component.html',
