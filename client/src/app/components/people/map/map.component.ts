@@ -129,7 +129,10 @@ export class MapComponent implements OnInit {
           };
         }
       };
-      this.data = peopleData;
+      this.data = peopleData.map(item => ({
+        ...item,
+        color: this.getCircleColor(item.instFunction)
+      }));
     })
   };
 
@@ -153,4 +156,15 @@ export class MapComponent implements OnInit {
   togglePlay() {
     this.isPlaying = !this.isPlaying;
   }
+
+  getCircleColor (type: string) : string {
+    const colorMap : { [key: string] : string} = {
+      'consecrated life institutions': '#FF0000', // red
+      'religious institutions': '#5bcea8ff', // yellow
+      'educational institutions': '#b300ffff', // orange
+      'healthcare institutions': '#0000FF', // blue
+      'charitable institutions': '#877b24ff', // green
+    };
+    return colorMap[type] || '#FFFFFF'; // default to white if type not found
+  };
 }

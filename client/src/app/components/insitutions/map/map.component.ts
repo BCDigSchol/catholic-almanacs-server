@@ -114,6 +114,7 @@ export class MapComponent implements OnInit {
       }
     }, 2000);
   }
+  
 
   getData() {
     
@@ -142,6 +143,10 @@ export class MapComponent implements OnInit {
         }
       };
       this.data = institutionData;
+      this.data = this.data.map(item => ({
+        ...item,
+        color: this.getCircleColor(item.instFunction)
+      }));
       this.loading = false;
       //console.log(this.data);
     })
@@ -167,10 +172,10 @@ export class MapComponent implements OnInit {
   getCircleColor (type: string) : string {
     const colorMap : { [key: string] : string} = {
       'consecrated life institutions': '#FF0000', // red
-      'religious institutions': '#FFFF00', // yellow
+      'religious institutions': '#5bcea8ff', // yellow
       'educational institutions': '#b300ffff', // orange
       'healthcare institutions': '#0000FF', // blue
-      'charitable institutions': '#00FF00', // green
+      'charitable institutions': '#877b24ff', // green
     };
     return colorMap[type] || '#FFFFFF'; // default to white if type not found
   };

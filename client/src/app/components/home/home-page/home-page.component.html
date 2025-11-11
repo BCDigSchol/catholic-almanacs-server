@@ -14,7 +14,7 @@
             </mat-form-field>
         </div>
     <div class="flex flex-col md:flex-row items-center justify-center mt-1">
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center md:mr-5">
             <a (click)="navigateToInstitutions()" style="display: block; text-align: center;">
                 <div style="position: relative; width: 100%; max-width:500px; aspect-ratio: 2/1; cursor:pointer" class="mb-5">
                     <img src="st nacho.jpg" alt="institution" style="width:100%; height:100%; opacity:0.4;">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </a>
-            <mat-card style="width:100%; max-width:500px; height: 100%; max-height:300px" appearance="outlined" class="mr-5 mb-5 md:mb-0">
+            <mat-card style="width:100%; max-width:500px; height: 100%; max-height:300px" appearance="outlined" class="mb-5 md:mb-0">
                 <mat-card-content class="scrollable-content" style="height: 100%; overflow-y: auto;">
                 @if (loading) {
                     <div style="height: 100%; display: flex; align-items: center; justify-content: center;">

@@ -105,7 +105,10 @@ export class MapComponent {
         }
       };
       this.data = institutionData;
-      //console.log(this.data);
+      this.data = this.data.map(item => ({
+        ...item,
+        color: this.getCircleColor(item.diocese)
+      }));
     })
   };
 
@@ -125,21 +128,6 @@ export class MapComponent {
     this.instDetailVisible = false;
     this.instDetailData = {};
   };
-
-  /**getCircleColor (diocese: string) : string {
-    const colorMap : { [key: string] : string} = {
-      'Albany': '#FF0000', // red
-      'Baltimore': '#00FF00', // green
-      'Boston': '#0000FF', // blue
-      'Chicago': '#FFFF00', // yellow
-      'Cincinnati': '#FFA500', // orange
-      'Cleveland': '#800080', // purple
-      'Detroit': '#FFC0CB', // pink
-      'Philadelphia': '#A52A2A', // brown
-      'New York': '#808080', // gray
-    };
-    return colorMap[diocese] || '#FFFFFF'; // default to white if diocese not found
-  };*/
 
   private initDioceseColorMap() {
     const colorPalette = [
