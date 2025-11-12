@@ -107,7 +107,7 @@ export class MapComponent {
       this.data = institutionData;
       this.data = this.data.map(item => ({
         ...item,
-        color: this.getCircleColor(item.diocese)
+        color: this.getCircleColor(item.diocese_reg)
       }));
     })
   };
