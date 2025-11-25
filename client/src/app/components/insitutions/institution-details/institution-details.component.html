@@ -17,7 +17,7 @@
                     <div class="table-body text-xs md:text-sm custom-font">
                         <div class="row">
                             <div class="cell">Institution ID</div>
-                            <div class="cell">{{data.instID}}</div>
+                            <div class="cell">{{data.instID.join(', ')}}</div>
                         </div>
                         <div class="row">
                             <div class="cell">Institution Type</div>
@@ -212,8 +212,8 @@
                             [options]="{
                             zoom:6, 
                             center: {
-                                lat: data.latitude || 30, 
-                                lng: data.longitude || -80
+                                lat: data.latitude || 40, 
+                                lng: data.longitude || -100
                             },
                             size: {width: '400px', height: '250px'}
                         }">
@@ -228,8 +228,8 @@
                             [options]="{
                             zoom:6, 
                             center: {
-                                lat: data.latitude || 30, 
-                                lng: data.longitude || -80
+                                lat: data.latitude || 40, 
+                                lng: data.longitude || -100
                             },
                             size: {width: '500px', height: '400px'}
                         }">

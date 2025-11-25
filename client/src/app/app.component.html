@@ -1,3 +1,5 @@
+<!-- Wide screen display -->
+<div *ngIf="!isMobile">
 <div class="w-full h-full" [ngClass]="{'dark-theme': isDarkTheme}">
     <app-header (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when it emits a signal, toggleNavMenu() is called-->
     <mat-sidenav-container class="w-full h-full" autosize #sidenav>
@@ -9,4 +11,13 @@
             <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
+</div>
+</div>
+
+<!-- Mobile display -->
+<div *ngIf="isMobile">
+    <div class="w-full h-full" [ngClass]="{'dark-theme': isDarkTheme}">
+    <app-header (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when it emits a signal, toggleNavMenu() is called-->
+    <router-outlet></router-outlet>
+</div>
 </div>

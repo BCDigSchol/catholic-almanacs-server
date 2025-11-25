@@ -70,9 +70,6 @@
 <div class="flex flex-col w-full justify-center items-center mobile-display">
     <div class="flex flex-col w-full justify-start items-start">
         <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">Institutions</div>
-        <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-            <p class="mt-6 italic text-gray-500 text-md" style="font-family: 'Open Sans', sans-serif">*** This site is in development ***</p>
-        </div>
         <div style="display:flex; align-items: center; width: 100%; justify-content: flex-end;" class="flex flex-row justify-center items-start">
             <mat-paginator (page)="changePage($event)"
             [length]="totalItems"
@@ -82,7 +79,7 @@
             [disabled]="loading"
             [pageSizeOptions]="[5, 10, 25, 50]">
             </mat-paginator>
-            <mat-form-field appearance="outline" style="width: 100px;" class="mt-2">
+            <mat-form-field appearance="outline" style="width: 100px;" class="mt-2 mr-3">
                 <mat-label>Go to Page</mat-label>
                 <input matInput
                     [ngModel]="currentPage + 1"
@@ -93,7 +90,7 @@
         </div>
     </div>
     <div class="flex flex-col w-full justify-start items-start">
-    <div style="width: 300px; min-width: 250px; margin-right: 20px" class="my-3 ml-3">
+    <div class="my-3 mr-3 ml-3">
         <app-filter></app-filter>
     </div>
     <div class="flex flex-col w-full">

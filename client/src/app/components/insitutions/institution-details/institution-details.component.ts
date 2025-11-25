@@ -33,6 +33,7 @@ export class InstitutionDetailsComponent implements OnInit {
   itemId: any;
   data: any = {};
   dioceseInfo: any = [];
+  instIDInYear: any = {};
   mapOptionsWide: google.maps.MapOptions = {
     center: { lat: 39.8283, lng: -98.5795 },
     zoom: 3.7,
@@ -69,6 +70,7 @@ export class InstitutionDetailsComponent implements OnInit {
     this.loading = true;
     this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
       this.data = res;
+      this.instIDInYear = res.instIDInYear;
       this.loading = false;
       const center = { lat: this.data.latitude, lng: this.data.longitude };
       if (window.innerWidth < 768) {
@@ -89,7 +91,7 @@ export class InstitutionDetailsComponent implements OnInit {
       this.dioceseInfo = [];
       this.getData();
     } else {
-      this._api.getTypeRequest('institution/' + this.data.instID + '/' + year).subscribe((res: any) => {
+      this._api.getTypeRequest('institution/' + this.instIDInYear[String(year)][0] + '/' + year).subscribe((res: any) => {
       this.loading = false;
       const allYears = this.data.year;
       this.data = res;

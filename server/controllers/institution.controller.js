@@ -184,10 +184,28 @@ exports.findAll = async (req, res) => {
     }
 };
 
+function uniqueBy(arr, keyFn) {
+    const seen = new Set();
+    return arr.filter(item => {
+        const key = keyFn(item);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+};
+
 exports.findByID = async (req, res) => {
     const id = req.params.id;
-    data = await institution.findOne({
-        where: { ID: id },
+    allInstitutionsData = await institution.findAll({
+        // fetch raw data from the database
+        where: {
+            [Op.or]: [
+                { ID: id },
+                Sequelize.where(
+                    Sequelize.literal(`FIND_IN_SET('${id}', REPLACE(\`institution\`.\`ID\`,'&',','))`),
+                    { [Op.gt]: 0 })
+    ]
+        },
         attributes: ['ID'],
         include: [{
                 model: almanacRecord,
@@ -235,178 +253,211 @@ exports.findByID = async (req, res) => {
         }
     ]
     });
-    console.log('data', data);
-    if (data) {
-        let processedData = {
-            instID: data.dataValues.ID,
-            year: [],
-            instName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instName,
-            language: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].language,
-            diocese: [],
-            instType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instType,
-            instNote: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instNote,
-            placeName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].placeName,
-            region: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].region,
-            countyOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].countyOrig,
-            countyReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].countyReg,
-            cityOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].cityOrig,
-            cityReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].cityReg,
-            stateOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].stateOrig,
-            stateReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].stateReg,
-            latitude: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].latitude,
-            longitude: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].longitude,
-            member: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].member,
-            memberType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].memberType,
-            affiliated: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].affiliated,
-            order: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].orders.map(order => order.order).join(', '),
-            attendedBy: [],
-            attendingInstitutions: [],
-            relatedInstitutions: [],
-            residingPersonInfo: [],
-            visitingPersonInfo: [],
-            // adding the info of the last record first so that the information of "all years" is the most up-to-date
-        };
-        
-        let existingAttendingInstIDs = [];
-        let existingAttendedByInstIDs = [];
-        let existingRelatedInstIDs = [];
-        let existingResidingPersonIDs = [];
-        let existingVisitingPersonIDs = [];
+    console.log('data', allInstitutionsData);
 
-        // all the (unique) dioceses
-        for (const record of data.dataValues.almanacRecord) {
-            if (!processedData.diocese.includes(record.diocese)) {
-                processedData.diocese.push(record.diocese);
-            }
-        };
+    // compile the metadata for "all years" (the most up-to-date information & all years & all dioceses & all related entries)
+    if (allInstitutionsData) {
+        processedAllInstitutionsData = [];
+        for (data of allInstitutionsData) {
+            let processedData = {
+                instID: data.dataValues.ID,
+                year: [],
+                instName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instName,
+                language: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].language,
+                diocese: [],
+                instType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instType,
+                instNote: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].instNote,
+                placeName: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].placeName,
+                region: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].region,
+                countyOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].countyOrig,
+                countyReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].countyReg,
+                cityOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].cityOrig,
+                cityReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].cityReg,
+                stateOrig: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].stateOrig,
+                stateReg: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].stateReg,
+                latitude: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].latitude,
+                longitude: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].longitude,
+                member: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].member,
+                memberType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].memberType,
+                affiliated: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].affiliated,
+                order: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].orders.map(order => order.order).join(', '),
+                attendedBy: [],
+                attendingInstitutions: [],
+                relatedInstitutions: [],
+                residingPersonInfo: [],
+                visitingPersonInfo: [],
+            };
+            
+            let existingAttendingInstIDs = [];
+            let existingAttendedByInstIDs = [];
+            let existingRelatedInstIDs = [];
+            let existingResidingPersonIDs = [];
+            let existingVisitingPersonIDs = [];
 
-        // all the (unique) attending institutions, attended by institutions and persons
-        for (let i = data.dataValues.almanacRecord.length - 1; i >= 0; i--) {
-            let record = data.dataValues.almanacRecord[i];
-            if (!processedData.year.includes(record.year)) {
-                processedData.year.push(record.year);
-            }
-            
-            for (const attendingInst of record.attendingInstitutions) {
-                if (!existingAttendingInstIDs.includes(attendingInst.instID)) {
-                    existingAttendingInstIDs.push(attendingInst.instID);
-                    const instDetails = await institution.findAll({
-                        where: { ID: attendingInst.instID },
-                        attributes: ['ID'],
-                        include: [{
-                            model: almanacRecord,
-                            as: 'almanacRecord',
-                            attributes: ['instName', 'year'],
-                        }]
-                    });
-                    let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
-                    let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
-                    //console.log('latestInstName', latestInstName);
-                    processedData.attendingInstitutions.push({
-                        instID: attendingInst.instID,
-                        instName: attendingInst.instName,
-                        year: attendingInst.year,
-                        attendingFrequency: attendingInst.attendingInstitution.attendingFrequency,
-                        note: attendingInst.attendingInstitution.note,
-                        latestInstName: latestInstName,
-                        latestYear: latestYear
-                    });
-                    //console.log('processedData.attendingInstitutions', processedData.attendingInstitutions);
-                    }};
-            
-            for (const attendedInst of record.attendedBy) {
-                if (!existingAttendedByInstIDs.includes(attendedInst.instID)) {
-                    existingAttendedByInstIDs.push(attendedInst.instID);
-                    const instDetails = await institution.findAll({
-                        where: { ID: attendedInst.instID },
-                        attributes: ['ID'],
-                        include: [{
-                            model: almanacRecord,
-                            as: 'almanacRecord',
-                            attributes: ['instName', 'year'],
-                        }]
-                    });
-                    let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
-                    let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
-                    processedData.attendedBy.push({
-                        instID: attendedInst.instID,
-                        instName: attendedInst.instName,
-                        year: attendedInst.year,
-                        attendingFrequency: attendedInst.attendingInstitution.attendingFrequency,
-                        note: attendedInst.attendingInstitution.note,
-                        latestInstName: latestInstName,
-                        latestYear: latestYear
-                    });}};
-            
-            for (const person of record.personInfo) {
-                if (!existingResidingPersonIDs.includes(person.ID) && !person.personInAlmanacRecord.isAttending) {
-                    existingResidingPersonIDs.push(person.ID);
-                    processedData.residingPersonInfo.push(person);
-                } else if (!existingVisitingPersonIDs.includes(person.ID) && person.personInAlmanacRecord.isAttending) {
-                    existingVisitingPersonIDs.push(person.ID);
-                    if (person.personInAlmanacRecord.attendingInstID) {
-                    processedData.attendedBy = processedData.attendedBy.filter(inst => inst.instID !== person.personInAlmanacRecord.attendingInstID);
-                    const instDetails = await institution.findAll({
-                        where: { ID: person.personInAlmanacRecord.attendingInstID },
-                        attributes: ['ID'],
-                        include: [{
-                            model: almanacRecord,
-                            as: 'almanacRecord',
-                            attributes: ['instName'],
-                        }]
-                    });
-                    let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
-                    processedData.visitingPersonInfo.push({
-                        ID: person.ID,
-                        personInAlmanacRecord: {
-                            ...person.personInAlmanacRecord.dataValues,
-                            attendingInstName: latestInstName
-                        },
-                    });
-                } else {
-                    processedData.visitingPersonInfo.push(person);
+            // all the (unique) dioceses
+            for (const record of data.dataValues.almanacRecord) {
+                if (!processedData.diocese.includes(record.diocese)) {
+                    processedData.diocese.push(record.diocese);
                 }
-            }}
-        };
+            };
 
-        // all the related institutions
-        const allRelatedInstitutions = [
-            ...data.dataValues.relatedFirst,
-            ...data.dataValues.relatedSecond
-        ];
+            // all the (unique) attending institutions, attended by institutions and persons
+            for (let i = data.dataValues.almanacRecord.length - 1; i >= 0; i--) {
+                let record = data.dataValues.almanacRecord[i];
+                if (!processedData.year.includes(record.year)) {
+                    processedData.year.push(record.year);
+                }
+                
+                for (const attendingInst of record.attendingInstitutions) {
+                    if (!existingAttendingInstIDs.includes(attendingInst.instID)) {
+                        existingAttendingInstIDs.push(attendingInst.instID);
+                        const instDetails = await institution.findAll({
+                            where: { ID: attendingInst.instID },
+                            attributes: ['ID'],
+                            include: [{
+                                model: almanacRecord,
+                                as: 'almanacRecord',
+                                attributes: ['instName', 'year'],
+                            }]
+                        });
+                        let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+                        let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
+                        //console.log('latestInstName', latestInstName);
+                        processedData.attendingInstitutions.push({
+                            instID: attendingInst.instID,
+                            instName: attendingInst.instName,
+                            year: attendingInst.year,
+                            attendingFrequency: attendingInst.attendingInstitution.attendingFrequency,
+                            note: attendingInst.attendingInstitution.note,
+                            latestInstName: latestInstName,
+                            latestYear: latestYear
+                        });
+                        //console.log('processedData.attendingInstitutions', processedData.attendingInstitutions);
+                        }};
+                
+                for (const attendedInst of record.attendedBy) {
+                    if (!existingAttendedByInstIDs.includes(attendedInst.instID)) {
+                        existingAttendedByInstIDs.push(attendedInst.instID);
+                        const instDetails = await institution.findAll({
+                            where: { ID: attendedInst.instID },
+                            attributes: ['ID'],
+                            include: [{
+                                model: almanacRecord,
+                                as: 'almanacRecord',
+                                attributes: ['instName', 'year'],
+                            }]
+                        });
+                        let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+                        let latestYear = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].year;
+                        processedData.attendedBy.push({
+                            instID: attendedInst.instID,
+                            instName: attendedInst.instName,
+                            year: attendedInst.year,
+                            attendingFrequency: attendedInst.attendingInstitution.attendingFrequency,
+                            note: attendedInst.attendingInstitution.note,
+                            latestInstName: latestInstName,
+                            latestYear: latestYear
+                        });}};
+                
+                for (const person of record.personInfo) {
+                    if (!existingResidingPersonIDs.includes(person.ID) && !person.personInAlmanacRecord.isAttending) {
+                        existingResidingPersonIDs.push(person.ID);
+                        processedData.residingPersonInfo.push(person);
+                    } else if (!existingVisitingPersonIDs.includes(person.ID) && person.personInAlmanacRecord.isAttending) {
+                        existingVisitingPersonIDs.push(person.ID);
+                        if (person.personInAlmanacRecord.attendingInstID) {
+                        processedData.attendedBy = processedData.attendedBy.filter(inst => inst.instID !== person.personInAlmanacRecord.attendingInstID);
+                        const instDetails = await institution.findAll({
+                            where: { ID: person.personInAlmanacRecord.attendingInstID },
+                            attributes: ['ID'],
+                            include: [{
+                                model: almanacRecord,
+                                as: 'almanacRecord',
+                                attributes: ['instName'],
+                            }]
+                        });
+                        let latestInstName = instDetails[0].almanacRecord[instDetails[0].almanacRecord.length - 1].instName;
+                        processedData.visitingPersonInfo.push({
+                            ID: person.ID,
+                            personInAlmanacRecord: {
+                                ...person.personInAlmanacRecord.dataValues,
+                                attendingInstName: latestInstName
+                            },
+                        });
+                    } else {
+                        processedData.visitingPersonInfo.push(person);
+                    }
+                }}
+            };
 
-        const allRelatedInstIDs = new Set();
+            // all the related institutions
+            const allRelatedInstitutions = [
+                ...data.dataValues.relatedFirst,
+                ...data.dataValues.relatedSecond
+            ];
 
-        allRelatedInstitutions.forEach(relatedInst => {
-            allRelatedInstIDs.add(relatedInst.firstID);
-            allRelatedInstIDs.add(relatedInst.secondID);
+            const allRelatedInstIDs = new Set();
+
+            allRelatedInstitutions.forEach(relatedInst => {
+                allRelatedInstIDs.add(relatedInst.firstID);
+                allRelatedInstIDs.add(relatedInst.secondID);
+            });
+
+            const uniqueRelatedInstIDs = Array.from(allRelatedInstIDs);
+            existingRelatedInstIDs = uniqueRelatedInstIDs.filter(id => id !== data.dataValues.ID);
+            for (const relatedInstID of existingRelatedInstIDs) {
+                const relatedInstDetails = await institution.findAll({
+                    where: { ID: relatedInstID },
+                    attributes: ['ID'],
+                    include: [{
+                        model: almanacRecord,
+                        as: 'almanacRecord',
+                        attributes: ['instName', 'year', 'instType'],
+                    }]
+                });
+                let latestInstName = relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instName;
+                let latestYear = relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].year;
+                processedData.relatedInstitutions.push({
+                    instID: relatedInstID,
+                    instName: latestInstName,
+                    year: latestYear,
+                    instType: relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instType,
+                });
+            }
+            processedAllInstitutionsData.push(processedData);
+        }
+
+        // create a year-instID list for the year buttons so that the correct metadata shows up when clicking on a year button
+        const instIDInYearDict = {};
+        processedAllInstitutionsData.forEach(d => {
+            d.year.forEach(y => {
+                if (!instIDInYearDict[y]) {
+                    instIDInYearDict[y] = [];
+                }
+                if (!instIDInYearDict[y].includes(d.instID)) {
+                    instIDInYearDict[y].push(d.instID);
+                }
+            });
         });
 
-        const uniqueRelatedInstIDs = Array.from(allRelatedInstIDs);
-        existingRelatedInstIDs = uniqueRelatedInstIDs.filter(id => id !== data.dataValues.ID);
-        for (const relatedInstID of existingRelatedInstIDs) {
-            const relatedInstDetails = await institution.findAll({
-                where: { ID: relatedInstID },
-                attributes: ['ID'],
-                include: [{
-                    model: almanacRecord,
-                    as: 'almanacRecord',
-                    attributes: ['instName', 'year', 'instType'],
-                }]
-            });
-            let latestInstName = relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instName;
-            let latestYear = relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].year;
-            processedData.relatedInstitutions.push({
-                instID: relatedInstID,
-                instName: latestInstName,
-                year: latestYear,
-                instType: relatedInstDetails[0].almanacRecord[relatedInstDetails[0].almanacRecord.length - 1].instType,
-            });
-        }
-    
-
-        processedData.year.reverse();
-        res.send(processedData);
+        const sortedYears = Object.keys(instIDInYearDict).sort((a, b) => Number(a) - Number(b));
+        const latestInstIDs = instIDInYearDict[sortedYears[sortedYears.length - 1]];
+        const latestInstitutionData = processedAllInstitutionsData.find(d => latestInstIDs.includes(d.instID));
+        
+        const combined = {
+            ...latestInstitutionData,
+            instID: Array.from(new Set(processedAllInstitutionsData.map(d => d.instID))),
+            year: Array.from(new Set(processedAllInstitutionsData.flatMap(d => d.year))),
+            diocese: Array.from(new Set(processedAllInstitutionsData.flatMap(d => d.diocese))),
+            attendedBy: uniqueBy(processedAllInstitutionsData.flatMap(d => d.attendedBy), x => x.instID),
+            attendingInstitutions: uniqueBy(processedAllInstitutionsData.flatMap(d => d.attendingInstitutions), x => x.instID),
+            relatedInstitutions: uniqueBy(processedAllInstitutionsData.flatMap(d => d.relatedInstitutions), x => x.instID),
+            residingPersonInfo: uniqueBy(processedAllInstitutionsData.flatMap(d => d.residingPersonInfo), x => x.ID),
+            visitingPersonInfo: uniqueBy(processedAllInstitutionsData.flatMap(d => d.visitingPersonInfo), x => x.ID),
+            instIDInYear: instIDInYearDict,
+        };
+        combined.year.sort((a, b) => a - b);
+        res.send(combined);
     }
     else {
         res.status(404).send({
@@ -467,7 +518,7 @@ exports.findOne = async (req, res) => {
 });
     if (data) {
         let processedData = {
-            instID: data.dataValues.ID,
+            instID: [data.dataValues.ID],
             instName: data.dataValues.almanacRecord[0].instName,
             language: data.dataValues.almanacRecord[0].language,
             diocese: [data.dataValues.almanacRecord[0].diocese],

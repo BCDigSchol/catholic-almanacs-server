@@ -36,6 +36,32 @@ async function preprocessCSV(filePath) {
           delete row['year'];
         }
 
+        if (row['instID'] && row['instID'].includes('&')) {
+          const parts = row['instID'].split('&');
+          const firstParts = parts[0].split('.');
+          if (firstParts.length >= 2) {
+            const prefix = firstParts.slice(0, 2).join('.'); // before second dot
+            row['instID'] = parts.map(p => {
+              if (p.startsWith(prefix + '.')) return p;
+              const tail = p.split('.').pop(); // last segment
+              return prefix + '.' + tail;
+            }).join('&');
+          }
+        }
+
+        if (row['attendingInstID'] && row['attendingInstID'].includes('&')) {
+          const parts = row['attendingInstID'].split('&');
+          const firstParts = parts[0].split('.');
+          if (firstParts.length >= 2) {
+            const prefix = firstParts.slice(0, 2).join('.');
+            row['attendingInstID'] = parts.map(p => {
+              if (p.startsWith(prefix + '.')) return p;
+              const tail = p.split('.').pop();
+              return prefix + '.' + tail;
+            }).join('&');
+          }
+        }
+
         if (row['instID'] && row['instYear']) {
           row['uniqueInstID'] = `${row['instYear']}_${row['instID']}`;
         } else {
