@@ -1,3 +1,5 @@
+<!-- Wide Display -->
+@if (!isMobile) {
 <div class="flex flex-row justify-start items-start">
 <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">
     Institutions Map
@@ -8,31 +10,10 @@
         <app-filter></app-filter>
     </div>
     <div class="w-full flex flex-col justify-around items-center relative">
-        <div style="flex-shrink: 0;">
-        <!--<google-map [options]="mapOptions" width = "1000px" height="600px">
-            @for (item of data; track item) {
-                <map-circle
-                    [center]="{lat: item.latitude, lng: item.longitude}"
-                    [radius]="300"
-                    [options]="{
-                        strokeColor: getCircleColor(item.instFunction),
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: getCircleColor(item.instFunction),
-                        fillOpacity: 0.8
-                    }"
-                    (circleClick)="clickMap(item)"
-                    (circleMouseover)="showInstDetail($event, item)"
-                    (circleMouseout)="hideInstDetail()"
-                ></map-circle>
-            }
-        </google-map> -->
-        <app-map [data]="data"
-            [options]="{
-                zoom: 4.4,
-                center: { lat: 39, lng: -98 },
-                size: { width: '1000px', height: '600px' },
-            }">
+        <div #instMap style="flex-shrink: 0;">
+        <app-map 
+            [data]="data"
+            [options]="mapOptions">
         </app-map>
         </div>
         <div class="absolute top-0 right-50 m-2" style="width: 300px; z-index: 1000;">
@@ -71,7 +52,7 @@
             }
             <div style="position: relative; z-index: 1001;">
             <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
-                <input value="{{year}}" (change)="getData()" [(ngModel)]="year" matSliderThumb >
+                <input value="{{year}}" (input)="year = $any($event.target).value; getData()" [(ngModel)]="year" matSliderThumb >
             </mat-slider>
             <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
                 <span>{{ yearMin }}</span>
@@ -81,16 +62,65 @@
             </div>
             </div>
         </div>
-        <!--
-        <div style="width:600px">
-            <mat-progress-bar mode="determinate" [value]="(year - yearMin) / (yearMax - yearMin) * 100"></mat-progress-bar>
-            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
-                <span>{{ yearMin }}</span>
-                <span>{{ (yearMin + yearMax) / 2 | number:'1.0-0' }}</span>
-                <span>{{ yearMax }}</span>
-            </div>
-        </div>
-        -->
         </div>
     </div>
 </div>
+</div>
+}
+
+<!-- Mobile Display -->
+@if (isMobile) {
+<div class="flex flex-row justify-start items-start">
+<div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">
+    Institutions Map
+</div>
+</div>
+<div class="flex flex-col w-full justify-start items-start mt-5">
+    <div style="width: 300px;" class="ml-3">
+        <app-filter></app-filter>
+    </div>
+    <div class="w-full flex flex-col justify-around items-center relative">
+        <div #instMap style="flex-shrink: 0;" class="my-5">
+        <app-map 
+            [data]="data"
+            [options]="mapOptions">
+        </app-map>
+        </div>
+        <div class="absolute top-0 right-50 m-2" style="width: 300px; z-index: 1000;">
+            <mat-card *ngIf="instDetailVisible">
+                <mat-card-content>
+                    <div>
+                        <b>Institution Name:</b> {{ instDetailData.instName }}
+                    </div>
+                    <div>
+                        <b>Institution Type:</b> {{ instDetailData.instType }}
+                    </div>
+                    <div>
+                        <b>Diocese:</b> {{ instDetailData.diocese }}
+                    </div>
+                    <div>
+                        <b>Year:</b> {{ instDetailData.year }}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+        <div>
+            <div class="flex flex-row justify-center items-center" >
+            <div style="position: relative; z-index: 1001;">
+            <mat-slider [style.width.px]="getSliderWidthMobile()" [min]="yearMin" [max]="yearMax" step="1" discrete>
+                <input value="{{year}}" (input)="year = $any($event.target).value; getData()" [(ngModel)]="year" matSliderThumb >
+            </mat-slider>
+            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
+                <span>{{ yearMin }}</span>
+                <span>{{ (yearMax - yearMin) / 3 + yearMin}}</span>
+                <span>{{ (yearMax - yearMin) / 3 * 2 + yearMin}}</span>
+                <span>{{ yearMax }}</span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+}

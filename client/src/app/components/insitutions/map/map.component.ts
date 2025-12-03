@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilterComponent } from '../../common/filter/filter.component';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +17,7 @@ import { ApiService } from '../../../services/api.service';
 import { FilterService } from '../../../services/filter.service';
 import { NavigationService } from '../../../services/navigation.service';
 import { HttpClient } from '@angular/common/http';
+import { A11yModule } from "@angular/cdk/a11y";
 
 interface FilterField {
     type: string;
@@ -33,14 +34,16 @@ interface FilterField {
 
 @Component({
   selector: 'app-institutions-map',
-  imports: [FilterComponent, MatCardModule, CommonModule, 
+  imports: [FilterComponent, MatCardModule, CommonModule,
     MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule,
-    MatProgressSpinnerModule, MatProgressBarModule, CommonMapComponent
-  ],
+    MatProgressSpinnerModule, MatProgressBarModule, CommonMapComponent, A11yModule],
   templateUrl: './map.component.html',
-  styleUrl: './map.component.scss'
+  styleUrl: './map.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent implements OnInit {
+
+  @ViewChild('instMap', {static: false}) private mapRef!: ElementRef<HTMLDivElement>;
 
   loading: boolean = true;
   data: any[] = [];
@@ -48,13 +51,13 @@ export class MapComponent implements OnInit {
   year: number = 1834;
   yearMin: number = 1834;
   yearMax: number = 1870;
+  isMobile: boolean = false;
 
-  mapOptions: google.maps.MapOptions = {
-    center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 4.5,
-    disableDefaultUI: true,
-    clickableIcons: false
-  };
+  mapOptions = {
+              zoom: 4.4,
+              center: { lat: 39, lng: -98 },
+              size: { width: '900px', height: '600px' },
+          }
 
   filterValues$!: Observable<any>; //! = can be null
   filterValues: any = {
@@ -72,7 +75,8 @@ export class MapComponent implements OnInit {
     private filterService: FilterService, 
     private _router:Router,
     private navigationService: NavigationService,
-    private http: HttpClient
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -97,7 +101,7 @@ export class MapComponent implements OnInit {
     if (this.navigationService.lastNavigationTrigger !== 'popstate') {
     this.filterService.clearFilters();
     this.filterService.setFields(this.filterFields);
-  }
+    };
     this.filterValues$ = this.filterService.filterValues$;
     this.filterValues$.subscribe(values => {
       this.filterValues = values;
@@ -113,8 +117,39 @@ export class MapComponent implements OnInit {
         this.isPlaying = false;
       }
     }, 2000);
-  }
+  };
   
+  ngAfterViewInit(): void {
+    this.isMobile = window.innerWidth <= 600;
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 600;
+      this.resizeMap();
+    });
+    this.resizeMap();
+    setTimeout(() => {
+      this.resizeMap();
+    }, 500);
+  };
+
+  resizeMap(): void {
+    //const mapElement = this.mapRef.nativeElement;
+    //console.log(mapElement);
+    const width = window.innerWidth;
+    const height = width * 0.6;
+    //console.log(`Resizing map to ${width}px x ${height}px`);
+    if (this.isMobile) {
+      this.mapOptions = {
+        ...this.mapOptions,
+        zoom: 2.5,
+        size: {
+          width: `${width}px`,
+          height: `${height}px`
+        }
+      }
+    }
+    this.getData();
+    this.cdr.markForCheck();
+  };
 
   getData() {
     
@@ -182,5 +217,9 @@ export class MapComponent implements OnInit {
 
   togglePlay () {
     this.isPlaying = !this.isPlaying;
+  };
+
+  getSliderWidthMobile(): number {
+    return parseInt(this.mapOptions.size.width) * 0.9;
   }
 }
