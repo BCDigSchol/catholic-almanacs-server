@@ -12,7 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { Location } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MapComponent } from '../../common/map/map.component';
+import { MapComponent } from '../../common/map-old/map.component';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -53,7 +53,7 @@ export class PersonDetailsComponent implements OnInit{
     this._api.getTypeRequest('person/' + this.itemId).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
-      //console.log(this.data);
+      console.log(this.data);
     });
   }
 
@@ -77,5 +77,16 @@ export class PersonDetailsComponent implements OnInit{
     } else {
       this._router.navigate(['/people']);
     }
-  }
+  };
+
+  getMapCenter() {
+    const validInstitution = this.data.allInstitutions?.find(
+      (inst: any) => inst.latitude != null && inst.longitude != null
+    );
+    //console.log('Valid institution for map center:', validInstitution);
+    return {
+      lat: validInstitution?.latitude || 40,
+      lng: validInstitution?.longitude || -100
+    };
+    }
 }

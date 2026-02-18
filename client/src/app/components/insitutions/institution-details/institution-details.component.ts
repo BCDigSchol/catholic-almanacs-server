@@ -15,7 +15,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MapComponent } from '../../common/map/map.component';
+import { MapComponent } from '../../common/map-old/map.component';
 
 import { ApiService } from '../../../services/api.service';
 

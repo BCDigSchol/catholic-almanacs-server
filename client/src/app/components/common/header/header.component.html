@@ -1,7 +1,7 @@
 <!-- Wide Display -->
  <div class="wide-display">
 @if (!isEmbedded) {
-    <div class="header flex flex-row justify-start w-full items-center p-4">
+    <div #headerRef class="header flex flex-row justify-start w-full items-center p-4">
         <div class="w-full text-sm md:text-2xl" [routerLink]="'/'" style="cursor: pointer; font-family:'Open Sans', sans-serif;">{{ title }}</div>
         <div>
             <button aria-label="Navigation Menu" style="cursor:pointer;" (click)="toggleNav()">
@@ -15,7 +15,7 @@
 <!-- Mobile Display -->
 <div class="mobile-display">
 @if (!isEmbedded) {
-    <div class="header flex flex-row justify-start w-full items-center p-4">
+    <div #headerRef class="header flex flex-row justify-start w-full items-center p-4">
         <div class="w-full text-sm md:text-2xl" [routerLink]="'/'" style="cursor: pointer; font-family:'Open Sans', sans-serif;">{{ title }}</div>
         <div>
             <button matButton [matMenuTriggerFor]="menu">

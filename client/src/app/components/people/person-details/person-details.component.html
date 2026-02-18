@@ -85,10 +85,7 @@
                         [data]="data.allInstitutions"
                         [options]="{
                             zoom:6, 
-                            center: {
-                                lat: (data.allInstitutions[0]?.latitude || 40), 
-                                lng: (data.allInstitutions[0]?.longitude || -100)
-                            },
+                            center: getMapCenter(),
                             size: {width: '400px', height: '250px'}
                         }">
                         </app-map>
@@ -98,10 +95,7 @@
                             [data]="data.allInstitutions"
                             [options]="{
                             zoom:6, 
-                            center: {
-                                lat: (data.allInstitutions[0]?.latitude || 40), 
-                                lng: (data.allInstitutions[0]?.longitude || -100)
-                            },
+                            center: getMapCenter(),
                             size: {width: '500px', height: '400px'}
                         }">
                         </app-map>
