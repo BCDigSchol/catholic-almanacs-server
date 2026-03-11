@@ -6,14 +6,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import { ActivatedRoute } from '@angular/router';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { Router } from '@angular/router';
 import { Settings } from '../../../app.settings';
 
 @Component({
   selector: 'app-header',
   imports: [
     MatToolbarModule, MatIconModule, MatButtonModule,
-    RouterLink, CommonModule
+    RouterLink, CommonModule, MatMenuModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -24,8 +25,34 @@ export class HeaderComponent implements OnInit {
   title = "Catholic Almanacs Database";
   isEmbedded = false;
 
-  constructor(private _route: ActivatedRoute){
+  navItems = [
+    {
+      name: 'Home',
+      route: ''
+    },
+    {
+      name: 'Institutions',
+      route: 'institutions'
+    },
+    {
+      name: 'People',
+      route: 'people'
+    },
+    {
+      name: 'Institutions Map',
+      route: 'institutions/map'
+    },
+    {
+      name: 'People Map',
+      route: 'people/map'
+    },
+    {
+      name: 'Dioceses Map',
+      route: 'dioceses/map'
+    },
+  ]
 
+  constructor(private _route: ActivatedRoute, private router: Router){
   }
 
   ngOnInit(): void {
@@ -38,5 +65,9 @@ export class HeaderComponent implements OnInit {
 
   toggleNav() {
     this.navMenuToggle.emit(true);
+  };
+
+  navigate(path: string) {
+    this.router.navigate([path]);
   }
 }

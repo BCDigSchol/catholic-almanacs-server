@@ -1,3 +1,5 @@
+<!-- Wide Display -->
+ <div class="wide-display">
 @if (!isEmbedded) {
     <div class="header flex flex-row justify-start w-full items-center p-4">
         <div class="w-full text-sm md:text-2xl" [routerLink]="'/'" style="cursor: pointer; font-family:'Open Sans', sans-serif;">{{ title }}</div>
@@ -8,3 +10,23 @@
         </div>
     </div>
 }
+</div>
+
+<!-- Mobile Display -->
+<div class="mobile-display">
+@if (!isEmbedded) {
+    <div class="header flex flex-row justify-start w-full items-center p-4">
+        <div class="w-full text-sm md:text-2xl" [routerLink]="'/'" style="cursor: pointer; font-family:'Open Sans', sans-serif;">{{ title }}</div>
+        <div>
+            <button matButton [matMenuTriggerFor]="menu">
+                <mat-icon fontIcon="menu"></mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                @for (item of navItems; track item) {
+                    <button mat-menu-item (click)="navigate(item.route)">{{ item.name }}</button>
+                }
+            </mat-menu>
+        </div>
+    </div>
+}
+</div>

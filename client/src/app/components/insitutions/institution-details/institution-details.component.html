@@ -17,7 +17,7 @@
                     <div class="table-body text-xs md:text-sm custom-font">
                         <div class="row">
                             <div class="cell">Institution ID</div>
-                            <div class="cell">{{data.instID}}</div>
+                            <div class="cell">{{data.instID.join(', ')}}</div>
                         </div>
                         <div class="row">
                             <div class="cell">Institution Type</div>
@@ -203,21 +203,17 @@
                     </div>
                 </div>
                 <div class="w-full flex flex-col justify-center items-center">
-                    <div class="w-full text-center flex justify-center mb-2">
-                        <span class="italic text-gray-500 text-sm" style="font-family:'Open Sans', sans-serif">Map in development, the warning message is temporary</span>
-                    </div>
                     <div class="map-container w-full md:!hidden flex justify-center items-center">
                         <!--<google-map [options]="mapOptionsSmall" width="400px" height="250px">
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
                         </google-map> -->
-                        <app-map [data]="data" 
-                            [markerMode]="'icon'"
+                        <app-map [data]="data"
                             [options]="{
                             zoom:6, 
                             center: {
-                                lat: data.latitude || 30, 
-                                lng: data.longitude || -80
+                                lat: data.latitude || 40, 
+                                lng: data.longitude || -100
                             },
                             size: {width: '400px', height: '250px'}
                         }">
@@ -228,13 +224,12 @@
                             <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
                             </map-marker>
                         </google-map>-->
-                        <app-map [data]="data" 
-                            [markerMode]="'icon'"
+                        <app-map [data]="data"
                             [options]="{
                             zoom:6, 
                             center: {
-                                lat: data.latitude || 30, 
-                                lng: data.longitude || -80
+                                lat: data.latitude || 40, 
+                                lng: data.longitude || -100
                             },
                             size: {width: '500px', height: '400px'}
                         }">

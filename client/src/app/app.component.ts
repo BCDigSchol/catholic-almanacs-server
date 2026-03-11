@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   navMenuToggled: boolean = false;
   isDarkTheme$: Observable<boolean> = new Observable<boolean>();
   isDarkTheme: boolean = false;
-
+  isMobile: boolean = false;
   constructor (
     private router: Router,
     private navigationService: NavigationService,
@@ -42,6 +42,9 @@ export class AppComponent implements OnInit {
     this.isDarkTheme$.subscribe(values => {
       this.isDarkTheme = values;
     })
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 600;
+    });
   };
 
   toggleNavMenu() {

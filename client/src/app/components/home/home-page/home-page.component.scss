@@ -13,3 +13,43 @@
 :host custom-font {
   font-family: 'Open Sans', sans-serif;
 }
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 2/1;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.image-container .bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.4;
+}
+
+.image-container .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.image-container .caption {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -50%); /* centered and scales with image */
+  color: #f0f0f0;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 12px;
+  text-align: center;
+}
