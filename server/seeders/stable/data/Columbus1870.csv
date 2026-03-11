@@ -80,7 +80,7 @@
 ﻿col.oh.0074,﻿church,﻿St. John Baptist's,English,,﻿Union Township,,,﻿Washington County,,﻿Watertown Township,﻿OH,,39.469444,-81.607778,,,,﻿l_r_schnieder_001,﻿Rev.,﻿L. R. Schnieder,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0075,﻿church,﻿Ave Maria,English,,﻿Union Township,,,﻿Washington County,,,﻿OH,,39.49627,-81.56632,﻿col.oh.0074,﻿Attended from St. John's,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0076,﻿church,not recorded,English,,,,,﻿Tuscarawas County,﻿Urichsville,﻿Uhrichsville,﻿OH,,40.3931218,-81.3464998,﻿col.oh.0015,﻿Attended from Canal Dover,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0077,﻿church,﻿St. Mary's,English,,,,,﻿Coshocton County,﻿Wills Creek,﻿Wills Creek,﻿OH,,40.1800711,-81.8506861,﻿col.oh.0021,﻿Attended from Coshocton,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0077,﻿church,﻿St. Mary's,English,,,,,﻿Coshocton County,﻿Wills Creek,﻿Wills Creek,﻿OH,,40.2008197,-81.76398718,﻿col.oh.0021,﻿Attended from Coshocton,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0078,﻿church,﻿St. Nicholas',English,,,,,﻿Coshocton County,﻿Wills Creek,﻿Wills Creek,﻿OH,,40.1800711,-81.8506861,﻿col.oh.0021,﻿Attended from Coshocton,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0079,﻿church,not recorded,English,,,,,﻿Monroe County,﻿Wills Creek,﻿Burkhart,﻿OH,,39.7889388,-81.26233964,﻿col.oh.0052,﻿Attended from Miltonsburg,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0080,﻿church,﻿St. Silvester's,English,,,,,﻿Monroe County,﻿Woodsfield,﻿Woodsfield,﻿OH,,39.7567864,-81.1187053,﻿col.oh.0052,﻿Attended from Miltonsburg,,,,,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
@@ -90,39 +90,39 @@
 ﻿col.oh.0084,﻿church,﻿St. Thomas',English,,,,,﻿Muskingum County,﻿Zanesville,﻿Zanesville,﻿OH,,39.94275267,-82.00605809,,,,﻿b_a_brady_001,﻿Rev.,﻿B. A. Brady,﻿O.P.,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0084,﻿church,﻿St. Thomas',English,,,,,﻿Muskingum County,﻿Zanesville,﻿Zanesville,﻿OH,,39.94275267,-82.00605809,,,,﻿t_j_cady_001,﻿Rev.,﻿T. J. Cady,﻿O.P.,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0085,﻿church,﻿St. Nicholas,English,,,,,﻿Muskingum County,﻿Zanesville,﻿Zanesville,﻿OH,,39.94011197,-82.00108681,,,,﻿mag_eppink_001,﻿Rev.,﻿Magnus Eppink,,,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿f_j_dunn_001,﻿Very Rev.,﻿F. J. Dunn,﻿O.P.,﻿Prior,,﻿brothers,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿vin_keogh_001,﻿Rev.,﻿Vincent Keogh,﻿O.P.,﻿Sub-Prior,,﻿brothers,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿d_sheehy_001,﻿Rev.,﻿D. Sheehy,﻿O.P.,﻿Pastor of St. Patrick's,,﻿brothers,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿leo_adams_001,﻿Rev.,﻿Leo Adams,﻿O.P.,"﻿Pastor of St. Rose's, Lexington",,﻿brothers,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿j_s_collins_001,﻿Rev.,﻿J. S. Collins,﻿O.P.,﻿Pastor of St. Dominic's,,﻿brothers,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿mf_mcgrath_001,﻿Rev.,﻿M.F. McGrath,﻿O.P.,,,﻿brothers,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,﻿Columbus,﻿OH,,39.99078955,-82.94182926,,,,,﻿Mother,﻿Rose,,﻿Superior,,﻿sisters,﻿Sisters of St. Dominic,﻿Conducted by the Sisters of St. Dominic,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,﻿Columbus,﻿OH,,39.99078955,-82.94182926,,,,,,,,,,﻿sisters,﻿26 Sisters,﻿Conducted by the Sisters of St. Dominic,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,﻿Columbus,﻿OH,,39.99078955,-82.94182926,,,,,,,,,,﻿pupils,﻿80 pupils,﻿Conducted by the Sisters of St. Dominic,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿f_j_dunn_001,﻿Very Rev.,﻿F. J. Dunn,﻿O.P.,﻿Prior,,﻿religious,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿vin_keogh_001,﻿Rev.,﻿Vincent Keogh,﻿O.P.,﻿Sub-Prior,,﻿religious,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿d_sheehy_001,﻿Rev.,﻿D. Sheehy,﻿O.P.,﻿Pastor of St. Patrick's,,﻿religious,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿leo_adams_001,﻿Rev.,﻿Leo Adams,﻿O.P.,"﻿Pastor of St. Rose's, Lexington",,﻿religious,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿j_s_collins_001,﻿Rev.,﻿J. S. Collins,﻿O.P.,﻿Pastor of St. Dominic's,,﻿religious,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,﻿St. Joseph's,,,﻿Perry County,﻿Perry County,﻿St. Joseph's,﻿Somerset,﻿OH,,39.7774325,-82.27578235,,,,﻿mf_mcgrath_001,﻿Rev.,﻿M.F. McGrath,﻿O.P.,,,﻿religious,﻿Eleven lay-brothers,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,﻿Columbus,﻿OH,,39.99078955,-82.94182926,,,,,﻿Mother,﻿Rose,,﻿Superior,,﻿religious,﻿Sisters of St. Dominic,﻿Conducted by the Sisters of St. Dominic,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,﻿Columbus,﻿OH,,39.99078955,-82.94182926,,,,,,,,,,﻿religious,﻿26 Sisters,﻿Conducted by the Sisters of St. Dominic,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,﻿Columbus,﻿OH,,39.99078955,-82.94182926,,,,,,,,,,﻿student,﻿80 pupils,﻿Conducted by the Sisters of St. Dominic,,1870,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0088,﻿convent,﻿Convent of the Sisters of the Good Shepherd,English,,﻿near Columbus,,,,﻿Franklin,﻿Columbus,﻿OH,,39.95991892,-83.01858317,,,,,﻿Sister,﻿Gertrude,,﻿Superior,,,,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,﻿Columbus,﻿OH,,39.960991,-82.99150849,,,,,﻿Sister,﻿Desideria,,﻿Superior,,﻿sisters,﻿Franciscan Sisters of the Poor,﻿Franciscan Sisters of the Poor,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,﻿Columbus,﻿OH,,39.960991,-82.99150849,,,,﻿b_hillebrand_001,﻿Rev.,﻿B. Hillebrand,,﻿Chaplain,,﻿sisters,﻿14 Sisters,﻿Franciscan Sisters of the Poor,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0001_02,﻿school,﻿St. Patrick's Schools,English,﻿for boys,,,,,﻿Columbus,﻿Columbus,﻿OH,,40.4172871,-82.907123,,,,,,,,,,﻿pupils,﻿240 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0001_03,﻿school,﻿St. Patrick's Schools,English,﻿for girls,,,,,﻿Columbus,﻿Columbus,﻿OH,,39.9611755,-82.9987942,,,,,,,,,,﻿pupils,﻿230 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0002_02,﻿school,﻿Holy Cross Parish Schools,English,﻿for boys and girls,,,,,﻿Columbus,﻿Columbus,﻿OH,,39.958679,-82.9932661,,,,,,,,,,﻿pupils,﻿400 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0003_02,﻿school,﻿St. Mary's,English,﻿for boys and girls,,,,,﻿Columbus,﻿Columbus,﻿OH,,39.94868908,-82.99478272,,,,,,,,,,﻿pupils,﻿150 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0084_02,﻿school,﻿St. Thomas Aquinas' Parish Schools,English,﻿boys and girls,,,,,﻿Zanesville,﻿Zanesville,﻿OH,,39.94275267,-82.00605809,,,,,,,,,,﻿pupils,﻿350 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0085_02,﻿school,﻿St. Nicholas',English,﻿boys and girls,,,,,﻿Zanesville,﻿Zanesville,﻿OH,,39.94011197,-82.00108681,,,,,,,,,,﻿pupils,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0056_02,﻿school,﻿St. Francis de Sales',English,﻿boys,,,,,﻿Newark,﻿Newark,﻿OH,,40.0603286,-82.4089924,,,,,,,,,,﻿sisters,﻿Sisters of Charity,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0056_02,﻿school,﻿St. Francis de Sales',English,﻿boys,,,,,﻿Newark,﻿Newark,﻿OH,,40.0603286,-82.4089924,,,,,,,,,,﻿pupils,﻿200 pupils,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0040_02,﻿school,﻿St. Mary's,English,,,,,,﻿Lancaster,﻿Lancaster,﻿OH,,39.71292775,-82.59886892,,,,,,,,,,﻿pupils,﻿250 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0025_02,﻿school,﻿St. Mary's,English,,,,,,﻿Delaware,﻿Delaware,﻿OH,,40.29812878,-83.06479832,,,,,,,,,,﻿pupils,﻿150 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0064_02,﻿school,﻿St. Peter's,English,,,,,,﻿Steubenville,﻿Steubenville,﻿OH,,40.36551147,-80.61279014,,,,,,,,,,﻿sisters,﻿Sisters of Charity,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0064_02,﻿school,﻿St. Peter's,English,,,,,,﻿Steubenville,﻿Steubenville,﻿OH,,40.36551147,-80.61279014,,,,,,,,,,﻿pupils,﻿300 pupils,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0037_02,﻿school,﻿St. Lawrence's,English,,,,,,﻿Ironton,﻿Ironton,﻿OH,,38.53763519,-82.68256214,,,,,,,,,,﻿pupils,﻿90 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0038_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Ironton,﻿Ironton,﻿OH,,38.52978363,-82.67757884,,,,,,,,,,﻿pupils,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0019_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Circleville,﻿Circleville,﻿OH,,39.60047146,-82.94745204,,,,,,,,,,﻿pupils,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0062_02,﻿school,﻿Holy Redeemer,English,,,,,,﻿Portsmouth,﻿Portsmouth,﻿OH,,38.73580037,-82.98636858,,,,,,,,,,﻿pupils,﻿90 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0058_02,﻿school,﻿St. Mary's,English,,,,,,﻿Pine Grove,﻿Pine Grove,﻿OH,,38.61184718,-82.68360433,,,,,,,,,,﻿pupils,﻿75 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0010_02,﻿school,﻿St. Mary's,English,,,,,,﻿Beaver,﻿Beaver Township,﻿OH,,39.90673255,-81.22973797,,,,,,,,,,﻿pupils,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0059_02,﻿school,﻿Sacred Heart,English,,,,,,﻿Pomeroy,﻿Pomeroy,﻿OH,,39.02976092,-82.03717995,,,,,,,,,,﻿pupils,﻿180 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0015_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Canal Dover,﻿Dover,﻿OH,,40.52369464,-81.48331346,,,,,,,,,,﻿pupils,﻿75 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0108,﻿school,﻿St. Peter's,English,,,,﻿Tuscarawas County,,,,﻿OH,,40.52369464,-81.48331346,,,,,,,,,,﻿pupils,﻿40 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0042_02,﻿school,﻿St. Peter's,English,,,,,,﻿Lick Run,﻿Nile Township,﻿OH,,38.71168073,-83.17234727,,,,,,,,,,﻿pupils,﻿— pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0052_02,﻿school,﻿St. John's,English,,,,,,﻿Miltonsburg,﻿Miltonsburg,﻿OH,,39.83721073,-81.17577083,,,,,,,,,,﻿pupils,﻿40 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0111,﻿school,﻿St. Joseph's,English,,,,﻿Coschocton County,,﻿Wills Creek,﻿Wills Creek,﻿OH,,39.7889388,-81.26233964,,,,,,,,,,﻿pupils,﻿40 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,﻿Columbus,﻿OH,,39.960991,-82.99150849,,,,,﻿Sister,﻿Desideria,,﻿Superior,,﻿religious,﻿Franciscan Sisters of the Poor,﻿Franciscan Sisters of the Poor,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,﻿Columbus,﻿OH,,39.960991,-82.99150849,,,,﻿b_hillebrand_001,﻿Rev.,﻿B. Hillebrand,,﻿Chaplain,,﻿religious,﻿14 Sisters,﻿Franciscan Sisters of the Poor,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0001_02,﻿school,﻿St. Patrick's Schools,English,﻿for boys,,,,,﻿Columbus,﻿Columbus,﻿OH,,40.4172871,-82.907123,,,,,,,,,,﻿student,﻿240 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0001_03,﻿school,﻿St. Patrick's Schools,English,﻿for girls,,,,,﻿Columbus,﻿Columbus,﻿OH,,39.9611755,-82.9987942,,,,,,,,,,﻿student,﻿230 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0002_02,﻿school,﻿Holy Cross Parish Schools,English,﻿for boys and girls,,,,,﻿Columbus,﻿Columbus,﻿OH,,39.958679,-82.9932661,,,,,,,,,,﻿student,﻿400 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0003_02,﻿school,﻿St. Mary's,English,﻿for boys and girls,,,,,﻿Columbus,﻿Columbus,﻿OH,,39.94868908,-82.99478272,,,,,,,,,,﻿student,﻿150 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0084_02,﻿school,﻿St. Thomas Aquinas' Parish Schools,English,﻿boys and girls,,,,,﻿Zanesville,﻿Zanesville,﻿OH,,39.94275267,-82.00605809,,,,,,,,,,﻿student,﻿350 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0085_02,﻿school,﻿St. Nicholas',English,﻿boys and girls,,,,,﻿Zanesville,﻿Zanesville,﻿OH,,39.94011197,-82.00108681,,,,,,,,,,﻿student,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0056_02,﻿school,﻿St. Francis de Sales',English,﻿boys,,,,,﻿Newark,﻿Newark,﻿OH,,40.0603286,-82.4089924,,,,,,,,,,﻿religious,﻿Sisters of Charity,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0056_02,﻿school,﻿St. Francis de Sales',English,﻿boys,,,,,﻿Newark,﻿Newark,﻿OH,,40.0603286,-82.4089924,,,,,,,,,,﻿student,﻿200 pupils,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0040_02,﻿school,﻿St. Mary's,English,,,,,,﻿Lancaster,﻿Lancaster,﻿OH,,39.71292775,-82.59886892,,,,,,,,,,﻿student,﻿250 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0025_02,﻿school,﻿St. Mary's,English,,,,,,﻿Delaware,﻿Delaware,﻿OH,,40.29812878,-83.06479832,,,,,,,,,,﻿student,﻿150 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0064_02,﻿school,﻿St. Peter's,English,,,,,,﻿Steubenville,﻿Steubenville,﻿OH,,40.36551147,-80.61279014,,,,,,,,,,﻿religious,﻿Sisters of Charity,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0064_02,﻿school,﻿St. Peter's,English,,,,,,﻿Steubenville,﻿Steubenville,﻿OH,,40.36551147,-80.61279014,,,,,,,,,,﻿student,﻿300 pupils,﻿Sisters of Charity,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0037_02,﻿school,﻿St. Lawrence's,English,,,,,,﻿Ironton,﻿Ironton,﻿OH,,38.53763519,-82.68256214,,,,,,,,,,﻿student,﻿90 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0038_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Ironton,﻿Ironton,﻿OH,,38.52978363,-82.67757884,,,,,,,,,,﻿student,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0019_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Circleville,﻿Circleville,﻿OH,,39.60047146,-82.94745204,,,,,,,,,,﻿student,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0062_02,﻿school,﻿Holy Redeemer,English,,,,,,﻿Portsmouth,﻿Portsmouth,﻿OH,,38.73580037,-82.98636858,,,,,,,,,,﻿student,﻿90 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0058_02,﻿school,﻿St. Mary's,English,,,,,,﻿Pine Grove,﻿Pine Grove,﻿OH,,38.61184718,-82.68360433,,,,,,,,,,﻿student,﻿75 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0010_02,﻿school,﻿St. Mary's,English,,,,,,﻿Beaver,﻿Beaver Township,﻿OH,,39.90673255,-81.22973797,,,,,,,,,,﻿student,﻿100 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0059_02,﻿school,﻿Sacred Heart,English,,,,,,﻿Pomeroy,﻿Pomeroy,﻿OH,,39.02976092,-82.03717995,,,,,,,,,,﻿student,﻿180 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0015_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Canal Dover,﻿Dover,﻿OH,,40.52369464,-81.48331346,,,,,,,,,,﻿student,﻿75 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0108,﻿school,﻿St. Peter's,English,,,,﻿Tuscarawas County,,,,﻿OH,,,,,,,,,,,,,﻿student,﻿40 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0042_02,﻿school,﻿St. Peter's,English,,,,,,﻿Lick Run,﻿Nile Township,﻿OH,,38.71168073,-83.17234727,,,,,,,,,,﻿student,﻿— pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0052_02,﻿school,﻿St. John's,English,,,,,,﻿Miltonsburg,﻿Miltonsburg,﻿OH,,39.83721073,-81.17577083,,,,,,,,,,﻿student,﻿40 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0111,﻿school,﻿St. Joseph's,English,,,,﻿Coschocton County,,﻿Wills Creek,﻿Wills Creek,﻿OH,,39.7889388,-81.26233964,,,,,,,,,,﻿student,﻿40 pupils,,,1870,﻿,﻿,﻿Columbus,Columbus

@@ -10,7 +10,7 @@
 ﻿bur.vt.0012,﻿church,﻿St. Michael's,English,,,,﻿Windham County,,﻿Brattleboro',,﻿VT,,42.8560077,-72.5580309,,,,﻿cha_oreilly_001,﻿Rev.,﻿Chas. O'Reilly,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0014,﻿church,not recorded,English,,,,﻿Rutland County,,﻿Castleton,,﻿VT,,43.6106223,-73.179832,﻿bur.vt.0047,﻿Attended from West Rutland,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0015,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Chittenden County,,﻿Charlotte,,﻿VT,,44.317348,-73.188774,﻿bur.vt.0001,﻿Attended from Burlington,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0070,﻿church,﻿St. Jerome's,English,,,,﻿Bennington County,,﻿Dorset,,﻿VT,,44.317348,-73.188774,﻿bur.vt.0010,﻿Attended from East Bennington,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0070,﻿church,﻿St. Jerome's,English,,,,﻿Bennington County,,﻿Dorset,,﻿VT,,,,﻿bur.vt.0010,﻿Attended from East Bennington,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0018,﻿church,not recorded,English,,,,﻿Lamoille County,,﻿Eden,,﻿VT,,44.7072718,-72.5456691,﻿bur.vt.0021,﻿Attended from Fairfield,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0020,﻿church,not recorded,English,,,,﻿Franklin County,,﻿Fairfax,,﻿VT,,44.6654963,-73.01032,﻿bur.vt.0052,﻿Attended from St. Alban's,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0021,﻿church,﻿St. Patrick's,English,,,,﻿Franklin County,,﻿Fairfield,,﻿VT,,44.8036839,-72.946899,,,,﻿j_m_dugluè_001,﻿Rev.,﻿Joseph Duglué,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
@@ -44,6 +44,6 @@
 ﻿bur.vt.0058,﻿church,not recorded,English,,,,﻿Windsor County,﻿Windsor County,﻿White River Junction,﻿White River Junction,﻿VT,,43.6489596,-72.3192579,﻿bur.vt.0012,﻿Attended from Brattleboro',,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0059,﻿church,not recorded,English,,,,﻿Chittenden County,﻿Chittenden County,﻿Williston,﻿Williston,﻿VT,,44.4496023,-73.1109997,﻿bur.vt.0001,﻿Visited from Burlington,,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0060,﻿church,not recorded,English,,,,﻿Windsor County,﻿Windsor County,﻿Windsor,﻿Windsor,﻿VT,,43.4799996,-72.3865679,﻿bur.vt.0012,﻿Attended from Brattleboro',,,,,,,,,,,,1864,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,"﻿asylum, academy",﻿Orphan Asylum and Academy of St. Joseph,English,,,,,,﻿Burlington,,﻿VT,,44.4878339,-73.2026855,,,,,﻿Sister,﻿Therese of Jesus,,﻿Sister-servant,,﻿sister,﻿9 sisters,﻿Sisters of Providence,,1864,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,"﻿asylum, academy",﻿Orphan Asylum and Academy of St. Joseph,English,,,,,,﻿Burlington,,﻿VT,,44.4878339,-73.2026855,,,,,,,,,,﻿pupil,﻿150 pupils,﻿Sisters of Providence,,1864,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,"﻿asylum, academy",﻿Orphan Asylum and Academy of St. Joseph,English,,,,,,﻿Burlington,,﻿VT,,44.4878339,-73.2026855,,,,,,,,,,﻿orphan,﻿70 orphans,﻿Sisters of Providence,,1864,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,"﻿asylum, academy",﻿Orphan Asylum and Academy of St. Joseph,English,,,,,,﻿Burlington,,﻿VT,,44.4878339,-73.2026855,,,,,﻿Sister,﻿Therese of Jesus,,﻿Sister-servant,,﻿religious,﻿9 sisters,﻿Sisters of Providence,,1864,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,"﻿asylum, academy",﻿Orphan Asylum and Academy of St. Joseph,English,,,,,,﻿Burlington,,﻿VT,,44.4878339,-73.2026855,,,,,,,,,,﻿student,﻿150 pupils,﻿Sisters of Providence,,1864,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,"﻿asylum, academy",﻿Orphan Asylum and Academy of St. Joseph,English,,,,,,﻿Burlington,,﻿VT,,44.4878339,-73.2026855,,,,,,,,,,﻿child,﻿70 orphans,﻿Sisters of Providence,,1864,﻿,﻿,﻿Burlington,Burlington

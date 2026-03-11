@@ -1,5 +1,5 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
-﻿kc.ks.0001,﻿cathedral,﻿Church of the Immaculate Conception,English,,,,,﻿Leavenworth County,﻿Leavenworth,﻿Leavenworth,﻿KS,,39.3247304,-94.9170115,,,,﻿jb_miege_001,﻿Rt. Rev.,﻿J.B. Miege,"﻿S.J., D.D.",,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0001,﻿cathedral,﻿Church of the Immaculate Conception,English,,,,,﻿Leavenworth County,﻿Leavenworth,﻿Leavenworth,﻿KS,,39.3247304,-94.9170115,,,,﻿j_b_miege_001,﻿Rt. Rev.,﻿J. B. Miege,"﻿S.J., D.D.",,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0001,﻿cathedral,﻿Church of the Immaculate Conception,English,,,,,﻿Leavenworth County,﻿Leavenworth,﻿Leavenworth,﻿KS,,39.3247304,-94.9170115,,,,﻿mic_corbett_001,﻿Rev.,﻿Michael Corbett,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0001,﻿cathedral,﻿Church of the Immaculate Conception,English,,,,,﻿Leavenworth County,﻿Leavenworth,﻿Leavenworth,﻿KS,,39.3247304,-94.9170115,,,,﻿alo_laigneil_001,﻿Rev.,﻿Aloysius Laigneil,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0001,﻿cathedral,﻿Church of the Immaculate Conception,English,,,,,﻿Leavenworth County,﻿Leavenworth,﻿Leavenworth,﻿KS,,39.3247304,-94.9170115,,,,﻿tho_a_butler_001,﻿Rev.,﻿Thos. Ambrose Butler,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
@@ -48,7 +48,7 @@
 ﻿kc.ks.0037,﻿church,not recorded,English,,,,﻿Riley County,﻿Riley / Geary  County,﻿Fort Riley,﻿Fort Riley,﻿KS,,39.088346,-96.813939,﻿kc.ks.0035,﻿Attended from Junction,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0038,﻿church,﻿St. John the Evangelist's,English,,,,﻿Douglas County,﻿Douglas County,﻿Lawrence,﻿Lawrence,﻿KS,,38.9606013,-95.2378022,,,,﻿joh_cunningham_002,﻿Rev.,﻿John Cunningham,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0039,﻿mission,﻿St. Francis de Hieronymo,English,,﻿Osage Mission (Indian),,﻿Neosho County,﻿Neosho County,,﻿St. Paul,﻿KS,,37.5165768,-95.1635056,,,,﻿joh_schoenmakers_001,﻿Rev.,﻿John Schoenmakers,﻿S.J.,﻿Superior,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0039,﻿mission,﻿St. Francis de Hieronymo,English,,﻿Osage Mission (Indian),,﻿Neosho County,﻿Neosho County,,﻿St. Paul,﻿KS,,37.5165768,-95.1635056,,,,﻿pm_ponziglione_001,﻿Rev.,﻿P.M. Ponziglione,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0039,﻿mission,﻿St. Francis de Hieronymo,English,,﻿Osage Mission (Indian),,﻿Neosho County,﻿Neosho County,,﻿St. Paul,﻿KS,,37.5165768,-95.1635056,,,,﻿p_m_ponziglione_001,﻿Rev.,﻿P. M. Ponziglione,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0039,﻿mission,﻿St. Francis de Hieronymo,English,,﻿Osage Mission (Indian),,﻿Neosho County,﻿Neosho County,,﻿St. Paul,﻿KS,,37.5165768,-95.1635056,,,,﻿phi_colleton_001,﻿Rev.,﻿Philip Colleton,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0040,﻿church,not recorded,English,,,,﻿Cherokee County,﻿Cherokee County,﻿Baxter's Springs,﻿Baxter Springs,﻿KS,,37.1142482,-94.8105955,﻿kc.ks.0039,﻿Attended from Osage Mission,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0041,﻿church,not recorded,English,,,,﻿Labete County,﻿Labette County,﻿Montana,﻿Montana,﻿KS,,37.2753392,-95.1241339,﻿kc.ks.0039,﻿Attended from Osage Mission,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
@@ -56,11 +56,11 @@
 ﻿kc.ks.0043,﻿church,not recorded,English,,,,﻿Labete County,﻿Labette  County,﻿Oswego,﻿Oswego,﻿KS,,37.1675652,-95.1099645,﻿kc.ks.0039,﻿Attended from Osage Mission,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0044,﻿church,not recorded,English,,,,﻿Woodson County,﻿Woodson County,﻿Pleasant Grove,﻿Toronto,﻿KS,,37.7989253,-95.9491562,﻿kc.ks.0039,﻿Attended from Osage Mission,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0045,﻿church,not recorded,English,,,,,﻿Montgomery County,﻿Settlement on the Verdigris,﻿Coffeyville,﻿KS,,37.0373005,-95.6163665,﻿kc.ks.0039,﻿Attended from Osage Mission,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0046,﻿church,﻿Trinity Church,English,,,,﻿Miami County,﻿Miami County,﻿Paola,﻿Paola,﻿KS,,38.6638392,-94.8503741,,,,﻿tj_wattron_001,﻿Rev.,﻿T.J. Wattron,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0046,﻿church,﻿Trinity Church,English,,,,﻿Miami County,﻿Miami County,﻿Paola,﻿Paola,﻿KS,,38.6638392,-94.8503741,,,,﻿t_j_wattron_001,﻿Rev.,﻿T. J. Wattron,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0047,﻿church,not recorded,English,,,,﻿Johnson County,﻿Johnson County,﻿Bull Creek,﻿Edgerton,﻿KS,,38.7647302,-95.0080224,﻿kc.ks.0046,﻿Attended from Paola,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0048,﻿church,﻿Church of St. Columbkille,English,,,,﻿Miami County,﻿Miami County,﻿Osawatomie,﻿Osawatomie,﻿KS,,38.4972372,-94.9505207,﻿kc.ks.0046,﻿Attended from Paola,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0049,﻿church,not recorded,English,,,,﻿Miami County,﻿Miami County,﻿Wea Creek,﻿Paola,﻿KS,,39.05587,-95.77884,﻿kc.ks.0046,﻿Attended from Paola,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0050,﻿church,﻿Saint Mary's,English,,﻿Potawatamie Mission,,﻿Potawatamie County,﻿Pottawatomie County,,﻿St. Marys,﻿KS,,39.194164,-96.0711041,,,,﻿jf_diels_001,﻿Rev.,﻿J.F. Diels,﻿S.J.,﻿Superior,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0050,﻿church,﻿Saint Mary's,English,,﻿Potawatamie Mission,,﻿Potawatamie County,﻿Pottawatomie County,,﻿St. Marys,﻿KS,,39.194164,-96.0711041,,,,﻿j_f_diels_001,﻿Rev.,﻿J. F. Diels,﻿S.J.,﻿Superior,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0050,﻿church,﻿Saint Mary's,English,,﻿Potawatamie Mission,,﻿Potawatamie County,﻿Pottawatomie County,,﻿St. Marys,﻿KS,,39.194164,-96.0711041,,,,﻿m_gailand_001,﻿Rev.,﻿M. Gailand,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0050,﻿church,﻿Saint Mary's,English,,﻿Potawatamie Mission,,﻿Potawatamie County,﻿Pottawatomie County,,﻿St. Marys,﻿KS,,39.194164,-96.0711041,,,,﻿j_sweere_001,﻿Rev.,﻿J. Sweere,﻿S.J.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0050,﻿church,﻿Saint Mary's,English,,﻿Potawatamie Mission,,﻿Potawatamie County,﻿Pottawatomie County,,﻿St. Marys,﻿KS,,39.194164,-96.0711041,,,,﻿jos_rimmele_001,﻿Rev.,﻿Joseph Rimmele,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
@@ -85,7 +85,7 @@
 ﻿kc.ks.0069,﻿church,not recorded,English,,,,,﻿Ellsworth County,﻿Fort Harker,﻿Kanopolis,﻿KS,,38.7111197,-98.1572769,﻿kc.ks.0065,﻿Attended from Solomon,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0070,﻿church,not recorded,English,,,,,﻿Saline County,﻿Salina,﻿Salina,﻿KS,,38.8402805,-97.6114237,﻿kc.ks.0065,﻿Attended from Solomon,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0071,﻿church,﻿Church of the Assumption,English,,,,﻿Shawnee County,﻿Shawnee County,﻿Topeka,﻿Topeka,﻿KS,,39.0473451,-95.6751576,,,,﻿jam_h_defouri_001,﻿Rev.,﻿James H. Defouri,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0071,﻿church,﻿Church of the Assumption,English,,,,﻿Shawnee County,﻿Shawnee County,﻿Topeka,﻿Topeka,﻿KS,,39.0473451,-95.6751576,,,,﻿jb_favre_001,﻿Rev.,﻿J.B. Favre,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0071,﻿church,﻿Church of the Assumption,English,,,,﻿Shawnee County,﻿Shawnee County,﻿Topeka,﻿Topeka,﻿KS,,39.0473451,-95.6751576,,,,﻿j_b_favre_001,﻿Rev.,﻿J. B. Favre,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0072,﻿church,not recorded,English,,,,﻿Jefferson County,﻿Jefferson County,﻿Indian Mills,﻿Thompsonville,﻿KS,,39.103794,-95.433922,﻿kc.ks.0071,﻿Attended from Topeka,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0073,﻿church,not recorded,English,,,,﻿Jefferson County,﻿Jefferson County,﻿Osaukee,﻿Ozawkie,﻿KS,,39.2333317,-95.4669194,﻿kc.ks.0071,﻿Attended from Topeka,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0074,﻿church,not recorded,English,,,,﻿Shawnee County,﻿Osage  County,﻿Ridgeway,﻿Ridgeway Township,﻿KS,,38.8296301,-95.6668306,﻿kc.ks.0071,﻿Attended from Topeka,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
@@ -94,15 +94,15 @@
 ﻿kc.ks.0077,﻿church,not recorded,English,,,,﻿Osage County,﻿Osage County,﻿One Hundred and Ten,,﻿KS,,38.6265488,-95.52398517,﻿kc.ks.0071,﻿Attended from Topeka,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0078,﻿church,not recorded,English,,,,﻿Jefferson County,﻿Jefferson County,﻿Newman,﻿Newman,﻿KS,,39.2827652,-95.3102505,﻿kc.ks.0071,﻿Attended from Topeka,,,,,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0079,﻿church,﻿Church of the Mother of God,English,,,,﻿Wyandotte County,﻿Wyandotte County,﻿Wyandotte,﻿Kansas City,﻿KS,,39.1155314,-94.6267873,,,,﻿a_kuhls_001,﻿Rev.,﻿A. Kuhls,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0080,﻿college,﻿Saint Benedict's College,English,,,,,,,﻿Atchison,﻿KS,,39.1155314,-94.6267873,,,,﻿lew_m_fink_001,﻿Very Rev.,﻿Lewis M. Fink,﻿O.S.B.,﻿President,,,,﻿under the charge of the Benedictine Fathers,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0081,"﻿college, seminary",not recorded,English,,,,,,,﻿Topeka,﻿KS,,39.1155314,-94.6267873,,,,﻿jh_defouri_001,﻿Rev.,﻿J.H. Defouri,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0081,"﻿college, seminary",not recorded,English,,,,,,,﻿Topeka,﻿KS,,39.1155314,-94.6267873,,,,﻿jb_favre_001,﻿Rev.,﻿J.B. Favre,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0080,﻿college,﻿Saint Benedict's College,English,,,,,,,﻿Atchison,﻿KS,,,,,,,﻿lew_m_fink_001,﻿Very Rev.,﻿Lewis M. Fink,﻿O.S.B.,﻿President,,,,﻿under the charge of the Benedictine Fathers,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0081,"﻿college, seminary",not recorded,English,,,,,,,﻿Topeka,﻿KS,,,,,,,﻿jam_h_defouri_001,﻿Rev.,﻿J. H. Defouri,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0081,"﻿college, seminary",not recorded,English,,,,,,,﻿Topeka,﻿KS,,,,,,,﻿j_b_favre_001,﻿Rev.,﻿J. B. Favre,,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0082,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Leavenworth City,﻿Leavenworth,﻿KS,,39.27831668,-94.90638881,,,,,﻿Mother,﻿Xavier Ross,,﻿Superior,,,,﻿conducted by the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0083,﻿school,not recorded,English,﻿female day-school,,,,,,,﻿KS,,39.27831668,-94.90638881,,,,,,,,,,,,﻿conducted by the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0083,﻿school,not recorded,English,﻿female day-school,,,,,,,﻿KS,,,,,,,,,,,,,,,﻿conducted by the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0084,﻿hospital,not recorded,English,,,,,,,,﻿KS,,39.28243004,-94.90595241,,,,,,,,,,,,﻿under charge of the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0085,﻿asylum,not recorded,English,﻿orphan asylum,,,,,,,﻿KS,,39.28243004,-94.90595241,,,,,,,,,,,,﻿under charge of the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0086,﻿school,not recorded,English,"﻿Parochial Male Schools, aided by two male teachers",,,,,﻿Leavenworth City,﻿Leavenworth,﻿KS,,39.28243004,-94.90595241,,,,﻿tho_a_butler_001,﻿Rev.,﻿Thos. Ambrose Butler,,﻿Director,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
-﻿kc.ks.0087,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Lawrence,﻿Lawrence,﻿KS,,39.28243004,-94.90595241,,,,,﻿Sister,﻿Mary Vincent Kearney,,﻿Sister-Servant,,,,﻿conducted by the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0085,﻿asylum,not recorded,English,﻿orphan asylum,,,,,,,﻿KS,,,,,,,,,,,,,,,﻿under charge of the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0086,﻿school,not recorded,English,"﻿Parochial Male Schools, aided by two male teachers",,,,,﻿Leavenworth City,﻿Leavenworth,﻿KS,,,,,,,﻿tho_a_butler_001,﻿Rev.,﻿Thos. Ambrose Butler,,﻿Director,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas
+﻿kc.ks.0087,﻿academy,﻿Academy for Young Ladies,English,,,,,,﻿Lawrence,﻿Lawrence,﻿KS,,,,,,,,﻿Sister,﻿Mary Vincent Kearney,,﻿Sister-Servant,,,,﻿conducted by the Sisters of Charity,,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0050_03,﻿convent,﻿Convent of Ladies of the Sacred Heart,English,,﻿St. Mary's Mission,,,,,,﻿KS,,39.19176645,-96.06221148,,,,,﻿Madame,﻿Milmoe,,﻿Superior,,,,,﻿Ladies of the Sacred Heart,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0039_02,﻿convent,﻿Convent of the Sisters of Loretto,English,,﻿at St. Francis de Hieronymo,,,﻿Neosho County,,﻿St. Paul,﻿KS,,37.51562256,-95.16364912,,,,,,,,,,,,,﻿Sisters of Loretto,1870,﻿,﻿,﻿VAKansas,VAKansas
 ﻿kc.ks.0090,"﻿convent, academy",﻿St. Scholastica's Convent and Academy,English,,,,,,﻿Atchison,﻿Atchison,﻿KS,,39.57497111,-95.11115151,,,,,﻿Mother,﻿Evangelista Kremeter,﻿O.S.B.,,,,,,,1870,﻿,﻿,﻿VAKansas,VAKansas

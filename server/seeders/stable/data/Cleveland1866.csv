@@ -1,0 +1,227 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿cle.oh.0001,﻿cathedral,﻿St. John the Evangelist's,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503032,-81.688109,,,,﻿a_rappe_001,﻿Rt. Rev.,﻿A. Rappe,﻿D.D.,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0001,﻿cathedral,﻿St. John the Evangelist's,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503032,-81.688109,,,,﻿a_caron_001,﻿Very Rev.,﻿A. Caron,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0001,﻿cathedral,﻿St. John the Evangelist's,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503032,-81.688109,,,,﻿t_mcmahony_001,﻿Rev.,﻿T. McMahony,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0001,﻿cathedral,﻿St. John the Evangelist's,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503032,-81.688109,,,,﻿f_gallagher_001,﻿Rev.,﻿F. Gallagher,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0002,﻿church,﻿St. Patrick's,English,,"﻿Bridge street, W.S.",,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.483426,-81.711512,,,,﻿j_conlan_001,﻿Very Rev.,﻿J. Conlan,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0002,﻿church,﻿St. Patrick's,English,,"﻿Bridge street, W.S.",,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.483426,-81.711512,,,,﻿j_v_conlan_001,﻿Rev.,﻿J. V. Conlan,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0003,﻿church,﻿St. Mary's of the Assumption,English,,﻿West Side,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.560673,-81.573232,,,,﻿ste_falk_001,﻿Rev.,﻿F. Falk,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0006,﻿church,﻿St. Bridget's,English,,﻿Perry street,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.408659,-81.759543,,,,﻿den_tighe_001,﻿Rev.,﻿Dennis Tighe,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0007,﻿church,﻿Immaculate Conception,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.514753,-81.66101,,,,﻿a_sauvedet_001,﻿Rev.,﻿A. Sauvedet,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0008,﻿church,﻿St. Augustine's,English,,﻿University Heights,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.47864,-81.685952,,﻿attended from Cathedral,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0004,﻿church,﻿St. Peter's,English,,﻿Dodge street,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.50231,-81.68207,,,,﻿j_luhr_002,﻿Very Rev.,﻿J. Luhr,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0005,﻿church,﻿St. Joseph's,English,,﻿Kingsman street,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.486729,-81.640255,,,,﻿a_kräsny_001,﻿Rev.,﻿A. Kräsny,,,,,,﻿Francisan Fathers,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0010,﻿chapel,﻿St. Mary's,English,,﻿Columbus street,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.490575,-81.6946,,,,﻿j_molony_001,﻿Rev.,﻿J. Molony,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0010,﻿chapel,﻿St. Mary's,English,,﻿Columbus street,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.490575,-81.6946,,,,﻿p_clement_001,﻿Rev.,﻿P. Clement,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0187_02&0187_04,"﻿convent, female orphan asylum",﻿Ursuline Convent and Female Orphan Asylum,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,,﻿attended from the Cathedral,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0016,﻿male orphan asylum,﻿St. Vincent's Male Orphan Asylum,English,,﻿West side,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,﻿cle.oh.0002,﻿attended from St. Patrick's,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0017,﻿church,﻿St. Vincent's,English,,,,,﻿Summit County,﻿Akron,﻿Akron,﻿OH,,41.136837,-81.598727,,,,﻿m_a_scanlan_001,﻿Rev.,﻿M. A. Scanlan,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0018,﻿church,﻿St. Bernard's,English,,,,,﻿Summit County,﻿Akron,﻿Akron,﻿OH,,41.078576,-81.518651,,,,﻿j_braun_001,﻿Rev.,﻿J. Brown,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0025,﻿church,﻿Trinity Church,English,,,,,﻿Lorain County,﻿Avon,﻿Avon,﻿OH,,41.452578,-81.989644,,,,﻿n_smith_001,﻿Rev.,﻿N. Smith,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0311,﻿church,﻿St. Patrick's,English,,,,,﻿Stark County,﻿Alliance,﻿Alliance,﻿OH,,,,﻿cle.oh.0096,﻿attended from Louisville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0022,﻿church,not recorded,English,,,,,﻿Ashland County,﻿Ashland,﻿Ashland,﻿OH,,40.868668,-82.318218,,﻿attended from Wooster,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0020,﻿church,not recorded,English,,,,,﻿Paulding County,﻿Antwerp,﻿Antwerp,﻿OH,,41.181439,-84.740514,﻿cle.oh.0050,﻿attended from Defiance,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0021,﻿church,not recorded,English,,,,,﻿Fulton County,﻿Archibald,﻿Archbold,﻿OH,,41.52144,-84.307172,﻿cle.oh.0154,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0320,﻿church,not recorded,English,,,,,﻿Fulton County,﻿Agaton,,﻿OH,,,,﻿cle.oh.0154,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0023,﻿church,not recorded,English,,,,,﻿Ashtabula County,﻿Ashtabula,﻿Ashtabula,﻿OH,,41.865053,-80.789809,,,,﻿joh_tracy_001,﻿Rev.,﻿John Tracy,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0026,﻿church,not recorded,English,,,,,﻿Portage County,﻿Aurora,﻿Aurora,﻿OH,,41.317555,-81.345386,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0031,﻿church,not recorded,English,,,,,﻿Stark County,﻿Bethlehem,﻿Bethlehem Township,﻿OH,,40.724782,-81.516825,,﻿attended from Massillon,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0028,﻿church,not recorded,English,,,,,﻿Huron County,﻿Bellevue,﻿Bellevue,﻿OH,,41.273665,-82.841576,,,,﻿j_monahan_001,﻿Rev.,﻿J. Monahan,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0033,﻿church,﻿St. Peter's,English,,,,,﻿Seneca County,﻿Big Springs,﻿Big Spring Township,﻿OH,,41.06502,-83.364812,﻿cle.oh.0117,﻿attended from New Reigel,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0034,﻿church,not recorded,English,,,,,﻿Seneca County,﻿Bloomfield,﻿Bloom Township,﻿OH,,41.049258,-83.014653,﻿cle.oh.0118,﻿attended from New Washington,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0035,﻿church,not recorded,English,,,,,﻿Trumbull County,﻿Braceville,﻿Braceville Township,﻿OH,,41.235459,-80.953947,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0027,﻿church,not recorded,English,,,,,﻿Trumbull County,﻿Baconsburgh,﻿Cortland,﻿OH,,41.330334,-80.725357,,,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0030,﻿church,﻿St. Nicholas',English,,,,,﻿Seneca County,﻿Berwick,﻿Berwick,﻿OH,,41.029222,-83.297978,,,,﻿nic_moes_001,﻿Rev.,﻿N. Moos,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0029,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Berea,﻿Berea,﻿OH,,41.366161,-81.854303,﻿cle.oh.0126,﻿attended from Olmstead,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0037,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Bucyrus,﻿Bucyrus,﻿OH,,40.808391,-82.975465,﻿cle.oh.0169,﻿attended from Upper Sandusky,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0321,﻿church,not recorded,English,,,,,,﻿Brownhelm,,﻿OH,,,,,﻿attended from Elyria,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0032,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Bedford,﻿Bedford,﻿OH,,41.39311,-81.536509,,﻿attended from Newburgh,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0036,﻿church,not recorded,English,,,,,﻿Williams County,﻿Bryan,﻿Bryan,﻿OH,,41.474773,-84.552451,﻿cle.oh.0154,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0038,﻿church,﻿St. John the Evangelist's,English,,,,,﻿Stark County,﻿Canton,﻿Canton,﻿OH,,40.803179,-81.377309,,,,﻿e_w_lendesmith_001,﻿Rev.,﻿H. Lindersmith,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0039,﻿church,﻿St. Peter's,English,,,,,﻿Stark County,﻿Canton,﻿Canton,﻿OH,,40.844634,-81.363431,,,,﻿v_arnould_001,﻿Rev.,﻿V. Arnould,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0044,﻿church,﻿St. Patrick's,English,,,,,﻿Sandusky County,﻿Clyde,﻿Clyde,﻿OH,,41.300051,-82.981582,﻿cle.oh.0028,﻿attended from Bellevue,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0043,﻿church,not recorded,English,,,,,﻿Fulton County,﻿Clarksville,,﻿OH,,41.571934,-84.143514,﻿cle.oh.0154,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0045,﻿church,not recorded,English,,,,﻿Ashtabula County,,﻿Conneaut,,﻿OH,,41.947555,-80.554241,,﻿attended from Ashtabula,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0046,﻿church,not recorded,English,,,,,﻿Van Wert County,﻿Convoy,﻿Convoy,﻿OH,,40.916715,-84.702737,﻿?,﻿attended from Delphos,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0047,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Crawfordville,,﻿OH,,40.826807,-82.993161,﻿cle.oh.0117,﻿attended from New Reigel,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0048,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Crestline,﻿Crestline,﻿OH,,40.787557,-82.736568,,﻿attended from Gallion,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0042,﻿church,not recorded,English,,,,,﻿Mahoning County,﻿Canfield,﻿Canfield,﻿OH,,41.025058,-80.760912,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0041,﻿church,not recorded,English,,,,﻿Huron County,﻿Lorain County,﻿Camden,﻿Camden Township,﻿OH,,41.234731,-82.312629,﻿cle.oh.0121,﻿attended from Norwalk,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0049,﻿church,not recorded,English,,,,,﻿Summit County,﻿Cuyahoga Falls,﻿Cuyahoga Falls,﻿OH,,41.133945,-81.484558,﻿cle.oh.0017,﻿attended from Akron,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0040,﻿church,not recorded,English,,,,,﻿Stark County,﻿Canal Fulton,﻿Canal Fulton,﻿OH,,40.889778,-81.597623,,,,﻿j_lais_001,﻿Rev.,﻿J. Lais,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0050,﻿church,﻿St. John the Evangelist's,English,,,,,﻿Defiance County,﻿Defiance,﻿Defiance,﻿OH,,41.284493,-84.35578,,,,﻿j_hieffel_001,﻿Rev.,﻿J. Heoffeland,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0050,﻿church,﻿St. John the Evangelist's,English,,,,,﻿Defiance County,﻿Defiance,﻿Defiance,﻿OH,,41.284493,-84.35578,,,,﻿j_hannon_001,﻿Rev.,﻿J. Hannon,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0052,﻿church,﻿St. John the Evangelist's,English,,,,,﻿Allen County,﻿Delphos,﻿Delphos,﻿OH,,40.843571,-84.33453,,,,﻿j_westerholt_001,﻿Rev.,﻿J. Westerholt,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0051,﻿church,not recorded,English,,,,,﻿Defiance County,﻿Delaware,﻿Delaware Township,﻿OH,,41.290161,-84.501243,﻿cle.oh.0050,﻿attended from Defiance,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0055,﻿church,not recorded,English,,,,,﻿Columbiana County,﻿Dungannon,﻿Dungannon,﻿OH,,40.734227,-80.878695,,,,﻿f_ludwig_001,﻿Rev.,﻿F. Ludwig,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0054,﻿church,not recorded,English,,,,,﻿Wayne County,﻿Doylestown,﻿Doylestown,﻿OH,,40.970055,-81.696517,,﻿attended from Fulton,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0059,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Euclid,﻿Euclid,﻿OH,,41.593105,-81.526787,,,,﻿ant_martin_001,﻿Rev.,﻿Anthony Martin,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0057,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Elyria,﻿Elyria,﻿OH,,41.364774,-82.105661,,,,﻿l_molon_001,﻿Rev.,﻿L. Molon,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0061,﻿church,not recorded,English,,,,,﻿Hancock County,﻿Findley,﻿Findlay,﻿OH,,41.039128,-83.650231,,,,﻿m_dechaut_001,﻿Rev.,﻿M. Dechaut,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0066,﻿church,﻿St. Mary's,English,,,,,﻿Sandusky County,﻿Fremont,﻿Fremont,﻿OH,,41.35033,-83.121863,,,,﻿p_voisard_001,﻿Rev.,﻿P. Voisard,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0067,﻿church,﻿St. Joseph's,English,,,,,﻿Sandusky County,﻿Fremont,﻿Fremont,﻿OH,,41.338632,-83.095086,,,,﻿s_bauer_001,﻿Rev.,﻿S. Bower,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0064,﻿church,not recorded,English,,,,,﻿Putnam County,﻿Fort Jennings,﻿Fort Jennings,﻿OH,,40.906439,-84.296616,,,,﻿l_burns_001,﻿Rev.,﻿L. Burns,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0069,﻿church,not recorded,English,,,,,﻿Wayne County,﻿French Settlement,,﻿OH,,40.75886,-81.953481,﻿cle.oh.0054,﻿attended from Fulton,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0312,﻿church,not recorded,English,,﻿German Township,,,﻿Wayne County,﻿French Settlement,,﻿OH,,,,,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0068,﻿church,﻿St. John the Baptist's,English,,,,,﻿Lorain County,﻿French Creek,﻿Avon,﻿OH,,41.451709,-82.035422,,,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0060,﻿church,not recorded,English,,,,,﻿Huron County,﻿Fairfield,﻿Fairfield Township,﻿OH,,41.102474,-82.583495,﻿cle.oh.0121,﻿attended from Norwalk,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0065,﻿church,not recorded,English,,,,,﻿Wayne County,﻿Fredericksburgh,﻿Fredericksburg,﻿OH,,40.676726,-81.870417,﻿cle.oh.0181,﻿attended from Wooster,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0062,﻿church,not recorded,English,,﻿Florence Township,,,﻿Williams County,,,﻿OH,,41.581408,-84.752448,﻿cle.oh.0154,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0063,﻿church,not recorded,English,,,,,﻿Seneca County,﻿Fostoria,﻿Fostoria,﻿OH,,41.156998,-83.41687,,﻿attended from Findlay,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0323,﻿church,not recorded,English,,,,,,﻿Grafton,,﻿OH,,,,,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0324,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Gallion,,﻿OH,,,,,,,﻿j_p_pitts_001,﻿Rev.,﻿J. P. Pitts,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0074,﻿church,﻿St. Peter's,English,,,,,﻿Putnam County,﻿Glendorf,﻿Glandorf,﻿OH,,41.030343,-84.079542,,,,﻿f_austin_001,﻿Rev.,﻿F. Austin,﻿C.PP.S.,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0075,﻿church,﻿St. Peter's,English,,,,,﻿Sandusky County,﻿Greensburgh,﻿Tinney,﻿OH,,41.342589,-83.079813,,,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0076,﻿church,not recorded,English,,,,,﻿Huron County,﻿Greenwich,﻿Greenwich,﻿OH,,41.030055,-82.515726,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0073,﻿church,not recorded,English,,,,﻿Mahoning County,﻿Trumbull County,﻿Girard,﻿Girard,﻿OH,,41.153947,-80.701466,﻿cle.oh.0182,﻿attended from Youngstown,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0072,﻿church,not recorded,English,,,,,﻿Portage County,﻿Garretsville,﻿Garrettsville,﻿OH,,41.284222,-81.096486,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0078,﻿church,not recorded,English,,,,,﻿Summit County,﻿Hudson,﻿Hudson,﻿OH,,41.240056,-81.440667,,﻿attended from Revanna,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0077,﻿church,﻿Sacred Heart of Mary,English,,,,,﻿Stark County,﻿Harrisburgh,﻿Harrisburg,﻿OH,,40.868468,-81.251883,,,,﻿f_moitrier_001,﻿Rev.,﻿F.  Moitrier,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0079,﻿church,not recorded,English,,,,,﻿Erie County,﻿Huron,﻿Huron,﻿OH,,41.395049,-82.555173,,﻿attended from Milan,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0080,﻿church,not recorded,English,,,,,﻿Erie County,﻿Huron Junction,,﻿OH,,41.294073,-82.60458,,﻿attended from Bellevue,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0081,﻿church,﻿St. Michael's,English,,,,,﻿Cuyahoga County,﻿Independence,﻿Independence,﻿OH,,41.383092,-81.642879,﻿cle.oh.0141,﻿attended from Rockport,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0082,﻿church,not recorded,English,,,,,﻿Paulding County,﻿Junction,﻿Junction,﻿OH,,41.191402,-84.456619,﻿cle.oh.0050,﻿attended from Defiance,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0083,﻿church,not recorded,English,,,,,﻿Erie County,﻿Kelly's Island,﻿Kelleys Island,﻿OH,,41.596993,-82.710182,,,,﻿cha_kumin_002,﻿Rev.,﻿Chas. Kumin,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0085,﻿church,not recorded,English,,,,﻿Lake County,﻿Ashtabula County,﻿Kingsville,﻿Kingsville,﻿OH,,41.887396,-80.66874,﻿cle.oh.0023,﻿attended from Ashtabula,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0084,﻿church,not recorded,English,,,,,﻿Portage County,﻿Kent,﻿Kent,﻿OH,,41.153667,-81.357886,﻿cle.oh.0137,﻿attended from Ravenna,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0086,﻿church,not recorded,English,,,,,﻿Allen County,﻿Lima,﻿Lima,﻿OH,,40.742551,-84.105226,,,,﻿e_murphy_002,﻿Rev.,﻿E. Murphy,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0096,﻿church,﻿St. Louis',English,,,,,﻿Stark County,﻿Louisville,﻿Louisville,﻿OH,,40.838214,-81.259599,,,,﻿t_calloup_001,﻿Rev.,﻿T. Calloup,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0094,﻿church,﻿St. Mary's,English,,﻿La Prairie,,,﻿Sandusky County,﻿La Prairie,﻿Rice Township,﻿OH,,41.44501,-83.11128,,﻿attended from Fulon,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0087,﻿church,﻿St. Martin's,English,,,,,﻿Medina County,﻿Liverpool,﻿Valley City,﻿OH,,41.237664,-81.931271,,,,﻿g_peter_001,﻿Rev.,﻿G. Peter,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0088,﻿church,﻿St. Mary's,English,,,,,﻿Medina County,﻿Liverpool,﻿Valley City,﻿OH,,41.237664,-81.931271,,﻿attended by Rev. G. Peter,,﻿g_peter_001,﻿Rev.,﻿G. Peter,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0089,﻿church,not recorded,English,,﻿Liverpool(East),,,﻿Columbiana County,﻿East-Liverpool,﻿East Liverpool,﻿OH,,40.689611,-80.642933,﻿cle.oh.0155,﻿attended from Summitville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0095,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Laporte,﻿Carlisle Township,﻿OH,,41.310552,-82.106068,,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0090,﻿church,﻿St. Sebastian's,English,,,,,﻿Sandusky County,﻿Liberty,﻿Bellevue,﻿OH,,41.273665,-82.841576,,﻿attended from Greensburgh,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0092,﻿church,not recorded,English,,,,﻿Mahoning County,﻿Trumbull County,﻿Leavittsburgh,﻿Leavittsburg,﻿OH,,41.247834,-80.877031,﻿cle.oh.0182,﻿attended from Youngstown,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0093,﻿church,not recorded,English,,,,﻿Ashland County,﻿Holmes County,﻿Lakeville,﻿Lakeville,﻿OH,,40.656171,-82.127098,﻿cle.oh.0181,﻿attended from Wooster,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0098,﻿church,not recorded,English,,,,,﻿Richland County,﻿Mansfield,﻿Mansfield,﻿OH,,40.75839,-82.515447,,,,﻿j_kuhn_001,﻿Rev.,﻿J. Kuhn,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0100,﻿church,﻿St. Mary's,English,,,,,﻿Stark County,﻿Massillon,﻿Massillon,﻿OH,,40.802379,-81.52292,,,,﻿cha_hamene_001,﻿Rev.,﻿Chas. Hamene,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0313,﻿church,﻿St. Patrick's,English,,,,,﻿Stark County,﻿Massillon,﻿Massillon,﻿OH,,,,,,,﻿f_varlet_001,﻿Rev.,﻿F. Varlet,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0108,﻿church,not recorded,English,,,,,﻿Huron County,﻿Monroeville,﻿Monroeville,﻿OH,,41.245748,-82.697327,,,,﻿mar_pitts_001,﻿Rev.,﻿M. Pits,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0102,﻿church,﻿St. Joseph's,English,,,,,﻿Lucas County,﻿Maumee City,﻿Maumee,﻿OH,,41.560387,-83.654218,,,,﻿ber_quin_001,﻿Rev.,﻿Bernard Quin,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0105,﻿church,﻿St. Mary's,English,,,,,﻿Wood County,﻿Middletown,﻿Middleton Township,﻿OH,,41.458519,-83.650809,﻿cle.oh.0132,﻿attended from Perrysburgh,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0106,﻿church,not recorded,English,,,,,﻿Medina County,﻿Medina,﻿Medina,﻿OH,,41.143245,-81.85522,,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0101,﻿church,not recorded,English,,,,,﻿Portage County,﻿Mantua,﻿Mantua,﻿OH,,41.283944,-81.223991,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0109,﻿church,not recorded,English,,,,,,﻿Morcherville,﻿Monroeville,﻿OH,,41.24422,-82.696293,,﻿attended from Fulton,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0110,﻿church,not recorded,English,,,,,﻿Henry County,﻿Napoleon,﻿Napoleon,﻿OH,,41.392273,-84.125224,,,,﻿j_carroll_001,﻿Rev.,﻿J. Carroll,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0118,﻿church,not recorded,English,,,,,﻿Crawford County,﻿New Washington,﻿New Washington,﻿OH,,40.962508,-82.857191,,,,﻿mic_bäcker_001,﻿Rev.,﻿Michael Baker,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0113,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Newburgh,﻿Newburgh Heights,﻿OH,,41.450052,-81.663462,,,,﻿j_daudet_001,﻿Rev.,﻿John Daudet,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0314,﻿church,﻿St. Michael's,English,,,,,﻿Putnam County,﻿New Cleveland,﻿New Cleveland,﻿OH,,41.0648698,-84.0435948,,﻿attended from Glendolf,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0112,﻿church,not recorded,English,,,,,﻿Stark County,﻿New Berlin,﻿North Canton,﻿OH,,40.875891,-81.402336,﻿?,﻿attended from Canton,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0121,﻿church,﻿St. Patrick's,English,,,,,﻿Huron County,﻿Norwalk,﻿Norwalk,﻿OH,,41.242553,-82.615733,,,,﻿tho_p_thorpe_001,﻿Rev.,﻿Thos. P. Thorpe,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0122&0123,﻿church,﻿St. Peter's,English,,,,,﻿Huron County,﻿Norwalk,﻿Norwalk,﻿OH,,41.2296,-82.603017,,,,﻿x_obermüller_001,﻿Rev.,﻿X. Obermüller,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0115,﻿church,not recorded,English,,,,,﻿Huron County,﻿New London,﻿New London,﻿OH,,41.085054,-82.399889,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0119,﻿church,not recorded,English,,,,,﻿Trumbull County,﻿Niles,﻿Niles,﻿OH,,41.182835,-80.765358,,,,﻿ale_sidley_001,﻿Rev.,﻿Alexander Sidley,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0116,﻿church,not recorded,English,,,,,﻿Summit County,﻿New Portage,﻿Barberton,﻿OH,,41.012833,-81.605122,﻿cle.oh.0017,﻿attended from Akron,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0120,﻿church,not recorded,English,,,,,﻿Defiance County,﻿Northridge,,﻿OH,,41.349173,-84.480261,﻿cle.oh.0050,﻿attended from Defiance,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0117,﻿church,﻿St. Boniface's,English,,,,,﻿Seneca County,﻿New Reigel,﻿New Riegel,﻿OH,,41.050765,-83.31416,,,,﻿c_french_001,﻿Rev.,﻿C. French,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0117,﻿church,﻿St. Boniface's,English,,,,,﻿Seneca County,﻿New Reigel,﻿New Riegel,﻿OH,,41.050765,-83.31416,,,,﻿j_h_drees_001,﻿Rev.,﻿J. H. Drees,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0126,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Olmstead,﻿Olmsted Township,﻿OH,,41.372786,-81.9262,,,,﻿l_filière_001,﻿Rev.,﻿L. Filière,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0128,﻿church,not recorded,English,,,,﻿Van Wert County,﻿Putnam County,﻿Ottoville,﻿Ottoville,﻿OH,,40.932272,-84.338838,,,,﻿f_abel_001,﻿Rev.,﻿F. Abel,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0127,﻿church,not recorded,English,,,,,﻿Wayne County,﻿Onaville,﻿Orrville,﻿OH,,40.85,-81.761111,﻿cle.oh.0181,﻿attended from Wooster,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0125,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Oberlin,﻿Oberlin,﻿OH,,41.293939,-82.217379,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0133,﻿church,not recorded,English,,,,,﻿Henry County,﻿Poplar Ridge,﻿New Bavaria,﻿OH,,41.19592,-84.13244,,,,﻿f_reinhardt_001,﻿Rev.,﻿F. Reinhardt,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0131,﻿church,﻿St. Alphonsus',English,,,,,﻿Huron County,﻿Peru,﻿Peru Township,﻿OH,,41.202367,-82.638066,,,,﻿a_mayenhahn_001,﻿Rev.,﻿A. Mayenhahn,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0129,﻿church,not recorded,English,,,,,﻿Lake County,﻿Painesville,﻿Painesville,﻿OH,,41.724489,-81.245657,,,,﻿c_coquerelle_001,﻿Rev.,﻿C. Coquerelle,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0134,﻿church,not recorded,English,,,,,﻿Ottawa County,﻿Port Clinton,﻿Port Clinton,﻿OH,,41.511995,-82.937692,,,,﻿cha_warde_001,﻿Rev.,﻿Chas. Warde,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0135,﻿church,﻿St. Patrick's,English,,,,﻿Henry County,﻿Lucas County,﻿Providence,﻿Providence,﻿OH,,41.689439,-83.378939,,﻿attended from Napolean,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0326,﻿church,not recorded,English,,,,,,﻿Pontiac,,﻿OH,,,,,﻿attended from Monroeville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0130,﻿church,not recorded,English,,,,,﻿Summit County,﻿Parkham,,﻿OH,,41.091899,-81.559643,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0141,﻿church,not recorded,English,,,,,﻿Cuyahoga County,﻿Rockport,﻿Rocky River,﻿OH,,41.476822,-81.849757,,,,﻿mic_miller_001,﻿Rev.,﻿Michael Miller,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0315,﻿church,not recorded,English,,,,,﻿Seneca County,﻿Rome,,﻿OH,,,,,﻿attended from Findley,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0136,﻿church,not recorded,English,,,,,﻿Portage County,﻿Randolph,﻿Randolph Township,﻿OH,,41.010492,-81.273907,,,,﻿v_hausner_001,﻿Rev.,﻿V. Hausner,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0138,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Rawsonville,﻿Belden,﻿OH,,41.237963,-82.066973,,,,﻿tho_p_hally_001,﻿Rev.,﻿Thos. P. Hally,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0137,﻿church,not recorded,English,,,,,﻿Portage County,﻿Ravenna,﻿Ravenna,﻿OH,,41.157557,-81.242047,,,,﻿p_h_brown_001,﻿Rev.,﻿P. H. Brown,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0140,﻿church,not recorded,English,,,,,﻿Ottawa County,﻿Rivière aux Toussaints,,﻿OH,,41.511641,-83.151674,﻿cle.oh.0134,﻿attended from Port Clinton,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0143,﻿church,﻿Holy Angels',English,,,,,﻿Erie County,﻿Sandusky City,﻿Sandusky,﻿OH,,41.449359,-82.723078,,,,﻿r_a_sidley_001,﻿Rev.,﻿R. A. Sidley,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0317,﻿church,﻿St. Peter's,English,,,,,﻿Erie County,﻿Sandusky City,﻿Snadusky,﻿OH,,,,,,,﻿a_herbstrit_001,﻿Rev.,﻿A. Herbstrit,﻿C.PP.S.,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0145,﻿church,﻿St. Teresa's,English,,,,,﻿Lorain County,﻿Sheffield,﻿Sheffield,﻿OH,,41.465998,-82.07645,﻿cle.oh.0025,﻿attended from Avon,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0147,﻿church,not recorded,English,,,,,﻿Richland County,﻿Shelby Settlement,﻿Bethlehem,﻿OH,,40.756672,-82.518584,,,,﻿d_best_001,﻿Rev.,﻿D. Best,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0148,﻿church,﻿St. Sebastian's,English,,,,,﻿Huron County,﻿Sherman,﻿Sherman Township,﻿OH,,41.185599,-82.788639,,﻿attended from Thompson,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0155,﻿church,﻿St. John's,English,,,,,﻿Columbiana County,﻿Summitville,﻿Summitville,﻿OH,,40.678117,-80.886196,,,,﻿p_mcguire_001,﻿Rev.,﻿P. McGuire,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0149,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Shilo,,﻿OH,,41.411688,-82.12784,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0154,﻿church,not recorded,English,,,,,﻿Williams County,﻿Stryker,﻿Stryker,﻿OH,,41.503662,-84.414116,,,,﻿nic_kirk_001,﻿Rev.,﻿Nicholas Kirk,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0150,﻿church,not recorded,English,,,,﻿Lucas County,﻿Fulton County,﻿Six-Mile Wood,﻿Delta,﻿OH,,41.573663,-84.005223,,,,﻿c_barbier_001,﻿Rev.,﻿C. Barbier,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0153,﻿church,not recorded,English,,,,﻿Stark County,﻿Tuscarawas County,﻿Strasburg,﻿Strasburg,﻿OH,,40.594784,-81.526786,﻿cle.oh.0096,﻿attended from Louisville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0142,﻿church,not recorded,English,,,,,﻿Columbiana County,﻿Salem,﻿Salem,﻿OH,,40.900892,-80.85675,﻿cle.oh.0055,﻿attended from Dungannon,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0152,﻿church,not recorded,English,,,,,﻿Williams County,﻿Springhills,,﻿OH,,41.55076,-84.522219,﻿cle.oh.0154,﻿attended from Stryker,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0156,﻿church,not recorded,English,,,,,﻿Lucas County,﻿Sylvania,﻿Sylvania,﻿OH,,41.718939,-83.712993,﻿?,﻿attended from Toledo,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0157,﻿church,not recorded,English,,,,,﻿Lucas County,﻿Texas,,﻿OH,,41.689439,-83.378939,,﻿attended from Toledo,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0158,﻿church,﻿St. Mary's,English,,,,,﻿Seneca County,﻿Tiffin,﻿Tiffin,﻿OH,,41.117257,-83.183866,,,,﻿mic_healy_001,﻿Rev.,﻿Michael Healy,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0159,﻿church,﻿St. Joseph's,English,,,,,﻿Seneca County,﻿Tiffin,﻿Tiffin,﻿OH,,41.108735,-83.175299,,,,﻿jos_bihn_001,﻿Rev.,﻿J. Behn,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0162,﻿church,﻿St. Francis of Sales,English,,,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,41.662799,-83.598385,,,,﻿f_boff_001,﻿Rev.,﻿F. Boff,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0300,﻿church,﻿St. Aloysius',English,,,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,,,,,,﻿cha_evrard_001,﻿Rev.,﻿Ch. Everard,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0167,﻿church,not recorded,﻿French,,,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,41.652805,-83.537867,,,,﻿f_rouchy_001,﻿Rev.,﻿F. Rouchy,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0164,﻿chapel,﻿St. Patrick's,English,,,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,41.648991,-83.546027,,,,﻿e_hannin_001,﻿Rev.,﻿E. Hannon,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0168,﻿church,﻿Chapels of Ursuline and Gray Nuns,English,,,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,41.680097,-83.595756,﻿cle.oh.0186,﻿attended by Rev. F. Rouchy,,﻿f_rouchy_001,﻿Rev.,﻿F. Rouchy,,,,,,﻿attended by the Jesuit Fathers,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0160,﻿church,﻿St. Michael's,English,,,,,﻿Seneca County,﻿Thompson,﻿Thompson Township,﻿OH,,41.201642,-82.885596,,,,﻿f_aloysius_001,﻿Rev.,﻿F. Aloysius,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0160,﻿church,﻿St. Michael's,English,,,,,﻿Seneca County,﻿Thompson,﻿Thompson Township,﻿OH,,41.201642,-82.885596,,,,﻿f_jacob_001,﻿Rev.,﻿F. Jacob,﻿C.P.P.S.,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0161,﻿church,not recorded,English,,,,,﻿Lake County,﻿Thompson,﻿Thompson,﻿OH,,41.686894,-81.045104,,,,﻿d_okeefe_001,﻿Rev.,﻿D. O'Keefe,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0170,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Vermilion,﻿Vermilion,﻿OH,,41.421989,-82.364607,﻿cle.oh.0057,﻿attended from Elyria,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0169,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Upper Sandusky,,﻿OH,,40.827279,-83.281309,,,,﻿g_a_spierings_001,﻿Rev.,﻿G. A. Spierings,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0318,﻿church,not recorded,English,,,,,﻿Crawford County,﻿Utica,,﻿OH,,,,,﻿attended from New-Washington,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0180,﻿church,not recorded,English,,,,﻿Woodville County,﻿Sandusky County,﻿Woodville,﻿Woodville,﻿OH,,41.45144,-83.36576,,﻿attended from Greensburgh,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0178,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Wilmington,,﻿OH,,41.411688,-82.12784,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0181,﻿church,﻿St. Mary's of the Immaculate Conception,English,,,,,﻿Wayne County,﻿Wooster,﻿Wooster,﻿OH,,40.798237,-81.939914,,,,﻿f_ankley_001,﻿Rev.,﻿F. Ankley,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0174,﻿church,not recorded,English,,,,,﻿Columbiana County,﻿Wellsville,﻿Wellsville,﻿OH,,40.602842,-80.648963,﻿cle.oh.0155,﻿attended from Summitville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0175,﻿church,not recorded,English,,,,,﻿Lorain County,﻿Wellington,﻿Wellington,﻿OH,,41.168942,-82.217935,﻿cle.oh.0138,﻿attended from Rawsonville,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0172,﻿church,not recorded,English,,,,,﻿Huron County,﻿Wakeman,﻿Wakeman,﻿OH,,41.254496,-82.399611,﻿cle.oh.0121,﻿attended from Norwalk,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0173,﻿church,not recorded,English,,,,,﻿Trumbull County,﻿Warren,﻿Warren,﻿OH,,41.237557,-80.818417,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0179,﻿church,not recorded,English,,,,﻿Trumbull County,﻿Portage County,﻿Windham,﻿Windham,﻿OH,,41.235056,-81.049261,﻿cle.oh.0119,﻿attended from Niles,,,,,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0182,﻿church,not recorded,English,,,,,﻿Mahoning County,﻿Youngstown,﻿Youngstown,﻿OH,,41.09978,-80.649519,,,,﻿e_m_ocallaghan_001,﻿Rev.,﻿E. M. O'Callaghan,,,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0183,﻿seminary,﻿St. Mary's Ecclesiastical Seminary,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503018,-81.691627,,,,,﻿Rev.,﻿J. Quin,,﻿Superior,,,"﻿Seminarians, 25",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0183,﻿seminary,﻿St. Mary's Ecclesiastical Seminary,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503018,-81.691627,,,,,﻿Rev.,﻿Peter Clement,,﻿Professor,,,"﻿Seminarians, 25",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0183,﻿seminary,﻿St. Mary's Ecclesiastical Seminary,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.503018,-81.691627,,,,,﻿Rev.,﻿F. Wilmot,,﻿Professor,,,"﻿Seminarians, 25",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0184,﻿seminary,﻿Preparatory Seminary,English,,,,﻿Stark County,﻿Stark County,﻿Louisville,﻿Louisville,﻿OH,,40.837281,-81.259552,,,,﻿p_clement_001,﻿Rev.,﻿P. Clement,,﻿President,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0184,﻿seminary,﻿Preparatory Seminary,English,,,,﻿Stark County,﻿Stark County,﻿Louisville,﻿Louisville,﻿OH,,40.837281,-81.259552,,,,,﻿Mr.,﻿J. Gibbons,,﻿Professors,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0184,﻿seminary,﻿Preparatory Seminary,English,,,,﻿Stark County,﻿Stark County,﻿Louisville,﻿Louisville,﻿OH,,40.837281,-81.259552,,,,,﻿Mr.,﻿Nicholas Moos,,﻿Professors,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0184,﻿seminary,﻿Preparatory Seminary,English,,,,﻿Stark County,﻿Stark County,﻿Louisville,﻿Louisville,﻿OH,,40.837281,-81.259552,,,,,﻿Mr.,﻿Edward Conway,,﻿Professors,,,,,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0001_02,﻿school,﻿The Cathedral Male School,English,,,,,,,,﻿OH,,41.503032,-81.688109,,,,,﻿Brother,﻿Thomas,,﻿Director,,﻿religious,"﻿brothers, 3",﻿conducted by three brothers,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0001_02,﻿school,﻿The Cathedral Male School,English,,,,,,,,﻿OH,,41.503032,-81.688109,,,,,,,,,,﻿religious,"﻿Ursuline Sisters, 2",﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0001_02,﻿school,﻿The Cathedral Male School,English,,,,,,,,﻿OH,,41.503032,-81.688109,,,,,,,,,,﻿teacher,"﻿scholars, 401",﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0187_03,﻿academy,﻿Ursuline Academy,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,,,,,,﻿Mother of the Annunciation,,﻿Superioress,,﻿religious,"﻿religious, 30",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0187_03,﻿academy,﻿Ursuline Academy,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,,,,,,,,,,﻿religious,"﻿Novices, 20",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0187_03,﻿academy,﻿Ursuline Academy,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,,,,,,,,,,﻿student,"﻿pupils in the academy, 50",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0187_03,﻿academy,﻿Ursuline Academy,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,,,,,,,,,,﻿day school pupil,"﻿day school pupils, 150",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0187_03,﻿academy,﻿Ursuline Academy,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.49932,-81.69436,,,,,,,,,,﻿free school,"﻿free schools, 250",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0007_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.514753,-81.66101,,,,,,,,,,﻿student,﻿100 scholars,﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0006_02,﻿school,not recorded,English,,﻿St. Bridget's,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.408659,-81.759543,,,,,,,,,,﻿student,﻿100 scholars,﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0003_02,﻿school,not recorded,English,,﻿St. Mary's of the Flats,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.560673,-81.573232,,,,,,,,,,﻿student,﻿100 scholars,﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0004_03,﻿female school,﻿St. Peter's Female School,English,,,,,,,﻿Cleveland,﻿OH,,41.50231,-81.68207,,,,,,,,,,﻿teacher,"﻿scholars, 200",﻿taught by two Ladies of the Sacred Heart of Mary,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0004_03,﻿female school,﻿St. Peter's Female School,English,,,,,,,﻿Cleveland,﻿OH,,41.50231,-81.68207,,,,,,,,,,﻿religious,﻿two Ladies of the Sacred Heart of Mary,﻿taught by two Ladies of the Sacred Heart of Mary,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0005_02,﻿school,﻿St. Joseph's School,English,,﻿Kingsman street,,,,,﻿Cleveland,﻿OH,,41.486729,-81.640255,,,,,,,,,,﻿teacher,"﻿scholars, 300",﻿taught by a Catholic gentleman and lady,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0002_02,﻿school,﻿St. Patrick's School,English,﻿female department is conducted by three Ursuline Sisters,﻿Bridge street (west side),,,,,﻿Cleveland,﻿OH,,41.483426,-81.711512,,,,,,,,,,﻿religious,"﻿brothers, 3",﻿taught by three brothers,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0003_02,﻿school,﻿St. Mary's of the Assumption,English,,﻿St. Mary's of the Flats,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.560673,-81.573232,,,,,﻿Brother,﻿Stritz,,﻿Director,,﻿religious,"﻿brothers, 4",﻿taught by four brothers,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0003_02,﻿school,﻿St. Mary's of the Assumption,English,,﻿St. Mary's of the Flats,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.560673,-81.573232,,,,,,,,,,﻿teacher,"﻿scholars, 300",﻿taught by four brothers,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0188,"﻿convent, academy",﻿Ursuline Convent and Academy,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.657864,-83.532393,,,,,﻿Mother,﻿Alphonse,,﻿Superioress,,﻿religious,"﻿religious, 14",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0188,"﻿convent, academy",﻿Ursuline Convent and Academy,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.657864,-83.532393,,,,,,,,,,﻿religious,"﻿novices, 6",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0188,"﻿convent, academy",﻿Ursuline Convent and Academy,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.657864,-83.532393,,,,,,,,,,﻿student,"﻿pupils, 30",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0188,"﻿convent, academy",﻿Ursuline Convent and Academy,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.657864,-83.532393,,,,,,,,,,﻿student,"﻿pay-scholars, 100",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0188,"﻿convent, academy",﻿Ursuline Convent and Academy,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.657864,-83.532393,,,,,,,,,,﻿free school,"﻿free schools, 250",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0162_02,﻿academy,﻿Ursuline Academy,English,,﻿St. Francis of Sales,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,41.662799,-83.598385,,,,,,,,,,﻿student,"﻿pay-scholars, 100",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0162_02,﻿academy,﻿Ursuline Academy,English,,﻿St. Francis of Sales,,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,41.662799,-83.598385,,,,,,,,,,﻿student,"﻿free schools, 250",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0300_02,"﻿academy, church",﻿Ursuline Academy,English,,﻿St. Aloysius',,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,,,,,,,,,,,,﻿student,"﻿pay-scholars, 100",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0300_02,"﻿academy, church",﻿Ursuline Academy,English,,﻿St. Aloysius',,,﻿Lucas County,﻿Toledo,﻿Toledo,﻿OH,,,,,,,,,,,,,﻿student,"﻿free schools, 250",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0333,﻿school,﻿St. Patricks's New Male School,English,﻿female department is conducted by the Ladies of the Sacred Heart of Mary,,,,,,,﻿OH,,,,,,,,,,,,,﻿teacher,"﻿scholars, 300",,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0143_02,﻿school,not recorded,English,﻿The Ladies of the Sacred Heart of Mary conduct the female schools.  The male department is taught by lay teachers,﻿Holy Angels' Church,,,﻿Erie County,﻿Sandusky City,﻿Sandusky,﻿OH,,41.449359,-82.723078,,,,,,,,,,﻿student,﻿200,﻿Sacred Heart of Mary,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0144_02,﻿school,not recorded,English,﻿The Ladies of the Sacred Heart of Mary conduct the female schools.  The male department is taught by lay teachers,﻿St. Joseph's Church,,,﻿Erie County,﻿Sandusky City,﻿Sandusky,﻿OH,,41.451648,-82.708714,,,,,,,,,,﻿student,﻿200,﻿Sacred Heart of Mary,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0158_02,﻿school,not recorded,English,,,,,﻿Seneca County,﻿Tiffin,﻿Tiffin,﻿OH,,41.117257,-83.183866,,,,,,,,,,﻿student,"﻿Pay-school, 60",﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0158_02,﻿school,not recorded,English,,,,,﻿Seneca County,﻿Tiffin,﻿Tiffin,﻿OH,,41.117257,-83.183866,,,,,,,,,,﻿student,"﻿free-school, 200",﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0159_02,﻿school,not recorded,English,,,,,﻿Seneca County,﻿Tiffin,﻿Tiffin,﻿OH,,41.108735,-83.175299,,,,,,,,,,﻿student,"﻿free-school, 200",﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0159_02,﻿school,not recorded,English,,,,,﻿Seneca County,﻿Tiffin,﻿Tiffin,﻿OH,,41.108735,-83.175299,,,,,,,,,,﻿student,"﻿Pay-school, 60",﻿Ursuline Sisters,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0302_02,﻿boarding school,not recorded,English,,,,,﻿Seneca County,﻿New Reigel,,﻿OH,,41.051444,-83.318534,,,,,,,,,,﻿student,﻿20 pupils,﻿Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0302_03,﻿free school,not recorded,English,,,,,﻿Seneca County,﻿New Reigel,,﻿OH,,41.051444,-83.318534,,,,,,,,,,﻿student,﻿200 scholars,﻿Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0303,"﻿boarding school, day school",not recorded,English,,,,,,﻿Thompson,,﻿OH,,,,,,,,,,,,,﻿religious,"﻿In all, 60 sisters",﻿Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0303,"﻿boarding school, day school",not recorded,English,,,,,,﻿Thompson,,﻿OH,,,,,,,,,,,,,﻿student,"﻿In all, 200 scholars",﻿Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0301,"﻿boarding school, day school",not recorded,English,,,,,,﻿Glandorf,,﻿OH,,,,,,,,,,,,,﻿religious,"﻿In all, 60 sisters",﻿Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0301,"﻿boarding school, day school",not recorded,English,,,,,,﻿Glandorf,,﻿OH,,,,,,,,,,,,,﻿student,"﻿In all, 200 scholars",﻿Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0191,﻿asylum,﻿St. Vincent's Male Orphan Asylum,English,,﻿West Side,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.477815,-81.708829,,,,,,﻿S. Augustine,,﻿Mother Superioress,,﻿religious,"﻿Religious, 25",﻿Under the charge of Sisters of Charity of the Order of St. Augustine,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0191,﻿asylum,﻿St. Vincent's Male Orphan Asylum,English,,﻿West Side,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.477815,-81.708829,,,,,,,,,,﻿religious,"﻿Novices, 10",﻿Under the charge of Sisters of Charity of the Order of St. Augustine,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0191,﻿asylum,﻿St. Vincent's Male Orphan Asylum,English,,﻿West Side,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.477815,-81.708829,,,,,,,,,,﻿child,"﻿Orphan boys, 150",﻿Under the charge of Sisters of Charity of the Order of St. Augustine,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0193,﻿asylum,﻿St. Mary's Female Orphan Asylum,English,,,,,,,﻿Cleveland,﻿OH,,41.509884,-81.68151,,,,,,﻿V. Boucher,,﻿Mother-Superioress,,﻿lady,"﻿Ladies, 30",﻿Under the charge of the Ladies of the Sacred Heart of Mary,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0193,﻿asylum,﻿St. Mary's Female Orphan Asylum,English,,,,,,,﻿Cleveland,﻿OH,,41.509884,-81.68151,,,,,,,,,,﻿child,"﻿Orphan girls, 160, including those at St. Joseph's",﻿Under the charge of the Ladies of the Sacred Heart of Mary,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0190,"﻿asylum, hospital",﻿St. Vincent's Orphan Asylum and Hospital,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.669769,-83.542102,,,,,,,,,,﻿religious,"﻿religious, 12",﻿under the direction of the Sisters of Charity---Gray Nuns,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0190,"﻿asylum, hospital",﻿St. Vincent's Orphan Asylum and Hospital,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.669769,-83.542102,,,,,,,,,,﻿child,"﻿orphans, 84",﻿under the direction of the Sisters of Charity---Gray Nuns,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0190,"﻿asylum, hospital",﻿St. Vincent's Orphan Asylum and Hospital,English,,,,,,﻿Toledo,﻿Toledo,﻿OH,,41.669769,-83.542102,,,,,,,,,,﻿patient,"﻿patients, 10",﻿under the direction of the Sisters of Charity---Gray Nuns,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0218_02,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Thompson,,﻿OH,,,,,,,,,,,,,﻿child,"﻿orphans, 20",﻿under the charge of the Sisters of the Most Precious Blood,,1866,﻿,﻿,﻿Cleveland,Cleveland
+﻿cle.oh.0192,﻿hospital,﻿Charity Hospital,English,,,,,,﻿Cleveland,﻿Cleveland,﻿OH,,41.496324,-81.673701,,,,,,,,,,,,﻿Under the charge of Sisters of Charity of the Order of St. Augustine,,1866,﻿,﻿,﻿Cleveland,Cleveland

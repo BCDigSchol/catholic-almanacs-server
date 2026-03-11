@@ -1,46 +1,47 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,Unnamed: 30,attendingPersID,attendingChurchNote,diocese,diocese_reg
 ﻿vin.in.0001,﻿cathedral,﻿Cathederal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,38.679024,-87.53415,,,,﻿sim_g_bruté_901,﻿Right Rev.,﻿Simon G. Bruté,﻿D. D.,,,,,,,1836,﻿https://en.wikipedia.org/wiki/St._Francis_Xavier_Cathedral_and_Library,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9002,﻿church,﻿St. Peter's,English,,,,﻿Davies County,,﻿Black Oak Ridge,﻿Montgomery,﻿IN,,38.679024,-87.53415,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Lalumiere,,,,,,,,1836,﻿https://stpetermontgomery.org/church-history/st-peters-history/,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9003,﻿church,﻿St. Mary's,English,,,,﻿Davies County,,﻿Black Oak Ridge,,﻿IN,,38.679024,-87.53415,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Lalumiere,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9004,﻿church,not recorded,English,,﻿an Indian Village on the Tippecanoa,,,,﻿Chicocos,,﻿IN,,38.679024,-87.53415,,,,﻿deseille_902,﻿Rev. Mr.,﻿Deseille,,,﻿of Michigan,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9005,﻿church,not recorded,English,,﻿Duchee River,,,,,,﻿IN,,38.679024,-87.53415,,,﻿occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.0033,﻿church,﻿St. John's,English,,,,﻿Dearborn County,,﻿Dover,,﻿IN,,38.679024,-87.53415,,,﻿every other Sunday,﻿jos_ferneding_901,﻿Rev.,﻿Jos. Ferneding,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9006,﻿church,﻿St. Joseph's,English,,,,﻿Allen County,,﻿Fort Wayne,,﻿IN,,38.679024,-87.53415,,,,﻿mat_ruff_901,﻿Rev.,﻿Matthew Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿for.in.0001,﻿church,﻿St. Mary's,English,,,,﻿Allen County,,﻿Fort Wayne,,﻿IN,,38.679024,-87.53415,,,,,﻿Rev.,﻿Matthew Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9007,﻿church,not recorded,English,,,,,,﻿Huntingdon,,﻿IN,,38.679024,-87.53415,,,,﻿mat_ruff_901,﻿Rev.,﻿Matthew Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿for.in.0081,﻿church,not recorded,English,,,,﻿Cass County,,﻿Logansport,,﻿IN,,40.752475,-86.375266,,,﻿visited occasionally,﻿s_t_badin_902,﻿Rev.,﻿S. T. Badin,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.0093,﻿church,not recorded,English,,,,,,﻿Mount Pleasant,,﻿IN,,40.752475,-86.375266,,,﻿visited occasionally,,,,,,,,,,,1836,"﻿https://en.wikipedia.org/wiki/Mount_Pleasant_Township,_Delaware_County,_Indiana",﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9009,﻿church,not recorded,English,,,,,,﻿Madison,,﻿IN,,40.752475,-86.375266,,,﻿visited occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9010,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Dearborn County,,﻿New Alsace,,﻿IN,,40.752475,-86.375266,,,﻿attended every other Sunday,﻿jos_ferneding_901,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9011,﻿church,not recorded,English,,,,﻿Floyd County,,﻿New Albany,,﻿IN,,40.752475,-86.375266,,,﻿attended occasionally,﻿ign_reynolds_901,﻿Rev.,﻿Ignatius Reynolds,,,﻿of Ky.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.9010,﻿church,not recorded,English,,,,﻿Floyd County,,﻿the Knobs,﻿Floyds Knobs,﻿IN,,38.324167,-85.873889,,,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿for.in.0109,﻿church,not recorded,English,,,,,﻿Miami County,﻿Peru,,﻿IN,,38.324167,-85.873889,,﻿visited by Rev. M. Ruff,﻿occasionally,﻿jos_ferneding_901,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9013,﻿church,not recorded,English,,,,,,﻿Miamiport,,﻿IN,,38.324167,-85.873889,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9014,﻿church,not recorded,English,,,,,,﻿Wabashtown,,﻿IN,,38.324167,-85.873889,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9015,﻿church,not recorded,English,,,,,,﻿Salomic,,﻿IN,,38.324167,-85.873889,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9016,﻿church,not recorded,English,,,,,,﻿Gros,,﻿IN,,38.324167,-85.873889,,﻿visited by Rev. M. Ruff,﻿occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9017,﻿church,not recorded,English,,,,,,﻿Rising Sun,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9018,﻿church,not recorded,English,,,,,,﻿Richmond,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.0127,﻿church,not recorded,English,,,,,,﻿Shelbyville,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9019,﻿church,not recorded,English,,,,,,﻿Columbus,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9019,﻿church,not recorded,English,,,,,,﻿Indianapolis,,﻿IN,,38.324167,-85.873889,,,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿for.in.0127,﻿church,not recorded,English,,,,﻿St. Joseph County,,﻿Southbend,,﻿IN,,38.324167,-85.873889,,,,﻿s_t_badin_902,﻿Rev.,﻿S. T. Badin,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿for.in.0127,﻿church,not recorded,English,,,,﻿St. Joseph County,,﻿Southbend,,﻿IN,,38.324167,-85.873889,,,,﻿descilles_901,﻿Rev. Mr.,﻿Descilles,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9021,﻿church,﻿St. Mary's of the Lake,English,,,,,,,,﻿IN,,38.324167,-85.873889,,,,﻿s_t_badin_902,﻿Rev.,﻿S. T. Badin,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9021,﻿church,﻿St. Mary's of the Lake,English,,,,,,,,﻿IN,,38.324167,-85.873889,,,,﻿descilles_901,﻿Rev. Mr.,﻿Descilles,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9022,﻿station,not recorded,English,,﻿Ohio River,,,,,,﻿IN,,38.324167,-85.873889,,"﻿visited by Rev. Elisha Durbin and Rev. Charles Coomes, of Kentucky.",,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9023,﻿church,not recorded,English,,,,,,﻿Terrehaute,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9024,﻿church,not recorded,English,,,,,,﻿Merom,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿for.in.0066,﻿church,not recorded,English,,,,,,﻿Lafayette,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9026,﻿church,not recorded,English,,,,,,﻿Shaker's Prairie,,﻿IN,,38.324167,-85.873889,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9027,﻿church,not recorded,English,,,,﻿Davies County,,﻿Washington,,﻿IN,,38.324167,-85.873889,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Lalumiere,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9027,﻿church,not recorded,English,,,,﻿Davies County,,﻿Chicago,,﻿IL,,38.324167,-85.873889,,,,﻿ire_s_cyr_901,﻿Rev.,﻿Irenceus St. Cyr,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.0087,﻿church,not recorded,English,,,,﻿Edgar County,,﻿Paris Prairie,﻿Paris,﻿IL,,39.611146,-87.696137,,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9029,﻿church,not recorded,English,,﻿Thrawl's Station,,,,,,﻿IL,,39.611146,-87.696137,,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9030,﻿church,not recorded,English,,﻿Riviere Au Chat,,,,,,﻿IL,,39.611146,-87.696137,,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.0295,﻿church,not recorded,English,,,,,﻿Wabash County,﻿Coffee Town,﻿Mt. Carmel,﻿IL,,38.35077351,-87.82228107,,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.9011,﻿church,not recorded,English,,,,,﻿Lawrence County,﻿Lawrenceville,﻿Lawrenceville,﻿IL,,38.73188355,-87.68849793,,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.0115,﻿church,not recorded,English,,,,,﻿Gallatin County,﻿Shawneytown,﻿Shawneetown,﻿IL,,37.735639,-88.138151,,﻿visited from Ky. by Rev. Elisha Durbin,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.0213,﻿church,not recorded,English,,,,,﻿White County,﻿Carmi,,﻿IL,,38.09088,-88.158649,,﻿visited from Ky. by Rev. Elisha Durbin,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿alt.il.9009,﻿church,not recorded,English,,,,,﻿Edwards County,﻿Albion,,﻿IL,,38.37717939,-88.05824115,,﻿visited from Ky. by Rev. Elisha Durbin,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
-﻿vin.in.9000,﻿convent,﻿St. Clare's Convent,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,﻿IN,38.37717939,-88.05824115,,,,﻿bishop_901,﻿Right Rev.,﻿Bishop,,﻿Superintendent,﻿resides in Vincennes,,,﻿manage[d] and govern[ed] [by] Sisters of Charity,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0090,﻿church,﻿St. Peter's,English,,﻿Black Oak Ridge,,﻿Davies County,,,﻿Montgomery,﻿IN,,38.66456,-87.046859,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Lalumiere,,,,,,,,1836,﻿https://stpetermontgomery.org/church-history/st-peters-history/,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9003,﻿church,﻿St. Mary's,English,,﻿Black Oak Ridge,,﻿Davies County,,,,﻿IN,,,,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Lalumiere,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9004,﻿church,not recorded,English,,﻿an Indian Village on the Tippecanoa,,,,﻿Chicocos,,﻿IN,,,,,,,﻿deseille_902,﻿Rev. Mr.,﻿Deseille,,,﻿of Michigan,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9005,﻿church,not recorded,English,,﻿Duchee River,,,,,,﻿IN,,,,,,﻿occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0033,﻿church,﻿St. John's,English,,,,﻿Dearborn County,,﻿Dover,,﻿IN,,,,,,﻿[visited] every other Sunday [by] Rev. Jos. Ferneding,﻿jos_ferneding_001,﻿Rev.,﻿Jos. Ferneding,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.9005,﻿church,﻿St. Joseph's,English,,,,﻿Allen County,,﻿Fort Wayne,,﻿IN,,,,,,,﻿mat_f_ruff_901,﻿Rev.,﻿Matthew Ruff,,,,,,,,1836,"﻿https://files.ecatholic.com/36674/documents/2024/7/TheFoundingoftheSt.JosephHessenCasselv2.pdf?t=1722438041000 , https://staging.stjoehc.org/general-information/history-of-parish/history-joseph-hessen/",﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0001,﻿church,﻿St. Mary's,English,,,,﻿Allen County,,﻿Fort Wayne,,﻿IN,,,,,,,,﻿Rev.,﻿Matthew Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9007,﻿church,not recorded,English,,,,,,﻿Huntingdon,,﻿IN,,,,,,,﻿mat_f_ruff_901,﻿Rev.,﻿Matthew Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0081,﻿church,not recorded,English,,,,﻿Cass County,,﻿Logansport,,﻿IN,,40.752475,-86.375266,,,﻿visited occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0093,﻿church,not recorded,English,,,,,,﻿Mount Pleasant,,﻿IN,,,,,,﻿visited occasionally,,,,,,,,,,,1836,"﻿https://en.wikipedia.org/wiki/Mount_Pleasant_Township,_Delaware_County,_Indiana",﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9009,﻿church,not recorded,English,,,,,,﻿Madison,,﻿IN,,,,,,﻿visited occasionally,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9010,﻿church,﻿St. Paul's,English,﻿a large German congregation,,,﻿Dearborn County,,﻿New Alsace,,﻿IN,,,,,,﻿attended every other Sunday Rev. Joseph Freneding,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9011,﻿church,not recorded,English,,,,﻿Floyd County,,﻿New Albany,,﻿IN,,,,,,"﻿attended occasionally [by] Rev. Ignatius Reynolds, of Ky., and Rev. Joseph Ferneding",﻿ign_a_reynolds_901,﻿Rev.,﻿Ignatius Reynolds,,,﻿of Ky.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0217,﻿church,not recorded,English,,,,﻿Floyd County,,﻿the Knobs,﻿Floyds Knobs,﻿IN,,,,,,"﻿attended occasionally [by] Rev. Ignatius Reynolds, of Ky., and Rev. Joseph Ferneding",,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0109,﻿church,not recorded,English,,,,,﻿Miami County,﻿Peru,,﻿IN,,,,,,﻿occasionally visited by Rev. M. Ruff,﻿mat_f_ruff_901,﻿Rev.,﻿M. Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9013,﻿church,not recorded,English,,,,,,﻿Miamiport,,﻿IN,,,,,,﻿occasionally visited by Rev. M. Ruff,﻿mat_f_ruff_901,﻿Rev.,﻿M. Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9014,﻿church,not recorded,English,,,,,,﻿Wabashtown,,﻿IN,,,,,,﻿occasionally visited by Rev. M. Ruff,﻿mat_f_ruff_901,﻿Rev.,﻿M. Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9015,﻿church,not recorded,English,,,,,,﻿Salomic,,﻿IN,,,,,,﻿occasionally visited by Rev. M. Ruff,﻿mat_f_ruff_901,﻿Rev.,﻿M. Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9016,﻿church,not recorded,English,,,,,,﻿Gros,,﻿IN,,,,,,﻿occasionally visited by Rev. M. Ruff,﻿mat_f_ruff_901,﻿Rev.,﻿M. Ruff,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9017,﻿church,not recorded,English,,,,,,﻿Rising Sun,,﻿IN,,,,,,﻿occasionally attended [by],,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9018,﻿church,not recorded,English,,,,,,﻿Richmond,,﻿IN,,,,,,﻿occasionally attended [by],,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0127,﻿church,not recorded,English,,,,,,﻿Shelbyville,,﻿IN,,,,,,﻿occasionally attended [by],,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9019,﻿church,not recorded,English,,,,,,﻿Columbus,,﻿IN,,,,,,﻿occasionally attended [by],,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0064,﻿church,not recorded,English,,,,,,﻿Indianapolis,,﻿IN,,,,,,﻿occasionally attended [by],,,,,,,,,,,1836,"﻿https://www.stjohnsindy.org/about-us.html , source mentions officially started in 37. stands to reason this is a precursor congregation, likely out of a house or something",﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0127,﻿church,not recorded,English,,,,﻿St. Joseph County,,﻿Southbend,﻿South Bend,﻿IN,,,,,,,﻿s_t_badin_901,﻿Rev.,﻿S. T. Badin,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0127,﻿church,not recorded,English,,,,﻿St. Joseph County,,﻿Southbend,﻿South Bend,﻿IN,,,,,,,﻿deseille_902,﻿Rev. Mr.,﻿Descilles,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.9009,﻿church,﻿St. Mary's of the Lake,English,,,,,,,﻿Culver,﻿IN,,,,,,,﻿s_t_badin_901,﻿Rev.,﻿S. T. Badin,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.9009,﻿church,﻿St. Mary's of the Lake,English,,,,,,,﻿Culver,﻿IN,,,,,,,﻿deseille_902,﻿Rev. Mr.,﻿Descilles,,,﻿of Mich.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9022,﻿station,not recorded,English,,﻿Ohio River,,,,,,﻿IN,,,,,"﻿visited by Rev. Elisha Durbin and Rev. Charles Coomes, of Kentucky.",,﻿eli_j_durbin_001,﻿Rev.,﻿Elisha Durbin,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9022,﻿station,not recorded,English,,﻿Ohio River,,,,,,﻿IN,,,,,,,,﻿Rev.,﻿Charles Coomes,,,﻿of Kentucky.,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0164,﻿church,not recorded,English,,,,,,﻿Terrehaute,﻿Terre Haute,﻿IN,,,,,,﻿occasionally attended,,,,,,,,,,,1836,﻿https://www.stjoeup.org/about-us,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9024,﻿church,not recorded,English,,,,,,﻿Merom,,﻿IN,,,,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0066,﻿church,not recorded,English,,,,,,﻿Lafayette,,﻿IN,,,,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9026,﻿church,not recorded,English,,,,,,﻿Shaker's Prairie,,﻿IN,,,,,,﻿occasionally attended,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0171,﻿church,not recorded,English,,,,﻿Davies County,,﻿Washington,,﻿IN,,,,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Lalumiere,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿chi.il.0002,﻿church,not recorded,English,,,,,,﻿Chicago,,﻿IL,,39.611146,-87.696137,,,,﻿ire_s_cyr_901,﻿Rev.,﻿Irenœus St. Cyr,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0087,﻿church,not recorded,English,,,,﻿Edgar County,,﻿Paris Prairie,﻿Paris,﻿IL,,,,﻿vin.in.0001,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9029,﻿church,not recorded,English,,﻿Thrawl's Station,,,,,,﻿IL,,,,﻿vin.in.0001,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9030,﻿church,not recorded,English,,﻿Riviere Au Chat,,,,,,﻿IL,,,,﻿vin.in.0001,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0072,﻿church,not recorded,English,,,,,﻿Wabash County,﻿Coffee Town,﻿Mt. Carmel,﻿IL,,38.73188355,-87.68849793,﻿vin.in.0001,﻿visited from Vincennes,,,,,,,,,,,,1836,﻿https://stmarysparish.net/stmary,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.9011,﻿church,not recorded,English,,,,,﻿Lawrence County,﻿Lawrenceville,﻿Lawrenceville,﻿IL,,37.735639,-88.138151,﻿vin.in.0001,﻿visited from Vincennes,,,,,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0115,﻿church,not recorded,English,,,,,﻿Gallatin County,﻿Shawneytown,﻿Shawneetown,﻿IL,,38.09088,-88.158649,,,﻿visited from Ky. by Rev. Elisha Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿Elisha Durbin,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0213,﻿church,not recorded,English,,,,,﻿White County,﻿Carmi,,﻿IL,,38.37717939,-88.05824115,,,﻿visited from Ky. by Rev. Elisha Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿Elisha Durbin,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.9009,﻿church,not recorded,English,,,,,﻿Edwards County,﻿Albion,,﻿IL,,,,,,﻿visited from Ky. by Rev. Elisha Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿Elisha Durbin,,,,,,,,1836,,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9000,﻿convent,﻿St. Clare's Convent,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,﻿IN,,,,,,﻿sim_g_bruté_901,﻿Right Rev.,﻿Simon G. Bruté,﻿D. D.,﻿Bishop; Superintendent,﻿resides in Vincennes,,,﻿manage[d] and govern[ed] [by] Sisters of Charity,,1836,,﻿,﻿,﻿Vincennes,Vincennes

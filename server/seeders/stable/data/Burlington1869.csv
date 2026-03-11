@@ -16,7 +16,7 @@
 ﻿bur.vt.0014,﻿church,not recorded,English,,,,﻿Rutland County,,﻿Castleton,,﻿VT,,43.610622,-73.179832,﻿bur.vt.0047,﻿Attended from West-Rutland,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0015,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Chittenden County,,﻿Charlotte,,﻿VT,,44.317348,-73.188774,﻿bur.vt.0063,﻿Attended from Burlington,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0016,﻿church,not recorded,English,,,,,,﻿Danby,,﻿VT,,43.354834,-73.04755,﻿bur.vt.0045,﻿Attended from East-Rutland,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0070,﻿church,not recorded,English,,,,﻿Bennington County,,﻿Dorset,,﻿VT,,41.819311,-71.416583,,,,﻿tho_gaffney_001,﻿Rev.,﻿Thomas Gaffney,,,﻿who resides at East-Rutland,,,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0070,﻿church,not recorded,English,,,,﻿Bennington County,,﻿Dorset,,﻿VT,,,,,,,﻿tho_gaffney_001,﻿Rev.,﻿Thomas Gaffney,,,﻿who resides at East-Rutland,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0017,﻿church,not recorded,English,,,,,,﻿East Dorset,,﻿VT,,43.241044,-73.002153,﻿bur.vt.0045,﻿Attended from East-Rutland,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0018,﻿church,not recorded,English,,,,﻿Lamoille County,,﻿Eden,,﻿VT,,44.707272,-72.545669,﻿bur.vt.0021,﻿Attended from Fairfield,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0019,﻿church,﻿St. John the Baptist,English,,,,﻿Franklin County,,﻿Enosburg,,﻿VT,,44.907388,-72.800667,﻿bur.vt.0006,﻿Attended from Bakersfield,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
@@ -63,14 +63,14 @@
 ﻿bur.vt.0060,﻿church,not recorded,English,,,,﻿Windsor County,﻿Windsor County,﻿Windsor,﻿Windsor,﻿VT,,43.48,-72.386568,﻿bur.vt.0012,﻿Attended from Brattleboro,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0061,﻿church,not recorded,English,,,,,﻿Chittenden County,﻿Winooski Falls,﻿Winooski,﻿VT,,44.491438,-73.185683,,,,﻿audet_001,﻿Rev. Fr.,﻿Audet,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0062,﻿church,not recorded,English,,,,﻿Windsor County,﻿Windsor County,﻿Woodstock,﻿Woodstock,﻿VT,,43.624244,-72.518511,﻿bur.vt.0033,﻿Attended from Milton Falls,﻿Attended once a month,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,,﻿Sister,﻿Ignatius,,﻿Sister-Servant,,﻿sister,﻿14 Sisters,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿orphan,﻿90 orphans,﻿Directed by the Sisters of Providence,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0071,﻿school,﻿St. Mary's Boy's School,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,41.819311,-71.416583,,,,,,,,,,﻿anttendee,﻿150 attendance,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0072,﻿school,﻿St. Mary's Schools,English,,,,,,﻿Winooski Village,,,,41.819311,-71.416583,,,,,,,,,,﻿pupil,﻿140 pupils,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0073,﻿school,﻿St. Mary's Schools,English,,,,,,﻿Winooski Village,,,,41.819311,-71.416583,,,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,,﻿Sister,﻿Ignatius,,﻿Sister-Servant,,﻿religious,﻿14 Sisters,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿child,﻿90 orphans,﻿Directed by the Sisters of Providence,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0071,﻿school,﻿St. Mary's Boy's School,English,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,,,,,,,,,,,,﻿student,﻿150 attendance,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0072,﻿school,﻿St. Mary's Schools,English,,,,,,﻿Winooski Village,,,,,,,,,,,,,,,﻿student,﻿140 pupils,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0073,﻿school,﻿St. Mary's Schools,English,,,,,,﻿Winooski Village,,,,,,,,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0066,﻿school,﻿St. Joseph's French School,﻿French,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,﻿lambert_001,﻿Miss,﻿Lambert,,,,﻿assistant,﻿2 assistants,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0066,﻿school,﻿St. Joseph's French School,﻿French,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿pupil,﻿100 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0067,﻿school,﻿St. Peter's Catholic School,English,,,,,﻿Rutland County,﻿East Rutland,﻿Rutland,﻿VT,,43.603074,-72.985656,,,,,,,,,,﻿pupil,﻿150 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0068,﻿school,﻿St. Bridget's Schools,English,﻿For boys and girls,,,,﻿Rutland County,﻿West Rutland,﻿West Rutland,﻿VT,,43.596747,-73.052748,,,,,,,,,,﻿pupil,﻿250 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0074,﻿school,not recorded,English,,,,,,,,,,41.819311,-71.416583,,,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0069,﻿school,﻿St. Francis of Sales,English,,,,,﻿Bennington County,﻿East Bennington,﻿Bennington,﻿VT,,42.878135,-73.196774,,,,,,,,,,﻿pupil,﻿75 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0066,﻿school,﻿St. Joseph's French School,﻿French,,,,,﻿Chittenden County,﻿Burlington,﻿Burlington,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿student,﻿100 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0067,﻿school,﻿St. Peter's Catholic School,English,,,,,﻿Rutland County,﻿East Rutland,﻿Rutland,﻿VT,,43.603074,-72.985656,,,,,,,,,,﻿student,﻿150 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0068,﻿school,﻿St. Bridget's Schools,English,﻿For boys and girls,,,,﻿Rutland County,﻿West Rutland,﻿West Rutland,﻿VT,,43.596747,-73.052748,,,,,,,,,,﻿student,﻿250 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0074,﻿school,not recorded,English,,,,,,,,,,,,,,,,,,,,,,,,,1869,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0069,﻿school,﻿St. Francis of Sales,English,,,,,﻿Bennington County,﻿East Bennington,﻿Bennington,﻿VT,,42.878135,-73.196774,,,,,,,,,,﻿student,﻿75 pupils on average,,,1869,﻿,﻿,﻿Burlington,Burlington
