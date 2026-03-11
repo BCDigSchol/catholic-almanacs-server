@@ -8,11 +8,11 @@
 ﻿har.ct.0002,﻿church,﻿St. Patrick's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,﻿hug_t_brady_001,﻿Rev.,﻿H. T. Brady,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0003,﻿church,﻿St. Joseph's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,﻿pet_kelly_001,﻿Rev.,﻿Peter Kelly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0005,﻿church,﻿Immaculate Conception,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿edw_j_cooney_001,﻿Rev.,﻿E. J. Cooney,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0006,﻿church,﻿St. Bernard's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿mic_a_wallace_001,﻿Rev.,﻿M. A. Wallace,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0006,﻿church,﻿St. Bernard's,English,,,,,,﻿Providence,﻿Providence,﻿RI,,,,,,,﻿mic_a_wallace_001,﻿Rev.,﻿M. A. Wallace,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0004,﻿church,﻿St. Mary's,English,﻿new church building,,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿joh_quinn_001,﻿Rev.,﻿John Quinn,﻿D.D.,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0004,﻿church,﻿St. Mary's,English,﻿new church building,,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,﻿jam_oreilly_003,﻿Rev.,﻿James O'Reilly,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0008,﻿chapel,﻿St. Catharine's Chapel,English,,,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.821092,-71.414004,﻿har.ct.0001,﻿attended from Cathedral,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0157_02,﻿chapel,﻿St. Aloysius' Chapel,English,,﻿Orphan Asylum,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.769265,-72.678812,﻿har.ct.0006,﻿attended from St. Bernard's,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157_02,﻿chapel,﻿St. Aloysius' Chapel,English,,﻿Orphan Asylum,,,﻿Providence County,﻿Providence,﻿Providence,﻿RI,,41.821092,-71.414004,﻿har.ct.0006,﻿attended from St. Bernard's,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0009,﻿church,not recorded,English,,,,﻿Providence County,﻿Providence County,﻿Albion,﻿Albion,﻿RI,,41.9533,-71.458136,﻿har.ct.0031,﻿attended from Valley Falls,﻿every second Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0012,﻿church,not recorded,English,,,,,﻿Bristol County,﻿Bristol,﻿Bristol,﻿RI,,41.671182,-71.270735,﻿har.ct.0033,﻿attended from Warren,﻿Mass every Sunday,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0015,﻿church,not recorded,English,,,,,,﻿Coal Mines,,﻿RI,,41.580095,-71.477429,﻿har.ct.0025,﻿attended from Newport,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
@@ -124,7 +124,7 @@
 ﻿har.ct.0134,﻿church,not recorded,English,,,,,﻿Litchfield County,﻿Watertown,﻿Watertown,﻿CT,,41.606204,-73.11834,﻿har.ct.0133,﻿attended from Waterbury,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0136,﻿church,﻿St. Michael's,English,,,,﻿New-London Co.,﻿Washington County,﻿Westerly,﻿Westerly,﻿RI,,41.356064,-71.81157,,,,﻿pat_sherry_001,﻿Rev.,﻿P. Sherry,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0139,﻿church,﻿Church of the Assumption,English,,,,,﻿Fairfield County,﻿Westport,﻿Westport,﻿CT,,41.136319,-73.3652,﻿har.ct.0107,﻿attended from Norwalk,﻿twice a month,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0148_02,﻿church,﻿St. Joseph's,English,,﻿St. Joseph's Convent,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.769203,-72.67853,,,,﻿phi_sheridan_001,﻿Rev.,﻿P. Sheridan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0148_02,﻿church,﻿St. Joseph's,English,,﻿St. Joseph's Convent,,,﻿Litchfield County,﻿Winsted,﻿Winsted,﻿CT,,41.921391,-73.064674,,,,﻿phi_sheridan_001,﻿Rev.,﻿P. Sheridan,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0142,﻿church,﻿St. Mary's,English,,,,,﻿Hartford County,﻿Windsor Locks,﻿Windsor Locks,﻿CT,,41.930185,-72.629537,,,,﻿jam_smyth_001,﻿Rev.,﻿James Smyth,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0143,﻿church,﻿St. Joseph's,English,,,,,﻿Windham County,﻿Willimantic,﻿Willimantic,﻿CT,,41.713293,-72.207127,,,,﻿flo_de-bruycker_001,﻿Rev.,﻿F. de Bruycker,,﻿Pastor,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0143,﻿church,﻿St. Joseph's,English,,,,,﻿Windham County,﻿Willimantic,﻿Willimantic,﻿CT,,41.713293,-72.207127,,,,﻿eug_j_vygen_001,﻿Rev.,﻿Eugene I. Vygen,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
@@ -134,66 +134,66 @@
 ﻿har.ct.0147,﻿church,not recorded,English,,,,,﻿New London County,﻿Uncas,﻿Uncasville,﻿CT,,41.431721,-72.110094,﻿har.ct.0095,﻿attended from New London,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0131,﻿church,not recorded,English,,,,,﻿Hartford County,﻿Unionsville,﻿Unionville,﻿CT,,41.760237,-72.888846,﻿har.ct.0052,﻿attended from Collinsville,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0150,"﻿convent, academy",﻿St. Francis Xavier's Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818852,-71.415268,,,,,﻿Sister,﻿M. Bernard Reade,,﻿Superior,,﻿religious,﻿28 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0150,"﻿convent, academy",﻿St. Francis Xavier's Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818852,-71.415268,,,,,,,,,,﻿pupil,﻿75 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0150,"﻿convent, academy",﻿St. Francis Xavier's Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818852,-71.415268,,,,,,,,,,﻿student,﻿75 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0151,"﻿convent, academy",﻿St. Francis Xavier's Academy and Boarding-School,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.818965,-71.415015,,,,,,,,,,,,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0158,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.769265,-72.678812,,,,,﻿Sister,﻿Pauline Maher,,﻿Superior,,﻿religious,﻿16 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0158,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.769265,-72.678812,,,,,,,,,,﻿pupil,﻿17 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0158,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.769265,-72.678812,,,,,,,,,,﻿student,﻿17 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0162,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿New Haven,﻿New Haven,﻿CT,,41.308085,-72.936739,,,,,﻿Sister,﻿M. Borgia Douglas,,﻿Superior,,﻿religious,﻿12 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0162,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿New Haven,﻿New Haven,﻿CT,,41.308085,-72.936739,,,,,,,,,,﻿pupil,﻿80 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0162,"﻿convent, academy",﻿Convent and Academy of the Sisters of Mercy,English,,,,,,﻿New Haven,﻿New Haven,﻿CT,,41.308085,-72.936739,,,,,,,,,,﻿student,﻿80 pupils,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0152,﻿convent,﻿Convent of the Sisters of Mercy,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.490102,-71.312828,,,,,﻿Sister,﻿M. De Pazzi Tobin,,﻿Superior,,﻿religious,﻿6 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
 ﻿har.ct.0154,﻿convent,﻿Convent of the Sisters of Mercy,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.876689,-71.402059,,,,,﻿Sister,﻿M. Camilla Purcell,,﻿Superior,,﻿religious,﻿6 religious,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0157,﻿asylum,﻿St. Aloysius' Orphan Asylum,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.801422,-71.4134,,,,,﻿Sister,﻿M. Angela Fitzgerald,,﻿Superior,,﻿boy,﻿102 boys,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0157,﻿asylum,﻿St. Aloysius' Orphan Asylum,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.801422,-71.4134,,,,,,,,,,﻿girl,﻿100 girls,,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0157,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.801422,-71.4134,,,,,,,,,,﻿orphan boy,﻿25 boys,﻿directed by Sisters of Mercy,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0157,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.801422,-71.4134,,,,,,,,,,﻿orphan girl,﻿55 girls,﻿directed by Sisters of Mercy,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0157,﻿asylum,﻿Female Orphan Asylum,English,,,,,,﻿New Haven,﻿Hartford,﻿CT,,41.801422,-71.4134,,,,,﻿Sister,﻿M. Ulrica,,﻿Sister-Servant,,﻿orphan girl,"﻿orphan girls, 80",﻿directed by Sisters of Charity,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿boy,"﻿boys, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿girl,"﻿girls, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 1000",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.801769,-71.413499,,,,,,,,,,﻿boy,"﻿boys, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.801769,-71.413499,,,,,,,,,,﻿girl,"﻿girls, 375",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.801769,-71.413499,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 700",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,,,,,,,﻿boy,"﻿boys, 130",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,,,,,,,﻿girl,"﻿girls, 145",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.821391,-71.396625,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.721302,-71.529526,,,,,,,,,,﻿boy,"﻿boys, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.721302,-71.529526,,,,,,,,,,﻿girl,"﻿girls, 225",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.721302,-71.529526,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,41.349737,-73.079691,,,,,,,,,,﻿boy,"﻿boys, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,41.349737,-73.079691,,,,,,,,,,﻿girl,"﻿girls, 175",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,41.349737,-73.079691,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿boy,"﻿boys, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿girl,"﻿girls, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿boy,"﻿boys, 250",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿girl,"﻿girls, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 550",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,,,,,,,﻿boy,"﻿boys, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,,,,,,,﻿girl,"﻿girls, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.316121,-72.916763,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 800",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿boy,"﻿boys, 325",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿girl,"﻿girls, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-schol, 850",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.987319,-72.544809,,,,,,,,,,﻿boy,"﻿boys, 170",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.987319,-72.544809,,,,,,,,,,﻿girl,"﻿girls, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.987319,-72.544809,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 440",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.606204,-73.11834,,,,,,,,,,﻿boy,"﻿boys, 320",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.606204,-73.11834,,,,,,,,,,﻿girl,"﻿girls, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.606204,-73.11834,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 800",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.145283,-73.494018,,,,,,,,,,﻿boy,"﻿boys, 120",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.145283,-73.494018,,,,,,,,,,﻿girl,"﻿girls, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.145283,-73.494018,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿boy,"﻿boys, 70",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿girl,"﻿girls, 75",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 250",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿boy,"﻿boys, 60",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿girl,"﻿girls, 70",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿boy,"﻿boys, 130",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿girl,"﻿girls, 125",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 375",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Portland,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿boy,"﻿boys, 90",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Portland,﻿Middletown,﻿CT,,41.326215,-72.922908,,,,,,,,,,﻿girl,"﻿girls, 100",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.347784,-71.916121,,,,,,,,,,﻿boy,"﻿boys, 75",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.347784,-71.916121,,,,,,,,,,﻿girl,"﻿girls, 80",,,1865,﻿,﻿,﻿Hartford,Hartford
-﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.347784,-71.916121,,,,,,,,,,﻿Sunday-school students,"﻿Sunday-school, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿St. Aloysius' Orphan Asylum,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.821092,-71.414004,,,,,﻿Sister,﻿M. Angela Fitzgerald,,﻿Superior,,﻿child,﻿102 boys,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿St. Aloysius' Orphan Asylum,English,,,,,,﻿Providence,﻿Providence,﻿RI,,41.821092,-71.414004,,,,,,,,,,﻿child,﻿100 girls,,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.821092,-71.414004,,,,,,,,,,﻿child,﻿25 boys,﻿directed by Sisters of Mercy,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿Orphan Asylum,English,,,,,,﻿Hartford,﻿Hartford,﻿CT,,41.821092,-71.414004,,,,,,,,,,﻿child,﻿55 girls,﻿directed by Sisters of Mercy,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0157,﻿asylum,﻿Female Orphan Asylum,English,,,,,,﻿New Haven,﻿Hartford,﻿CT,,41.821092,-71.414004,,,,,﻿Sister,﻿M. Ulrica,,﻿Sister-Servant,,﻿child,"﻿orphan girls, 80",﻿directed by Sisters of Charity,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,,,,,,,﻿child,"﻿boys, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,,,,,,,﻿child,"﻿girls, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0001_02,﻿school,not recorded,English,,﻿Cathedral,,,,﻿Providence,﻿Providence,﻿RI,,41.819311,-71.416583,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 1000",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,,,,,,,﻿child,"﻿boys, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,,,,,,,﻿child,"﻿girls, 375",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0005_02,﻿school,not recorded,English,,﻿Immaculate Conception,,,,﻿Providence,﻿Providence,﻿RI,,41.823989,-71.412834,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 700",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿child,"﻿boys, 130",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿child,"﻿girls, 145",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0002_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Providence,﻿Providence,﻿RI,,41.8326,-71.419564,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿child,"﻿boys, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿child,"﻿girls, 225",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0026_02,﻿school,not recorded,English,,,,,,﻿Pawtucket,﻿Pawtucket,﻿RI,,41.878711,-71.382556,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008323,-71.513785,,,,,,,,,,﻿child,"﻿boys, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008323,-71.513785,,,,,,,,,,﻿child,"﻿girls, 175",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0035_02,﻿school,not recorded,English,,,,,,﻿Woonsocket,﻿Woonsocket,﻿RI,,42.008323,-71.513785,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 400",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.484199,-71.308439,,,,,,,,,,﻿child,"﻿boys, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.484199,-71.308439,,,,,,,,,,﻿child,"﻿girls, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0025_02,﻿school,not recorded,English,,,,,,﻿Newport,﻿Newport,﻿RI,,41.484199,-71.308439,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.311921,-72.923824,,,,,,,,,,﻿child,"﻿boys, 250",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.311921,-72.923824,,,,,,,,,,﻿child,"﻿girls, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0097_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.311921,-72.923824,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 550",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿child,"﻿boys, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿child,"﻿girls, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0098_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿New-Haven,﻿New Haven,﻿CT,,41.296715,-72.943131,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 800",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.682856,,,,,,,,,,﻿child,"﻿boys, 325",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.682856,,,,,,,,,,﻿child,"﻿girls, 350",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0076_02,﻿school,not recorded,English,,﻿St. Patrick's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.782096,-72.682856,,,,,,,,,,﻿sunday-school student,"﻿Sunday-schol, 850",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿child,"﻿boys, 170",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿child,"﻿girls, 200",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0077_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Hartford,﻿Hartford,﻿CT,,41.757322,-72.674281,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 440",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿child,"﻿boys, 320",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿child,"﻿girls, 450",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0133_02,﻿school,not recorded,English,,,,,,﻿Waterbury,﻿Waterbury,﻿CT,,41.558153,-73.051496,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 800",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.672076,-72.78271,,,,,,,,,,﻿child,"﻿boys, 120",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.672076,-72.78271,,,,,,,,,,﻿child,"﻿girls, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0093_02,﻿school,not recorded,English,,,,,,﻿New-Britain,﻿New Britain,﻿CT,,41.672076,-72.78271,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 300",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.534956,-72.793037,,,,,,,,,,﻿child,"﻿boys, 70",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.534956,-72.793037,,,,,,,,,,﻿child,"﻿girls, 75",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0086_02,﻿school,not recorded,English,,,,,,﻿Meriden,﻿Meriden,﻿CT,,41.534956,-72.793037,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 250",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.455541,-72.819185,,,,,,,,,,﻿child,"﻿boys, 60",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.455541,-72.819185,,,,,,,,,,﻿child,"﻿girls, 70",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0132_02,﻿school,not recorded,English,,,,,,﻿Wallingford,﻿Wallingford,﻿CT,,41.455541,-72.819185,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 150",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿child,"﻿boys, 130",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿child,"﻿girls, 125",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Middletown,﻿Middletown,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 375",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Portland,﻿Middletown,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿child,"﻿boys, 90",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0087_02,﻿school,not recorded,English,,,,,,﻿Portland,﻿Middletown,﻿CT,,41.567417,-72.652892,,,,,,,,,,﻿child,"﻿girls, 100",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.051736,-73.539738,,,,,,,,,,﻿child,"﻿boys, 75",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.051736,-73.539738,,,,,,,,,,﻿child,"﻿girls, 80",,,1865,﻿,﻿,﻿Hartford,Hartford
+﻿har.ct.0124_02,﻿school,not recorded,English,,,,,,﻿Stamford,﻿Stamford,﻿CT,,41.051736,-73.539738,,,,,,,,,,﻿sunday-school student,"﻿Sunday-school, 200",,,1865,﻿,﻿,﻿Hartford,Hartford

@@ -10,7 +10,7 @@
 ﻿bur.vt.0012,﻿church,﻿St. Michael's,English,,,,﻿Windham County,,﻿Brattleboro,,﻿VT,,42.856008,-72.558031,,,,﻿cha_oreilly_001,﻿Rev.,﻿Charles O'Reilly,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0014,﻿church,not recorded,English,,,,﻿Rutland County,,﻿Castleton,,﻿VT,,43.610622,-73.179832,﻿bur.vt.0047,﻿Attended from West-Rutland,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0015,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Chittenden County,,﻿Charlotte,,﻿VT,,44.317348,-73.188774,﻿bur.vt.0001,﻿Attended from Burlington,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0070,﻿church,not recorded,English,,,,﻿Bennington County,,﻿Dorset,,﻿VT,,41.819311,-71.416583,﻿bur.vt.0010,﻿Attended from East-Bennington,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0070,﻿church,not recorded,English,,,,﻿Bennington County,,﻿Dorset,,﻿VT,,,,﻿bur.vt.0010,﻿Attended from East-Bennington,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0018,﻿church,not recorded,English,,,,﻿Lamoille County,,﻿Eden,,﻿VT,,44.707272,-72.545669,﻿bur.vt.0021,﻿Attended from Fairfield,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0020,﻿church,not recorded,English,,,,﻿Franklin County,,﻿Fairfax,,﻿VT,,44.665496,-73.01032,﻿bur.vt.0021,﻿Attended from Fairfield,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0021,﻿church,﻿St. Patrick's,English,,,,﻿Franklin County,,﻿Fairfield,,﻿VT,,44.803684,-72.946899,,,,﻿geo_n_caissy_001,﻿Rev.,﻿George Caissy,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
@@ -44,7 +44,7 @@
 ﻿bur.vt.0059,﻿church,not recorded,English,,,,﻿Chittenden County,﻿Chittenden County,﻿Williston,﻿Williston,﻿VT,,44.449602,-73.111,﻿bur.vt.0001,﻿Visited from Burlington,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0060,﻿church,not recorded,English,,,,﻿Windsor County,﻿Windsor County,﻿Windsor,﻿Windsor,﻿VT,,43.48,-72.386568,﻿bur.vt.0012,﻿Attended from Brattleboro,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0062,﻿church,not recorded,English,,,,﻿Windsor County,﻿Windsor County,﻿Woodstock,﻿Woodstock,﻿VT,,43.624244,-72.518511,﻿bur.vt.0034,﻿Attended from Montpelier,,,,,,,,,,,,1865,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,﻿Two of the sisters teach the girls at the Cathedral Parish,,,,,,,﻿VT,,44.487834,-73.202685,,,,,﻿Sister,﻿Teresa of Jesus,,﻿Sister-Servant,,﻿sister,﻿10 Sisters,﻿Sisters of Providence,,1865,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,﻿Two of the sisters teach the girls at the Cathedral Parish,,,,,,,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿orphan,﻿80 orphans,﻿Sisters of Providence,,1865,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,﻿Two of the sisters teach the girls at the Cathedral Parish,,,,,,,﻿VT,,44.487834,-73.202685,,,,,﻿Sister,﻿Teresa of Jesus,,﻿Sister-Servant,,﻿religious,﻿10 Sisters,﻿Sisters of Providence,,1865,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0063,﻿asylum,﻿St. Joseph's Orphan Asylum,English,﻿Two of the sisters teach the girls at the Cathedral Parish,,,,,,,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿child,﻿80 orphans,﻿Sisters of Providence,,1865,﻿,﻿,﻿Burlington,Burlington
 ﻿bur.vt.0066,﻿school,﻿St. Joseph's French School for Girls,﻿French,,,,,,,,﻿VT,,44.487834,-73.202685,,,,,﻿Miss,﻿Lambert,,,,﻿assistant,﻿2 assistants,,,1865,﻿,﻿,﻿Burlington,Burlington
-﻿bur.vt.0066,﻿school,﻿St. Joseph's French School for Girls,﻿French,,,,,,,,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿pupil,"﻿75, pupils",,,1865,﻿,﻿,﻿Burlington,Burlington
+﻿bur.vt.0066,﻿school,﻿St. Joseph's French School for Girls,﻿French,,,,,,,,﻿VT,,44.487834,-73.202685,,,,,,,,,,﻿student,"﻿75, pupils",,,1865,﻿,﻿,﻿Burlington,Burlington

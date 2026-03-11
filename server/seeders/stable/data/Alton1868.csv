@@ -1,5 +1,5 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
-﻿alt.il.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,﻿Madison County,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,﻿h_d_juncker_001,﻿Rt. Rev.,﻿H. D. Juncker,﻿D.D.,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,﻿Madison County,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,﻿hen_d_juncker_001,﻿Rt. Rev.,﻿H. D. Juncker,﻿D.D.,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,﻿Madison County,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,﻿jam_harty_001,﻿Rev.,﻿James Harty,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,﻿Madison County,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,﻿a_b_rinckes_001,﻿Rev.,﻿A. B. Rinckes,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0001,﻿cathedral,﻿Cathedral of SS. Peter and Paul,English,,,,﻿Madison County,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,﻿j_janssen_001,﻿Rev.,﻿J. Janssen,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
@@ -49,7 +49,7 @@
 ﻿alt.il.0047,﻿church,﻿St. Philip's,English,﻿vacant,﻿French Village,,﻿St. Clair County,﻿St. Clair County,﻿French Village,﻿Fairview Heights,﻿IL,,38.600328,-90.050106,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0048,﻿church,not recorded,English,﻿church building,,,﻿St. Clair County,﻿St. Clair County,﻿Georgetown,﻿Smithton,﻿IL,,38.408466,-89.99353,,﻿Attended from Freeburgh,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0049,﻿church,﻿SS. Boniface and Henry,English,,,,﻿Clinton County,﻿Clinton County,﻿Germantown,﻿Germantown,﻿IL,,38.55164,-89.539164,,,,﻿b_bartels_001,﻿Rev.,﻿B. Bartels,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0049,﻿church,﻿SS. Boniface and Henry,English,﻿church building,,,﻿Jersey County,﻿Jersey County,﻿Grafton,﻿Grafton,﻿IL,,38.55164,-89.539164,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0301,﻿church,not recorded,English,﻿church building,,,﻿Jersey County,﻿Jersey County,﻿Grafton,﻿Grafton,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0051,﻿church,﻿Help of Christians,English,,,,﻿Effingham County,﻿Effingham County,﻿Green Creek,﻿Green Creek,﻿IL,,39.202818,-88.523383,﻿alt.il.0216,"﻿Attended by Rev. N. Kommerscheit, O.S.F.",,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0052,﻿church,not recorded,English,,,,﻿Pike County,﻿Pike County,﻿Griggsville,﻿Griggsville,﻿IL,,39.708936,-90.724572,﻿alt.il.0089,﻿Attended from Pittsfield,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0053,﻿church,not recorded,English,,,,﻿Monroe County,﻿Monroe County,﻿Harrisonville,﻿Harrisonville,﻿IL,,38.286709,-90.34952,﻿alt.il.0261,﻿Attended from Madonnaville,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
@@ -65,7 +65,7 @@
 ﻿alt.il.0063,﻿church,not recorded,English,,,,﻿Fayette County,﻿Fayette County,﻿London or Howard's Point,﻿Wrights Corner,﻿IL,,39.131018,-88.865679,﻿alt.il.0127,﻿Attended from Teutopolis,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0064,﻿church,not recorded,English,,,,﻿Macon County,﻿Macon County,﻿Macon Station,﻿Macon,﻿IL,,39.712816,-88.997022,﻿alt.il.0034,﻿Attended from Decatur,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0065,﻿church,﻿St. Mary's,English,﻿vacant,,,﻿Madison County,﻿Monroe County,﻿Madonnaville,﻿Madonaville,﻿IL,,38.264615,-90.246954,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0065,﻿church,﻿St. Elizabeth's,English,﻿vacant,,,﻿Madison County,﻿Monroe County,﻿Marinetown,﻿Marinetown,﻿IL,,38.264615,-90.246954,﻿alt.il.0054,﻿Attended from Highland,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alti.il.0327,﻿church,﻿St. Elizabeth's,English,,,,﻿Madison County,,﻿Marinetown,﻿Marinetown,﻿IL,,,,﻿alt.il.0054,﻿Attended from Highland,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0066,﻿church,not recorded,English,,,,﻿Moultrie County,﻿Moultrie County,﻿Marrowbone,﻿Marrowbone Township,﻿IL,,39.624668,-88.768638,﻿alt.il.0034,﻿Attended from Decatur,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0067,﻿church,﻿St. Patrick's,English,,,,﻿Clark County,﻿Clark County,﻿Marshall,﻿Marshall,﻿IL,,39.387497,-87.694521,,,,﻿joh_mark_001,﻿Rev.,﻿John Mark,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0068,﻿church,﻿Holy Childhood of Jesus,English,,,,﻿St. Clair County,﻿St. Clair County,﻿Maskoutah,﻿Mascoutah,﻿IL,,38.491205,-89.791783,,,,﻿p_rosendahl_001,﻿Rev.,﻿P. Rosendahl,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
@@ -90,11 +90,11 @@
 ﻿alt.il.0089,﻿church,﻿St. Mary's,English,,,,﻿Pittsfield County,﻿Pike County,﻿Pike,﻿Pittsfield,﻿IL,,39.607825,-90.805129,,,,﻿f_recouvreur_001,﻿Rev.,﻿Fr. Recouvreur,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0090,﻿church,﻿St. Patrick's,English,,,,﻿Gallatin County,,﻿Pond Settlement,,﻿IL,,37.710775,-88.246118,﻿alt.il.0115,﻿Attended from Shawneetown,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0091,﻿church,﻿St. Augustine's,English,,﻿Heckler P.O.,,﻿Monroe County,﻿St. Clair County,﻿Prarie du Long,﻿Prairie Du Long Township,﻿IL,,38.300842,-90.03607,,,,﻿i_berlage_001,﻿Rev.,﻿I. Berlage,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0092,﻿church,﻿St. Joseph's,English,,,,﻿Randolph County,﻿Randolph County,﻿Prarie du Rocher,﻿Prairie Du Rocher,﻿IL,,38.079235,-90.093336,,,,﻿h_frohböse_001,﻿Rev.,﻿H. Frohboese,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0092,﻿church,﻿St. Joseph's,English,,,,﻿Randolph County,﻿Randolph County,﻿Prarie du Rocher,﻿Prairie Du Rocher,﻿IL,,38.079235,-90.093336,,,,﻿h_frohboese_001,﻿Rev.,﻿H. Frohboese,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0093,﻿church,﻿St. Boniface's,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.932455,-91.40511,,,,﻿h_schaefermeyer_001,﻿Very Rev.,﻿H. Schaefermeyer,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0093,﻿church,﻿St. Boniface's,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.932455,-91.40511,,,,﻿f_reinhardt_001,﻿Rev.,﻿F. Reinhardt,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0094,﻿church,﻿St. Lawrence's,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.934465,-91.361503,,,,﻿pet_mcgirr_001,﻿Rev.,﻿Peter McGirr,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0095,﻿church,﻿St. Francis Solanus',English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.939549,-91.388669,,,,﻿f_bergmeyer_001,﻿Rev.,﻿F. Bergmeyer,﻿O.S.F.,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0095,﻿church,﻿St. Francis Solanus',English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.939549,-91.388669,,,,﻿fer_bergmeyer_001,﻿Rev.,﻿F. Bergmeyer,﻿O.S.F.,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0096,﻿church,﻿Immaculate Conception,English,﻿church building,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.949604,-91.406868,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0097,﻿chapel,﻿St. Aloysius' Chapel,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.409873,﻿alt.il.0275,﻿Attended from St. Francis' Church,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0098,﻿chapel,﻿St. Joseph's Chapel,English,,,,﻿Adams County,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.949604,-91.406868,﻿alt.il.0275,﻿Attended from St. Francis' Church,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
@@ -128,20 +128,20 @@
 ﻿alt.il.0128,﻿church,﻿St. Patrick's,English,,﻿Red Bud P.O.,,﻿Monroe County,﻿Monroe County,﻿Tiptown,﻿Tiptown,﻿IL,,38.211717,-89.994274,,﻿Attended from Red Bud,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0130,﻿church,﻿Purification of the Blessed Virgin Mary,English,﻿vacant,,,﻿Clinton County,﻿Clinton County,﻿Trenton,﻿Trenton,﻿IL,,38.605604,-89.682037,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0131,﻿church,not recorded,English,﻿vacant,,,﻿Fayette County,﻿Fayette County,﻿Vandalia,﻿Vandalia,﻿IL,,38.964738,-89.098545,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0132,﻿church,not recorded,English,,,,﻿Macoupin County,﻿Macoupin County,﻿Virden,﻿Virden,﻿IL,,39.500887,-89.767875,,,,﻿r_grant_001,﻿Rev.,﻿Richard Grant,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0132,﻿church,not recorded,English,,,,﻿Macoupin County,﻿Macoupin County,﻿Virden,﻿Virden,﻿IL,,39.500887,-89.767875,,,,﻿ric_grant_001,﻿Rev.,﻿Richard Grant,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0133,﻿church,not recorded,English,,,,﻿Cass County,﻿Cass County,﻿Virginia,﻿Virginia,﻿IL,,39.951,-90.207455,﻿alt.il.0234,﻿Attended from Beardstown,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0134,﻿church,﻿SS. Peter and Francis,English,,,,﻿Monroe County,﻿Monroe County,﻿Waterloo,﻿Waterloo,﻿IL,,38.335886,-90.149834,,,,﻿p_limacher_001,﻿Rev.,﻿P. Limacher,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0135,﻿church,not recorded,English,,,,﻿Morgan County,﻿Morgan County,﻿Waverly,﻿Waverly,﻿IL,,39.591716,-89.952885,﻿alt.il.0077,﻿Attended from New Berlin,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0136,﻿church,not recorded,English,﻿vacant,﻿Fieldon P.O.,,﻿Jersey County,﻿Jersey County,﻿Westwoods,﻿Jerseyville,﻿IL,,39.11708402,-90.47310548,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0137,﻿church,not recorded,English,,,,﻿Scott County,﻿Scott County,﻿Winchester,﻿Winchester,﻿IL,,39.631356,-90.453933,,,,﻿pat_kearney_001,﻿Rev.,﻿Patrick Kearney,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0137,﻿station,not recorded,English,,,,﻿Adams County,﻿Adams County,﻿Columbus,﻿Columbus,﻿IL,,39.631356,-90.453933,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0330,﻿station,not recorded,English,,,,﻿Adams County,﻿Adams County,﻿Columbus,﻿Columbus,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0139,﻿station,not recorded,English,,,,﻿Adams County,﻿Adams County,﻿Liberty,﻿Liberty,﻿IL,,39.879491,-91.107916,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0140,﻿station,not recorded,English,,,,﻿Alexander County,﻿Alexander County,﻿Thebes,﻿Thebes,﻿IL,,37.220884,-89.460921,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0141,﻿station,not recorded,English,,,,﻿Alexander County,﻿Alexander County,﻿Unity,﻿Unity,﻿IL,,37.149772,-89.272857,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0143,﻿station,not recorded,English,,,,﻿Bond County,﻿Bond County,﻿Pocahontas,﻿Pocahontas,﻿IL,,38.827825,-89.540085,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0144,﻿station,not recorded,English,,,,﻿Brown County,﻿Brown County,﻿Versailles,﻿Versailles,﻿IL,,39.885048,-90.655961,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0145,﻿station,not recorded,English,,,,﻿Cass County,﻿Cass County,﻿Arenzville,﻿Arenzville,﻿IL,,39.876992,-90.373457,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0145,﻿station,not recorded,English,,,,﻿Cass County,﻿Cass County,﻿Ashland,﻿Ashland,﻿IL,,39.876992,-90.373457,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0296,﻿station,not recorded,English,,,,﻿Cass County,﻿Cass County,﻿Ashland,﻿Ashland,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0150,﻿station,not recorded,English,,,,﻿Clay County,﻿Clay County,﻿Clay City,﻿Clay City,﻿IL,,38.688659,-88.354212,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0151,﻿station,not recorded,English,,,,﻿Clay County,﻿Clay County,﻿Xenia,﻿Xenia,﻿IL,,38.635881,-88.634774,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0152,﻿station,not recorded,English,,,,﻿Coles County,﻿Coles County,﻿Ashmore,﻿Ashmore,﻿IL,,39.533091,-88.022258,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
@@ -162,22 +162,22 @@
 ﻿alt.il.0179,﻿station,not recorded,English,,,,﻿Madison County,﻿Madison County,﻿Mitchell,﻿Mitchell,﻿IL,,38.764276,-90.080517,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0180,﻿station,not recorded,English,,,,﻿Madison County,﻿Madison County,﻿Venice,﻿Venice,﻿IL,,38.672273,-90.169832,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0211,﻿station,not recorded,English,,,,﻿Marion County,﻿Marion County,﻿Coloma,﻿Coloma,﻿IL,,38.332376,-89.380125,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0211,﻿station,not recorded,English,,,,﻿Marion County,﻿Marion County,﻿Sandoval,﻿Sandoval,﻿IL,,38.332376,-89.380125,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0211,﻿station,not recorded,English,,,,﻿Marion County,﻿Marion County,﻿Tonti,﻿Tonti,﻿IL,,38.332376,-89.380125,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0306,﻿station,not recorded,English,,,,﻿Marion County,﻿Marion County,﻿Sandoval,﻿Sandoval,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0331,﻿station,not recorded,English,,,,﻿Marion County,﻿Marion County,﻿Tonti,﻿Tonti,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0186,﻿station,not recorded,English,,,,﻿Morgan County,﻿Morgan County,﻿Meredosia,﻿Meredosia,﻿IL,,39.831158,-90.559571,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0186,﻿station,not recorded,English,,,,﻿Morgan County,﻿Morgan County,﻿Morgan City,﻿Morgan City,﻿IL,,39.831158,-90.559571,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0186,﻿station,not recorded,English,,,,﻿Perry County,﻿Perry County,﻿Duquoin,﻿Duquoin,﻿IL,,39.831158,-90.559571,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0332,﻿station,not recorded,English,,,,﻿Morgan County,﻿Morgan County,﻿Morgan City,﻿Morgan City,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0333,﻿station,not recorded,English,,,,﻿Perry County,﻿Perry County,﻿Duquoin,﻿Duquoin,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0191,﻿station,not recorded,English,,,,﻿Perry County,﻿Perry County,﻿Tamaroa,﻿Tamaroa,﻿IL,,38.137828,-89.230081,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0193,﻿station,not recorded,English,,,,﻿Pulaski County,,﻿Caledonia,,﻿IL,,37.251242,-89.132487,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0196,﻿station,not recorded,English,,,,﻿Randolph County,﻿Randolph County,﻿Sparta,﻿Sparta,﻿IL,,38.123105,-89.701766,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0198,﻿station,not recorded,English,,,,﻿Richland County,﻿Lawrence County,﻿Sumner,﻿Sumner,﻿IL,,38.721279,-89.701766,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0203,﻿station,not recorded,English,,,,﻿Sangamon County,﻿Sangamon County,﻿Chatham,﻿Chatham,﻿IL,,39.676163,-89.701766,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0204,﻿station,not recorded,English,,,,﻿Sangamon County,﻿Sangamon County,﻿Mechanicsburgh,﻿Mechanicsburg,﻿IL,,39.809491,-89.701766,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0198,﻿station,not recorded,English,,,,﻿Richland County,﻿Lawrence County,﻿Sumner,﻿Sumner,﻿IL,,38.721279,-88.090076,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0203,﻿station,not recorded,English,,,,﻿Sangamon County,﻿Sangamon County,﻿Chatham,﻿Chatham,﻿IL,,39.676163,-89.704544,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0204,﻿station,not recorded,English,,,,﻿Sangamon County,﻿Sangamon County,﻿Mechanicsburgh,﻿Mechanicsburg,﻿IL,,39.809491,-89.397312,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0205,﻿station,not recorded,English,,,,﻿Sangamon County,﻿Sangamon County,﻿Williamsville,﻿Williamsville,﻿IL,,39.954216,-89.548713,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0206,﻿station,not recorded,English,,,,﻿Scott County,﻿Scott County,﻿Naples,﻿Naples,﻿IL,,39.757269,-90.607349,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0199,﻿station,not recorded,English,,,,﻿St. Clair County,,﻿Cantine,,﻿IL,,38.642467,-90.607349,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0200,﻿station,not recorded,English,,,,﻿St. Clair County,﻿St. Clair County,﻿Caseyville,﻿Caseyville,﻿IL,,38.636716,-90.607349,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0200,﻿station,not recorded,English,,,,﻿Washington County,﻿St. Clair County,﻿Ashly,﻿Ashly,﻿IL,,38.636716,-90.607349,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0199,﻿station,not recorded,English,,,,﻿St. Clair County,,﻿Cantine,,﻿IL,,38.642467,-90.084021,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0200,﻿station,not recorded,English,,,,﻿St. Clair County,﻿St. Clair County,﻿Caseyville,﻿Caseyville,﻿IL,,38.636716,-90.025661,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0314,﻿station,not recorded,English,,,,﻿Washington County,,﻿Ashly,﻿Ashley,﻿IL,,,,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0213,﻿station,not recorded,English,,,,﻿White County,﻿White County,﻿Carmi,﻿Carmi,﻿IL,,38.09088,-88.158649,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0216,﻿convent,﻿St. Teresa's Convent of the Franciscan Fathers,English,,,,﻿Effingham County,﻿Effingham County,﻿Teutopolis,﻿Teutopolis,﻿IL,,39.133097,-88.471992,,,,﻿kil_schlosser_001,﻿Very Rev.,﻿Killian Schlosser,﻿O.S.F.,﻿Commissarius and Guardian,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0216,﻿convent,﻿St. Teresa's Convent of the Franciscan Fathers,English,,,,﻿Effingham County,﻿Effingham County,﻿Teutopolis,﻿Teutopolis,﻿IL,,39.133097,-88.471992,,,,﻿mat_hiltermann_001,﻿Rev.,﻿Mathias Hiltermann,﻿O.S.F.,﻿Vicarius,,,,,,1868,﻿,﻿,﻿Alton,Alton
@@ -199,61 +199,61 @@
 ﻿alt.il.0222,"﻿convent, school","﻿Ursuline Convent of the Holy Family, Academy, Boarding, and Day School",English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.907401,-90.197094,,,,,﻿Mother,﻿Mary Wiemann,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0223,﻿academy,﻿Young Ladies' Academy of the Immaculate Conception,English,,,,﻿St. Clair County,﻿St. Clair County,﻿Belleville,﻿Belleville,﻿IL,,38.52005,-89.983993,,,,,﻿Sister,﻿Jerome,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0223,﻿academy,﻿Young Ladies' Academy of the Immaculate Conception,English,,,,﻿St. Clair County,﻿St. Clair County,﻿Belleville,﻿Belleville,﻿IL,,38.52005,-89.983993,,,,,,,,,,,,﻿Conducted by the Poor School Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0223,﻿convent,﻿Convent of the Sister of St. Joseph,English,,,,﻿Jasper County,﻿St. Clair County,﻿Ste. Marie,﻿Belleville,﻿IL,,38.52005,-89.983993,,,,,﻿Mother,﻿Ferdinand,,﻿Superior,,,,﻿Conducted by the Poor School Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0315,﻿convent,﻿Convent of the Sister of St. Joseph,English,,,,﻿Jasper County,,﻿Ste. Marie,,﻿IL,,,,,,,,﻿Mother,﻿Ferdinand,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0224,"﻿convent, academy",﻿Convent and Academy of the Sisters of Loretto,English,,,,,﻿Alexander County,﻿Cairo,﻿Cairo,﻿IL,,37.005329,-89.176461,,,,,﻿Mother,﻿Elizabeth,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0224,"﻿convent, academy","﻿St. Teresa's Academy, Boarding, and Day-School",English,,,,,﻿Alexander County,﻿Decatur,﻿Decatur,﻿IL,,37.005329,-89.176461,,,,,﻿Sister,﻿M. Ignatius,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0224,"﻿convent, academy","﻿St. Teresa's Academy, Boarding, and Day-School",English,,,,,﻿Alexander County,﻿Decatur,﻿Decatur,﻿IL,,37.005329,-89.176461,,,,,,,,,,,,﻿Under Direction of the Sisters of the Holy Names of Jesus and Mary,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0334,"﻿convent, academy","﻿St. Teresa's Academy, Boarding, and Day-School",English,,,,,﻿Macon County,﻿Decatur,﻿Decatur,﻿IL,,,,,,,,﻿Sister,﻿M. Ignatius,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0334,"﻿convent, academy","﻿St. Teresa's Academy, Boarding, and Day-School",English,,,,,﻿Macon County,﻿Decatur,﻿Decatur,﻿IL,,,,,,,,,,,,,,,﻿Under Direction of the Sisters of the Holy Names of Jesus and Mary,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0225,"﻿convent, academy",﻿Convent and Academy of the Poor School Sisters of Notre Dame,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.409873,,,,,﻿Sister,﻿Boniface,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0226,"﻿convent, academy",﻿Convent and Academy of the Sisters of St. Joseph,English,,,,﻿Monroe County,﻿Monroe County,﻿Waterloo,﻿Waterloo,﻿IL,,38.335886,-90.149834,,,,,﻿Sister,﻿Teresa,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0227,﻿hospital,﻿St. Joseph's Hospital at Alton,English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.890604,-90.149834,,,,,﻿Sister,﻿Ignatia,,﻿Sister-Servant,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0227,﻿hospital,﻿St. Joseph's Hospital at Alton,English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.890604,-90.149834,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0227,﻿hospital,﻿St. Joseph's Hospital at Alton,English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.890604,-90.184276,,,,,﻿Sister,﻿Ignatia,,﻿Sister-Servant,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0227,﻿hospital,﻿St. Joseph's Hospital at Alton,English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.890604,-90.184276,,,,,,,,,,,,﻿Conducted by the Sisters of Charity,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0228,﻿hospital,﻿St. Joseph's Hospital at Quincy,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.949604,-91.406868,,,,,,,,,,,,,,1868,﻿,﻿,﻿Alton,Alton
 ﻿alt.il.0228,﻿hospital,﻿St. Joseph's Hospital at Quincy,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.949604,-91.406868,,,,,,,,,,,,﻿Conducted by the Franciscan Sisters of the Poor,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0229,﻿asylum,﻿St. Aloysius' Orphan Asylum at Quincy,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.406868,,,,,﻿Sister,﻿Gertrud,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0229,﻿asylum,﻿St. Aloysius' Orphan Asylum at Quincy,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.406868,,,,,,,,,,,,﻿Conducted by the Poor School Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0231,﻿school,﻿Cathedral schools,English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,,,,,,,﻿pupil,﻿400 pupils,﻿Conducted by Brothers of the Holy Cross and Ursuline Sisters,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0232,﻿parochial school,﻿Immaculate Conception,English,﻿Conducted by secular teacher and Ursuline Sisters,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.89118,-90.178218,,,,,,,,,,﻿pupil,﻿140 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0233,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Aviston,﻿Aviston,﻿IL,,38.606715,-89.607589,,,,,,,,,,﻿pupil,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0235,﻿parochial school,not recorded,English,﻿Conducted by secular teachers and Sisters of Notre Dame,,,,﻿St. Clair County,﻿Belleville,﻿Belleville,﻿IL,,38.52005,-89.983993,,,,,,,,,,﻿pupil,﻿600 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0236,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Effingham County,﻿Bishop,﻿Bishop Township,﻿IL,,40.345875,-89.874835,,,,,,,,,,﻿pupil,﻿30 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0237,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Louis County,﻿Black Jack,﻿Black Jack,﻿IL,﻿MO,40.633125,-89.398528,,,,,,,,,,﻿pupil,﻿42 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0238,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Calhoun County,﻿Bruxelles,﻿Bruxelles,﻿IL,,38.949494,-90.588731,,,,,,,,,,﻿pupil,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0239,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Loretto,,,,﻿Alexander County,﻿Cairo,﻿Cairo,﻿IL,,37.005329,-89.176461,,,,,,,,,,﻿pupil,﻿200 pupils,﻿Sisters of Loretto,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0241,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Carlyle,﻿Carlyle,﻿IL,,38.610326,-89.37258,,,,,,,,,,﻿pupil,﻿110 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0242,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Marion County,﻿Centralia,﻿Centralia,﻿IL,,38.528517,-89.131694,,,,,,,,,,﻿pupil,﻿35 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0243,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Randolph County,﻿Chester,﻿Chester,﻿IL,,37.913663,-89.82205,,,,,,,,,,﻿pupil,﻿50 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0245,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Monroe County,﻿Columbia,﻿Columbia,﻿IL,,38.443664,-90.201224,,,,,,,,,,﻿pupil,﻿91 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0246,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Damiansville,﻿Damiansville,﻿IL,,38.510049,-89.619536,,,,,,,,,,﻿pupil,﻿78 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0247,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Macon County,﻿Decatur,﻿Decatur,﻿IL,,39.840315,-88.9548,,,,,,,,,,﻿pupil,﻿80 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0249,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,﻿St. Patrick's Church,,,﻿St. Clair County,﻿East St. Louis,﻿East St. Louis,﻿IL,,38.624514,-90.150646,,,,,,,,,,﻿pupil,﻿225 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0250,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,﻿St. Henry's Church,,,﻿St. Clair County,﻿East St. Louis,﻿East St. Louis,﻿IL,,38.546689,-90.031859,,,,,,,,,,﻿pupil,﻿75 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0251,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Madison County,﻿Edwardsville,﻿Edwardsville,﻿IL,,38.811436,-89.953157,,,,,,,,,,﻿pupil,﻿71 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0252,﻿parochial school,not recorded,English,,,,,﻿Effingham County,﻿Effingham,﻿Effingham,﻿IL,,39.120042,-88.543383,,,,,,,,,,﻿pupil,﻿110 pupils,﻿Conducted by Franciscan Sisters,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0253,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Fayetteville,﻿Fayetteville,﻿IL,,38.377549,-89.795377,,,,,,,,,,﻿pupil,﻿35 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0254,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Freeburgh,﻿Freeburg,﻿IL,,38.42755,-89.913714,,,,,,,,,,﻿pupil,﻿46 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0255,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Germantown,﻿Germantown,﻿IL,,38.55366,-89.538421,,,,,,,,,,﻿pupil,﻿200 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0256,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Effingham County,﻿Green Creek,﻿Green Creek,﻿IL,,39.202818,-88.523383,,,,,,,,,,﻿pupil,﻿70 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0257,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,,,,﻿Madison County,﻿Highland,﻿Highland,﻿IL,,38.739492,-89.671201,,,,,,,,,,﻿pupil,﻿150 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0258,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Morgan County,﻿Jacksonville,﻿Jacksonville,﻿IL,,39.733936,-90.22901,,,,,,,,,,﻿pupil,﻿220 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0261,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Monroe County,﻿Madonnaville,﻿Madonnaville,﻿IL,,38.265054,-90.246783,,,,,,,,,,﻿pupil,﻿52 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0262,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿St. Clair County,﻿Maskoutah,﻿Mascoutah,﻿IL,,38.490327,-89.793154,,,,,,,,,,﻿pupil,﻿125 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0263,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Millstadt,﻿Millstadt,﻿IL,,38.46144,-90.091775,,,,,,,,,,﻿pupil,﻿75 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0264,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Pulaski County,﻿Mound City,﻿Mound City,﻿IL,,37.085329,-89.162573,,,,,,,,,,﻿pupil,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0266,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Brown County,﻿Mount Sterling,﻿Mount Sterling,﻿IL,,39.987271,-90.763463,,,,,,,,,,﻿pupil,﻿75 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0269,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Paderborn,﻿Paderborn,﻿IL,,38.360329,-90.042608,,,,,,,,,,﻿pupil,﻿48 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0271,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Prairie du Long,﻿Prairie Du Long Township,﻿IL,,38.337647,-89.981344,,,,,,,,,,﻿pupil,﻿30 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0272,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Randolph County,﻿Prairie du Rocher,﻿Prairie du Rocher,﻿IL,,38.083108,-90.095946,,,,,,,,,,﻿pupil,﻿50 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0273,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,﻿St. Boniface's Church,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.409873,,,,,,,,,,﻿pupil,﻿600 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0274,﻿parochial school,﻿St. Lawrence's,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.931377,-91.374333,,,,,,,,,,﻿pupil,﻿200 pupils,﻿Conducted by Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0275,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,﻿St. Francis Solanus' Church,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.939549,-91.388669,,,,,,,,,,﻿pupil,﻿250 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0278,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Randolph County,﻿Red Bud,﻿Red Bud,﻿IL,,38.211717,-89.994274,,,,,,,,,,﻿pupil,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0279,﻿parochial school,﻿St. Anthony's,English,﻿Conducted by secular teacher,,,,,,,﻿IL,,38.211717,-89.994274,,,,,,,,,,﻿pupil,﻿30 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0280,﻿parochial school,﻿St. John's,English,﻿Conducted by secular teacher,,,,,,,﻿IL,,38.211717,-89.994274,,,,,,,,,,﻿pupil,﻿25 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0282,﻿parochial school,﻿St. Joseph's,English,﻿Conducted by secular teacher,,,,﻿Calhoun County,,,﻿IL,,38.211717,-89.994274,,,,,,,,,,﻿pupil,﻿40 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0283,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Jasper County,﻿St. Marie,﻿Sainte Marie,﻿IL,,38.932421,-88.023547,,,,,,,,,,﻿pupil,﻿100 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0284,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,,,,﻿St. Clair County,﻿St. Liborius,﻿St. Libory,﻿IL,,38.36131017,-89.71086731,,,,,,,,,,﻿pupil,﻿175 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0285,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,,,,﻿Clinton County,﻿Shoal Creek Station,﻿Breese,﻿IL,,38.966013,-89.71086731,,,,,,,,,,﻿pupil,﻿160 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0287,﻿parochial school,not recorded,English,,﻿Immaculate Conception Church,,,﻿Sangamon County,﻿Springfield,﻿Springfield,﻿IL,,39.781721,-89.650148,,,,,,,,,,﻿pupil,﻿400 pupils,﻿Conducted by Brothers of the Holy Cross and Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0288,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,﻿SS. Peter and Paul Church,,,﻿Sangamon County,﻿Springfield,﻿Springfield,﻿IL,,39.781721,-89.650148,,,,,,,,,,﻿pupil,﻿80 pupils,,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0289,﻿parochial school,not recorded,English,,,,,﻿Effingham County,﻿Teutopolis,﻿Teutopolis,﻿IL,,39.133097,-88.471992,,,,,,,,,,﻿pupil,﻿225 pupils,﻿Conducted by Franciscan Brothers and Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
-﻿alt.il.0292,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of St. Joseph,﻿At St. Francis Solanus Church,,﻿Adams County,﻿Monroe County,﻿Waterloo,﻿Waterloo,﻿IL,,39.939549,-91.388669,,,,,,,,,,﻿pupil,﻿275 pupils,﻿Sisters of St. Joseph,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0229,﻿asylum,﻿St. Aloysius' Orphan Asylum at Quincy,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.409873,,,,,﻿Sister,﻿Gertrud,,﻿Superior,,,,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0229,﻿asylum,﻿St. Aloysius' Orphan Asylum at Quincy,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.409873,,,,,,,,,,,,﻿Conducted by the Poor School Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0231,﻿school,﻿Cathedral schools,English,,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.895385,-90.190202,,,,,,,,,,﻿student,﻿400 pupils,﻿Conducted by Brothers of the Holy Cross and Ursuline Sisters,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0232,﻿parochial school,﻿Immaculate Conception,English,﻿Conducted by secular teacher and Ursuline Sisters,,,,﻿Madison County,﻿Alton,﻿Alton,﻿IL,,38.89118,-90.178218,,,,,,,,,,﻿student,﻿140 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0233,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Aviston,﻿Aviston,﻿IL,,38.606715,-89.607589,,,,,,,,,,﻿student,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0235,﻿parochial school,not recorded,English,﻿Conducted by secular teachers and Sisters of Notre Dame,,,,﻿St. Clair County,﻿Belleville,﻿Belleville,﻿IL,,38.52005,-89.983993,,,,,,,,,,﻿student,﻿600 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0236,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Effingham County,﻿Bishop,﻿Bishop Township,﻿IL,,40.345875,-89.874835,,,,,,,,,,﻿student,﻿30 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0237,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Louis County,﻿Black Jack,﻿Black Jack,﻿IL,﻿MO,40.633125,-89.398528,,,,,,,,,,﻿student,﻿42 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0238,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Calhoun County,﻿Bruxelles,﻿Bruxelles,﻿IL,,38.949494,-90.588731,,,,,,,,,,﻿student,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0239,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Loretto,,,,﻿Alexander County,﻿Cairo,﻿Cairo,﻿IL,,37.005329,-89.176461,,,,,,,,,,﻿student,﻿200 pupils,﻿Sisters of Loretto,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0241,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Carlyle,﻿Carlyle,﻿IL,,38.610326,-89.37258,,,,,,,,,,﻿student,﻿110 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0242,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Marion County,﻿Centralia,﻿Centralia,﻿IL,,38.528517,-89.131694,,,,,,,,,,﻿student,﻿35 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0243,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Randolph County,﻿Chester,﻿Chester,﻿IL,,37.913663,-89.82205,,,,,,,,,,﻿student,﻿50 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0245,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Monroe County,﻿Columbia,﻿Columbia,﻿IL,,38.443664,-90.201224,,,,,,,,,,﻿student,﻿91 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0246,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Damiansville,﻿Damiansville,﻿IL,,38.510049,-89.619536,,,,,,,,,,﻿student,﻿78 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0247,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Macon County,﻿Decatur,﻿Decatur,﻿IL,,39.840315,-88.9548,,,,,,,,,,﻿student,﻿80 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0249,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,﻿St. Patrick's Church,,,﻿St. Clair County,﻿East St. Louis,﻿East St. Louis,﻿IL,,38.624514,-90.150646,,,,,,,,,,﻿student,﻿225 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0250,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,﻿St. Henry's Church,,,﻿St. Clair County,﻿East St. Louis,﻿East St. Louis,﻿IL,,38.546689,-90.031859,,,,,,,,,,﻿student,﻿75 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0251,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Madison County,﻿Edwardsville,﻿Edwardsville,﻿IL,,38.811436,-89.953157,,,,,,,,,,﻿student,﻿71 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0252,﻿parochial school,not recorded,English,,,,,﻿Effingham County,﻿Effingham,﻿Effingham,﻿IL,,39.120042,-88.543383,,,,,,,,,,﻿student,﻿110 pupils,﻿Conducted by Franciscan Sisters,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0253,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Fayetteville,﻿Fayetteville,﻿IL,,38.377549,-89.795377,,,,,,,,,,﻿student,﻿35 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0254,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Freeburgh,﻿Freeburg,﻿IL,,38.42755,-89.913714,,,,,,,,,,﻿student,﻿46 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0255,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Clinton County,﻿Germantown,﻿Germantown,﻿IL,,38.55366,-89.538421,,,,,,,,,,﻿student,﻿200 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0256,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Effingham County,﻿Green Creek,﻿Green Creek,﻿IL,,39.202818,-88.523383,,,,,,,,,,﻿student,﻿70 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0257,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,,,,﻿Madison County,﻿Highland,﻿Highland,﻿IL,,38.739492,-89.671201,,,,,,,,,,﻿student,﻿150 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0258,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿Morgan County,﻿Jacksonville,﻿Jacksonville,﻿IL,,39.733936,-90.22901,,,,,,,,,,﻿student,﻿220 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0261,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Monroe County,﻿Madonnaville,﻿Madonnaville,﻿IL,,38.265054,-90.246783,,,,,,,,,,﻿student,﻿52 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0262,﻿parochial school,not recorded,English,﻿Conducted by secular teachers,,,,﻿St. Clair County,﻿Maskoutah,﻿Mascoutah,﻿IL,,38.490327,-89.793154,,,,,,,,,,﻿student,﻿125 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0263,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Millstadt,﻿Millstadt,﻿IL,,38.46144,-90.091775,,,,,,,,,,﻿student,﻿75 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0264,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Pulaski County,﻿Mound City,﻿Mound City,﻿IL,,37.085329,-89.162573,,,,,,,,,,﻿student,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0266,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Brown County,﻿Mount Sterling,﻿Mount Sterling,﻿IL,,39.987271,-90.763463,,,,,,,,,,﻿student,﻿75 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0269,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Paderborn,﻿Paderborn,﻿IL,,38.360329,-90.042608,,,,,,,,,,﻿student,﻿48 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0271,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿St. Clair County,﻿Prairie du Long,﻿Prairie Du Long Township,﻿IL,,38.337647,-89.981344,,,,,,,,,,﻿student,﻿30 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0272,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Randolph County,﻿Prairie du Rocher,﻿Prairie du Rocher,﻿IL,,38.083108,-90.095946,,,,,,,,,,﻿student,﻿50 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0273,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,﻿St. Boniface's Church,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.935602,-91.409873,,,,,,,,,,﻿student,﻿600 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0274,﻿parochial school,﻿St. Lawrence's,English,,,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.931377,-91.374333,,,,,,,,,,﻿student,﻿200 pupils,﻿Conducted by Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0275,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,﻿St. Francis Solanus' Church,,,﻿Adams County,﻿Quincy,﻿Quincy,﻿IL,,39.939549,-91.388669,,,,,,,,,,﻿student,﻿250 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0278,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Randolph County,﻿Red Bud,﻿Red Bud,﻿IL,,38.211717,-89.994274,,,,,,,,,,﻿student,﻿60 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0279,﻿parochial school,﻿St. Anthony's,English,﻿Conducted by secular teacher,,,,,,,﻿IL,,,,,,,,,,,,,﻿student,﻿30 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0280,﻿parochial school,﻿St. John's,English,﻿Conducted by secular teacher,,,,,,,﻿IL,,,,,,,,,,,,,﻿student,﻿25 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0282,﻿parochial school,﻿St. Joseph's,English,﻿Conducted by secular teacher,,,,﻿Calhoun County,,,﻿IL,,,,,,,,,,,,,﻿student,﻿40 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0283,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,,,,﻿Jasper County,﻿St. Marie,﻿Sainte Marie,﻿IL,,38.932421,-88.023547,,,,,,,,,,﻿student,﻿100 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0284,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,,,,﻿St. Clair County,﻿St. Liborius,﻿St. Libory,﻿IL,,38.36131017,-89.71086731,,,,,,,,,,﻿student,﻿175 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0285,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of Notre Dame,,,,﻿Clinton County,﻿Shoal Creek Station,﻿Breese,﻿IL,,38.966013,-89.568627,,,,,,,,,,﻿student,﻿160 pupils,﻿Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0287,﻿parochial school,not recorded,English,,﻿Immaculate Conception Church,,,﻿Sangamon County,﻿Springfield,﻿Springfield,﻿IL,,39.781721,-89.650148,,,,,,,,,,﻿student,﻿400 pupils,﻿Conducted by Brothers of the Holy Cross and Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0288,﻿parochial school,not recorded,English,﻿Conducted by secular teacher,﻿SS. Peter and Paul Church,,,﻿Sangamon County,﻿Springfield,﻿Springfield,﻿IL,,39.781721,-89.650148,,,,,,,,,,﻿student,﻿80 pupils,,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0289,﻿parochial school,not recorded,English,,,,,﻿Effingham County,﻿Teutopolis,﻿Teutopolis,﻿IL,,39.133097,-88.471992,,,,,,,,,,﻿student,﻿225 pupils,﻿Conducted by Franciscan Brothers and Sisters of Notre Dame,,1868,﻿,﻿,﻿Alton,Alton
+﻿alt.il.0292,﻿parochial school,not recorded,English,﻿Conducted by secular teacher and Sisters of St. Joseph,﻿At St. Francis Solanus Church,,﻿Adams County,﻿Monroe County,﻿Waterloo,﻿Waterloo,﻿IL,,39.939549,-91.388669,,,,,,,,,,﻿student,﻿275 pupils,﻿Sisters of St. Joseph,,1868,﻿,﻿,﻿Alton,Alton
