@@ -16,7 +16,6 @@ exports.findDioceseInfo = async (req, res) => {
         };
         const dioceseInfoData = await dioceseInfo.findAll({ where });
         res.status(200).send(dioceseInfoData);
-        console.log(dioceseInfoData);
     } catch (err) {
         res.status(500).send({
             message: err.message || "An error occurred while retrieving diocese information."

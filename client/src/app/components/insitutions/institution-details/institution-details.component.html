@@ -34,11 +34,23 @@
                                     {{data.diocese?.join(', ' )}}
                                 </div>
                             </div>
-                        } @else {
+                        } @else if (dioceseInfo[0].dioceseInfo) {
                             <div class="row">
                                 <div class="cell">Diocese</div>
                                 <div class="cell">
                                     <button mat-button class="!text-xs md:!text-sm" (click)="displayDioceseInfo()">{{data.diocese}}</button>
+                                </div>
+                            </div>
+                        } @else {
+                            <div class="row">
+                                <div class="cell">Diocese</div>
+                                <div class="cell">
+                                    {{data.diocese?.join(', ' )}}
+                                    <button mat-button 
+                                    class="!text-xs md:!text-sm" 
+                                    matTooltip="click to see notes from the editors" 
+                                    matTooltipPosition="above"
+                                    (click)="displayDioceseInfo()">Notes from the Editors</button>
                                 </div>
                             </div>
                         }

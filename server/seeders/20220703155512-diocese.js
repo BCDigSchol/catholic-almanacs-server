@@ -57,13 +57,15 @@ module.exports = {
         const dioceseName = row['diocese'];
         const year = parseInt(row['year']);
         const info = row['dioceseInfo'];
+        const editorialNote = row['editorialNote'];
 
         await dioceseInfo.findOrCreate({
           where: { diocese: dioceseName, year: year },
           defaults: {
             diocese: dioceseName,
             year: year,
-            dioceseInfo: info
+            dioceseInfo: info,
+            editorialNote: editorialNote
           }
         });
         //console.log(`Processed diocese info for ${dioceseName} in year ${year}`);

@@ -48,7 +48,8 @@ module.exports = (sequelize, DataTypes) => {
     member: DataTypes.TEXT,
     affiliated: DataTypes.STRING,
     diocese: DataTypes.STRING,
-    diocese_reg: DataTypes.STRING
+    diocese_reg: DataTypes.STRING,
+    citation: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'almanacRecord',

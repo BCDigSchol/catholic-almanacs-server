@@ -16,6 +16,7 @@ import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MapComponent } from '../../common/map-old/map.component';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -23,7 +24,7 @@ import { ApiService } from '../../../services/api.service';
   selector: 'app-institution-details',
   imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
             RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIcon,
-            MatIconModule, DialogComponent, MatProgressSpinnerModule, MapComponent
+            MatIconModule, DialogComponent, MatProgressSpinnerModule, MapComponent, MatTooltip
   ],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
@@ -111,12 +112,22 @@ export class InstitutionDetailsComponent implements OnInit {
   };
 
   displayDioceseInfo () {
-    if (this.dioceseInfo.length > 0) {
+    console.log('Diocese info:', this.dioceseInfo);
+    if (this.dioceseInfo.length > 0 && this.dioceseInfo[0].dioceseInfo) {
       const dialogRef = this._dialog.open(DialogComponent, {
         data: {
           diocese: this.dioceseInfo[0].diocese,
           year: this.dioceseInfo[0].year,
           dioceseInfo: this.dioceseInfo[0].dioceseInfo
+        }
+      });
+    }
+    if (this.dioceseInfo.length > 0 && this.dioceseInfo[0].editorialNote) {
+      const dialogRef = this._dialog.open(DialogComponent, {
+        data: {
+          diocese: this.dioceseInfo[0].diocese,
+          year: this.dioceseInfo[0].year,
+          dioceseInfo: this.dioceseInfo[0].editorialNote
         }
       });
     }

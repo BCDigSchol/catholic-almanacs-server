@@ -281,6 +281,7 @@ exports.findByID = async (req, res) => {
                 memberType: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].memberType,
                 affiliated: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].affiliated,
                 order: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].orders.map(order => order.order).join(', '),
+                citation: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].citation,
                 attendedBy: [],
                 attendingInstitutions: [],
                 relatedInstitutions: [],
@@ -428,6 +429,7 @@ exports.findByID = async (req, res) => {
         }
 
         // create a year-instID list for the year buttons so that the correct metadata shows up when clicking on a year button
+        // this is to handle the combine/split situation: nash.tn.0004&nash.tn.0006 should show up in nash.tn.0004 throughout the years
         const instIDInYearDict = {};
         processedAllInstitutionsData.forEach(d => {
             d.year.forEach(y => {

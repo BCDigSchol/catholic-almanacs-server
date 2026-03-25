@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   dioceseInfo.init({
     diocese: DataTypes.STRING,
     year: DataTypes.INTEGER,
-    dioceseInfo: DataTypes.TEXT
+    dioceseInfo: DataTypes.TEXT,
+    editorialNote: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'dioceseInfo',

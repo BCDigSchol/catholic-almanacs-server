@@ -18,6 +18,9 @@ module.exports = {
       dioceseInfo: {
         type: Sequelize.TEXT
       },
+      editorialNote: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

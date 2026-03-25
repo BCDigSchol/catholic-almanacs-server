@@ -97,6 +97,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
+      citation: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE
