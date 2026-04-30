@@ -11,6 +11,10 @@ import { ExportComponent } from './components/export/export.component';
 import { MapComponent as InstitutionMapComponent } from './components/insitutions/map/map.component';
 import { MapComponent as PeopleMapComponent } from './components/people/map/map.component';
 import { MapComponent as DioceseMapComponent } from './components/dioceses/map/map.component';
+import { NetworksComponent } from './components/networks/networks.component';
+import { InstitutionalNetworkContainerComponent } from './components/networks/institutional-network-container/institutional-network-container.component';
+import { PersonalNetworkContainerComponent } from './components/networks/personal-network-container/personal-network-container.component';
+import { MapsComponent } from './components/maps/maps.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -22,6 +26,10 @@ export const routes: Routes = [
     { path: 'people/map', component: PeopleMapComponent },
     { path: 'people/:id', component: PersonDetailsComponent }, 
     { path: 'dioceses/map', component: DioceseMapComponent },
+    { path: 'networks', component: NetworksComponent },
+    { path: 'networks/institutional', component: InstitutionalNetworkContainerComponent },
+    { path: 'networks/personal', component: PersonalNetworkContainerComponent },
+    { path: 'maps', component: MapsComponent },
     { path: 'export', component: ExportComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' }

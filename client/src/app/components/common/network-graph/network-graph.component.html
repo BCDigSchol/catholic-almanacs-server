@@ -1,0 +1,44 @@
+<mat-card [hidden]="loading" class="w-full panel shaded-header">
+  <mat-card-header class="rounded-t-lg">
+    <mat-card-title>
+      <div class="flex flex-row justify-between items-center">
+        <div class="w-full text-xl">{{ label }}</div>
+        <button mat-icon-button (click)="togglePanel()">
+          <mat-icon>{{ isOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="w-full h-full min-w-0 overflow-hidden relative" #visNetworkContainer>
+      <div class="time-window-overlay" *ngIf="showTimeWindowControls && isOpen">
+        <div class="time-window-inputs">
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <input matInput type="number" placeholder="From" [min]="minYear" [max]="maxYear" [(ngModel)]="timeWindowStartYear" (ngModelChange)="onTimeWindowInputChange()">
+          </mat-form-field>
+          <span class="year-sep">–</span>
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <input matInput type="number" placeholder="To" [min]="minYear" [max]="maxYear" [(ngModel)]="timeWindowEndYear" (ngModelChange)="onTimeWindowInputChange()">
+          </mat-form-field>
+          <button mat-icon-button type="button" (click)="toggleTimeWindowPlayback()" [disabled]="timeWindowLoading" class="play-btn">
+            <mat-icon>{{ timeWindowPlaybackActive ? 'stop' : 'play_arrow' }}</mat-icon>
+          </button>
+        </div>
+        <div class="time-window-status" *ngIf="timeWindowStartYear !== null && timeWindowEndYear !== null">
+          {{ timeWindowStartYear }}&ndash;{{ timeWindowEndYear }}<span *ngIf="timeWindowLoading"> &middot; updating&hellip;</span>
+        </div>
+      </div>
+        <div class="w-full min-w-0 overflow-hidden" [hidden]="!isOpen">
+          <div id="vis-network" class="vis-network" #visNetwork></div>
+        </div>
+        <div id="vis-loading-bar" #visLoadingBar [hidden]="!isOpen">
+            <div class="vis-outer-border" #visOuterBorder>
+                <div id="vis-text" #visText>0%</div>
+                <div id="vis-inner-border" #visInnerBorder>
+                    <div id="vis-bar" #visBar></div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </mat-card-content>
+</mat-card>

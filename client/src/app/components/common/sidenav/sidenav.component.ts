@@ -34,17 +34,13 @@ export class SidenavComponent implements OnInit {
       route: 'people'
     },
     {
-      name: 'Institutions Map',
-      route: 'institutions/map'
+      name: 'Maps',
+      route: 'maps'
     },
     {
-      name: 'People Map',
-      route: 'people/map'
-    },
-    {
-      name: 'Dioceses Map',
-      route: 'dioceses/map'
-    },
+      name: 'Networks',
+      route: 'networks'
+    }
   ]
 
   constructor (private _router: Router, private themeService: ThemeService) { 

@@ -1,3 +1,165 @@
+// Returns a network graph of all institutions connected by shared persons, with optional filters
+exports.getAllInstitutionNetwork = async (req, res) => {
+    const { diocese, state, city, startYear, endYear } = req.query;
+    // Build WHERE clauses for almanacRecord (not institution)
+    // These filters must be applied to ar1 and ar2
+    const arWhere = [];
+    const replacements = {};
+    if (diocese) {
+        arWhere.push('ar1.diocese_reg LIKE :diocese');
+        replacements.diocese = `%${diocese}%`;
+    }
+    if (state) {
+        arWhere.push('ar1.stateOrig LIKE :state');
+        replacements.state = `%${state}%`;
+    }
+    if (city) {
+        arWhere.push('ar1.cityOrig LIKE :city');
+        replacements.city = `%${city}%`;
+    }
+    // Year filter
+    if (startYear && endYear) {
+        arWhere.push('ar1.year BETWEEN :startYear AND :endYear');
+        replacements.startYear = Number(startYear);
+        replacements.endYear = Number(endYear);
+    } else if (startYear) {
+        arWhere.push('ar1.year >= :startYear');
+        replacements.startYear = Number(startYear);
+    } else if (endYear) {
+        arWhere.push('ar1.year <= :endYear');
+        replacements.endYear = Number(endYear);
+    }
+    // Compose WHERE clause
+    const arWhereClause = arWhere.length ? 'WHERE ' + arWhere.join(' AND ') : '';
+    try {
+        // Get all institution IDs matching filters (from almanacRecord)
+        const insts = await db.sequelize.query(
+            `SELECT DISTINCT ar1.instID FROM almanacRecords ar1 ${arWhereClause}`,
+            { replacements, type: db.Sequelize.QueryTypes.SELECT }
+        );
+        const instIDs = insts.map(i => i.instID);
+        if (instIDs.length === 0) return res.send({ nodes: [], edges: [] });
+
+        // Find all pairs of institutions that share at least one person in common in the time window
+        // Only include institutions in instIDs
+        // Apply the same filters to ar1 in the join
+        const edgeWhere = [];
+        if (instIDs.length) {
+            edgeWhere.push('ar1.instID IN (:instIDs)');
+            edgeWhere.push('ar2.instID IN (:instIDs)');
+        }
+        if (arWhere.length) {
+            // Only apply filters to ar1 (not ar2)
+            edgeWhere.push(...arWhere);
+        }
+        const edgeWhereClause = edgeWhere.length ? 'WHERE ' + edgeWhere.join(' AND ') : '';
+        const edges = await db.sequelize.query(
+            `SELECT
+                ar1.instID AS instID1,
+                ar2.instID AS instID2,
+                COUNT(DISTINCT piar1.persID) AS weight
+             FROM personInAlmanacRecords piar1
+             JOIN almanacRecords ar1 ON piar1.almanacRecordID = ar1.ID
+             JOIN personInAlmanacRecords piar2 ON piar2.persID = piar1.persID
+             JOIN almanacRecords ar2 ON piar2.almanacRecordID = ar2.ID AND ar2.year = ar1.year
+             ${edgeWhereClause}
+               AND ar1.instID < ar2.instID
+             GROUP BY ar1.instID, ar2.instID
+             HAVING weight > 0`,
+            { replacements: { ...replacements, instIDs }, type: db.Sequelize.QueryTypes.SELECT }
+        );
+
+        // Collect all institution IDs that appear in at least one edge
+        const connectedIDs = new Set();
+        for (const row of edges) {
+            connectedIDs.add(row.instID1);
+            connectedIDs.add(row.instID2);
+        }
+        if (connectedIDs.size === 0) return res.send({ nodes: [], edges: [] });
+
+        // Get names and dioceses for all connected institutions (most recent name in time window)
+        const metaMap = {};
+        for (const instID of connectedIDs) {
+            let whereClause = { instID };
+            if (endYear) whereClause.year = { [Op.lte]: Number(endYear) };
+            const rec = await almanacRecord.findOne({
+                where: whereClause,
+                attributes: ['instName', 'year', 'diocese_reg'],
+                order: [['year', 'DESC']]
+            });
+            metaMap[instID] = rec
+                ? { instName: rec.instName, diocese: rec.diocese_reg }
+                : { instName: instID, diocese: null };
+        }
+
+        const edgeList = edges.map(row => ({
+            from: row.instID1,
+            to: row.instID2,
+            weight: Number(row.weight),
+            value: Number(row.weight),
+            label: String(row.weight)
+        }));
+
+        // Weighted PageRank (using shared-person counts as edge weights)
+        const nodeIDs = Array.from(connectedIDs);
+        const N = nodeIDs.length;
+        const d = 0.85;
+        const iterations = 50;
+
+        // Build adjacency: weightedDegree[id] = sum of weights of all edges touching id
+        // neighbors[id] = [{ id, weight }]
+        const neighbors = {};
+        const weightedDegree = {};
+        for (const id of nodeIDs) { neighbors[id] = []; weightedDegree[id] = 0; }
+        for (const e of edgeList) {
+            const w = e.weight;
+            neighbors[e.from].push({ id: e.to, weight: w });
+            neighbors[e.to].push({ id: e.from, weight: w });
+            weightedDegree[e.from] += w;
+            weightedDegree[e.to] += w;
+        }
+
+        let pr = {};
+        for (const id of nodeIDs) pr[id] = 1 / N;
+
+        for (let i = 0; i < iterations; i++) {
+            const newPr = {};
+            for (const id of nodeIDs) {
+                let rank = (1 - d) / N;
+                for (const { id: neighborID, weight } of neighbors[id]) {
+                    if (weightedDegree[neighborID] > 0) {
+                        rank += d * pr[neighborID] * (weight / weightedDegree[neighborID]);
+                    }
+                }
+                newPr[id] = rank;
+            }
+            pr = newPr;
+        }
+
+        // Normalize PageRank to [0, 1] range for easy use in UI
+        const prValues = Object.values(pr);
+        const prMin = Math.min(...prValues);
+        const prMax = Math.max(...prValues);
+        const prRange = prMax - prMin || 1;
+        for (const id of nodeIDs) {
+            pr[id] = (pr[id] - prMin) / prRange;
+        }
+
+        // Build nodes and edges, include diocese as group and pageRank for sizing
+        const nodes = nodeIDs.map(id => ({
+            id,
+            label: metaMap[id].instName,
+            group: metaMap[id].diocese || 'Unknown',
+            diocese: metaMap[id].diocese || 'Unknown',
+            routeSegment: 'institutions',
+            pageRank: pr[id],
+            value: pr[id]
+        }));
+        res.send({ nodes, edges: edgeList });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
 const db = require("../models");
 const { Sequelize } = db.sequelize;
 const getPagination = require("../utils/get-pagination");
@@ -717,6 +879,279 @@ exports.findOne = async (req, res) => {
         res.status(404).send({
             message: `Cannot find almanacRecord with id=${req.params.id}.`
         });
+    }
+};
+
+exports.getPersonNetwork = async (req, res) => {
+    const id = req.params.id;
+    const startYear = req.query.startYear ? parseInt(req.query.startYear, 10) : null;
+    const endYear = req.query.endYear ? parseInt(req.query.endYear, 10) : null;
+
+    const yearClause = (alias) => {
+        if (startYear && endYear) return `AND ${alias}.year BETWEEN :startYear AND :endYear`;
+        if (startYear) return `AND ${alias}.year >= :startYear`;
+        if (endYear)   return `AND ${alias}.year <= :endYear`;
+        return '';
+    };
+    const replacements = { targetInstID: id, startYear, endYear };
+
+    try {
+        // Get the most recent name for the target institution
+        const [targetRows] = await db.sequelize.query(
+            `SELECT instName
+             FROM \`almanacRecords\`
+             WHERE instID = :targetInstID
+             ORDER BY year DESC
+             LIMIT 1`,
+            { replacements, type: db.Sequelize.QueryTypes.SELECT }
+        );
+
+        if (!targetRows) {
+            return res.status(404).json({ message: `Cannot find institution with id=${id}.` });
+        }
+
+        // For each person who appeared at the target institution within the time window,
+        // find every other institution that same person appeared at, and count distinct persons per pair.
+        const edges = await db.sequelize.query(
+            `SELECT
+                ar2.instID AS instID,
+                (
+                    SELECT sub.instName
+                    FROM \`almanacRecords\` sub
+                    WHERE sub.instID = ar2.instID
+                    ORDER BY sub.year DESC
+                    LIMIT 1
+                ) AS instName,
+                COUNT(DISTINCT piar1.persID) AS weight
+             FROM \`personInAlmanacRecords\` piar1
+             JOIN \`almanacRecords\` ar1  ON piar1.almanacRecordID = ar1.ID ${yearClause('ar1')}
+             JOIN \`personInAlmanacRecords\` piar2 ON piar2.persID = piar1.persID
+             JOIN \`almanacRecords\` ar2  ON piar2.almanacRecordID = ar2.ID AND ar2.year = ar1.year
+             WHERE ar1.instID = :targetInstID
+               AND ar2.instID != :targetInstID
+             GROUP BY ar2.instID
+             ORDER BY weight DESC`,
+            { replacements, type: db.Sequelize.QueryTypes.SELECT }
+        );
+
+        const nodes = [
+            {
+                id: id,
+                label: targetRows.instName,
+                isTarget: true,
+                routeSegment: 'institutions',
+                color: { border: '#003B1F', background: '#003B1F' },
+                font: { color: '#ffffff', strokeColor: '#003B1F' },
+                size: 30,
+                borderWidth: 3
+            },
+            ...edges.map(row => ({
+                id: row.instID,
+                label: row.instName,
+                isTarget: false,
+                routeSegment: 'institutions'
+            }))
+        ];
+
+        const edgeList = edges.map(row => ({
+            from: id,
+            to: row.instID,
+            weight: Number(row.weight),
+            value: Number(row.weight),
+            label: String(row.weight)
+        }));
+
+        // Find pairwise shared-person counts among all neighbor institutions (excluding target)
+        const neighborIDs = edges.map(row => row.instID);
+        if (neighborIDs.length > 1) {
+            const neighborEdges = await db.sequelize.query(
+                `SELECT
+                    ar1.instID AS instID1,
+                    ar2.instID AS instID2,
+                    COUNT(DISTINCT piar1.persID) AS weight
+                 FROM \`personInAlmanacRecords\` piar1
+                 JOIN \`almanacRecords\` ar1  ON piar1.almanacRecordID = ar1.ID ${yearClause('ar1')}
+                 JOIN \`personInAlmanacRecords\` piar2 ON piar2.persID = piar1.persID
+                 JOIN \`almanacRecords\` ar2  ON piar2.almanacRecordID = ar2.ID AND ar2.year = ar1.year
+                 WHERE ar1.instID IN (:neighborIDs)
+                   AND ar2.instID IN (:neighborIDs)
+                   AND ar1.instID < ar2.instID
+                 GROUP BY ar1.instID, ar2.instID
+                 HAVING weight > 0`,
+                { replacements: { ...replacements, neighborIDs }, type: db.Sequelize.QueryTypes.SELECT }
+            );
+
+            for (const row of neighborEdges) {
+                edgeList.push({
+                    from: row.instID1,
+                    to: row.instID2,
+                    weight: Number(row.weight),
+                    value: Number(row.weight),
+                    label: String(row.weight)
+                });
+            }
+        }
+
+        res.send({ nodes, edges: edgeList });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+exports.getDendrogramData = async (req, res) => {
+    const targetID = req.params.id;
+    const year = req.query.year ? parseInt(req.query.year, 10) : null;
+
+    try {
+        const targetExists = await institution.findOne({ where: { ID: targetID }, attributes: ['ID'] });
+        if (!targetExists) {
+            return res.status(404).json({ message: `Cannot find institution with id=${targetID}.` });
+        }
+
+        /* Load relationships, optionally filtered to a specific almanac year.
+        relatedInstitutions.almanacRecordID -> almanacRecord.ID -> almanacRecord.year */
+        const findAllOptions = {
+            attributes: ['firstID', 'secondID', 'isSibling']
+        };
+        if (year) {
+            findAllOptions.include = [{
+                model: almanacRecord,
+                as: 'almanacRecord',
+                attributes: [],
+                where: { year },
+                required: true
+            }];
+        }
+        const allRels = await relatedInstitutions.findAll(findAllOptions);
+
+        /* Build deduplicated relationship maps
+        isSibling=false: firstID is parent, secondID is child
+        isSibling=true:  firstID and secondID are siblings */
+        const parentOf = {}; 
+        const childrenOf = {};
+        const siblingsOf = {};
+
+        for (const rel of allRels) {
+            const a = rel.firstID, b = rel.secondID;
+            if (!rel.isSibling) {
+                parentOf[b] = a;
+                if (!childrenOf[a]) childrenOf[a] = new Set();
+                childrenOf[a].add(b);
+            } else {
+                if (!siblingsOf[a]) siblingsOf[a] = new Set();
+                if (!siblingsOf[b]) siblingsOf[b] = new Set();
+                siblingsOf[a].add(b);
+                siblingsOf[b].add(a);
+            }
+        }
+
+        // BFS in all directions (up, down, sideways) from the target
+        // to find the full connected family of institutions
+        const connected = new Set();
+        const queue = [targetID];
+        while (queue.length > 0) {
+            const current = queue.shift();
+            if (connected.has(current)) continue;
+            connected.add(current);
+            if (parentOf[current]) queue.push(parentOf[current]);
+            for (const c of (childrenOf[current] || [])) queue.push(c);
+            for (const s of (siblingsOf[current] || [])) queue.push(s);
+        }
+
+        /* Re-parent nodes whose ID naming convention implies a closer parent than
+        what the DB recorded. The DB sometimes stores a grandparent relationship
+        (e.g. phi.pa.0006 → phi.pa.0006_02.01) when the ID suffix structure
+        makes the real parent clear (phi.pa.0006_02 → phi.pa.0006_02.01).
+        Only re-parent when the implied parent actually exists in the connected family. */
+        function getImpliedParent(instID) {
+            if (instID.includes(' & ')) return null;
+            // Level 2 child:  city.state.NNNN_NN.NN  →  city.state.NNNN_NN
+            const level2 = instID.match(/^(.+_\d+)\.\d+$/);
+            if (level2) return level2[1];
+            // Level 1 child:  city.state.NNNN_NN     →  city.state.NNNN
+            const level1 = instID.match(/^(.+)_\d+$/);
+            if (level1) return level1[1];
+            return null;
+        }
+
+        for (const nodeID of connected) {
+            const impliedParentID = getImpliedParent(nodeID);
+            if (!impliedParentID || !connected.has(impliedParentID)) continue;
+            const dbParentID = parentOf[nodeID];
+            if (dbParentID === impliedParentID) continue; // already correct
+            // Remove from the DB-recorded parent's children
+            if (dbParentID && childrenOf[dbParentID]) {
+                childrenOf[dbParentID].delete(nodeID);
+            }
+            // Attach to the implied (closer) parent
+            if (!childrenOf[impliedParentID]) childrenOf[impliedParentID] = new Set();
+            childrenOf[impliedParentID].add(nodeID);
+            parentOf[nodeID] = impliedParentID;
+        }
+
+        // True roots = nodes in the connected family that have no parent
+        // within that family (i.e. top of the chain)
+        const trueRoots = Array.from(connected).filter(id =>
+            !parentOf[id] || !connected.has(parentOf[id])
+        );
+
+        // Fetch the instName/year for an institution (cached).
+        // If a year filter is active, resolve the most recent name at or before that year.
+        const nameCache = {};
+        async function getLatestName(instID) {
+            if (nameCache[instID]) return nameCache[instID];
+            const whereClause = { instID };
+            if (year) whereClause.year = { [Op.lte]: year };
+            const rec = await almanacRecord.findOne({
+                where: whereClause,
+                attributes: ['instName', 'year'],
+                order: [['year', 'DESC']]
+            });
+            nameCache[instID] = rec
+                ? { instName: rec.instName, year: rec.year }
+                : { instName: instID, year: null };
+            return nameCache[instID];
+        }
+
+        /* Recursively build the d3-hierarchy tree downward from a node,
+        staying within the connected family to avoid pulling unrelated subtrees*/
+        async function buildNode(instID, visited = new Set()) {
+            if (visited.has(instID)) return null; // cycle guard
+            visited.add(instID);
+
+            const { instName, year } = await getLatestName(instID);
+            const node = { name: instName, instID, year };
+
+            const childIDs = [...(childrenOf[instID] || [])].filter(id => connected.has(id));
+            if (childIDs.length > 0) {
+                const childNodes = await Promise.all(
+                    childIDs.map(cid => buildNode(cid, new Set(visited)))
+                );
+                node.children = childNodes.filter(Boolean);
+            }
+            return node;
+        }
+
+        let tree;
+        if (trueRoots.length === 1) {
+            tree = await buildNode(trueRoots[0]);
+        } else {
+            /* Multiple roots connected only via sibling links (no common parent in DB).
+            Wrap them in a virtual grouping node so d3 always gets a single root. */
+            const rootNodes = await Promise.all(trueRoots.map(id => buildNode(id)));
+            const { instName, year } = await getLatestName(targetID);
+            tree = {
+                name: instName,
+                instID: targetID,
+                year,
+                virtual: true,
+                children: rootNodes.filter(Boolean)
+            };
+        }
+
+        res.send(tree);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
 };
 
