@@ -177,10 +177,13 @@
                             <div class="row">
                                 <div class="cell">Attending Institutions</div>
                                 <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.attendingInstitutions" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"  *ngFor="let item of data.attendingInstitutions">
+                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                             <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                         </button>
+                                        @if (item.attendingFrequency) {
+                                        <div>({{ item.attendingFrequency }})</div>
+                                    }
                                     </div>
                                     <div *ngIf="data.attendingInstitutions.length === 0">None</div>
                                 </div>
@@ -190,10 +193,13 @@
                         <div class="row">
                             <div class="cell">Attended From</div>
                             <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.attendedBy" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center" *ngFor="let item of data.attendedBy">
+                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
                                         <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
                                     </button>
+                                    @if (item.attendingFrequency) {
+                                        <div>({{ item.attendingFrequency }})</div>
+                                    }
                                 </div>
                                 <div *ngIf="data.attendedBy.length === 0">None</div>
                             </div>
