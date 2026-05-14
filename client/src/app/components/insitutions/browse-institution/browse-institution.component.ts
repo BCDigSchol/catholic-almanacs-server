@@ -158,16 +158,22 @@ export class BrowseInstitutionComponent implements OnInit {
     this.itemsPerPage$ = this.paginationService.pageSize$;
     this.filterValues$ = this.filterService.filterValues$;
 
+    // Subscribe to filter values to update local state without calling getData()
+    this.filterValues$.subscribe(filterValues => {
+      this.filterValues = filterValues;
+    });
+
+    // Subscribe to pagination changes to update local state
     combineLatest([
       this.currentPage$,
-      this.itemsPerPage$,
-      this.filterValues$
-    ]).subscribe(([currentPage, itemsPerPage, filterValues]) => {
+      this.itemsPerPage$
+    ]).subscribe(([currentPage, itemsPerPage]) => {
       this.currentPage = currentPage;
       this.itemsPerPage = itemsPerPage;
-      this.filterValues = filterValues;
-      this.getData();
     });
+
+    // Load initial data on page load
+    this.getData();
   }
 
   /**
@@ -216,6 +222,15 @@ export class BrowseInstitutionComponent implements OnInit {
   changePage (e: PageEvent) {
     this.paginationService.setPageSize(e.pageSize);
     this.paginationService.setCurrentPage(e.pageIndex);
-    //this.getData();
+    this.getData();
+  }
+
+  /**
+   * Called when the filter button is clicked
+   * Resets pagination to first page and fetches data with current filter values
+   */
+  onFilterButtonClicked() {
+    this.paginationService.setCurrentPage(0);
+    this.getData();
   }
 }
