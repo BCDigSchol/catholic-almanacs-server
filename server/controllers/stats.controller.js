@@ -353,6 +353,10 @@ exports.getGeo = async (req, res) => {
             const lat = Number(r.lat);
             const lng = Number(r.lng);
             if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+            // Skip impossible coordinates (e.g. a lost decimal turning 44.47 into
+            // 4447967) — a single one would otherwise poison the weighted centroid
+            // and fling the "centre of gravity" marker millions of miles off.
+            if (Math.abs(lat) > 90 || Math.abs(lng) > 180) continue;
             const cat = categoryOf(r);
             catTotals.set(cat, (catTotals.get(cat) || 0) + w);
             // Centroid is the WEIGHTED mean of exact locations (a place with many
