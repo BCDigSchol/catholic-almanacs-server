@@ -1,0 +1,11 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,Unnamed: 30,Unnamed: 31,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿nash.tn.9000,,﻿Church of the Holy Rosary,English,,,,,,﻿Nashville,,﻿TN,,36.166521,-86.783958,,,,﻿ric_p_miles_001,﻿Rt. Rev.,﻿Richard P. Miles,﻿D.D.,,,,,,,1840,,﻿https://www.hmdb.org/m.asp?m=36240,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9000,,﻿Church of the Holy Rosary,English,,,,,,﻿Nashville,,﻿TN,,36.166521,-86.783958,,,,﻿jos_stokes_903,﻿Rev.,﻿Joseph Stokes,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9001,﻿station,[Unnamed Institution],English,,,,,,﻿Gallatin,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9002,﻿station,[Unnamed Institution],English,,,,,,﻿Hartsville,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9003,﻿station,[Unnamed Institution],English,,,,,,﻿Athens,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9004,﻿station,[Unnamed Institution],English,,,,,,﻿Fayetteville,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.0004,﻿station,[Unnamed Institution],English,,,,,,﻿Memphis,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,﻿https://stpeterchurch.org/parish-history,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9005,﻿station,[Unnamed Institution],English,,,,,,﻿Columbia,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.9006,﻿station,[Unnamed Institution],English,,,,,,﻿Jackson,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville
+﻿nash.tn.0025,﻿station,[Unnamed Institution],English,,,,,,﻿Franklin,,﻿TN,,,,,,﻿visited occasionally by Rev. E. Durbin,﻿eli_j_durbin_001,﻿Rev.,﻿E. Durbin,,,,,,,,1840,,,﻿,﻿,﻿Nashville,Nashville

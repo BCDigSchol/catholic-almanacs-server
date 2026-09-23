@@ -1,0 +1,4 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿dub.ia.9000,﻿church,﻿St. Raphael's,English,,,,,,﻿Dubuque,,﻿IA,,,,,,,﻿mat_loras_901,﻿Rt. Rev.,﻿Mathias Loras,,,,,,,,1839,﻿,﻿,﻿Dubuque,Dubuque
+﻿dub.ia.9000,﻿church,﻿St. Raphael's,English,,,,,,﻿Dubuque,,﻿IA,,,,,,,﻿jos_cretin_901,﻿Rev.,﻿Joseph Cretin,,,,,,,,1839,﻿,﻿,﻿Dubuque,Dubuque
+﻿dub.ia.9000,﻿church,﻿St. Raphael's,English,,,,,,﻿Dubuque,,﻿IA,,,,,,,﻿joh_a_pelamourgues_901,﻿Rev.,﻿John Anthony Pelamourgues,,,,,,,,1839,﻿,﻿,﻿Dubuque,Dubuque

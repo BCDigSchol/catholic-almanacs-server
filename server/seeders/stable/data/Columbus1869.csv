@@ -1,39 +1,39 @@
 ﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
-﻿col.oh.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Columbus,,﻿OH,,39.968885,-82.991711,,,,﻿s_h_rosecrans_001,﻿Rt. Ref.,﻿S. H. Rosecrans,﻿D.D.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Columbus,,﻿OH,,39.968885,-82.991711,,,,﻿s_h_rosecrans_001,﻿Rt. Rev.,﻿S. H. Rosecrans,﻿D.D.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Columbus,,﻿OH,,39.968885,-82.991711,,,,﻿fra_gonesse_001,﻿Rev.,﻿Francis Gonesse,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Columbus,,﻿OH,,39.968885,-82.991711,,,,﻿p_j_daly_001,﻿Rev.,﻿P. J. Daly,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Columbus,,﻿OH,,39.968885,-82.991711,,,,﻿g_h_ahrens_001,﻿Rev.,﻿G. H. Ahrens,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0001,﻿church,﻿St. Patrick's,English,,,,,,﻿Columbus,,﻿OH,,39.968885,-82.991711,,,,﻿ger_h_ahrens_001,﻿Rev.,﻿G. H. Ahrens,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0002,﻿church,﻿Holy Cross,﻿German,,,,,,﻿Columbus,,﻿OH,,39.958679,-82.993266,,,,﻿j_b_hemsteger_001,﻿Very Rev.,﻿J. B. Hemsteger,﻿V.G.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0002,﻿church,﻿Holy Cross,﻿German,,,,,,﻿Columbus,,﻿OH,,39.958679,-82.993266,,,,,,﻿—,,﻿Assistant,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0002,﻿church,﻿Holy Cross,﻿German,,,,,,﻿Columbus,,﻿OH,,39.958679,-82.993266,,,,,,﻿-,,﻿Assistant,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0003,﻿church,﻿St. Mary's,﻿German,,,,,,﻿Columbus,,﻿OH,,39.948684,-82.994742,,,,﻿f_x_specht_001,﻿Rev.,﻿F. X. Specht,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0089_02,﻿chapel,﻿Chapel of St. Francis' Hospital,English,,,,,,﻿Columbus,,﻿OH,,39.961176,-82.998794,,,,﻿b_hillebrand_001,﻿Rev.,﻿B. Hillebrand,,﻿Chaplain,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0088_02,﻿chapel,﻿Chapel at the Convent of the Good Shepard,English,,,,,,﻿Columbus,,﻿OH,,39.961176,-82.998794,﻿col.oh.0001,﻿Attended from St. Patrick's,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0087_02,﻿chapel,﻿Chapel at the Academy of St. Mary's of the Springs,English,,,,,,﻿Columbus,,﻿OH,,39.961176,-82.998794,,,,﻿o_m_clarkson_001,﻿Rev.,﻿O. M. Clarkson,﻿O.P.,﻿Chaplain,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0007,﻿chapel,﻿Chapel of the Sisters of Notre Dame,English,,,,,,﻿Columbus,,﻿OH,,39.961176,-82.998794,﻿col.oh.0002,﻿Attended from Holy Cross,,,﻿Sister,﻿Mary Ligouri,,﻿Superior of the sisters of Notre Dame,,﻿religious,﻿9 sisters,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0008,﻿settlement,not recorded,English,,﻿Archres Settlement,,﻿Munroe County,,,,﻿OH,,39.76785,-81.400674,﻿col.oh.0028,﻿Attended from Enoch,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0009,﻿church,not recorded,English,,,,﻿Athens County,,﻿Athens,,﻿OH,,39.32924,-82.101255,,,,﻿j_e_mcswiny_001,﻿Rev.,﻿J. E. McSwiny,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0007,﻿chapel,﻿Chapel of the Sisters of Notre Dame,English,,,,,,﻿Columbus,,﻿OH,,39.961176,-82.998794,﻿col.oh.0002,﻿Attended from Holy Cross,,﻿m-ligouri_col.oh_001,﻿Sister,﻿Mary Ligouri,,﻿Superior of the sisters of Notre Dame,,﻿religious,﻿9 sisters,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0008,﻿settlement,[Unnamed Institution],English,,﻿Archres Settlement,,﻿Munroe County,,,,﻿OH,,39.76785,-81.400674,﻿col.oh.0028,﻿Attended from Enoch,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0009,﻿church,[Unnamed Institution],English,,,,﻿Athens County,,﻿Athens,,﻿OH,,39.32924,-82.101255,,,,﻿j_e_mcswiny_001,﻿Rev.,﻿J. E. McSwiny,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0011,﻿church,﻿St. John's,English,,,,﻿Belmont County,,﻿Belair,,﻿OH,,40.016184,-80.742305,,﻿Attended by Rev. J. M. Jacquet,,﻿j_m_jacquet_001,﻿Rev.,﻿J. M. Jacquet,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0012,﻿church,﻿St. Martin's,English,,,,﻿Tuscarawas County,,﻿Bolivar,,﻿OH,,40.397897,-81.427898,,﻿Attended from Canal Dover,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0013,﻿church,﻿Church of the Sacred Heart,English,,,,﻿Fairfield County,,﻿Bremen,,﻿OH,,39.701733,-82.426822,,,,﻿j_w_brummer_001,﻿Rev.,﻿J. W. Brummer,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0015,﻿church,﻿St. Joseph's,English,,,,﻿Tuscarawas County,,﻿Canal Dover,,﻿OH,,40.523695,-81.483313,,,,﻿b_wismann_001,﻿Rev.,﻿B. Wismann,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0016,﻿church,﻿St. Francis',English,,,,﻿Perry County,,﻿Chapel Hill,,﻿OH,,39.764135,-82.25833,,,,﻿jos_n_brogard_001,﻿Rev.,﻿Joseph N. Brogard,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0017,﻿church,not recorded,English,﻿Church being built,,,﻿Morrow County,,﻿Cardington,,﻿OH,,40.500616,-82.893515,,﻿Attended from Delaware,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0017,﻿church,[Unnamed Institution],English,﻿Church being built,,,﻿Morrow County,,﻿Cardington,,﻿OH,,40.500616,-82.893515,,﻿Attended from Delaware,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0018,﻿church,﻿Seven Dolors,English,,,,﻿Athens County,,﻿Chauncey,,﻿OH,,39.397849,-82.129312,,﻿Attended from Logan,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0019,﻿church,﻿St. Joseph's,English,,,,﻿Pickaway County,,﻿Circleville,,﻿OH,,39.600471,-82.947452,,,,﻿c_l_pindar_001,﻿Rev.,﻿C. L. Pindar,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0020,﻿church,not recorded,English,,﻿Dominico,,﻿Perry County,,﻿Clayton,,﻿OH,,39.764135,-82.25833,,,,﻿lev_adams_001,﻿Rev.,﻿Lev. Adams,﻿O.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0020,﻿church,[Unnamed Institution],English,,﻿Dominico,,﻿Perry County,,﻿Clayton,,﻿OH,,39.764135,-82.25833,,,,﻿lev_adams_001,﻿Rev.,﻿Lev. Adams,﻿O.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0021,﻿church,﻿St. George's,English,,,,﻿Coshocton County,,﻿Coshocton,,﻿OH,,40.273582,-81.953481,,,,﻿j_g_nordmeier_001,﻿Rev.,﻿J. G. Nordmeier,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0023,﻿church,﻿St. Luke's,English,,,,﻿Knox County,,﻿Danville,,﻿OH,,40.447705,-82.260386,,﻿Attended from Mt. Vernon,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0024,﻿church,﻿St. Barnabas',English,,,,﻿Morgan County,,﻿Deaverton,,﻿OH,,39.734235,-82.037919,,﻿Attended from Chapel Hill,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0025,﻿church,﻿St. Mary's,English,,,,﻿Delaware County,,﻿Delaware,,﻿OH,,40.298129,-83.064798,,,,﻿h_fehlings_002,﻿Rev.,﻿H. Fehlings,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0026,﻿religious institution,not recorded,English,,﻿Doherty's Settlement,,﻿Munroe County,,,,﻿OH,,39.719904,-81.075466,﻿col.oh.0028,﻿Attended from Enoch,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0025,﻿church,﻿St. Mary's,English,,,,﻿Delaware County,,﻿Delaware,,﻿OH,,40.298129,-83.064798,,,,﻿h_fehlings_003,﻿Rev.,﻿H. Fehlings,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0026,﻿religious institution,[Unnamed Institution],English,,﻿Doherty's Settlement,,﻿Munroe County,,,,﻿OH,,39.719904,-81.075466,﻿col.oh.0028,﻿Attended from Enoch,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0027,﻿church,﻿St. Matthew's,English,,,,﻿Muskingum County,,﻿Dresden,,﻿OH,,40.124198,-82.014231,,﻿Attended from Coshocton,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0028,﻿church,﻿Immaculate Conception,English,,,,﻿Noble County,,﻿Enoch,,﻿OH,,39.716674,-81.438886,,,,﻿d_j_klüber_001,﻿Rev.,﻿D. J. Klüber,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0029,﻿church,﻿St. Patrick's,English,,﻿Fox's Settlement,,﻿Washington County,,,,﻿OH,,39.46264,-81.471839,﻿col.oh.0028,﻿Attended from Enoch,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0030,﻿church,﻿St. Louis,English,,,,﻿Gallia County,,﻿Gallipolis,,﻿OH,,38.809803,-82.202369,,﻿Attended from Pomeroy,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0031,﻿church,﻿Our Lady of Good Hope,English,,,,﻿Hocking County,,﻿Good Hope,,﻿OH,,39.567825,-82.551047,,,,﻿j_w_brummer_001,﻿Rev.,﻿J. W. Brummer,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0032,﻿religious institution,not recorded,English,,,,﻿Franklin County,,﻿Groveport,,﻿OH,,39.853206,-82.888276,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0034,﻿religious institution,not recorded,English,,,,﻿Lawrence County,,﻿Hanging Rock,,﻿OH,,38.56008,-82.720997,﻿col.oh.0037,﻿Attended from Ironton,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0035,﻿religious institution,not recorded,English,,,,﻿Jackson County,,﻿Jackson,,﻿OH,,39.052017,-82.636554,,﻿Attended from Zaleski,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0032,﻿religious institution,[Unnamed Institution],English,,,,﻿Franklin County,,﻿Groveport,,﻿OH,,39.853206,-82.888276,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0034,﻿religious institution,[Unnamed Institution],English,,,,﻿Lawrence County,,﻿Hanging Rock,,﻿OH,,38.56008,-82.720997,﻿col.oh.0037,﻿Attended from Ironton,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0035,﻿religious institution,[Unnamed Institution],English,,,,﻿Jackson County,,﻿Jackson,,﻿OH,,39.052017,-82.636554,,﻿Attended from Zaleski,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0036,﻿church,﻿St. Patrick's,English,,,,﻿Perry County,,﻿Jackson Township,,﻿OH,,39.764135,-82.25833,,,,﻿j_v_ealen_001,﻿Rev.,﻿J. V. Ealen,﻿O.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0037,﻿church,﻿St. Lawrence's,English,,,,﻿Lawrence County,,﻿Ironton,,﻿OH,,38.537635,-82.682562,,,,﻿ph_odonoghoo_001,﻿Rev.,﻿Ph. O'Donoghoo,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0038,﻿church,﻿St. Joseph's,English,,,,﻿Lawrence County,,﻿Ironton,,﻿OH,,38.529784,-82.677579,,,,﻿h_fisher_001,﻿Rev.,﻿H. Fisher,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
@@ -43,16 +43,16 @@
 ﻿col.oh.0043,﻿church,﻿St. John's,English,,,,﻿Scioto County,,﻿Little Scioto,,﻿OH,,38.857572,-82.865887,,﻿Attended from Lick Run,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0044,﻿church,﻿St. Francis Xavier,English,,,,﻿Carrol County,,﻿Lodi,,﻿OH,,40.688105,-81.172938,,﻿Attended from Canal Dover,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0045,﻿church,﻿St. John's,English,,,,﻿Hocking County,,﻿Logan,,﻿OH,,39.540067,-82.407099,,,,﻿e_thienpont_001,﻿Rev.,﻿E. Thienpont,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0046,﻿religious institution,not recorded,English,,,,﻿Meigs County,,﻿Long Bottom,,﻿OH,,39.086189,-81.803744,,﻿Attended from Pomeroy,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0046,﻿religious institution,[Unnamed Institution],English,,,,﻿Meigs County,,﻿Long Bottom,,﻿OH,,39.086189,-81.803744,,﻿Attended from Pomeroy,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0047,﻿church,﻿Immaculate Conception,English,,,,﻿Carrol County,,﻿Marges,,﻿OH,,40.532833,-81.075466,,﻿Attended from Canal Dover,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0048,﻿religious institution,not recorded,English,,,,﻿Jackson County,,﻿Monroe Furnace,,﻿OH,,39.006038,-82.648344,,﻿Attended from Lick Run,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0048,﻿religious institution,[Unnamed Institution],English,,,,﻿Jackson County,,﻿Monroe Furnace,,﻿OH,,39.006038,-82.648344,,﻿Attended from Lick Run,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0049,﻿church,﻿St. Mary's,English,,,,﻿Washington County,,﻿Marietta,,﻿OH,,39.415352,-81.454844,,,,﻿m_j_ryan_001,﻿Rev.,﻿M. J. D. Ryan,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0050,﻿religious institution,not recorded,English,,﻿Mettingley's Settlement,,﻿Washington County,,,,﻿OH,,40.040556,-82.069444,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0050,﻿religious institution,[Unnamed Institution],English,,﻿Mettingley's Settlement,,﻿Washington County,,,,﻿OH,,40.040556,-82.069444,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0051,﻿church,﻿St. James',English,,,,﻿Morgan County,,﻿Meigs Creek,,﻿OH,,39.633281,-81.677799,,﻿Attended from Marietta,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0054,﻿church,﻿St. Genevieve's,English,,,,﻿Holmes County,,﻿Mt. Eaton,,﻿OH,,40.694502,-81.703185,,,,﻿j_a_heimo_001,﻿Rev.,﻿J. A. Heimo,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0055,﻿church,﻿St. Vincent of Paul,English,,,,﻿Knox County,,﻿Mt. Vernon,,﻿OH,,40.393228,-82.485436,,,,﻿j_a_brent_001,﻿Rev.,﻿J. A. Brent,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0056,﻿church,﻿St. Francis de Sales,English,,,,﻿Licking County,,﻿Newark,,﻿OH,,40.060329,-82.408992,,,,﻿lou_cartuyvels_001,﻿Rev.,﻿Louis Cartuyvels,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0058,﻿religious institution,not recorded,English,,,,﻿Lawrence County,,﻿Pine Grove,,﻿OH,,38.611847,-82.683604,﻿col.oh.0038,﻿Attended from Ironton,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0058,﻿religious institution,[Unnamed Institution],English,,,,﻿Lawrence County,,﻿Pine Grove,,﻿OH,,38.611847,-82.683604,﻿col.oh.0038,﻿Attended from Ironton,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0059,﻿church,﻿Sacred Heart,English,,,,﻿Meigs County,,﻿Pomeroy,,﻿OH,,39.029761,-82.03718,,,,﻿joh_kalenberg_001,﻿Rev.,﻿John Kalenberg,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0060,﻿church,﻿Holy Trinity,English,,,,﻿Scioto County,,﻿Pond Creek,,﻿OH,,38.758409,-83.029064,,﻿Attended from Portsmouth,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0061,﻿church,﻿Church of the Nativity,English,,,,﻿Scioto County,,﻿Portsmouth,,﻿OH,,38.861065,-82.993161,,,,﻿f_karge_001,﻿Rev.,﻿F. Karge,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
@@ -67,13 +67,13 @@
 ﻿col.oh.0066,﻿church,﻿St. Joseph's,English,,,,﻿Perry County,,,,﻿OH,,39.764135,-82.25833,,,,﻿d_h_noon_001,﻿Rev.,﻿D. H. Noon,﻿V.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0067,﻿church,﻿St. Dominic's,English,,,,,,﻿Clayton Township,,﻿OH,,39.73926,-82.106322,,"﻿Attended by Rev. Lev. Adams, V.P.",,﻿lev_adams_001,﻿Rev.,﻿Lev. Adams,﻿V.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0068,﻿church,﻿St. Pius,English,,,,,,﻿South Fork,,﻿OH,,39.6692,-82.1603,,,,﻿lev_adams_001,﻿Rev.,﻿Lev. Adams,﻿O.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0071,﻿religious institution,not recorded,English,,,,﻿Meigs County,,﻿Syracuse,,﻿OH,,38.997579,-81.974027,,﻿Attended from Pomeroy,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0072,﻿religious institution,not recorded,English,,,,﻿Muskingum County,,﻿Taylorsville,,﻿OH,,39.861181,-81.906801,,﻿Attended from Zanesville,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0073,﻿religious institution,not recorded,English,,,,﻿Franklin County,,﻿Taylorstown,,﻿OH,,40.015475,-82.993161,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0071,﻿religious institution,[Unnamed Institution],English,,,,﻿Meigs County,,﻿Syracuse,,﻿OH,,38.997579,-81.974027,,﻿Attended from Pomeroy,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0072,﻿religious institution,[Unnamed Institution],English,,,,﻿Muskingum County,,﻿Taylorsville,,﻿OH,,39.861181,-81.906801,,﻿Attended from Zanesville,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0073,﻿religious institution,[Unnamed Institution],English,,,,﻿Franklin County,,﻿Taylorstown,,﻿OH,,40.015475,-82.993161,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0074,﻿church,﻿St. John's,English,,﻿Union Township,,﻿Washington County,,,,﻿OH,,39.469444,-81.607778,,,,﻿mag_eppink_001,﻿Rev.,﻿M. Eppink,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0077,﻿church,﻿St. Ann's,English,,,,﻿Coshocton County,,﻿Wills Creek,,﻿OH,,40.20082,-81.763987,,﻿Attended from Coshocton,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0081,﻿church,﻿St. Mary's,English,,,,﻿Vinton County,,﻿Wilkesville,,﻿OH,,39.091573,-82.366887,,,,﻿mic_ahern_001,﻿Rev.,﻿Michael Ahern,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0082,﻿religious institution,not recorded,English,,,,﻿Franklin County,,﻿Worthington,,﻿OH,,40.093119,-83.017962,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0082,﻿religious institution,[Unnamed Institution],English,,,,﻿Franklin County,,﻿Worthington,,﻿OH,,40.093119,-83.017962,,﻿Attended from Columbus,,,,,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0083,﻿church,﻿St. Silvester's,English,,,,﻿Vinton County,,﻿Zaleski,,﻿OH,,39.283954,-82.394042,,,,﻿j_e_mcswiny_001,﻿Rev.,﻿J. E. McSwiny,,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0084,﻿church,﻿St. Thomas',English,,,,﻿Muskingum County,,﻿Zanesville,,﻿OH,,39.942753,-82.006058,,,,﻿b_a_brady_001,﻿Rev.,﻿B. A. Brady,﻿V.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0084,﻿church,﻿St. Thomas',English,,,,﻿Muskingum County,,﻿Zanesville,,﻿OH,,39.942753,-82.006058,,,,﻿t_j_cady_001,﻿Rev.,﻿T. J. Cady,﻿O.P.,,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
@@ -83,10 +83,10 @@
 ﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,,﻿St. Joseph's,,﻿Perry County,,,,﻿OH,,39.764135,-82.25833,,,,﻿j_v_edlen_001,﻿Rev.,﻿J. V. Edlen,﻿V.P.,,,﻿religious,﻿eleven lay-brothers,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,,﻿St. Joseph's,,﻿Perry County,,,,﻿OH,,39.764135,-82.25833,,,,﻿lev_adams_001,﻿Rev.,﻿Lev. Adams,﻿V.P.,,,﻿religious,﻿eleven lay-brothers,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0066_02,﻿convent,﻿Dominican Convent,English,,﻿St. Joseph's,,﻿Perry County,,,,﻿OH,,39.764135,-82.25833,,,,﻿d_h_noon_001,﻿Rev.,﻿D. H. Noon,,,,﻿religious,﻿eleven lay-brothers,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,,﻿OH,,39.961176,-82.998794,,,,,﻿Mother,﻿Rose,,﻿Superior,,﻿religious,﻿26 sisters,﻿Conducted by the Sisters of St. Dominic,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,,﻿OH,,39.961176,-82.998794,,,,﻿rose_col.oh_001,﻿Mother,﻿Rose,,﻿Superior,,﻿religious,﻿26 sisters,﻿Conducted by the Sisters of St. Dominic,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0087,﻿academy,﻿St. Mary's of the Springs Academy,English,,,,,,,,﻿OH,,39.961176,-82.998794,,,,,,,,,,﻿student,﻿80 pupils,﻿Conducted by the Sisters of St. Dominic,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0088,﻿convent,﻿Convent of the Sisters of the Good Shepard,English,,,﻿near Columbus,,,﻿Franklin,,﻿OH,,39.961176,-82.998794,,,,,﻿Sister,﻿Gertrude,,﻿Superior,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,,﻿OH,,39.961176,-82.998794,,,,,﻿Sister,﻿Desideria,,﻿Superior,,﻿religious,﻿14 sisters,﻿Franciscan Sisters of the Poor,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0088,﻿convent,﻿Convent of the Sisters of the Good Shepard,English,,,﻿near Columbus,,,﻿Franklin,,﻿OH,,39.961176,-82.998794,,,,﻿gertrude_col.oh_001,﻿Sister,﻿Gertrude,,﻿Superior,,,,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,,﻿OH,,39.961176,-82.998794,,,,﻿desideria_col.oh_001,﻿Sister,﻿Desideria,,﻿Superior,,﻿religious,﻿14 sisters,﻿Franciscan Sisters of the Poor,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0089,﻿hospital,﻿St. Francis' Hospital,English,,,,,,,,﻿OH,,39.961176,-82.998794,,,,﻿b_hillebrand_001,﻿Rev.,﻿B. Hillebrand,,﻿Chaplain,,﻿religious,﻿14 sisters,﻿Franciscan Sisters of the Poor,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0001_02,﻿school,"﻿St. Patrick's Schools, for boys",English,,,,,,,﻿Columbus,﻿OH,,39.968885,-82.991711,,,,,,,,,,﻿student,﻿240 pupils,﻿Sisters of Notre Dame,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0001_02,﻿school,"﻿St. Patrick's Schools, for boys",English,,,,,,,﻿Columbus,﻿OH,,39.968885,-82.991711,,,,,,,,,,﻿religious,﻿9 sisters teaching the parish schools,﻿Sisters of Notre Dame,,1869,﻿,﻿,﻿Columbus,Columbus
@@ -110,5 +110,5 @@
 ﻿col.oh.0010_02,﻿school,﻿St. Mary's,English,,,,,,﻿Beaver,,﻿OH,,39.906733,-81.229738,,,,,,,,,,﻿student,﻿100 pupils,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0059_02,﻿school,﻿Sacred Heart,English,,,,,,﻿Pomeroy,,﻿OH,,39.029761,-82.03718,,,,,,,,,,﻿student,﻿180 pupils,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0015_02,﻿school,﻿St. Joseph's,English,,,,,,﻿Canal Dover,,﻿OH,,40.523695,-81.483313,,,,,,,,,,﻿student,﻿— pupils,,,1869,﻿,﻿,﻿Columbus,Columbus
-﻿col.oh.0108,﻿school,﻿St. Peter's,English,,,,﻿Tucarawas County,,,,﻿OH,,,,,,,,,,,,,﻿student,﻿— pupils,,,1869,﻿,﻿,﻿Columbus,Columbus
+﻿col.oh.0108,﻿school,﻿St. Peter's,English,,,,﻿Tucarawas County,﻿Tuscarawas,,,﻿OH,,,,,,,,,,,,,﻿student,﻿— pupils,,,1869,﻿,﻿,﻿Columbus,Columbus
 ﻿col.oh.0042_02,﻿school,﻿St. Peter's,English,,,,,,﻿Lick Run,,﻿OH,,38.711681,-83.172347,,,,,,,,,,﻿student,﻿— pupils,,,1869,﻿,﻿,﻿Columbus,Columbus
