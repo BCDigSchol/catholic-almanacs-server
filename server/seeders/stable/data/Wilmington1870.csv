@@ -10,8 +10,8 @@
 ﻿wil.de.0007,﻿church,﻿St. Peter's,English,,,,,,﻿New Castle,﻿New Castle,﻿DE,,39.6625154,-75.5646843,,,,﻿joh_daly_003,﻿Rev.,﻿John Daly,,﻿Pastor,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0008,﻿church,﻿St. Paul's,English,,,,,,﻿Delaware City,﻿Delaware City,﻿DE,,39.57615,-75.5922806,,﻿Attended from New Castle,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0009,﻿church,﻿St. Patrick's,English,,,,,,﻿Newark,﻿Newark,﻿DE,,39.6644193,-75.7273694,,"﻿Attended from Elkton, MD by Rev. F.J. Blake",,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0010,﻿church,not recorded,English,,,,,,﻿Dover,﻿Dover,﻿DE,,39.158168,-75.5243682,,﻿Visited from New Castle,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0011,﻿church,not recorded,English,,,,,,﻿Smyrna,﻿Smyrna,﻿DE,,39.2998339,-75.6046494,,﻿Visited from New Castle,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0010,﻿church,[Unnamed Institution],English,,,,,,﻿Dover,﻿Dover,﻿DE,,39.158168,-75.5243682,,﻿Visited from New Castle,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0011,﻿church,[Unnamed Institution],English,,,,,,﻿Smyrna,﻿Smyrna,﻿DE,,39.2998339,-75.6046494,,﻿Visited from New Castle,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0012,﻿church,﻿St. Francis Xavier's,English,,﻿Warwick P.O.,,﻿Cecil County,,﻿Bohemia Manor,﻿Chesapeake City,﻿MD,,39.530946,-75.8074367,,,,﻿geo_villiger_001,﻿Rev.,﻿George Villiger,﻿S.J.,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0013,﻿church,﻿St. Patrick's,English,,,,﻿Cecil County,,﻿Conowingo,﻿Conowingo,﻿MD,,39.6779267,-76.1590765,,﻿Attended from Havre de Grace,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0014,﻿church,﻿Immaculate Conception,English,,,,﻿Cecil County,,﻿Elkton,﻿Elkton,﻿MD,,39.6148047,-75.8314811,,,,﻿j_f_blake_001,﻿Rev.,﻿F. J. Blake,,﻿Pastor,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
@@ -21,20 +21,20 @@
 ﻿wil.de.0017,﻿church,﻿SS. Peter and Paul,English,,,,﻿Talbot County,,﻿Easton,﻿Easton,﻿MD,,38.7443991,-76.0689624,,﻿Attended from Wye Mills,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0018,﻿church,﻿St. Peter's,English,,,,﻿Queen Anne County,,﻿Queenstown,﻿Queenstown,﻿MD,,38.9906679,-76.1577268,,﻿Attended from Wye Mills,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0019,﻿church,﻿St. Denis',English,,,,﻿Kent County,,﻿Georgetown Cross Roads,﻿Galena,﻿MD,,39.3461502,-75.8792727,,﻿Attended from Bohemia,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0020,﻿church,not recorded,English,,﻿at Benett Wilson's,,﻿Kent County,,﻿Eastern Neck,﻿Eastern Neck Island,﻿MD,,39.0303894,-76.2277309,,﻿Attended from Bohemia,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0021,﻿church,not recorded,English,,﻿at Thomas Dixon's,,﻿Kent County,,﻿Chestertown,﻿Chestertown,﻿MD,,39.2121948,-76.0762451,,﻿Attended from Bohemia,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0020,﻿church,[Unnamed Institution],English,,﻿at Benett Wilson's,,﻿Kent County,,﻿Eastern Neck,﻿Eastern Neck Island,﻿MD,,39.0303894,-76.2277309,,﻿Attended from Bohemia,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0021,﻿church,[Unnamed Institution],English,,﻿at Thomas Dixon's,,﻿Kent County,,﻿Chestertown,﻿Chestertown,﻿MD,,39.2121948,-76.0762451,,﻿Attended from Bohemia,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0022,﻿church,﻿St. Elizabeth's,English,,,,﻿Caroline County,,﻿Denton,﻿Denton,﻿MD,,38.8852883,-75.834971,,﻿Attended from Wye Mills,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0023,﻿church,﻿St. Mary's,English,,,,﻿Wicomico County,,﻿Salisbury,﻿Salisbury,﻿MD,,38.3739821,-75.5727644,,"﻿Visited from Wilmington, DE",,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0024,﻿church,﻿St. Mary's,English,,,,﻿Dorchester County,,﻿Meekin's Neck,﻿Golden Hill,﻿MD,,38.38562109,-76.24923305,,﻿Visited from Wye Mills,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿ric.va.0018,﻿church,not recorded,English,,,,﻿Northampton County,,﻿Eastville,﻿Eastville,﻿MD,﻿VA,37.3526369,-75.945765,,﻿Visited from Norfolk,﻿occasionally,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0001_03,﻿asylum,﻿Female Orphan Asylum,English,,﻿corner of Sixth and West streets,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7615867,-75.5267034,,,,,﻿Sister,﻿M. Stanislaus Kostka,,﻿Sister-Servant,,﻿religious,"﻿Number of sisters, 8",,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿ric.va.0018,﻿church,[Unnamed Institution],English,,,,﻿Northampton County,,﻿Eastville,﻿Eastville,﻿MD,﻿VA,37.3526369,-75.945765,,﻿Visited from Norfolk,﻿occasionally,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0001_03,﻿asylum,﻿Female Orphan Asylum,English,,﻿corner of Sixth and West streets,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7615867,-75.5267034,,,,﻿m-stanislaus_kostka_ric.va_001,﻿Sister,﻿M. Stanislaus Kostka,,﻿Sister-Servant,,﻿religious,"﻿Number of sisters, 8",,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0001_03,﻿asylum,﻿Female Orphan Asylum,English,,﻿corner of Sixth and West streets,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7615867,-75.5267034,,,,,,,,,,﻿child,"﻿orphans, 33",﻿under the charge of the Sisters of Charity,,1870,﻿,﻿,﻿Wilmington,Wilmington
 ﻿wil.de.0027,﻿academy,﻿Academy of the Visitation B.V.M.,English,"﻿The building formerly known as St. Mary's College has been opened by the Sisters as a boarding and day-school. Address, for terms, Mother Superior, Academy of the Visitation, Wilmington, Delaware",,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,,,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0028,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,﻿religious,﻿three lay teachers,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0028,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,﻿child,"﻿boys, 250",,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0001_02,﻿school,not recorded,English,,﻿St. Peter's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,﻿child,"﻿girls, 300",﻿Sisters of Charity,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0002_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7388308,-75.5441827,,,,,,,,,,﻿child,"﻿boys, 220",,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0002_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7388308,-75.5441827,,,,,,,,,,﻿child,"﻿girls, 240",,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0002_02,﻿school,not recorded,English,,﻿St. Mary's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7388308,-75.5441827,,,,,,,,,,﻿religious,﻿lay teachers,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0005_02,﻿school,not recorded,English,,﻿St. Joseph's,,,,﻿Brandywine,﻿Brandywine,﻿DE,,39.7721416,-75.5893161,,,,,,,,,,﻿religious,﻿two lay teachers,,,1870,﻿,﻿,﻿Wilmington,Wilmington
-﻿wil.de.0005_02,﻿school,not recorded,English,,﻿St. Joseph's,,,,﻿Brandywine,﻿Brandywine,﻿DE,,39.7721416,-75.5893161,,,,,,,,,,﻿child,"﻿children, 300",,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0028,﻿school,[Unnamed Institution],English,,﻿St. Peter's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,﻿religious,﻿three lay teachers,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0028,﻿school,[Unnamed Institution],English,,﻿St. Peter's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,﻿child,"﻿boys, 250",,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0001_02,﻿school,[Unnamed Institution],English,,﻿St. Peter's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.744655,-75.5483909,,,,,,,,,,﻿child,"﻿girls, 300",﻿Sisters of Charity,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0002_02,﻿school,[Unnamed Institution],English,,﻿St. Mary's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7388308,-75.5441827,,,,,,,,,,﻿child,"﻿boys, 220",,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0002_02,﻿school,[Unnamed Institution],English,,﻿St. Mary's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7388308,-75.5441827,,,,,,,,,,﻿child,"﻿girls, 240",,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0002_02,﻿school,[Unnamed Institution],English,,﻿St. Mary's,,,,﻿Wilmington,﻿Wilmington,﻿DE,,39.7388308,-75.5441827,,,,,,,,,,﻿religious,﻿lay teachers,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0005_02,﻿school,[Unnamed Institution],English,,﻿St. Joseph's,,,,﻿Brandywine,﻿Brandywine,﻿DE,,39.7721416,-75.5893161,,,,,,,,,,﻿religious,﻿two lay teachers,,,1870,﻿,﻿,﻿Wilmington,Wilmington
+﻿wil.de.0005_02,﻿school,[Unnamed Institution],English,,﻿St. Joseph's,,,,﻿Brandywine,﻿Brandywine,﻿DE,,39.7721416,-75.5893161,,,,,,,,,,﻿child,"﻿children, 300",,,1870,﻿,﻿,﻿Wilmington,Wilmington

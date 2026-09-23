@@ -1,0 +1,103 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿vin.in.0001,﻿cathedral,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,38.679024,-87.53415,,,,﻿sim_g_bruté_901,﻿Rt. Rev.,﻿Simon G. Bruté,﻿D. D.,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0001,﻿cathedral,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,38.679024,-87.53415,,,,﻿cél_de-la-hailandière_901,﻿Rev.,﻿Celestin de la Hailandiére,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0001,﻿cathedral,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,38.679024,-87.53415,,,,﻿j_a_vabret_901,﻿Rev.,﻿J. A. Vahret,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0001,﻿cathedral,﻿Cathderal of St. Frances Xavier,English,,,,,﻿Knox County,﻿Vincennes,,﻿IN,,38.679024,-87.53415,,,,﻿pet_berel_901,﻿Rev.,﻿Peter Berel,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9005,﻿church,[Unnamed Institution],English,,﻿Duchee River,,,,,,﻿IN,,,,﻿vin.in.0001,﻿attended from Vincennes,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0115,﻿church,[Unnamed Institution],English,,﻿Queret Prairie,,,,,,﻿IN,,,,﻿vin.in.0001,﻿attended from Vincennes,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0022,﻿church,[Unnamed Institution],English,,,,,,﻿Carlisle,,﻿IN,,,,﻿vin.in.0001,﻿attended from Vincennes,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9026,﻿church,[Unnamed Institution],English,,,,,,﻿Shaker's Prairie,,﻿IN,,,,﻿vin.in.0001,﻿attended from Vincennes,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.9011,﻿church,[Unnamed Institution],English,,,,,,﻿Lawrenceville,,﻿IL,,37.735639,-88.138151,﻿vin.in.0001,﻿attended from Vincennes,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0171,﻿church,[Unnamed Institution],English,,,,﻿Davies County,,﻿Washington,,﻿IN,,38.658611,-87.159167,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Salumiére,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0090,﻿church,﻿St. Peter's,English,,,,﻿Davies County,,,﻿Montgomery,﻿IN,,38.66456,-87.046859,,,,﻿sim_lalumiere_901,﻿Rev.,﻿Simon Salumiére,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0145,﻿church,﻿St. Mary's,English,,,,﻿Davies County,,,,﻿IN,,,,,,,﻿mau_de-st-palais_001,﻿Rev.,﻿Maurice St. Palais,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0093,﻿station,[Unnamed Institution],English,,,,,,﻿Mount Pleasant,,﻿IN,,,,,,﻿monthly or occasionally visited,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9038,﻿station,[Unnamed Institution],English,,,,,,﻿Paoli,,,,,,,,﻿monthly or occasionally visited,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0069,﻿station,[Unnamed Institution],English,,,,,,﻿Jasper,,﻿IN,,,,,,,﻿jos_kundek_901,﻿Rev.,﻿Joseph Kundek,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9011,﻿church,[Unnamed Institution],English,,,,﻿Floyd County,,﻿New Albany,,﻿IN,,38.324167,-85.873889,,,,﻿lou_t_neyron_901,﻿Rev.,﻿Louis T. Neyron,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0217,﻿church,﻿Assumption,English,,,,﻿Floyd County,,﻿the Knobs,﻿Floyds Knobs,﻿IN,,,,,,,﻿lou_t_neyron_901,﻿Rev.,﻿Louis T. Neyron,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.9006,﻿church,[Unnamed Institution],English,,,,,,﻿Jefferson,,﻿IN,,,,,,﻿occasionally,﻿lou_t_neyron_901,﻿Rev.,﻿Louis T. Neyron,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9033,﻿church,[Unnamed Institution],English,,,,,,﻿Charleston,﻿Charlestown,﻿IN,,,,,,﻿occasionally,﻿lou_t_neyron_901,﻿Rev.,﻿Louis T. Neyron,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9039,﻿church,[Unnamed Institution],English,,,,,,﻿Corydon,,﻿IN,,,,,,﻿occasionally,﻿lou_t_neyron_901,﻿Rev.,﻿Louis T. Neyron,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9034,﻿church,﻿St. Mary's,English,,,,﻿Perry County,,﻿Rome,,﻿IN,,,,,,,﻿jul_benoit_001,﻿Rev.,﻿Julian Benoit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0024,﻿station,[Unnamed Institution],English,,﻿Cassidy,,,,,,﻿IN,,,,,,,﻿jul_benoit_001,﻿Rev.,﻿Julian Benoit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0166,﻿station,[Unnamed Institution],English,,,,,,﻿Troy,,﻿IN,,,,,,,﻿jul_benoit_001,﻿Rev.,﻿Julian Benoit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0036,﻿church,[Unnamed Institution],English,,,,,,﻿Evansville,,﻿IN,,,,,,,﻿ant_deydier_901,﻿Rev.,﻿Anthony Deydier,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9040,﻿church,[Unnamed Institution],English,,,,,,﻿Newark,,﻿IN,,,,,,,﻿ant_deydier_901,﻿Rev.,﻿Anthony Deydier,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0094,﻿church,[Unnamed Institution],English,,,,,,﻿Mount Vernon,,﻿IN,,,,,,,﻿ant_deydier_901,﻿Rev.,﻿Anthony Deydier,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9036,﻿church,[Unnamed Institution],English,,,,,,﻿New Harmony,﻿New Harmony,﻿IN,﻿IN,,,,,,﻿ant_deydier_901,﻿Rev.,﻿Anthony Deydier,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9041,﻿church,[Unnamed Institution],English,,,,,,﻿Princeton,,﻿IN,,,,,,,﻿ant_deydier_901,﻿Rev.,﻿Anthony Deydier,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0081,﻿church,[Unnamed Institution],English,,,,,,﻿Madison,,﻿IN,,,,,,,﻿mic_e_e_shaw_901,﻿Rev.,﻿Michael Shaw,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0081,﻿church,[Unnamed Institution],English,,,,,,﻿Madison,,﻿IN,,,,,,,﻿joh_plunkett_901,﻿Rev.,﻿John Plunkett,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0094,﻿church,[Unnamed Institution],English,,,,,,﻿Vernon,,﻿IN,,,,,,,﻿joh_plunkett_901,﻿Rev.,﻿John Plunkett,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9042,﻿church,[Unnamed Institution],English,,,,,,﻿Lancaster,,﻿IN,,,,,,,﻿joh_plunkett_901,﻿Rev.,﻿John Plunkett,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0124,﻿church,[Unnamed Institution],English,,,,,,﻿Salem,,﻿IN,,,,,,,﻿joh_plunkett_901,﻿Rev.,﻿John Plunkett,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0168,﻿church,[Unnamed Institution],English,,,,,,﻿Vevay,,﻿IN,,,,,,,﻿joh_plunkett_901,﻿Rev.,﻿John Plunkett,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9043,﻿church,﻿St. John's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9043,﻿church,﻿St. John's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0100,﻿church,﻿St. Paul's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0100,﻿church,﻿St. Paul's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9044,﻿church,﻿Blue Creek's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9044,﻿church,﻿Blue Creek's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9045,﻿church,﻿Salt Creek's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9045,﻿church,﻿Salt Creek's,English,,,,,,﻿New Alsace,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0075,﻿church,[Unnamed Institution],English,,,,,,﻿Laurenceburg,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0075,﻿church,[Unnamed Institution],English,,,,,,﻿Laurenceburg,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0096,﻿church,[Unnamed Institution],English,,,,,,﻿Napolean,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0096,﻿church,[Unnamed Institution],English,,,,,,﻿Napolean,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0048,﻿church,[Unnamed Institution],English,,,,,,﻿Harrison,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0048,﻿church,[Unnamed Institution],English,,,,,,﻿Harrison,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0016,﻿church,[Unnamed Institution],English,,,,,,﻿Brookville,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0016,﻿church,[Unnamed Institution],English,,,,,,﻿Brookville,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0119,﻿church,[Unnamed Institution],English,,,,,,﻿Richmond,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0119,﻿church,[Unnamed Institution],English,,,,,,﻿Richmond,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9046,﻿church,[Unnamed Institution],English,,,,,,﻿Abington,,﻿IN,,,,,,,﻿jos_ferneding_001,﻿Rev.,﻿Joseph Ferneding,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9046,﻿church,[Unnamed Institution],English,,,,,,﻿Abington,,﻿IN,,,,,,,﻿con_schniederjans_901,﻿Rev.,﻿N. Schniederjans,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9047,﻿church,[Unnamed Institution],English,,,,,,﻿Shelby,,﻿IN,,,,,,,﻿vin_baquelin_901,﻿Rev.,﻿Vincent Baquelin,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0030,﻿church,[Unnamed Institution],English,,,,,,﻿Columbus,,﻿IN,,,,,,,﻿vin_baquelin_901,﻿Rev.,﻿Vincent Baquelin,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0064,﻿church,[Unnamed Institution],English,,,,,,﻿Indianapolis,,﻿IN,,39.768611,-86.158056,,,,﻿vin_baquelin_901,﻿Rev.,﻿Vincent Baquelin,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9048,﻿church,[Unnamed Institution],English,,,,,,﻿Greenburg,,﻿IN,,,,,,,﻿vin_baquelin_901,﻿Rev.,﻿Vincent Baquelin,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0081,﻿church,[Unnamed Institution],English,,,,,,﻿Logansport,,﻿IN,,40.752475,-86.375266,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0066,﻿church,[Unnamed Institution],English,,,,,,﻿Lafayette,,﻿IN,,40.400556,-86.878611,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0055,﻿church,[Unnamed Institution],English,,,,,﻿,﻿Independence,,﻿IN,,40.337778,-87.171667,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0155,﻿church,[Unnamed Institution],English,,,,,,﻿Williamsport,,﻿IN,,,,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0035,﻿church,[Unnamed Institution],English,,,,,,﻿Delphi,,﻿IN,,,,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0109,﻿church,[Unnamed Institution],English,,,,,,﻿Peru,,﻿IN,,40.757778,-86.071667,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9014,﻿church,[Unnamed Institution],English,,,,,,﻿Wabashtown,,﻿IN,,40.800833,-85.827222,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0107,﻿church,[Unnamed Institution],English,,,,,,﻿Nobleville,,﻿IN,,,,,,,﻿cla_françois_901,﻿Rev.,﻿Claude Français,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0001,﻿church,[Unnamed Institution],English,,,,,,﻿Fort Wayne,,﻿IN,,41.080556,-85.139167,,,,﻿lou_muller_901,﻿Rev.,﻿Lewis Muller,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0079,﻿church,[Unnamed Institution],English,,,,,,﻿Legros,,﻿IN,,,,,,,﻿lou_muller_901,﻿Rev.,﻿Lewis Muller,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9007,﻿church,[Unnamed Institution],English,,,,,,﻿Huntingdon,,﻿IN,,40.880556,-85.506389,,,,﻿lou_muller_901,﻿Rev.,﻿Lewis Muller,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0045,﻿church,[Unnamed Institution],English,,,,,,﻿Goshen,,﻿IN,,,,,,,﻿lou_muller_901,﻿Rev.,﻿Lewis Muller,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.9008,﻿church,[Unnamed Institution],English,,,,,,﻿South Bend,﻿South Bend,﻿IN,,,,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9049,﻿church,[Unnamed Institution],English,﻿the Potowatomis of Yellow River,﻿Yellow River,,,,,,﻿IN,,,,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.9009,﻿church,﻿St. Mary's of the Lake,English,,,,,,,﻿Culver,﻿IN,,41.217222,-86.421667,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0069,﻿church,[Unnamed Institution],English,,,,,,﻿Laporte,,﻿IN,,,,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0037,﻿church,[Unnamed Institution],English,,,,,,﻿Elkhart,,﻿IN,,,,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9050,﻿station,[Unnamed Institution],English,,﻿Indian station of Pokagon,,,,,,﻿IN,,,,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿for.in.0086,﻿church,[Unnamed Institution],English,,,,,,﻿Michigan City,,﻿IN,,,,,,,﻿ben_petit_901,﻿Rev.,﻿Benj. Petit,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0164,﻿church,[Unnamed Institution],English,,,,,,﻿Terrehaute,﻿Terre Haute,﻿IN,,39.479722,-87.375,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,﻿also attends at Thrall's Church,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9051,﻿church,﻿St. Mary's,English,,﻿Thrall's Settlement,,,,,,﻿IN,,,,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0089,﻿church,[Unnamed Institution],English,,,,,,﻿Montezuma,,﻿IN,,,,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9052,﻿church,[Unnamed Institution],English,,,,,,﻿Clinton,,﻿IN,,,,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9024,﻿church,[Unnamed Institution],English,,,,,,﻿Merom,,﻿IN,,39.056944,-87.566667,﻿vin.in.0001,﻿attended from Vincennes,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿chi.il.0002,﻿church,[Unnamed Institution],English,,,,,,﻿Chicago,,﻿IL,,39.611146,-87.696137,,,,﻿jam_omeara_901,﻿Rev.,﻿James O'Meara,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿chi.il.0002,﻿church,[Unnamed Institution],English,,﻿Mt. Juliet,,,,﻿Chicago,,﻿IL,,39.611146,-87.696137,,,﻿occasionally,﻿jam_omeara_901,﻿Rev.,﻿James O'Meara,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9053,﻿church,[Unnamed Institution],English,,﻿Grand Calumet,,,,,,﻿IL,,,,,,﻿occasionally,﻿jam_omeara_901,﻿Rev.,﻿James O'Meara,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9054,﻿church,[Unnamed Institution],English,,﻿Smallfork,,,,,,﻿IL,,,,,,﻿occasionally,﻿jam_omeara_901,﻿Rev.,﻿James O'Meara,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9055,﻿church,[Unnamed Institution],English,,﻿Illinois Canal,,,,,,﻿IL,,,,,,﻿occasionally,﻿jam_omeara_901,﻿Rev.,﻿James O'Meara,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0087,﻿church,[Unnamed Institution],English,,﻿Bodine's,,﻿Edgar County,,﻿Paris Prairie,﻿Paris,﻿IL,,39.625,-87.691667,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9056,﻿church,[Unnamed Institution],English,,,,,,﻿Darwin,,﻿IL,,,,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9058,﻿church,[Unnamed Institution],English,,,,,,﻿York,,﻿IL,,,,,,,﻿lou_s_m_buteux_001,﻿Rev.,﻿Stanislaus Buteux,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0115,﻿church,[Unnamed Institution],English,,,,,,﻿Shawneetown,﻿Shawneetown,﻿IL,,38.09088,-88.158649,,,,﻿m_ward_901,﻿Rev.,﻿M. Ward,,,﻿of Kentucky,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0213,﻿church,[Unnamed Institution],English,,,,,,﻿Carnia,,﻿IL,,38.377179,-88.058241,,,,﻿m_ward_901,﻿Rev.,﻿M. Ward,,,﻿of Kentucky,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0103,﻿church,[Unnamed Institution],English,,,,,,﻿St. Francisville,﻿St. Francisville,﻿IL,,,,,,,﻿jam_corbe_901,﻿Rev.,﻿James Corbe,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.9009,﻿church,[Unnamed Institution],English,,,,,﻿Edwards County,﻿Albion,,﻿IL,,38.376667,-88.058056,,,﻿occasionally,﻿jam_corbe_901,﻿Rev.,﻿James Corbe,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0295,﻿church,[Unnamed Institution],English,,,,,﻿Wabash County,﻿Coffee,﻿Mt. Carmel,﻿IL,,,,,,﻿occasionally,﻿jam_corbe_901,﻿Rev.,﻿James Corbe,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0072,﻿church,[Unnamed Institution],English,,,,,﻿Wabash County,﻿Mt. Carmel,﻿Mt. Carmel,﻿IL,,38.731884,-87.688498,,,,﻿m_oreilly_901,﻿Rev.,﻿M. O'Reilly,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿alt.il.0109,﻿church,[Unnamed Institution],English,﻿German settlement,,,,,﻿Picquet,,﻿IL,,,,,,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.0242,﻿seminary,﻿Theological Seminary,English,,,,,,﻿Vincennes,,﻿IN,,,,,,,,,,,,,﻿student,﻿6 students,"﻿Society of Eudists, est. 1643",,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9037,﻿college,﻿College of Vincennes,English,,,,,,﻿Vincennes,,﻿IN,,,,,,,﻿j_a_vabret_vin.in_901,,﻿J. A. Vabret,,﻿President,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9000_02,﻿academy,[Unnamed Institution],English,,,,,,﻿Vincennes,,﻿IN,,38.6775,-87.501944,,﻿from St. Joseph's,,,,,,,,﻿religious,﻿4 sisters,﻿Sisters of Charity,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9059,﻿free school,﻿Male Free School,English,,,,,,﻿Vincennes,,﻿IN,,,,,,,,,,,,,﻿student,﻿average number of pupils is 70,,,1839,﻿,﻿,﻿Vincennes,Vincennes
+﻿vin.in.9000_03,﻿free school,﻿Female Free School,English,﻿connected with the academy under the care of the Sisters of Charity,,,,,,﻿Vincennes,,,38.6775,-87.501944,,,,,,,,,,,,,,1839,﻿,﻿,﻿Vincennes,Vincennes
