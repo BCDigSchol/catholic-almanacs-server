@@ -523,7 +523,7 @@ exports.findByID = async (req, res) => {
                 model: almanacRecord,
                 as: 'almanacRecord',
                 attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude',
-                    'member', 'memberType', 'affiliated'
+                    'member', 'memberType', 'affiliated', 'attendingFrequency'
                 ],
                 include: [{
                     model: almanacRecord,
@@ -595,11 +595,13 @@ exports.findByID = async (req, res) => {
                 order: data.dataValues.almanacRecord[data.dataValues.almanacRecord.length - 1].orders.map(order => order.order).join(', '),
                 attendedBy: [],
                 attendingInstitutions: [],
+                attendedFrequencies: [],
                 relatedInstitutions: [],
                 residingPersonInfo: [],
                 visitingPersonInfo: [],
             };
-            
+
+            let existingAttendedFrequencies = [];
             let existingAttendingInstIDs = [];
             let existingAttendedByInstIDs = [];
             let existingRelatedInstIDs = [];
@@ -619,7 +621,16 @@ exports.findByID = async (req, res) => {
                 if (!processedData.year.includes(record.year)) {
                     processedData.year.push(record.year);
                 }
-                
+
+                // Orphan attendance frequency (attended at some cadence, no church named).
+                if (record.attendingFrequency) {
+                    const freqKey = `${record.year}|${record.attendingFrequency}`;
+                    if (!existingAttendedFrequencies.includes(freqKey)) {
+                        existingAttendedFrequencies.push(freqKey);
+                        processedData.attendedFrequencies.push({ year: record.year, frequency: record.attendingFrequency });
+                    }
+                }
+
                 for (const attendingInst of record.attendingInstitutions) {
                     if (!existingAttendingInstIDs.includes(attendingInst.instID)) {
                         existingAttendingInstIDs.push(attendingInst.instID);

@@ -207,6 +207,16 @@
                             </div>
                         </div>
                     }
+                    @if (data.attendedFrequencies && data.attendedFrequencies.length > 0) {
+                        <div class="row">
+                            <div class="cell">Attended</div>
+                            <div class="cell">
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center" *ngFor="let item of data.attendedFrequencies">
+                                    <div>{{ item.frequency }}<span *ngIf="item.year"> ({{ item.year }})</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     </div>
                     </div>
                     @if (dendrogramData && dendrogramData.children && dendrogramData.children.length > 0) {
