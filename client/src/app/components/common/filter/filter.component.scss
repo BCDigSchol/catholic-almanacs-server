@@ -13,7 +13,7 @@
 }
 
 :host .custom-font-filter {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 600
 }
 

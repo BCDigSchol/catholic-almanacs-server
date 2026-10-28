@@ -11,19 +11,100 @@
 
 @include mat.core();
 
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Tagesschrift&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+/* Design tokens. Fonts are loaded in index.html (three families only):
+   a text serif for titles, a sans for everything else, a mono for record IDs.
+   Entity colours mark the kind of record (institution, person, diocese/place,
+   year) the same way everywhere: chips, links, map points, network nodes. */
+:root {
+    --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.375rem;
+    --text-2xl: 1.75rem;
+    --text-3xl: 2.25rem;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --content-max: 1200px;
+    --gutter: clamp(16px, 4vw, 32px);
+
+    --paper: #fbfaf7;
+    --surface: #ffffff;
+    --sunk: #f2f0ea;
+    --rule: #dedad0;
+    --ink: #16203a;
+    --ink-2: #4a5268;
+    --ink-3: #6b7185;
+    --link: #2a4d8f;
+    --focus: #2a4d8f;
+    --nav-bg: #101b32;
+    --nav-fg: #f4f2ec;
+    --nav-fg-muted: #b8bccb;
+    --nav-hover: #263048;
+
+    --c-inst: #1f6f5c;
+    --c-pers: #8c2f39;
+    --c-place: #3d4f9f;
+    --c-year: #9a650f;
+}
+
+.dark-theme {
+    --paper: #12151d;
+    --surface: #1a1e29;
+    --sunk: #222736;
+    --rule: #333a4c;
+    --ink: #e9e7e1;
+    --ink-2: #b7b9c4;
+    --ink-3: #8f93a4;
+    --link: #8fb0ef;
+    --focus: #8fb0ef;
+    --nav-bg: #0b0f19;
+    --nav-fg: #e9e7e1;
+    --nav-fg-muted: #9a9fb0;
+    --nav-hover: #1f2535;
+
+    --c-inst: #5fc2a4;
+    --c-pers: #e48a94;
+    --c-place: #9aa8ec;
+    --c-year: #e0ad55;
+}
 
 html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: "Rubik", sans-serif;
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--paper);
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.mono {
+    font-family: var(--font-mono);
+}
+
+/* Standard page container: one width and gutter for every redesigned page. */
+.page {
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding: var(--space-6) var(--gutter) var(--space-8);
 }
 
 
@@ -50,7 +131,7 @@ body {
 }
 
 .custom-font {
-    font-family: "Rubik", sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     font-size: 14px;
 }
@@ -60,6 +141,10 @@ $light-theme: (
     theme-type: light,
     primary: theme-colors.$primary-palette,
     tertiary: theme-colors.$tertiary-palette,
+  ),
+  typography: (
+    plain-family: ("Public Sans", system-ui, sans-serif),
+    brand-family: ("Source Serif 4", Georgia, serif),
   ),
   density: (
     scale: 0
@@ -71,6 +156,10 @@ $dark-theme: (
     theme-type: dark,
     primary: theme-colors.$primary-palette,
     tertiary: theme-colors.$tertiary-palette,
+  ),
+  typography: (
+    plain-family: ("Public Sans", system-ui, sans-serif),
+    brand-family: ("Source Serif 4", Georgia, serif),
   ),
   density: (
     scale: 0

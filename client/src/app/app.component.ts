@@ -1,30 +1,22 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/common/header/header.component';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NavigationService } from './services/navigation.service';
-import { SidenavComponent } from './components/common/sidenav/sidenav.component';
 import { ThemeService } from './services/theme.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, MatSidenavModule, SidenavComponent, CommonModule],
-  providers: [ThemeService], // similar to import, provide the ThemeService to the component
+  imports: [RouterOutlet, HeaderComponent],
+  providers: [ThemeService], // one ThemeService for the app shell and everything inside it
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
-}) // @Component -- decorator, used (in Angular) to mark a class as a component and provide metadata about it;
-   // put right before the class AppComponent to decorate it
+})
 export class AppComponent implements OnInit {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
   title = 'catholic-almanacs';
-  navMenuToggled: boolean = false;
-  isDarkTheme$: Observable<boolean> = new Observable<boolean>();
   isDarkTheme: boolean = false;
-  isMobile: boolean = false;
+
   constructor (
     private router: Router,
     private navigationService: NavigationService,
@@ -38,21 +30,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.isDarkTheme$ = this.themeService.isDarkTheme$;
-    this.isDarkTheme$.subscribe(values => {
-      this.isDarkTheme = values;
-    })
-    window.addEventListener('resize', () => {
-      this.isMobile = window.innerWidth <= 600;
+    this.themeService.isDarkTheme$.subscribe(value => {
+      this.isDarkTheme = value;
+      // Overlays (menus, selects, dialogs) render outside .app, so the
+      // theme class also goes on <body> for them to pick up the dark tokens.
+      document.body.classList.toggle('dark-theme', value);
     });
-  };
-
-  toggleNavMenu() {
-    this.navMenuToggled = !this.navMenuToggled;
-    if (this.navMenuToggled) {
-      this.sidenav.open();
-    } else {
-      this.sidenav.close();
-    }
   };
 }

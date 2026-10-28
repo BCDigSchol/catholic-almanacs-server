@@ -1,5 +1,5 @@
 :host mat-card-title{
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-style: normal;
 }
@@ -8,7 +8,7 @@
     width: 100%;
     border-collapse: collapse;
     line-height: 2.0; 
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px; 
 }
 
@@ -20,7 +20,7 @@
 }
 
 :host .custom-font {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 500;
 }
 

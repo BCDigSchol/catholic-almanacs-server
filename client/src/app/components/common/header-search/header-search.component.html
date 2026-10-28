@@ -1,0 +1,64 @@
+<div class="search" role="search">
+    <label class="visually-hidden" for="header-search-scope">Search in</label>
+    <select id="header-search-scope" class="scope" [(ngModel)]="scope" (ngModelChange)="onScopeChange()">
+        @for (s of scopes; track s.value) {
+            <option [value]="s.value">{{ s.label }}</option>
+        }
+    </select>
+    <mat-icon class="glyph" aria-hidden="true">search</mat-icon>
+    <label class="visually-hidden" for="header-search-input">{{ placeholder }}</label>
+    <input #input
+        id="header-search-input"
+        type="search"
+        autocomplete="off"
+        role="combobox"
+        aria-controls="header-search-results"
+        [attr.aria-expanded]="open && query.trim().length >= 2"
+        [placeholder]="placeholder"
+        [(ngModel)]="query"
+        (input)="onInput()"
+        (focus)="open = query.trim().length >= 2"
+        (keydown)="onKeydown($event)">
+
+    @if (open && query.trim().length >= 2) {
+        <div class="results" id="header-search-results" role="listbox">
+            @if (loading && !hasResults) {
+                <p class="status">Searching…</p>
+            } @else if (!hasResults) {
+                <p class="status">No {{ scope === 'all' ? 'institutions or people' : scope }} named “{{ query.trim() }}”.</p>
+            }
+
+            @if (shownInstitutions.length) {
+                <div class="group">
+                    <div class="group-label inst">Institutions</div>
+                    @for (hit of shownInstitutions; track hit.link) {
+                        <a class="hit" role="option" [class.active]="isActive(hit)" [attr.aria-selected]="isActive(hit)"
+                            [href]="hit.link" (click)="$event.preventDefault(); go(hit.link)">
+                            <span class="hit-label">{{ hit.label }}</span>
+                            <span class="hit-detail">{{ hit.detail }}</span>
+                        </a>
+                    }
+                    <button type="button" class="see-all" (click)="seeAll('institutions')">
+                        {{ seeAllLabel('institutions') }}
+                    </button>
+                </div>
+            }
+
+            @if (shownPeople.length) {
+                <div class="group">
+                    <div class="group-label pers">People</div>
+                    @for (hit of shownPeople; track hit.link) {
+                        <a class="hit" role="option" [class.active]="isActive(hit)" [attr.aria-selected]="isActive(hit)"
+                            [href]="hit.link" (click)="$event.preventDefault(); go(hit.link)">
+                            <span class="hit-label">{{ hit.label }}</span>
+                            <span class="hit-detail">{{ hit.detail }}</span>
+                        </a>
+                    }
+                    <button type="button" class="see-all" (click)="seeAll('people')">
+                        {{ seeAllLabel('people') }}
+                    </button>
+                </div>
+            }
+        </div>
+    }
+</div>

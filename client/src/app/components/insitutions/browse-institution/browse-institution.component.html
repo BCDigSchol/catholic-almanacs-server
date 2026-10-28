@@ -1,9 +1,9 @@
 <!-- Wide Display -->
 <div class="flex flex-col w-full justify-center items-center wide-display">
     <div class="flex flex-row w-full justify-start items-start">
-        <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">Institutions</div>
+        <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: var(--font-display);">Institutions</div>
         <div class="ml-30" style="width: 40%; display: flex; align-items: center;">
-            <p class="mt-6 italic text-gray-500 text-md" style="font-family: 'Open Sans', sans-serif">*** This site is in development ***</p>
+            <p class="mt-6 italic text-gray-500 text-md" style="font-family: var(--font-sans)">*** This site is in development ***</p>
         </div>
         <div style="display:flex; align-items: center; width: 100%; justify-content: flex-end;" class="flex flex-row justify-center items-start">
             <mat-paginator (page)="changePage($event)"
@@ -69,7 +69,7 @@
 <!-- Mobile Display -->
 <div class="flex flex-col w-full justify-center items-center mobile-display">
     <div class="flex flex-col w-full justify-start items-start">
-        <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: 'Lato', sans-serif;">Institutions</div>
+        <div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: var(--font-display);">Institutions</div>
         <div style="display:flex; align-items: center; width: 100%; justify-content: flex-end;" class="flex flex-row justify-center items-start">
             <mat-paginator (page)="changePage($event)"
             [length]="totalItems"

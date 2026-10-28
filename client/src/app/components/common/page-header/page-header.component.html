@@ -1,0 +1,35 @@
+<header class="page-header">
+    @if (crumbs.length) {
+        <nav class="crumbs" aria-label="Breadcrumb">
+            <ol class="trail">
+                @for (crumb of crumbs; track crumb.label) {
+                    <li>
+                        @if (crumb.link) {
+                            <a [routerLink]="crumb.link">{{ crumb.label }}</a>
+                        } @else {
+                            <span>{{ crumb.label }}</span>
+                        }
+                    </li>
+                }
+            </ol>
+            @if (parent) {
+                <a class="back" [routerLink]="parent.link">‹ {{ parent.label }}</a>
+            }
+        </nav>
+    }
+
+    <div class="heading">
+        <div class="titles">
+            @if (eyebrow) {
+                <div class="eyebrow">{{ eyebrow }}</div>
+            }
+            <h1>{{ title }}</h1>
+            @if (subtitle) {
+                <p class="subtitle">{{ subtitle }}</p>
+            }
+        </div>
+        <div class="actions">
+            <ng-content select="[actions]"></ng-content>
+        </div>
+    </div>
+</header>

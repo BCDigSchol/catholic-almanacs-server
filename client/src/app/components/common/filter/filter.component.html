@@ -13,7 +13,7 @@
             <ng-container *ngFor="let filter of filterService.fields; let index = index">
             @if (!filter.active){
             <mat-chip (click)="toggleFilter(index)"
-                style="width: 100%; max-width: 200px; height: 37px; display: flex; align-items: center; justify-content: center; margin: 2 auto; font-family:'Open Sans', sans-serif;">
+                style="width: 100%; max-width: 200px; height: 37px; display: flex; align-items: center; justify-content: center; margin: 2 auto; font-family:var(--font-sans);">
                  +
                 {{ filter.label }}
             </mat-chip>
@@ -95,7 +95,7 @@
             <ng-container *ngFor="let filter of filterService.fields; let index = index">
             @if (!filter.active){
             <mat-chip (click)="toggleFilter(index)"
-                style="max-width: 150px; height: 37px; display: flex; align-items: center; justify-content: center; font-family:'Open Sans', sans-serif;">
+                style="max-width: 150px; height: 37px; display: flex; align-items: center; justify-content: center; font-family:var(--font-sans);">
                  +
                 {{ filter.label }}
             </mat-chip>

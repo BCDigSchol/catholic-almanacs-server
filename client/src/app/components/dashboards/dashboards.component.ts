@@ -5,9 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
+import { PageHeaderComponent } from '../common/page-header/page-header.component';
+
 @Component({
   selector: 'app-dashboards',
-  imports: [MatIconModule, MatButtonModule, MatCardModule],
+  imports: [MatIconModule, MatButtonModule, MatCardModule, PageHeaderComponent],
   templateUrl: './dashboards.component.html',
   styleUrl: './dashboards.component.scss'
 })

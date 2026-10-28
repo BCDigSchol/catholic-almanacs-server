@@ -1,5 +1,5 @@
 :host mat-card-title{
-    font-family: "Tagesschrift", sans-serif;
+    font-family: var(--font-display);
     font-weight: 300;
     font-style: normal;
     font-size: 20px;
@@ -11,7 +11,7 @@
 }
 
 :host custom-font {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-sans);
 }
 
 .image-container {
@@ -44,7 +44,7 @@
   transform: translate(-50%, -50%); /* centered and scales with image */
   color: #f0f0f0;
   font-size: 16px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-display);
   text-decoration: underline;
   display: flex;
   align-items: center;

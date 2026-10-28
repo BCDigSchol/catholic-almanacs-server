@@ -1,32 +1,48 @@
-<!-- Wide Display -->
- <div class="wide-display">
 @if (!isEmbedded) {
-    <div class="header flex flex-row justify-start w-full items-center p-4">
-        <div class="w-full text-sm md:text-2xl" [routerLink]="'/'" style="cursor: pointer; font-family:'Open Sans', sans-serif;">{{ title }}</div>
-        <div>
-            <button aria-label="Navigation Menu" style="cursor:pointer;" (click)="toggleNav()">
-                <mat-icon fontIcon="menu"></mat-icon>
-            </button>
-        </div>
-    </div>
-}
-</div>
+<header class="site-header">
+    <div class="bar">
+        <a class="brand" routerLink="/">{{ title }}</a>
 
-<!-- Mobile Display -->
-<div class="mobile-display">
-@if (!isEmbedded) {
-    <div class="header flex flex-row justify-start w-full items-center p-4">
-        <div class="w-full text-sm md:text-2xl" [routerLink]="'/'" style="cursor: pointer; font-family:'Open Sans', sans-serif;">{{ title }}</div>
-        <div>
-            <button matButton [matMenuTriggerFor]="menu">
-                <mat-icon fontIcon="menu"></mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                @for (item of navItems; track item) {
-                    <button mat-menu-item (click)="navigate(item.route)">{{ item.name }}</button>
-                }
-            </mat-menu>
-        </div>
+        <nav class="primary" aria-label="Main">
+            @for (item of navItems; track item.route) {
+                <a [routerLink]="item.route" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.name }}</a>
+            }
+        </nav>
+
+        <app-header-search class="inline-search"></app-header-search>
+
+        <button type="button" class="icon-btn theme-toggle" (click)="toggleTheme()"
+            [attr.aria-label]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
+            [attr.title]="isDarkTheme ? 'Light theme' : 'Dark theme'">
+            <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+
+        <button type="button" class="icon-btn compact-only push" (click)="toggleSearch()"
+            aria-label="Search" [attr.aria-expanded]="searchOpen" aria-controls="compact-search">
+            <mat-icon>{{ searchOpen ? 'close' : 'search' }}</mat-icon>
+        </button>
+        <button type="button" class="icon-btn compact-only" (click)="toggleMenu()"
+            aria-label="Menu" [attr.aria-expanded]="menuOpen" aria-controls="compact-menu">
+            <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
+        </button>
     </div>
+
+    @if (searchOpen) {
+        <div class="panel" id="compact-search">
+            <app-header-search [autofocus]="true" (navigated)="closePanels()"></app-header-search>
+        </div>
+    }
+
+    @if (menuOpen) {
+        <nav class="panel menu" id="compact-menu" aria-label="Main">
+            @for (item of navItems; track item.route) {
+                <a [routerLink]="item.route" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.name }}</a>
+            }
+            <button type="button" class="menu-theme" (click)="toggleTheme()">
+                <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+                {{ isDarkTheme ? 'Light theme' : 'Dark theme' }}
+            </button>
+        </nav>
+    }
+</header>
 }
-</div>

@@ -1,65 +1,73 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common'; 
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { MatIconModule } from '@angular/material/icon';
 
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatIconModule} from '@angular/material/icon'; 
-import {MatButtonModule} from '@angular/material/button'; 
-import { ActivatedRoute } from '@angular/router';
-import { MatMenuModule } from '@angular/material/menu';
-import { Router } from '@angular/router';
 import { Settings } from '../../../app.settings';
+import { ThemeService } from '../../../services/theme.service';
+import { HeaderSearchComponent } from '../header-search/header-search.component';
+
+interface NavItem {
+  name: string;
+  route: string;
+}
 
 @Component({
   selector: 'app-header',
-  imports: [
-    MatToolbarModule, MatIconModule, MatButtonModule,
-    RouterLink, CommonModule, MatMenuModule
-  ],
+  imports: [RouterLink, RouterLinkActive, MatIconModule, HeaderSearchComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-
 export class HeaderComponent implements OnInit {
-  @Output() navMenuToggle = new EventEmitter<boolean>();
-  title = "Catholic Almanacs Database";
+  title = 'Catholic Almanacs';
   isEmbedded = false;
+  isDarkTheme = false;
+  menuOpen = false;
+  searchOpen = false;
 
-  navItems = [
-    {
-      name: 'Home',
-      route: ''
-    },
-    {
-      name: 'Institutions',
-      route: 'institutions'
-    },
-    {
-      name: 'People',
-      route: 'people'
-    },
-    {
-      name: 'Dashboards',
-      route: 'dashboards'
-    },
-  ]
+  navItems: NavItem[] = [
+    { name: 'Institutions', route: '/institutions' },
+    { name: 'People', route: '/people' },
+    { name: 'Dashboards', route: '/dashboards' },
+    { name: 'About', route: '/pages/about' },
+  ];
 
-  constructor(private _route: ActivatedRoute, private router: Router){
-  }
+  constructor(private _route: ActivatedRoute, private router: Router, private themeService: ThemeService) {}
 
   ngOnInit(): void {
+    if (Settings.exportEnabled) {
+      this.navItems.push({ name: 'Export', route: '/export' });
+    }
     this._route.queryParamMap.subscribe(params => {
-      if (params.get('embed') && params.get('embed') === 'true') {
+      if (params.get('embed') === 'true') {
         this.isEmbedded = true;
       }
-    })
-};
+    });
+    this.themeService.isDarkTheme$.subscribe(value => this.isDarkTheme = value);
+    this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => this.closePanels());
+  }
 
-  toggleNav() {
-    this.navMenuToggle.emit(true);
-  };
+  toggleTheme(): void {
+    this.themeService.setTheme(!this.isDarkTheme);
+  }
 
-  navigate(path: string) {
-    this.router.navigate([path]);
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+    this.searchOpen = false;
+  }
+
+  toggleSearch(): void {
+    this.searchOpen = !this.searchOpen;
+    this.menuOpen = false;
+  }
+
+  closePanels(): void {
+    this.menuOpen = false;
+    this.searchOpen = false;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closePanels();
   }
 }

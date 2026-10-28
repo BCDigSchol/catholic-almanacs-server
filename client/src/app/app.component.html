@@ -1,23 +1,7 @@
-<!-- Wide screen display -->
-<div *ngIf="!isMobile">
-<div class="w-full h-full" [ngClass]="{'dark-theme': isDarkTheme}">
-    <app-header style="position: sticky; top: 0; z-index: 100;" (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when it emits a signal, toggleNavMenu() is called-->
-    <mat-sidenav-container class="w-full h-full" autosize #sidenav>
-        <mat-sidenav #drawer mode="side" position="end" class="!w-38 md:!w-55">
-            <app-sidenav (menuClicked)="toggleNavMenu()">
-            </app-sidenav>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
-</div>
-</div>
-
-<!-- Mobile display -->
-<div *ngIf="isMobile">
-    <div class="w-full h-full" [ngClass]="{'dark-theme': isDarkTheme}">
-    <app-header (navMenuToggle)="toggleNavMenu()"></app-header> <!--navMenuToggle is an event emitter in the header, when it emits a signal, toggleNavMenu() is called-->
-    <router-outlet></router-outlet>
-</div>
+<div class="app" [class.dark-theme]="isDarkTheme">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <app-header></app-header>
+    <main id="main" class="app-main" tabindex="-1">
+        <router-outlet></router-outlet>
+    </main>
 </div>

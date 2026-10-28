@@ -2,13 +2,13 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/common/not-found/not-found.component';
-import { AboutComponent } from './components/common/about/about.component';
 
 // Heavy feature areas (vis-network, d3, leaflet, google maps) are lazy-loaded
 // so the initial bundle stays small.
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'about', component: AboutComponent },
+    // About is an editable content page: client/public/page-content/about.md
+    { path: 'about', redirectTo: 'pages/about' },
     { path: 'institutions', loadComponent: () => import('./components/insitutions/browse-institution/browse-institution.component').then(m => m.BrowseInstitutionComponent) },
     { path: 'institutions/:id', loadComponent: () => import('./components/insitutions/institution-details/institution-details.component').then(m => m.InstitutionDetailsComponent) },
     { path: 'people', loadComponent: () => import('./components/people/browse-people/browse-people.component').then(m => m.BrowsePeopleComponent) },
