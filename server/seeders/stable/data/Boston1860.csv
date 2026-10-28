@@ -1,0 +1,80 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,Unnamed: 30,Unnamed: 31,Unnamed: 32,Unnamed: 33,Unnamed: 34,Unnamed: 35,Unnamed: 36,Unnamed: 37,Unnamed: 38,Unnamed: 39,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿#REF!,﻿Rt. Rev.,﻿John B. Fitzpatrick,﻿D.D.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿Hilary Tucker,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿Michael Moran,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿C. Lyonnet,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿C. Lynch,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿cathedral,﻿Cathedral of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿J. A. Healey,,﻿Chancellor and Secretary,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿chapel,﻿Chapel of the Holy Cross,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿Charles Lynch,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0001,﻿chapel,﻿Chapel of the Guardian Angels,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,,﻿Rev.,﻿H. Tucker,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0006,﻿church,﻿Church of St. Vincent de Paul,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.367662,-71.091123,﻿bos.ma.0001,﻿Cathedral of the Holy Cross,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0004,﻿church,﻿St. James Church,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.32683,-71.086812,,,,,﻿Very Rev.,﻿John J. Williams,﻿V.G.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0004,﻿church,﻿St. James Church,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.32683,-71.086812,,,,,﻿Rev.,﻿John McCarthy,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0002,﻿church,﻿St. Mary's,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.365307,-71.057407,,,,,﻿Rev.,﻿Bernardin Wiget,﻿S.J.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0002,﻿church,﻿St. Mary's,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.365307,-71.057407,,,,,﻿Rev.,﻿Aloysius Roccofort,﻿S.J.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0002,﻿church,﻿St. Mary's,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.365307,-71.057407,,,,,﻿Rev.,﻿Basil Paciarini,﻿S.J.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0009,﻿chapel,﻿St. Joseph's Chapel,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.366566,-71.052568,﻿bos.ma.0002,﻿attended from St. Mary's Church,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0003,﻿church,﻿St. Patrick's,English,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿tho_lynch_001,﻿Rev.,﻿Thomas Lynch,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿church,﻿Holy Trinity,﻿German,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿ern_reiter_001,﻿Rev.,﻿Ernst Reiter,﻿S.J.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿church,﻿St. John the Baptist's Church,﻿German,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿geo_f_haskins_001,﻿Rev.,﻿George F. Haskins,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿church,﻿St. John the Baptist's Church,﻿German,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿joh_w_donahue_001,﻿Rev.,﻿John W. Donahue,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿church,﻿St. John the Baptist's Church,﻿German,,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿cha_renoni_001,﻿Rev.,﻿Charles Renoni,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿chapel,﻿Chapel of Our Lady Star of the Sea,﻿German,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿geo_f_haskins_001,﻿Rev.,﻿George F. Haskins,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿chapel,﻿Chapel of Our Lady Star of the Sea,﻿German,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿joh_w_donahue_001,﻿Rev.,﻿John W. Donahue,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿chapel,﻿Chapel of Our Lady Star of the Sea,﻿German,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿cha_renoni_001,﻿Rev.,﻿Charles Renoni,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿chapel,﻿Chapel in the College,﻿German,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿joh_mcelroy_003,﻿Rev.,﻿John McElroy,﻿S.J.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0005,﻿chapel,﻿Chapel in the College,﻿German,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.360083,-71.05888,,,,﻿nic_steinbacher_001,﻿Rev.,﻿Nicholas Steinbacher,﻿S.J.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿SS. Peter and Paul's,English,﻿(S. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.125295,-71.108017,,,,﻿p_f_lyndon_001,﻿Rev.,﻿P. F. Lyndon,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿SS. Peter and Paul's,English,﻿(S. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.125295,-71.108017,,,,﻿joh_flattely_001,﻿Rev.,﻿J. Flattely,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿SS. Peter and Paul's,English,﻿(S. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.125295,-71.108017,,,,﻿t_mcnulty_001,﻿Rev.,﻿T. McNulty,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿Augustine's,English,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.125295,-71.108017,,,,﻿p_f_lyndon_001,﻿Rev.,﻿P. F. Lyndon,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿Augustine's,English,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.125295,-71.108017,,,,﻿joh_flattely_001,﻿Rev.,﻿J. Flattely,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿Augustine's,English,﻿same,,,,,﻿Boston,﻿Boston,﻿MA,,42.125295,-71.108017,,,,﻿t_mcnulty_001,﻿Rev.,﻿T. McNulty,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿Church of Immaculate Conception,English,﻿Building,﻿Stoughton,,,,﻿Stoughton,﻿Boston,﻿MA,,42.125295,-71.108017,,,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0010,﻿church,﻿Church of Immaculate Conception,English,"﻿Stations - Canton, Milton, and Dorchester",﻿Stoughton,,,,﻿Stoughton,﻿Boston,﻿MA,,42.125295,-71.108017,,,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0013,﻿church,﻿Church of the Holy Redeemer,English,﻿(E. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.371487,-71.040336,,,,﻿jam_fitton_001,﻿Rev.,﻿J. Fitton,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0013,﻿church,﻿Church of the Holy Redeemer,English,﻿(E. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.371487,-71.040336,,,,,﻿Rev.,﻿P. Healy,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0013,﻿church,﻿St. Nicholas,English,﻿(E. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.371487,-71.040336,,,,﻿jam_fitton_001,﻿Rev.,﻿J. Fitton,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0013,﻿church,﻿St. Nicholas,English,﻿(E. B.),,,,,﻿Boston,﻿Boston,﻿MA,,42.371487,-71.040336,,,,,﻿Rev.,﻿P. Healy,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0058,﻿church,﻿St. Rose,English,﻿new church building,,,,,﻿Chelsea,﻿Chelsea,﻿MA,,42.394432,-71.031958,,,,﻿pat_strain_001,﻿Rev.,﻿Patrick Strain,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0113,﻿church,[Unnamed Institution],English,"﻿church destroyed by fire, Stations - Nahant and Saugus",,,,,﻿Lynn,﻿Lynn,﻿MA,,42.462989,-70.950702,﻿bos.ma.0058,,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0152,﻿church,﻿Immaculate Conception,English,﻿Marblehead belongs to Salem,,,,,﻿Salem,﻿Salem,﻿MA,,42.519747,-70.895463,,,,﻿tho_h_shahan_001,﻿Rev.,﻿Thomas H. Shahan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0152,﻿church,﻿Immaculate Conception,English,﻿Marblehead belongs to Salem,,,,,﻿Salem,﻿Salem,﻿MA,,42.519747,-70.895463,,,,﻿mic_hartney_001,﻿Rev.,﻿Michael Hartney,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0152,﻿church,﻿Immaculate Conception,English,﻿Marblehead belongs to Salem,,,,,﻿Salem,﻿Salem,﻿MA,,42.519747,-70.895463,,,,,﻿Rev.,﻿Victor Clerouin,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0080,﻿church,﻿St. Ann's,English,,,,,,﻿Gloucester,﻿Gloucester,﻿MA,,42.615934,-70.663068,,,,﻿lui_acquarone_001,﻿Rev.,﻿Luigi Acquarone,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0149,﻿church,﻿St. Joachim's,English,,,,,,﻿Rockport,﻿Rockport,﻿MA,,42.655489,-70.622037,﻿bos.ma.0080,,,﻿lui_acquarone_001,﻿Rev.,﻿Luigi Acquarone,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0131,﻿church,﻿St. Mary's,English,"﻿, and Missions",,,,,﻿Newburyport,﻿Newburyport,﻿MA,,42.822085,-70.90841,,,,﻿hen_lennon_001,﻿Rev.,﻿Henry Lennon,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0087,﻿church,﻿St. Gregory's,English,,,,,,﻿Haverhill,﻿Haverhill,﻿MA,,42.780345,-71.085828,,,,﻿joh_t_mcdonnell_001,﻿Rev.,﻿J. S. McDonnell,﻿O.S.D.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0101,﻿church,﻿Immaculate Conception,English,,,,,,﻿Lawrence,﻿Lawrence,﻿MA,,42.707035,-71.163114,,,,﻿jam_d_taaffe_001,﻿Rev.,﻿James D. Taaffe,﻿O. S. D,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0102,﻿church,﻿St. Mary's,English,,,,,,﻿Lawrence,﻿Lawrence,﻿MA,,42.707035,-71.163114,,,,﻿jam_odonnell_001,﻿Rev.,﻿James O'Donnell,﻿O.S.A.,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0031,﻿church,﻿St. Augustine's,English,,,,,,﻿S. Andover,﻿Andover,﻿MA,,42.653327,-71.140937,﻿bos.ma.0102,﻿Attended from St. Mary's Lawrence,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0055,﻿church,﻿St. Mary's,English,,,,,,﻿Charlestown,﻿Charlestown,﻿MA,,42.373967,-71.061543,,,,﻿geo_a_hamilton_002,﻿Rev.,﻿George A. Hamilton,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0051,﻿church,﻿St. Peter's,English,﻿Stations -W. Cambridge and Lexington,,,,,﻿Old Cambridge,﻿Cambridge,﻿MA,,42.381571,-71.130077,,,,﻿man_p_dougherty_001,﻿Rev.,﻿Manasses P. Dougherty,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0052,﻿church,﻿St. John's,English,,,,,,﻿East Cambridge,﻿Cambridge,﻿MA,,42.368604,-71.077394,,,,﻿fra_x_branagan_001,﻿Rev.,﻿Francis X. Branagan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0190,﻿church,﻿St. Charles Borromeo,English,,,,,,﻿Woburn,﻿Woburn,﻿MA,,42.476601,-71.150981,,,,﻿fra_x_branagan_001,﻿Rev.,﻿Francis X. Branagan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0190,﻿church,﻿St. Charles Borromeo,English,﻿church lot bought,﻿Cambridgeport,,,,﻿Woburn,﻿Woburn,﻿MA,,42.476601,-71.150981,,,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0114,﻿church,﻿Immaculate Conception,English,,,,,,﻿Malden,﻿Malden,﻿MA,,42.424765,-71.087473,,,,,﻿Rev.,﻿John Ryan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0148,﻿church,﻿St. Mary's,English,﻿Stations - Medford and Stoneham,,,,,﻿South Reading,,,,42.50148,-71.075811,,,,,﻿Rev.,﻿John Ryan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0183,﻿church,﻿St. Patrick's,English,,,,,,﻿Watertown,﻿Watertown,﻿MA,,42.367814,-71.189339,,,,,﻿Rev.,﻿Bernard Flood,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0179,﻿church,﻿St. Mary's,English,﻿new church,,,,,﻿Waltham,﻿Waltham,﻿MA,,42.379421,-71.237851,,,,,﻿Rev.,﻿Patrick Flood,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,,﻿Lowell,﻿Lowell,﻿MA,,42.645245,-71.317762,,,,,﻿Rev.,﻿John O'Brien,,,,,,,,1860,,,,,,,,﻿joh_obrien_001,﻿Rev.,﻿John O'Brien,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0109,﻿church,﻿St. Patrick's,English,,,,,,﻿Lowell,﻿Lowell,﻿MA,,42.645245,-71.317762,,,,,﻿Rev. Mr.,﻿O'Connor,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0108,﻿church,﻿St. Peter's,English,,,,,,﻿Lowell,﻿Lowell,﻿MA,,42.633425,-71.316172,,,,,﻿Rev.,﻿Peter Crudden,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0108,﻿church,﻿St. Mary's,English,,,,,,﻿Lowell,﻿Lowell,﻿MA,,42.633425,-71.316172,,,,,﻿Rev.,﻿James T. McDermott,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0191,﻿church,﻿St. John's,English,,,,,,﻿Worcester,﻿Worcester,﻿MA,,42.244161,-71.829837,,,,,﻿Rev.,﻿John Boyce,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0191,﻿church,﻿St. John's,English,,,,,,﻿Worcester,﻿Worcester,﻿MA,,42.244161,-71.829837,,,,,﻿Rev.,﻿Patrick T. O'Reilly,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0192,﻿church,﻿St. Ann's,English,,,,,,﻿Worcester,﻿Worcester,﻿MA,,42.157506,-71.882202,,,,,﻿Rev.,﻿John J. Power,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0075,﻿church,﻿St. Bernard's,English,,,,,,﻿Fitchburg,﻿Fitchburg,﻿MA,,42.57735,-71.784495,,,,,﻿Rev.,﻿Edward Turpin,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0106,﻿church,﻿St. Leo's,English,,,,,,﻿Leominster,﻿Leominster,﻿MA,,42.529687,-71.757858,﻿bos.ma.0075,,,﻿edw_turpin_001,﻿Rev.,﻿Edward Turpin,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0171,﻿church,﻿St. Martin's,English,,,,,,﻿Templeton,﻿Templeton,﻿MA,,42.598451,-72.052452,﻿bos.ma.0075,,,﻿edw_turpin_001,﻿Rev.,﻿Edward Turpin,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0036,﻿church,﻿St. Catharine's,English,,,,,,﻿Athol,,,,42.560147,-72.245275,,,,﻿edw_turpin_001,﻿Rev.,﻿Edward Turpin,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0090,﻿station,[Unnamed Institution],English,,,,,,﻿Holden,,﻿MA,,42.36372,-71.88066,﻿bos.ma.0036,﻿Attended from St. Catharine's,,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0122,﻿church,﻿St. Mary's,English,,,,,,﻿Milford,﻿Milford,﻿MA,,42.139858,-71.516305,,,,﻿pat_cuddihy_001,﻿Rev.,﻿Patrick Cuddihy,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0095,﻿church,﻿St. Malachy's,English,,,,,,﻿Hopkinton,﻿Hopkinton,﻿MA,,42.228695,-71.522565,﻿bos.ma.0122,,,﻿pat_cuddihy_001,﻿Rev.,﻿Patrick Cuddihy,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0168,﻿church,﻿St. George's,English,,,,,,﻿Saxonville,﻿Framingham,﻿MA,,42.326484,-71.399505,,,,﻿joh_walsh_002,﻿Rev.,﻿John Walsh,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0117,﻿church,﻿Immac. Conception,English,,,,,,﻿Marlboro,﻿Marlboro,﻿MA,,42.347628,-71.549974,﻿bos.ma.0168,,,﻿joh_walsh_002,﻿Rev.,﻿John Walsh,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0117,﻿church,﻿Immac. Conception,English,,﻿Farmingham,,,,﻿Marlboro,﻿Marlboro,﻿MA,,42.347628,-71.549974,,,,﻿joh_walsh_002,﻿Rev.,﻿John Walsh,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0043,﻿church,﻿St. Paul's,English,,,,,,﻿Blackstone,﻿Blackstone,﻿MA,,42.014854,-71.538262,,,,﻿edw_j_sheridan_001,﻿Rev.,﻿Edward J. Sheridan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0175,﻿church,﻿St. Mary's,English,,,,,,﻿Uxbridge,﻿Uxbridge,﻿MA,,42.077999,-71.625014,﻿bos.ma.0043,,,﻿edw_j_sheridan_001,﻿Rev.,﻿Edward J. Sheridan,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0123,﻿church,﻿St. Bridget's,English,,,,,,﻿Milbury,﻿Millbury,﻿MA,,42.192072,-71.761522,﻿bos.ma.0192,"﻿Attended from St. Ann's, Worcester",,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston
+﻿bos.ma.0081,﻿church,[Unnamed Institution],English,﻿church not yet dedicated,,,,,﻿Grafton,﻿Grafton,﻿MA,,42.204838,-71.688938,﻿bos.ma.0192,"﻿Attended from St. Ann's, Worcester",,,,,,,,,,,,1860,,,,,,,,,,,﻿,﻿,﻿Boston,Boston

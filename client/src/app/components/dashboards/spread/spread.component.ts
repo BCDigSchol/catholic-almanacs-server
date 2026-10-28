@@ -145,12 +145,27 @@ export class SpreadDashboardComponent implements OnInit, AfterViewInit, OnDestro
     return this.years[0].centroidLng - this.currentStat.centroidLng;
   }
 
-  /** Rough miles-west of that drift at this latitude. */
+  /** Rough miles-west of that drift at this latitude (signed: + = west, − = east). */
   get westwardDriftMiles(): number {
     const stat = this.currentStat;
     if (!stat) return 0;
     const milesPerDegLng = 69.17 * Math.cos((stat.centroidLat * Math.PI) / 180);
     return Math.round(this.westwardDriftDeg * milesPerDegLng);
+  }
+
+  /** Whether the centre of gravity has moved a meaningful distance from year one. */
+  get hasDrift(): boolean {
+    return Math.abs(this.westwardDriftDeg) > 0.05;
+  }
+
+  /** Direction of that drift — most years march west, but a year can bounce east. */
+  get driftDirection(): 'west' | 'east' {
+    return this.westwardDriftDeg >= 0 ? 'west' : 'east';
+  }
+
+  /** Unsigned miles of drift, for display alongside the direction label. */
+  get driftMilesAbs(): number {
+    return Math.abs(this.westwardDriftMiles);
   }
 
   private bucket(fn: string): string {

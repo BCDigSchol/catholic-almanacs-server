@@ -52,9 +52,9 @@
         <div class="stat-value">{{ centroidLabel(currentStat) }}</div>
         <div class="stat-label">centre of gravity</div>
       </div>
-      <div class="stat" *ngIf="westwardDriftDeg > 0.05">
-        <div class="stat-value">{{ westwardDriftMiles | number }} mi</div>
-        <div class="stat-label">moved west since {{ years[0].year }}</div>
+      <div class="stat" *ngIf="hasDrift">
+        <div class="stat-value">{{ driftMilesAbs | number }} mi</div>
+        <div class="stat-label">moved {{ driftDirection }} since {{ years[0].year }}</div>
       </div>
     </div>
 

@@ -23,8 +23,8 @@
 ﻿pit.pa.0014,﻿church,﻿SS. Peter and Paul,English,,,,﻿Beaver County,,﻿Beaver,﻿Beaver,﻿PA,,40.699188,-80.297675,,,,﻿jas_canevin_001,﻿Rev.,﻿Jas. Canevin,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0015,﻿church,﻿St. Thomas',English,,,,﻿Bedford County,,﻿Bedford,﻿Bedford,﻿PA,,40.0177,-78.501392,,,,﻿tho_heyden_001,﻿Very Rev.,﻿Thomas Heyden,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0016,﻿church,﻿St. John Baptist,English,,﻿Buchanan P.O.,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.427934,-79.984318,,,,﻿w_pollard_001,﻿Rev.,﻿W. Pollard,,﻿Rector,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿fis_luke_001,﻿Rev.,﻿Fisher Luke,﻿Passionist,﻿Rector,,,,﻿Passionists,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿jam_hoffzugott_001,﻿Rev.,﻿James Hoffzugott,﻿Passionist,,,,,﻿Passionists,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿fis_luke_001,﻿Rev.,﻿Fisher Luke,,"﻿Rector, Passionist",,,,﻿Passionists,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿jam_hoffzugott_001,﻿Rev.,﻿James Hoffzugott,,﻿Passionist,,,,﻿Passionists,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0121_02,﻿church,﻿St. Paul of the Cross,English,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.422815,-79.983896,﻿?,,,,,,,,,,,﻿Attended by the Passionist Fathers,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0019,﻿church,﻿SS. Simon and Jude,English,,,,﻿Indiana County,,﻿Blairsville,﻿Blairsville,﻿PA,,40.432626,-79.258078,,,,﻿jam_a_stillinger_001,﻿Rev.,﻿J. A. Stillinger,,﻿Rector,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0020,﻿church,[Unnamed Institution],English,,﻿Braddock's Field,,﻿Allegheny County,,﻿Braddock,﻿Braddock,﻿PA,,40.402879,-79.863361,,,,﻿p_hughes_001,﻿Rev.,﻿P. Hughes,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
@@ -48,7 +48,7 @@
 ﻿pit.pa.0036,﻿church,[Unnamed Institution],English,,,,﻿Bedford County,,﻿Clearville,﻿Clearville,﻿PA,,39.916751,-78.383904,﻿pit.pa.0015,﻿attended from Bedford,,,,,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0037,﻿church,[Unnamed Institution],English,,,,﻿Washington County,,﻿Coal Bluff,,﻿PA,,40.227964,-79.975557,﻿pit.pa.0043,﻿from Elizabeth,,,,,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0038,﻿church,[Unnamed Institution],English,,,,﻿Fayette County,,﻿Connellsville,﻿Connellsville,﻿PA,,40.017852,-79.589483,,,,﻿joh_haney_001,﻿Rev.,﻿J. Haney,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0039,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Westmoreland County,,﻿Derry Township,,﻿PA,,40.390914,-79.354721,,,,﻿jer_kearney_001,﻿Rev.,﻿J. Kearney,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0039,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Westmoreland County,,﻿Derry Township,,﻿PA,,40.390914,-79.354721,,,,﻿jam_kearney_001,﻿Rev.,﻿J. Kearney,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0040,﻿church,﻿St. Joseph's,English,,,,﻿Butler County,,﻿Donegal,﻿Donegal Township,﻿PA,,40.903687,-79.778834,﻿pit.pa.0028,﻿attended from Butler,,,,,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0041,﻿church,﻿SS. Peter and Paul,English,,,,﻿Allegheny County,,﻿East-Liberty,﻿East Liberty,﻿PA,,40.462712,-79.918123,,,,﻿sug_bierl_001,﻿Rev.,﻿Sugliri Bierl,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0042,﻿church,﻿St. Patrick's,English,,,,﻿Cambria County,,﻿Edensbrugh,﻿Ebensburg,﻿PA,,40.515092,-78.874024,,,,﻿r_c_christy_001,﻿Rev.,﻿R. C. Christy,,,,,,,,1869,﻿,﻿,﻿Pittsburgh,Pittsburgh

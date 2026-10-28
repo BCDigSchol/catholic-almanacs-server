@@ -105,8 +105,11 @@ async function preprocessCSV(filePath) {
 }
 
 async function loadData(directoryPath) {
+  // Data source by environment:
+  //   development / test → the git submodule (seeders/import/processed) — latest WIP data
+  //   production / anything else → the stable snapshot committed in the main repo (seeders/stable/data)
   let csvFilePath;
-  if (process.env.NODE_ENV === 'test') {
+  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
     csvFilePath = path.join(directoryPath, 'import', 'processed');
   }
   else {

@@ -47,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
     memberType: DataTypes.STRING,
     member: DataTypes.TEXT,
     affiliated: DataTypes.STRING,
+    // Attendance frequency stated for this church when no attending church is
+    // named (source col R without P/Q); named-church frequencies live on the
+    // attendingInstitution link instead.
+    attendingFrequency: DataTypes.STRING,
     diocese: DataTypes.STRING,
     diocese_reg: DataTypes.STRING
   }, {

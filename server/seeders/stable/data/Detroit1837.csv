@@ -14,8 +14,8 @@
 ﻿gre.wi.9002,﻿church,[Unnamed Institution],English,,,,,,﻿Fort Winebago,﻿Portage,,﻿WI,,,,,﻿[visited] once in two months [by] Rev. Theod. J. Vanden Broek,﻿the_j_vandenbroeck_901,﻿Rev.,﻿Theod. J. Vanden Broek,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
 ﻿det.mi.9005,﻿church,[Unnamed Institution],﻿English,﻿Instructions in the English language,﻿Grand River,,,,,,﻿MI,﻿MI,,,,,,﻿vizosky_901,﻿Rev. Mr.,﻿Vizosky,,,,,,,,1837,﻿https://en.wikipedia.org/wiki/Grand_River_(Michigan),,﻿,﻿,﻿Detroit,Detroit
 ﻿gre.wi.0002,﻿church,[Unnamed Institution],﻿French and Menomony,﻿Sermons in French and Menomony.,,,,﻿Brown County,﻿Green Bay,﻿Green Bay,,﻿WI,44.508541,-88.015257,,,,﻿fra_hetscher_901,﻿Rev. Mr.,﻿Hetscher,,,,,,"﻿Served by a Seminary of Liguorists, 5 in No.",,1837,﻿https://www.gbdioc.org/history/,,﻿,﻿,﻿Detroit,Detroit
-﻿gre.wi.0017,﻿church,[Unnamed Institution],English,,﻿Little Shoot Cockalin,,,,,﻿Little Chute,,﻿WI,,,,,,﻿the_j_vandenbroeck_901,﻿Rev.,﻿Theodore J. Vanden Broek,,,,,,,,1837,﻿https://stjn.org/church/im-new-2/our-story-3/,,﻿,﻿,﻿Detroit,Detroit
-﻿mar.mi.0011,﻿church,[Unnamed Institution],English,,,,,,﻿Machinac,,,,,,,,,﻿flo_bonduel_901,﻿Rev.,﻿F. Bonduel,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
+﻿gre.wi.0017,﻿church,[Unnamed Institution],English,,﻿Little Shoot Cockalin,,,,,﻿Little Chute,,﻿WI,44.278276,-88.314417,,,,﻿the_j_vandenbroeck_901,﻿Rev.,﻿Theodore J. Vanden Broek,,,,,,,,1837,﻿https://stjn.org/church/im-new-2/our-story-3/,,﻿,﻿,﻿Detroit,Detroit
+﻿mar.mi.0011,﻿church,[Unnamed Institution],English,,,,,,﻿Machinac,,,,45.868313,-84.627566,,,,﻿flo_bonduel_901,﻿Rev.,﻿F. Bonduel,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
 ﻿det.mi.0114,﻿church,[Unnamed Institution],English,,,,,﻿Monroe County,﻿Monroe,﻿Monroe,﻿MI,﻿MI,41.918551,-83.396856,,,,﻿carabin_901,﻿Rev. Mr.,﻿Carabin,,,,,,,,1837,﻿https://www.stmarymonroe.org/history,,﻿,﻿,﻿Detroit,Detroit
 ﻿lac.wi.0019,﻿church,[Unnamed Institution],English,,,,,,﻿Prairie du Chien,,﻿WI,,43.051667,-91.141389,,,,﻿sam_mazzuchelli_901,﻿Rev.,﻿S. Mazzuchelli,,,,,,,,1837,﻿https://www.prairieduchien.org/history/,,﻿,﻿,﻿Detroit,Detroit
 ﻿mar.mi.0002,﻿church,[Unnamed Institution],English,,,,,,﻿Sault Ste. Marie,,﻿MI,,46.496944,-84.345556,,,,﻿fra_hetscher_901,﻿Rev. Mr.,﻿Hetscher,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
@@ -35,4 +35,4 @@
 ﻿det.mi.9005_02,﻿school,﻿Indian School,English,,,,,,﻿Grand River,,﻿MI,,,,,,,,,,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
 ﻿mar.mi.9000_02,﻿school,﻿Indian School,English,,﻿Arbre Croche,,,,,,﻿MI,,45.626437,-85.071053,,,,,,,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
 ﻿gre.wi.0002_02,﻿school,﻿Indian School,English,,,,,,﻿Green Bay,,﻿MI,,44.508541,-88.015257,,,,,,,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
-﻿gre.wi.0017_02,﻿school,﻿Indian School,English,,﻿Little Shoot Cockalin,,,,,,,,,,,,,,,,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit
+﻿gre.wi.0017_02,﻿school,﻿Indian School,English,,﻿Little Shoot Cockalin,,,,,,,,44.278276,-88.314417,,,,,,,,,,,,,,1837,,,﻿,﻿,﻿Detroit,Detroit

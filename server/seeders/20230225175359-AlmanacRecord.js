@@ -82,9 +82,15 @@ async function importData(data, typeMap) {
       const filteredRow = {};
       instKeys.forEach(key => {
         if (key in row) {
-          filteredRow[keyMapping[key]] = row[key]; 
+          filteredRow[keyMapping[key]] = row[key];
         }
       });
+      // Orphan attendance frequency: the almanac states this church is attended at
+      // some cadence (col R) but names no attending church (cols P/Q). Keep it on
+      // the record so it isn't lost — the attendingInstitution link needs both ids.
+      const freq = (row.attendingChurchFrequency || '').trim();
+      const hasAttendingChurch = (row.attendingInstID || '').trim() || (row.attendingChurch || '').trim();
+      if (freq && !hasAttendingChurch) filteredRow.attendingFrequency = freq;
       return filteredRow;
     });
   
@@ -117,6 +123,11 @@ async function importData(data, typeMap) {
           .filter(Boolean)
         );
         existing.member = Array.from(members).join(', ');
+      }
+
+      // Keep an orphan attendance frequency if the first row for this record lacked one.
+      if (item.attendingFrequency && !existing.attendingFrequency) {
+        existing.attendingFrequency = item.attendingFrequency;
       }
     }
   });
