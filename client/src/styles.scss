@@ -149,6 +149,327 @@ body {
     }
 }
 
+/* ---- Record pages (institution, person) ---------------------------------- */
+
+/* Main column beside a narrower rail (map, related records); one column on phones. */
+.record-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: var(--space-6);
+    align-items: start;
+    margin-top: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.record-section {
+    min-width: 0;
+
+    & + & {
+        margin-top: var(--space-6);
+    }
+
+    > h2 {
+        display: flex;
+        align-items: baseline;
+        gap: var(--space-2);
+        margin: 0 0 var(--space-3);
+        font: 600 var(--text-xl)/1.3 var(--font-display);
+        color: var(--ink);
+
+        small {
+            font: 500 var(--text-sm) var(--font-sans);
+            color: var(--ink-3);
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    > .note {
+        margin: calc(-1 * var(--space-2)) 0 var(--space-3);
+        color: var(--ink-3);
+        font-size: var(--text-sm);
+    }
+}
+
+/* Label / value pairs. */
+.fact-list {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+    gap: var(--space-2) var(--space-4);
+    margin: 0;
+
+    dt {
+        color: var(--ink-3);
+        font-size: var(--text-sm);
+        padding-top: 2px;
+    }
+
+    dd {
+        margin: 0;
+        color: var(--ink);
+        overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 560px) {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
+
+        dd + dt {
+            margin-top: var(--space-2);
+        }
+    }
+}
+
+/* Compact data table; becomes stacked cards on phones (cells carry data-label). */
+.table-wrap {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+
+    th, td {
+        padding: var(--space-2) var(--space-3);
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    th {
+        font: 600 var(--text-xs) var(--font-sans);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        white-space: nowrap;
+    }
+
+    td.num {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    td.muted {
+        color: var(--ink-3);
+    }
+
+    @media (max-width: 560px) {
+        thead {
+            display: none;
+        }
+
+        tr {
+            display: block;
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        td {
+            display: flex;
+            gap: var(--space-3);
+            padding: 2px 0;
+            border: 0;
+
+            &::before {
+                content: attr(data-label);
+                flex: 0 0 76px;
+                color: var(--ink-3);
+                font-size: var(--text-xs);
+                padding-top: 2px;
+            }
+
+            &:first-child::before {
+                content: none;
+            }
+
+            &.empty {
+                display: none;
+            }
+        }
+    }
+}
+
+/* A link to another record, coloured by what kind of record it is. */
+.record-link {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--kind, var(--link)) 55%, transparent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+
+    &:hover {
+        text-decoration-color: var(--kind, var(--link));
+    }
+
+    &.inst { --kind: var(--c-inst); }
+    &.pers { --kind: var(--c-pers); }
+    &.place { --kind: var(--c-place); }
+
+    &.unnamed {
+        font-style: italic;
+        font-weight: 500;
+    }
+}
+
+/* Small outlined tag, e.g. an institution type. */
+.tag {
+    display: inline-block;
+    padding: 0 8px;
+    border: 1px solid color-mix(in srgb, var(--kind, var(--ink-3)) 45%, transparent);
+    border-radius: 10px;
+    color: var(--kind, var(--ink-2));
+    font-size: var(--text-xs);
+    font-weight: 500;
+    line-height: 18px;
+    white-space: nowrap;
+
+    &.inst { --kind: var(--c-inst); }
+    &.pers { --kind: var(--c-pers); }
+}
+
+/* Header, sections and states shared by the institution and person pages. */
+.record-summary {
+    margin-top: var(--space-3);
+}
+
+.record-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-4);
+    margin: 0;
+    color: var(--ink-2);
+}
+
+.record-id {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}
+
+.record-names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-2);
+    margin: var(--space-3) 0 0;
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+
+    em {
+        color: var(--ink-2);
+    }
+}
+
+.record-year-note {
+    margin: var(--space-2) 0 0;
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}
+
+.record-layout {
+    transition: opacity 0.15s;
+
+    &.busy {
+        opacity: 0.55;
+    }
+}
+
+.fact-list dd.long {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.record-show-all {
+    margin-top: var(--space-3);
+}
+
+.record-empty {
+    margin: 0;
+    color: var(--ink-3);
+}
+
+.record-link-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-align: left;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.record-map {
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+}
+
+.record-related {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .record-detail {
+        color: var(--ink-3);
+        font-size: var(--text-sm);
+    }
+}
+
+.record-connections {
+    margin-top: var(--space-7);
+}
+
+.record-conn-tabs {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+
+    button {
+        padding: var(--space-2) 0;
+        margin-bottom: -1px;
+        border: 0;
+        border-bottom: 2px solid transparent;
+        background: none;
+        color: var(--ink-2);
+        font: 500 var(--text-sm) var(--font-sans);
+        cursor: pointer;
+
+        &[aria-selected="true"] {
+            color: var(--ink);
+            font-weight: 700;
+            border-bottom-color: var(--ink);
+        }
+    }
+}
+
+.record-skeleton {
+    display: grid;
+    gap: var(--space-3);
+    padding-top: var(--space-6);
+
+    span {
+        height: 18px;
+        border-radius: 3px;
+        background: var(--sunk);
+
+        &:nth-child(1) { width: 40%; height: 36px; }
+        &:nth-child(2) { width: 60%; }
+        &:nth-child(3) { width: 30%; }
+    }
+}
+
 /* Standard page container: one width and gutter for every redesigned page. */
 .page {
     max-width: var(--content-max);

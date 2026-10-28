@@ -21,12 +21,13 @@
     <div class="heading">
         <div class="titles">
             @if (eyebrow) {
-                <div class="eyebrow">{{ eyebrow }}</div>
+                <div class="eyebrow" [style.color]="eyebrowColor || null">{{ eyebrow }}</div>
             }
-            <h1>{{ title }}</h1>
+            <h1 [class.muted]="titleMuted">{{ title }}</h1>
             @if (subtitle) {
                 <p class="subtitle">{{ subtitle }}</p>
             }
+            <ng-content select="[below-title]"></ng-content>
         </div>
         <div class="actions">
             <ng-content select="[actions]"></ng-content>

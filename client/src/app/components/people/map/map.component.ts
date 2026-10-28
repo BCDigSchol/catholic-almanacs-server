@@ -55,13 +55,6 @@ export class MapComponent implements OnInit {
   yearMin: number = 1833;
   yearMax: number = 1870;
 
-  mapOptions: google.maps.MapOptions = {
-    center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 4.5,
-    disableDefaultUI: true,
-    clickableIcons: false
-  };
-
   filterValues$!: Observable<any>; //! = can be null
   filterValues: any = {
   };

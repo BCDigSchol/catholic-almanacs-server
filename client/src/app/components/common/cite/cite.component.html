@@ -1,0 +1,15 @@
+<button type="button" class="btn" (click)="open = !open" [attr.aria-expanded]="open" aria-controls="cite-panel">
+    <mat-icon aria-hidden="true">format_quote</mat-icon> Cite
+</button>
+@if (open) {
+    <div class="panel" id="cite-panel" role="dialog" aria-label="Cite this record">
+        <p class="label">Cite this record</p>
+        <p class="citation">{{ citation }}</p>
+        <div class="actions">
+            <button type="button" class="btn btn-primary" (click)="copy()">
+                <mat-icon aria-hidden="true">{{ copied ? 'check' : 'content_copy' }}</mat-icon>
+                {{ copied ? 'Copied' : 'Copy citation' }}
+            </button>
+        </div>
+    </div>
+}

@@ -1,0 +1,51 @@
+:host {
+    display: block;
+    min-width: 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.tabs {
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+button {
+    flex: none;
+    padding: var(--space-2) 10px var(--space-3);
+    margin-bottom: -1px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: var(--ink-2);
+    font: 500 var(--text-sm) var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        color: var(--ink);
+    }
+
+    &[aria-selected="true"] {
+        color: var(--ink);
+        font-weight: 700;
+        border-bottom-color: var(--ink);
+    }
+
+    &.all {
+        margin-right: var(--space-2);
+    }
+
+    &:focus-visible {
+        outline-offset: -2px;
+    }
+}
+
+.gap {
+    flex: 0 0 10px;
+    margin: 10px 4px 14px;
+    background: repeating-linear-gradient(135deg, var(--rule) 0 2px, transparent 2px 4px);
+}

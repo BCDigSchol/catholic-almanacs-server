@@ -1,239 +1,337 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RouterLink } from '@angular/router';
-
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { SelectYearComponent } from '../../common/select-year/select-year.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { Location } from '@angular/common';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { DialogComponent } from '../../common/dialog/dialog.component';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Subscription, combineLatest, of } from 'rxjs';
+import { catchError, distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+
+import { ApiService } from '../../../services/api.service';
+import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
 import { TreeGraphComponent, DendrogramNode } from '../../common/tree-graph/tree-graph.component';
+import { PageHeaderComponent } from '../../common/page-header/page-header.component';
+import { YearTabsComponent } from '../../common/year-tabs/year-tabs.component';
+import { CiteComponent } from '../../common/cite/cite.component';
+import { institutionLabel, isUnnamed, personLabel, placeLabel, yearRuns } from '../../../utils/record-labels';
 
-import { ApiService } from '../../../services/api.service';
+interface TimelinePerson {
+  ID: string;
+  name: string;
+  title: string;
+  suffix: string;
+  role: string;
+  isAttending: boolean;
+  attendingInstID: string;
+  attendingInstName: string;
+  attendingInstType: string;
+}
+
+interface TimelineYear {
+  year: number;
+  instID: string;
+  name: string;
+  type: string;
+  diocese: string;
+  city: string;
+  state: string;
+  people: TimelinePerson[];
+}
+
+/** One row of the People table: a person and every year they were listed here. */
+interface PersonRow {
+  ID: string;
+  label: string;
+  roles: string;
+  years: number[];
+  resident: boolean;
+  visitingFrom: { ID: string; label: string; unnamed: boolean }[];
+}
+
+interface Related {
+  heading: string;
+  items: { ID: string; label: string; unnamed: boolean; detail: string }[];
+}
+
+interface Fact {
+  label: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-institution-details',
-  imports: [CommonModule, MatCardModule, MatListModule, MatTableModule, MatButtonModule,
-            RouterLink, SelectYearComponent, MatTooltipModule, GoogleMapsModule, MatIcon,
-            MatIconModule, MatProgressSpinnerModule, MapVisComponent,
-            NetworkGraphComponent, TreeGraphComponent
-  ],
+  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, TreeGraphComponent,
+    PageHeaderComponent, YearTabsComponent, CiteComponent],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
 })
-export class InstitutionDetailsComponent implements OnInit {
+export class InstitutionDetailsComponent implements OnInit, OnDestroy {
+  id = '';
+  /** null = all years */
+  year: number | null = null;
   loading = true;
-  itemId: any;
-  data: any = {};
-  mapData: any[] = [];
-  dioceseInfo: any = [];
-  instIDInYear: any = {};
+  notFound = false;
+
+  /** findByID (all years) or findOne (one year) response. */
+  record: any = null;
+  timeline: TimelineYear[] = [];
+  dioceseInfo: any[] = [];
+
   network: any = { nodes: [], edges: [] };
-  networkTimeWindowLoading = false;
+  networkLoading = false;
   networkStartYear: number | null = null;
   networkEndYear: number | null = null;
-  dendrogramData: any = null;
-  mapOptionsWide: google.maps.MapOptions = {
-    center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 3.7,
-    disableDefaultUI: true,
-    clickableIcons: false
-  };
+  dendrogram: any = null;
+  connectionsTab: 'network' | 'tree' = 'network';
+  /** Long people lists start collapsed to this many rows. */
+  readonly peoplePreview = 15;
+  showAllPeople = false;
 
-  mapOptionsSmall: google.maps.MapOptions = {
-    center: { lat: 39.8283, lng: -98.5795 },
-    zoom: 3.4,
-    disableDefaultUI: true,
-    clickableIcons: false
-  };
+  readonly networkOptions = { height: '520px' };
 
-  networkOptions = {
-    height: '800px',
-    width: '1100px',
-    nodes: {
-            shape: 'dot',
-            font: {
-                color: '#000000',
-                strokeWidth: 4,
-                strokeColor: '#ffffff'
-            },
-            borderWidth: 2,
-            scaling: {
-              label: {
-                min: 8,
-                max: 20
-              }
-            },
-              shadow: false
-        },
-        edges: {
-            width: 2,
-              shadow: false,
-              smooth: false,
-            font: {
-                color: '#000000',
-                strokeWidth: 3,
-                strokeColor: 'rgba(255, 255, 255, 0.85)'
-            },
-        },
-  };
+  private subs: Subscription[] = [];
 
   constructor(
-    private _route: ActivatedRoute,
-    private _api: ApiService,
-    private _location: Location,
-    private _router: Router,
-    private _dialog: MatDialog
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router,
+    private api: ApiService,
+    private title: Title,
+    private dialog: MatDialog,
+  ) {}
 
-  ngOnInit () {
-    // refresh the page whenever the parameter changes
-    // this._route.paramMap is an observable that emits whenever the route parameters change
-    // and when a new value is emitted, .subscribe is called
-    this._route.paramMap.subscribe((params) => {
-      this.itemId = params.get('id');
-      this.getData();
-    });
-  }
+  ngOnInit(): void {
+    const id$ = this.route.paramMap.pipe(map(p => p.get('id') ?? ''), distinctUntilChanged());
+    const year$ = this.route.queryParamMap.pipe(map(p => Number(p.get('year')) || null), distinctUntilChanged());
 
-  getData () {
-    this.loading = true;
-    this._api.getTypeRequest('institution/' + this.itemId).subscribe((res: any) => {
-      this.data = res;
-      this.buildMapData();
-      this.instIDInYear = res.instIDInYear;
+    // The timeline (fetched once per record) supplies the years and each
+    // year's record id, so the per-year requests wait for it.
+    const timeline$ = id$.pipe(
+      tap(id => {
+        this.id = id;
+        this.loading = true;
+        this.notFound = false;
+        this.record = null;
+      }),
+      switchMap(id => this.api.getTypeRequest(`institution/${id}/timeline`).pipe(catchError(() => of(null)))),
+      shareReplay(1),
+    );
+
+    this.subs.push(combineLatest([timeline$, year$]).pipe(
+      tap(([res, year]) => {
+        this.timeline = (res as any)?.years ?? [];
+        this.notFound = !res;
+        this.year = year;
+        this.recomputeTimeline();
+        this.title.setTitle(res ? `${this.heading} · Catholic Almanacs` : 'Institution not found · Catholic Almanacs');
+        if (res) this.loadConnections(year);
+      }),
+      switchMap(([res, year]) => !res ? of(null) : this.api.getTypeRequest(year === null
+        ? `institution/${this.id}`
+        : `institution/${this.yearInstID(year)}/${year}`).pipe(catchError(() => of(null)))),
+    ).subscribe(record => {
+      this.record = record;
+      this.recomputeRecord();
       this.loading = false;
-      this.networkStartYear = res.year?.[0] ?? null;
-      this.networkEndYear = res.year?.[res.year.length - 1] ?? null;
-      this.fetchNetwork(this.networkStartYear ?? undefined, this.networkEndYear ?? undefined);
-      const center = { lat: this.data.latitude, lng: this.data.longitude };
-      if (window.innerWidth < 768) {
-        this.mapOptionsSmall = { ...this.mapOptionsSmall, center, zoom: 7 };
-      } else {
-        this.mapOptionsWide = { ...this.mapOptionsWide, center, zoom: 7 };
-      }
-      this._api.getTypeRequest('institution/' + this.itemId + '/dendrogram').subscribe((dendrogramRes: any) => {
-        this.dendrogramData = dendrogramRes;
-      });
-    });
+      this.loadDioceseInfo();
+    }));
   }
 
-  /** Shape the single institution into the marker array the map-vis component expects. */
-  private buildMapData (): void {
-    if (this.data?.latitude && this.data?.longitude) {
-      // The aggregated detail record exposes instID as an array (one per year);
-      // use the route id (always a scalar) for the marker's navigation target.
-      const id = this.itemId ?? (Array.isArray(this.data.instID) ? this.data.instID[0] : this.data.instID);
-      this.mapData = [{
-        latitude: this.data.latitude,
-        longitude: this.data.longitude,
-        title: Array.isArray(this.data.instName) ? this.data.instName[0] : (this.data.instName || ''),
-        internalLink: id ? ['/institutions', id] : null
-      }];
-    } else {
-      this.mapData = [];
+  ngOnDestroy(): void {
+    this.subs.forEach(s => s.unsubscribe());
+  }
+
+  // ---- loading --------------------------------------------------------------
+
+  /** Network and institution tree for the selected year (or all years). */
+  private loadConnections(year: number | null): void {
+    const [start, end] = year === null ? [this.years[0], this.years[this.years.length - 1]] : [year, year];
+    this.fetchNetwork(start, end);
+    const tree = `institution/${this.id}/dendrogram` + (year === null ? '' : `?year=${year}`);
+    this.api.getTypeRequest(tree).pipe(catchError(() => of(null))).subscribe(res => this.dendrogram = res);
+  }
+
+  /** The diocese's own notes for the selected year, when the almanac printed any. */
+  private loadDioceseInfo(): void {
+    const diocese = this.record?.diocese?.[0];
+    if (this.year === null || !diocese) {
+      this.dioceseInfo = [];
+      return;
     }
+    this.api.getTypeRequest(`diocese?diocese=${encodeURIComponent(diocese)}&year=${this.year}`)
+      .pipe(catchError(() => of([]))).subscribe((info: any) => this.dioceseInfo = info);
   }
 
-  fetchDendrogram (year?: number) {
-    let url = 'institution/' + this.itemId + '/dendrogram';
-    if (year != null) url += '?year=' + year;
-    this._api.getTypeRequest(url).subscribe({
-      next: (dendrogramRes: any) => {
-        this.dendrogramData = dendrogramRes;
-      },
-      error: () => {
-        this.dendrogramData = null;
-      }
+  /** A branching institution can sit under a different id in a given year. */
+  private yearInstID(year: number): string {
+    return this.timeline.find(t => t.year === year)?.instID ?? this.id;
+  }
+
+  fetchNetwork(startYear?: number, endYear?: number): void {
+    this.networkStartYear = startYear ?? null;
+    this.networkEndYear = endYear ?? null;
+    this.networkLoading = true;
+    const q = [startYear != null && `startYear=${startYear}`, endYear != null && `endYear=${endYear}`].filter(Boolean).join('&');
+    this.api.getTypeRequest(`institution/${this.id}/network` + (q ? '?' + q : '')).pipe(
+      catchError(() => of({ nodes: [], edges: [] }))
+    ).subscribe(res => {
+      this.network = res;
+      this.networkLoading = false;
     });
   }
 
-  fetchNetwork (startYear?: number, endYear?: number) {
-    this.networkTimeWindowLoading = true;
-    let url = 'institution/' + this.itemId + '/network';
-    const params: string[] = [];
-    if (startYear != null) params.push('startYear=' + startYear);
-    if (endYear != null) params.push('endYear=' + endYear);
-    if (params.length) url += '?' + params.join('&');
-    this._api.getTypeRequest(url).subscribe({
-      next: (networkRes: any) => {
-        this.network = networkRes;
-        this.networkTimeWindowLoading = false;
-      },
-      error: () => {
-        this.network = { nodes: [], edges: [] };
-        this.networkTimeWindowLoading = false;
-      }
-    });
-  }
-
-  onNetworkTimeWindowChange (event: { startYear: number; endYear: number }) {
-    this.networkStartYear = event.startYear;
-    this.networkEndYear = event.endYear;
+  onNetworkWindow(event: { startYear: number; endYear: number }): void {
     this.fetchNetwork(event.startYear, event.endYear);
   }
 
-  /**
-   * when a user clicks the year button, the child component emits the variable year and the yearSelected event
-   * @param year 
-   */
-  onYearSelected (year: number | string) {
-    //this.loading = true;
-    if (year === 'All') {
-      this.dioceseInfo = [];
-      this.getData();
-      this.fetchDendrogram();
-    } else {
-      const y = Number(year);
-      this.networkStartYear = y;
-      this.networkEndYear = y;
-      this.fetchNetwork(y, y);
-      this._api.getTypeRequest('institution/' + this.instIDInYear[String(year)][0] + '/' + year).subscribe((res: any) => {
-      this.loading = false;
-      const allYears = this.data.year;
-      this.data = res;
-      this.data.year = allYears;
-      this.buildMapData();
-      this.itemId = this.data.instID;
-      this.fetchDendrogram(y);
-      this._api.getTypeRequest('diocese?diocese=' + this.data.diocese[0] + '&year=' + year).subscribe((dioceseInfoData: any) => {
-        this.dioceseInfo = dioceseInfoData;
-    })});}
-  };
+  selectYear(year: number | null): void {
+    this.router.navigate([], { relativeTo: this.route, queryParams: { year }, replaceUrl: true });
+  }
 
-  goBack (): void {
-    if (window.history.length > 1) {
-      this._location.back();
-    } else {
-      this._router.navigate(['/institutions']);
-    }
-  };
+  onTreeNode(node: DendrogramNode): void {
+    if (node.instID) this.router.navigate(['/institutions', node.instID]);
+  }
 
-  onDendrogramNodeDoubleClick(node: DendrogramNode): void {
-    if (node.instID) {
-      this._router.navigate(['/institutions', node.instID]);
+  showDioceseInfo(): void {
+    const info = this.dioceseInfo[0];
+    if (info) {
+      this.dialog.open(DialogComponent, { data: { diocese: info.diocese, year: info.year, dioceseInfo: info.dioceseInfo } });
     }
   }
 
-  displayDioceseInfo () {
-    if (this.dioceseInfo.length > 0) {
-      const dialogRef = this._dialog.open(DialogComponent, {
-        data: {
-          diocese: this.dioceseInfo[0].diocese,
-          year: this.dioceseInfo[0].year,
-          dioceseInfo: this.dioceseInfo[0].dioceseInfo
+  // ---- derived view ---------------------------------------------------------
+  // Computed once per data change (never in getters): the template binds these
+  // to child components, and a fresh array/object on every change-detection
+  // pass would make the map, strip and tabs re-render endlessly.
+
+  years: number[] = [];
+  /** The timeline entries shown: one year, or all of them. */
+  entries: TimelineYear[] = [];
+  heading = '';
+  unnamed = false;
+  kind = 'Institution';
+  place = '';
+  /** Dioceses this institution was listed under, latest first. */
+  dioceses: string[] = [];
+  yearsLabel = '';
+  /** Every name the almanacs gave it, with the years each was used (only if it changed). */
+  namesRecorded: { name: string; years: string }[] = [];
+  people: PersonRow[] = [];
+  facts: Fact[] = [];
+  related: Related[] = [];
+  mapData: any[] = [];
+  mapOptions = { zoom: 7, center: { lat: 40, lng: -90 }, size: { width: '100%', height: '280px' } };
+  readonly crumbs = [{ label: 'Institutions', link: '/institutions' }];
+
+  get hasTree(): boolean {
+    return !!this.dendrogram?.children?.length;
+  }
+
+  get shownPeople(): PersonRow[] {
+    return this.showAllPeople ? this.people : this.people.slice(0, this.peoplePreview);
+  }
+
+  yearsOf(row: PersonRow): string {
+    return yearRuns(row.years);
+  }
+
+  /** After the timeline or the selected year changes. */
+  private recomputeTimeline(): void {
+    this.years = [...new Set(this.timeline.map(t => t.year))];
+    this.entries = this.year === null ? this.timeline : this.timeline.filter(t => t.year === this.year);
+    // The header describes the selected year, else the latest.
+    const current = this.entries[this.entries.length - 1];
+    this.heading = current ? institutionLabel(current.name, current.type) : '';
+    this.unnamed = !!current && isUnnamed(current.name);
+    this.kind = current?.type || 'Institution';
+    this.place = current ? placeLabel(current.city, current.state) : '';
+    // Latest spelling first; variants that differ only in spacing or
+    // punctuation ("St. Louis" / "StLouis") count as one diocese.
+    const seen = new Set<string>();
+    this.dioceses = this.entries.map(t => t.diocese).filter(Boolean).reverse().filter(d => {
+      const key = d.toLowerCase().replace(/[^a-z]/g, '');
+      return !seen.has(key) && !!seen.add(key);
+    });
+    this.yearsLabel = yearRuns(this.years);
+
+    const byName = new Map<string, number[]>();
+    for (const t of this.timeline) {
+      const name = isUnnamed(t.name) ? 'no name given' : t.name.trim();
+      byName.set(name, [...(byName.get(name) ?? []), t.year]);
+    }
+    this.namesRecorded = byName.size > 1 ? [...byName].map(([name, years]) => ({ name, years: yearRuns(years) })) : [];
+
+    const rows = new Map<string, PersonRow & { first: number }>();
+    for (const t of this.entries) {
+      for (const p of t.people) {
+        let row = rows.get(p.ID);
+        if (!row) {
+          row = { ID: p.ID, label: '', roles: '', years: [], resident: false, visitingFrom: [], first: t.year };
+          rows.set(p.ID, row);
         }
-      });
+        row.label = personLabel(p);  // latest spelling wins
+        if (!row.years.includes(t.year)) row.years.push(t.year);
+        if (p.role && !row.roles.split('; ').includes(p.role)) row.roles = row.roles ? `${row.roles}; ${p.role}` : p.role;
+        if (!p.isAttending) row.resident = true;
+        if (p.isAttending && p.attendingInstID && !row.visitingFrom.some(v => v.ID === p.attendingInstID)) {
+          row.visitingFrom.push({
+            ID: p.attendingInstID,
+            label: institutionLabel(p.attendingInstName, p.attendingInstType),
+            unnamed: isUnnamed(p.attendingInstName),
+          });
+        }
+      }
+    }
+    this.showAllPeople = false;
+    this.people = [...rows.values()].sort((a, b) => a.first - b.first || a.label.localeCompare(b.label));
+  }
+
+  /** After the selected year's (or the merged) record arrives. */
+  private recomputeRecord(): void {
+    const r = this.record;
+    if (!r) {
+      this.facts = [];
+      this.related = [];
+      this.mapData = [];
+      return;
+    }
+    const printed = [r.placeName, r.countyOrig, r.cityOrig, r.stateOrig].filter(Boolean).join(', ');
+    // No standardised town in the timeline: show the place as the almanac printed it.
+    if (!this.place) this.place = printed;
+    const standard = [r.countyReg && `${r.countyReg} County`, r.cityReg, r.stateReg].filter(Boolean).join(', ');
+    const frequencies = (r.attendedFrequencies ?? []).map((f: any) => f.year ? `${f.frequency} (${f.year})` : f.frequency);
+    this.facts = [
+      { label: 'Type', value: r.instType },
+      { label: 'Language', value: r.language && r.language !== 'English' ? r.language : '' },
+      { label: 'Religious order', value: r.order },
+      { label: 'Place as printed', value: printed },
+      { label: 'Place (standardised)', value: standard !== printed ? standard : '' },
+      { label: 'Region', value: r.region },
+      { label: 'Member', value: [r.member, r.memberType && `(${r.memberType})`].filter(Boolean).join(' ') },
+      { label: 'Affiliated with', value: r.affiliated },
+      { label: 'Attended', value: frequencies.join('; ') },
+      { label: 'Notes', value: r.instNote },
+    ].filter(f => f.value && String(f.value).trim());
+
+    const item = (x: any, detail = '') => ({
+      ID: x.instID,
+      label: institutionLabel(x.instName, x.instType),
+      unnamed: isUnnamed(x.instName),
+      detail: [x.instType, detail].filter(Boolean).join(' · '),
+    });
+    const freq = (x: any) => x.attendingFrequency || '';
+    this.related = [
+      { heading: 'Related institutions', items: (r.relatedInstitutions ?? []).map((x: any) => item(x)) },
+      { heading: 'Part of', items: (r.parentInstitutions ?? []).map((x: any) => item(x)) },
+      { heading: 'Includes', items: (r.childInstitutions ?? []).map((x: any) => item(x)) },
+      { heading: 'Alongside', items: (r.siblingInstitutions ?? []).map((x: any) => item(x)) },
+      { heading: 'Attending institutions', items: (r.attendingInstitutions ?? []).map((x: any) => item(x, freq(x))) },
+      { heading: 'Attended from', items: (r.attendedBy ?? []).map((x: any) => item(x, freq(x))) },
+    ].filter(g => g.items.length);
+
+    const hasPoint = !!(r.latitude && r.longitude);
+    this.mapData = hasPoint ? [{ latitude: r.latitude, longitude: r.longitude, title: this.heading, internalLink: null }] : [];
+    if (hasPoint) {
+      this.mapOptions = { ...this.mapOptions, center: { lat: r.latitude, lng: r.longitude } };
     }
   }
 }

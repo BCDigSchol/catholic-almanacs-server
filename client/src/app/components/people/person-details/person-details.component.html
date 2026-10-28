@@ -1,134 +1,125 @@
-<mat-card class="max-md:mt-2 mt-2">
-    @if (loading) {
-        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-            <mat-spinner></mat-spinner>
-        </div>
+<div class="page">
+    @if (notFound) {
+        <app-page-header [crumbs]="crumbs" eyebrow="Person not found" title="No person with this ID"
+            [subtitle]="'There is no person “' + id + '” in the database. They may have been renumbered when the data was last updated.'">
+        </app-page-header>
+        <a class="btn" routerLink="/people">Browse people</a>
+    } @else if (!listings.length) {
+        <div class="record-skeleton" aria-busy="true" aria-label="Loading record"><span></span><span></span><span></span></div>
     } @else {
-    <mat-card-header>
-        <mat-card-title>
-            {{data.title + ' ' + longestName + ' ' + data.suffix}}
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="w-full flex flex-col md:flex-row justify-start items-start">
-            <div class="w-full flex flex-col justify-center items-start custom-font">
-                <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
-                <div class="table formatted-table custom-font">
-                    <div class="table-body text-xs md:text-sm">
-                        <div class="row">
-                            <div class="cell">Person ID</div>
-                            <div class="cell">{{data.persID}}</div>
-                        </div>
-                        @if (data.title) {
-                        <div class="row">
-                            <div class="cell">Title</div>
-                            <div class="cell">{{data.title}}</div>
-                        </div>}
-                        @if (data.name) {
-                            <div class="row">
-                            <div class="cell">Name(s)</div>
-                            <div class="cell">{{data.name.join(', ')}}</div>
-                        </div>}
-                        @if (data.suffix) {
-                            <div class="row">
-                            <div class="cell">Suffix</div>
-                            <div class="cell">{{data.suffix}}</div>
-                            </div>
+        <app-page-header [crumbs]="crumbs" [title]="heading" [eyebrow]="kind" eyebrowColor="var(--c-pers)">
+            <div below-title class="record-summary">
+                <p class="record-meta">
+                    @for (d of dioceses; track d) {
+                        <a class="record-link place" routerLink="/people" [queryParams]="{ diocese: d }"
+                            [attr.title]="'Browse people in the Diocese of ' + d">Diocese of {{ d }}</a>
+                    }
+                    <span>{{ yearsLabel }}</span>
+                    <span class="mono record-id">{{ id }}</span>
+                </p>
+                @if (namesRecorded.length) {
+                    <p class="record-names">
+                        Recorded as
+                        @for (n of namesRecorded; track n.name; let last = $last) {
+                            <span><em>{{ n.name }}</em> ({{ n.years }}){{ last ? '' : ';' }}</span>
                         }
-                        @if (data.dioceses && data.dioceses.length > 0) {
-                            <div class="row">
-                            <div class="cell">Diocese(s)</div>
-                            <div class="cell">{{data.dioceses.join(', ')}}</div>
-                        </div>}
-                        @if (data.role[0]) {
-                            <div class="row">
-                            <div class="cell">Role</div>
-                            <div class="cell">{{data.role.join(', ')}}</div>
-                        </div>
-                        }
-                        @if (data.note) {
-                            <div class="row">
-                            <div class="cell">Notes</div>
-                            <div class="cell">{{data.note}}</div>
-                        </div>
-                        }
-                        @if (data.residingInstitutions && data.residingInstitutions.length > 0) {
-                            <div class="row">
-                            <div class="cell">Residing In</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" *ngFor="let item of data.residingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        }
-                        @if (data.visitingInstitutions && data.visitingInstitutions.length > 0) {
-                            <div class="row">
-                            <div class="cell">Visiting</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" *ngFor="let item of data.visitingInstitutions" [matTooltip]="item.personInAlmanacRecord?.role || 'No person role info'">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        }
+                    </p>
+                }
+            </div>
+            <div actions>
+                <app-cite [title]="heading" kind="Person" [recordId]="id" [years]="yearsLabel"></app-cite>
+            </div>
+        </app-page-header>
+
+        <app-year-tabs [years]="years" [selected]="year" (selectedChange)="selectYear($event)"></app-year-tabs>
+        <p class="record-year-note">
+            @if (year === null) {
+                Everything the almanacs recorded about this person, across all {{ years.length }} years.
+            } @else {
+                As listed in the {{ year }} almanac.
+            }
+        </p>
+
+        <div class="record-layout">
+            <div class="main">
+                @if (facts.length) {
+                    <section class="record-section" aria-labelledby="facts-heading">
+                        <h2 id="facts-heading">Facts</h2>
+                        <dl class="fact-list">
+                            @for (f of facts; track f.label) {
+                                <dt>{{ f.label }}</dt>
+                                <dd>{{ f.value }}</dd>
+                            }
+                        </dl>
+                    </section>
+                }
+
+                <section class="record-section" aria-labelledby="service-heading">
+                    <h2 id="service-heading">Service <small>{{ service.length }} {{ service.length === 1 ? 'institution' : 'institutions' }}</small></h2>
+                    <p class="note">Where the almanac listed them{{ year ? ' in ' + year : ', and in which years' }}.</p>
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Institution</th>
+                                    <th scope="col">Diocese</th>
+                                    <th scope="col">Role</th>
+                                    @if (year === null) { <th scope="col">Years</th> }
+                                    <th scope="col">Listed as</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (s of shownService; track s.instID) {
+                                    <tr>
+                                        <td>
+                                            <a class="record-link inst" [class.unnamed]="s.unnamed" [routerLink]="['/institutions', s.instID]">{{ s.label }}</a>
+                                            @if (s.place) { <div class="record-detail">{{ s.place }}</div> }
+                                        </td>
+                                        <td data-label="Diocese" [class.empty]="!s.diocese">{{ s.diocese }}</td>
+                                        <td data-label="Role" [class.empty]="!s.roles" [class.muted]="!s.roles">{{ s.roles || '—' }}</td>
+                                        @if (year === null) { <td data-label="Years" class="num">{{ yearsOf(s) }}</td> }
+                                        <td data-label="Listed as">{{ s.listedAs }}</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                </div>
-                <div class="w-full flex flex-col justify-center items-center">
-                    <div class="map-container w-full md:!hidden flex justify-center items-center">
-                        <app-map-vis
-                        [data]="mapData"
-                        [simple]="true"
-                        [options]="{
-                            zoom:6,
-                            center: {
-                                lat: (data.allInstitutions[0]?.latitude || 40),
-                                lng: (data.allInstitutions[0]?.longitude || -100)
-                            },
-                            size: {width: '400px', height: '250px'}
-                        }">
-                        </app-map-vis>
-                    </div>
-                    <div class="map-container w-full md:w-auto !hidden md:!flex">
-                        <app-map-vis
-                            [data]="mapData"
-                            [simple]="true"
-                            [options]="{
-                            zoom:6,
-                            center: {
-                                lat: (data.allInstitutions[0]?.latitude || 40),
-                                lng: (data.allInstitutions[0]?.longitude || -100)
-                            },
-                            size: {width: '500px', height: '400px'}
-                        }">
-                        </app-map-vis>
-                    </div>
-                    @if (network.nodes.length > 1) {
-            <div class="w-full mt-4" style="width: 500px;">
+                    @if (service.length > servicePreview) {
+                        <button type="button" class="btn record-show-all" (click)="showAllService = !showAllService">
+                            {{ showAllService ? 'Show fewer' : 'Show all ' + service.length + ' institutions' }}
+                        </button>
+                    }
+                </section>
+            </div>
+
+            <aside class="rail">
+                @if (mapData.length) {
+                    <section class="record-section" aria-labelledby="map-heading">
+                        <h2 id="map-heading">Places served <small>{{ mapData.length }}</small></h2>
+                        <div class="record-map">
+                            <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
+                        </div>
+                    </section>
+                }
+            </aside>
+        </div>
+
+        @if (network.nodes.length > 1) {
+            <section class="record-section record-connections" aria-labelledby="connections-heading">
+                <h2 id="connections-heading">Connections</h2>
+                <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
                 <app-network-graph
                     [data]="network"
-                    [label]="(data.title ? data.title + ' ' : '') + longestName + (data.suffix ? ' ' + data.suffix : '') + ' — People Network'"
+                    [label]="'People who served alongside ' + heading"
+                    [options]="networkOptions"
                     [startYear]="networkStartYear"
                     [endYear]="networkEndYear"
-                    [minYear]="data.year[0]"
-                    [maxYear]="data.year[data.year.length - 1]"
-                    [timeWindowLoading]="networkTimeWindowLoading"
-                    (timeWindowChange)="onNetworkTimeWindowChange($event)">
+                    [minYear]="years[0]"
+                    [maxYear]="years[years.length - 1]"
+                    [timeWindowLoading]="networkLoading"
+                    (timeWindowChange)="onNetworkWindow($event)">
                 </app-network-graph>
-            </div>
-            }
-                </div>
-        </div>
-        <div>
-        <button mat-button class="tertiary-btn !text-xs md:!text-sm custom-font" (click)="goBack()">
-            <mat-icon>arrow_back</mat-icon>
-            Back
-        </button>
-        </div>
-        </mat-card-content>}
-</mat-card>
+            </section>
+        }
+    }
+</div>

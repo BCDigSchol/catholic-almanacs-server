@@ -1,0 +1,12 @@
+<div class="tabs" #list role="tablist" aria-label="Almanac year" (keydown)="onKeydown($event)">
+    @for (tab of tabs; track tab.label) {
+        @if (tab.gapBefore) {
+            <span class="gap" [attr.title]="tab.gapBefore + ': not in this record'" aria-hidden="true"></span>
+        }
+        <button type="button" role="tab"
+            [class.all]="tab.year === null"
+            [attr.aria-selected]="tab.year === selected"
+            [attr.tabindex]="tab.year === selected ? 0 : -1"
+            (click)="select(tab.year)">{{ tab.label }}</button>
+    }
+</div>

@@ -1,285 +1,167 @@
-<mat-card class="max-md:mt-2 mt-2">
-    @if (loading) {
-        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-            <mat-spinner></mat-spinner>
-        </div>
+<div class="page">
+    @if (notFound) {
+        <app-page-header [crumbs]="crumbs" eyebrow="Institution not found" title="No institution with this ID"
+            [subtitle]="'There is no institution “' + id + '” in the database. It may have been renumbered when the data was last updated.'">
+        </app-page-header>
+        <a class="btn" routerLink="/institutions">Browse institutions</a>
+    } @else if (!timeline.length) {
+        <div class="record-skeleton" aria-busy="true" aria-label="Loading record"><span></span><span></span><span></span></div>
     } @else {
-    <mat-card-header>
-        <mat-card-title>
-            {{data.instName}}
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="w-full flex flex-col md:flex-row justify-center items-start">
-            <div class="w-full flex flex-col justify-center items-start">
-                <app-select-year [years]="data.year" (yearSelected)="onYearSelected($event)"></app-select-year>
-                <div class="table formatted-table">
-                    <div class="table-body text-xs md:text-sm custom-font">
-                        <div class="row">
-                            <div class="cell">Institution ID</div>
-                            <div class="cell">{{data.instID.join(', ')}}</div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Institution Type</div>
-                            <div class="cell">{{data.instType}}</div>
-                        </div>
-                        @if (data.language != "English") {
-                            <div class="row">
-                                <div class="cell">Language</div>
-                                <div class="cell">{{data.language}}</div>
-                            </div>
+        <app-page-header [crumbs]="crumbs" [title]="heading" [titleMuted]="unnamed"
+            [eyebrow]="kind" eyebrowColor="var(--c-inst)">
+            <div below-title class="record-summary">
+                <p class="record-meta">
+                    @if (place) { <span>{{ place }}</span> }
+                    @for (d of dioceses; track d) {
+                        <a class="record-link place" routerLink="/institutions" [queryParams]="{ diocese: d }"
+                            [attr.title]="'Browse institutions in the Diocese of ' + d">Diocese of {{ d }}</a>
+                    }
+                    <span>{{ yearsLabel }}</span>
+                    <span class="mono record-id">{{ id }}</span>
+                </p>
+                @if (namesRecorded.length) {
+                    <p class="record-names">
+                        Recorded as
+                        @for (n of namesRecorded; track n.name; let last = $last) {
+                            <span><em>{{ n.name }}</em> ({{ n.years }}){{ last ? '' : ';' }}</span>
                         }
-                        @if (dioceseInfo.length == 0) {
-                            <div class="row">
-                                <div class="cell">Diocese</div>
-                                <div class="cell">
-                                    {{data.diocese?.join(', ' )}}
-                                </div>
-                            </div>
-                        } @else {
-                            <div class="row">
-                                <div class="cell">Diocese</div>
-                                <div class="cell">
-                                    <button mat-button class="!text-xs md:!text-sm" (click)="displayDioceseInfo()">{{data.diocese}}</button>
-                                </div>
-                            </div>
-                        }
-                        @if (data.instNote) {
-                            <div class="row">
-                                <div class="cell">Notes</div>
-                                <div class="cell" style="word-wrap: break-word; overflow-wrap: break-word;">{{data.instNote}}</div>
-                            </div>
-                        }
-                        @if (data.region) {
-                            <div class="row">
-                            <div class="cell">Region</div>
-                            <div class="cell">{{data.region}}</div>
-                        </div>
-                        }
-                        <div class="row">
-                            <div class="cell">Location (Original)</div>
-                            <div class="cell">
-                                {{data.placeName ? data.placeName + ', ' : ''}}
-                                {{data.countyOrig ? data.countyOrig + ', ' : ''}}
-                                {{data.cityOrig ? data.cityOrig + ', ' : ''}}
-                                {{data.stateOrig ? data.stateOrig : data.stateReg}}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Location (Regular)</div>
-                            <div class="cell">
-                                {{data.countyReg ? data.countyReg + ', ' : ''}}
-                                {{data.cityReg ? data.cityReg + ', ' : ''}}
-                                {{data.stateReg ? data.stateReg : data.stateOrig}}
-                            </div>
-                        </div>
-                        @if (data.member) {
-                            <div class="row">
-                                <div class="cell">Member</div>
-                                <div class="cell">{{data.member}}</div>
-                            </div>
-                        }
-                        @if (data.affiliated) {
-                            <div class="row">
-                                <div class="cell">Affiliated</div>
-                                <div class="cell">{{data.affiliated}}</div>
-                            </div>
-                        }
-                        @if (data.order.length > 0) {
-                            <div class="row">
-                                <div class="cell">Order</div>
-                                <div class="cell">{{data.order}}</div>
-                            </div>
-                        }
-                        @if (data.residingPersonInfo && data.residingPersonInfo.length > 0) {
-                        <div class="row">
-                            <div class="cell">Residing People</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font custom-font" color="primary" *ngFor="let item of data.residingPersonInfo">
-                                        <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        }
-                        @if (data.visitingPersonInfo && data.visitingPersonInfo.length > 0) {
-                        <div class="row">
-                            <div class="cell">Visiting People</div>
-                            <div class="cell">
-                                @for (item of data.visitingPersonInfo; track item.ID) {
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary">
-                                        <div [routerLink]="'/people/' + item.ID">{{item.personInAlmanacRecord.title + ' ' + item.personInAlmanacRecord.name + ' ' + item.personInAlmanacRecord.suffix}}</div>
-                                    </button>
-                                    @if (item.personInAlmanacRecord.attendingInstID) {
-                                        <p>from</p>
-                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary">
-                                            <div [routerLink]="'/institutions/' + item.personInAlmanacRecord.attendingInstID">{{item.personInAlmanacRecord.attendingInstName}}</div>
-                                        </button>
-                                    }
-                                </div>
+                    </p>
+                }
+            </div>
+            <div actions>
+                <app-cite [title]="heading" kind="Institution" [recordId]="id" [years]="yearsLabel"></app-cite>
+            </div>
+        </app-page-header>
+
+        <app-year-tabs [years]="years" [selected]="year" (selectedChange)="selectYear($event)"></app-year-tabs>
+        <p class="record-year-note">
+            @if (year === null) {
+                Everything the almanacs recorded about this institution, across all {{ years.length }} years.
+            } @else {
+                As listed in the {{ year }} almanac.
+            }
+        </p>
+
+        <div class="record-layout" [class.busy]="loading">
+            <div class="main">
+                <section class="record-section" aria-labelledby="facts-heading">
+                    <h2 id="facts-heading">Facts</h2>
+                    @if (facts.length) {
+                        <dl class="fact-list">
+                            @for (f of facts; track f.label) {
+                                <dt>{{ f.label }}</dt>
+                                <dd [class.long]="f.label === 'Notes'">{{ f.value }}</dd>
                             }
-                            </div>
-                        </div>
-                        }
-                        @if (data.relatedInstitutions && data.relatedInstitutions.length > 0) {
-                            <div class="row">
-                            <div class="cell">Relevant Institutions</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.relatedInstitutions" [matTooltip]="item?.instType || ''">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                    </button>
-                                </div>
-                                <div *ngIf="data.relatedInstitutions.length === 0">None</div>
-                            </div>
-                        </div>
-                        }
-                        @if (data.parentInstitutions && data.parentInstitutions.length > 0) {
-                            <div class="row">
-                            <div class="cell">Parent Institutions</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.parentInstitutions" [matTooltip]="item?.instType || ''">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                    </button>
-                                </div>
-                                <div *ngIf="data.parentInstitutions.length === 0">None</div>
-                            </div>
-                        </div>
-                        }
-                        @if (data.childInstitutions && data.childInstitutions.length > 0) {
-                            <div class="row">
-                            <div class="cell">Child Institutions</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.childInstitutions" [matTooltip]="item?.instType || ''">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                    </button>
-                                </div>
-                                <div *ngIf="data.childInstitutions.length === 0">None</div>
-                            </div>
-                        </div>
-                        }
-                        @if (data.siblingInstitutions && data.siblingInstitutions.length > 0) {
-                            <div class="row">
-                            <div class="cell">Sibling Institutions</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" *ngFor="let item of data.siblingInstitutions" [matTooltip]="item?.instType || ''">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{item.instName}}</div>
-                                    </button>
-                                </div>
-                                <div *ngIf="data.siblingInstitutions.length === 0">None</div>
-                            </div>
-                        </div>
-                        }
-                        @if (data.attendingInstitutions && data.attendingInstitutions.length > 0) {
-                            <div class="row">
-                                <div class="cell">Attending Institutions</div>
-                                <div class="cell">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"  *ngFor="let item of data.attendingInstitutions">
-                                        <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
-                                            <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                        </button>
-                                        @if (item.attendingFrequency) {
-                                        <div>({{ item.attendingFrequency }})</div>
-                                    }
-                                    </div>
-                                    <div *ngIf="data.attendingInstitutions.length === 0">None</div>
-                                </div>
-                            </div>
-                        }
-                        @if (data.attendedBy && data.attendedBy.length > 0) {
-                        <div class="row">
-                            <div class="cell">Attended From</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center" *ngFor="let item of data.attendedBy">
-                                    <button mat-button class="!text-xs md:!text-sm custom-font" color="primary" [matTooltip]="item.latestInstName + ' (' + item.latestYear + ')'">
-                                        <div [routerLink]="'/institutions/' + item.instID">{{ item.instName }}</div>
-                                    </button>
-                                    @if (item.attendingFrequency) {
-                                        <div>({{ item.attendingFrequency }})</div>
-                                    }
-                                </div>
-                                <div *ngIf="data.attendedBy.length === 0">None</div>
-                            </div>
-                        </div>
+                            @if (dioceseInfo.length) {
+                                <dt>Diocese notes</dt>
+                                <dd><button type="button" class="record-link-btn" (click)="showDioceseInfo()">
+                                    Read what the {{ year }} almanac says about the Diocese of {{ dioceseInfo[0].diocese }}</button></dd>
+                            }
+                        </dl>
+                    } @else if (!loading) {
+                        <p class="record-empty">No further details were recorded{{ year ? ' in ' + year : '' }}.</p>
                     }
-                    @if (data.attendedFrequencies && data.attendedFrequencies.length > 0) {
-                        <div class="row">
-                            <div class="cell">Attended</div>
-                            <div class="cell">
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center" *ngFor="let item of data.attendedFrequencies">
-                                    <div>{{ item.frequency }}<span *ngIf="item.year"> ({{ item.year }})</span></div>
-                                </div>
-                            </div>
+                </section>
+
+                <section class="record-section" aria-labelledby="people-heading">
+                    <h2 id="people-heading">People <small>{{ people.length }}</small></h2>
+                    @if (people.length) {
+                        <p class="note">Clergy and religious the almanac listed here{{ year ? ' in ' + year : ', with the years each appears' }}.</p>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Role</th>
+                                        @if (year === null) { <th scope="col">Years</th> }
+                                        <th scope="col">Listed as</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (p of shownPeople; track p.ID) {
+                                        <tr>
+                                            <td><a class="record-link pers" [routerLink]="['/people', p.ID]">{{ p.label }}</a></td>
+                                            <td data-label="Role" [class.empty]="!p.roles" [class.muted]="!p.roles">{{ p.roles || '—' }}</td>
+                                            @if (year === null) { <td data-label="Years" class="num">{{ yearsOf(p) }}</td> }
+                                            <td data-label="Listed as">
+                                                @if (p.resident) { Resident }
+                                                @if (p.resident && p.visitingFrom.length) { · }
+                                                @if (p.visitingFrom.length) {
+                                                    Visiting from
+                                                    @for (v of p.visitingFrom; track v.ID; let last = $last) {
+                                                        <a class="record-link inst" [class.unnamed]="v.unnamed" [routerLink]="['/institutions', v.ID]">{{ v.label }}</a>{{ last ? '' : ', ' }}
+                                                    }
+                                                } @else if (!p.resident) { Visiting }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
+                        @if (people.length > peoplePreview) {
+                            <button type="button" class="btn record-show-all" (click)="showAllPeople = !showAllPeople">
+                                {{ showAllPeople ? 'Show fewer' : 'Show all ' + people.length + ' people' }}
+                            </button>
+                        }
+                    } @else {
+                        <p class="record-empty">The almanac named no one here{{ year ? ' in ' + year : '' }}.</p>
                     }
-                    </div>
-                    </div>
-                    @if (dendrogramData && dendrogramData.children && dendrogramData.children.length > 0) {
-                        <div class="w-full mt-4">
-                            <app-tree-graph [data]="dendrogramData" [label]="data.instName + ' — Associated Institutions'" (nodeDoubleClick)="onDendrogramNodeDoubleClick($event)"></app-tree-graph>
+                </section>
+            </div>
+
+            <aside class="rail">
+                @if (mapData.length) {
+                    <section class="record-section" aria-labelledby="map-heading">
+                        <h2 id="map-heading">Location</h2>
+                        <div class="record-map">
+                            <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
                         </div>
+                    </section>
+                }
+                @for (g of related; track g.heading) {
+                    <section class="record-section">
+                        <h2>{{ g.heading }} <small>{{ g.items.length }}</small></h2>
+                        <ul class="record-related">
+                            @for (r of g.items; track r.ID) {
+                                <li>
+                                    <a class="record-link inst" [class.unnamed]="r.unnamed" [routerLink]="['/institutions', r.ID]">{{ r.label }}</a>
+                                    @if (r.detail) { <span class="record-detail">{{ r.detail }}</span> }
+                                </li>
+                            }
+                        </ul>
+                    </section>
+                }
+            </aside>
+        </div>
+
+        @if (network.nodes.length > 1 || hasTree) {
+            <section class="record-section record-connections" aria-labelledby="connections-heading">
+                <h2 id="connections-heading">Connections</h2>
+                <div class="record-conn-tabs" role="tablist" aria-label="Connections view">
+                    @if (network.nodes.length > 1) {
+                        <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'network'" (click)="connectionsTab = 'network'">People network</button>
+                    }
+                    @if (hasTree) {
+                        <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'tree' || network.nodes.length <= 1" (click)="connectionsTab = 'tree'">Related institutions</button>
                     }
                 </div>
-                <div class="w-full flex flex-col justify-content items-center">
-                    <div class="map-container w-full md:!hidden flex justify-center items-center">
-                        <!--<google-map [options]="mapOptionsSmall" width="400px" height="250px">
-                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
-                            </map-marker>
-                        </google-map> -->
-                        <app-map-vis [data]="mapData"
-                            [simple]="true"
-                            [options]="{
-                            zoom:6,
-                            center: {
-                                lat: data.latitude || 40,
-                                lng: data.longitude || -100
-                            },
-                            size: {width: '400px', height: '250px'}
-                        }">
-                        </app-map-vis>
-                    </div>
-                    <div class="map-container md:w-auto !hidden md:!flex">
-                        <!--<google-map [options]="mapOptionsWide" width="500px" height="350px">
-                            <map-marker [position]="{lat: data.latitude, lng: data.longitude}" [title]="data.instName" (mapClick)="clickMap($event)">
-                            </map-marker>
-                        </google-map>-->
-                        <app-map-vis [data]="mapData"
-                            [simple]="true"
-                            [options]="{
-                            zoom:6,
-                            center: {
-                                lat: data.latitude || 40,
-                                lng: data.longitude || -100
-                            },
-                            size: {width: '500px', height: '400px'}
-                        }">
-                        </app-map-vis>
-                    </div>
-                    @if (network.nodes.length > 1) {
-                <div class="w-full mt-4" style="width: 500px;">
+                @if (connectionsTab === 'network' && network.nodes.length > 1) {
                     <app-network-graph
                         [data]="network"
-                        [label]="data.instName + ' — People Network'"
+                        [label]="'People who served ' + heading"
                         [options]="networkOptions"
                         [startYear]="networkStartYear"
                         [endYear]="networkEndYear"
-                        [minYear]="data.year[0]"
-                        [maxYear]="data.year[data.year.length - 1]"
-                        [timeWindowLoading]="networkTimeWindowLoading"
-                        (timeWindowChange)="onNetworkTimeWindowChange($event)">
+                        [minYear]="years[0]"
+                        [maxYear]="years[years.length - 1]"
+                        [timeWindowLoading]="networkLoading"
+                        (timeWindowChange)="onNetworkWindow($event)">
                     </app-network-graph>
-                </div>
+                } @else if (hasTree) {
+                    <app-tree-graph [data]="dendrogram" [label]="heading + ' and related institutions'"
+                        (nodeDoubleClick)="onTreeNode($event)"></app-tree-graph>
                 }
-                </div>
-            </div>
-            <button mat-button class="tertiary-btn custom-font" (click)="goBack()">
-                <mat-icon>arrow_back</mat-icon>
-                Back
-            </button>
-    </mat-card-content>}
-</mat-card>
+            </section>
+        }
+    }
+</div>

@@ -29,6 +29,21 @@ export function personLabel(p: { title?: string; name?: string; suffix?: string 
   return [p.title, p.name, p.suffix].filter(Boolean).join(' ').trim() || 'Unnamed person';
 }
 
+/** "1833–1838, 1864, 1866–1870": consecutive years grouped into ranges. */
+export function yearRuns(years: Iterable<number>): string {
+  const sorted = [...new Set(years)].sort((a, b) => a - b);
+  const runs: string[] = [];
+  let start = sorted[0], prev = sorted[0];
+  for (const y of sorted.slice(1).concat(NaN)) {
+    if (y !== prev + 1) {
+      runs.push(start === prev ? `${start}` : `${start}–${prev}`);
+      start = y;
+    }
+    prev = y;
+  }
+  return sorted.length ? runs.join(', ') : '';
+}
+
 /** "1833–1870" or "1866" for a sorted list of years. */
 export function yearSpan(years: number[]): string {
   if (!years.length) return '';

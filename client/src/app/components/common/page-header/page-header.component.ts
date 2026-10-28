@@ -22,6 +22,10 @@ export class PageHeaderComponent {
   @Input({ required: true }) title = '';
   @Input() subtitle = '';
   @Input() eyebrow = '';
+  /** Eyebrow colour, e.g. an entity token such as var(--c-inst). */
+  @Input() eyebrowColor = '';
+  /** Style the title as a generated label (e.g. "Unnamed church"), not a recorded name. */
+  @Input() titleMuted = false;
   @Input() crumbs: Crumb[] = [];
 
   get parent(): Crumb | undefined {
