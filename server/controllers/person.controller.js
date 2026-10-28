@@ -515,6 +515,45 @@ exports.findOne = async (req, res) => {
 };
 
 
+// Every (year, institution) this person was listed at, for the service
+// timeline on their record page.
+exports.getTimeline = async (req, res) => {
+    const id = req.params.id;
+    const rows = await db.sequelize.query(
+        `SELECT ar.year, ar.instID, ar.instName, ar.instType, ar.diocese, ar.cityReg, ar.stateReg,
+                ar.latitude, ar.longitude,
+                pia.name, pia.title, pia.suffix, pia.role, pia.note, pia.isAttending, pia.attendingInstID
+           FROM personInAlmanacRecords pia
+           JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
+          WHERE pia.persID = :id
+          ORDER BY ar.year, ar.instName`,
+        { replacements: { id }, type: db.Sequelize.QueryTypes.SELECT }
+    );
+    if (!rows.length) {
+        return res.status(404).json({ message: `Cannot find person with id=${id}.` });
+    }
+    res.send({
+        rows: rows.map(r => ({
+            year: r.year,
+            instID: r.instID,
+            instName: r.instName || '',
+            instType: r.instType || '',
+            diocese: r.diocese || '',
+            city: r.cityReg || '',
+            state: r.stateReg || '',
+            latitude: r.latitude,
+            longitude: r.longitude,
+            name: r.name || '',
+            title: r.title || '',
+            suffix: r.suffix || '',
+            role: r.role || '',
+            note: r.note || '',
+            isAttending: !!r.isAttending,
+            attendingInstID: r.attendingInstID || '',
+        })),
+    });
+};
+
 exports.getPersonNetwork = async (req, res) => {
     const id = req.params.id;
     const params = parseNetworkParams(req.query);

@@ -1158,6 +1158,58 @@ exports.getPersonNetwork = async (req, res) => {
     }
 };
 
+// Year-by-year view of one institution for its record page: what each
+// almanac year recorded (name, type, diocese, place) and who was listed there
+// that year. Branching ids (A&B) match like findByID.
+exports.getTimeline = async (req, res) => {
+    const id = req.params.id;
+    const rows = await db.sequelize.query(
+        `SELECT ar.year, ar.instID, ar.instName, ar.instType, ar.diocese, ar.cityReg, ar.stateReg,
+                pia.persID, pia.name, pia.title, pia.suffix, pia.role, pia.isAttending, pia.attendingInstID,
+                att.instName AS attendingInstName, att.instType AS attendingInstType
+           FROM almanacRecords ar
+           LEFT JOIN personInAlmanacRecords pia ON pia.almanacRecordID = ar.ID
+           LEFT JOIN almanacRecords att ON att.instID = pia.attendingInstID AND att.year = ar.year
+          WHERE ar.instID = :id OR FIND_IN_SET(:id, REPLACE(ar.instID, '&', ',')) > 0
+          ORDER BY ar.year, pia.lastName, pia.name`,
+        { replacements: { id }, type: db.Sequelize.QueryTypes.SELECT }
+    );
+    if (!rows.length) {
+        return res.status(404).json({ message: `Cannot find institution with id=${id}.` });
+    }
+    const years = [];
+    for (const r of rows) {
+        let y = years[years.length - 1];
+        if (!y || y.year !== r.year || y.instID !== r.instID) {
+            y = {
+                year: r.year,
+                instID: r.instID,
+                name: r.instName || '',
+                type: r.instType || '',
+                diocese: r.diocese || '',
+                city: r.cityReg || '',
+                state: r.stateReg || '',
+                people: [],
+            };
+            years.push(y);
+        }
+        if (r.persID) {
+            y.people.push({
+                ID: r.persID,
+                name: r.name || '',
+                title: r.title || '',
+                suffix: r.suffix || '',
+                role: r.role || '',
+                isAttending: !!r.isAttending,
+                attendingInstID: r.attendingInstID || '',
+                attendingInstName: r.attendingInstName || '',
+                attendingInstType: r.attendingInstType || '',
+            });
+        }
+    }
+    res.send({ years });
+};
+
 exports.getDendrogramData = async (req, res) => {
     const targetID = req.params.id;
     const yearParam = parseIntParam(req.query.year, 'year');
