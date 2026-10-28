@@ -25,8 +25,8 @@
 ﻿pit.pa.0014,﻿church,﻿SS. Peter and Paul,English,,,,﻿Beaver County,,﻿Beaver,﻿Beaver,﻿PA,,40.699188,-80.297675,,,,﻿jam_reid_001,﻿Rev.,﻿J. Reid,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0015,﻿church,﻿St. Thomas',English,,,,﻿Bedford County,,﻿Bedford,﻿Bedford,﻿PA,,40.0177,-78.501392,,,,﻿tho_heyden_001,﻿Very Rev.,﻿Thomas Heyden,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0016,﻿church,﻿St. John Baptist,English,,﻿Buchanan P.O.,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.42793443,-79.98431837,,,,﻿w_pollard_001,﻿Rev.,﻿W. Pollard,,﻿Rector,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿vin_taylor_001,﻿Rev.,﻿Vincent Taylor,﻿Passionist,﻿Rector,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿jam_hoffzugott_001,﻿Rev.,﻿Jas. Hoffzugott,﻿Passionist,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿vin_taylor_001,﻿Rev.,﻿Vincent Taylor,,"﻿Rector, Passionist",,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0017,﻿church,﻿St. Michael's,﻿German,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.425016,-79.984436,,,,﻿jam_hoffzugott_001,﻿Rev.,﻿Jas. Hoffzugott,,﻿Passionist,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0121_02,﻿church,﻿B. Paul of the Cross,English,,,,﻿Allegheny County,,﻿Birmingham,﻿Birmingham,﻿PA,,40.422815,-79.983896,﻿?,,,,,,,,,,,﻿Passionist Fathers,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0019,﻿church,﻿SS. Simon and Jude,English,,,,﻿Indiana County,,﻿Blairsville,﻿Blairsville,﻿PA,,40.432626,-79.258078,,,,﻿jam_a_stillinger_001,﻿Rev.,﻿J. A. Stillinger,,﻿Rector,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0020,﻿church,[Unnamed Institution],English,,,,﻿Allegheny County,,﻿Braddock's Field,﻿Braddock,﻿PA,,40.402879,-79.863361,,,,﻿c_neeson_001,﻿Rev.,﻿C. Nisson,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
@@ -50,7 +50,7 @@
 ﻿pit.pa.0036,﻿church,[Unnamed Institution],English,,,,﻿Bedford County,,﻿Clearville,﻿Clearville,﻿PA,,39.916751,-78.383904,﻿pit.pa.0015,﻿attended from Bedford,,,,,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0037,﻿church,[Unnamed Institution],English,,,,﻿Washington County,,﻿Coal Bluff,,﻿PA,,40.227964,-79.975557,﻿pit.pa.0043,﻿from Elizabeth,,,,,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0038,﻿church,[Unnamed Institution],English,,,,﻿Fayette County,,﻿Connellsville,﻿Connellsville,﻿PA,,40.017852,-79.589483,,,,﻿joh_haney_001,﻿Rev.,﻿J. Haney,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0039,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Westmoreland County,,﻿Derry Township,,﻿PA,,40.390914,-79.354721,,,,﻿jer_kearney_001,﻿Rev.,﻿J. Kearney,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0039,﻿church,﻿Our Lady of Mount Carmel,English,,,,﻿Westmoreland County,,﻿Derry Township,,﻿PA,,40.390914,-79.354721,,,,﻿jam_kearney_001,﻿Rev.,﻿J. Kearney,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0040,﻿church,﻿St. Joseph's,English,,,,﻿Butler County,,﻿Donegal,﻿Donegal Township,﻿PA,,40.903687,-79.778834,﻿pit.pa.0028,﻿attended from Butler,,,,,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0041,﻿church,﻿SS. Peter and Paul,English,,,,﻿Allegheny County,,﻿East-Liberty,﻿East Liberty,﻿PA,,40.462712,-79.918123,,,,﻿sug_bierl_001,﻿Rev.,﻿J. Bierl,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0042,﻿church,﻿St. Patrick's,English,,,,﻿Cambria County,,﻿Ebensburgh,﻿Ebensburg,﻿PA,,40.515092,-78.874024,,,,﻿r_c_christy_001,﻿Rev.,﻿R. C. Christy,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
@@ -75,7 +75,7 @@
 ﻿pit.pa.0059&0165,﻿church,"﻿St. Joseph's, Immaculate Conception",﻿German,,,,﻿Cambria County,,﻿Johnstown,﻿Johnstown,﻿PA,,40.295565,-78.874443,,,,﻿chi_bernetzeder_001,﻿Rev.,﻿Chilian Bernetzeder,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0060,﻿church,﻿St. Mary's,English,,,,﻿Armstrong County,,﻿Kittaning,﻿Kittanning,﻿PA,,40.827281,-79.544207,,,,﻿joh_orourke_001,﻿Rev.,﻿John O'Rourke,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0061,﻿church,﻿St. Mary's,﻿German,,,,,,﻿Klindale,,﻿PA,,40.241495,-75.283786,﻿pit.pa.0009,"﻿Attended from St. Mary's, Allegheny",,,,,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0062,﻿church,﻿Holy Family,English,,,,﻿Westmoreland County,,﻿Latrobe,﻿Latrobe,﻿PA,,40.31464,-79.381807,,,,﻿jer_kearney_001,﻿Rev.,﻿Jerome Kearney,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0062,﻿church,﻿Holy Family,English,,,,﻿Westmoreland County,,﻿Latrobe,﻿Latrobe,﻿PA,,40.31464,-79.381807,,,,﻿jam_kearney_001,﻿Rev.,﻿Jerome Kearney,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0063,﻿church,﻿St. Mary's,English,,,,﻿Allegheny County,,﻿Lawrenceville,﻿Lawrenceville,﻿PA,,40.469897,-79.955759,,,,﻿a_p_gibbs_001,﻿Rev.,﻿A. P. Gibbs,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0065,﻿church,[Unnamed Institution],﻿German,,,,﻿Allegheny County,,﻿Lawrenceville,,﻿PA,,40.465278,-79.963889,,,,﻿j_tamchina_001,﻿Rev.,﻿J. Tamchina,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0066,﻿church,﻿Most Holy Trinity,English,,,,﻿Westmoreland County,,﻿Ligonier,﻿Loretto,﻿PA,,40.247374,-79.240872,﻿pit.pa.0119,﻿attended from St. Vincent's,,,,,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
@@ -89,7 +89,7 @@
 ﻿pit.pa.0074,﻿church,﻿St. Alphonsus',English,,,,﻿Butler County,,﻿Murrinsville,﻿New Brighton,﻿PA,,40.739029,-80.313882,,,,﻿p_kerr_001,﻿Rev.,﻿P. Kerr,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0075,﻿church,﻿St. Joseph's,English,,,,﻿Beaver County,,﻿New-Brighton,﻿New Castle,﻿PA,,41.001438,-80.348496,,,,﻿m_j_mitchell_001,﻿Rev.,﻿M. J. Mitchell,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0076,﻿church,﻿St. Mary's,English,,,,﻿Lawrence County,,﻿Newcastle,﻿New Derry,﻿PA,,40.739029,-80.313882,,,,﻿jas_canevin_001,﻿Rev.,﻿J. A. Canavin,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
-﻿pit.pa.0077,﻿church,﻿St. Martin's,English,,,,﻿Westmoreland County,,﻿New-Derry,﻿Newry,﻿PA,,41.001438,-80.348496,,,,﻿jer_kearney_001,﻿Rev.,﻿Jerome Kearney,,,﻿Latrobe,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
+﻿pit.pa.0077,﻿church,﻿St. Martin's,English,,,,﻿Westmoreland County,,﻿New-Derry,﻿Newry,﻿PA,,41.001438,-80.348496,,,,﻿jam_kearney_001,﻿Rev.,﻿Jerome Kearney,,,﻿Latrobe,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0094,﻿church,﻿Church of Immaculate Conception,English,,,,﻿Allegheny County,,﻿New-Germany,,﻿PA,,40.412245,-78.755037,﻿pit.pa.0058,﻿attended from Johnstown,,,,,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0078,﻿church,﻿St. Patrick's,English,,,,﻿Blair County,,﻿Newry,,﻿PA,,40.348466,-79.317345,,,,﻿jam_bradley_001,﻿Rev.,﻿James Bradley,,﻿Rector,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh
 ﻿pit.pa.0079,﻿church,[Unnamed Institution],English,,,,﻿Allegheny County,,﻿Pine Creek,,﻿PA,,40.504191,-79.924915,,,,﻿j_rosswell_001,﻿Rev.,﻿J. Rosswell,,,,,,,,1866,﻿,﻿,﻿Pittsburgh,Pittsburgh

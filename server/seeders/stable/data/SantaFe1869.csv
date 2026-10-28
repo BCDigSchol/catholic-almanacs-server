@@ -16,7 +16,7 @@
 ﻿san.nm.0012,﻿church,﻿Parish Church of Santo Tomas,English,,,﻿Abiquiu,,,﻿Abiquiu,﻿Abiquiu,﻿NM,,﻿35.82501,﻿-105.978414,,,,﻿j_valesy_001,﻿Rev.,﻿J. Valesy,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0012,﻿church,﻿Parish Church of Santo Tomas,English,,,﻿Abiquiu,,,﻿Abiquiu,﻿Abiquiu,﻿NM,,﻿35.82501,﻿-105.978414,,,,﻿e_parisis_001,﻿Rev.,﻿E. Parisis,,﻿Assistant,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0013,﻿chapel,﻿Santa Rosa's Chapel,English,,,﻿Abiquiu,,,,,﻿NM,,,,﻿san.nm.0012,﻿Attended from Abiquiu,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
-﻿san.nm.0014,﻿chapel,﻿Chapel of N. Sen. de Guadalupe,English,,,﻿Abiquiu,,,﻿El Rito,﻿El Rito,﻿NM,,﻿36.209999,﻿-106.290624,﻿san.nm.0012,﻿Attended from Abiquiu,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
+﻿san.nm.0014,﻿chapel,﻿Chapel of N. Sen. de Guadalupe,English,,,﻿Abiquiu,,,﻿El Rito,﻿Abiquiu,﻿NM,,﻿36.209999,﻿-106.290624,﻿san.nm.0012,﻿Attended from Abiquiu,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0015,﻿chapel,﻿Chapel of N. Sen. de Guadalupe,English,,,﻿Abiquiu,,,﻿Los Ancones,﻿Ancones,﻿NM,,﻿36.344236,﻿-106.188487,﻿san.nm.0012,﻿Attended from Abiquiu,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0016,﻿chapel,﻿Chapel of N. Sen. de Guadalupe,English,,,﻿Abiquiu,,,﻿Servilleta,,﻿NM,,﻿36.423908,﻿-106.063076,﻿san.nm.0012,﻿Attended from Abiquiu,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0017,﻿chapel,﻿Chapel of N. Sen. de Guadalupe,English,,,﻿Abiquiu,,,﻿El Ojo Caliente,﻿Ojo Caliente,﻿NM,,﻿36.553302,﻿-105.935549,﻿san.nm.0012,﻿Attended from Abiquiu,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
@@ -66,7 +66,7 @@
 ﻿san.nm.0058,﻿chapel,﻿Chapel of San Antonio,English,,,﻿Isleta,,,﻿Lentes,﻿Los Lunas,﻿NM,,﻿34.766669,﻿-106.618068,﻿san.nm.0055,﻿Chapel attended from Isleta,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0059,﻿church,﻿Parish Church of Santiago,English,,﻿Indian Pueblo,﻿Jemes,,,﻿Jemes,﻿Jemez Pueblo,﻿NM,,﻿35.613917,﻿-106.725868,﻿san.nm.0041,﻿Attended from Bernalillo,,﻿nic_valenica_001,﻿Rev.,﻿N. Valencia,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0060,﻿chapel,﻿San Isidro's Chapel,English,,,,,,,,﻿NM,,﻿35.563363,﻿-106.770591,﻿san.nm.0059,﻿attended from Jemes,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
-﻿san.nm.0061,﻿chapel,﻿San Isidro's Chapel,English,,﻿Indian Pueblo,﻿Jemes,,,﻿Silla,,﻿NM,,﻿34.972731,﻿-105.032363,﻿san.nm.0059,﻿attended from Jemes,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
+﻿san.nm.0061,﻿chapel,[Unnamed Institution],English,,﻿Indian Pueblo,﻿Jemes,,,﻿Silla,,﻿NM,,﻿34.972731,﻿-105.032363,﻿san.nm.0059,﻿attended from Jemes,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0062,﻿chapel,[Unnamed Institution],English,,﻿Indian Pueblo,﻿Jemes,,,﻿Santa Anna,﻿Santa Ana Pueblo,﻿NM,,﻿35.339985,﻿-106.522529,﻿san.nm.0059,﻿attended from Jemes,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0063,﻿church,﻿Parish Church of Santa Cruz,English,,,﻿La Cañada,,,﻿La Cañada,﻿Santa Cruz,﻿NM,,﻿35.991132,﻿-106.04881,,,,﻿jua_d_trujillo_001,﻿Rev.,﻿Juan de Jesus Trujillo,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0064,﻿chapel,﻿Sanctuario del Sr. de Esquipula,English,,,﻿La Cañada,,,,﻿Chimayo,﻿NM,,﻿36.003913,﻿-105.946966,﻿san.nm.0063,﻿attended from Cañada,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
@@ -74,7 +74,7 @@
 ﻿san.nm.0066,﻿chapel,﻿San Antonio's Chapel,English,,,﻿La Cañada,,,﻿El Quemado,﻿Cordova,﻿NM,,﻿34.972731,﻿-105.032363,﻿san.nm.0063,﻿attended from Cañada,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0067,﻿chapel,﻿Chapel of N. Senora,English,,,﻿La Cañada,,,﻿Las Truchas,﻿Truchas,﻿NM,,﻿32.314444,﻿-106.778889,﻿san.nm.0063,﻿attended from Cañada,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0215,﻿church,﻿Parish Church,English,,,﻿Mesilla Valley,,﻿Doña Ana County,﻿Las Cruces,﻿Las Cruces,﻿NM,,﻿32.387222,﻿-106.816389,,,,﻿man_chavez_001,﻿Rev.,﻿Manuel Chaves,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
-﻿san.nm.0216,﻿chapel,[Unnamed Institution],English,,,,,﻿Doña Ana County,﻿Donana,﻿Dona Ana,﻿NM,,﻿32.387222,﻿-106.816389,,﻿attended from Las Cruces,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
+﻿san.nm.0216,﻿chapel,﻿Our Lady of Purification,English,,,,,﻿Doña Ana County,﻿Donana,﻿Dona Ana,﻿NM,,﻿32.387222,﻿-106.816389,,﻿attended from Las Cruces,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0068,﻿church,﻿Parish Church of Na. Sen. de los Dolores,English,,,﻿Las Vegas,,,﻿Las Vegas,﻿Las Vegas,﻿NM,,﻿35.594214,﻿-105.222798,,,,﻿jos_m_coudert_001,﻿Rev.,﻿José Maria Coudert,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0068,﻿church,﻿Parish Church of Na. Sen. de los Dolores,English,,,﻿Las Vegas,,,﻿Las Vegas,﻿Las Vegas,﻿NM,,﻿35.594214,﻿-105.222798,,,,﻿c_peyron_001,﻿Rev.,﻿C. Peyron,,﻿Assistant,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0069,﻿chapel,[Unnamed Institution],English,,,﻿Las Vegas,,,﻿Plasa Ariba,,﻿NM,,﻿34.972731,﻿-105.032363,﻿san.nm.0068,﻿attended from Las Vegas,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
@@ -120,7 +120,7 @@
 ﻿san.nm.0105,﻿church,﻿San Juan de los Cavalleros,English,,﻿Indian Pueblo,﻿San Juan de los Cavalleros,,,,﻿Ohkay Owingeh,﻿NM,,﻿36.052801,﻿-106.070579,,,,﻿c_seux_001,﻿Rev.,﻿C. Seux,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0106,﻿chapel,[Unnamed Institution],English,,,﻿San Juan de los Cavalleros,,,﻿Plasa del Alcalde,﻿Alcalde,﻿NM,,﻿36.088912,﻿-106.053634,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0107,﻿chapel,﻿Chapel of Na. Sen. de la Soledad,English,,,﻿San Juan de los Cavalleros,,,﻿La Villita,﻿La Villita,﻿NM,,﻿34.972731,﻿-105.032363,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
-﻿san.nm.0108,﻿chapel,[Unnamed Institution],English,,,﻿San Juan de los Cavalleros,,﻿Socorro County,﻿El Bosquecito,﻿El Bosquecito,﻿NM,,﻿33.977288,﻿-106.850858,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
+﻿san.nm.0108,﻿chapel,[Unnamed Institution],English,,,﻿San Juan de los Cavalleros,,﻿Socorro County,﻿El Bosquecito,﻿San Antonio,﻿NM,,﻿33.977288,﻿-106.850858,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0109,﻿chapel,﻿Chapel of Na. Sen. de Guadalupe,English,,,﻿San Juan de los Cavalleros,,,﻿La Jolla,﻿La Joya,﻿NM,,﻿34.345639,﻿-106.845692,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0110,﻿chapel,﻿Chapel of San Rafael,English,,,﻿San Juan de los Cavalleros,,,,﻿Guique/Ohkay Owingeh,﻿NM,,﻿36.052801,﻿-106.070579,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe
 ﻿san.nm.0111,﻿chapel,[Unnamed Institution],English,,,﻿San Juan de los Cavalleros,,,﻿Chamita,﻿Chamita,﻿NM,,﻿36.075301,﻿-106.104067,﻿san.nm.0091,﻿Attended from San Juan,,,,,,,,,,,,1869,﻿,﻿,﻿Santa Fé,SantaFe

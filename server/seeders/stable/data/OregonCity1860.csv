@@ -1,0 +1,35 @@
+﻿instID,church_type,instName,language,instNote,placeName,region,county_orig,county_reg,city_orig,city_reg,state_orig,state_reg,latitude,longitude,attendingInstID,attendingChurch,attendingChurchFrequency,persID,persTitle,persName,persSuffix,persRole,persNote,memberType,member,affiliated,order,year,attendingPersID,attendingChurchNote,diocese,diocese_reg
+﻿ore.or.0002,﻿cathedral,﻿Cathedral of the Sacred Heart,English,,,,,,﻿Oregon City,﻿Oregon City,﻿OR,,45.35561,-122.605853,﻿ore.or.0001,,,﻿f_n_blanchet_001,﻿Most Rev.,﻿F. N. Blanchet,﻿D.D,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0002,﻿cathedral,﻿Cathedral of the Sacred Heart,English,,,,,,﻿Oregon City,﻿Oregon City,﻿OR,,45.35561,-122.605853,,,,﻿z_poulin_001,﻿Rev.,﻿A. Z. Poulin,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0005,﻿cathedral,[Unnamed Institution],English,,,,,,﻿Molala,﻿Molalla,﻿OR,,45.147544,-122.577126,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0007,﻿cathedral,[Unnamed Institution],English,,,,,,﻿Hillborough,,,,45.520134,-122.989849,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0007,﻿church,[Unnamed Institution],English,,,,,,﻿Linn City,,,,45.520134,-122.989849,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0001,﻿church,﻿Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿OR,,45.523698,-122.689059,,,,﻿pat_mackin_001,﻿Rev.,﻿Patrick Mackin,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0001,﻿church,﻿Immaculate Conception,English,,,,,,﻿Portland,﻿Portland,﻿OR,,45.523698,-122.689059,,,,﻿lew_piette_001,﻿Rev.,﻿Mr. Piette,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0004,﻿church,[Unnamed Institution],English,,,,,,﻿Astoria,,,,46.187884,-123.831253,,﻿attended from Portland,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0004,﻿church,[Unnamed Institution],English,,,,,,﻿Mount Rainer,,,,46.187884,-123.831253,,﻿attended from Portland,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0004,﻿church,[Unnamed Institution],English,,,,,,﻿St. Helen's,,,,46.187884,-123.831253,,﻿attended from Portland,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0004,﻿church,[Unnamed Institution],English,,,,,,﻿Columbia Bottom,,,,46.187884,-123.831253,,﻿attended from Portland,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0051,﻿church,﻿St. Peter's,English,,,,﻿Wano County,,﻿Dallas City,﻿City of the Dalles,﻿OR,,45.601772,-121.184843,,,,﻿m_oreilly_004,﻿Rev.,﻿M. O'Reilly,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0051,﻿church,﻿Symcoe,English,"﻿Military post, W.T.",,,﻿Wano County,,﻿Dallas City,﻿City of the Dalles,﻿OR,,45.601772,-121.184843,,﻿attended from Dallas,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0051,﻿church,﻿Symcoe,English,"﻿Military post, W.T.",,,﻿Wano County,,﻿Walla Walla,﻿City of the Dalles,﻿OR,,45.601772,-121.184843,,﻿attended from Dallas,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0051,﻿church,﻿Symcoe,English,"﻿Military post, W.T.",,﻿Canada,﻿Wano County,,﻿Walla Walla,﻿City of the Dalles,﻿OR,,45.601772,-121.184843,,﻿attended from Dallas,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0015,﻿church,﻿St. Paul's,English,,,﻿French Prairie,,,﻿St. Paul,﻿St. Paul,﻿OR,,45.262342,-122.840374,,,,﻿joh_f_malo_001,﻿Rev.,﻿John F. Malo,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0013,﻿church,[Unnamed Institution],English,,,﻿French Prairie,,,﻿St. Louis,﻿St. Louis,﻿OR,,45.123267,-122.942632,,,,﻿bar_delorme_001,﻿Very Rev.,﻿B. Delorme,,﻿V.G.,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿church,﻿St. Patrick,English,,﻿Fort Yam Hill,,﻿Yam Hil County,,,,﻿OR,,45.177198,-123.23953,,﻿attended from St. Louis,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Patrick,English,,﻿Fort Yam Hill,,﻿Marion County,,﻿Parkersville,,﻿OR,,45.177198,-123.23953,,﻿attended from St. Louis,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Patrick,English,,﻿Fort Yam Hill,,﻿Marion County,,﻿Salem,,﻿OR,,45.177198,-123.23953,,﻿attended from St. Louis,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,"﻿church, station",﻿St. Joseph's,English,,﻿Fort Yam Hill,,﻿Marion County,,﻿Jacksonville,,﻿OR,,45.177198,-123.23953,,,,﻿a_s_croquet_001,﻿Rev.,﻿Adrian Croquet,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,"﻿church, station",﻿St. Joseph's,English,,﻿Fort Yam Hill,,﻿Marion County,,﻿Jacksonville,,﻿OR,,45.177198,-123.23953,,,,﻿t_mesplié_001,﻿Rev.,﻿T. Mesplié,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Scottsburg,,﻿OR,,45.177198,-123.23953,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Winchester,,﻿OR,,45.177198,-123.23953,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Eugene City,,﻿OR,,45.177198,-123.23953,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,"﻿Cor Vallis, or Marysville",,﻿OR,,45.177198,-123.23953,,﻿attended from Oregon City,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Rosebury,,﻿OR,,45.177198,-123.23953,,﻿attended from Jacksonville,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Canonville,,﻿OR,,45.177198,-123.23953,,﻿attended from Jacksonville,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Kerbyville,,﻿OR,,45.177198,-123.23953,,﻿attended from Jacksonville,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Port Oxford,,﻿OR,,45.177198,-123.23953,,﻿attended from Jacksonville,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿station,﻿St. Joseph's,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Eupine City,,﻿OR,,45.177198,-123.23953,,﻿attended from Jacksonville,,,,,,,,,,,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿female academy,﻿Academy for Young Ladies,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿Portland,,﻿OR,,45.177198,-123.23953,,,,,,,,,,﻿religious,,﻿under the direction of the Sisters,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿female academy,﻿Academy for Young Ladies,English,﻿on the South,﻿Fort Yam Hill,,﻿Marion County,,﻿St. Paul's,,﻿OR,,45.177198,-123.23953,,,,,,,,,,﻿religious,,﻿under the Sisters,,1860,﻿,﻿,﻿Oregon City,OregonCity
+﻿ore.or.0019,﻿female academy,﻿Female Academy,English,"﻿shortly to be opened by the Very Rev. B Delorme, V.G.",﻿Fort Yam Hill,,﻿Marion County,,﻿St. Paul's,﻿Oregon City,﻿OR,,45.177198,-123.23953,,,,,,,,,,﻿religious,,﻿under the Sisters,,1860,﻿,﻿,﻿Oregon City,OregonCity

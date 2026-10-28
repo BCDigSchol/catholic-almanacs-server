@@ -7,7 +7,7 @@
 ﻿boi.id.0005,﻿church,﻿St. Francis',English,,,﻿District of Boise,,﻿Boise County,﻿Pioneer City,﻿Pioneerville,﻿ID,,43.968889,-115.846667,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0002,﻿church,[Unnamed Institution],English,,,﻿District of Boise,,﻿Ada County,﻿Boise City,﻿Boise,﻿ID,,43.615833,-116.201667,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0012,﻿church,[Unnamed Institution],English,,,﻿District of Boise,,﻿Elmore County,﻿Rocky Car,﻿Rocky Bar,﻿ID,,43.689167,-115.29,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0013,﻿church,[Unnamed Institution],English,,,﻿District of Boise,,,﻿Yuba,,﻿ID,,,,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0013,﻿church,[Unnamed Institution],English,,,﻿District of Boise,,,﻿Yuba,,﻿ID,,43.7679547,-115.1439697,﻿boi.id.0001,﻿Attended from Idaho City,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0007,﻿church,﻿St. Andrew's,English,,,﻿District of Owyhee,,﻿Owyhee County,﻿Silver City,﻿Silver City,﻿ID,,43.016944,-116.733056,,,,﻿t_mesplie_001,﻿Rev.,﻿T. Mesplie,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0007,﻿church,﻿St. Andrew's,English,,,﻿District of Owyhee,,﻿Owyhee County,﻿Silver City,﻿Silver City,﻿ID,,43.016944,-116.733056,,,,﻿kil_coll_001,﻿Rev.,﻿Kil. Coll.,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0014,﻿church,[Unnamed Institution],English,,,﻿District of Owyhee,,﻿Owyhee County,﻿Owyhee City,﻿Owyhee,﻿ID,,,,,,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
@@ -16,14 +16,14 @@
 ﻿boi.id.0016,﻿church,[Unnamed Institution],English,,,﻿District of Idaho,,﻿Clearwater County,﻿Orofino,﻿Orofino,﻿ID,,46.485556,-116.242222,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0017,﻿church,[Unnamed Institution],English,,,﻿District of Idaho,,﻿Idaho County,﻿Elk City,﻿Elk City,﻿ID,,45.826944,-115.436667,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0010,﻿church,[Unnamed Institution],English,,,﻿District of Idaho,,﻿Idaho County,﻿Florence,﻿Florence,﻿ID,,45.501111,-116.028333,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0011,﻿church,[Unnamed Institution],English,,,﻿District of Idaho,,﻿Idaho County,﻿Warren,﻿Warren,﻿ID,,45.264167,-115.676389,﻿boi.id.0015,﻿Attended from Lewiston,,﻿g_gazzoli_001,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0018,﻿mission,"﻿Cœur de'Alène Mission, Sacred Heart",English,,,,,﻿Kootenai County,﻿Cœur de'Alène,﻿Cataldo,﻿ID,,47.550091,-116.357675,,,,﻿j_m_caruana_001,﻿Rev.,﻿G. Gazzoli,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0018,﻿mission,"﻿Cœur de'Alène Mission, Sacred Heart",English,,,,,﻿Kootenai County,﻿Cœur de'Alène,﻿Cataldo,﻿ID,,47.550091,-116.357675,,,,﻿jm_caruana_002,﻿Rev.,﻿J.M. Caruana,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0019,﻿mission,﻿Pend'Oreille Mission,English,,,,,,,,,,,,,,,﻿jos_grassi_002,﻿Rev.,﻿Jos. Grassi,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0019,﻿mission,﻿Pend'Oreille Mission,English,,,,,,,,,,,,,,,﻿f_p_cazeau_001,﻿Rev.,﻿Jos. Venzina,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0019,﻿mission,﻿Pend'Oreille Mission,English,,,,,,,,,,,,,,,﻿f_cazeau_001,﻿Rev.,﻿F. Cazeau,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0011,﻿church,[Unnamed Institution],English,,,﻿District of Idaho,,﻿Idaho County,﻿Warren,﻿Warren,﻿ID,,45.264167,-115.676389,﻿boi.id.0015,﻿Attended from Lewiston,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0018,﻿mission,﻿Sacred Heart,English,,﻿Cœur de'Alène Mission,,,﻿Kootenai County,﻿Cœur de'Alène,﻿Cataldo,﻿ID,,47.550091,-116.357675,,,,﻿g_gazzoli_001,﻿Rev.,﻿G. Gazzoli,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0018,﻿mission,﻿Sacred Heart,English,,﻿Cœur de'Alène Mission,,,﻿Kootenai County,﻿Cœur de'Alène,﻿Cataldo,﻿ID,,47.550091,-116.357675,,,,﻿j_m_caruana_001,﻿Rev.,﻿J. M. Caruana,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿St. Ignatius',English,,﻿Pend'Oreille Mission,,,﻿Lake County,,﻿St. Ignatius,,﻿MT,47.31455346,-114.1028373,,,,﻿jos_grassi_002,﻿Rev.,﻿Jos. Grassi,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿St. Ignatius',English,,﻿Pend'Oreille Mission,,,﻿Lake County,,﻿St. Ignatius,,,47.31455346,-114.1028373,,,,﻿jos_venzina_001,﻿Rev.,﻿Jos. Venzina,﻿S.J.,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿St. Ignatius',English,,﻿Pend'Oreille Mission,,,﻿Lake County,,﻿St. Ignatius,,,47.31455346,-114.1028373,,,,﻿f_p_cazeau_001,﻿Rev.,﻿F. Cazeau,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0019,﻿mission,﻿St. Ignatius',English,,﻿Pend'Oreille Mission,,,﻿Lake County,,﻿St. Ignatius,,,47.31455346,-114.1028373,,,,﻿j_jiorda_001,﻿Rev. Father,﻿J. Jiorda,,﻿Superior of the Indian Mission of the Rocky Mountains,,,,﻿the Jesuit Fathers,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0020,﻿mission,﻿Spokan Mission,English,,,,,﻿Spokane County,﻿Spokan,﻿Spokane,,﻿WA,47.731533,-117.339641,﻿boi.id.0018,﻿Atended from Cœur de'Alène,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0021,﻿mission,[Unnamed Institution],English,,,,,"﻿Pend Oreille County, Kalispell Reservation",﻿Kalispel,﻿Usk,,﻿WA,48.313889,-117.279722,,﻿from St. Ignatius,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0024,﻿mission,﻿Indian Mission of the Rocky Mountains,English,,,,,,,,,,,,,,,﻿j_jiorda_001,﻿Rev. Father,﻿J. Jiorda,,﻿Superior,,,,﻿the Jesuit Fathers,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
-﻿boi.id.0022,﻿school,﻿Providence School,English,,,,,,,,,,,,,,,﻿Idaho City,,,,,,,,﻿conducted by the Sisters of Charity,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0021,﻿mission,[Unnamed Institution],English,,,,,,﻿Kalispel,﻿Kalispel,,﻿WA,48.313889,-117.279722,﻿boi.id.0019,﻿from St. Ignatius,,,,,,,,,,,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
+﻿boi.id.0022,﻿school,﻿Providence School,English,,﻿St. Ignatius (Pend'Oreille Mission),,,﻿Lake County,,﻿St. Ignatius,,﻿MT,47.31455346,-114.1028373,,,,,,,,,,,,﻿conducted by the Sisters of Charity,,1869,﻿,﻿,﻿VAIdaho,VAIdaho
 ﻿boi.id.0023,﻿school,﻿St. Mary's Academy,English,,,,,﻿Boise County,﻿Idaho City,﻿Idaho City,﻿ID,,43.828611,-115.832222,,,,,,,,,,,,﻿conducted by the Sisters of the Holy Names of Jesus and Mary,,1869,﻿,﻿,﻿VAIdaho,VAIdaho

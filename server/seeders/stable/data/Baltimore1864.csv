@@ -97,7 +97,7 @@
 ﻿bal.md.0089,﻿church,﻿St. John's,English,,,,﻿Montgomery County,,﻿Rock Creek,,﻿MD,,39.124038,-77.133828,,,,﻿edm_didier_001,﻿Rev.,﻿E. Didier,,,﻿service 2d Sunday,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0090,﻿church,﻿St. Rose's,English,,,,﻿Montgomery County,,,﻿Seneca,﻿MD,,39.078611,-77.339444,,,,﻿edm_didier_001,﻿Rev.,﻿E. Didier,,,﻿service 3d Sunday,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0047,﻿church,﻿St. Stephen's,English,,﻿near Kingsville,,﻿Baltimore County,,,,﻿MD,,39.433019,-76.395492,,,,﻿jos_s_birch_001,﻿Rev.,﻿J. S. Birch,,,﻿4th Sunday,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
-﻿bal.md.0106,﻿church,﻿St. Ignatius',English,,,,﻿Prince George's County,,,,﻿MD,,38.784921,-76.872096,,﻿Attended from Alexandria,,,,,,,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
+﻿bal.md.0106,﻿church,﻿St. Ignatius',English,,,,﻿Prince George's County,,,,﻿MD,,38.784921,-76.872096,﻿ric.va.0005,﻿Attended from Alexandria,,,,,,,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0102,﻿church,﻿Sacred Heart,English,,,,﻿St. Mary's County,,,,﻿MD,,38.302318,-76.792088,﻿bal.md.0098,﻿Attended from Newtown,﻿twice a month,,,,,,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0100,﻿church,﻿St. John's,English,,,,﻿St. Mary's County,,,,﻿MD,,38.442165,-76.743977,﻿bal.md.0098,﻿Attended from Newtown,﻿twice a month,,,,,,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0101,﻿church,﻿St. Joseph's,English,,,,﻿St. Mary's County,,,,﻿MD,,38.442165,-76.743977,﻿bal.md.0098,﻿Attended from Newtown,﻿twice a month,,,,,,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
@@ -222,7 +222,7 @@
 ﻿bal.md.0140,﻿convent,﻿Convent of the Visitation,English,,﻿Fayette street,,,,﻿Georgetown,﻿Georgetown,﻿DC,,38.9089,-77.069401,,,,﻿m-angela_harrison_bal.md_001,﻿Mother,﻿Mary Angela Harrison,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0141,﻿convent,﻿Convent of the Visitation,English,,﻿corner Park and Centre streets,,,,﻿Baltimore,﻿Baltimore,﻿MD,,39.29627,-76.618323,,,,﻿m-paulina_millard_bal.md_001,﻿Mother,﻿Mary Paulina Millard,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0142,﻿convent,﻿Convent of the Visitation,English,,﻿near Catonsville,,,,﻿Mt. de Sales,﻿Mt. de Sales,﻿MD,,39.272051,-76.731916,,,,﻿m-regina_neale_bal.md_001,﻿Mother,﻿Mary Regina Neale,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
-﻿bal.md.0143,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Frederick,﻿Frederick,﻿MD,,39.414269,-77.410541,,,,﻿m-elder_bal.md_001,﻿Mother,﻿Mary Elder,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
+﻿bal.md.0143,﻿convent,﻿Convent of the Visitation,English,,,,,,﻿Frederick,﻿Frederick,﻿MD,,39.414269,-77.410541,,,,﻿m-loretto_hunter_bal.md_001,﻿Mother,﻿Mary Elder,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0144,﻿convent,﻿Convent of the Visitation,English,,﻿corner of Tenth and G streets,,,,﻿Washington,﻿Washington,﻿DC,,38.89837,-77.025998,,,,﻿m-de-sales_ohara_bal.md_001,﻿Mother,﻿Mary de Sales O'Hara,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0004_04,﻿convent,﻿Convent of the Immaculate Conception of the Sisters of Mercy,English,,﻿Poppleton street,,,,,﻿Baltimore,﻿MD,,39.288036,-76.631907,,,,﻿m-alphonsus_atkinson_bal.md_001,﻿Sister,﻿Mary Alphonsus Atkinson,,﻿Superior,,,,,,1864,﻿,﻿,﻿Baltimore,Baltimore
 ﻿bal.md.0149,﻿convent,﻿St. Joseph's Sisterhood,English,﻿Mother House of the Sisters of Charity in the U.S.,,,,,﻿Emmittsburgh,﻿Emmittsburg,﻿MD,,39.704542,-77.326931,,,,﻿ann_s_norris_bal.md_001,﻿Mother,﻿Ann Simeon Norris,,﻿Superior,,,,﻿Sisters of Charity,,1864,﻿,﻿,﻿Baltimore,Baltimore
