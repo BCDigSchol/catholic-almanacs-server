@@ -12,4 +12,12 @@ app.use(express.json());
 
 require('./routes')(app);
 
+// Errors from route handlers (see utils/async-handler.js) answer 500 instead
+// of crashing the process.
+app.use((err, req, res, next) => {
+    console.error(`${req.method} ${req.originalUrl} failed:`, err);
+    if (res.headersSent) return next(err);
+    res.status(500).json({ message: err.message || 'Internal server error' });
+});
+
 module.exports = app;
