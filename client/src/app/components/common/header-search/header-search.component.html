@@ -1,18 +1,18 @@
 <div class="search" role="search">
-    <label class="visually-hidden" for="header-search-scope">Search in</label>
-    <select id="header-search-scope" class="scope" [(ngModel)]="scope" (ngModelChange)="onScopeChange()">
+    <label class="visually-hidden" [for]="idPrefix + '-scope'">Search in</label>
+    <select [id]="idPrefix + '-scope'" class="scope" [(ngModel)]="scope" (ngModelChange)="onScopeChange()">
         @for (s of scopes; track s.value) {
             <option [value]="s.value">{{ s.label }}</option>
         }
     </select>
     <mat-icon class="glyph" aria-hidden="true">search</mat-icon>
-    <label class="visually-hidden" for="header-search-input">{{ placeholder }}</label>
+    <label class="visually-hidden" [for]="idPrefix + '-input'">{{ placeholder }}</label>
     <input #input
-        id="header-search-input"
+        [id]="idPrefix + '-input'"
         type="search"
         autocomplete="off"
         role="combobox"
-        aria-controls="header-search-results"
+        [attr.aria-controls]="idPrefix + '-results'"
         [attr.aria-expanded]="open && query.trim().length >= 2"
         [placeholder]="placeholder"
         [(ngModel)]="query"
@@ -21,7 +21,7 @@
         (keydown)="onKeydown($event)">
 
     @if (open && query.trim().length >= 2) {
-        <div class="results" id="header-search-results" role="listbox">
+        <div class="results" [id]="idPrefix + '-results'" role="listbox">
             @if (loading && !hasResults) {
                 <p class="status">Searching…</p>
             } @else if (!hasResults) {

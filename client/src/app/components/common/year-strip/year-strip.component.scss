@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    min-width: 0;
+}
+
+.strip {
+    display: flex;
+    align-items: stretch;
+    gap: 1px;
+    height: 12px;
+}
+
+i {
+    flex: 1 1 0;
+    min-width: 2px;
+    max-width: 10px;
+    background: var(--sunk);
+    border-radius: 1px;
+
+    &.on {
+        background: var(--fill);
+    }
+
+    &.gap {
+        flex: 0 0 8px;
+        max-width: none;
+        margin: 0 2px;
+        background: repeating-linear-gradient(135deg, var(--rule) 0 2px, transparent 2px 4px);
+    }
+}

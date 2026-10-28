@@ -29,7 +29,7 @@
 
     @if (searchOpen) {
         <div class="panel" id="compact-search">
-            <app-header-search [autofocus]="true" (navigated)="closePanels()"></app-header-search>
+            <app-header-search idPrefix="menu-search" [autofocus]="true" (navigated)="closePanels()"></app-header-search>
         </div>
     }
 

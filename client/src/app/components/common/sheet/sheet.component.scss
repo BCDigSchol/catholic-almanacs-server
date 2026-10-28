@@ -1,0 +1,55 @@
+.sheet {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--gutter);
+    padding-top: calc(var(--space-3) + env(safe-area-inset-top, 0px));
+    border-bottom: 1px solid var(--rule);
+
+    h2 {
+        margin: 0;
+        font: 600 var(--text-xl) var(--font-display);
+    }
+}
+
+.close {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-4) var(--gutter);
+}
+
+.foot {
+    padding: var(--space-3) var(--gutter) calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--rule);
+
+    ::ng-deep [sheet-footer] {
+        display: flex;
+        gap: var(--space-2);
+
+        > .btn-primary {
+            flex: 1;
+        }
+    }
+}

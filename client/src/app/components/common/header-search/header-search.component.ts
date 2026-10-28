@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, Subscription, of } from 'rxjs';
@@ -34,6 +34,12 @@ const SHOWN = 6;
 })
 export class HeaderSearchComponent implements OnInit, OnDestroy {
   @Input() autofocus = false;
+  /** 'large' is the prominent version used on the home page. */
+  @Input() @HostBinding('attr.data-size') size: 'compact' | 'large' = 'compact';
+  /** Open results in a new tab (used when the site is embedded in another page). */
+  @Input() newTab = false;
+  /** Prefix for element ids, so several search boxes can share a page. */
+  @Input() idPrefix = 'header-search';
   @Output() navigated = new EventEmitter<void>();
   @ViewChild('input', { static: true }) input!: ElementRef<HTMLInputElement>;
 
@@ -159,14 +165,23 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
   }
 
   go(link: string): void {
-    this.router.navigateByUrl(link);
+    this.open_(link);
     this.reset();
   }
 
   seeAll(kind: 'institutions' | 'people'): void {
     const q = this.query.trim();
-    this.router.navigate(['/' + kind], q ? { queryParams: { name: q } } : {});
+    this.open_(this.router.serializeUrl(this.router.createUrlTree(['/' + kind], q ? { queryParams: { name: q } } : {})));
     this.reset();
+  }
+
+  private open_(url: string): void {
+    if (this.newTab) {
+      const base = (document.querySelector('base')?.href || '/').replace(/\/$/, '');
+      window.open(base + url, '_blank');
+    } else {
+      this.router.navigateByUrl(url);
+    }
   }
 
   private reset(): void {

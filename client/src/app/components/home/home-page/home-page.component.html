@@ -1,97 +1,44 @@
-<div class="flex flex-col w-full justify-center items-center">
-    <div>
-        <p class="mt-5 italic text-gray-500 text-md" style="font-family: var(--font-sans)">*** This site is in development ***</p>
+<section class="hero">
+    <div class="hero-inner">
+        <p class="eyebrow">From the annual <cite>Catholic Almanac</cite> directories</p>
+        <h1>The Catholic Almanacs Database</h1>
+        <p class="lede">The churches, schools, convents and clergy of the nineteenth-century American Catholic Church, year by year.</p>
+        <app-header-search class="hero-search" size="large" idPrefix="home-search" [newTab]="isEmbedded"></app-header-search>
+
+        <dl class="figures" aria-label="In the database">
+            <div><dt>Institutions</dt><dd>{{ format(kpis?.institutions) }}</dd></div>
+            <div><dt>People</dt><dd>{{ format(kpis?.people) }}</dd></div>
+            <div><dt>Dioceses</dt><dd>{{ format(kpis?.dioceses) }}</dd></div>
+            <div><dt>Almanac years</dt><dd>{{ kpis ? kpis.yearMin + '–' + kpis.yearMax : '—' }}</dd></div>
+        </dl>
     </div>
-    <div class="flex flex-row w-full justify-center items-center">
-    <div>
-        <div class="flex w-full justify-center">
-            <mat-form-field style="width: 80%; max-width:600px" class="mt-5 custom-font">
-                <mat-label>Search for Institutions and People</mat-label>
-                <input matInput (input)="getData()" [(ngModel)]="inputName">
-                <button mat-icon-button matSuffix class="mx-3" style="cursor:pointer;" (click)="getData()">
-                    <mat-icon fontIcon="search"></mat-icon>
-                </button>
-            </mat-form-field>
-        </div>
-    <div class="flex flex-col md:flex-row items-center justify-center mt-1">
-        <div class="flex flex-col justify-center md:mr-5">
-            <a (click)="navigateToInstitutions()" style="display: block; text-align: center;">
-                <div class="image-container mb-5">
-                    <img src="st nacho.jpg" alt="institution" class="bg-image">
-                    <div class="overlay"></div>
-                    <div class="caption">
-                        Browse Institutions
-                    </div>
-                </div>
-            </a>
-            <mat-card style="width:100%; max-width:450px; height: 100%; max-height:300px" appearance="outlined" class="mb-5 md:mb-0">
-                <mat-card-content class="scrollable-content" style="height: 100%; overflow-y: auto;">
-                @if (loading) {
-                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-                    <mat-spinner></mat-spinner>
-                    </div>
-                } @else {
-                    @if (institutions.length === 0) {
-                        <div style="text-align: center; color: gray;">No Results Found</div>
-                    } @else {
-                        @for (item of institutions; track item) {
-                            <a [routerLink]="'/institutions/' + item.instID" [target]="isEmbedded ? '_blank' : '_self'">
-                                <mat-card class="mb-2" style="padding: 1%; cursor: pointer" appearance="outlined">
-                                    <div class="flex flex-row items-center justify-between w-full custom-font">
-                                        <div class="flex flex-row items-center">
-                                            <mat-icon class="mr-3">church</mat-icon>
-                                            <span>{{item.instName}}</span>
-                                </div>
-                                    <span class="text-sm text-gray-600">{{item.diocese}}</span>
-                                </div>
-                                </mat-card>
-                            </a>
-                    }}}
-                </mat-card-content>
-        </mat-card>
-        </div>
-        <div class="flex flex-col justify-center">
-            <div class="flex flex-col justify-center">
-                <a (click)="navigateToPeople()" style="display: block; text-align: center;">
-                    <div class="image-container mb-5">
-                        <img src="John_Bapst_standing_cropped.jpg" alt="institution" class="bg-image" style="object-position: 50% 15%;">
-                        <div class="overlay"></div>
-                        <div class="caption">
-                            Browse People
-                        </div>
-                    </div>
-                </a>
-                <mat-card style="width:100%; max-width:500px; height: 100%; max-height:300px" appearance="outlined">
-                    <mat-card-content class="scrollable-content">
-                    @if (loading) {
-                        <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <mat-spinner></mat-spinner>
-                        </div>
-                    } @else {
-                        @if (people.length === 0) {
-                            <div style="text-align: center; color: gray;">No Results Found</div>
-                        } @else {
-                            @for (item of people; track item) {
-                                <a [routerLink]="'/people/' + item.persID" [target]="isEmbedded ? '_blank' : '_self'">
-                                    <mat-card class="mb-2 custom-font" style="padding: 1%; cursor: pointer" appearance="outlined">
-                                        <div class="flex flex-row items-center justify-between w-full">
-                                            <div class="flex flex-row items-center">
-                                                <mat-icon class="mr-2">person</mat-icon>
-                                                <span>{{item.name}}</span>
-                                            </div>
-                                            @if (item.yearStart === item.yearEnd) {
-                                                <span class="text-sm text-gray-600">{{item.yearStart}}</span>
-                                            } @else {
-                                                <span class="text-sm text-gray-600">{{item.yearStart}} - {{item.yearEnd}}</span>
-                                            }
-                                        </div>
-                                    </mat-card>
-                                </a>
-                            }}}
-                    </mat-card-content>
-                </mat-card>
-            </div> 
-        </div> 
-    </div>
-    </div>
+</section>
+
+<div class="page ways-page">
+    <h2 class="section-title">Ways in</h2>
+    <ul class="ways">
+        <li class="way">
+            <img src="st nacho.jpg" alt="" loading="lazy">
+            <div class="way-body">
+                <h3><a routerLink="/institutions" [target]="linkTarget">Browse institutions</a></h3>
+                <p>Parishes, missions, schools, convents, hospitals and charities, filtered by place, type, diocese, religious order and year.</p>
+            </div>
+        </li>
+        <li class="way">
+            <img src="John_Bapst_standing_cropped.jpg" alt="" loading="lazy" class="portrait">
+            <div class="way-body">
+                <h3><a routerLink="/people" [target]="linkTarget">Browse people</a></h3>
+                <p>Clergy and religious named in the almanacs, with every place they served and the years they served there.</p>
+            </div>
+        </li>
+        <li class="way">
+            <div class="way-art" aria-hidden="true"><mat-icon>insights</mat-icon></div>
+            <div class="way-body">
+                <h3><a routerLink="/dashboards" [target]="linkTarget">Explore the dashboards</a></h3>
+                <p>Maps, networks and charts of how the Church grew and moved west, starting with the almanacs at a glance.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p class="notice">This site is in development: records and features are still being added. <a routerLink="/pages/about" [target]="linkTarget">About the data</a></p>
 </div>

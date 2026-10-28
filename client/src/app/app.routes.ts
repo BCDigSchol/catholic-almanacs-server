@@ -9,9 +9,10 @@ export const routes: Routes = [
     { path: '', component: HomeComponent },
     // About is an editable content page: client/public/page-content/about.md
     { path: 'about', redirectTo: 'pages/about' },
-    { path: 'institutions', loadComponent: () => import('./components/insitutions/browse-institution/browse-institution.component').then(m => m.BrowseInstitutionComponent) },
+    // One Browse page for both lists; filters, sort and page live in the query string.
+    { path: 'institutions', data: { entity: 'institutions' }, loadComponent: () => import('./components/browse/browse.component').then(m => m.BrowseComponent) },
     { path: 'institutions/:id', loadComponent: () => import('./components/insitutions/institution-details/institution-details.component').then(m => m.InstitutionDetailsComponent) },
-    { path: 'people', loadComponent: () => import('./components/people/browse-people/browse-people.component').then(m => m.BrowsePeopleComponent) },
+    { path: 'people', data: { entity: 'people' }, loadComponent: () => import('./components/browse/browse.component').then(m => m.BrowseComponent) },
     { path: 'people/:id', loadComponent: () => import('./components/people/person-details/person-details.component').then(m => m.PersonDetailsComponent) },
     { path: 'dashboards', loadComponent: () => import('./components/dashboards/dashboards.component').then(m => m.DashboardsComponent) },
     { path: 'dashboards/overview', loadComponent: () => import('./components/dashboards/overview/overview.component').then(m => m.OverviewDashboardComponent) },

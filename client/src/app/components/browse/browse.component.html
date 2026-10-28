@@ -1,0 +1,176 @@
+<div class="page">
+    <app-page-header title="Browse"></app-page-header>
+
+    <nav class="tabs" aria-label="What to browse">
+        <a routerLink="/institutions" [queryParams]="entity === 'institutions' ? null : tabParams"
+            [class.active]="entity === 'institutions'" [attr.aria-current]="entity === 'institutions' ? 'page' : null">
+            Institutions
+            @if (entity === 'institutions' && !loading) { <span class="count">{{ total.toLocaleString() }}</span> }
+        </a>
+        <a routerLink="/people" [queryParams]="entity === 'people' ? null : tabParams"
+            [class.active]="entity === 'people'" [attr.aria-current]="entity === 'people' ? 'page' : null">
+            People
+            @if (entity === 'people' && !loading) { <span class="count">{{ total.toLocaleString() }}</span> }
+        </a>
+    </nav>
+
+    <div class="search">
+        <mat-icon aria-hidden="true">search</mat-icon>
+        <label class="visually-hidden" for="browse-name">{{ config.searchPlaceholder }}</label>
+        <input id="browse-name" type="search" autocomplete="off"
+            [placeholder]="config.searchPlaceholder"
+            [(ngModel)]="values['name']" (input)="onType()" (keydown.enter)="apply()">
+    </div>
+
+    <div class="layout">
+        <aside class="rail" aria-label="Filters">
+            <ng-container *ngTemplateOutlet="filterPanel; context: { $implicit: 'rail' }"></ng-container>
+        </aside>
+
+        <section class="results" #results aria-live="polite" [attr.aria-busy]="loading">
+            <div class="toolbar">
+                <button type="button" class="filters-btn" (click)="sheetOpen = true">
+                    <mat-icon aria-hidden="true">tune</mat-icon>
+                    Filters
+                    @if (activeCount) { <span class="badge">{{ activeCount }}</span> }
+                </button>
+                <p class="summary">
+                    @if (failed) {
+                        Couldn’t load results.
+                    } @else if (total) {
+                        <strong>{{ totalLabel }}</strong>
+                        @if (total > size) { <span class="muted"> · showing {{ rangeLabel }}</span> }
+                    }
+                </p>
+                <label class="sort">
+                    <span>Sort by</span>
+                    <select class="control" [(ngModel)]="sort" (ngModelChange)="apply()" id="browse-sort">
+                        @for (s of sorts; track s.value) {
+                            <option [value]="s.value">{{ s.label }}</option>
+                        }
+                    </select>
+                </label>
+            </div>
+
+            @if (chips.length) {
+                <ul class="chips" aria-label="Active filters">
+                    @for (chip of chips; track chip.label) {
+                        <li>
+                            <button type="button" (click)="chip.clear()" [attr.aria-label]="'Remove filter ' + chip.label">
+                                {{ chip.label }} <mat-icon aria-hidden="true">close</mat-icon>
+                            </button>
+                        </li>
+                    }
+                    <li><button type="button" class="clear" (click)="clearAll()">Clear all</button></li>
+                </ul>
+            }
+
+            @if (failed) {
+                <div class="state">
+                    <p>The list couldn’t be loaded. Check your connection and try again.</p>
+                    <button type="button" class="btn btn-primary" (click)="reload()">Try again</button>
+                </div>
+            } @else if (!loading && !rows.length) {
+                <div class="state">
+                    <p>No {{ config.noun[1] }} match these filters.</p>
+                    @if (chips.length) {
+                        <button type="button" class="btn btn-primary" (click)="clearAll()">Clear all filters</button>
+                    }
+                </div>
+            } @else {
+                <ol class="rows" [class.busy]="loading" [class.people]="entity === 'people'">
+                    @if (loading && !rows.length) {
+                        @for (n of [1,2,3,4,5,6]; track n) {
+                            <li class="row skeleton" aria-hidden="true"><span></span><span></span></li>
+                        }
+                    }
+                    @for (row of rows; track row.ID) {
+                        <li class="row">
+                            <div class="ident">
+                                <a class="title" [routerLink]="rowLink(row)"
+                                    [class.unnamed]="entity === 'institutions' && isUnnamed(row.name)">{{ rowLabel(row) }}</a>
+                                @if (entity === 'institutions' && primaryType(row.type) && !isUnnamed(row.name)) {
+                                    <span class="kind">{{ row.type }}</span>
+                                }
+                                <div class="meta">{{ rowMeta(row) }}</div>
+                            </div>
+                            <div class="time">
+                                <app-year-strip [years]="row.years" [allYears]="allYears"
+                                    [color]="entity === 'institutions' ? 'var(--c-inst)' : 'var(--c-pers)'"></app-year-strip>
+                                <span class="span">{{ yearSpan(row.years) }}</span>
+                            </div>
+                            <span class="id mono">{{ row.ID }}</span>
+                        </li>
+                    }
+                </ol>
+
+                <div class="footer">
+                    <app-pager [page]="page" [size]="size" [total]="total" (pageChange)="goToPage($event)"></app-pager>
+                    <label class="page-size">
+                        <span>Per page</span>
+                        <select class="control" [(ngModel)]="size" (ngModelChange)="apply()" id="browse-size">
+                            @for (n of pageSizes; track n) {
+                                <option [ngValue]="n">{{ n }}</option>
+                            }
+                        </select>
+                    </label>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+@if (sheetOpen) {
+    <app-sheet heading="Filters" (closed)="sheetOpen = false">
+        <ng-container *ngTemplateOutlet="filterPanel; context: { $implicit: 'sheet' }"></ng-container>
+        <div sheet-footer>
+            @if (activeCount) {
+                <button type="button" class="btn" (click)="clearAll()">Clear all</button>
+            }
+            <button type="button" class="btn btn-primary" (click)="sheetOpen = false">
+                {{ loading ? 'Show results' : 'Show ' + totalLabel }}
+            </button>
+        </div>
+    </app-sheet>
+}
+
+<ng-template #filterPanel let-where>
+    @for (group of config.groups; track group.label) {
+        <fieldset class="group">
+            <legend>{{ group.label }}</legend>
+            @for (f of group.filters; track f.param) {
+                <div class="field">
+                    <label [for]="where + '-f-' + f.param">{{ f.label }}</label>
+                    @switch (f.kind) {
+                        @case ('select') {
+                            <select class="control" [id]="where + '-f-' + f.param" [(ngModel)]="values[f.param]" (ngModelChange)="apply()">
+                                <option value="">Any</option>
+                                @for (o of f.options ?? []; track o) {
+                                    <option [value]="o">{{ o }}</option>
+                                }
+                            </select>
+                        }
+                        @case ('suggest') {
+                            <input class="control" [id]="where + '-f-' + f.param" type="text" autocomplete="off" [attr.list]="where + '-list-' + f.param"
+                                [(ngModel)]="values[f.param]" (input)="onType()" (keydown.enter)="apply()">
+                            <datalist [id]="where + '-list-' + f.param">
+                                @for (o of f.options ?? []; track o) {
+                                    <option [value]="o"></option>
+                                }
+                            </datalist>
+                        }
+                        @default {
+                            <input class="control" [id]="where + '-f-' + f.param" type="text" autocomplete="off"
+                                [(ngModel)]="values[f.param]" (input)="onType()" (keydown.enter)="apply()">
+                        }
+                    }
+                </div>
+            }
+        </fieldset>
+    }
+    <fieldset class="group">
+        <legend>Years in the almanacs</legend>
+        <app-year-range [min]="yearMin" [max]="yearMax" [from]="from" [to]="to"
+            [idPrefix]="where + '-years'" (rangeChange)="onYears($event)"></app-year-range>
+    </fieldset>
+</ng-template>

@@ -1,0 +1,14 @@
+<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-heading">
+    <div class="head">
+        <h2 id="sheet-heading">{{ heading }}</h2>
+        <button type="button" class="close" (click)="close()" [attr.aria-label]="'Close ' + heading.toLowerCase()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="body">
+        <ng-content></ng-content>
+    </div>
+    <div class="foot">
+        <ng-content select="[sheet-footer]"></ng-content>
+    </div>
+</div>

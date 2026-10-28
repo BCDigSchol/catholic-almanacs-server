@@ -1,0 +1,19 @@
+@if (pages > 1) {
+<nav class="pager" aria-label="Pages">
+    <button type="button" class="step" [disabled]="page <= 1" (click)="go(page - 1)">‹ Previous</button>
+    <ol class="numbers">
+        @for (p of window; track $index) {
+            <li>
+                @if (p === null) {
+                    <span class="ellipsis" aria-hidden="true">…</span>
+                } @else {
+                    <button type="button" [class.current]="p === page" [attr.aria-current]="p === page ? 'page' : null"
+                        [attr.aria-label]="'Page ' + p" (click)="go(p)">{{ p }}</button>
+                }
+            </li>
+        }
+    </ol>
+    <span class="compact">Page {{ page }} of {{ pages }}</span>
+    <button type="button" class="step" [disabled]="page >= pages" (click)="go(page + 1)">Next ›</button>
+</nav>
+}

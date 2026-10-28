@@ -1,0 +1,12 @@
+<div class="fields">
+    <label [for]="idPrefix + '-from'">From</label>
+    <input class="control" [id]="idPrefix + '-from'" type="number" inputmode="numeric" [min]="min" [max]="max"
+        [(ngModel)]="start" (keydown.enter)="commit()" (blur)="commit()">
+    <label [for]="idPrefix + '-to'">to</label>
+    <input class="control" [id]="idPrefix + '-to'" type="number" inputmode="numeric" [min]="min" [max]="max"
+        [(ngModel)]="end" (keydown.enter)="commit()" (blur)="commit()">
+</div>
+<mat-slider class="slider" [min]="min" [max]="max" step="1" discrete>
+    <input matSliderStartThumb [(ngModel)]="start" (change)="commit()" aria-label="First year">
+    <input matSliderEndThumb [(ngModel)]="end" (change)="commit()" aria-label="Last year">
+</mat-slider>
