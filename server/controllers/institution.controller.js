@@ -312,6 +312,7 @@ exports.getBipartiteNetwork = async (req, res) => {
 const db = require("../models");
 const { Sequelize } = db.sequelize;
 const getPagination = require("../utils/get-pagination");
+const { orderCondition } = require("../utils/religious-orders");
 const { parseNetworkParams, parseIntParam, computePageRank, truncateToTopNodes, networkCache, cacheKey } = require("../utils/network");
 const Op = db.Sequelize.Op;
 const { where } = require("sequelize");
@@ -347,36 +348,77 @@ const orderInAlmanacRecord = db.orderInAlmanacRecord;
     });
 };*/
 
-// Browse-list sort order: every institution ID, ordered by its latest-year name
-// (names starting with a letter first, then the rest). Sorting by a correlated
-// subquery per institution cost ~7s per page, so it is computed once per process
-// (like loadFacts() in stats.controller — restart the backend after a reseed).
-let browseOrderPromise = null;
-function loadBrowseOrder() {
-    if (!browseOrderPromise) {
-        browseOrderPromise = db.sequelize.query(
-            `SELECT i.ID AS instID, ar.instName, ar.year
+// Browse-list index: one summary per institution (its latest-year name, type,
+// diocese and place, plus every year it appears) and the list pre-sorted each
+// way the browse page offers. Sorting by a correlated subquery per institution
+// cost ~7s per page, so this is built once per process (like loadFacts() in
+// stats.controller — restart the backend after a reseed).
+let browseIndexPromise = null;
+function loadBrowseIndex() {
+    if (!browseIndexPromise) {
+        browseIndexPromise = db.sequelize.query(
+            `SELECT i.ID AS instID, ar.instName, ar.instType, ar.diocese, ar.cityReg, ar.stateReg, ar.year
                FROM institutions i
                LEFT JOIN almanacRecords ar ON ar.instID = i.ID
               ORDER BY i.ID, ar.year DESC`,
             { type: db.Sequelize.QueryTypes.SELECT }
         ).then(rows => {
-            const latestName = new Map();
+            const byId = new Map();
+            const allYears = new Set();
             for (const r of rows) {
-                if (!latestName.has(r.instID)) latestName.set(r.instID, r.instName || '');
+                let s = byId.get(r.instID);
+                if (!s) {
+                    // rows arrive latest year first, so the first row is the latest record
+                    s = {
+                        ID: r.instID,
+                        name: r.instName || '',
+                        type: r.instType || '',
+                        diocese: r.diocese || '',
+                        city: r.cityReg || '',
+                        state: r.stateReg || '',
+                        years: [],
+                    };
+                    byId.set(r.instID, s);
+                }
+                if (r.year != null && s.years[0] !== r.year) {
+                    s.years.unshift(r.year);
+                    allYears.add(r.year);
+                }
             }
+            const summaries = [...byId.values()];
             const collator = new Intl.Collator('en', { sensitivity: 'base' });
-            const isAlpha = name => /^[A-Za-z]/.test(name);
-            return [...latestName.keys()].sort((a, b) => {
-                const an = latestName.get(a), bn = latestName.get(b);
-                return (isAlpha(bn) - isAlpha(an)) || collator.compare(an, bn) || (a < b ? -1 : a > b ? 1 : 0);
-            });
+            const cmp = (a, b) => collator.compare(a, b);
+            // Named institutions starting with a letter, then other names, then
+            // unnamed ones (grouped by type and place, since they share a label).
+            const bucket = s => isUnnamed(s.name) ? 2 : /^[A-Za-z]/.test(s.name) ? 0 : 1;
+            const byName = (a, b) => (bucket(a) - bucket(b))
+                || (bucket(a) === 2 ? cmp(a.type, b.type) || cmp(a.city, b.city) : cmp(a.name, b.name))
+                || (a.ID < b.ID ? -1 : a.ID > b.ID ? 1 : 0);
+            const nameOrder = [...summaries].sort(byName);
+            const rank = new Map(nameOrder.map((s, i) => [s.ID, i]));
+            const ids = list => list.map(s => s.ID);
+            return {
+                byId,
+                years: [...allYears].sort((a, b) => a - b),
+                orders: {
+                    name: ids(nameOrder),
+                    year: ids([...summaries].sort((a, b) =>
+                        ((a.years[0] ?? Infinity) - (b.years[0] ?? Infinity)) || rank.get(a.ID) - rank.get(b.ID))),
+                    diocese: ids([...summaries].sort((a, b) =>
+                        (!a.diocese - !b.diocese) || cmp(a.diocese, b.diocese) || rank.get(a.ID) - rank.get(b.ID))),
+                },
+            };
         }).catch(err => {
-            browseOrderPromise = null;
+            browseIndexPromise = null;
             throw err;
         });
     }
-    return browseOrderPromise;
+    return browseIndexPromise;
+}
+
+// Placeholder names the almanacs printed for unnamed institutions.
+function isUnnamed(name) {
+    return /^\s*(|not recorded|\(name not recorded\)|[—–-])\s*$/i.test(name || '');
 }
 
 exports.findAll = async (req, res) => {
@@ -389,7 +431,7 @@ exports.findAll = async (req, res) => {
             size = 3;
         };
         let {limit, offset} = getPagination(page, size);
-        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder } = req.query;
+        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder, sort } = req.query;
 
         // Same filters as before, as raw SQL conditions on almanacRecords (ar),
         // personInAlmanacRecords (pia) and orderInAlmanacRecords (oia).
@@ -410,7 +452,11 @@ exports.findAll = async (req, res) => {
         like('ar.instFunction', 'instFunction', instFunction);
         like('ar.instID', 'instID', instID);
         like('pia.name', 'persName', persName);
-        like('oia.`order`', 'religiousOrder', religiousOrder);
+        if (religiousOrder) {
+            const order = orderCondition('oia.`order`', religiousOrder);
+            conditions.push(order.sql);
+            Object.assign(replacements, order.replacements);
+        };
         if (instStartYear) {
             conditions.push('ar.year >= :instStartYear');
             replacements.instStartYear = parseInt(instStartYear, 10);
@@ -425,33 +471,21 @@ exports.findAll = async (req, res) => {
         ].join(' ');
         const filterSql = conditions.length ? `AND ${conditions.join(' AND ')}` : '';
 
-        const browseOrder = await loadBrowseOrder();
-        let ids = browseOrder;
+        const index = await loadBrowseIndex();
+        let ids = index.orders[sort] || index.orders.name;
         if (conditions.length) {
             const matched = await db.sequelize.query(
                 `SELECT DISTINCT ar.instID FROM almanacRecords ar ${joins} WHERE 1=1 ${filterSql}`,
                 { replacements, type: db.Sequelize.QueryTypes.SELECT }
             );
             const matchedIds = new Set(matched.map(r => r.instID));
-            ids = browseOrder.filter(id => matchedIds.has(id));
+            ids = ids.filter(id => matchedIds.has(id));
         }
-        const pageIds = ids.slice(offset, offset + limit);
-
-        // Only the (filter-matching) records of this page's institutions, oldest first.
-        const records = pageIds.length ? await db.sequelize.query(
-            `SELECT DISTINCT ar.ID, ar.instID, ar.instName, ar.year, ar.instType, ar.diocese
-               FROM almanacRecords ar ${joins}
-              WHERE ar.instID IN (:pageIds) ${filterSql}
-              ORDER BY ar.year`,
-            { replacements: { ...replacements, pageIds }, type: db.Sequelize.QueryTypes.SELECT }
-        ) : [];
-        const recordsById = new Map(pageIds.map(id => [id, []]));
-        for (const { ID, instID, ...record } of records) {
-            recordsById.get(instID).push(record);
-        }
+        // Rows summarise each institution as of its latest year, whatever the filters.
         res.send({
             count: ids.length,
-            rows: pageIds.map(id => ({ ID: id, almanacRecord: recordsById.get(id) }))
+            rows: ids.slice(offset, offset + limit).map(id => index.byId.get(id)),
+            meta: { years: index.years },
         });
     } catch (error) {
         return res.status(500).json({ message: error.message });

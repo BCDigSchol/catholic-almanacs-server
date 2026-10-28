@@ -180,7 +180,7 @@ const { Sequelize } = db.sequelize;
 
 const getPagination = require("../utils/get-pagination");
 const { parseNetworkParams, computePageRank, truncateToTopNodes, networkCache, cacheKey } = require("../utils/network");
-const religiousOrderDict = require('../config/religiousOrderDict.json')
+const { orderCondition } = require('../utils/religious-orders');
 
 const almanacRecord = db.almanacRecord;
 const personInAlmanacRecord = db.personInAlmanacRecord;
@@ -207,9 +207,72 @@ const person = db.person;
     });
 };*/
 
-exports.findAll = (req, res) => {
+// Browse-list index: one summary per person (their latest-year name, title and
+// diocese, plus every year they appear) and the list pre-sorted each way the
+// browse page offers. Built once per process, like the institution index in
+// institution.controller — restart the backend after a reseed.
+let browseIndexPromise = null;
+function loadBrowseIndex() {
+    if (!browseIndexPromise) {
+        browseIndexPromise = db.sequelize.query(
+            `SELECT pia.persID, pia.name, pia.lastName, pia.title, pia.suffix, ar.year, ar.diocese
+               FROM personInAlmanacRecords pia
+               JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
+              ORDER BY pia.persID, ar.year DESC`,
+            { type: db.Sequelize.QueryTypes.SELECT }
+        ).then(rows => {
+            const byId = new Map();
+            const allYears = new Set();
+            for (const r of rows) {
+                let s = byId.get(r.persID);
+                if (!s) {
+                    // rows arrive latest year first, so the first row is the latest record
+                    s = {
+                        ID: r.persID,
+                        name: r.name || '',
+                        lastName: r.lastName || '',
+                        title: r.title || '',
+                        suffix: r.suffix || '',
+                        diocese: r.diocese || '',
+                        years: [],
+                    };
+                    byId.set(r.persID, s);
+                }
+                if (r.year != null && s.years[0] !== r.year) {
+                    s.years.unshift(r.year);
+                    allYears.add(r.year);
+                }
+            }
+            const summaries = [...byId.values()];
+            const collator = new Intl.Collator('en', { sensitivity: 'base' });
+            const cmp = (a, b) => collator.compare(a, b);
+            const sortName = s => s.lastName || s.name;
+            const byName = (a, b) => (/^[A-Za-z]/.test(sortName(b)) - /^[A-Za-z]/.test(sortName(a)))
+                || cmp(sortName(a), sortName(b)) || cmp(a.name, b.name)
+                || (a.ID < b.ID ? -1 : a.ID > b.ID ? 1 : 0);
+            const nameOrder = [...summaries].sort(byName);
+            const rank = new Map(nameOrder.map((s, i) => [s.ID, i]));
+            const ids = list => list.map(s => s.ID);
+            return {
+                byId,
+                years: [...allYears].sort((a, b) => a - b),
+                orders: {
+                    name: ids(nameOrder),
+                    year: ids([...summaries].sort((a, b) => (a.years[0] - b.years[0]) || rank.get(a.ID) - rank.get(b.ID))),
+                    diocese: ids([...summaries].sort((a, b) =>
+                        (!a.diocese - !b.diocese) || cmp(a.diocese, b.diocese) || rank.get(a.ID) - rank.get(b.ID))),
+                },
+            };
+        }).catch(err => {
+            browseIndexPromise = null;
+            throw err;
+        });
+    }
+    return browseIndexPromise;
+}
+
+exports.findAll = async (req, res) => {
     let {page, size} = req.query;
-    console.log(req.query);
     if (!page) {
         page = 1;
     };
@@ -217,128 +280,56 @@ exports.findAll = (req, res) => {
         size = 3;
     };
     let {limit, offset} = getPagination(page, size);
-    let persWhere = {};
-    let instWhere = {};
-    let { persName, instName, diocese, countyOrig, cityOrig, stateOrig, instStartYear, instEndYear, religiousOrder } = req.query;
-    if (persName) {
-        persWhere.name = { [Op.like]: `%${persName}%` };
+    let { persName, instName, diocese, countyOrig, cityOrig, stateOrig, instStartYear, instEndYear, religiousOrder, sort } = req.query;
+
+    // Filters as raw SQL conditions on personInAlmanacRecords (pia), the
+    // almanacRecords they appear in (ar) and orderInAlmanacRecords (oia).
+    const conditions = [];
+    const replacements = {};
+    const like = (column, key, value) => {
+        if (!value) return;
+        conditions.push(`${column} LIKE :${key}`);
+        replacements[key] = `%${value}%`;
     };
-    if (instName) {
-        instWhere.instName = { [Op.like]: `%${instName}%` };
+    like('pia.name', 'persName', persName);
+    like('ar.instName', 'instName', instName);
+    like('ar.countyOrig', 'countyOrig', countyOrig);
+    like('ar.cityOrig', 'cityOrig', cityOrig);
+    like('ar.stateOrig', 'stateOrig', stateOrig);
+    like('ar.diocese_reg', 'diocese', diocese);
+    if (instStartYear) {
+        conditions.push('ar.year >= :instStartYear');
+        replacements.instStartYear = parseInt(instStartYear, 10);
     };
-    if (countyOrig) {
-        instWhere.countyOrig = { [Op.like]: `%${countyOrig}%` };
-    };
-    if (cityOrig) {
-        instWhere.cityOrig = { [Op.like]: `%${cityOrig}%` };
-    };
-    if (stateOrig) {
-        instWhere.stateOrig = { [Op.like]: `%${stateOrig}%` };
-    };
-    if (instStartYear && instEndYear) {
-        instWhere.year = { [Op.between]: [instStartYear, instEndYear] };
-    } else if (instStartYear) {
-        instWhere.year = { [Op.gte]: instStartYear };
-    } else if (instEndYear) {
-        instWhere.year = { [Op.lte]: instEndYear };
-    };
-    if (diocese) {
-        instWhere.diocese_reg = { [Op.like]: `%${diocese}%` };
+    if (instEndYear) {
+        conditions.push('ar.year <= :instEndYear');
+        replacements.instEndYear = parseInt(instEndYear, 10);
     };
     if (religiousOrder) {
-        let equivalents = null;
-        for (const group of Object.values(religiousOrderDict)) {
-            if (group.includes(religiousOrder)) {
-                equivalents = group;
-                break;
-            }
-        }
-        if (!equivalents && religiousOrderDict[religiousOrder]) {
-            equivalents = religiousOrderDict[religiousOrder];
-        }
-        if (!equivalents) {
-            equivalents = [religiousOrder];
-        }
-        instWhere.religiousOrder = {
-            [Op.or]: equivalents.map(order => ({ [Op.like]: `%${order}%` }))
-        };  
+        const order = orderCondition('oia.`order`', religiousOrder);
+        conditions.push(order.sql);
+        Object.assign(replacements, order.replacements);
     };
+    const joins = religiousOrder ? 'JOIN orderInAlmanacRecords oia ON oia.almanacRecordID = ar.ID' : '';
 
-    person.findAndCountAll({
-        distinct: true,
-        attributes: ['ID'],
-        include: [
-            {
-                model: almanacRecord,
-                where: instWhere,
-                as: 'almanacRecords',
-                attributes: ['instID','instName','year','cityReg', 'diocese', 'latitude', 'longitude'],
-                through: {
-                    model: personInAlmanacRecord,
-                    where: persWhere,
-                    attributes: ['name', 'lastName', 'title', 'suffix', 'role', 'note']
-                }
-            }
-        ],
-        order: [[
-            Sequelize.literal(`(
-                CASE 
-                    WHEN (
-                    SELECT pir.\`lastName\`
-                    FROM \`personInAlmanacRecords\` pir
-                    JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
-                    WHERE pir.\`persID\` = \`person\`.\`ID\`
-                    ORDER BY ar.\`year\` DESC
-                    LIMIT 1
-                    ) REGEXP '^[A-Za-z]' THEN 0
-                    ELSE 1
-                END
-            )`), 'ASC'
-        ], [
-                Sequelize.literal(`(
-                    SELECT pir.\`lastName\`
-                    FROM \`personInAlmanacRecords\` pir
-                    JOIN \`almanacRecords\` ar ON pir.\`almanacRecordID\` = ar.\`ID\`
-                    WHERE pir.\`persID\` = \`person\`.\`ID\`
-                    ORDER BY ar.\`year\` DESC
-                    LIMIT 1
-                    )`), 'ASC'
-        ]
-    ],
-        limit,
-        offset
-    }).then(
-        data => {
-        /**data.forEach(person => {
-            if (person.almanacRecords && Array.isArray(person.almanacRecords)) {
-                person.almanacRecords.sort((a, b) => a.year - b.year);
-            }
-        });
-        data.sort((a, b) => {
-            const aName = a.almanacRecords.length > 0 ? a.almanacRecords[a.almanacRecords.length - 1].personInAlmanacRecord.name : '';
-            const bName = b.almanacRecords.length > 0 ? b.almanacRecords[b.almanacRecords.length - 1].personInAlmanacRecord.name : '';
-            const aAlpha = /^[A-Za-z]/.test(aName);
-            const bAlpha = /^[A-Za-z]/.test(bName);
-            if (aAlpha && !bAlpha) return -1;
-            if (!aAlpha && bAlpha) return 1;
-            return aName.localeCompare(bName);
-        });
-        const start = offset;
-        const end = offset + limit;
-        const paginatedRows = data.slice(start, end); */
-        data.rows.forEach(person => {
-            if (person.almanacRecords && Array.isArray(person.almanacRecords)) {
-                person.almanacRecords.sort((a, b) => a.year - b.year);
-            }
-        });
-        res.send({
-            count: data.count,
-            rows: data.rows,
-        });
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "An error occurred while retrieving people."
-        });
+    const index = await loadBrowseIndex();
+    let ids = index.orders[sort] || index.orders.name;
+    if (conditions.length) {
+        const matched = await db.sequelize.query(
+            `SELECT DISTINCT pia.persID
+               FROM personInAlmanacRecords pia
+               JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID ${joins}
+              WHERE ${conditions.join(' AND ')}`,
+            { replacements, type: db.Sequelize.QueryTypes.SELECT }
+        );
+        const matchedIds = new Set(matched.map(r => r.persID));
+        ids = ids.filter(id => matchedIds.has(id));
+    }
+    // Rows summarise each person as of their latest year, whatever the filters.
+    res.send({
+        count: ids.length,
+        rows: ids.slice(offset, offset + limit).map(id => index.byId.get(id)),
+        meta: { years: index.years },
     });
 };
 
