@@ -66,38 +66,22 @@
                 <section class="record-section" aria-labelledby="people-heading">
                     <h2 id="people-heading">People <small>{{ people.length }}</small></h2>
                     @if (people.length) {
-                        <p class="note">Clergy and religious the almanac listed here{{ year ? ' in ' + year : ', with the years each appears' }}.</p>
-                        <div class="table-wrap">
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Role</th>
-                                        @if (year === null) { <th scope="col">Years</th> }
-                                        <th scope="col">Listed as</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @for (p of shownPeople; track p.ID) {
-                                        <tr>
-                                            <td><a class="record-link pers" [routerLink]="['/people', p.ID]">{{ p.label }}</a></td>
-                                            <td data-label="Role" [class.empty]="!p.roles" [class.muted]="!p.roles">{{ p.roles || '—' }}</td>
-                                            @if (year === null) { <td data-label="Years" class="num">{{ yearsOf(p) }}</td> }
-                                            <td data-label="Listed as">
-                                                @if (p.resident) { Resident }
-                                                @if (p.resident && p.visitingFrom.length) { · }
-                                                @if (p.visitingFrom.length) {
-                                                    Visiting from
-                                                    @for (v of p.visitingFrom; track v.ID; let last = $last) {
-                                                        <a class="record-link inst" [class.unnamed]="v.unnamed" [routerLink]="['/institutions', v.ID]">{{ v.label }}</a>{{ last ? '' : ', ' }}
-                                                    }
-                                                } @else if (!p.resident) { Visiting }
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                        <p class="note">Clergy and religious as the almanac listed them here{{ year ? ' in ' + year : ': name, office, years' }}. Resident unless marked.</p>
+                        <ol class="entries two-col">
+                            @for (p of shownPeople; track p.ID) {
+                                <li>
+                                    <a class="record-link pers" [routerLink]="['/people', p.ID]">{{ p.label }}</a>{{ afterName(p.label, !!p.roles) }}
+                                    @if (p.roles) { {{ ' ' }}<i>{{ p.roles }}.</i> }
+                                    @if (year === null) { {{ ' ' + yearsOf(p) + '.' }} }
+                                    @if (p.visitingFrom.length) {
+                                        {{ ' ' }}<span class="muted">{{ p.resident ? 'Also visiting' : 'Visiting' }} from</span>{{ ' ' }}
+                                        @for (v of p.visitingFrom; track v.ID; let last = $last) {
+                                            <a class="record-link inst" [class.unnamed]="v.unnamed" [routerLink]="['/institutions', v.ID]">{{ v.label }}</a>{{ last ? '.' : ', ' }}
+                                        }
+                                    } @else if (!p.resident) { {{ ' ' }}<span class="muted">Visiting.</span> }
+                                </li>
+                            }
+                        </ol>
                         @if (people.length > peoplePreview) {
                             <button type="button" class="btn record-show-all" (click)="showAllPeople = !showAllPeople">
                                 {{ showAllPeople ? 'Show fewer' : 'Show all ' + people.length + ' people' }}
@@ -147,6 +131,7 @@
                 </div>
                 @if (connectionsTab === 'network' && network.nodes.length > 1) {
                     <app-network-graph
+                        [framed]="false"
                         [data]="network"
                         [label]="'Institutions linked to ' + heading + ' by shared clergy'"
                         [options]="networkOptions"

@@ -230,6 +230,11 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     return this.showAllPeople ? this.people : this.people.slice(0, this.peoplePreview);
   }
 
+  /** Punctuation after a name in a run-in entry; "S.J." already ends in a stop. */
+  afterName(name: string, more: boolean): string {
+    return more ? ',' : name.endsWith('.') ? '' : '.';
+  }
+
   yearsOf(row: PersonRow): string {
     return yearRuns(row.years);
   }

@@ -14,6 +14,7 @@ import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { YearPlayerComponent } from '../../common/year-player/year-player.component';
 import { UrlState } from '../../../utils/url-state';
 import { yearScale, drawYearAxis } from '../../../utils/year-scale';
+import { HIGHLIGHT_INK } from '../../../utils/palette';
 
 interface GeoPoint {
   year: number;
@@ -221,7 +222,7 @@ export class SpreadDashboardComponent implements OnInit, AfterViewInit, OnDestro
       }
     }));
     this.centroidMarker = this.current
-      ? [{ lat: this.current.lat, lng: this.current.lng, color: '#ffc107', title: `Centre of gravity · ${this.current.year}` }]
+      ? [{ lat: this.current.lat, lng: this.current.lng, color: HIGHLIGHT_INK, title: `Centre of gravity · ${this.current.year}` }]
       : [];
     this.takeaway = this.computeTakeaway();
     this.renderDrift();

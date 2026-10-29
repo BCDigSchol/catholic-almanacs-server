@@ -1,4 +1,20 @@
-.scrollable-content {
-  height: 100%;
-  overflow-y: auto;
+.formats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.download {
+    margin-left: var(--space-4);
+}
+
+.preparing {
+    margin-left: var(--space-4);
+    font-style: italic;
+    color: var(--ink-3);
+}
+
+.record-section {
+    max-width: 720px;
 }

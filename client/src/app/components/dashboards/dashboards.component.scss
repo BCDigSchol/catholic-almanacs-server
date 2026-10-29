@@ -4,19 +4,22 @@
 
 h2 {
     margin: 0;
-    font: 600 var(--text-xl)/1.3 var(--font-display);
+    padding-top: var(--space-3);
+    border-top: 3px solid var(--rule-strong);
+    font: 400 var(--text-2xl)/1.2 var(--font-display);
     color: var(--ink);
 }
 
 .group-subtitle {
     margin: var(--space-1) 0 var(--space-4);
     color: var(--ink-2);
+    font: italic 400 var(--text-lg) var(--font-display);
 }
 
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--space-4);
+    gap: var(--space-5) var(--space-6);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -24,25 +27,21 @@ h2 {
 
 .card {
     position: relative;
-    padding: var(--space-4);
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-    transition: border-color 0.15s, box-shadow 0.15s;
+    padding: var(--space-3) 0 0;
+    border-top: 1px solid var(--rule);
 
-    &:hover {
-        border-color: var(--ink-3);
-        box-shadow: 0 6px 18px rgb(16 27 50 / 0.08);
+    &:hover h3 a {
+        color: var(--rubric);
     }
 
     &:focus-within {
         outline: 2px solid var(--focus);
-        outline-offset: 2px;
+        outline-offset: 4px;
     }
 
     h3 {
-        margin: var(--space-2) 0 var(--space-2);
-        font: 600 var(--text-lg)/1.3 var(--font-display);
+        margin: 0 0 var(--space-2);
+        font: 400 var(--text-xl)/1.25 var(--font-display);
     }
 
     a {
@@ -70,5 +69,5 @@ h2 {
 }
 
 .icon {
-    color: var(--ink-2);
+    display: none;
 }

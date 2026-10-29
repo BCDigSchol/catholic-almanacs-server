@@ -1,9 +1,0 @@
-<div class="strip" role="img" [attr.aria-label]="label" [style.--fill]="color">
-    @for (cell of cells; track $index) {
-        @if (cell.gap) {
-            <i class="gap" [attr.title]="cell.gap + ': no almanac data'"></i>
-        } @else {
-            <i [class.on]="cell.on" [attr.title]="cell.year"></i>
-        }
-    }
-</div>

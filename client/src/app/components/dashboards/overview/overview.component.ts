@@ -15,6 +15,7 @@ import { ControlBarComponent, ControlChip } from '../../common/control-bar/contr
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { UrlState } from '../../../utils/url-state';
+import { INKS } from '../../../utils/palette';
 import {
   FilterState, Dim, Entity, emptyFilter, totalActive,
   FUNCTION_ORDER, FUNCTION_LABELS, functionColor
@@ -237,8 +238,8 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
     if (res.meta?.dioceseNames) this.dioceseNames = res.meta.dioceseNames;
 
     this.functionBars = this.toBars(res.functions, this.filter.functions, k => FUNCTION_LABELS[k] ?? k, k => functionColor(k));
-    this.typeBars = this.toBars(res.types, this.filter.types, k => this.titleCase(k), () => '#5c6bc0');
-    this.dioceseBars = this.toBars(res.dioceses, this.filter.dioceses, k => this.dioceseName(k), () => '#26a69a');
+    this.typeBars = this.toBars(res.types, this.filter.types, k => this.titleCase(k), () => INKS[0]);
+    this.dioceseBars = this.toBars(res.dioceses, this.filter.dioceses, k => this.dioceseName(k), () => INKS[7]);
 
     const ys = (res.years ?? []) as { year: number; value: number }[];
     const ymax = Math.max(1, ...ys.map(y => y.value));

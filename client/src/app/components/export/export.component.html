@@ -1,35 +1,37 @@
-<div class="flex flex-row items-center justify-center">
-    <div class="flex flex-col justify-center items-center mt-10">
-        <p class="text-center text-gray-700 font-semibold mb-5 custom-font" style="font-family: var(--font-sans)">
-            The most recent dates when data in these files was made available on the website:
-        </p>
-        <mat-card style="width:500px; height:400px" appearance="outlined" class="ml-5 mr-10">
-            <mat-card-content class="scrollable-content">
-                @if (loading) {
-                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <mat-spinner></mat-spinner>
-                    </div>
-                } @else {
-                    @if (fileDates.length === 0) {
-                        <div style="text-align: center; color: gray;">No File Dates Found</div>
-                    } @else {
-                        @for (item of fileDates; track item) {
-                            <div class="mb-2 custom-font">
-                                <span>{{item.fileName}}</span> - 
-                                <span class="text-sm text-gray-600">{{item.date}}</span>
-                            </div>
-                        }}}
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <mat-slide-toggle (change)="toggleFormat()">
-            {{format}}
-        </mat-slide-toggle>
-        <button mat-raised-button>
-            <a [href]="downloadURI" download="almanacs.zip">
-            download
-            </a>
-        </button>
-    </div>
+<div class="page">
+    <app-page-header title="Export the data" eyebrow="Download"
+        subtitle="Every institution, person and almanac record in the database, as one zip file.">
+    </app-page-header>
+
+    <section class="record-section" aria-labelledby="format-heading">
+        <h2 id="format-heading">Format</h2>
+        <div class="formats" role="group" aria-label="File format">
+            @for (f of formats; track f) {
+                <button type="button" class="btn" [class.btn-primary]="format === f" [attr.aria-pressed]="format === f"
+                    (click)="setFormat(f)">{{ f.toUpperCase() }}</button>
+            }
+            @if (downloadURI) {
+                <a class="btn btn-primary download" [href]="downloadURI" [attr.download]="'almanacs-' + format + '.zip'">Download {{ format.toUpperCase() }}</a>
+            } @else {
+                <span class="preparing" aria-live="polite">Preparing the file…</span>
+            }
+        </div>
+    </section>
+
+    <section class="record-section" aria-labelledby="files-heading">
+        <h2 id="files-heading">Files</h2>
+        <p class="note">When the data in each file was last updated on the site.</p>
+        @if (loading) {
+            <p class="note" aria-live="polite">Loading…</p>
+        } @else if (!fileDates.length) {
+            <p class="note">No file dates found.</p>
+        } @else {
+            <dl class="fact-list">
+                @for (item of fileDates; track item.fileName) {
+                    <dt class="mono">{{ item.fileName }}</dt>
+                    <dd>{{ item.date }}</dd>
+                }
+            </dl>
+        }
+    </section>
 </div>

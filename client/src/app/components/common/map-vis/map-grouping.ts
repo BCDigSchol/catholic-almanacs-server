@@ -2,6 +2,7 @@
 // data points and a field to "colour by", this produces a stable colour for
 // each category and a legend describing them. Used by the browse maps and the
 // map dashboards so colours/legends stay consistent across the app.
+import { FUNCTION_COLORS as PALETTE_FUNCTIONS, MANY_INKS, OTHER_INK } from '../../../utils/palette';
 
 import { spaceName } from '../../../pipes/space-name.pipe';
 
@@ -19,23 +20,19 @@ export interface Grouping {
 
 // The five canonical institution functions get fixed, meaningful colours so the
 // same function always reads the same on every map. Mirrors the server buckets.
+// Colours come from the site palette (utils/palette.ts).
 export const FUNCTION_COLORS: Record<string, string> = {
-  'religious institutions': '#377eb8',        // blue
-  'educational institutions': '#984ea3',      // purple
-  'consecrated life institutions': '#e41a1c', // red
-  'charitable institutions': '#ff7f00',       // orange
-  'healthcare institutions': '#4daf4a'        // green
+  'religious institutions': PALETTE_FUNCTIONS['religious institutions'],
+  'educational institutions': PALETTE_FUNCTIONS['educational institutions'],
+  'consecrated life institutions': PALETTE_FUNCTIONS['consecrated life institutions'],
+  'charitable institutions': PALETTE_FUNCTIONS['charitable institutions'],
+  'healthcare institutions': PALETTE_FUNCTIONS['healthcare institutions'],
 };
-export const OTHER_COLOR = '#9e9e9e';
+export const OTHER_COLOR = OTHER_INK;
 const OTHER_LABEL = 'other / unspecified';
 
 // A wide qualitative palette for open-ended categories (type, diocese, …).
-export const PALETTE = [
-  '#1976d2', '#388e3c', '#fbc02d', '#d32f2f', '#7b1fa2', '#0288d1', '#c2185b',
-  '#ffa000', '#455a64', '#f57c00', '#0097a7', '#afb42b', '#5d4037', '#00897b',
-  '#6d4c41', '#303f9f', '#7e57c2', '#43a047', '#d84315', '#8e24aa', '#cddc39',
-  '#ffb300', '#e64a19', '#009688', '#607d8b', '#c0ca33', '#3949ab', '#00acc1'
-];
+export const PALETTE = MANY_INKS;
 
 /** Bucket a (possibly compound) instFunction string to its primary function. */
 export function primaryFunction(raw: string | null | undefined): string {

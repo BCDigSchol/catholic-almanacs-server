@@ -6,6 +6,7 @@ import { DataSet, Network } from "vis-network/standalone";
 import { MatIconModule } from '@angular/material/icon';
 
 import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
+import { INKS } from '../../../utils/palette';
 
 /** What the details card shows for the clicked node. */
 export interface SelectedNode {
@@ -196,7 +197,9 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     const ink = token('--ink', '#16203a');
     const surface = token('--surface', '#ffffff');
     const font = { color: ink, strokeWidth: 4, strokeColor: surface };
-    this.protectedOptions.nodes = { ...this.protectedOptions.nodes, font };
+    // Ungrouped nodes would otherwise take vis-network's default light blue.
+    const nodeColor = { border: surface, background: INKS[0], highlight: { border: ink, background: INKS[0] }, hover: { border: ink, background: INKS[0] } };
+    this.protectedOptions.nodes = { color: nodeColor, ...this.protectedOptions.nodes, font };
     this.protectedOptions.edges = { ...this.protectedOptions.edges, font: { color: ink, strokeWidth: 3, strokeColor: surface } };
     const groups = { ...(this.protectedOptions.groups ?? {}) };
     for (const [group, tokenName] of [['institutions', '--c-inst'], ['people', '--c-pers']]) {
@@ -746,7 +749,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     for (const node of nodes) {
       const group = node.group ?? 'Unknown';
       if (!seen.has(group)) {
-        seen.set(group, groupOptions[group]?.color?.background ?? '#97c2fc');
+        seen.set(group, groupOptions[group]?.color?.background ?? INKS[0]);
       }
     }
     return Array.from(seen.entries())

@@ -19,7 +19,6 @@ button {
     height: 36px;
     padding: 0 var(--space-2);
     border: 1px solid transparent;
-    border-radius: var(--radius-sm);
     background: none;
     color: var(--ink-2);
     font: 500 var(--text-sm) var(--font-sans);
@@ -38,8 +37,8 @@ button {
     }
 
     &.current {
-        border-color: var(--ink);
-        color: var(--ink);
+        border-color: var(--rubric);
+        color: var(--rubric);
         font-weight: 600;
     }
 }

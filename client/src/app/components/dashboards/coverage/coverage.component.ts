@@ -10,13 +10,14 @@ import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-
 import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { UrlState } from '../../../utils/url-state';
+import { COUNT_RAMP } from '../../../utils/palette';
 
 // Sequential 5-step ramp (light -> dark) for the map, whose base tiles are
 // light in both themes. The grid uses the --cov-N tokens in the SCSS instead,
 // which flip for dark mode.
 const d3sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
 
-const RAMP = ['#bdd7e7', '#6baed6', '#3182bd', '#08519c', '#08306b'];
+const RAMP = COUNT_RAMP;
 
 type CellState = 'data' | 'empty' | 'absent';
 interface CovCell { year: number; n: number; cls: string; title: string; gapBefore: boolean; civilWarBefore: boolean; }

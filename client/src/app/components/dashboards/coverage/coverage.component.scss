@@ -5,11 +5,11 @@
     // Grid shading (sqrt levels 1-5, light -> dark); flips in dark mode so
     // "more" is always the strongest contrast against the page.
     --cov-0: rgba(127, 127, 127, 0.12);
-    --cov-1: #bdd7e7;
-    --cov-2: #6baed6;
-    --cov-3: #3182bd;
-    --cov-4: #08519c;
-    --cov-5: #08306b;
+    --cov-1: #d5dde8;
+    --cov-2: #a6b6cc;
+    --cov-3: #6f88a8;
+    --cov-4: #3f6290;
+    --cov-5: #1f3556;
     --cov-pink: rgba(233, 30, 99, 0.25);
     --cov-pink-edge: rgba(233, 30, 99, 0.6);
     --cov-hatch: repeating-linear-gradient(-45deg, rgba(127, 127, 127, 0.32) 0 1px, transparent 1px 4px);
@@ -20,11 +20,11 @@
 }
 
 :host-context(.dark-theme) {
-    --cov-1: #1b3d5e;
-    --cov-2: #24639a;
-    --cov-3: #3d8ccb;
-    --cov-4: #7cb7e3;
-    --cov-5: #cfe6f7;
+    --cov-1: #253447;
+    --cov-2: #34507a;
+    --cov-3: #5c7ba5;
+    --cov-4: #93abcc;
+    --cov-5: #d5dde8;
     --cov-pink: rgba(244, 114, 162, 0.3);
     --cov-pink-edge: rgba(244, 114, 162, 0.7);
 }
@@ -164,7 +164,7 @@ button {
     flex-basis: calc(var(--cell) + 2px);
     border: 0;
     background: none;
-    color: var(--cov-pink-edge);
+    color: var(--rubric);
     font-weight: 700;
 }
 

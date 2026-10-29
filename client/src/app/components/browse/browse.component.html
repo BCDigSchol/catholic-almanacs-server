@@ -29,7 +29,7 @@
 
         <section class="results" #results aria-live="polite" [attr.aria-busy]="loading">
             <div class="toolbar">
-                <button type="button" class="filters-btn" (click)="sheetOpen = true">
+                <button type="button" class="btn filters-btn" (click)="sheetOpen = true">
                     <mat-icon aria-hidden="true">tune</mat-icon>
                     Filters
                     @if (activeCount) { <span class="badge">{{ activeCount }}</span> }
@@ -68,13 +68,13 @@
             @if (failed) {
                 <div class="state">
                     <p>The list couldn’t be loaded. Check your connection and try again.</p>
-                    <button type="button" class="btn btn-primary" (click)="reload()">Try again</button>
+                    <button type="button" class="btn" (click)="reload()">Try again</button>
                 </div>
             } @else if (!loading && !rows.length) {
                 <div class="state">
                     <p>No {{ config.noun[1] }} match these filters.</p>
                     @if (chips.length) {
-                        <button type="button" class="btn btn-primary" (click)="clearAll()">Clear all filters</button>
+                        <button type="button" class="btn" (click)="clearAll()">Clear all filters</button>
                     }
                 </div>
             } @else {
@@ -86,20 +86,17 @@
                     }
                     @for (row of rows; track row.ID) {
                         <li class="row">
-                            <div class="ident">
+                            <div class="line">
                                 <a class="title" [routerLink]="rowLink(row)"
                                     [class.unnamed]="entity === 'institutions' && isUnnamed(row.name)">{{ rowLabel(row) }}</a>
-                                @if (entity === 'institutions' && primaryType(row.type) && !isUnnamed(row.name)) {
-                                    <span class="kind">{{ row.type }}</span>
-                                }
-                                <div class="meta">{{ rowMeta(row) }}</div>
+                                @if (rowPlace(row)) { <span class="place">, {{ rowPlace(row) }}</span> }
+                                <span class="leader" aria-hidden="true"></span>
+                                <span class="span">{{ yearRuns(row.years) }}</span>
                             </div>
-                            <div class="time">
-                                <app-year-strip [years]="row.years" [allYears]="allYears"
-                                    [color]="entity === 'institutions' ? 'var(--c-inst)' : 'var(--c-pers)'"></app-year-strip>
-                                <span class="span">{{ yearSpan(row.years) }}</span>
+                            <div class="sub">
+                                @for (part of rowSub(row); track part) { <span>{{ part }}</span> }
+                                <span class="id">{{ row.ID }}</span>
                             </div>
-                            <span class="id mono">{{ row.ID }}</span>
                         </li>
                     }
                 </ol>

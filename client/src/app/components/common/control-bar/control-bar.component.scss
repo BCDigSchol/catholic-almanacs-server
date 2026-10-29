@@ -38,8 +38,7 @@
     min-width: 20px;
     height: 20px;
     padding: 0 6px;
-    border-radius: 10px;
-    background: var(--ink);
+    background: var(--rubric);
     color: var(--paper);
     font-size: var(--text-xs);
 }
@@ -55,15 +54,19 @@
     button {
         display: inline-flex;
         align-items: center;
-        gap: 4px;
-        height: 30px;
-        padding: 0 var(--space-2) 0 var(--space-3);
-        border: 1px solid var(--rule);
-        border-radius: 15px;
-        background: var(--surface);
+        gap: 2px;
+        height: 28px;
+        padding: 0 var(--space-1) 0 var(--space-2);
+        border: 1px solid var(--rule-strong);
+        background: transparent;
         color: var(--ink);
         font: 500 var(--text-sm) var(--font-sans);
         cursor: pointer;
+
+        &:hover {
+            color: var(--rubric);
+            border-color: var(--rubric);
+        }
 
         mat-icon {
             font-size: 16px;
@@ -75,7 +78,10 @@
         &.clear {
             border-color: transparent;
             background: none;
-            color: var(--link);
+            color: var(--ink-2);
+            font: italic 400 var(--text-base) var(--font-display);
+            text-decoration: underline;
+            text-decoration-color: var(--rubric);
         }
     }
 }

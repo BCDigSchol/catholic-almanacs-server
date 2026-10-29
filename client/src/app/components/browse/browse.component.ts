@@ -10,11 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ApiService } from '../../services/api.service';
 import { PageHeaderComponent } from '../common/page-header/page-header.component';
-import { YearStripComponent } from '../common/year-strip/year-strip.component';
 import { YearRangeComponent, YearRange } from '../common/year-range/year-range.component';
 import { PagerComponent } from '../common/pager/pager.component';
 import { SheetComponent } from '../common/sheet/sheet.component';
-import { institutionLabel, isUnnamed, personLabel, placeLabel, primaryType, yearSpan } from '../../utils/record-labels';
+import { institutionLabel, isUnnamed, personLabel, placeLabel, yearRuns } from '../../utils/record-labels';
 
 export type BrowseEntity = 'institutions' | 'people';
 
@@ -102,7 +101,7 @@ interface Chip {
  */
 @Component({
   selector: 'app-browse',
-  imports: [NgTemplateOutlet, FormsModule, RouterLink, MatIconModule, PageHeaderComponent, YearStripComponent, YearRangeComponent, PagerComponent, SheetComponent],
+  imports: [NgTemplateOutlet, FormsModule, RouterLink, MatIconModule, PageHeaderComponent, YearRangeComponent, PagerComponent, SheetComponent],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss'
 })
@@ -126,14 +125,12 @@ export class BrowseComponent implements OnInit, OnDestroy {
 
   rows: any[] = [];
   total = 0;
-  allYears: number[] = [];
   loading = true;
   failed = false;
   sheetOpen = false;
 
   readonly isUnnamed = isUnnamed;
-  readonly primaryType = primaryType;
-  readonly yearSpan = yearSpan;
+  readonly yearRuns = yearRuns;
 
   private configured = false;
   private appliedKey = '';
@@ -170,7 +167,6 @@ export class BrowseComponent implements OnInit, OnDestroy {
       if (!res) return;
       this.rows = res.rows;
       this.total = res.count;
-      this.allYears = res.meta?.years ?? this.allYears;
     }));
   }
 
@@ -335,11 +331,15 @@ export class BrowseComponent implements OnInit, OnDestroy {
     return this.entity === 'institutions' ? institutionLabel(row.name, row.type) : personLabel(row);
   }
 
-  rowMeta(row: any): string {
-    const parts = this.entity === 'institutions'
-      ? [placeLabel(row.city, row.state), row.diocese && `Diocese of ${row.diocese}`]
-      : [row.diocese && `Diocese of ${row.diocese}`];
-    return parts.filter(Boolean).join(' · ');
+  /** "Louisville, KY" after an institution's name; people have no place of their own. */
+  rowPlace(row: any): string {
+    return this.entity === 'institutions' ? placeLabel(row.city, row.state) : '';
+  }
+
+  /** The italic line beneath an entry: its kind (unless the name already says it) and diocese. */
+  rowSub(row: any): string[] {
+    const kind = this.entity === 'institutions' && !isUnnamed(row.name) ? row.type : '';
+    return [kind, row.diocese && `Diocese of ${row.diocese}`].filter(Boolean);
   }
 
   // ---- filter options -------------------------------------------------------

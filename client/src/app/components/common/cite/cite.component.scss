@@ -16,25 +16,22 @@ mat-icon {
     z-index: 50;
     width: min(420px, calc(100vw - 2 * var(--gutter)));
     padding: var(--space-4);
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-    box-shadow: 0 12px 32px rgb(16 27 50 / 0.18);
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+    box-shadow: 0 8px 24px rgb(27 26 23 / 0.16);
 }
 
 .label {
     margin: 0 0 var(--space-2);
-    font: 600 var(--text-xs) var(--font-sans);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font: italic 400 var(--text-lg) var(--font-display);
     color: var(--ink-3);
 }
 
 .citation {
     margin: 0 0 var(--space-3);
     padding: var(--space-3);
-    background: var(--sunk);
-    border-radius: var(--radius-sm);
+    border-top: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--rule-strong);
     color: var(--ink);
     font-size: var(--text-sm);
     line-height: 1.55;

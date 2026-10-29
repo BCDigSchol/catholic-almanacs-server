@@ -1,3 +1,5 @@
+import { FUNCTION_COLORS, INKS } from '../../../utils/palette';
+
 // The three views of "The Shape of the Church": institutions by function,
 // people by the function of the institution they served, and clergy by rank.
 // They share one chart; only the data request, labels, colours and wording differ.
@@ -28,14 +30,6 @@ export interface CompositionView {
   takeaway(rows: CompositionRow[], buckets: string[], years: number[], scope: string): string;
 }
 
-const FUNCTION_COLORS: Record<string, string> = {
-  'religious institutions': '#3c6e9e',
-  'educational institutions': '#e0a83b',
-  'consecrated life institutions': '#7b5aa6',
-  'charitable institutions': '#3f9e7a',
-  'healthcare institutions': '#c0504d',
-  'other': '#9aa0a6'
-};
 
 const pct = (v: number) => `${Math.round(v * 100)}%`;
 const shareOf = (rows: CompositionRow[], year: number, bucket: string) =>
@@ -121,12 +115,12 @@ export const COMPOSITION_VIEWS: Record<CompositionViewKey, CompositionView> = {
       'other': 'Other / unrecorded'
     },
     colors: {
-      'archbishop': '#5b2a86',
-      'bishop': '#9b4f9e',
-      'vicar or superior': '#3c6e9e',
-      'priest': '#3f9e7a',
-      'seminarian or lay': '#e0a83b',
-      'other': '#9aa0a6'
+      'archbishop': INKS[4],
+      'bishop': INKS[2],
+      'vicar or superior': INKS[0],
+      'priest': INKS[3],
+      'seminarian or lay': INKS[1],
+      'other': INKS[5]
     },
     // How many priests there were for each bishop or archbishop, first year to last.
     takeaway(rows, _buckets, years, scope) {

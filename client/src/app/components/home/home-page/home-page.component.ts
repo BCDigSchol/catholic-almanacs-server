@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { MatIconModule } from '@angular/material/icon';
 
 import { ApiService } from '../../../services/api.service';
 import { HeaderSearchComponent } from '../../common/header-search/header-search.component';
@@ -16,7 +15,7 @@ interface Kpis {
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterLink, MatIconModule, HeaderSearchComponent],
+  imports: [RouterLink, HeaderSearchComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })

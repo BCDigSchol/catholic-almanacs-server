@@ -2,13 +2,21 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 const STORAGE_KEY = 'almanacs-theme';
+const DARK_QUERY = '(prefers-color-scheme: dark)';
 
 @Injectable()
 export class ThemeService {
-  // Starts from the visitor's saved choice, else light. (Following the system
-  // preference waits until every page has been checked in dark mode.)
+  // Starts from the visitor's saved choice, else the system preference, which it
+  // keeps following until the visitor picks a theme with the toggle.
   private _darkTheme = new BehaviorSubject<boolean>(ThemeService.initialDark());
   readonly isDarkTheme$ = this._darkTheme.asObservable();
+
+  constructor() {
+    const media = ThemeService.systemQuery();
+    media?.addEventListener('change', e => {
+      if (!ThemeService.savedChoice()) this._darkTheme.next(e.matches);
+    });
+  }
 
   setTheme(isDarkTheme: boolean): void {
     this._darkTheme.next(isDarkTheme);
@@ -18,10 +26,20 @@ export class ThemeService {
   }
 
   private static initialDark(): boolean {
+    const saved = ThemeService.savedChoice();
+    if (saved) return saved === 'dark';
+    return ThemeService.systemQuery()?.matches ?? false;
+  }
+
+  private static savedChoice(): string | null {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return saved === 'dark';
-    } catch { /* storage unavailable: default to light */ }
-    return false;
+      return localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  private static systemQuery(): MediaQueryList | null {
+    return typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(DARK_QUERY) : null;
   }
 }

@@ -13,6 +13,7 @@ import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.co
 import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { UrlState } from '../../../utils/url-state';
 import { US_STATES, loadOptions, stateName } from '../../../utils/options';
+import { INKS } from '../../../utils/palette';
 
 interface CompositionRow {
   year: number;
@@ -68,7 +69,7 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
   years: number[] = [];
   scopes: Scope[] = [];
 
-  private readonly scopeColors = ['#2f6f9f', '#d98a2b', '#3f9e7a', '#9b4f9e'];
+  private readonly scopeColors = [INKS[0], INKS[1], INKS[3], INKS[2]];
   private cache = new Map<string, CompositionData>();
   private url: UrlState<typeof DEFAULTS>;
   private subs: Subscription[] = [];

@@ -35,8 +35,8 @@
             </ul>
 
             <div class="grid-scroll">
-                <div class="cov-grid" role="grid" aria-label="Institutions recorded per diocese per year">
-                    <div class="cov-row cov-head" role="row">
+                <div class="cov-grid" role="group" aria-label="Institutions recorded per diocese per year">
+                    <div class="cov-row cov-head">
                         <span class="cov-name"></span>
                         @for (h of headerYears; track h.year) {
                             @if (h.gapBefore) { <span class="cov-gap" aria-hidden="true"></span> }
@@ -48,7 +48,7 @@
                     </div>
 
                     @for (r of rows; track r.key) {
-                        <div class="cov-row" role="row" [class.row-sel]="r.key === state.diocese">
+                        <div class="cov-row" [class.row-sel]="r.key === state.diocese">
                             <button type="button" class="cov-name" [class.sel]="r.key === state.diocese"
                                 (click)="pickDiocese(r.key)" [attr.aria-pressed]="r.key === state.diocese" [title]="r.title">{{ r.name }}</button>
                             @for (c of r.cells; track c.year) {

@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { Settings } from '../../../app.settings';
 import { LegendEntry } from './map-grouping';
+import { INKS, COUNT_RAMP, HIGHLIGHT_INK } from '../../../utils/palette';
 import maplibregl from 'maplibre-gl';
 
 @Component({
@@ -279,6 +280,9 @@ export class MapVisComponent {
       .addControl(new maplibregl.GlobeControl());
     this.map.on('load', () => {
       this.renderMapFeatures();
+      // MapLibre opens the compact attribution on wide maps; start it closed.
+      this.map.getContainer().querySelector('.maplibregl-ctrl-attrib.maplibregl-compact-show')
+        ?.classList.remove('maplibregl-compact-show');
     });
 
     // Cross-filter mode: a single map-level click/hover hit-test against the
@@ -374,7 +378,7 @@ export class MapVisComponent {
           properties: {
             value: item.options?.value || 1,
             title: item.title || '',
-            color: item.options?.color || this.options.modeOptions?.color || '#0000ff',
+            color: item.options?.color || this.options.modeOptions?.color || INKS[0],
             radius: item.options?.radius || this.options.modeOptions?.radius || 8,
             internalLink: item.internalLink || null
           }
@@ -423,7 +427,7 @@ export class MapVisComponent {
         this.map.addLayer({
           id: 'overlay-track', type: 'line', source: 'overlay-track-src',
           layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-color': '#3e2723', 'line-width': 2, 'line-opacity': 0.65, 'line-dasharray': [1.5, 1.2] }
+          paint: { 'line-color': '#1b1a17', 'line-width': 2, 'line-opacity': 0.65, 'line-dasharray': [1.5, 1.2] }
         });
       }
     }
@@ -437,7 +441,7 @@ export class MapVisComponent {
           features: pts.map(m => ({
             type: 'Feature',
             geometry: { type: 'Point', coordinates: [m.lng, m.lat] },
-            properties: { color: m.color || '#ffc107', title: m.title || '' }
+            properties: { color: m.color || HIGHLIGHT_INK, title: m.title || '' }
           }))
         }
       });
@@ -478,7 +482,7 @@ export class MapVisComponent {
   private addPointLayer(geojson: any): void {
     let pointPaint = this.options.modeOptions?.point?.paint || {
       'circle-radius': ['coalesce', ['get', 'radius'], 8],
-      'circle-color': ['coalesce', ['get', 'color'], '#0000ff'],
+      'circle-color': ['coalesce', ['get', 'color'], INKS[0]],
       'circle-stroke-width': 1,
       'circle-stroke-color': '#fff',
       'circle-opacity': 0.8
@@ -524,7 +528,7 @@ export class MapVisComponent {
    */
   private addBinsLayer(): void {
     const cfg = this.options.modeOptions?.bins || {};
-    const ramp: string[] = cfg.ramp || ['#bdd7e7', '#6baed6', '#3182bd', '#08519c', '#08306b'];
+    const ramp: string[] = cfg.ramp || COUNT_RAMP;
     this.binsConfig = {
       baseSize: cfg.size || 0.5,
       ramp,
@@ -789,9 +793,9 @@ export class MapVisComponent {
     let clusterPaint = this.options.modeOptions?.cluster?.paint || {
       'circle-color': [
         'step', ['get', 'point_count'],
-        '#51bbd6', 10,
-        '#f1f075', 30,
-        '#f28cb1'
+        COUNT_RAMP[1], 10,
+        COUNT_RAMP[2], 30,
+        COUNT_RAMP[3]
       ],
       'circle-radius': [
         'step', ['get', 'point_count'],
@@ -865,7 +869,7 @@ export class MapVisComponent {
     this.data.forEach(item => {
       if (item.latitude && item.longitude) {
         const marker = new maplibregl.Marker({
-          color: item.options?.color || '#0000ff',
+          color: item.options?.color || INKS[0],
           opacity: item.options?.opacity || 1,
           scale: item.options?.scale || 1
         })

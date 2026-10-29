@@ -128,7 +128,7 @@ export class TreeGraphComponent implements AfterViewInit, OnChanges {
       .append('path')
       .attr('class', 'link')
       .attr('fill', 'none')
-      .attr('stroke', '#aaa')
+      .style('stroke', 'var(--rule-strong)')
       .attr('stroke-width', 1.5)
       .attr('d', () => {
         const o = { x: source.x0 ?? 0, y: source.y0 ?? 0 };
@@ -164,13 +164,13 @@ export class TreeGraphComponent implements AfterViewInit, OnChanges {
 
     nodeEnter.append('circle')
       .attr('r', 0)
-      .attr('stroke', '#003B1F')
+      .style('stroke', 'var(--ink)')
       .attr('stroke-width', 1.5);
 
     nodeEnter.append('text')
       .attr('dy', '0.31em')
       .style('font-size', '12px')
-      .style('font-family', 'sans-serif')
+      .style('font-family', 'var(--font-sans)')
       .style('user-select', 'none')
       .attr('opacity', 0);
 
@@ -182,7 +182,7 @@ export class TreeGraphComponent implements AfterViewInit, OnChanges {
     nodeMerge.select('circle')
       .transition().duration(this.duration)
       .attr('r', this.nodeRadius)
-      .attr('fill', (d: D3Node) => d._children ? '#888' : (d.children ? '#003B1F' : '#6aab8e'));
+      .style('fill', (d: D3Node) => d._children ? 'var(--ink-3)' : (d.children ? 'var(--ink)' : 'var(--c-inst)'));
 
     nodeMerge.select('text')
       .transition().duration(this.duration)

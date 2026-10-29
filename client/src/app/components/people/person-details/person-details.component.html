@@ -56,34 +56,17 @@
 
                 <section class="record-section" aria-labelledby="service-heading">
                     <h2 id="service-heading">Service <small>{{ service.length }} {{ service.length === 1 ? 'institution' : 'institutions' }}</small></h2>
-                    <p class="note">Where the almanac listed them{{ year ? ' in ' + year : ', and in which years' }}.</p>
-                    <div class="table-wrap">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Institution</th>
-                                    <th scope="col">Diocese</th>
-                                    <th scope="col">Role</th>
-                                    @if (year === null) { <th scope="col">Years</th> }
-                                    <th scope="col">Listed as</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @for (s of shownService; track s.instID) {
-                                    <tr>
-                                        <td>
-                                            <a class="record-link inst" [class.unnamed]="s.unnamed" [routerLink]="['/institutions', s.instID]">{{ s.label }}</a>
-                                            @if (s.place) { <div class="record-detail">{{ s.place }}</div> }
-                                        </td>
-                                        <td data-label="Diocese" [class.empty]="!s.diocese">{{ s.diocese }}</td>
-                                        <td data-label="Role" [class.empty]="!s.roles" [class.muted]="!s.roles">{{ s.roles || '—' }}</td>
-                                        @if (year === null) { <td data-label="Years" class="num">{{ yearsOf(s) }}</td> }
-                                        <td data-label="Listed as">{{ s.listedAs }}</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                    <p class="note">Where the almanac listed them{{ year ? ' in ' + year : ': institution, office, years' }}. Resident unless marked.</p>
+                    <ol class="entries">
+                        @for (s of shownService; track s.instID) {
+                            <li>
+                                <a class="record-link inst" [class.unnamed]="s.unnamed" [routerLink]="['/institutions', s.instID]">{{ s.label }}</a>{{ s.place ? ', ' + s.place : '' }}@if (s.diocese) {<span class="muted">{{ ', Diocese of ' + s.diocese }}</span>}.
+                                @if (s.roles) { {{ ' ' }}<i>{{ s.roles }}.</i> }
+                                @if (year === null) { {{ ' ' + yearsOf(s) + '.' }} }
+                                @if (s.listedAs !== 'Resident') { {{ ' ' }}<span class="muted">{{ s.listedAs }}.</span> }
+                            </li>
+                        }
+                    </ol>
                     @if (service.length > servicePreview) {
                         <button type="button" class="btn record-show-all" (click)="showAllService = !showAllService">
                             {{ showAllService ? 'Show fewer' : 'Show all ' + service.length + ' institutions' }}
@@ -109,6 +92,7 @@
                 <h2 id="connections-heading">Connections</h2>
                 <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
                 <app-network-graph
+                    [framed]="false"
                     [data]="network"
                     [label]="'People who served alongside ' + heading"
                     [options]="networkOptions"

@@ -13,6 +13,7 @@ import { US_STATES, loadOptions, stateName } from '../../../utils/options';
 import { UrlState } from '../../../utils/url-state';
 import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
 import { NetworkGraphComponent } from './network-graph.component';
+import { MANY_INKS, OTHER_INK } from '../../../utils/palette';
 
 /** Almanac years the network endpoints can filter on. */
 export const NETWORK_MIN_YEAR = 1833;
@@ -39,11 +40,7 @@ export interface KeyEntry {
 }
 
 /** 20 distinguishable categorical colours, for dioceses. */
-const PALETTE = [
-  '#3c6e9e', '#e0a83b', '#7b5aa6', '#3f9e7a', '#c0504d', '#5aa5c9', '#b5649a', '#8a7a3a',
-  '#2f8f8f', '#d9773a', '#6a8f3a', '#9a4f7f', '#4f5fb0', '#c79a2e', '#7f6a5a', '#2e7d5b',
-  '#a8434a', '#5c86c4', '#b0a03a', '#7a7a92',
-];
+const PALETTE = MANY_INKS;
 
 /**
  * Shared behaviour of the three network dashboards: filters in the URL,
@@ -257,7 +254,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
     const ordered = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
     const groups: any = {};
     this.key = ordered.map(([group, count], i) => {
-      const color = group === 'Unknown' ? '#9aa0a6' : PALETTE[i % PALETTE.length];
+      const color = group === 'Unknown' ? OTHER_INK : PALETTE[i % PALETTE.length];
       groups[group] = { color: { background: color, border: color }, borderWidth: 1, shape: 'dot' };
       return { group, label: group === 'Unknown' ? 'Diocese not recorded' : spaceName(group), color, count, hidden: false };
     });
