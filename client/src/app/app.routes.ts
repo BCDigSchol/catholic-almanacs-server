@@ -9,7 +9,7 @@ function redirectWith(path: string, params: Record<string, string>): RedirectFun
     return ({ queryParams }) => inject(Router).createUrlTree([path], { queryParams: { ...queryParams, ...params } });
 }
 
-// Heavy feature areas (vis-network, d3, leaflet, google maps) are lazy-loaded
+// Heavy feature areas (vis-network, d3, MapLibre) are lazy-loaded
 // so the initial bundle stays small.
 export const routes: Routes = [
     { path: '', component: HomeComponent },
