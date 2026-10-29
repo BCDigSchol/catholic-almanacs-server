@@ -18,6 +18,11 @@
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/history",
       "attribution": "Boundaries by year: <a href=\"https://publications.newberry.org/ahcb/\" target=\"_blank\" rel=\"noopener\">Atlas of Historical County Boundaries</a>, ed. John H. Long, The Newberry Library (<a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY-NC-SA 2.5</a>)"
+    },
+    "ohm": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/ohm",
+      "attribution": "Streets by year: <a href=\"https://www.openhistoricalmap.org/copyright\" target=\"_blank\" rel=\"noopener\">© OpenHistoricalMap contributors</a> (CC0)"
     }
   },
   "glyphs": "${TILES_PUBLIC_URL}/font/{fontstack}/{range}",
@@ -41,6 +46,9 @@
     },
     {
       "id": "history-foreign",
+      "metadata": {
+        "almanac:dated": "show"
+      },
       "type": "fill",
       "source": "base",
       "source-layer": "land",
@@ -54,6 +62,9 @@
     },
     {
       "id": "history-fill",
+      "metadata": {
+        "almanac:dated": "show"
+      },
       "type": "fill",
       "source": "history",
       "source-layer": "states",
@@ -267,6 +278,9 @@
     },
     {
       "id": "detail-rail",
+      "metadata": {
+        "almanac:dated": 0.35
+      },
       "type": "line",
       "source": "detail",
       "source-layer": "rail",
@@ -293,6 +307,9 @@
     },
     {
       "id": "detail-roads",
+      "metadata": {
+        "almanac:dated": 0.35
+      },
       "type": "line",
       "source": "detail",
       "source-layer": "roads",
@@ -370,7 +387,149 @@
       }
     },
     {
+      "id": "ohm-rail",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "line",
+      "source": "ohm",
+      "source-layer": "rail",
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "line-color": "#b5ae9f",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          0.6,
+          15,
+          1.4
+        ],
+        "line-dasharray": [
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "id": "ohm-roads",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "line",
+      "source": "ohm",
+      "source-layer": "roads",
+      "layout": {
+        "visibility": "none",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "line-color": "#b5ae9f",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          [
+            "match",
+            [
+              "get",
+              "kind"
+            ],
+            "major",
+            0.8,
+            "secondary",
+            0.6,
+            0.4
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "kind"
+            ],
+            "major",
+            1.6,
+            "secondary",
+            1.2,
+            "alley",
+            0.5,
+            0.9
+          ],
+          15,
+          [
+            "match",
+            [
+              "get",
+              "kind"
+            ],
+            "major",
+            3,
+            "secondary",
+            2.4,
+            "alley",
+            1,
+            1.8
+          ]
+        ]
+      }
+    },
+    {
       "id": "state-boundaries",
+      "metadata": {
+        "almanac:dated": "hide"
+      },
       "type": "line",
       "source": "base",
       "source-layer": "state_boundaries",
@@ -393,6 +552,9 @@
     },
     {
       "id": "history-lines",
+      "metadata": {
+        "almanac:dated": "show"
+      },
       "type": "line",
       "source": "history",
       "source-layer": "states",
@@ -438,6 +600,9 @@
     },
     {
       "id": "boundaries",
+      "metadata": {
+        "almanac:dated": "hide"
+      },
       "type": "line",
       "source": "base",
       "source-layer": "boundaries",
@@ -627,6 +792,9 @@
     },
     {
       "id": "detail-road-labels",
+      "metadata": {
+        "almanac:dated": "hide"
+      },
       "type": "symbol",
       "source": "detail",
       "source-layer": "roads",
@@ -662,6 +830,65 @@
       }
     },
     {
+      "id": "ohm-road-labels",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "symbol",
+      "source": "ohm",
+      "source-layer": "roads",
+      "minzoom": 14,
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "none",
+        "symbol-placement": "line",
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Old Standard TT Regular"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          14,
+          10,
+          15,
+          12
+        ],
+        "symbol-spacing": 300
+      },
+      "paint": {
+        "text-color": "#cfc8b9",
+        "text-halo-color": "#14130f",
+        "text-halo-width": 1.5
+      }
+    },
+    {
       "id": "detail-green-labels",
       "type": "symbol",
       "source": "detail",
@@ -686,6 +913,9 @@
     },
     {
       "id": "history-labels",
+      "metadata": {
+        "almanac:dated": "show"
+      },
       "type": "symbol",
       "source": "history",
       "source-layer": "state_labels",
@@ -774,6 +1004,9 @@
     },
     {
       "id": "state-labels",
+      "metadata": {
+        "almanac:dated": "hide"
+      },
       "type": "symbol",
       "source": "base",
       "source-layer": "state_labels",

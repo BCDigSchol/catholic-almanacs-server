@@ -17,13 +17,6 @@ import { LegendEntry } from './map-grouping';
 import { INKS, COUNT_RAMP, HIGHLIGHT_INK } from '../../../utils/palette';
 import maplibregl from 'maplibre-gl';
 
-/** Base-map layers that draw today's state lines, borders and state names. */
-const MODERN_LAYERS = ['state-boundaries', 'state-labels', 'boundaries'];
-/** Base-map layers that draw the United States of one date instead: all land
- *  tinted foreign, that day's states and territories in paper over it, their
- *  lines and names, and the neighbouring countries' names of the time. */
-const HISTORY_LAYERS = ['history-foreign', 'history-fill', 'history-lines', 'history-labels'];
-
 /** The given point, moved inside Settings.mapBounds if it lies outside. */
 function clampToUs(lngLat: maplibregl.LngLat): maplibregl.LngLat {
   const [[w, s], [e, n]] = Settings.mapBounds;
@@ -236,28 +229,33 @@ export class MapVisComponent {
   }
 
   /**
-   * Shows the state and territory lines and names in force on 1 January of
-   * `year` (the almanacs were compiled at the turn of the year), hiding today's;
-   * with no year, today's. A style without the history layers (the Carto
-   * fallback) keeps its own.
+   * Shows the base map as of 1 January of `year` (the almanacs were compiled
+   * at the turn of the year): that day's states, territories and borders, and
+   * its streets where OpenHistoricalMap has them, in place of today's; with no
+   * year, today's. Each layer's `metadata['almanac:dated']` in the style
+   * (tiles/make-styles.py) says what it does on a dated map: 'show' (a dated
+   * layer, filtered to the day), 'hide' (today's lines and names), or an
+   * opacity to fade to. Styles without it (the Carto fallback) are untouched.
    */
   private applyYear(): void {
-    const map = this.map;
-    if (!map?.getLayer('history-lines')) return;
+    const layers: any[] = this.map?.getStyle?.()?.layers ?? [];
     const dated = this.year != null;
     const day = (this.year ?? 0) * 10000 + 101;
-    for (const id of HISTORY_LAYERS) {
-      if (!map.getLayer(id)) continue;
-      // a dated layer's filter is ['all', <from test>, <to test>, ...more]
-      // (tiles/make-styles.py): swap in this day, keep the rest
-      const filter = map.getFilter(id);
-      if (Array.isArray(filter) && filter[0] === 'all') {
-        map.setFilter(id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...filter.slice(3)]);
+    for (const layer of layers) {
+      const rule = layer.metadata?.['almanac:dated'];
+      if (rule === 'show') {
+        // a dated layer's filter is ['all', <from test>, <to test>, ...more]:
+        // swap in this day, keep the rest
+        const f = layer.filter;
+        if (dated && Array.isArray(f) && f[0] === 'all') {
+          this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...f.slice(3)]);
+        }
+        this.map.setLayoutProperty(layer.id, 'visibility', dated ? 'visible' : 'none');
+      } else if (rule === 'hide') {
+        this.map.setLayoutProperty(layer.id, 'visibility', dated ? 'none' : 'visible');
+      } else if (typeof rule === 'number') {
+        this.map.setPaintProperty(layer.id, `${layer.type}-opacity`, dated ? rule : 1);
       }
-      map.setLayoutProperty(id, 'visibility', dated ? 'visible' : 'none');
-    }
-    for (const id of MODERN_LAYERS) {
-      if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', dated ? 'none' : 'visible');
     }
   }
 

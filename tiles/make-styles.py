@@ -23,7 +23,7 @@ PALETTES = {
         "dot": "#3d3a33",
         "road_minor": "#dcd7cc", "road_secondary": "#c4bcae", "road_major": "#9a9384",
         "rail": "#8a8478", "green": "#f3f1ea", "cemetery": "#ebe9e0",
-        "foreign": "#ebe8e0",
+        "foreign": "#ebe8e0", "old_road": "#5f5a50",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
@@ -32,7 +32,7 @@ PALETTES = {
         "dot": "#cfc8b9",
         "road_minor": "#2e2c26", "road_secondary": "#403d35", "road_major": "#625d52",
         "rail": "#7a7466", "green": "#1a1915", "cemetery": "#1e1d19",
-        "foreign": "#22211c",
+        "foreign": "#22211c", "old_road": "#b5ae9f",
     },
 }
 
@@ -43,9 +43,19 @@ ATTRIBUTION = (
 )
 
 
-# The history layers' filter until a map picks a date: matches nothing. A
-# history layer's filter is always ["all", <from test>, <to test>, ...more]:
-# map-vis replaces the two date tests with the year's day and keeps the rest.
+# What a layer does on a map set to a year (map-vis applies it): "show" (a
+# dated layer, hidden otherwise), "hide" (today's lines and names), or an
+# opacity to fade to (today's streets, under the historical ones).
+SHOW, HIDE = {"almanac:dated": "show"}, {"almanac:dated": "hide"}
+
+
+def fade(opacity):
+    return {"almanac:dated": opacity}
+
+
+# A dated layer's filter until a map picks a date: matches nothing. It is
+# always ["all", <from test>, <to test>, ...more]: map-vis replaces the two
+# date tests with the year's day and keeps the rest.
 NO_DATE = ["all", ["<=", ["get", "from"], 0], [">=", ["get", "to"], 0]]
 
 # the historical boundaries' provenance, shown in the map's (i) credit line
@@ -54,6 +64,12 @@ HISTORY_ATTRIBUTION = (
     'Boundaries by year: <a href="https://publications.newberry.org/ahcb/" target="_blank" rel="noopener">'
     'Atlas of Historical County Boundaries</a>, ed. John H. Long, The Newberry Library'
     ' (<a href="https://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank" rel="noopener">CC BY-NC-SA 2.5</a>)'
+)
+
+
+OHM_ATTRIBUTION = (
+    'Streets by year: <a href="https://www.openhistoricalmap.org/copyright" target="_blank" rel="noopener">'
+    '© OpenHistoricalMap contributors</a> (CC0)'
 )
 
 
@@ -70,10 +86,10 @@ def layers(c):
         # A dated map tints all land as foreign, then lays the United States of
         # that day over it in paper, so the border falls wherever it was then
         # (Mexico's north before 1848, Texas as a republic) rather than today.
-        {"id": "history-foreign", "type": "fill", "source": "base", "source-layer": "land",
+        {"id": "history-foreign", "metadata": SHOW, "type": "fill", "source": "base", "source-layer": "land",
          "layout": {"visibility": "none"},
          "paint": {"fill-color": c["foreign"], "fill-antialias": False}},
-        {"id": "history-fill", "type": "fill", "source": "history", "source-layer": "states",
+        {"id": "history-fill", "metadata": SHOW, "type": "fill", "source": "history", "source-layer": "states",
          "layout": {"visibility": "none"},
          # the United States proper: not the Texas Republic or Oregon Country
          "filter": [*NO_DATE, ["match", ["get", "kind"], ["state", "territory", "district"], True, False]],
@@ -101,9 +117,9 @@ def layers(c):
          "layout": {"line-cap": "round", "line-join": "round"},
          "paint": {"line-color": c["river"],
                    "line-width": zoom(10, ["match", ["get", "kind"], "stream", 0.4, 1], 15, ["match", ["get", "kind"], "stream", 1.2, 3])}},
-        {"id": "detail-rail", "type": "line", "source": "detail", "source-layer": "rail",
+        {"id": "detail-rail", "metadata": fade(0.35), "type": "line", "source": "detail", "source-layer": "rail",
          "paint": {"line-color": c["rail"], "line-width": zoom(11, 0.5, 15, 1.2), "line-dasharray": [4, 2]}},
-        {"id": "detail-roads", "type": "line", "source": "detail", "source-layer": "roads",
+        {"id": "detail-roads", "metadata": fade(0.35), "type": "line", "source": "detail", "source-layer": "roads",
          "layout": {"line-cap": "round", "line-join": "round"},
          # main and secondary streets lead; motorways (modern) stay as quiet
          # as side streets, so the older street plan reads first
@@ -112,16 +128,28 @@ def layers(c):
                    "line-width": zoom(10, ["match", ["get", "kind"], "major", 0.8, "secondary", 0.5, "motorway", 0.5, 0.3],
                                       13, ["match", ["get", "kind"], "major", 1.6, "secondary", 1.2, "motorway", 1.2, 0.8],
                                       15, ["match", ["get", "kind"], "major", 3, "secondary", 2.5, "motorway", 2, 2])}},
-        {"id": "state-boundaries", "type": "line", "source": "base", "source-layer": "state_boundaries",
+        # ── the streets and railways of one date (ohm.pmtiles), in ink over
+        # today's, which fade; coverage is what OpenHistoricalMap has
+        {"id": "ohm-rail", "metadata": SHOW, "type": "line", "source": "ohm", "source-layer": "rail",
+         "layout": {"visibility": "none"}, "filter": NO_DATE,
+         "paint": {"line-color": c["old_road"], "line-width": zoom(11, 0.6, 15, 1.4),
+                   "line-dasharray": [4, 2]}},
+        {"id": "ohm-roads", "metadata": SHOW, "type": "line", "source": "ohm", "source-layer": "roads",
+         "layout": {"visibility": "none", "line-cap": "round", "line-join": "round"}, "filter": NO_DATE,
+         "paint": {"line-color": c["old_road"],
+                   "line-width": zoom(10, ["match", ["get", "kind"], "major", 0.8, "secondary", 0.6, 0.4],
+                                      13, ["match", ["get", "kind"], "major", 1.6, "secondary", 1.2, "alley", 0.5, 0.9],
+                                      15, ["match", ["get", "kind"], "major", 3, "secondary", 2.4, "alley", 1, 1.8])}},
+        {"id": "state-boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
         # ── the states and territories of one date (history.pmtiles) ──
         # Hidden here: a map given a year shows these in place of today's state
         # lines, borders and names, filtered to that year (map-vis, HISTORY_LAYERS).
-        {"id": "history-lines", "type": "line", "source": "history", "source-layer": "states",
+        {"id": "history-lines", "metadata": SHOW, "type": "line", "source": "history", "source-layer": "states",
          "layout": {"visibility": "none", "line-join": "round"},
          "filter": NO_DATE,
          "paint": {"line-color": c["border"], "line-width": zoom(3, 0.5, 8, 1.1)}},
-        {"id": "boundaries", "type": "line", "source": "base", "source-layer": "boundaries",
+        {"id": "boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "boundaries",
          "layout": {"line-join": "round"},
          "paint": {"line-color": c["border"], "line-width": zoom(2, 0.6, 8, 1.4),
                    "line-dasharray": [6, 2, 1, 2]}},
@@ -146,11 +174,16 @@ def layers(c):
          "layout": {"symbol-placement": "line", "text-field": ["get", "name"], "text-font": ITALIC,
                     "text-size": zoom(6, 11, 10, 13), "symbol-spacing": 400},
          "paint": {"text-color": c["water_label"], "text-halo-color": halo, "text-halo-width": 1.2}},
-        {"id": "detail-road-labels", "type": "symbol", "source": "detail", "source-layer": "roads",
+        {"id": "detail-road-labels", "metadata": HIDE, "type": "symbol", "source": "detail", "source-layer": "roads",
          "minzoom": 14,
          "layout": {"symbol-placement": "line", "text-field": ["get", "name"], "text-font": REGULAR,
                     "text-size": zoom(14, 10, 15, 12), "symbol-spacing": 300},
          "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.5}},
+        {"id": "ohm-road-labels", "metadata": SHOW, "type": "symbol", "source": "ohm", "source-layer": "roads",
+         "minzoom": 14, "filter": NO_DATE,
+         "layout": {"visibility": "none", "symbol-placement": "line", "text-field": ["get", "name"],
+                    "text-font": REGULAR, "text-size": zoom(14, 10, 15, 12), "symbol-spacing": 300},
+         "paint": {"text-color": c["ink2"], "text-halo-color": halo, "text-halo-width": 1.5}},
         {"id": "detail-green-labels", "type": "symbol", "source": "detail", "source-layer": "green",
          "minzoom": 15,
          "layout": {"text-field": ["get", "name"], "text-font": ITALIC, "text-size": 11, "text-max-width": 7},
@@ -158,7 +191,7 @@ def layers(c):
         # a year's states in italic capitals, as below; territories and other
         # areas (Texas Republic, Oregon Country) in italic lower case; the
         # neighbouring countries widely spaced
-        {"id": "history-labels", "type": "symbol", "source": "history", "source-layer": "state_labels",
+        {"id": "history-labels", "metadata": SHOW, "type": "symbol", "source": "history", "source-layer": "state_labels",
          "maxzoom": 8,
          "layout": {"visibility": "none",
                     "text-field": ["get", "name"], "text-font": ITALIC,
@@ -171,7 +204,7 @@ def layers(c):
          "filter": NO_DATE,
          "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.5}},
         # state names: italic capitals, spaced, as the almanacs set them
-        {"id": "state-labels", "type": "symbol", "source": "base", "source-layer": "state_labels",
+        {"id": "state-labels", "metadata": HIDE, "type": "symbol", "source": "base", "source-layer": "state_labels",
          "maxzoom": 8,
          "layout": {"text-field": ["step", ["zoom"], ["get", "abbr"], 4, ["get", "name"]],
                     "text-font": ITALIC, "text-size": zoom(3, 10, 7, 15),
@@ -203,6 +236,8 @@ def style(name, c):
             # built by `tiles-build history`
             "history": {"type": "vector", "url": "${TILES_PUBLIC_URL}/history",
                         "attribution": HISTORY_ATTRIBUTION},
+            # built by `tiles-build ohm`
+            "ohm": {"type": "vector", "url": "${TILES_PUBLIC_URL}/ohm", "attribution": OHM_ATTRIBUTION},
         },
         "glyphs": "${TILES_PUBLIC_URL}/font/{fontstack}/{range}",
         "layers": layers(c),

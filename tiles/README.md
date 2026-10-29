@@ -3,24 +3,25 @@
 Self-hosted base map for the site's maps, in place of OpenStreetMap / Carto.
 Two containers share one volume of tiles:
 
-- **`tiles-build`** is a one-off job. It writes three files into the
+- **`tiles-build`** is a one-off job. It writes four files into the
   `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10),
-  `history.pmtiles` (US states and territories by date, zoom 0–10) and
-  `detail.pmtiles` (streets around every recorded place, zoom 10–15).
+  `history.pmtiles` (US states and territories by date, zoom 0–10),
+  `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15)
+  and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
 
 Keeping them apart means restarting or rebuilding the server never rebuilds the
-tiles, and later layers (historical streets) are just more files in the same
-volume.
+tiles, and new layers are just more files in the same volume.
 
 ## Running
 
 ```sh
-docker compose run --rm tiles-build          # build all three (base, history, detail)
+docker compose run --rm tiles-build          # build all four (base, history, ohm, detail)
 docker compose run --rm tiles-build base     # base map only: a few minutes
 docker compose run --rm tiles-build history  # boundaries by year only: a minute
+docker compose run --rm tiles-build ohm      # streets by year only: a few minutes (fetches the newest planet)
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
@@ -33,7 +34,7 @@ Until the first build has run, the server waits and logs a reminder.
 | URL | What |
 |---|---|
 | `/style/almanac-light`, `/style/almanac-dark` | the map styles the client loads (one per site theme) |
-| `/base/{z}/{x}/{y}`, `/history/…`, `/detail/…` | vector tiles; `/base`, `/history` and `/detail` are the TileJSONs |
+| `/base/{z}/{x}/{y}`, `/history/…`, `/ohm/…`, `/detail/…` | vector tiles; `/base`, `/history`, `/ohm` and `/detail` are the TileJSONs |
 | `/font/Old Standard TT Regular/0-255` | label glyphs (`Regular`, `Italic`, `Bold`) |
 | `/catalog`, `/health` | what the server has; liveness |
 
@@ -146,6 +147,47 @@ the US side of each border is dated.
   to have released them as CC0; we have not found that release at a primary
   source, so we follow the licence in the file.)
 
+## Streets by year
+
+At street zoom, a map given a year also draws the streets and railways that
+existed on 1 January of that year, in ink, wherever OpenHistoricalMap has
+mapped them; today's streets fade to a ghost underneath and their names are
+hidden (streets were renamed, so today's names would contradict the
+historical ones). Where nobody has mapped a city's past yet, only the faded
+modern plan shows: the map does not guess.
+
+| Layer | Contents | From zoom |
+|---|---|---|
+| `roads` | `kind`: major (motorway, trunk, primary) / secondary (secondary, tertiary) / minor (residential and other streets) / alley (service), `name` as of that version, `from`, `to` | 10 / 11 / 12 / 14 |
+| `rail` | `kind`: rail / tram (horsecars and streetcars included), `from`, `to` | 11 |
+
+### Provenance
+
+- **Dataset:** [OpenHistoricalMap](https://www.openhistoricalmap.org/) (OHM),
+  a volunteer-built, OpenStreetMap-style database of places through time, in
+  which each street (and each renaming or rebuilding of it) is a way carrying
+  `start_date` and `end_date` tags.
+- **File:** the newest daily planet snapshot,
+  `planet/planet-YYMMDD_HHMM.osm.pbf` (~1.3 GB), listed in the
+  [planet bucket](https://planet.openhistoricalmap.org/) and fetched through its
+  CDN. The snapshot used is named in the tiles' TileJSON description (`/ohm`);
+  the first build used `planet-261029_0000`, taken 29 October 2026. Each build
+  takes the newest snapshot, so rebuild to pick up new mapping.
+- **Changes made here:** cut to the US (`OHM_BBOX`, Hawaii below it), kept
+  only `highway` and `railway` ways, reduced to a road or rail kind, the name
+  and the dates. Dates are read leniently (`1850`, `1850-05`, `1850-05-12`,
+  `~1850`, `1850s`): a start counts from the first day it can mean, an end to
+  the last. **Undated ways are left out**, since they can't be placed in time.
+- **Coverage** is uneven and is the volunteers', not ours: in October 2026,
+  sampled tiles had hundreds of streets in use in 1880 in lower Manhattan and
+  Cincinnati, and a few dozen in central Boston, Chicago, St. Louis and New
+  Orleans. Errors and gaps should be fixed in OpenHistoricalMap itself, then
+  rebuilt.
+- **Licence:** OHM data is dedicated to the public domain under
+  [CC0](https://www.openhistoricalmap.org/copyright), apart from the few
+  features carrying their own `license=*` tag; OHM asks for credit as a
+  courtesy, which the maps give in their (i) line whenever these layers show.
+
 ## The styles
 
 `styles/almanac-light.json` and `almanac-dark.json` are generated by
@@ -157,6 +199,14 @@ own). Edit the script, not the JSON, then:
 python3 tiles/make-styles.py && docker compose up -d --build tiles
 ```
 
+What a layer does on a map set to a year is in its
+`metadata["almanac:dated"]`: `"show"` (a dated layer: hidden until a year is
+set, then filtered to that day; its filter must start
+`["all", <from test>, <to test>, …]`), `"hide"` (today's borders, state names
+and street names) or an opacity to fade to (today's streets and rail). The
+client's map-vis applies whatever the style says, so new dated layers need no
+client change.
+
 Labels use Old Standard TT (OFL), the site's display face; Martin serves the
 glyphs straight from the TTFs. Libre Franklin isn't used on the map because it
 is only published as a variable font.
@@ -166,11 +216,13 @@ is only published as a variable font.
 ```
 tiles/
   Dockerfile        builder target (tippecanoe + gdal + the script) and server target (Martin + fonts + styles)
-  build.sh          the build job's entry point: base | detail | history | all
+  build.sh          the build job's entry point: base | detail | history | ohm | all
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
   build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
   build-history.sh  Newberry AHCB states and territories → ogr2ogr → history-features.py → tippecanoe → history.pmtiles
   history-features.py  dated outlines + label points (and the neighbours' names), Hawaii dropped
+  build-ohm.sh      newest OpenHistoricalMap planet → osmium (US, streets, rail) → ohm-features.py → tippecanoe → ohm.pmtiles
+  ohm-features.py   OHM dates → from/to days; road and rail kinds; undated ways dropped
   make-area.py      grid cells of recorded places → one clip polygon
   pick-regions.py   the Geofabrik state extracts that touch that polygon
   entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data
