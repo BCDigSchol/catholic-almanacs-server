@@ -3,8 +3,9 @@
 Self-hosted base map for the site's maps, in place of OpenStreetMap / Carto.
 Two containers share one volume of tiles:
 
-- **`tiles-build`** is a one-off job: it downloads open data, clips it to
-  North America and writes `base.pmtiles` into the `tiles-data` volume.
+- **`tiles-build`** is a one-off job. It writes two files into the
+  `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10) and
+  `detail.pmtiles` (streets around every recorded place, zoom 10–15).
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
@@ -16,16 +17,21 @@ year, historical streets) are just more files in the same volume.
 ## Running
 
 ```sh
-docker compose run --rm tiles-build     # build (or rebuild) the tiles; minutes
-docker compose up -d --build tiles      # serve them on http://localhost:8092
+docker compose run --rm tiles-build          # build both (base, then detail)
+docker compose run --rm tiles-build base     # base map only: a few minutes
+docker compose run --rm tiles-build detail   # street detail only: reads the database
+docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
+
+Rebuild the detail after a reseed that adds places (e.g. Alaska's records):
+only states not fetched before are downloaded.
 
 Until the first build has run, the server waits and logs a reminder.
 
 | URL | What |
 |---|---|
 | `/style/almanac-light`, `/style/almanac-dark` | the map styles the client loads (one per site theme) |
-| `/base/{z}/{x}/{y}` | vector tiles; `/base` is the TileJSON |
+| `/base/{z}/{x}/{y}`, `/detail/{z}/{x}/{y}` | vector tiles; `/base` and `/detail` are the TileJSONs |
 | `/font/Old Standard TT Regular/0-255` | label glyphs (`Regular`, `Italic`, `Bold`) |
 | `/catalog`, `/health` | what the server has; liveness |
 
@@ -39,7 +45,7 @@ with no tile server (`null`) fall back to Carto's public base maps.
   almanacs never cover it). Alaska is in. Canada, Mexico and the Caribbean
   show as context: their land, cities over 50,000 and borders, but not their
   provinces or states.
-- **Zoom:** 0–10. MapLibre overzooms beyond that (the client allows zoom 15).
+- **Zoom:** 0–10. MapLibre overzooms beyond that; the street detail takes over from zoom 10 around recorded places (the client allows zoom 15).
 - **Layers:** `land`, `lakes`, `rivers`, `boundaries` (national),
   `state_boundaries` and `state_labels` (US only), `places`, `marine_labels`.
 - **Sources:**
@@ -53,6 +59,30 @@ with no tile server (`null`) fall back to Carto's public base maps.
     100,000 within `SUBURB_KM` (30) of a city of 250,000+ is skipped, so a
     metro area shows its city and county seats, not twentieth-century
     municipalities.
+
+## Street detail around recorded places
+
+`build-detail.sh` reads every recorded coordinate from `mysqldb-prod` (inside
+the US only: a few records carry mistyped coordinates), snaps them to a grid of
+`CELL` = 0.05° cells (~5 km), grows each by `MARGIN` = 1 cell, and unions them
+into one clip area (`make-area.py`). `pick-regions.py` picks the Geofabrik
+state extracts that touch it. Each state is downloaded, filtered with osmium to
+what the map draws, and deleted, so at most one raw state (~1.3 GB) is on disk;
+the filtered states stay in the `tiles-work` volume for the next build
+(`REFRESH_OSM=1` fetches fresh data).
+
+What's drawn, from OpenStreetMap (ODbL, © OpenStreetMap contributors):
+
+| Layer | Contents | From zoom |
+|---|---|---|
+| `roads` | `kind`: major (motorway, trunk, primary) / secondary (secondary, tertiary) / minor (residential and other streets), `name` | 10 / 11 / 12 |
+| `rail` | railways (not in tunnels) | 11 |
+| `waterways` | rivers and canals; streams | 10; 13 |
+| `water` | water areas (river banks, ponds, reservoirs) | 10 |
+| `green` | `kind`: park / cemetery, `name` | 12 |
+
+No buildings or points of interest: they are modern and would compete with
+the data.
 
 ## The styles
 
@@ -74,7 +104,11 @@ is only published as a variable font.
 ```
 tiles/
   Dockerfile        builder target (tippecanoe + gdal + the script) and server target (Martin + fonts + styles)
+  build.sh          the build job's entry point: base | detail | all
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
+  build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
+  make-area.py      grid cells of recorded places → one clip polygon
+  pick-regions.py   the Geofabrik state extracts that touch that polygon
   entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data
   make-styles.py    writes styles/almanac-{light,dark}.json
   styles/

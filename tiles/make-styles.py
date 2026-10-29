@@ -21,12 +21,16 @@ PALETTES = {
         "state": "#b9b1a3", "border": "#5f5a50",
         "ink": "#1b1a17", "ink2": "#3d3a33", "ink3": "#5f5a50", "water_label": "#56707e",
         "dot": "#3d3a33",
+        "road_minor": "#dcd7cc", "road_secondary": "#c4bcae", "road_major": "#9a9384",
+        "rail": "#8a8478", "green": "#f3f1ea", "cemetery": "#ebe9e0",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
         "state": "#4a463c", "border": "#a39c8d",
         "ink": "#ece7dc", "ink2": "#cfc8b9", "ink3": "#a39c8d", "water_label": "#7f97a4",
         "dot": "#cfc8b9",
+        "road_minor": "#2e2c26", "road_secondary": "#403d35", "road_major": "#625d52",
+        "rail": "#7a7466", "green": "#1a1915", "cemetery": "#1e1d19",
     },
 }
 
@@ -56,7 +60,31 @@ def layers(c):
          "layout": {"line-cap": "round", "line-join": "round"},
          "paint": {"line-color": c["river"],
                    "line-width": zoom(3, ["case", ["<=", ["get", "rank"], 4], 0.7, 0.3],
-                                      8, ["case", ["<=", ["get", "rank"], 4], 1.6, 0.8])}},
+                                      8, ["case", ["<=", ["get", "rank"], 4], 1.6, 0.8]),
+                   # Natural Earth's lines are too coarse at street zoom, where
+                   # the detail layer draws the real banks
+                   "line-opacity": zoom(10, 1, 11, 0)}},
+        # ── street detail around recorded places (zoom 10+; detail.pmtiles) ──
+        {"id": "detail-green", "type": "fill", "source": "detail", "source-layer": "green",
+         "paint": {"fill-color": ["match", ["get", "kind"], "cemetery", c["cemetery"], c["green"]],
+                   "fill-outline-color": c["road_minor"]}},
+        {"id": "detail-water", "type": "fill", "source": "detail", "source-layer": "water",
+         "paint": {"fill-color": c["water"]}},
+        {"id": "detail-waterways", "type": "line", "source": "detail", "source-layer": "waterways",
+         "layout": {"line-cap": "round", "line-join": "round"},
+         "paint": {"line-color": c["river"],
+                   "line-width": zoom(10, ["match", ["get", "kind"], "stream", 0.4, 1], 15, ["match", ["get", "kind"], "stream", 1.2, 3])}},
+        {"id": "detail-rail", "type": "line", "source": "detail", "source-layer": "rail",
+         "paint": {"line-color": c["rail"], "line-width": zoom(11, 0.5, 15, 1.2), "line-dasharray": [4, 2]}},
+        {"id": "detail-roads", "type": "line", "source": "detail", "source-layer": "roads",
+         "layout": {"line-cap": "round", "line-join": "round"},
+         # main and secondary streets lead; motorways (modern) stay as quiet
+         # as side streets, so the older street plan reads first
+         "paint": {"line-color": ["match", ["get", "kind"], "major", c["road_major"],
+                                  "secondary", c["road_secondary"], c["road_minor"]],
+                   "line-width": zoom(10, ["match", ["get", "kind"], "major", 0.8, "secondary", 0.5, "motorway", 0.5, 0.3],
+                                      13, ["match", ["get", "kind"], "major", 1.6, "secondary", 1.2, "motorway", 1.2, 0.8],
+                                      15, ["match", ["get", "kind"], "major", 3, "secondary", 2.5, "motorway", 2, 2])}},
         {"id": "state-boundaries", "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
         {"id": "boundaries", "type": "line", "source": "base", "source-layer": "boundaries",
@@ -80,10 +108,19 @@ def layers(c):
                     "text-size": zoom(5, 11, 9, 14), "text-max-width": 7},
          "paint": {"text-color": c["water_label"], "text-halo-color": c["water"], "text-halo-width": 1}},
         {"id": "river-labels", "type": "symbol", "source": "base", "source-layer": "rivers",
-         "minzoom": 6,
+         "minzoom": 6, "maxzoom": 11,
          "layout": {"symbol-placement": "line", "text-field": ["get", "name"], "text-font": ITALIC,
                     "text-size": zoom(6, 11, 10, 13), "symbol-spacing": 400},
          "paint": {"text-color": c["water_label"], "text-halo-color": halo, "text-halo-width": 1.2}},
+        {"id": "detail-road-labels", "type": "symbol", "source": "detail", "source-layer": "roads",
+         "minzoom": 14,
+         "layout": {"symbol-placement": "line", "text-field": ["get", "name"], "text-font": REGULAR,
+                    "text-size": zoom(14, 10, 15, 12), "symbol-spacing": 300},
+         "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.5}},
+        {"id": "detail-green-labels", "type": "symbol", "source": "detail", "source-layer": "green",
+         "minzoom": 15,
+         "layout": {"text-field": ["get", "name"], "text-font": ITALIC, "text-size": 11, "text-max-width": 7},
+         "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.2}},
         # state names: italic capitals, spaced, as the almanacs set them
         {"id": "state-labels", "type": "symbol", "source": "base", "source-layer": "state_labels",
          "maxzoom": 8,
@@ -110,7 +147,11 @@ def style(name, c):
         "metadata": {"description": "North American base map for the Catholic Almanacs (Hawaii excluded). "
                                     "Generated by tiles/make-styles.py; ${TILES_PUBLIC_URL} is filled in "
                                     "when the tile server starts."},
-        "sources": {"base": {"type": "vector", "url": "${TILES_PUBLIC_URL}/base", "attribution": ATTRIBUTION}},
+        "sources": {
+            "base": {"type": "vector", "url": "${TILES_PUBLIC_URL}/base", "attribution": ATTRIBUTION},
+            # built by `tiles-build detail`; until then its layers simply draw nothing
+            "detail": {"type": "vector", "url": "${TILES_PUBLIC_URL}/detail"},
+        },
         "glyphs": "${TILES_PUBLIC_URL}/font/{fontstack}/{range}",
         "layers": layers(c),
     }

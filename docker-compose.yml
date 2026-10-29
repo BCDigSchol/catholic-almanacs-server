@@ -78,15 +78,27 @@ services:
       - server-network
 
   # Map tiles (see tiles/README.md). tiles-build is a one-off job that builds
-  # the tiles into the tiles-data volume: docker compose run --rm tiles-build
+  # the tiles into the tiles-data volume:
+  #   docker compose run --rm tiles-build [base|detail]
+  # The street detail follows the places recorded in mysqldb-prod.
   tiles-build:
     build:
       context: tiles/
       target: builder
     profiles: ["build"]
+    depends_on:
+      - mysqldb-prod
+    environment:
+      - DB_HOST=mysqldb-prod
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=123456
+      - DB_NAME=database
     volumes:
       - tiles-data:/data
       - tiles-work:/work
+    networks:
+      - server-network
 
   tiles:
     build:
