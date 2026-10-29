@@ -1,0 +1,40 @@
+<div class="bar" role="group" aria-label="Dashboard controls">
+    <div class="primary"><ng-content select="[primary]"></ng-content></div>
+    @if (filters) {
+        @if (compact) {
+            <button type="button" class="btn filters-btn" (click)="sheetOpen = true">
+                <mat-icon aria-hidden="true">tune</mat-icon> Filters
+                @if (chips.length) { <span class="badge">{{ chips.length }}</span> }
+            </button>
+        } @else {
+            <div class="filters"><ng-container *ngTemplateOutlet="filters"></ng-container></div>
+        }
+    }
+</div>
+
+@if (chips.length) {
+    <ul class="chips" aria-label="Active filters">
+        @for (chip of chips; track chip.label) {
+            <li>
+                <button type="button" (click)="chip.clear()" [attr.aria-label]="'Remove filter ' + chip.label">
+                    {{ chip.label }} <mat-icon aria-hidden="true">close</mat-icon>
+                </button>
+            </li>
+        }
+        @if (clearAll && chips.length > 1) {
+            <li><button type="button" class="clear" (click)="clearAll()">Clear all</button></li>
+        }
+    </ul>
+}
+
+@if (compact && sheetOpen && filters) {
+    <app-sheet heading="Filters" (closed)="sheetOpen = false">
+        <div class="sheet-filters"><ng-container *ngTemplateOutlet="filters"></ng-container></div>
+        <div sheet-footer>
+            @if (clearAll && chips.length) {
+                <button type="button" class="btn" (click)="clearAll()">Clear all</button>
+            }
+            <button type="button" class="btn btn-primary" (click)="sheetOpen = false">Done</button>
+        </div>
+    </app-sheet>
+}

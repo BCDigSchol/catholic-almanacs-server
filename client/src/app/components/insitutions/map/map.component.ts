@@ -1,258 +1,221 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FilterComponent } from '../../common/filter/filter.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatInput, MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FormsModule } from  '@angular/forms';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MapVisComponent } from '../../common/map-vis/map-vis.component';
-import { buildGrouping, LegendEntry } from '../../common/map-vis/map-grouping';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { ApiService } from '../../../services/api.service';
-import { FilterService } from '../../../services/filter.service';
-import { NavigationService } from '../../../services/navigation.service';
-import { HttpClient } from '@angular/common/http';
-import { A11yModule } from "@angular/cdk/a11y";
+import { spaceName } from '../../../pipes/space-name.pipe';
+import { MapVisComponent } from '../../common/map-vis/map-vis.component';
+import { buildGrouping, LegendEntry } from '../../common/map-vis/map-grouping';
+import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
+import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
+import { YearPlayerComponent } from '../../common/year-player/year-player.component';
+import { UrlState } from '../../../utils/url-state';
+import { loadOptions } from '../../../utils/options';
+import { institutionLabel } from '../../../utils/record-labels';
 
-interface FilterField {
-    type: string;
-    label?: string;
-    keyword?: string;
-    active?: boolean;
-    autocompleteOptions?: string[];
-    keywordStart?: string;
-    keywordEnd?: string;
-    min?: number; 
-    max?: number; 
-    filteredOptions?: string[];
-  }
+interface InstPoint {
+  id: string;
+  instName: string;
+  instType: string;
+  instFunction: string;
+  diocese: string;
+  latitude: number;
+  longitude: number;
+}
+
+const MAP_VIEWS = [
+  { value: 'point', label: 'Points' },
+  { value: 'heatmap', label: 'Heatmap' },
+  { value: 'bins', label: 'Grid' },
+  { value: 'cluster', label: 'Clusters' },
+];
+const DEFAULTS = { year: 0, type: '', fn: '', name: '', diocese: '', color: 'function', view: 'point' };
+/** Params that change what the server returns (the rest only redraw). */
+const DATA_KEYS = ['year', 'type', 'fn', 'name', 'diocese'] as const;
 
 @Component({
   selector: 'app-institutions-map',
-  imports: [FilterComponent, MatCardModule, CommonModule,
-    MatButtonModule, MatIconModule, MatSliderModule, MatInputModule, FormsModule,
-    MatProgressSpinnerModule, MatProgressBarModule, MapVisComponent, A11yModule,
-    MatSelectModule, MatFormFieldModule],
+  imports: [MapVisComponent, DashboardShellComponent, ControlBarComponent, VizPanelComponent, SegmentedComponent, YearPlayerComponent],
   templateUrl: './map.component.html',
-  styleUrl: './map.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './map.component.scss'
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
+  @ViewChild(MapVisComponent) mapVis?: MapVisComponent;
 
-  @ViewChild('instMap', {static: false}) private mapRef!: ElementRef<HTMLDivElement>;
-
-  loading: boolean = true;
-  data: any[] = [];
-  isPlaying: boolean = false;
-  year: number = 1833;
-  yearMin: number = 1833;
-  yearMax: number = 1870;
-  isMobile: boolean = false;
-
-  mapOptions = {
-              zoom: 4.4,
-              mode: 'point' as const,
-              modeControl: true,
-              center: { lat: 39, lng: -98 },
-              size: { width: '900px', height: '600px' },
-          }
-
-  // "Colour by" grouping — recolours the same points without refetching.
-  groupBy: 'function' | 'type' | 'diocese' = 'function';
-  groupOptions = [
-    { value: 'function', label: 'Function' },
-    { value: 'type', label: 'Institution Type' },
-    { value: 'diocese', label: 'Diocese' }
+  readonly related = [
+    { label: 'Explore People on the Map', link: '/dashboards/explore-people' },
+    { label: 'The Spread of the Church', link: '/dashboards/spread' },
+    { label: 'The Almanacs at a Glance', link: '/dashboards/overview' },
   ];
-  legend: LegendEntry[] = [];
-  private rawPoints: any[] = [];
+  readonly colorOptions = [
+    { value: 'function', label: 'Function' },
+    { value: 'type', label: 'Type' },
+    { value: 'diocese', label: 'Diocese' },
+  ];
+  readonly views = MAP_VIEWS;
+  readonly dioceseLabel = spaceName;
+  typeOptions: string[] = [];
+  functionOptions: string[] = [];
+  dioceseOptions: string[] = [];
 
-  filterValues$!: Observable<any>; //! = can be null
-  filterValues: any = {
+  state = { ...DEFAULTS };
+  nameDraft = '';
+  vizState: VizState = 'loading';
+  updating = false;
+  takeaway = '';
+  chips: ControlChip[] = [];
+  years: number[] = [];
+  year: number | null = null;
+
+  data: any[] = [];
+  legend: LegendEntry[] = [];
+  shown = 0;
+  unlocated = 0;
+  mapOptions = {
+    // Narrow screens start zoomed out far enough to show the whole country.
+    zoom: window.innerWidth < 640 ? 2 : 3.6,
+    mode: 'point' as 'heatmap' | 'point' | 'bins' | 'cluster',
+    center: { lat: 39, lng: window.innerWidth < 640 ? -96 : -94 },
+    size: { width: '100%', height: 'clamp(320px, 62vh, 640px)' }
   };
 
-  filterFields: FilterField[] = [
-    //{ type: 'slider', label: 'Year', keyword: 'year', min: 1830, max: 1870, active: true, defaultValue: '1864'},
-    { type: 'autocomplete', label: 'Institution Type', keyword: 'instType', active: false, autocompleteOptions: []},
-    { type: 'input', label: 'Institution Name', keyword: 'instName', active: false},
-    { type: 'autocomplete', label: 'Diocese', keyword: 'diocese', active: false, autocompleteOptions: []}
-  ]
+  private points: InstPoint[] = [];
+  private url: UrlState<typeof DEFAULTS>;
+  private subs: Subscription[] = [];
+  private fetchSub?: Subscription;
+  private nameInput = new Subject<string>();
 
-  constructor(
-    private _api: ApiService, 
-    private filterService: FilterService, 
-    private _router:Router,
-    private navigationService: NavigationService,
-    private http: HttpClient,
-    private cdr: ChangeDetectorRef
-  ) { }
+  constructor(private api: ApiService, private http: HttpClient, router: Router, route: ActivatedRoute) {
+    this.url = new UrlState(router, route, DEFAULTS);
+  }
 
   ngOnInit(): void {
-    this.http.get('diocese.csv', { responseType: 'text' }).subscribe((data) => {
-      const dioceses = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-      const dioceseFilter = this.filterFields.find(field => field.keyword === 'diocese');
-      if (dioceseFilter) {
-        dioceseFilter.autocompleteOptions = dioceses;
-        dioceseFilter.filteredOptions = dioceses;
-      }
-    });
+    this.subs.push(
+      loadOptions(this.http, 'types.csv').subscribe(o => this.typeOptions = o),
+      loadOptions(this.http, 'functions.csv').subscribe(o => this.functionOptions = o.filter(f => f !== 'other')),
+      loadOptions(this.http, 'diocese.csv').subscribe(o => this.dioceseOptions = o),
+      this.nameInput.pipe(debounceTime(400), distinctUntilChanged())
+        .subscribe(name => this.url.set({ name: name.trim() })),
+    );
+    // The almanac years, from the browse index (cheap: one row).
+    this.subs.push(this.api.getTypeRequest('institution?size=1').subscribe({
+      next: (res: any) => {
+        this.years = res.meta?.years ?? [];
+        this.subs.push(this.watchUrl());
+      },
+      error: () => this.vizState = 'error',
+    }));
+  }
 
-    this.http.get('types.csv', { responseType: 'text' }).subscribe((data) => {
-      const types = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-      const typeFilter = this.filterFields.find(field => field.keyword === 'instType');
-      if (typeFilter) {
-        typeFilter.autocompleteOptions = types;
-        typeFilter.filteredOptions = types;
-      }
-    });
+  ngOnDestroy(): void {
+    this.subs.forEach(s => s.unsubscribe());
+    this.fetchSub?.unsubscribe();
+  }
 
-    if (this.navigationService.lastNavigationTrigger !== 'popstate') {
-    this.filterService.clearFilters();
-    this.filterService.setFields(this.filterFields);
-    };
-    this.filterValues$ = this.filterService.filterValues$;
-    this.filterValues$.subscribe(values => {
-      this.filterValues = values;
-      this.getData();
-    });
-    
-    setInterval (() => {
-      if (this.isPlaying && this.year < this.yearMax) {
-        this.year += 1;
-        this.getData();
-      };
-      if (this.isPlaying && this.year >= this.yearMax) {
-        this.isPlaying = false;
+  private watchUrl(): Subscription {
+    let dataKey: string | null = null;
+    let first = true;
+    return this.url.changes().subscribe(state => {
+      if (first) this.mapOptions = { ...this.mapOptions, mode: state.view as any };
+      else if (state.view !== this.state.view) this.mapVis?.changeMapMode(state.view);
+      first = false;
+      this.year = this.years.includes(state.year) ? state.year : this.years[this.years.length - 1] ?? null;
+      this.state = state;
+      if (state.name !== this.nameDraft.trim()) this.nameDraft = state.name;
+      this.chips = [
+        ...(state.type ? [{ label: `Type: ${state.type}`, clear: () => this.url.set({ type: '' }) }] : []),
+        ...(state.fn ? [{ label: `Function: ${state.fn}`, clear: () => this.url.set({ fn: '' }) }] : []),
+        ...(state.name ? [{ label: `Name: “${state.name}”`, clear: () => this.url.set({ name: '' }) }] : []),
+        ...(state.diocese ? [{ label: `Diocese: ${spaceName(state.diocese)}`, clear: () => this.url.set({ diocese: '' }) }] : []),
+      ];
+      const key = DATA_KEYS.map(k => k === 'year' ? this.year : state[k]).join('|');
+      if (key !== dataKey) {
+        dataKey = key;
+        this.fetchData();
+      } else {
+        this.applyGrouping();
       }
-    }, 2000);
-  };
-  
-  ngAfterViewInit(): void {
-    this.isMobile = window.innerWidth <= 600;
-    window.addEventListener('resize', () => {
-      this.isMobile = window.innerWidth <= 600;
-      this.resizeMap();
     });
-    this.resizeMap();
-    setTimeout(() => {
-      this.resizeMap();
-    }, 500);
-  };
+  }
 
-  resizeMap(): void {
-    //const mapElement = this.mapRef.nativeElement;
-    //console.log(mapElement);
-    const width = window.innerWidth;
-    const height = width * 0.6;
-    //console.log(`Resizing map to ${width}px x ${height}px`);
-    if (this.isMobile) {
-      this.mapOptions = {
-        ...this.mapOptions,
-        zoom: 2.5,
-        size: {
-          width: `${width}px`,
-          height: `${height}px`
-        }
-      }
-    }
-    this.getData();
-    this.cdr.markForCheck();
+  // ---- controls -------------------------------------------------------------
+
+  setYear(year: number): void { this.url.set({ year }); }
+  setColor(color: string): void { this.url.set({ color }); }
+  setView(view: string): void { this.url.set({ view }); }
+  setFilter(change: Partial<typeof DEFAULTS>): void { this.url.set(change); }
+  onName(value: string): void {
+    this.nameDraft = value;
+    this.nameInput.next(value);
+  }
+  clearAll = (): void => {
+    this.nameDraft = '';
+    this.url.set({ type: '', fn: '', name: '', diocese: '' });
   };
 
-  getData() {
-    
-    this.loading = true;
-    let queryString = '';
-    //if (this.filterValues.year) {
-    //  queryString = `?year=${this.filterValues.year}`;
-    //};
-    queryString = `?year=${this.year}`;
-    if (this.filterValues.instType) {
-      queryString += queryString ? `&instType=${this.filterValues.instType}` : `?instType=${this.filterValues.instType}`;
-    };
-    if (this.filterValues.instName) {
-      queryString += queryString ? `&instName=${this.filterValues.instName}` : `?instName=${this.filterValues.instName}`;
-    };
-    if (this.filterValues.diocese) {
-      queryString += queryString ? `&diocese=${this.filterValues.diocese}` : `?diocese=${this.filterValues.diocese}`;
-    }
-    this._api.getTypeRequest('maps/institutions' + queryString).subscribe((res: any) => {
-      let institutionData: any[] = [];
-      for (let item of res.rows) {
-        for (let almanacRecord of item.almanacRecord) {
-          if (almanacRecord.latitude && almanacRecord.longitude) {
-            institutionData.push(Object.assign(almanacRecord, {id: item.ID}));
+  // ---- data -----------------------------------------------------------------
+
+  fetchData(): void {
+    if (this.year === null) return;
+    // Keep the old points on screen while a new year loads (so playing doesn't flash).
+    if (!this.points.length) this.vizState = 'loading';
+    this.updating = true;
+    const q = new URLSearchParams({ year: String(this.year) });
+    if (this.state.type) q.set('instType', this.state.type);
+    if (this.state.fn) q.set('instFunction', this.state.fn);
+    if (this.state.name) q.set('instName', this.state.name);
+    if (this.state.diocese) q.set('diocese', this.state.diocese);
+    this.fetchSub?.unsubscribe();
+    this.fetchSub = this.api.getTypeRequest('maps/institutions?' + q).subscribe({
+      next: (res: any) => {
+        const points: InstPoint[] = [];
+        let unlocated = 0;
+        for (const item of res.rows ?? []) {
+          for (const r of item.almanacRecord ?? []) {
+            if (r.latitude && r.longitude) points.push({ ...r, id: item.ID });
+            else unlocated++;
           }
         }
-      };
-      this.rawPoints = institutionData;
-      this.applyGrouping();
-      this.loading = false;
-      //console.log(this.data);
-    })
-  };
+        this.points = points;
+        this.unlocated = unlocated;
+        this.updating = false;
+        this.vizState = points.length ? 'ready' : 'empty';
+        this.applyGrouping();
+      },
+      error: () => {
+        this.updating = false;
+        this.vizState = 'error';
+      },
+    });
+  }
 
-  /** Recolour the current points by the active "Colour by" field + build the legend. */
-  applyGrouping() {
-    const field = this.groupBy === 'type' ? 'instType' : this.groupBy === 'diocese' ? 'diocese' : 'instFunction';
-    const mode = this.groupBy === 'function' ? 'function' : 'categorical';
-    const grouping = buildGrouping(this.rawPoints.map(p => p[field]), mode);
+  /** Colour the current points by the "Colour by" field and build the key. */
+  private applyGrouping(): void {
+    const field = this.state.color === 'type' ? 'instType' : this.state.color === 'diocese' ? 'diocese' : 'instFunction';
+    const grouping = buildGrouping(this.points.map(p => p[field]), this.state.color === 'function' ? 'function' : 'categorical');
     this.legend = grouping.legend;
-    this.data = this.rawPoints.map(item => ({
-      latitude: item.latitude,
-      longitude: item.longitude,
-      title: item.instName || '',
-      internalLink: item.id ? '/institutions/' + item.id : '',
-      options: { color: grouping.colorFor(item[field]), radius: 6 }
+    this.data = this.points.map(p => ({
+      latitude: p.latitude,
+      longitude: p.longitude,
+      title: institutionLabel(p.instName, p.instType),
+      internalLink: '/institutions/' + p.id,
+      options: { color: grouping.colorFor(p[field]), radius: 6 }
     }));
-    this.cdr.markForCheck();
+    this.shown = this.points.length;
+    this.takeaway = this.computeTakeaway();
   }
 
-  onGroupChange() {
-    this.applyGrouping();
-  }
-
-  clickMap(item: any) {
-    this._router.navigate(['/institutions', item.id]);
-  };
-
-  instDetailVisible: boolean = false;
-  instDetailData: any = {};
-  
-  showInstDetail(event: any, item: any) {
-    this.instDetailData = item;
-    this.instDetailVisible = true;
-  };
-
-  hideInstDetail() {
-    this.instDetailVisible = false;
-    this.instDetailData = {};
-  };
-
-  getCircleColor (type: string) : string {
-    const colorMap : { [key: string] : string} = {
-      'consecrated life institutions': '#FF0000', // red
-      'religious institutions': '#5bcea8ff', // yellow
-      'educational institutions': '#b300ffff', // orange
-      'healthcare institutions': '#0000FF', // blue
-      'charitable institutions': '#877b24ff', // green
-    };
-    return colorMap[type] || '#FFFFFF'; // default to white if type not found
-  };
-
-  togglePlay () {
-    this.isPlaying = !this.isPlaying;
-  };
-
-  getSliderWidthMobile(): number {
-    return parseInt(this.mapOptions.size.width) * 0.9;
+  private computeTakeaway(): string {
+    if (this.year === null || this.vizState === 'loading') return '';
+    const filtered = this.chips.length ? ' matching these filters' : '';
+    if (!this.shown) return `The ${this.year} almanac has no located institutions${filtered}.`;
+    const dioceses = new Set(this.points.map(p => p.diocese).filter(Boolean)).size;
+    const missing = this.unlocated ? ` A further ${this.unlocated.toLocaleString()} have no recorded location.` : '';
+    return `${this.shown.toLocaleString()} institution${this.shown === 1 ? '' : 's'}${filtered} appear on the ${this.year} map, ` +
+      `across ${dioceses.toLocaleString()} diocese${dioceses === 1 ? '' : 's'}.${missing}`;
   }
 }

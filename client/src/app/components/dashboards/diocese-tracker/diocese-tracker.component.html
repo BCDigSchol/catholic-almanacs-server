@@ -1,76 +1,93 @@
-<div class="dashboard">
-  <header class="dashboard-header">
-    <h1>Diocese by Diocese</h1>
-    <p class="subtitle">
-      How the spread of the church breaks down by jurisdiction. Each point is a place the almanac
-      recorded that year, coloured by its diocese — pick one to trace its own spread, or press play
-      to watch the whole patchwork fill in.
-    </p>
-  </header>
+<app-dashboard-shell
+    title="Diocese by Diocese"
+    purpose="The places the almanacs recorded each year, coloured by diocese: trace one see's spread, or watch the whole patchwork fill in."
+    [takeaway]="takeaway"
+    [related]="related">
 
-  <div class="controls">
-    <mat-form-field appearance="fill" class="diocese-select" subscriptSizing="dynamic">
-      <mat-label>Diocese</mat-label>
-      <mat-select [(ngModel)]="selected" (selectionChange)="onSelectChange()">
-        <mat-option value="">All dioceses</mat-option>
-        @for (d of dioceses; track d.key) {
-          <mat-option [value]="d.key">{{ nameFor(d.key) }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </div>
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" [value]="state.diocese" (change)="setDiocese($any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceses; track d.key) {
+                        <option [value]="d.key" [selected]="d.key === state.diocese">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
 
-  <div class="state-msg" *ngIf="loading">Loading…</div>
-  <div class="state-msg error" *ngIf="error">
-    {{ error }}
-    <button (click)="fetchData()">Retry</button>
-  </div>
+    @if (year) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">institutions recorded in {{ year }}{{ state.diocese ? ' in ' + nameFor(state.diocese) : '' }}</dt>
+                <dd class="stat-value">{{ visibleTotal | number }}</dd>
+            </div>
+            @if (state.diocese) {
+                @if (selectedSpan) {
+                    <div class="stat">
+                        <dt class="stat-label">years {{ nameFor(state.diocese) }} appears</dt>
+                        <dd class="stat-value">{{ selectedSpan }}</dd>
+                    </div>
+                }
+            } @else {
+                <div class="stat">
+                    <dt class="stat-label">dioceses represented in {{ year }}</dt>
+                    <dd class="stat-value">{{ activeCount }}</dd>
+                </div>
+            }
+        </dl>
+    }
 
-  <div class="content" [class.hidden]="loading || error">
-    <!-- Scrubber + play -->
-    <div class="timeline" *ngIf="currentStat">
-      <button class="play-btn" type="button" (click)="togglePlay()"
-              [attr.aria-label]="isPlaying ? 'Pause' : 'Play'">
-        <mat-icon>{{ isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
-      </button>
-      <div class="year-readout">{{ currentStat.year }}</div>
-      <mat-slider class="year-slider" [min]="0" [max]="years.length - 1" step="1" discrete
-                  [displayWith]="formatYear">
-        <input matSliderThumb [(ngModel)]="yearIndex" (input)="onScrub()" />
-      </mat-slider>
+    <app-viz-panel
+        [heading]="(state.diocese ? nameFor(state.diocese) : 'All dioceses') + (year ? ', ' + year : '')"
+        [note]="dioceses.length + ' dioceses · click one in the key to select it'"
+        [state]="vizState"
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <label panel-actions class="view-select">
+            <span class="visually-hidden">Map display</span>
+            <select class="control" [value]="state.view" (change)="setView($any($event.target).value)">
+                @for (v of views; track v.value) {
+                    <option [value]="v.value" [selected]="v.value === state.view">{{ v.label }}</option>
+                }
+            </select>
+        </label>
+        <ul key class="legend dio-key" aria-label="Dioceses (click to select)">
+            @for (d of dioceses; track d.key) {
+                <li>
+                    <button type="button" class="legend-item" [class.off]="(state.diocese && d.key !== state.diocese) || !d.count"
+                        [attr.aria-pressed]="d.key === state.diocese" (click)="toggleDiocese(d.key)"
+                        [title]="d.count ? d.count + ' institutions in ' + year : 'None recorded in ' + year">
+                        <span class="legend-swatch" [style.background]="d.color"></span>{{ d.name }}
+                        <span class="count">{{ d.count | number }}</span>
+                    </button>
+                </li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1100" idPrefix="dio-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            label="Diocese by Diocese"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <app-viz-panel
+        [heading]="growthTitle"
+        [note]="growthNote"
+        [state]="vizState"
+        (retry)="fetchData()">
+        <div class="chart" #growth></div>
+    </app-viz-panel>
+
+    <div notes>
+        <p>Each point is a place the almanac recorded that year, snapped to a ~0.1° grid and sized by how many institutions it had. Dioceses are matched by their canonical id (the prefix of each institution's id), so a see recorded under different names over the years stays one diocese, shown under its latest name.</p>
+        <p>Colours are assigned largest diocese first, so the biggest sees get the most distinct colours; with more dioceses than colours, some smaller sees share one. Counts in the key are for the selected year; dimmed dioceses have nothing recorded that year.</p>
+        <p>Years with no almanac data (the 1862–63 Civil War gap, and years not yet transcribed) are skipped by the player and drawn as a break on the time axis.</p>
     </div>
-
-    <!-- Stat strip -->
-    <div class="stat-strip" *ngIf="currentStat">
-      <div class="stat">
-        <div class="stat-value">{{ visibleTotal | number }}</div>
-        <div class="stat-label">institution-years recorded in {{ currentStat.year }}</div>
-      </div>
-      @if (selected) {
-        <div class="stat" *ngIf="selectedSpan">
-          <div class="stat-value">{{ selectedSpan.first }}–{{ selectedSpan.last }}</div>
-          <div class="stat-label">years {{ nameFor(selected) }} appears</div>
-        </div>
-      } @else {
-        <div class="stat">
-          <div class="stat-value">{{ activeDioceseCount }}</div>
-          <div class="stat-label">dioceses represented in {{ currentStat.year }}</div>
-        </div>
-      }
-    </div>
-
-    <app-map-vis
-      [data]="mapData"
-      [isOpen]="true"
-      [legend]="legend"
-      label="Diocese by Diocese"
-      [options]="mapOptions">
-    </app-map-vis>
-
-    <!-- Growth sparkline -->
-    <div class="growth-panel">
-      <div class="growth-title">{{ growthTitle }}</div>
-      <div class="growth" #growth></div>
-    </div>
-  </div>
-</div>
+</app-dashboard-shell>

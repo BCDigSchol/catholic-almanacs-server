@@ -1,0 +1,15 @@
+// Shared dashboard styles (.ctl, .control, .legend) live in src/styles.scss.
+
+.view-select .control {
+    height: 32px;
+    padding-block: 0;
+    font-size: var(--text-sm);
+}
+
+input[type='search'].control {
+    min-width: 200px;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}

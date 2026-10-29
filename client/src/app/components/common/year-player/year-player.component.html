@@ -1,0 +1,23 @@
+<div class="player" role="group" aria-label="Year">
+    <button type="button" class="play" (click)="toggle()" [attr.aria-label]="playing ? 'Pause' : 'Play through the years'"
+        [disabled]="years.length < 2">
+        <mat-icon aria-hidden="true">{{ playing ? 'pause' : 'play_arrow' }}</mat-icon>
+    </button>
+    <button type="button" class="step" (click)="step(-1)" [disabled]="index <= 0" aria-label="Previous year">
+        <mat-icon aria-hidden="true">chevron_left</mat-icon>
+    </button>
+    <output class="readout" [attr.for]="idPrefix + '-slider'" aria-live="polite">{{ current ?? '—' }}</output>
+    <button type="button" class="step" (click)="step(1)" [disabled]="index >= years.length - 1" aria-label="Next year">
+        <mat-icon aria-hidden="true">chevron_right</mat-icon>
+    </button>
+    <div class="track">
+        <label class="visually-hidden" [for]="idPrefix + '-slider'">Year</label>
+        <input type="range" [id]="idPrefix + '-slider'" min="0" [max]="years.length - 1" step="1"
+            [value]="index" [attr.aria-valuetext]="current" (input)="onSlide($any($event.target).value)">
+        <div class="marks" aria-hidden="true">
+            @for (m of marks; track m.year) {
+                <span [style.left.%]="m.left">{{ m.year }}</span>
+            }
+        </div>
+    </div>
+</div>

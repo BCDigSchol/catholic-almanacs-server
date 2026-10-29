@@ -1,22 +1,45 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PersonalNetworkComponent } from './personal-network/personal-network.component';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
+import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { ControlBarComponent } from '../../common/control-bar/control-bar.component';
+import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
+import { YearRangeComponent } from '../../common/year-range/year-range.component';
+import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
+import { FilterField, NetworkDashboard } from '../../common/network-graph/network-dashboard';
 
+const DEFAULTS = { diocese: '', state: '', role: '', title: '', order: '', city: '', from: 0, to: 0 };
 
+/** The People Network: people linked when they served at the same institution. */
 @Component({
   selector: 'app-personal-network-container',
-  imports: [PersonalNetworkComponent, MatButtonModule, MatIconModule],
+  imports: [SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './personal-network-container.component.html',
   styleUrl: './personal-network-container.component.scss'
 })
-export class PersonalNetworkContainerComponent {
-  comparisonNetwork: boolean = false;
+export class PersonalNetworkContainerComponent extends NetworkDashboard<typeof DEFAULTS> {
+  readonly related = [
+    { label: 'The Institution Network', link: '/dashboards/network-institutions' },
+    { label: 'People Serving Institutions', link: '/dashboards/network-service' },
+    { label: 'The Shape of the Clergy', link: '/dashboards/clergy-hierarchy' },
+  ];
+  protected readonly defaults = DEFAULTS;
+  protected override readonly nodeNouns: [string, string] = ['person', 'people'];
+  protected readonly endpoint = 'person/network';
+  protected readonly fields: FilterField[] = [
+    { key: 'diocese', param: 'diocese', label: 'Diocese' },
+    { key: 'state', param: 'state', label: 'State' },
+    { key: 'role', param: 'role', label: 'Role', text: true },
+    { key: 'title', param: 'title', label: 'Title', text: true },
+    { key: 'order', param: 'order', label: 'Order' },
+    { key: 'city', param: 'city', label: 'City', text: true },
+  ];
+  protected readonly moreKeys = ['title', 'order', 'city'];
 
-  toggleComparisonNetwork() {
-    this.comparisonNetwork = !this.comparisonNetwork;
+  protected computeTakeaway(nodes: any[], edges: any[]): string {
+    const best = this.top(nodes, this.degrees(edges));
+    if (!best) return '';
+    const where = best.node.diocese && best.node.diocese !== 'Unknown' ? ` (Diocese of ${spaceName(best.node.diocese)})` : '';
+    return `${best.node.label}${where} is the best-connected person in this view: they served alongside ${best.degree.toLocaleString()} other ${best.degree === 1 ? 'person' : 'people'} shown here.`;
   }
-
 }

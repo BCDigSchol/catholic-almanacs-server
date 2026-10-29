@@ -1,18 +1,15 @@
+// Shared dashboard styles (.ctl, .control, .legend) live in src/styles.scss.
 
-@media screen and (min-width: 601px) {
-  .wide-display {
-    display: block !important;
-  }
-  .mobile-display {
-    display: none !important;
-  }
+.view-select .control {
+    height: 32px;
+    padding-block: 0;
+    font-size: var(--text-sm);
 }
 
-@media screen and (max-width: 600px) {
-  .wide-display {
-    display: none !important;
-  }
-  .mobile-display {
-    display: block !important;
-  }
+input[type='search'].control {
+    min-width: 200px;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
 }

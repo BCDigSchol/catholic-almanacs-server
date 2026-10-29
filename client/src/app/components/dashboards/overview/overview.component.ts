@@ -1,16 +1,20 @@
 import {
   Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Subscription, of, EMPTY } from 'rxjs';
 import { debounceTime, switchMap, tap, catchError } from 'rxjs/operators';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiService } from '../../../services/api.service';
 import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { LegendEntry } from '../../common/map-vis/map-grouping';
 import { spaceName } from '../../../pipes/space-name.pipe';
+import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
+import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
+import { UrlState } from '../../../utils/url-state';
 import {
   FilterState, Dim, Entity, emptyFilter, totalActive,
   FUNCTION_ORDER, FUNCTION_LABELS, functionColor
@@ -31,7 +35,11 @@ interface YearBar {
   selected: boolean;
   gapBefore: boolean;
 }
-interface Chip { dim: Dim; key: string; label: string; }
+
+/** Filter state in the query string; each set is joined with "~" (type names contain commas). */
+const DEFAULTS = { entity: 'institutions', years: '', functions: '', types: '', dioceses: '' };
+const SEP = '~';
+const DIM_LABELS: Record<Dim, string> = { years: 'Year', functions: 'Function', types: 'Type', dioceses: 'Diocese' };
 
 // "The Almanac at a Glance" — a coordinated-views ("god view") dashboard. Every
 // panel both displays a breakdown and acts as a filter; clicking anything
@@ -40,21 +48,32 @@ interface Chip { dim: Dim; key: string; label: string; }
 // panel payload it gets back (no big corpus download).
 @Component({
   selector: 'app-overview-dashboard',
-  imports: [CommonModule, FormsModule, MatButtonToggleModule, MatIconModule, MapVisComponent],
+  imports: [DecimalPipe, MatIconModule, MapVisComponent, DashboardShellComponent, ControlBarComponent, VizPanelComponent, SegmentedComponent],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OverviewDashboardComponent implements OnInit, OnDestroy {
+  readonly related = [
+    { label: 'Coverage — the Shape of the Data', link: '/dashboards/coverage' },
+    { label: 'The Shape of the Church', link: '/dashboards/composition' },
+    { label: 'Diocese by Diocese', link: '/dashboards/diocese-tracker' },
+    { label: 'Who Served the Church', link: '/dashboards/people-composition' },
+  ];
+  readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
+
   loading = true;       // first load (full-panel placeholder)
   fetching = false;     // subsequent refreshes (subtle dim)
   error: string | null = null;
   note = '';
+  takeaway = '';
 
   entity: Entity = 'institutions';
   private filter: FilterState = emptyFilter();
+  private url: UrlState<typeof DEFAULTS>;
+  private urlSub?: Subscription;
 
-  chips: Chip[] = [];
+  chips: ControlChip[] = [];
   functionBars: Bar[] = [];
   typeBars: Bar[] = [];
   dioceseBars: Bar[] = [];
@@ -74,7 +93,7 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
     mode: 'heatmap' as const,
     modeControl: true,
     center: { lat: 39, lng: -95 },
-    size: { width: '100%', height: '520px' }
+    size: { width: '100%', height: `${Math.round(Math.min(520, Math.max(340, window.innerWidth * 0.75)))}px` }
   };
 
   private refresh$ = new Subject<void>();
@@ -82,7 +101,9 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
   // Cache responses by request body so toggling a filter back is instant.
   private cache = new Map<string, any>();
 
-  constructor(private _api: ApiService, private cdr: ChangeDetectorRef) {}
+  constructor(private _api: ApiService, private cdr: ChangeDetectorRef, router: Router, route: ActivatedRoute) {
+    this.url = new UrlState(router, route, DEFAULTS);
+  }
 
   ngOnInit(): void {
     this.sub = this.refresh$.pipe(
@@ -107,11 +128,34 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
       })
     ).subscribe(res => this.applyResponse(res));
 
-    this.refresh$.next();   // initial load
+    // The URL is the source of truth for the filter state: every click writes
+    // it, and loading a shared link restores the same filtered board.
+    this.urlSub = this.url.changes().subscribe(state => {
+      const split = (v: string) => v ? v.split(SEP).filter(Boolean) : [];
+      this.entity = state.entity === 'people' ? 'people' : 'institutions';
+      this.filter = {
+        years: new Set(split(state.years).map(Number).filter(Number.isFinite)),
+        functions: new Set(split(state.functions)),
+        types: new Set(split(state.types)),
+        dioceses: new Set(split(state.dioceses)),
+      };
+      this.afterFilterChange();
+    });
   }
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+    this.urlSub?.unsubscribe();
+  }
+
+  get vizState(): VizState {
+    return this.error ? 'error' : this.loading ? 'loading' : 'ready';
+  }
+
+  retry(): void {
+    this.error = null;
+    this.loading = true;
+    this.refresh$.next();
   }
 
   get activeCount(): number { return totalActive(this.filter); }
@@ -124,33 +168,35 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
   toggleType(key: string): void { this.toggleStr('types', key); }
   toggleDiocese(key: string): void { this.toggleStr('dioceses', key); }
   toggleYear(year: number): void {
-    const set = this.filter.years;
+    const set = new Set(this.filter.years);
     set.has(year) ? set.delete(year) : set.add(year);
-    this.afterFilterChange();
+    this.writeUrl({ years: set });
   }
   onMapSelect(payload: { select?: string | null }): void {
     if (payload?.select) this.toggleDiocese(payload.select);
   }
 
   private toggleStr(dim: Exclude<Dim, 'years'>, key: string): void {
-    const set = this.filter[dim];
+    const set = new Set(this.filter[dim]);
     set.has(key) ? set.delete(key) : set.add(key);
-    this.afterFilterChange();
+    this.writeUrl({ [dim]: set });
   }
 
-  removeChip(chip: Chip): void {
-    if (chip.dim === 'years') this.filter.years.delete(Number(chip.key));
-    else (this.filter[chip.dim] as Set<string>).delete(chip.key);
-    this.afterFilterChange();
+  clearAll = (): void => this.writeUrl(emptyFilter());
+
+  setEntity(entity: string): void {
+    this.url.set({ entity });
   }
 
-  clearAll(): void {
-    this.filter = emptyFilter();
-    this.afterFilterChange();
-  }
-
-  onEntityChange(): void {
-    this.afterFilterChange();
+  /** Writes changed filter dimensions to the URL; the URL subscription refetches. */
+  private writeUrl(changes: Partial<FilterState>): void {
+    const out: Partial<typeof DEFAULTS> = {};
+    for (const [dim, set] of Object.entries(changes) as [Dim, Set<string | number>][]) {
+      const values = Array.from(set);
+      if (dim === 'years') (values as number[]).sort((a, b) => a - b);
+      out[dim] = values.join(SEP);
+    }
+    this.url.set(out);
   }
 
   // Reflect selection/chips immediately (client-side), then ask the server for
@@ -234,7 +280,18 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
       .map(x => ({ label: FUNCTION_LABELS[x] ?? x, color: functionColor(x) }));
 
     this.buildChips();
+    this.takeaway = this.computeTakeaway();
     this.cdr.markForCheck();
+  }
+
+  /** The leading diocese's part of the current selection (unless dioceses are already filtered). */
+  private computeTakeaway(): string {
+    const total = this.entity === 'people' ? this.kpis.people : this.kpis.institutions;
+    const top = this.dioceseBars[0];
+    if (this.filter.dioceses.size || this.dioceseBars.length < 2 || !top || !total) return '';
+    const noun = this.entity === 'people' ? 'people' : 'institutions';
+    const scope = totalActive(this.filter) ? 'in this selection' : 'across the almanacs';
+    return `${top.label} recorded the most ${noun} ${scope}: ${top.value.toLocaleString()} of ${total.toLocaleString()} (${Math.round(top.value / total * 100)}%).`;
   }
 
   // Map a server [{key,value}] panel into rendered bars (label/colour/pct/selected).
@@ -256,14 +313,13 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
   }
 
   private buildChips(): void {
-    const chips: Chip[] = [];
-    for (const f of this.filter.functions) chips.push({ dim: 'functions', key: f, label: FUNCTION_LABELS[f] ?? f });
-    for (const t of this.filter.types) chips.push({ dim: 'types', key: t, label: this.titleCase(t) });
-    for (const d of this.filter.dioceses) chips.push({ dim: 'dioceses', key: d, label: this.dioceseName(d) });
-    for (const y of Array.from(this.filter.years).sort((a, b) => a - b)) {
-      chips.push({ dim: 'years', key: String(y), label: String(y) });
-    }
-    this.chips = chips;
+    const chip = (dim: Dim, label: string, clear: () => void): ControlChip => ({ label: `${DIM_LABELS[dim]}: ${label}`, clear });
+    this.chips = [
+      ...Array.from(this.filter.functions, f => chip('functions', FUNCTION_LABELS[f] ?? f, () => this.toggleFunction(f))),
+      ...Array.from(this.filter.types, t => chip('types', this.titleCase(t), () => this.toggleType(t))),
+      ...Array.from(this.filter.dioceses, d => chip('dioceses', this.dioceseName(d), () => this.toggleDiocese(d))),
+      ...Array.from(this.filter.years).sort((a, b) => a - b).map(y => chip('years', String(y), () => this.toggleYear(y))),
+    ];
   }
 
   private titleCase(value: string): string {

@@ -1,239 +1,177 @@
-.coverage {
-  padding: 16px clamp(12px, 3vw, 32px) 40px;
-  max-width: 1600px;
-  margin: 0 auto;
+// Shared dashboard styles (.ctl, .legend, panels) live in src/styles.scss and
+// the common components. Here: the coverage grid and the grid/map layout.
+
+:host {
+    // Grid shading (sqrt levels 1-5, light -> dark); flips in dark mode so
+    // "more" is always the strongest contrast against the page.
+    --cov-0: rgba(127, 127, 127, 0.12);
+    --cov-1: #bdd7e7;
+    --cov-2: #6baed6;
+    --cov-3: #3182bd;
+    --cov-4: #08519c;
+    --cov-5: #08306b;
+    --cov-pink: rgba(233, 30, 99, 0.25);
+    --cov-pink-edge: rgba(233, 30, 99, 0.6);
+    --cov-hatch: repeating-linear-gradient(-45deg, rgba(127, 127, 127, 0.32) 0 1px, transparent 1px 4px);
+    --cell: 14px;
+    --gap: 3px;
+    --name: 150px;
+    display: block;
 }
 
-.cov-header {
-  margin-bottom: 16px;
-  h1 { margin: 0 0 4px; font-size: 1.7rem; }
-  .cov-sub { margin: 0; max-width: 72ch; opacity: 0.75; font-size: 0.9rem; line-height: 1.4; }
+:host-context(.dark-theme) {
+    --cov-1: #1b3d5e;
+    --cov-2: #24639a;
+    --cov-3: #3d8ccb;
+    --cov-4: #7cb7e3;
+    --cov-5: #cfe6f7;
+    --cov-pink: rgba(244, 114, 162, 0.3);
+    --cov-pink-edge: rgba(244, 114, 162, 0.7);
 }
-
-.cov-loading, .cov-error { padding: 48px 0; text-align: center; opacity: 0.7; }
-.cov-error { color: #d32f2f; }
 
 .cov-layout {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  align-items: start;
-}
-@media (max-width: 1024px) {
-  .cov-layout { grid-template-columns: 1fr; }
+    display: grid;
+    gap: var(--space-4);
+    align-items: start;
 }
 
-.cov-panel {
-  background: var(--mat-sys-surface-container-low, rgba(127,127,127,0.05));
-  border: 1px solid var(--mat-sys-outline-variant, rgba(127,127,127,0.18));
-  border-radius: 12px;
-  padding: 14px 16px;
-  min-width: 0;
-}
-.cov-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-  h3 { margin: 0; font-size: 0.95rem; font-weight: 600; }
-  .cov-hint { font-weight: 400; opacity: 0.5; font-size: 0.78rem; }
+// Desktop: grid beside a map that stays in view while the grid scrolls with the page.
+@media (min-width: 900px) {
+    .cov-layout {
+        grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+    }
+
+    .cov-map-panel {
+        position: sticky;
+        top: 76px;
+    }
 }
 
-.cov-map-controls {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.cov-year-select { width: 130px; }
-
-/* ---- Legend ---- */
-.cov-legend {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-  .cov-legend-label { font-size: 0.72rem; opacity: 0.55; }
-  .cov-legend-sep { opacity: 0.3; margin: 0 2px; }
-  .cov-sw { width: 13px; height: 13px; border-radius: 3px; }
-  .cov-sw-absent {
-    background:
-      repeating-linear-gradient(-45deg,
-        rgba(127,127,127,0.28) 0, rgba(127,127,127,0.28) 1px,
-        transparent 1px, transparent 4px),
-      rgba(127,127,127,0.05);
-  }
-  .cov-sw-cw {
-    background: rgba(233, 30, 99, 0.22);
-    border: 1px solid rgba(233, 30, 99, 0.55);
-  }
+app-viz-panel {
+    display: block;
+    min-width: 0;
 }
 
-/* Civil-War disclaimer callout under the intro. */
-.cov-cw-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 8px 0 0;
-  padding: 6px 10px;
-  max-width: 72ch;
-  font-size: 0.82rem;
-  line-height: 1.4;
-  border-left: 3px solid rgba(233, 30, 99, 0.7);
-  background: rgba(233, 30, 99, 0.07);
-  border-radius: 4px;
-  .cov-sw-cw {
-    flex: 0 0 auto;
-    width: 13px;
-    height: 13px;
-    margin-top: 2px;
-    border-radius: 3px;
-    background: rgba(233, 30, 99, 0.22);
-    border: 1px solid rgba(233, 30, 99, 0.55);
-  }
+.cov-sw {
+    display: inline-block;
+    flex: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
 }
 
-/* ---- Diocese x year grid ---- */
-.cov-grid-scroll {
-  max-height: 72vh;
-  overflow: auto;
-  padding-top: 26px;   /* room for the rotated year labels */
+.l0 { background: var(--cov-0); }
+.l1 { background: var(--cov-1); }
+.l2 { background: var(--cov-2); }
+.l3 { background: var(--cov-3); }
+.l4 { background: var(--cov-4); }
+.l5 { background: var(--cov-5); }
+.absent { background: var(--cov-hatch); }
+.err { background: var(--cov-pink); box-shadow: inset 0 0 0 1px var(--cov-pink-edge); }
+
+// Wide grids scroll sideways only; vertically the grid uses the page.
+.grid-scroll {
+    overflow-x: auto;
+    padding-top: 28px; // room for the rotated year labels
 }
-.cov-grid { width: max-content; }
+
+.cov-grid {
+    width: max-content;
+}
 
 .cov-row {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  height: 15px;
-  margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    height: calc(var(--cell) + 1px);
+    margin-bottom: var(--gap);
+
+    &.row-sel .cov-cell { outline: 1px solid var(--link); outline-offset: -1px; }
 }
+
 .cov-head {
-  height: auto;
-  align-items: flex-end;
-  margin-bottom: 6px;
+    align-items: flex-end;
+    margin-bottom: var(--space-2);
 }
+
+button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
 .cov-name {
-  width: 150px;
-  min-width: 150px;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: right;
-  padding-right: 6px;
-  opacity: 0.85;
-  /* button reset */
-  border: none;
-  background: transparent;
-  color: inherit;
-  font-family: inherit;
-  cursor: pointer;
-  &:hover { opacity: 1; text-decoration: underline; }
-  &.sel { opacity: 1; font-weight: 700; color: var(--mat-sys-primary, #1559a8); }
+    flex: 0 0 var(--name);
+    overflow: hidden;
+    padding-right: 6px;
+    color: var(--ink-2);
+    font-size: var(--text-xs);
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover { color: var(--ink); text-decoration: underline; }
 }
+
+.sel {
+    color: var(--link);
+    font-weight: 700;
+}
+
 .cov-cell {
-  width: 14px;
-  height: 14px;
-  flex: 0 0 14px;
-  border-radius: 2px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  &:hover { outline: 2px solid rgba(0,0,0,0.45); outline-offset: -1px; }
-  &.col-sel { outline: 2px solid var(--mat-sys-primary, #1559a8); outline-offset: -1px; }
-}
-/* See existed but its records are absent/disrupted that year (an ERROR: cell in
-   the timeline, e.g. the almanac wasn't printed during the Civil War). Pink like
-   the 1862-63 band; hover shows the reason. Still clickable (a real see-year). */
-.cov-cell.cov-error {
-  background: rgba(233, 30, 99, 0.28);
-  box-shadow: inset 0 0 0 1px rgba(233, 30, 99, 0.55);
-  cursor: help;
+    flex: 0 0 var(--cell);
+    height: var(--cell);
+    border-radius: 2px;
+
+    &:hover, &:focus-visible { outline: 2px solid var(--ink); outline-offset: -1px; }
+    &.col-sel { outline: 2px solid var(--link); outline-offset: -1px; }
+    &.err { cursor: help; }
 }
 
-/* Diocese did not exist that year: diagonal hatch, no data expected. */
-.cov-absent {
-  cursor: default;
-  background:
-    repeating-linear-gradient(-45deg,
-      rgba(127,127,127,0.28) 0, rgba(127,127,127,0.28) 1px,
-      transparent 1px, transparent 4px),
-    rgba(127,127,127,0.05);
-  &:hover { outline: none; }
+.cov-gap {
+    flex: 0 0 var(--cell);
 }
-.row-sel .cov-cell { outline: 1px solid rgba(21,95,168,0.6); outline-offset: -1px; }
-.cov-gap { width: 14px; flex: 0 0 14px; }
 
-/* Civil War gap (1862-63): the almanac wasn't published, so no columns exist —
-   a pink band per row stacks into a highlighted stripe between 1861 and 1864. */
-.cov-cw-band {
-  width: 16px;
-  flex: 0 0 16px;
-  height: 14px;
-  border-radius: 2px;
-  background: rgba(233, 30, 99, 0.22);
-  border-left: 1px solid rgba(233, 30, 99, 0.45);
-  border-right: 1px solid rgba(233, 30, 99, 0.45);
-  cursor: help;
+// The 1862-63 Civil War break: not columns, a pink band stacked down the rows.
+.cov-cw {
+    flex: 0 0 calc(var(--cell) + 2px);
+    height: var(--cell);
+    border-inline: 1px solid var(--cov-pink-edge);
+    border-radius: 2px;
+    background: var(--cov-pink);
+    cursor: help;
 }
+
+.cov-ylabel, .cov-cw-head {
+    flex: 0 0 var(--cell);
+    min-width: 0;
+    height: var(--cell);
+    overflow: visible;
+    text-align: left;
+    color: var(--ink-3);
+    font-size: 0.62rem;
+    white-space: nowrap;
+    transform: rotate(-60deg);
+    transform-origin: left bottom;
+}
+
+.cov-ylabel:hover { color: var(--ink); }
+
 .cov-cw-head {
-  width: 16px;
-  flex: 0 0 16px;
-  height: 14px;
-  align-self: flex-end;
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #c2185b;
-  white-space: nowrap;
-  transform: rotate(-60deg);
-  transform-origin: left bottom;
-  cursor: help;
-}
-.cov-ylabel {
-  width: 14px;
-  flex: 0 0 14px;
-  font-size: 0.62rem;
-  opacity: 0.6;
-  white-space: nowrap;
-  transform: rotate(-60deg);
-  transform-origin: left bottom;
-  height: 14px;
-  /* button reset */
-  border: none;
-  background: transparent;
-  color: inherit;
-  padding: 0;
-  cursor: pointer;
-  &:hover { opacity: 1; }
-  &.sel { opacity: 1; font-weight: 700; color: var(--mat-sys-primary, #1559a8); }
+    flex-basis: calc(var(--cell) + 2px);
+    border: 0;
+    background: none;
+    color: var(--cov-pink-edge);
+    font-weight: 700;
 }
 
-/* Active-diocese chip by the map */
-.cov-dio-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: none;
-  cursor: pointer;
-  background: var(--mat-sys-secondary-container, #d7e3ff);
-  color: var(--mat-sys-on-secondary-container, #001b3f);
-  border-radius: 14px;
-  padding: 3px 10px;
-  font-size: 0.8rem;
-  &:hover { filter: brightness(0.95); }
-  .cov-dio-x { font-size: 1rem; line-height: 1; opacity: 0.7; }
-}
-
-/* ---- Map (app-map-vis renders its own sized container) ---- */
-.cov-map { display: block; width: 100%; }
-
-.cov-caveat {
-  margin-top: 18px;
-  font-size: 0.78rem;
-  opacity: 0.55;
-  line-height: 1.45;
-  max-width: 90ch;
+@media (max-width: 560px) {
+    :host {
+        --cell: 13px;
+        --gap: 2px;
+        --name: 92px;
+    }
 }

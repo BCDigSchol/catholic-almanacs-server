@@ -139,7 +139,7 @@
                 <h2 id="connections-heading">Connections</h2>
                 <div class="record-conn-tabs" role="tablist" aria-label="Connections view">
                     @if (network.nodes.length > 1) {
-                        <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'network'" (click)="connectionsTab = 'network'">People network</button>
+                        <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'network'" (click)="connectionsTab = 'network'">Institution network</button>
                     }
                     @if (hasTree) {
                         <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'tree' || network.nodes.length <= 1" (click)="connectionsTab = 'tree'">Related institutions</button>
@@ -148,7 +148,7 @@
                 @if (connectionsTab === 'network' && network.nodes.length > 1) {
                     <app-network-graph
                         [data]="network"
-                        [label]="'People who served ' + heading"
+                        [label]="'Institutions linked to ' + heading + ' by shared clergy'"
                         [options]="networkOptions"
                         [startYear]="networkStartYear"
                         [endYear]="networkEndYear"

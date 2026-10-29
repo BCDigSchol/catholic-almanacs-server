@@ -1,70 +1,103 @@
-<h1 class="text-2xl font-bold m-4">People Serving Institutions</h1>
+<app-dashboard-shell
+    title="People Serving Institutions"
+    purpose="People and institutions in one web, linked by who was listed where: the ties that connect the two networks."
+    [takeaway]="takeaway"
+    [related]="related">
 
-<div class="network-filter-bar flex flex-row flex-wrap items-center justify-start m-4 gap-2">
-  <mat-form-field appearance="fill" style="min-width: 180px; margin-right: 8px;">
-    <mat-label>State</mat-label>
-    <mat-select [(ngModel)]="state">
-      <mat-option *ngFor="let s of usStates" [value]="s.abbr">{{ s.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="set('diocese', $any($event.target).value)">
+                    <option [value]="all" [selected]="state.diocese === all">All dioceses</option>
+                    @for (d of dioceseOptions; track d) {
+                        <option [value]="d" [selected]="d === state.diocese">{{ d | spaceName }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>State</span>
+                <select class="control" (change)="set('state', $any($event.target).value)">
+                    <option value="">All states</option>
+                    @for (s of usStates; track s.abbr) {
+                        <option [value]="s.abbr" [selected]="s.abbr === state.state">{{ s.name }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Institution type</span>
+                <select class="control" (change)="set('type', $any($event.target).value)">
+                    <option value="">All types</option>
+                    @for (t of typeOptions; track t) {
+                        <option [value]="t" [selected]="t === state.type">{{ t }}</option>
+                    }
+                </select>
+            </label>
+            <div class="ctl">
+                <span>Years</span>
+                <app-year-range idPrefix="bnet-years" [min]="minYear" [max]="maxYear"
+                    [from]="state.from || minYear" [to]="state.to || maxYear" (rangeChange)="setYears($event)"></app-year-range>
+            </div>
+            @if (moreOpen) {
+                <label class="ctl">
+                    <span>Role</span>
+                    <input class="control" type="search" placeholder="e.g. pastor" [value]="draft['role']"
+                        (input)="setText('role', $any($event.target).value)">
+                </label>
+                <label class="ctl">
+                    <span>Title</span>
+                    <input class="control" type="search" placeholder="e.g. Rev." [value]="draft['title']"
+                        (input)="setText('title', $any($event.target).value)">
+                </label>
+                <label class="ctl">
+                    <span>Religious order</span>
+                    <select class="control" (change)="set('order', $any($event.target).value)">
+                        <option value="">All orders</option>
+                        @for (o of orderOptions; track o) {
+                            <option [value]="o" [selected]="o === state.order">{{ o }}</option>
+                        }
+                    </select>
+                </label>
+                <label class="ctl">
+                    <span>City</span>
+                    <input class="control" type="search" placeholder="e.g. Louisville" [value]="draft['city']"
+                        (input)="setText('city', $any($event.target).value)">
+                </label>
+            } @else {
+                <button type="button" class="btn more-btn" (click)="moreOpen = true">More filters</button>
+            }
+        </ng-template>
+    </app-control-bar>
 
-  <mat-form-field appearance="fill" style="min-width: 180px; margin-right: 8px;">
-    <mat-label>City</mat-label>
-    <input matInput [(ngModel)]="city" placeholder="City name">
-  </mat-form-field>
+    <app-viz-panel
+        [heading]="'Who served where, ' + scopeLabel"
+        [note]="panelNote"
+        [state]="vizState"
+        emptyText="No one is listed at an institution under these filters. Try widening the years or clearing a filter."
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <div key>
+            <ul class="legend">
+                @for (entry of key; track entry.group) {
+                    <li><button type="button" class="legend-item" [class.off]="entry.hidden" [attr.aria-pressed]="!entry.hidden" (click)="setKeyHidden(entry)">
+                        <span class="legend-swatch" [class.round]="entry.group === 'people'" [style.background]="entry.color"></span>{{ entry.label }} ({{ entry.count.toLocaleString() }})
+                    </button></li>
+                }
+            </ul>
+        </div>
+        <app-network-graph
+            [framed]="false"
+            [showLegend]="false"
+            emptyText=""
+            label="People and the institutions they served at"
+            [data]="network"
+            [options]="networkOptions">
+        </app-network-graph>
+    </app-viz-panel>
 
-  <mat-form-field appearance="fill" style="min-width: 180px; margin-right: 8px;">
-    <mat-label>Diocese</mat-label>
-    <mat-select [(ngModel)]="diocese">
-      <mat-option value="">All Dioceses</mat-option>
-      <mat-option *ngFor="let d of dioceseOptions" [value]="d">{{ d | spaceName }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" style="min-width: 160px; margin-right: 8px;">
-    <mat-label>Type</mat-label>
-    <mat-select [(ngModel)]="instType">
-      <mat-option value="">All Types</mat-option>
-      <mat-option *ngFor="let t of typeOptions" [value]="t">{{ t }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" style="min-width: 220px; margin-right: 8px;">
-    <mat-label>Religious Order</mat-label>
-    <mat-select [(ngModel)]="order">
-      <mat-option value="">All Orders</mat-option>
-      <mat-option *ngFor="let o of orderOptions" [value]="o">{{ o }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" style="min-width: 110px; margin-right: 8px;">
-    <mat-label>Start Year</mat-label>
-    <input matInput type="number" [(ngModel)]="startYear" placeholder="e.g. 1850">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" style="min-width: 110px; margin-right: 8px;">
-    <mat-label>End Year</mat-label>
-    <input matInput type="number" [(ngModel)]="endYear" placeholder="e.g. 1900">
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" (click)="fetchNetwork()" [disabled]="loading">
-    Filter
-  </button>
-</div>
-
-<div class="network-error m-4 flex flex-row items-center gap-3" *ngIf="error">
-  <span>{{ error }}</span>
-  <button mat-stroked-button (click)="fetchNetwork()">Retry</button>
-</div>
-
-<app-network-graph
-  *ngIf="!error"
-  label="People and the institutions they served at"
-  [data]="network"
-  [startYear]="startYear"
-  [endYear]="endYear"
-  [timeWindowLoading]="loading"
-  [truncated]="truncated"
-  [totalNodes]="totalNodes"
-  (timeWindowChange)="onTimeWindowChange($event)">
-</app-network-graph>
+    <div notes>
+        <p>Hexagons are institutions and dots are people. A line joins a person to each institution where they are listed within the selected years; its number and thickness count the years of that listing. Size reflects PageRank, a measure of how central a node is.</p>
+        <p>The page opens on the Diocese of Baltimore, the oldest American see, because the whole church (about 10,700 people and institutions) is far too large to draw: cut down to its 500 most central nodes it is mostly disconnected fragments. Choose another diocese, or “All dioceses” to see the most central 1,000 nodes nationally (those left without a link are dropped). The panel note says how many are shown.</p>
+        <p>Click a node for details and a link to its record; double-click to open the record.</p>
+    </div>
+</app-dashboard-shell>

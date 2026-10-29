@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonalNetworkComponent } from './personal-network.component';
+import { DashboardShellComponent } from './dashboard-shell.component';
 
-describe('PersonalNetworkComponent', () => {
-  let component: PersonalNetworkComponent;
-  let fixture: ComponentFixture<PersonalNetworkComponent>;
+describe('DashboardShellComponent', () => {
+  let component: DashboardShellComponent;
+  let fixture: ComponentFixture<DashboardShellComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PersonalNetworkComponent]
+      imports: [DashboardShellComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PersonalNetworkComponent);
+    fixture = TestBed.createComponent(DashboardShellComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,82 +1,86 @@
-<div class="dashboard">
-  <header class="dashboard-header">
-    <h1>The Spread of the Church</h1>
-    <p class="subtitle">
-      Watch the Catholic Church expand across the continent as the United States grows its borders. Each point is an institution the almanac recorded that year. Press play to see the Church grow in the West and the church's geographic center of gravity march westward with it.<br><br>By default, all types of institutions display. Click a type to remove those institutions from the visualization.
-    </p>
-  </header>
+<app-dashboard-shell
+    title="The Spread of the Church"
+    purpose="Where the almanacs recorded Catholic institutions and clergy each year, and how the church's centre of gravity moved west as the country grew."
+    [takeaway]="takeaway"
+    [related]="related">
 
-  <div class="controls">
-    <mat-button-toggle-group [(ngModel)]="entity" (ngModelChange)="onEntityChange()" class="entity-toggle">
-      <mat-button-toggle value="institutions">Institutions</mat-button-toggle>
-      <mat-button-toggle value="people">People</mat-button-toggle>
-    </mat-button-toggle-group>
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Show" [options]="entities" [value]="state.entity" (valueChange)="setEntity($event)"></app-segmented>
+    </app-control-bar>
 
-    <div class="function-filter">
-      @for (f of functions; track f.key) {
-        <button type="button" class="fn-chip" [class.off]="!enabled.has(f.key)"
-                (click)="toggleFunction(f.key)">
-          <span class="fn-swatch" [style.background]="f.color"></span>{{ f.label }}
-        </button>
-      }
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">{{ unit }} recorded in {{ current.year }}</dt>
+                <dd class="stat-value">{{ current.total | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">centre of gravity</dt>
+                <dd class="stat-value">{{ coords(current) }}</dd>
+            </div>
+            @if (driftMiles >= 5) {
+                <div class="stat">
+                    <dt class="stat-label">moved {{ driftDirection }} since {{ years[0] }}</dt>
+                    <dd class="stat-value">{{ driftMiles | number }} mi</dd>
+                </div>
+            }
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'Where ' + unit + ' were recorded' + (year ? ', ' + year : '')"
+        [note]="state.view === 'heatmap' ? 'Switch the display to Points to see each function’s colour' : ''"
+        [state]="vizState"
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <label panel-actions class="view-select">
+            <span class="visually-hidden">Map display</span>
+            <select class="control" [value]="state.view" (change)="setView($any($event.target).value)">
+                @for (v of views; track v.value) {
+                    <option [value]="v.value" [selected]="v.value === state.view">{{ v.label }}</option>
+                }
+            </select>
+        </label>
+        <div key>
+            <ul class="legend" aria-label="Institution functions (click to show or hide)">
+                @for (f of functions; track f.id) {
+                    <li>
+                        <button type="button" class="legend-item" [class.off]="hidden.has(f.id)"
+                            [attr.aria-pressed]="!hidden.has(f.id)" (click)="toggleFunction(f.id)">
+                            <span class="legend-swatch" [style.background]="f.color"></span>{{ f.label }}
+                        </button>
+                    </li>
+                }
+                <li class="legend-item"><span class="cog-dot" aria-hidden="true"></span>Centre of gravity</li>
+            </ul>
+            <p class="key-hint">Click a function to show or hide it.</p>
+        </div>
+        <app-year-player [years]="years" [year]="year" [interval]="1100" idPrefix="spread-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [overlayMarkers]="centroidMarker"
+            label="Spread of the Church"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <app-viz-panel
+        heading="Westward drift"
+        note="Longitude of the centre of gravity each year"
+        [state]="vizState"
+        (retry)="fetchData()">
+        <div class="chart" #drift></div>
+    </app-viz-panel>
+
+    <div notes>
+        <p>The <strong>centre of gravity</strong> (the amber marker) is the average position of everything shown that year, each place weighted by how many {{ unit }} were recorded there. It follows the function filter. Distances are great-circle miles between the first year's centre and the selected year's.</p>
+        @if (note) { <p>{{ note }}</p> }
+        <p>The almanac covered more of the country each year, so some of the drift reflects wider reporting as well as real growth. Years with no almanac data (the 1862–63 Civil War gap, and years not yet transcribed) are skipped by the player and drawn as a break on the time axis.</p>
+        @if (state.entity === 'institutions') {
+            <p>In the Points and Clusters displays, click a point to open that institution's record.</p>
+        }
     </div>
-  </div>
-
-  <div class="state-msg" *ngIf="loading">Loading…</div>
-  <div class="state-msg error" *ngIf="error">
-    {{ error }}
-    <button (click)="fetchData()">Retry</button>
-  </div>
-
-  <div class="content" [class.hidden]="loading || error">
-    <!-- Scrubber + play -->
-    <div class="timeline" *ngIf="currentStat">
-      <button class="play-btn" type="button" (click)="togglePlay()"
-              [attr.aria-label]="isPlaying ? 'Pause' : 'Play'">
-        <mat-icon>{{ isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
-      </button>
-      <div class="year-readout">{{ currentStat.year }}</div>
-      <mat-slider class="year-slider" [min]="0" [max]="years.length - 1" step="1" discrete
-                  [displayWith]="formatYear">
-        <input matSliderThumb [(ngModel)]="yearIndex" (input)="onScrub()" />
-      </mat-slider>
-    </div>
-
-    <!-- Stat strip -->
-    <div class="stat-strip" *ngIf="currentStat">
-      <div class="stat">
-        <div class="stat-value">{{ visibleTotal | number }}</div>
-        <div class="stat-label">{{ entity === 'people' ? 'people-years' : 'institution-years' }} recorded in {{ currentStat.year }}</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">{{ centroidLabel(currentStat) }}</div>
-        <div class="stat-label">centre of gravity</div>
-      </div>
-      <div class="stat" *ngIf="hasDrift">
-        <div class="stat-value">{{ driftMilesAbs | number }} mi</div>
-        <div class="stat-label">moved {{ driftDirection }} since {{ years[0].year }}</div>
-      </div>
-    </div>
-
-    <app-map-vis
-      [data]="mapData"
-      [isOpen]="true"
-      [legend]="legend"
-      [overlayMarkers]="centroidMarker"
-      label="Spread of the Church"
-      [options]="mapOptions">
-    </app-map-vis>
-
-    <p class="cog-hint" *ngIf="currentStat">
-      <span class="cog-dot"></span> The amber marker is the recorded <strong>centre of gravity</strong> — the weighted average location of every institution recorded that year.
-    </p>
-
-    <!-- Westward-drift sparkline -->
-    <div class="drift-panel">
-      <div class="drift-title">Westward drift — the recorded centre of gravity, by longitude</div>
-      <div class="drift" #drift></div>
-    </div>
-  </div>
-
-  <p class="caveat" *ngIf="note">{{ note }}</p>
-</div>
+</app-dashboard-shell>

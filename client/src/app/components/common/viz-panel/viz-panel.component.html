@@ -1,0 +1,46 @@
+<section class="panel" [class.is-fullscreen]="fullscreen" [attr.aria-label]="heading || null" [attr.aria-busy]="state === 'loading'">
+    @if (heading || hasKey || allowFullscreen) {
+        <header class="head">
+            <div class="titles">
+                @if (heading) { <h2>{{ heading }}</h2> }
+                @if (note) { <span class="note">{{ note }}</span> }
+            </div>
+            <div class="actions">
+                <ng-content select="[panel-actions]"></ng-content>
+                @if (hasKey) {
+                    <button type="button" class="icon-btn" (click)="keyOpen = !keyOpen" [attr.aria-expanded]="keyOpen">
+                        <mat-icon aria-hidden="true">{{ keyOpen ? 'expand_less' : 'legend_toggle' }}</mat-icon>
+                        <span>Key</span>
+                    </button>
+                }
+                @if (allowFullscreen) {
+                    <button type="button" class="icon-btn" (click)="toggleFullscreen()"
+                        [attr.aria-label]="fullscreen ? 'Exit full screen' : 'Full screen'"
+                        [attr.title]="fullscreen ? 'Exit full screen' : 'Full screen'">
+                        <mat-icon aria-hidden="true">{{ fullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+                    </button>
+                }
+            </div>
+        </header>
+    }
+
+    @if (hasKey && keyOpen) {
+        <div class="key"><ng-content select="[key]"></ng-content></div>
+    }
+
+    <div class="body">
+        <div class="viz" [class.hidden]="state === 'empty' || state === 'error'">
+            <ng-content></ng-content>
+        </div>
+        @if (state === 'loading') {
+            <div class="overlay" role="status"><span class="spinner" aria-hidden="true"></span> Loading…</div>
+        } @else if (state === 'empty') {
+            <p class="message">{{ emptyText }}</p>
+        } @else if (state === 'error') {
+            <div class="message">
+                <p>{{ errorText }}</p>
+                <button type="button" class="btn" (click)="retry.emit()">Try again</button>
+            </div>
+        }
+    </div>
+</section>

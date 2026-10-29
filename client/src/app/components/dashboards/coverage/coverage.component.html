@@ -1,89 +1,90 @@
-<div class="coverage">
-  <header class="cov-header">
-    <h1>Coverage — the shape of the data</h1>
-    <p class="cov-sub">See at a glance which dioceses were recorded, how thoroughly, and how that changed over time. A darker cell means more institutions recorded that year; a light cell means the diocese existed but has no records encoded yet; a <strong>hatched</strong> cell means the diocese did not exist that year. Dioceses that changed names over time (e.g. “New York” / “New York City”) are merged onto one row under their latest name.</p>
-    <p class="cov-cw-note">
-      <span class="cov-sw cov-sw-cw" aria-hidden="true"></span>
-      <span><strong>1862–1863</strong> — the <em>Catholic Almanac</em> was not published during these Civil War years, so records for this period are absent or highly disrupted; they appear as the pink band, not as columns. Individual <strong>pink cells</strong> mark other see-years whose records are absent or disrupted (mostly wartime) — hover any pink cell for the reason.</span>
-    </p>
-  </header>
+<app-dashboard-shell
+    title="Coverage — the Shape of the Data"
+    purpose="Which dioceses the almanacs recorded, how thoroughly, and where, year by year."
+    [takeaway]="takeaway"
+    [related]="related">
 
-  <div class="cov-loading" *ngIf="loading">Loading coverage…</div>
-  <div class="cov-error" *ngIf="error">{{ error }}</div>
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <label primary class="ctl">
+            <span>Map year</span>
+            <select class="control" (change)="setYear(+$any($event.target).value)">
+                <option value="0" [selected]="!state.year">All years</option>
+                @for (y of years; track y) {
+                    <option [value]="y" [selected]="y === state.year">{{ y }}</option>
+                }
+            </select>
+        </label>
+    </app-control-bar>
 
-  <ng-container *ngIf="!loading && !error">
     <div class="cov-layout">
-      <!-- Diocese x year grid -->
-      <section class="cov-panel cov-grid-panel">
-        <div class="cov-panel-head">
-          <h3>Diocese &times; year <span class="cov-hint">— click a year or diocese to focus the map</span></h3>
-          <div class="cov-legend">
-            <span class="cov-sw cov-sw-cw" title="Records absent or disrupted (e.g. the almanac wasn’t printed) — hover for the reason"></span>
-            <span class="cov-legend-label">records disrupted</span>
-            <span class="cov-legend-sep">·</span>
-            <span class="cov-sw cov-sw-absent" title="Did not exist that year"></span>
-            <span class="cov-legend-label">didn’t exist</span>
-            <span class="cov-legend-sep">·</span>
-            <span class="cov-legend-label">fewer</span>
-            <span class="cov-sw" [style.background]="emptyColor"></span>
-            <span class="cov-sw" *ngFor="let c of ramp" [style.background]="c"></span>
-            <span class="cov-legend-label">more</span>
-          </div>
-        </div>
+        <app-viz-panel class="cov-grid-panel"
+            heading="Diocese × year"
+            note="Click a year or diocese to focus the map"
+            [state]="vizState"
+            [hasKey]="true"
+            (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item">
+                    fewer
+                    <span class="cov-sw l0"></span>
+                    @for (l of levels; track l) { <span class="cov-sw" [class]="'cov-sw l' + l"></span> }
+                    more
+                </li>
+                <li class="legend-item"><span class="cov-sw absent"></span>didn’t exist yet</li>
+                <li class="legend-item"><span class="cov-sw err"></span>records disrupted (hover for why)</li>
+            </ul>
 
-        <div class="cov-grid-scroll">
-          <div class="cov-grid">
-            <div class="cov-row cov-head">
-              <div class="cov-name"></div>
-              <ng-container *ngFor="let h of headerYears">
-                <div class="cov-gap" *ngIf="h.gapBefore" aria-hidden="true"></div>
-                <div class="cov-cw-head" *ngIf="h.civilWarBefore" [matTooltip]="civilWarNote">1862–63</div>
-                <button class="cov-ylabel" [class.sel]="isYearSel(h.year)" (click)="pickYear(h.year)" title="Show this year on the map">{{ h.year }}</button>
-              </ng-container>
-            </div>
+            <div class="grid-scroll">
+                <div class="cov-grid" role="grid" aria-label="Institutions recorded per diocese per year">
+                    <div class="cov-row cov-head" role="row">
+                        <span class="cov-name"></span>
+                        @for (h of headerYears; track h.year) {
+                            @if (h.gapBefore) { <span class="cov-gap" aria-hidden="true"></span> }
+                            @if (h.civilWarBefore) { <span class="cov-cw cov-cw-head" [title]="civilWarNote">1862–63</span> }
+                            <button type="button" class="cov-ylabel" [class.sel]="h.year === state.year"
+                                (click)="pickYear(h.year)" [attr.aria-pressed]="h.year === state.year"
+                                title="Show this year on the map">{{ h.year }}</button>
+                        }
+                    </div>
 
-            <div class="cov-row" *ngFor="let r of rows" [class.row-sel]="isDioceseSel(r.key)">
-              <button class="cov-name" [class.sel]="isDioceseSel(r.key)" (click)="pickDiocese(r.key)"
-                  [title]="r.name + ' — ' + r.total + ' institutions · ' + r.span + ' (click to focus the map)'">{{ r.name }}</button>
-              <ng-container *ngFor="let c of r.cells">
-                <div class="cov-gap" *ngIf="c.gapBefore" aria-hidden="true"></div>
-                <div class="cov-cw-band" *ngIf="c.civilWarBefore" [matTooltip]="civilWarNote"></div>
-                <button class="cov-cell" [class.col-sel]="isYearSel(c.year)" [class.cov-absent]="c.state === 'absent'"
-                    [class.cov-error]="!!c.error"
-                    [style.background]="cellColor(c)" [title]="cellTitle(r, c)"
-                    (click)="pickCell(r.key, c.year)"></button>
-              </ng-container>
+                    @for (r of rows; track r.key) {
+                        <div class="cov-row" role="row" [class.row-sel]="r.key === state.diocese">
+                            <button type="button" class="cov-name" [class.sel]="r.key === state.diocese"
+                                (click)="pickDiocese(r.key)" [attr.aria-pressed]="r.key === state.diocese" [title]="r.title">{{ r.name }}</button>
+                            @for (c of r.cells; track c.year) {
+                                @if (c.gapBefore) { <span class="cov-gap" aria-hidden="true"></span> }
+                                @if (c.civilWarBefore) { <span class="cov-cw" [title]="civilWarNote"></span> }
+                                <button type="button" class="cov-cell" [class]="'cov-cell ' + c.cls" [class.col-sel]="c.year === state.year"
+                                    [title]="c.title" [attr.aria-label]="c.title" (click)="pickCell(r.key, c.year)"></button>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </app-viz-panel>
 
-      <!-- Spatial binned heatmap (map-vis grid mode) -->
-      <section class="cov-panel cov-map-panel">
-        <div class="cov-panel-head">
-          <h3>Where records concentrate <span class="cov-hint">— zoom in to refine the grid</span></h3>
-          <div class="cov-map-controls">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="cov-year-select">
-              <mat-label>Year</mat-label>
-              <mat-select [(ngModel)]="selectedYear" (selectionChange)="onYearChange()">
-                <mat-option value="all">All years</mat-option>
-                <mat-option *ngFor="let y of years" [value]="y">{{ y }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <button class="cov-dio-chip" *ngIf="selectedDiocese" (click)="clearDiocese()" title="Clear diocese filter">
-              {{ selectedDioceseLabel }} <span class="cov-dio-x">&times;</span>
-            </button>
-            <div class="cov-legend">
-              <span class="cov-legend-label">fewer</span>
-              <span class="cov-sw" *ngFor="let c of ramp" [style.background]="c"></span>
-              <span class="cov-legend-label">more</span>
-            </div>
-          </div>
-        </div>
-        <app-map-vis class="cov-map" [data]="mapData" [isOpen]="true" [options]="mapOptions" [autoCenter]="false"></app-map-vis>
-      </section>
+        <app-viz-panel class="cov-map-panel"
+            heading="Where records concentrate"
+            [note]="mapNote"
+            [state]="vizState === 'error' ? 'error' : vizState === 'loading' ? 'loading' : 'ready'"
+            [hasKey]="true"
+            (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item">
+                    fewer
+                    @for (c of ramp; track c) { <span class="cov-sw" [style.background]="c"></span> }
+                    more institutions
+                </li>
+            </ul>
+            <app-map-vis [simple]="true" [data]="mapData" [isOpen]="true" [options]="mapOptions" [autoCenter]="false"></app-map-vis>
+        </app-viz-panel>
     </div>
 
-    <p class="cov-caveat">{{ note }}</p>
-  </ng-container>
-</div>
+    <div notes>
+        <p>Each grid cell counts the distinct institutions recorded for a diocese in one almanac year, on a square-root scale so the largest sees don’t flatten the rest. A light cell means the diocese existed but has no records encoded yet; a <strong>hatched</strong> cell means it did not exist that year (from a timeline of when each see was founded).</p>
+        <p>Dioceses are keyed by the prefix of their institutions’ IDs, so name changes (e.g. “New York” / “New York City”) are merged onto one row under the latest name.</p>
+        <p>The <strong>pink band</strong> between 1861 and 1864 marks 1862–63: the <em>Catholic Almanac</em> was not published during those Civil War years. Individual <strong>pink cells</strong> mark other see-years whose records are absent or disrupted; hover one for the reason.</p>
+        <p>The map bins the same records onto a grid that refines as you zoom in, with shading scaled to the cells in view.</p>
+        @if (note) { <p>{{ note }}</p> }
+    </div>
+</app-dashboard-shell>

@@ -85,6 +85,7 @@ export class MapVisComponent {
     { value: 'bins', label: 'Grid' }
   ];
   private binsPopup?: any;
+  private pointPopup?: any;
   private binsConfig: any = null;
   private binsViewHandler?: any;
   private heatConfig: any = null;
@@ -126,7 +127,7 @@ export class MapVisComponent {
       if (!this.simple && this.fillScreen) {
         this.setMapHeightToFillScreen();
       }
-      this.updateMapCenter();
+      if (this.autoCenter) this.updateMapCenter();
       // The container may have been sized (or revealed) after the map was
       // created, which leaves MapLibre stuck at its 400x300 fallback canvas.
       // Sync the canvas to the real container size now and on any later change.
@@ -273,7 +274,8 @@ export class MapVisComponent {
       .addControl(new maplibregl.NavigationControl())
       .addControl(new maplibregl.FullscreenControl())
       .addControl(new maplibregl.ScaleControl({ maxWidth: 80, unit: 'metric' }))
-      .addControl(new maplibregl.AttributionControl({ customAttribution: Settings.mapTilesAttribution }))
+      // Compact: an (i) button that expands, instead of a long caption over the map.
+      .addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: Settings.mapTilesAttribution }))
       .addControl(new maplibregl.GlobeControl());
     this.map.on('load', () => {
       this.renderMapFeatures();
@@ -493,6 +495,18 @@ export class MapVisComponent {
       if (feature.properties.internalLink) {
         this.router.navigate([feature.properties.internalLink]);
       }
+    });
+    // Hover names the point, so it's clear what a click will open.
+    this.pointPopup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8 });
+    this.map.on('mousemove', 'data-point-layer', (e: any) => {
+      const f = e.features?.[0];
+      this.map.getCanvas().style.cursor = f?.properties.internalLink ? 'pointer' : '';
+      if (!f?.properties.title) return;
+      this.pointPopup.setLngLat(f.geometry.coordinates).setText(f.properties.title).addTo(this.map);
+    });
+    this.map.on('mouseleave', 'data-point-layer', () => {
+      this.map.getCanvas().style.cursor = '';
+      this.pointPopup?.remove();
     });
   }
 
@@ -892,6 +906,9 @@ export class MapVisComponent {
       this.map.off('mouseenter', 'data-cluster');
       this.map.off('mouseleave', 'data-cluster');
       this.map.off('click', 'data-point-layer');
+      this.map.off('mousemove', 'data-point-layer');
+      this.map.off('mouseleave', 'data-point-layer');
+      this.pointPopup?.remove();
       this.map.off('mousemove', 'data-bins-fill');
       this.map.off('mouseleave', 'data-bins-fill');
       if (this.binsViewHandler) { this.map.off('moveend', this.binsViewHandler); this.binsViewHandler = undefined; }

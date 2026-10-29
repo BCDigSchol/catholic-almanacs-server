@@ -1,152 +1,81 @@
-<!-- Wide Display -->
-@if (!isMobile) {
-<div class="flex flex-row justify-start items-start">
-<div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: var(--font-display);">
-    Institutions Map
-</div>
-</div>
-<div class="flex flex-row w-full justify-start items-start mt-5">
-    <div style="width: 300px;" class="ml-3">
-        <app-filter></app-filter>
-    </div>
-    <div class="w-full flex flex-col justify-around items-center relative">
-        <div #instMap style="flex-shrink: 0;">
-        <div class="flex flex-row items-center gap-3 mb-2">
-          <mat-form-field appearance="outline" subscriptSizing="dynamic" style="width: 200px;">
-            <mat-label>Colour by</mat-label>
-            <mat-select [(ngModel)]="groupBy" (selectionChange)="onGroupChange()">
-              @for (opt of groupOptions; track opt.value) {
-                <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <app-map-vis
-            [data]="data"
-            [isOpen]="true"
-            [legend]="legend"
-            label="Institutions"
-            [options]="mapOptions">
-        </app-map-vis>
-        </div>
-        <div class="absolute top-0 right-50 m-2" style="width: 300px; z-index: 1000;">
-            <mat-card *ngIf="instDetailVisible">
-                <mat-card-content>
-                    <div>
-                        <b>Institution Name:</b> {{ instDetailData.instName }}
-                    </div>
-                    <div>
-                        <b>Institution Type:</b> {{ instDetailData.instType }}
-                    </div>
-                    <div>
-                        <b>Diocese:</b> {{ instDetailData.diocese }}
-                    </div>
-                    <div>
-                        <b>Year:</b> {{ instDetailData.year }}
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="flex flex-col justify-center items-center">
-        <div>
-            <div class="flex flex-row justify-center items-center" >
-            <div>
-                <span>Year: {{year}}</span>
-            </div>
-            @if (!isPlaying) {
-                <button mat-fab class="flex flex-col mx-5" (click)="togglePlay()">
-                    <mat-icon>play_arrow</mat-icon>
-                </button>
-            }
-            @else {
-                <button mat-fab class="flex flex-col" (click)="togglePlay()">
-                    <mat-icon>pause</mat-icon>
-                </button>
-            }
-            <div style="position: relative; z-index: 1001;">
-            <mat-slider class="mx-2" style="width:200px; width:600px" [min]="yearMin" [max]="yearMax" step="1" discrete>
-                <input value="{{year}}" (input)="year = $any($event.target).value; getData()" [(ngModel)]="year" matSliderThumb >
-            </mat-slider>
-            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
-                <span>{{ yearMin }}</span>
-                <span>{{ (yearMax - yearMin) / 3 + yearMin}}</span>
-                <span>{{ (yearMax - yearMin) / 3 * 2 + yearMin}}</span>
-                <span>{{ yearMax }}</span>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-</div>
-}
+<app-dashboard-shell
+    title="Explore Institutions on the Map"
+    purpose="Every institution the almanacs located in a given year: filter by type, function, name or diocese, and click a point to open its record."
+    [takeaway]="takeaway"
+    [related]="related">
 
-<!-- Mobile Display -->
-@if (isMobile) {
-<div class="flex flex-row justify-start items-start">
-<div class="font-semibold text-lg ml-10 mt-4" style="font-size: 24px; font-family: var(--font-display);">
-    Institutions Map
-</div>
-</div>
-<div class="flex flex-col w-full justify-start items-start mt-5">
-    <div style="width: 300px;" class="ml-3">
-        <app-filter></app-filter>
-    </div>
-    <div class="w-full flex flex-col justify-around items-center relative">
-        <div #instMap style="flex-shrink: 0;" class="my-5">
-        <div class="flex flex-row items-center gap-3 mb-2">
-          <mat-form-field appearance="outline" subscriptSizing="dynamic" style="width: 200px;">
-            <mat-label>Colour by</mat-label>
-            <mat-select [(ngModel)]="groupBy" (selectionChange)="onGroupChange()">
-              @for (opt of groupOptions; track opt.value) {
-                <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Colour by" [showLabel]="true" [options]="colorOptions" [value]="state.color" (valueChange)="setColor($event)"></app-segmented>
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Name</span>
+                <input class="control" type="search" placeholder="e.g. St. Patrick" [value]="nameDraft"
+                    (input)="onName($any($event.target).value)">
+            </label>
+            <label class="ctl">
+                <span>Type</span>
+                <select class="control" [value]="state.type" (change)="setFilter({ type: $any($event.target).value })">
+                    <option value="">All types</option>
+                    @for (t of typeOptions; track t) {
+                        <option [value]="t" [selected]="t === state.type">{{ t }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Function</span>
+                <select class="control" [value]="state.fn" (change)="setFilter({ fn: $any($event.target).value })">
+                    <option value="">All functions</option>
+                    @for (f of functionOptions; track f) {
+                        <option [value]="f" [selected]="f === state.fn">{{ f }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" [value]="state.diocese" (change)="setFilter({ diocese: $any($event.target).value })">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceseOptions; track d) {
+                        <option [value]="d" [selected]="d === state.diocese">{{ dioceseLabel(d) }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    <app-viz-panel
+        [heading]="'Institutions' + (year ? ', ' + year : '')"
+        [note]="updating ? 'Loading…' : shown.toLocaleString() + ' located'"
+        [state]="vizState"
+        emptyText="No located institutions match these filters in this year."
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <label panel-actions class="view-select">
+            <span class="visually-hidden">Map display</span>
+            <select class="control" [value]="state.view" (change)="setView($any($event.target).value)">
+                @for (v of views; track v.value) {
+                    <option [value]="v.value" [selected]="v.value === state.view">{{ v.label }}</option>
+                }
+            </select>
+        </label>
+        <ul key class="legend">
+            @for (item of legend; track item.label) {
+                <li class="legend-item"><span class="legend-swatch" [style.background]="item.color"></span>{{ item.label }}</li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1800" idPrefix="inst-map-year" (yearChange)="setYear($event)"></app-year-player>
         <app-map-vis
             [data]="data"
             [isOpen]="true"
-            [legend]="legend"
+            [simple]="true"
+            [autoCenter]="false"
             label="Institutions"
             [options]="mapOptions">
         </app-map-vis>
-        </div>
-        <div class="absolute top-0 right-50 m-2" style="width: 300px; z-index: 1000;">
-            <mat-card *ngIf="instDetailVisible">
-                <mat-card-content>
-                    <div>
-                        <b>Institution Name:</b> {{ instDetailData.instName }}
-                    </div>
-                    <div>
-                        <b>Institution Type:</b> {{ instDetailData.instType }}
-                    </div>
-                    <div>
-                        <b>Diocese:</b> {{ instDetailData.diocese }}
-                    </div>
-                    <div>
-                        <b>Year:</b> {{ instDetailData.year }}
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="flex flex-col justify-center items-center">
-        <div>
-            <div class="flex flex-row justify-center items-center" >
-            <div style="position: relative; z-index: 1001;">
-            <mat-slider [style.width.px]="getSliderWidthMobile()" [min]="yearMin" [max]="yearMax" step="1" discrete>
-                <input value="{{year}}" (input)="year = $any($event.target).value; getData()" [(ngModel)]="year" matSliderThumb >
-            </mat-slider>
-            <div class="flex flex-row justify-between" style="font-size: 14px; margin-top: 2px;">
-                <span>{{ yearMin }}</span>
-                <span>{{ (yearMax - yearMin) / 3 + yearMin}}</span>
-                <span>{{ (yearMax - yearMin) / 3 * 2 + yearMin}}</span>
-                <span>{{ yearMax }}</span>
-            </div>
-            </div>
-        </div>
-        </div>
+    </app-viz-panel>
+
+    <div notes>
+        <p>Each point is one institution as the almanac recorded it in the selected year, placed at its geocoded town. Institutions whose place could not be located are counted in the summary but not drawn.</p>
+        <p>In the Points and Clusters displays, click a point to open the institution's record page. Name, type and diocese filters match any part of the recorded value, so “Patrick” finds every St. Patrick's.</p>
+        <p>Years with no almanac data (the 1862–63 Civil War gap, and years not yet transcribed) are skipped by the player.</p>
     </div>
-</div>
-</div>
-}
+</app-dashboard-shell>

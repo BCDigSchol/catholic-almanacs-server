@@ -1,48 +1,54 @@
 import { Component, OnInit, AfterViewInit, Input, OnChanges, OnDestroy, Output, EventEmitter, SimpleChanges, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DataSet, Network } from "vis-network/standalone";
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 
-import { Settings } from '../../../app.settings';
+import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
+
+/** What the details card shows for the clicked node. */
+export interface SelectedNode {
+  id: string;
+  kind: 'Institution' | 'Person' | 'Node';
+  label: string;
+  unnamed: boolean;
+  group: string;
+  links: string;
+  link: string | null;
+}
 
 @Component({
   selector: 'app-network-graph',
   imports: [
     SpaceNamePipe,
-    CommonModule,
     FormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule
+    RouterLink,
+    MatIconModule
   ],
   templateUrl: './network-graph.component.html',
   styleUrl: './network-graph.component.scss'
 })
 export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-  @ViewChild('visNetworkContainer') visNetworkContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('visNetwork') visNetwork!: ElementRef<HTMLDivElement>;
-  @ViewChild('visBar') visBar!: ElementRef<HTMLDivElement>;
-  @ViewChild('visLoadingBar') visLoadingBar!: ElementRef<HTMLImageElement>;
-  @ViewChild('visText') visText!: ElementRef<HTMLImageElement>;
+  @ViewChild('visBar') visBar!: ElementRef<HTMLSpanElement>;
+  @ViewChild('visLoadingBar') visLoadingBar!: ElementRef<HTMLDivElement>;
+  @ViewChild('visText') visText!: ElementRef<HTMLSpanElement>;
 
   @Input() label = '';
-  @Input() data = {
+  /** Draw its own bordered card and title bar. Dashboards pass false and let app-viz-panel frame it. */
+  @Input() framed = true;
+  /** Show the group key above the graph. Dashboards pass false and render the key in the panel. */
+  @Input() showLegend = true;
+  /** CSS height of the drawing area; defaults to options.height, else a responsive height. */
+  @Input() height = '';
+  /** Shown when there is nothing to draw; '' when the host shows its own empty state. */
+  @Input() emptyText = 'No connections matched these filters. Try widening the year range or clearing a filter.';
+  @Input() data: { nodes: any[]; edges: any[] } = {
     nodes: [],
     edges: []
   };
-  @Input() options = {};
+  @Input() options: any = {};
   @Input() startYear: number | null | undefined = undefined;
   @Input() endYear: number | null | undefined = undefined;
   @Input() minYear = 1500;
@@ -55,7 +61,12 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
 
   network: any;
   isOpen = true;
-  loading = true;
+  graphHeight: string | null = null;
+  selected: SelectedNode | null = null;
+  /** Touch screens: the graph ignores drags until tapped, so the page can still scroll past it. */
+  coarsePointer = typeof window !== 'undefined' && !!window.matchMedia?.('(pointer: coarse)').matches;
+  touchLocked = this.coarsePointer;
+  private themeObserver?: MutationObserver;
   showTimeWindowControls = false;
   timeWindowStartYear: number | null = null;
   timeWindowEndYear: number | null = null;
@@ -90,9 +101,9 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     nodes: [],
     edges: []
   };
-  protectedOptions = {
+  protectedOptions: any = {
     autoResize: true,
-    height: '600px',
+    height: '100%',
     width: '600px',
     locale: 'en',
     clickToUse: false,
@@ -172,8 +183,76 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   ngOnInit(): void {
     this.protectedData = this.data ?? { nodes: [], edges: [] };
     this.protectedOptions = Object.assign({}, this.protectedOptions, this.options ?? {});
+    this.updateHeight();
+    this.applyThemeColors();
     this.syncTimeWindowInputs();
-    this.loading = false;
+  }
+
+  /* vis draws on a canvas, so its text and default group colours are read
+     from the theme tokens and re-read when the theme class changes. */
+  private applyThemeColors(): void {
+    const css = getComputedStyle(document.body);
+    const token = (name: string, fallback: string) => css.getPropertyValue(name).trim() || fallback;
+    const ink = token('--ink', '#16203a');
+    const surface = token('--surface', '#ffffff');
+    const font = { color: ink, strokeWidth: 4, strokeColor: surface };
+    this.protectedOptions.nodes = { ...this.protectedOptions.nodes, font };
+    this.protectedOptions.edges = { ...this.protectedOptions.edges, font: { color: ink, strokeWidth: 3, strokeColor: surface } };
+    const groups = { ...(this.protectedOptions.groups ?? {}) };
+    for (const [group, tokenName] of [['institutions', '--c-inst'], ['people', '--c-pers']]) {
+      if (groups[group]?.themed !== false) {
+        const c = token(tokenName, '#888888');
+        groups[group] = { ...groups[group], color: { border: surface, background: c, highlight: { border: ink, background: c }, hover: { border: ink, background: c } } };
+      }
+    }
+    this.protectedOptions.groups = groups;
+  }
+
+  private updateHeight(): void {
+    this.graphHeight = this.height || this.options?.height || null;
+    this.protectedOptions.height = '100%';
+  }
+
+  unlockTouch(): void {
+    this.touchLocked = false;
+  }
+
+  lockTouch(): void {
+    this.touchLocked = true;
+  }
+
+  clearSelection(): void {
+    this.selected = null;
+    this.network?.unselectAll();
+  }
+
+  /* Fills the details card for a clicked node: kind, group, how many of each
+     kind it links to in the current view, and a link to its record page. */
+  private selectNode(nodeId: any): void {
+    const node = this.nodesDataSet?.get(nodeId) as any;
+    if (!node) {
+      this.selected = null;
+      return;
+    }
+    const kindOf = (n: any) => n?.routeSegment === 'institutions' ? 'Institution' : n?.routeSegment === 'people' ? 'Person' : 'Node';
+    const counts = new Map<string, number>();
+    for (const id of this.network.getConnectedNodes(nodeId) as any[]) {
+      const k = kindOf(this.nodesDataSet?.get(id));
+      counts.set(k, (counts.get(k) ?? 0) + 1);
+    }
+    const noun = (k: string, n: number) => k === 'Institution' ? (n === 1 ? 'institution' : 'institutions')
+      : k === 'Person' ? (n === 1 ? 'person' : 'people') : (n === 1 ? 'node' : 'nodes');
+    const parts = [...counts.entries()].map(([k, n]) => `${n.toLocaleString()} ${noun(k, n)}`);
+    const groupName = node.diocese ?? (['institutions', 'people'].includes(node.group) ? '' : node.group);
+    this.selected = {
+      id: String(node.id),
+      kind: kindOf(node),
+      label: node.label ?? String(node.id),
+      unnamed: !!node.unnamed,
+      group: groupName && groupName !== 'Unknown' ? `Diocese of ${spaceName(groupName)}` : '',
+      links: parts.length ? `Linked to ${parts.join(' and ')} in this view` : 'No links in this view',
+      link: node.routeSegment ? `/${node.routeSegment}/${node.id}` : null,
+    };
   }
 
   ngAfterViewInit(): void {
@@ -182,12 +261,14 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     this.network = new Network(container, {
       nodes: new DataSet<any>([]),
       edges: new DataSet<any>([])
-    }, this.protectedOptions);
-    this.network.setOptions({
-      autoResize: true,
-      height: '100%',
-      width: '100%',
+    }, { ...this.protectedOptions, width: '100%', height: '100%' });
+
+    // Follow theme switches (a class on <body>) without rebuilding the graph.
+    this.themeObserver = new MutationObserver(() => {
+      this.applyThemeColors();
+      this.network?.setOptions({ nodes: this.protectedOptions.nodes, edges: this.protectedOptions.edges, groups: this.protectedOptions.groups });
     });
+    this.themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     // Single click selects (vis default); double click navigates to the
     // entity's detail page so stray clicks don't yank the user off the graph
     // Single click on a cluster bubble expands it back into its members
@@ -197,7 +278,9 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
         this.network.openCluster(clickedNodeId);
         // Let the freed members spread out instead of stacking at the bubble's spot
         this.restartPhysics();
+        return;
       }
+      this._ngZone.run(() => clickedNodeId ? this.selectNode(clickedNodeId) : this.selected = null);
     });
     this.network.on('doubleClick', (properties: any) => {
       const clickedNodeId = properties.nodes?.[0] ?? this.network.getNodeAt(properties.pointer?.DOM);
@@ -210,7 +293,10 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
         return;
       }
 
-      const routeSegment = clickedNode.routeSegment ?? clickedNode.group ?? 'jesuits';
+      const routeSegment = clickedNode.routeSegment;
+      if (!routeSegment) {
+        return;
+      }
       this._ngZone.run(() => {
         this._router.navigate([`/${routeSegment}/${clickedNode.id}`]);
       });
@@ -239,12 +325,9 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
       }
     });
     this.network.on("stabilizationProgress", (params: any) => {
-      const maxWidth = 496;
-      const minWidth = 20;
       const widthFactor = params.total > 0 ? params.iterations / params.total : 1;
-      const width = Math.max(minWidth, maxWidth * widthFactor);
-      this.visBar.nativeElement.style.width = width + 'px';
-      this.visText.nativeElement.innerHTML = Math.round(widthFactor*100) + '%';
+      this.visBar.nativeElement.style.width = Math.round(widthFactor * 100) + '%';
+      this.visText.nativeElement.textContent = 'Laying out ' + Math.round(widthFactor * 100) + '%';
     });
     this.network.on("stabilizationIterationsDone", () => {
       // Only hide loading bar when physics is fully stabilized
@@ -290,6 +373,10 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
 
     if (changes['options']?.currentValue) {
       this.protectedOptions = Object.assign({}, this.protectedOptions, changes['options'].currentValue);
+      this.applyThemeColors();
+    }
+    if (changes['options'] || changes['height']) {
+      this.updateHeight();
     }
 
     if (
@@ -326,6 +413,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
       clearTimeout(this.searchBlurTimeout);
       this.searchBlurTimeout = null;
     }
+    this.themeObserver?.disconnect();
     this.network?.destroy();
   }
 
@@ -461,6 +549,13 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     }
   }
 
+  /* "not recorded" institution names read as "Unnamed church" etc. */
+  private labelNodes(nodes: any[]): any[] {
+    return nodes.map(node => node.routeSegment === 'institutions' && isUnnamed(node.label)
+      ? { ...node, label: institutionLabel(node.label, node.instType), unnamed: true }
+      : node);
+  }
+
   private resolveHtmlTitles(items: any[]): any[] {
     return items.map(item => {
       if (typeof item.title !== 'string' || !/<[a-z][\s\S]*>/i.test(item.title)) {
@@ -473,7 +568,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   }
 
   private applyNetworkState(showLoading = true): void {
-    const nodes = this.resolveHtmlTitles(this.protectedData?.nodes ?? []);
+    const nodes = this.resolveHtmlTitles(this.labelNodes(this.protectedData?.nodes ?? []));
     const edges = this.resolveHtmlTitles(this.protectedData?.edges ?? []);
     this.currentNodeCount = nodes.length;
     this.currentEdgeCount = edges.length;
@@ -511,6 +606,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
 
     // Fresh data resets the client-side exploration state
     this.isEmpty = nodes.length === 0;
+    this.selected = null;
     this.clustered = false;
     this.highlightActive = false;
     this.searchText = '';
@@ -658,6 +754,12 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
       .map(([group, color]) => ({ group, color, hidden: false }));
   }
 
+  /** Shows or hides one group's nodes (for a key rendered outside the graph). */
+  setGroupHidden(group: string, hidden: boolean): void {
+    const entry = this.legendEntries.find(e => e.group === group);
+    if (entry && entry.hidden !== hidden) this.toggleLegendGroup(entry);
+  }
+
   toggleLegendGroup(entry: { group: string; color: string; hidden: boolean }): void {
     entry.hidden = !entry.hidden;
     if (entry.hidden) {
@@ -783,9 +885,9 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
         clusterNodeProperties: {
           id: `cluster:${group}`,
           shape: 'dot',
-          color: { background: entry.color, border: '#333333' },
+          color: { background: entry.color, border: this.protectedOptions.nodes.font.color },
           borderWidth: 3,
-          font: { size: 16, strokeWidth: 4, strokeColor: '#ffffff' }
+          font: { ...this.protectedOptions.nodes.font, size: 16 }
         }
       });
     }
@@ -846,10 +948,10 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   }
 
   private showLoadingBar(): void {
-    this.visLoadingBar.nativeElement.style.display = 'block';
+    this.visLoadingBar.nativeElement.style.display = 'flex';
     this.visLoadingBar.nativeElement.style.opacity = '1';
-    this.visBar.nativeElement.style.width = '20px';
-    this.visText.nativeElement.innerHTML = '0%';
+    this.visBar.nativeElement.style.width = '0';
+    this.visText.nativeElement.textContent = 'Laying out 0%';
   }
 
   private hideLoadingBar(): void {
@@ -859,8 +961,8 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
 
     this.isRestabilizing = false;
 
-    this.visText.nativeElement.innerHTML = '100%';
-    this.visBar.nativeElement.style.width = '496px';
+    this.visText.nativeElement.textContent = 'Laying out 100%';
+    this.visBar.nativeElement.style.width = '100%';
     this.visLoadingBar.nativeElement.style.opacity = '0';
     setTimeout(() => {
       this.visLoadingBar.nativeElement.style.display = 'none';

@@ -1,23 +1,96 @@
-<h2 class="text-2xl font-bold m-4">Personal Network</h2>
-<div class="flex flex-row justify-start items-center w-full">
-    
-    @if (!comparisonNetwork) {
-        <div class="w-full">
-            <app-personal-network></app-personal-network>
+<app-dashboard-shell
+    title="The People Network"
+    purpose="Who served alongside whom: clergy and religious linked by the institutions where both were listed."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="set('diocese', $any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceseOptions; track d) {
+                        <option [value]="d" [selected]="d === state.diocese">{{ d | spaceName }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>State</span>
+                <select class="control" (change)="set('state', $any($event.target).value)">
+                    <option value="">All states</option>
+                    @for (s of usStates; track s.abbr) {
+                        <option [value]="s.abbr" [selected]="s.abbr === state.state">{{ s.name }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Role</span>
+                <input class="control" type="search" placeholder="e.g. pastor" [value]="draft['role']"
+                    (input)="setText('role', $any($event.target).value)">
+            </label>
+            <div class="ctl">
+                <span>Years</span>
+                <app-year-range idPrefix="pnet-years" [min]="minYear" [max]="maxYear"
+                    [from]="state.from || minYear" [to]="state.to || maxYear" (rangeChange)="setYears($event)"></app-year-range>
+            </div>
+            @if (moreOpen) {
+                <label class="ctl">
+                    <span>Title</span>
+                    <input class="control" type="search" placeholder="e.g. Rev." [value]="draft['title']"
+                        (input)="setText('title', $any($event.target).value)">
+                </label>
+                <label class="ctl">
+                    <span>Religious order</span>
+                    <select class="control" (change)="set('order', $any($event.target).value)">
+                        <option value="">All orders</option>
+                        @for (o of orderOptions; track o) {
+                            <option [value]="o" [selected]="o === state.order">{{ o }}</option>
+                        }
+                    </select>
+                </label>
+                <label class="ctl">
+                    <span>City</span>
+                    <input class="control" type="search" placeholder="e.g. Louisville" [value]="draft['city']"
+                        (input)="setText('city', $any($event.target).value)">
+                </label>
+            } @else {
+                <button type="button" class="btn more-btn" (click)="moreOpen = true">More filters</button>
+            }
+        </ng-template>
+    </app-control-bar>
+
+    <app-viz-panel
+        [heading]="'People who served together, ' + scopeLabel"
+        [note]="panelNote"
+        [state]="vizState"
+        emptyText="No one served alongside anyone else under these filters. Try widening the years or clearing a filter."
+        [hasKey]="key.length > 1"
+        [keyOpen]="keyOpen"
+        (retry)="fetchData()">
+        <div key>
+            <p class="key-hint">Colour shows each person's diocese. Click a diocese to hide or show its people.</p>
+            <ul class="legend">
+                @for (entry of key; track entry.group) {
+                    <li><button type="button" class="legend-item" [class.off]="entry.hidden" [attr.aria-pressed]="!entry.hidden" (click)="setKeyHidden(entry)">
+                        <span class="legend-swatch" [style.background]="entry.color"></span>{{ entry.label }} ({{ entry.count }})
+                    </button></li>
+                }
+            </ul>
         </div>
-    } @else {
-        <div class="comparison-row">
-            <app-personal-network initialState="NY" class="comparison-pane"></app-personal-network>
-            <app-personal-network initialState="NJ" class="comparison-pane"></app-personal-network>
-        </div>
-    }
-    @if (!comparisonNetwork) {
-        <button mat-icon-button color="accent" (click)="toggleComparisonNetwork()" class="m-4">
-            <mat-icon>add</mat-icon>
-        </button>
-    } @else {
-        <button mat-icon-button color="accent" (click)="toggleComparisonNetwork()" class="m-4">
-            <mat-icon>remove</mat-icon>
-        </button>
-    }
-</div>
+        <app-network-graph
+            [framed]="false"
+            [showLegend]="false"
+            emptyText=""
+            label="People linked through institutions"
+            [data]="network"
+            [options]="networkOptions">
+        </app-network-graph>
+    </app-viz-panel>
+
+    <div notes>
+        <p>Each dot is a person. Two people are linked when both are listed at the same institution within the selected years; the line's number and thickness count the institutions they shared. Dot size reflects PageRank, a measure of how central a person is to the whole web. A person's colour is the diocese of their latest listing.</p>
+        <p>The full network is too large to draw at once, so the server keeps the most central people (by PageRank, up to 500) and drops any left without a link. The panel note says how many of the matching people are shown; narrow the filters to see the rest.</p>
+        <p>Role and title match any part of the recorded text (“pastor” also finds “assistant pastor”). Click a person for details and a link to their record; double-click to open it.</p>
+    </div>
+</app-dashboard-shell>

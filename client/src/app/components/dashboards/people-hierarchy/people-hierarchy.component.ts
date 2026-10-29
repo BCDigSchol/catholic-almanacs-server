@@ -1,14 +1,18 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import * as d3 from 'd3';
+
 import { ApiService } from '../../../services/api.service';
+import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
+import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
+import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
+import { UrlState } from '../../../utils/url-state';
+import { yearScale, drawYearAxis } from '../../../utils/year-scale';
+import { US_STATES, loadOptions, stateName } from '../../../utils/options';
 
 interface CompositionRow {
   year: number;
@@ -18,44 +22,44 @@ interface CompositionRow {
   share: number;
 }
 
+const DEFAULTS = { diocese: '', state: '', mode: 'share' };
+
 @Component({
   selector: 'app-people-hierarchy-dashboard',
-  imports: [
-    SpaceNamePipe,
-    CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonToggleModule
-  ],
+  imports: [SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, SegmentedComponent],
   templateUrl: './people-hierarchy.component.html',
   styleUrl: './people-hierarchy.component.scss'
 })
 export class PeopleHierarchyDashboardComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('chart', { static: false }) chartRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('chart', { static: true }) chartRef!: ElementRef<HTMLDivElement>;
 
-  loading = true;
-  error: string | null = null;
-  note = '';
-  // Counts read better than shares here — the leadership ranks are tiny next to
-  // the priests, so the pyramid's growth is clearest as raw numbers.
-  mode: 'share' | 'count' = 'count';
-
-  // Filters
-  diocese = '';
-  state = '';
+  readonly related = [
+    { label: 'Who Served the Church', link: '/dashboards/people-composition' },
+    { label: 'The Shape of the Church', link: '/dashboards/composition' },
+    { label: 'Comparing People', link: '/dashboards/people-comparison' },
+    { label: 'The People Network', link: '/dashboards/network-people' },
+  ];
+  readonly modes = [{ value: 'share', label: 'Share' }, { value: 'count', label: 'Count' }];
+  readonly usStates = US_STATES;
   dioceseOptions: string[] = [];
-  usStates = US_STATES;
 
+  state = { ...DEFAULTS };
+  vizState: VizState = 'loading';
+  note = '';
+  takeaway = '';
+  chips: ControlChip[] = [];
   years: number[] = [];
+  legend: { group: string; label: string; color: string }[] = [];
+
   private rows: CompositionRow[] = [];
   private buckets: string[] = [];
-  private viewInitialized = false;
-  private fetchSubscription: Subscription | null = null;
+  private url: UrlState<typeof DEFAULTS>;
+  private subs: Subscription[] = [];
+  private fetchSub?: Subscription;
   private resizeObserver?: ResizeObserver;
-  private lastRenderWidth = 0;
+  private lastWidth = 0;
 
-  // Clergy rank labels and a high-to-low color ramp
+  // Clergy rank labels and a high-to-low colour ramp.
   private readonly labels: Record<string, string> = {
     'archbishop': 'Archbishops (Most Rev.)',
     'bishop': 'Bishops (Rt. Rev.)',
@@ -73,225 +77,162 @@ export class PeopleHierarchyDashboardComponent implements OnInit, AfterViewInit,
     'other': '#9aa0a6'
   };
 
-  constructor(private _api: ApiService, private _http: HttpClient) {}
+  constructor(private api: ApiService, private http: HttpClient, router: Router, route: ActivatedRoute) {
+    this.url = new UrlState(router, route, DEFAULTS);
+  }
 
   ngOnInit(): void {
-    this._http.get('diocese.csv', { responseType: 'text' }).subscribe({
-      next: data => this.dioceseOptions = data.split('\n')
-        .map(l => l.replace(/﻿/g, '').trim()).filter(l => l.length > 0),
-      error: () => this.dioceseOptions = []
-    });
-    this.fetchData();
+    this.subs.push(loadOptions(this.http, 'diocese.csv').subscribe(o => this.dioceseOptions = o));
+    // Refetch only when the place changes; Share/Count just redraws.
+    let scope: string | null = null;
+    this.subs.push(this.url.changes().subscribe(state => {
+      const scopeChanged = `${state.diocese}|${state.state}` !== scope;
+      scope = `${state.diocese}|${state.state}`;
+      this.state = state;
+      this.chips = [
+        ...(state.diocese ? [{ label: `Diocese: ${spaceName(state.diocese)}`, clear: () => this.url.set({ diocese: '' }) }] : []),
+        ...(state.state ? [{ label: `State: ${stateName(state.state)}`, clear: () => this.url.set({ state: '' }) }] : []),
+      ];
+      if (scopeChanged) this.fetchData(); else this.render();
+    }));
   }
 
   ngAfterViewInit(): void {
-    this.viewInitialized = true;
-    // Re-render whenever the chart element's width actually settles or changes.
-    // The first measurement on a fresh navigation can be too small (layout not
-    // yet settled); this catches the corrected width and also makes it responsive.
-    if (this.chartRef) {
-      this.resizeObserver = new ResizeObserver(() => {
-        const w = this.chartRef.nativeElement.clientWidth;
-        if (w > 0 && w !== this.lastRenderWidth && !this.loading && !this.error) {
-          this.render();
-        }
-      });
-      this.resizeObserver.observe(this.chartRef.nativeElement);
-    }
-    if (!this.loading && !this.error) this.render();
+    this.resizeObserver = new ResizeObserver(() => {
+      const w = this.chartRef.nativeElement.clientWidth;
+      if (w > 0 && w !== this.lastWidth) this.render();
+    });
+    this.resizeObserver.observe(this.chartRef.nativeElement);
   }
 
   ngOnDestroy(): void {
-    this.fetchSubscription?.unsubscribe();
+    this.subs.forEach(s => s.unsubscribe());
+    this.fetchSub?.unsubscribe();
     this.resizeObserver?.disconnect();
   }
 
-  fetchData(): void {
-    this.loading = true;
-    this.error = null;
-    const params: string[] = ['entity=people', 'dimension=title'];
-    if (this.diocese) params.push('diocese=' + encodeURIComponent(this.diocese));
-    if (this.state) params.push('state=' + encodeURIComponent(this.state));
-    const url = 'stats/composition?' + params.join('&');
+  // ---- controls -------------------------------------------------------------
 
-    this.fetchSubscription?.unsubscribe();
-    this.fetchSubscription = this._api.getTypeRequest(url).subscribe({
+  setDiocese(diocese: string): void {
+    this.url.set({ diocese, state: '' });
+  }
+
+  setState(state: string): void {
+    this.url.set({ state, diocese: '' });
+  }
+
+  setMode(mode: string): void {
+    this.url.set({ mode });
+  }
+
+  clearAll = (): void => this.url.set({ diocese: '', state: '' });
+
+  get scopeLabel(): string {
+    if (this.state.diocese) return `in the Diocese of ${spaceName(this.state.diocese)}`;
+    if (this.state.state) return `in ${stateName(this.state.state)}`;
+    return 'nationally';
+  }
+
+  // ---- data -----------------------------------------------------------------
+
+  fetchData(): void {
+    this.vizState = 'loading';
+    const q = new URLSearchParams({ entity: 'people', dimension: 'title' });
+    if (this.state.diocese) q.set('diocese', this.state.diocese);
+    if (this.state.state) q.set('state', this.state.state);
+    this.fetchSub?.unsubscribe();
+    this.fetchSub = this.api.getTypeRequest('stats/composition?' + q).subscribe({
       next: (res: any) => {
         this.rows = res.rows ?? [];
         this.buckets = res.meta?.buckets ?? [];
         this.years = res.meta?.years ?? [];
         this.note = res.meta?.note ?? '';
-        this.loading = false;
-        if (this.viewInitialized) this.renderWhenReady();
+        this.legend = this.buckets.map(b => ({ group: b, label: this.labels[b] ?? b, color: this.colors[b] ?? '#999' }));
+        this.takeaway = this.computeTakeaway();
+        this.vizState = this.years.length ? 'ready' : 'empty';
+        requestAnimationFrame(() => this.render());
       },
-      error: (err: any) => {
-        this.error = err?.error?.message || 'Could not load clergy data.';
-        this.loading = false;
-      }
+      error: () => this.vizState = 'error',
     });
   }
 
-  // Renders once the chart actually has width. After a refetch the chart is
-  // briefly hidden (loading), so a single render() can hit a 0-width element and
-  // no-op; retry across a few frames until the element is laid out again.
-  private renderWhenReady(attempts = 0): void {
-    if (!this.chartRef) return;
-    if (this.chartRef.nativeElement.clientWidth > 0) {
-      this.render();
-    } else if (attempts < 10) {
-      requestAnimationFrame(() => this.renderWhenReady(attempts + 1));
-    }
+  /** How many priests there were for each bishop or archbishop, first year to last. */
+  private computeTakeaway(): string {
+    const count = (year: number, bucket: string) => this.rows.find(r => r.year === year && r.group === bucket)?.count ?? 0;
+    const ratio = (year: number) => {
+      const bishops = count(year, 'archbishop') + count(year, 'bishop');
+      return bishops ? count(year, 'priest') / bishops : 0;
+    };
+    const years = this.years.filter(y => ratio(y) > 0);
+    if (years.length < 2) return '';
+    const [first, last] = [years[0], years[years.length - 1]];
+    const n = (v: number) => Math.round(v).toLocaleString();
+    return `${this.scopeLabel.charAt(0).toUpperCase() + this.scopeLabel.slice(1)}, there were about ${n(ratio(first))} priests for every bishop or archbishop in ${first}, and ${n(ratio(last))} in ${last}.`;
   }
 
-  onScopeChange(): void {
-    this.fetchData();
-  }
-
-  onModeChange(): void {
-    if (this.viewInitialized && !this.loading) this.render();
-  }
-
-  get legend(): { group: string; label: string; color: string }[] {
-    return this.buckets.map(b => ({
-      group: b,
-      label: this.labels[b] ?? b,
-      color: this.colors[b] ?? '#999'
-    }));
-  }
-
-  get scopeLabel(): string {
-    if (this.diocese) return `Diocese of ${spaceName(this.diocese)}`;
-    if (this.state) return `State of ${this.state}`;
-    return 'National';
-  }
+  // ---- chart ----------------------------------------------------------------
 
   private render(): void {
-    if (!this.chartRef) return;
-    const host = this.chartRef.nativeElement;
-    // Container not laid out yet (0 width) — skip rather than draw a narrow
-    // fallback; the ResizeObserver re-fires render() once it has real width.
-    if (host.clientWidth === 0) return;
+    const host = this.chartRef?.nativeElement;
+    if (!host || host.clientWidth === 0) return;
     d3.select(host).selectAll('*').remove();
     if (!this.rows.length) return;
 
-    const margin = { top: 16, right: 16, bottom: 64, left: 56 };
-    const width = Math.max(host.clientWidth, 360);
-    this.lastRenderWidth = width;
-    const height = 460;
+    const width = host.clientWidth;
+    this.lastWidth = width;
+    const compact = width < 520;
+    const margin = { top: 12, right: 8, bottom: 34, left: compact ? 40 : 56 };
+    const height = Math.round(Math.min(460, Math.max(300, width * 0.5)));
     const innerW = width - margin.left - margin.right;
     const innerH = height - margin.top - margin.bottom;
 
-    const svg = d3.select(host).append('svg')
-      .attr('width', width)
-      .attr('height', height);
-    const g = svg.append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`);
+    const svg = d3.select(host).append('svg').attr('width', width).attr('height', height)
+      .attr('role', 'img').attr('aria-label', `Clergy by rank ${this.scopeLabel}, ${this.years[0]}–${this.years[this.years.length - 1]}`);
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // Time-positioned x-axis so coverage gaps show as real empty space,
-    // never interpolated across. Bars sit at their actual year.
-    const yearExtent = d3.extent(this.years) as [number, number];
-    const x = d3.scaleLinear()
-      .domain([yearExtent[0] - 1, yearExtent[1] + 1])
-      .range([0, innerW]);
-    const barW = Math.min(34, (innerW / (yearExtent[1] - yearExtent[0])) * 0.9);
-
-    const isShare = this.mode === 'share';
+    const x = yearScale(this.years, [0, innerW]);
+    const barW = Math.max(3, Math.min(34, x.step * 0.72));
+    const isShare = this.state.mode === 'share';
     const y = d3.scaleLinear()
       .domain([0, isShare ? 1 : (d3.max(this.years, yr => this.totalFor(yr)) ?? 1)])
       .nice()
       .range([innerH, 0]);
 
-    this.drawGapBand(g, x, innerH);
+    const yTicks = y.ticks(5);
+    g.append('g').attr('class', 'gridline').selectAll('line').data(yTicks).join('line')
+      .attr('x1', 0).attr('x2', innerW).attr('y1', d => y(d)).attr('y2', d => y(d));
+    g.append('g').call(d3.axisLeft(y).tickValues(yTicks).tickSize(0).tickPadding(6)
+      .tickFormat(isShare ? d3.format('.0%') : d3.format('~s')))
+      .call(sel => sel.select('.domain').remove());
 
-    // Axes
-    const xAxis = d3.axisBottom(x).tickValues(this.years).tickFormat(d3.format('d'));
-    g.append('g')
-      .attr('transform', `translate(0,${innerH})`)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('transform', 'rotate(-45)')
-      .style('text-anchor', 'end')
-      .style('font-size', '11px');
+    drawYearAxis(g, x, innerH, { minSpacing: compact ? 40 : 36 });
 
-    const yAxis = isShare
-      ? d3.axisLeft(y).ticks(5).tickFormat(d3.format('.0%'))
-      : d3.axisLeft(y).ticks(5).tickFormat(d3.format('~s'));
-    g.append('g').call(yAxis);
-
-    g.append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('x', -innerH / 2).attr('y', -42)
-      .attr('text-anchor', 'middle').style('font-size', '12px').style('fill', '#555')
-      .text(isShare ? 'Share of clergy recorded' : 'Clergy recorded');
-
-    // Stacked columns, one per year
     const tooltip = d3.select(host).append('div').attr('class', 'chart-tooltip');
-
     for (const year of this.years) {
       const total = this.totalFor(year);
       let cumulative = 0;
-      const cx = x(year) - barW / 2;
       for (const bucket of this.buckets) {
         const row = this.rows.find(r => r.year === year && r.group === bucket);
-        const value = row ? (isShare ? row.share : row.count) : 0;
-        if (value <= 0) continue;
-        const segTop = isShare ? cumulative + value : cumulative + row!.count;
+        if (!row || row.count <= 0) continue;
+        const top = cumulative + (isShare ? row.share : row.count);
         g.append('rect')
-          .attr('x', cx)
-          .attr('width', barW)
-          .attr('y', y(segTop))
-          .attr('height', Math.max(0, y(cumulative) - y(segTop)))
+          .attr('x', x(year) - barW / 2).attr('width', barW)
+          .attr('y', y(top)).attr('height', Math.max(0, y(cumulative) - y(top)))
           .attr('fill', this.colors[bucket] ?? '#999')
-          .style('cursor', 'pointer')
           .on('mousemove', (event: MouseEvent) => {
             const [mx, my] = d3.pointer(event, host);
             tooltip.style('opacity', '1')
-              .style('left', `${mx + 12}px`).style('top', `${my + 12}px`)
-              .html(`<strong>${year} &middot; ${this.labels[bucket] ?? bucket}</strong><br>` +
-                `${row!.count} ${row!.count === 1 ? 'person' : 'people'} &middot; ${(row!.share * 100).toFixed(1)}% of ${total}`);
+              .style('left', `${Math.min(mx + 12, width - 200)}px`).style('top', `${my + 12}px`)
+              .html(`<strong>${year} · ${this.labels[bucket] ?? bucket}</strong><br>` +
+                `${row.count.toLocaleString()} ${row.count === 1 ? 'person' : 'people'} · ${(row.share * 100).toFixed(1)}% of ${total.toLocaleString()}`);
           })
           .on('mouseleave', () => tooltip.style('opacity', '0'));
-        cumulative = segTop;
+        cumulative = top;
       }
     }
   }
 
   private totalFor(year: number): number {
-    const row = this.rows.find(r => r.year === year);
-    return row ? row.total : 0;
-  }
-
-  // Shades any span longer than 3 years between consecutive present years
-  private drawGapBand(g: any, x: d3.ScaleLinear<number, number>, innerH: number): void {
-    for (let i = 1; i < this.years.length; i++) {
-      const prev = this.years[i - 1];
-      const cur = this.years[i];
-      if (cur - prev > 3) {
-        const x0 = x(prev + 0.5);
-        const x1 = x(cur - 0.5);
-        g.append('rect')
-          .attr('x', x0).attr('y', 0)
-          .attr('width', x1 - x0).attr('height', innerH)
-          .attr('fill', '#000').attr('opacity', 0.04);
-        g.append('text')
-          .attr('x', (x0 + x1) / 2).attr('y', innerH / 2)
-          .attr('text-anchor', 'middle').attr('transform', `rotate(-90 ${(x0 + x1) / 2} ${innerH / 2})`)
-          .style('font-size', '11px').style('fill', '#999')
-          .text(`not published ${prev + 1}–${cur - 1}`);
-      }
-    }
+    return this.rows.find(r => r.year === year)?.total ?? 0;
   }
 }
-
-const US_STATES: { abbr: string; name: string }[] = [
-  { abbr: '', name: 'All States' },
-  { abbr: 'CA', name: 'California' }, { abbr: 'CT', name: 'Connecticut' },
-  { abbr: 'IL', name: 'Illinois' }, { abbr: 'IN', name: 'Indiana' },
-  { abbr: 'IA', name: 'Iowa' }, { abbr: 'KY', name: 'Kentucky' },
-  { abbr: 'LA', name: 'Louisiana' }, { abbr: 'MD', name: 'Maryland' },
-  { abbr: 'MA', name: 'Massachusetts' }, { abbr: 'MI', name: 'Michigan' },
-  { abbr: 'MN', name: 'Minnesota' }, { abbr: 'MO', name: 'Missouri' },
-  { abbr: 'NJ', name: 'New Jersey' }, { abbr: 'NY', name: 'New York' },
-  { abbr: 'OH', name: 'Ohio' }, { abbr: 'PA', name: 'Pennsylvania' },
-  { abbr: 'WI', name: 'Wisconsin' }
-];

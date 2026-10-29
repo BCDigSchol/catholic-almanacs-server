@@ -1,23 +1,109 @@
-<h2 class="text-2xl font-bold m-4">Institutional Network</h2>
-<div class="flex flex-row justify-start items-center w-full">
-    
-    @if (!comparisonNetwork) {
-        <div class="w-full">
-            <app-institutional-network></app-institutional-network>
+<app-dashboard-shell
+    title="The Institution Network"
+    purpose="Which institutions were tied together by the clergy and religious who served at more than one of them."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="set('diocese', $any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceseOptions; track d) {
+                        <option [value]="d" [selected]="d === state.diocese">{{ d | spaceName }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>State</span>
+                <select class="control" (change)="set('state', $any($event.target).value)">
+                    <option value="">All states</option>
+                    @for (s of usStates; track s.abbr) {
+                        <option [value]="s.abbr" [selected]="s.abbr === state.state">{{ s.name }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Function</span>
+                <select class="control" (change)="set('function', $any($event.target).value)">
+                    <option value="">All functions</option>
+                    @for (f of functionOptions; track f) {
+                        <option [value]="f" [selected]="f === state.function">{{ f }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Type</span>
+                <select class="control" (change)="set('type', $any($event.target).value)">
+                    <option value="">All types</option>
+                    @for (t of typeOptions; track t) {
+                        <option [value]="t" [selected]="t === state.type">{{ t }}</option>
+                    }
+                </select>
+            </label>
+            <div class="ctl">
+                <span>Years</span>
+                <app-year-range idPrefix="inet-years" [min]="minYear" [max]="maxYear"
+                    [from]="state.from || minYear" [to]="state.to || maxYear" (rangeChange)="setYears($event)"></app-year-range>
+            </div>
+            @if (moreOpen) {
+                <label class="ctl">
+                    <span>Religious order</span>
+                    <select class="control" (change)="set('order', $any($event.target).value)">
+                        <option value="">All orders</option>
+                        @for (o of orderOptions; track o) {
+                            <option [value]="o" [selected]="o === state.order">{{ o }}</option>
+                        }
+                    </select>
+                </label>
+                <label class="ctl">
+                    <span>Language</span>
+                    <input class="control" type="search" placeholder="e.g. German" [value]="draft['language']"
+                        (input)="setText('language', $any($event.target).value)">
+                </label>
+                <label class="ctl">
+                    <span>City</span>
+                    <input class="control" type="search" placeholder="e.g. Louisville" [value]="draft['city']"
+                        (input)="setText('city', $any($event.target).value)">
+                </label>
+            } @else {
+                <button type="button" class="btn more-btn" (click)="moreOpen = true">More filters</button>
+            }
+        </ng-template>
+    </app-control-bar>
+
+    <app-viz-panel
+        [heading]="'Institutions sharing people, ' + scopeLabel"
+        [note]="panelNote"
+        [state]="vizState"
+        emptyText="No institutions shared people under these filters. Try widening the years or clearing a filter."
+        [hasKey]="key.length > 1"
+        [keyOpen]="keyOpen"
+        (retry)="fetchData()">
+        <div key>
+            <p class="key-hint">Colour shows the diocese. Click a diocese to hide or show its institutions.</p>
+            <ul class="legend">
+                @for (entry of key; track entry.group) {
+                    <li><button type="button" class="legend-item" [class.off]="entry.hidden" [attr.aria-pressed]="!entry.hidden" (click)="setKeyHidden(entry)">
+                        <span class="legend-swatch" [style.background]="entry.color"></span>{{ entry.label }} ({{ entry.count }})
+                    </button></li>
+                }
+            </ul>
         </div>
-    } @else {
-        <div class="comparison-row">
-            <app-institutional-network initialState="NY" class="comparison-pane"></app-institutional-network>
-            <app-institutional-network initialState="NJ" class="comparison-pane"></app-institutional-network>
-        </div>
-    }
-    @if (!comparisonNetwork) {
-        <button mat-icon-button color="accent" (click)="toggleComparisonNetwork()" class="m-4">
-            <mat-icon>add</mat-icon>
-        </button>
-    } @else {
-        <button mat-icon-button color="accent" (click)="toggleComparisonNetwork()" class="m-4">
-            <mat-icon>remove</mat-icon>
-        </button>
-    }
-</div>
+        <app-network-graph
+            [framed]="false"
+            [showLegend]="false"
+            emptyText=""
+            label="Institutions linked through people"
+            [data]="network"
+            [options]="networkOptions">
+        </app-network-graph>
+    </app-viz-panel>
+
+    <div notes>
+        <p>Each dot is an institution. Two institutions are linked when at least one person is listed at both within the selected years; the line's number and thickness count the people they shared. Dot size reflects PageRank, a measure of how central an institution is to the whole web.</p>
+        <p>The full network is too large to draw at once, so the server keeps the most central institutions (by PageRank, up to 500) and drops any left without a link. The panel note says how many of the matching institutions are shown; narrow the filters to see the rest.</p>
+        <p>Click an institution for its details and a link to its record; double-click to open the record. Use “Min. shared” to keep only stronger ties, and “Cluster groups” to fold each diocese into one bubble.</p>
+    </div>
+</app-dashboard-shell>

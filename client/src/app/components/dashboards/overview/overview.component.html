@@ -1,164 +1,103 @@
-<div class="overview">
-  <header class="ov-header">
-    <div class="ov-title">
-      <h1>The Almanacs at a Glance</h1>
-      <p class="ov-sub">Every institution the almanacs recorded, in one place. Click any function, diocese, type, or year to filter the whole board — then click again to release it.</p>
-    </div>
-    <mat-button-toggle-group class="entity-toggle" [(ngModel)]="entity" (change)="onEntityChange()"
-        aria-label="Count by" hideSingleSelectionIndicator>
-      <mat-button-toggle value="institutions">Institutions</mat-button-toggle>
-      <mat-button-toggle value="people">People</mat-button-toggle>
-    </mat-button-toggle-group>
-  </header>
+<app-dashboard-shell
+    title="The Almanacs at a Glance"
+    purpose="Every institution and person the almanacs recorded, on one board. Click any function, type, diocese, year or map point to filter every other panel; click it again to release it."
+    [takeaway]="takeaway"
+    [related]="related">
 
-  <div class="ov-progress" *ngIf="fetching" aria-hidden="true"></div>
-  <div class="ov-loading" *ngIf="loading">Loading the almanac…</div>
-  <div class="ov-error" *ngIf="error">{{ error }}</div>
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Count" [showLabel]="true" [options]="entities" [value]="entity" (valueChange)="setEntity($event)"></app-segmented>
+    </app-control-bar>
 
-  <ng-container *ngIf="!loading && !error">
+    @if (!chips.length && !loading && !error) {
+        <p class="hint"><mat-icon aria-hidden="true">touch_app</mat-icon> Nothing selected: every panel below is also a filter.</p>
+    }
+
+    <div class="ov-progress" [class.on]="fetching && !loading" aria-hidden="true"></div>
+
     <!-- KPI strip: live totals over the fully-filtered set -->
-    <div class="kpi-strip">
-      <div class="kpi"><span class="kpi-num">{{ kpis.institutions | number }}</span><span class="kpi-label">institutions</span></div>
-      <div class="kpi"><span class="kpi-num">{{ kpis.people | number }}</span><span class="kpi-label">people</span></div>
-      <div class="kpi"><span class="kpi-num">{{ kpis.dioceses | number }}</span><span class="kpi-label">dioceses</span></div>
-      <div class="kpi"><span class="kpi-num">{{ kpis.states | number }}</span><span class="kpi-label">states</span></div>
-      <div class="kpi"><span class="kpi-num">{{ kpis.yearSpan }}</span><span class="kpi-label">year span</span></div>
-      <div class="kpi kpi-wide"><span class="kpi-num">{{ kpis.topFunction }}</span><span class="kpi-label">most frequent institution</span></div>
-    </div>
-
-    <p class="metric-note">
-      <ng-container *ngIf="entity === 'institutions'">Bars count <strong>distinct institutions</strong> — deduplicated across years.</ng-container>
-      <ng-container *ngIf="entity === 'people'">Bars count <strong>distinct people</strong> — each person counted once, however many institutions or years they served.</ng-container>
-    </p>
-
-    <!-- Active cross-filters -->
-    <div class="chip-bar" *ngIf="chips.length; else hint">
-      <span class="chip-lead">Filtering by</span>
-      <button class="chip" *ngFor="let c of chips" (click)="removeChip(c)">
-        <span class="chip-dim">{{ c.dim === 'years' ? 'year' : (c.dim === 'dioceses' ? 'diocese' : c.dim.slice(0, -1)) }}</span>
-        {{ c.label }}
-        <mat-icon>close</mat-icon>
-      </button>
-      <button class="chip-clear" (click)="clearAll()">Clear all</button>
-    </div>
-    <ng-template #hint>
-      <div class="chip-bar chip-hint">
-        <mat-icon>touch_app</mat-icon>
-        Nothing selected — every panel below is also a filter. Pick a bar to start exploring.
-      </div>
-    </ng-template>
-
-      <h2 class="text-2xl">
-          @if (entity === 'institutions') {
-            Institutions
-          }
-          @else {
-            People
-          }
-       </h2>
+    @if (!loading && !error) {
+        <div class="kpi-strip">
+            <div class="kpi"><span class="kpi-num">{{ kpis.institutions | number }}</span><span class="kpi-label">institutions</span></div>
+            <div class="kpi"><span class="kpi-num">{{ kpis.people | number }}</span><span class="kpi-label">people</span></div>
+            <div class="kpi"><span class="kpi-num">{{ kpis.dioceses | number }}</span><span class="kpi-label">dioceses</span></div>
+            <div class="kpi"><span class="kpi-num">{{ kpis.states | number }}</span><span class="kpi-label">states</span></div>
+            <div class="kpi"><span class="kpi-num">{{ kpis.yearSpan }}</span><span class="kpi-label">year span</span></div>
+            <div class="kpi kpi-wide"><span class="kpi-num">{{ kpis.topFunction }}</span><span class="kpi-label">most frequent institution</span></div>
+        </div>
+    }
 
     <div class="ov-breakdowns">
-      <!-- Function + type composition -->
-      <section class="panel panel-comp">
-        <h3 class="panel-title">
-          Number of 
-          @if (entity === 'institutions') {
-            Institutions
-          }
-          @else {
-            People
-          }
-          by function
-        </h3>
-        <div class="bars">
-          <button class="bar-row" *ngFor="let b of functionBars"
-              [class.sel]="b.selected" [class.dim]="fnActive && !b.selected"
-              (click)="toggleFunction(b.key)">
-            <span class="bar-label">{{ b.label }}</span>
-            <span class="bar-track"><span class="bar-fill" [style.width.%]="b.pct" [style.background]="b.color"></span></span>
-            <span class="bar-value">{{ b.value | number }}</span>
-          </button>
-        </div>
-        <h3 class="panel-title">
-          Number of 
-          @if (entity === 'institutions') {
-            Institutions
-          }
-          @else {
-            People
-          }
-          by type
-       </h3>
-        <div class="bars">
-          <button class="bar-row" *ngFor="let b of typeBars"
-              [class.sel]="b.selected" (click)="toggleType(b.key)">
-            <span class="bar-label" [title]="b.label">{{ b.label }}</span>
-            <span class="bar-track"><span class="bar-fill" [style.width.%]="b.pct" [style.background]="b.color"></span></span>
-            <span class="bar-value">{{ b.value | number }}</span>
-          </button>
-          <p class="bars-empty" *ngIf="!typeBars.length">No typed records in this selection.</p>
-        </div>
-      </section>
+        <app-viz-panel heading="By function" [note]="entity === 'people' ? 'Distinct people' : 'Distinct institutions'"
+            [state]="vizState" [allowFullscreen]="false" (retry)="retry()">
+            <div class="bars">
+                @for (b of functionBars; track b.key) {
+                    <button type="button" class="bar-row" [class.sel]="b.selected" [class.dim]="fnActive && !b.selected"
+                        [attr.aria-pressed]="b.selected" (click)="toggleFunction(b.key)">
+                        <span class="bar-label">{{ b.label }}</span>
+                        <span class="bar-track"><span class="bar-fill" [style.width.%]="b.pct" [style.background]="b.color"></span></span>
+                        <span class="bar-value">{{ b.value | number }}</span>
+                    </button>
+                }
+            </div>
+        </app-viz-panel>
 
-      <!-- Diocese ranking -->
-      <section class="panel panel-dio">
-        <h3 class="panel-title">
-          Diocese by Number of 
-          @if (entity === 'institutions') {
-            Institutions
-          }
-          @else {
-            People
-          }
-          in each
-       
-        </h3>
-        <div class="bars">
-          <button class="bar-row" *ngFor="let b of dioceseBars"
-              [class.sel]="b.selected" (click)="toggleDiocese(b.key)">
-            <span class="bar-label" [title]="b.label">{{ b.label }}</span>
-            <span class="bar-track"><span class="bar-fill" [style.width.%]="b.pct" [style.background]="b.color"></span></span>
-            <span class="bar-value">{{ b.value | number }}</span>
-          </button>
-        </div>
-      </section>
+        <app-viz-panel heading="By type" [note]="entity === 'people' ? 'Distinct people' : 'Distinct institutions'"
+            [state]="vizState" [allowFullscreen]="false" (retry)="retry()">
+            <div class="bars">
+                @for (b of typeBars; track b.key) {
+                    <button type="button" class="bar-row" [class.sel]="b.selected" [attr.aria-pressed]="b.selected" (click)="toggleType(b.key)">
+                        <span class="bar-label" [title]="b.label">{{ b.label }}</span>
+                        <span class="bar-track"><span class="bar-fill type" [style.width.%]="b.pct"></span></span>
+                        <span class="bar-value">{{ b.value | number }}</span>
+                    </button>
+                } @empty {
+                    <p class="bars-empty">No typed records in this selection.</p>
+                }
+            </div>
+        </app-viz-panel>
 
+        <app-viz-panel heading="By diocese" [note]="entity === 'people' ? 'Distinct people' : 'Distinct institutions'"
+            [state]="vizState" [allowFullscreen]="false" (retry)="retry()">
+            <div class="bars">
+                @for (b of dioceseBars; track b.key) {
+                    <button type="button" class="bar-row" [class.sel]="b.selected" [attr.aria-pressed]="b.selected" (click)="toggleDiocese(b.key)">
+                        <span class="bar-label" [title]="b.label">{{ b.label }}</span>
+                        <span class="bar-track"><span class="bar-fill dio" [style.width.%]="b.pct"></span></span>
+                        <span class="bar-value">{{ b.value | number }}</span>
+                    </button>
+                }
+            </div>
+        </app-viz-panel>
     </div>
 
-    <!-- Timeline (full width) -->
-    <section class="panel panel-time">
-      <h3 class="panel-title">
-        
-          Number of 
-          @if (entity === 'institutions') {
-            Institutions
-          }
-          @else {
-            People
-          }
-          by year
-       
-        <span class="panel-hint">— Note: there are two periods of our data entry: 1833-40 and 1860-70, excepting 1862-63 when the almanacs were not published. We are actively working to fill the gap in the 1840's and '50s.</span></h3>
-      <div class="year-bars">
-        <ng-container *ngFor="let y of yearBars">
-          <span class="year-gap" *ngIf="y.gapBefore" aria-hidden="true"></span>
-          <button class="year-bar" [class.sel]="y.selected"
-              [class.dim]="yearActive && !y.selected"
-              (click)="toggleYear(y.year)" [title]="y.year + ': ' + (y.value | number)">
-            <span class="ybar-track"><span class="ybar-fill" [style.height.%]="y.pct"></span></span>
-            <span class="ybar-label">{{ y.year }}</span>
-          </button>
-        </ng-container>
-      </div>
-    </section>
+    <app-viz-panel heading="By year" note="Click a year to filter; hatching marks years with no almanac data"
+        [state]="vizState" [allowFullscreen]="false" (retry)="retry()">
+        <div class="year-bars">
+            @for (y of yearBars; track y.year) {
+                @if (y.gapBefore) { <span class="year-gap" aria-hidden="true"></span> }
+                <button type="button" class="year-bar" [class.sel]="y.selected" [class.dim]="yearActive && !y.selected"
+                    [attr.aria-pressed]="y.selected" (click)="toggleYear(y.year)" [title]="y.year + ': ' + (y.value | number)">
+                    <span class="ybar-track"><span class="ybar-fill" [style.height.%]="y.pct"></span></span>
+                    <span class="ybar-label">{{ y.year }}</span>
+                </button>
+            }
+        </div>
+    </app-viz-panel>
 
-    <!-- Map (full width) — click a point to filter to its diocese -->
-    <section class="panel panel-map">
-      <h3 class="panel-title">Where <span class="panel-hint">— scroll to zoom, click and drag to move. Click a point to filter to its diocese.</span></h3>
-      <app-map-vis [data]="mapData" [isOpen]="true" [legend]="legend" [options]="mapOptions"
-        [clickToSelect]="true" [excludeModes]="['cluster']" (featureClick)="onMapSelect($event)"></app-map-vis>
-    </section>
+    <app-viz-panel heading="Where" note="Scroll to zoom, drag to move. Click a point to filter to its diocese."
+        [state]="vizState" (retry)="retry()">
+        <app-map-vis [data]="mapData" [isOpen]="true" [legend]="legend" [options]="mapOptions"
+            [clickToSelect]="true" [excludeModes]="['cluster']" (featureClick)="onMapSelect($event)"></app-map-vis>
+    </app-viz-panel>
 
-    <p class="ov-caveat">{{ note }}</p>
-  </ng-container>
-</div>
+    <div notes>
+        @if (entity === 'institutions') {
+            <p>Bars count <strong>distinct institutions</strong>, each counted once however many years it appears.</p>
+        } @else {
+            <p>Bars count <strong>distinct people</strong>, each counted once however many institutions or years they served.</p>
+        }
+        <p>Every panel is also a filter, and the filters combine: picking a function and a diocese shows only that function in that diocese. The filtered board is kept in the page address, so it can be shared or bookmarked.</p>
+        <p>The data comes from two periods of transcription, 1833–40 and 1860–70, excepting 1862–63 when the almanacs were not published. Work to fill the 1840s and 1850s is ongoing.</p>
+        @if (note) { <p>{{ note }}</p> }
+    </div>
+</app-dashboard-shell>

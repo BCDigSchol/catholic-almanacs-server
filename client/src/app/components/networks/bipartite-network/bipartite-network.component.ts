@@ -1,166 +1,74 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SpaceNamePipe } from '../../../pipes/space-name.pipe';
-import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
-import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { ApiService } from '../../../services/api.service';
-import { NetworkGraphComponent } from "../../common/network-graph/network-graph.component";
+import { Component } from '@angular/core';
 
+import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
+import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { ControlBarComponent } from '../../common/control-bar/control-bar.component';
+import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
+import { YearRangeComponent } from '../../common/year-range/year-range.component';
+import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
+import { FilterField, NetworkDashboard } from '../../common/network-graph/network-dashboard';
+
+/** Opens on one diocese: the whole church is ~10,700 people and institutions,
+ *  too many to draw, and its top-N slice is mostly disconnected fragments. */
+const DEFAULT_DIOCESE = 'Baltimore';
+const ALL = 'all';
+const DEFAULTS = { diocese: DEFAULT_DIOCESE, state: '', type: '', order: '', role: '', title: '', city: '', from: 0, to: 0 };
+
+/** People Serving Institutions: a two-mode graph of people and the institutions they served. */
 @Component({
   selector: 'app-bipartite-network',
-  imports: [
-    SpaceNamePipe,
-    CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    NetworkGraphComponent
-  ],
+  imports: [SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './bipartite-network.component.html',
   styleUrl: './bipartite-network.component.scss'
 })
-export class BipartiteNetworkComponent implements OnInit, OnDestroy {
-  loading: boolean = true;
-  error: string | null = null;
-  network: any = { nodes: [], edges: [] };
-  truncated = false;
-  totalNodes: number | null = null;
-  private fetchSubscription: Subscription | null = null;
-
-  // Filter fields
-  state: string = '';
-  city: string = '';
-  diocese: string = '';
-  instType: string = '';
-  order: string = '';
-  startYear: number | null = null;
-  endYear: number | null = null;
-
-  // Dropdown options loaded from the CSVs in public/
-  dioceseOptions: string[] = [];
-  typeOptions: string[] = [];
-  orderOptions: string[] = [];
-
-  usStates = [
-    { abbr: '', name: 'All States' },
-    { abbr: 'AL', name: 'Alabama' },
-    { abbr: 'AK', name: 'Alaska' },
-    { abbr: 'AZ', name: 'Arizona' },
-    { abbr: 'AR', name: 'Arkansas' },
-    { abbr: 'CA', name: 'California' },
-    { abbr: 'CO', name: 'Colorado' },
-    { abbr: 'CT', name: 'Connecticut' },
-    { abbr: 'DE', name: 'Delaware' },
-    { abbr: 'FL', name: 'Florida' },
-    { abbr: 'GA', name: 'Georgia' },
-    { abbr: 'HI', name: 'Hawaii' },
-    { abbr: 'ID', name: 'Idaho' },
-    { abbr: 'IL', name: 'Illinois' },
-    { abbr: 'IN', name: 'Indiana' },
-    { abbr: 'IA', name: 'Iowa' },
-    { abbr: 'KS', name: 'Kansas' },
-    { abbr: 'KY', name: 'Kentucky' },
-    { abbr: 'LA', name: 'Louisiana' },
-    { abbr: 'ME', name: 'Maine' },
-    { abbr: 'MD', name: 'Maryland' },
-    { abbr: 'MA', name: 'Massachusetts' },
-    { abbr: 'MI', name: 'Michigan' },
-    { abbr: 'MN', name: 'Minnesota' },
-    { abbr: 'MS', name: 'Mississippi' },
-    { abbr: 'MO', name: 'Missouri' },
-    { abbr: 'MT', name: 'Montana' },
-    { abbr: 'NE', name: 'Nebraska' },
-    { abbr: 'NV', name: 'Nevada' },
-    { abbr: 'NH', name: 'New Hampshire' },
-    { abbr: 'NJ', name: 'New Jersey' },
-    { abbr: 'NM', name: 'New Mexico' },
-    { abbr: 'NY', name: 'New York' },
-    { abbr: 'NC', name: 'North Carolina' },
-    { abbr: 'ND', name: 'North Dakota' },
-    { abbr: 'OH', name: 'Ohio' },
-    { abbr: 'OK', name: 'Oklahoma' },
-    { abbr: 'OR', name: 'Oregon' },
-    { abbr: 'PA', name: 'Pennsylvania' },
-    { abbr: 'RI', name: 'Rhode Island' },
-    { abbr: 'SC', name: 'South Carolina' },
-    { abbr: 'SD', name: 'South Dakota' },
-    { abbr: 'TN', name: 'Tennessee' },
-    { abbr: 'TX', name: 'Texas' },
-    { abbr: 'UT', name: 'Utah' },
-    { abbr: 'VT', name: 'Vermont' },
-    { abbr: 'VA', name: 'Virginia' },
-    { abbr: 'WA', name: 'Washington' },
-    { abbr: 'WV', name: 'West Virginia' },
-    { abbr: 'WI', name: 'Wisconsin' },
-    { abbr: 'WY', name: 'Wyoming' }
+export class BipartiteNetworkComponent extends NetworkDashboard<typeof DEFAULTS> {
+  readonly all = ALL;
+  readonly related = [
+    { label: 'The Institution Network', link: '/dashboards/network-institutions' },
+    { label: 'The People Network', link: '/dashboards/network-people' },
+    { label: 'Explore People on the Map', link: '/dashboards/explore-people' },
   ];
+  protected readonly defaults = DEFAULTS;
+  protected readonly endpoint = 'institution/network/bipartite';
+  // A whole diocese is ~500–650 nodes; ask for enough to draw it complete.
+  protected override readonly extraParams = { limit: '1000' };
+  protected readonly fields: FilterField[] = [
+    { key: 'diocese', param: 'diocese', label: 'Diocese' },
+    { key: 'state', param: 'state', label: 'State' },
+    { key: 'type', param: 'instType', label: 'Type' },
+    { key: 'role', param: 'role', label: 'Role', text: true },
+    { key: 'title', param: 'title', label: 'Title', text: true },
+    { key: 'order', param: 'order', label: 'Order' },
+    { key: 'city', param: 'city', label: 'City', text: true },
+  ];
+  protected readonly moreKeys = ['role', 'title', 'order', 'city'];
 
-  constructor(private _api: ApiService, private _http: HttpClient) { }
-
-  ngOnInit(): void {
-    this.loadCsvOptions('diocese.csv', options => this.dioceseOptions = options);
-    this.loadCsvOptions('types.csv', options => this.typeOptions = options);
-    this.loadCsvOptions('order.csv', options => this.orderOptions = options);
-    this.fetchNetwork();
+  protected override clearedValue(key: string): string {
+    return key === 'diocese' ? ALL : '';
   }
 
-  private loadCsvOptions(file: string, assign: (options: string[]) => void): void {
-    this._http.get(file, { responseType: 'text' }).subscribe({
-      next: data => assign(
-        data.split('\n').map(line => line.replace(/\uFEFF/g, '').trim()).filter(line => line.length > 0)
-      ),
-      error: () => assign([])
-    });
+  /** Two kinds of node, coloured with the site's institution and person colours. */
+  protected override buildOptions(nodes: any[]): any {
+    const count = (g: string) => nodes.filter(n => n.group === g).length;
+    this.key = [
+      { group: 'people', label: 'People', color: 'var(--c-pers)', count: count('people'), hidden: false },
+      { group: 'institutions', label: 'Institutions', color: 'var(--c-inst)', count: count('institutions'), hidden: false },
+    ];
+    return {};
   }
 
-  fetchNetwork(overrideStartYear?: number, overrideEndYear?: number): void {
-    this.loading = true;
-    const start = overrideStartYear ?? this.startYear;
-    const end = overrideEndYear ?? this.endYear;
-    let url = 'institution/network/bipartite';
-    const params: string[] = [];
-    if (this.state) params.push('state=' + encodeURIComponent(this.state));
-    if (this.city) params.push('city=' + encodeURIComponent(this.city));
-    if (this.diocese) params.push('diocese=' + encodeURIComponent(this.diocese));
-    if (this.instType) params.push('instType=' + encodeURIComponent(this.instType));
-    if (this.order) params.push('order=' + encodeURIComponent(this.order));
-    if (start != null) params.push('startYear=' + start);
-    if (end != null) params.push('endYear=' + end);
-    if (params.length) url += '?' + params.join('&');
-    this.error = null;
-    // Cancel any in-flight request so a stale response can't overwrite a newer one
-    this.fetchSubscription?.unsubscribe();
-    this.fetchSubscription = this._api.getTypeRequest(url).subscribe({
-      next: (res: any) => {
-        this.network = res;
-        this.truncated = !!res.truncated;
-        this.totalNodes = res.totalNodes ?? null;
-        this.loading = false;
-      },
-      error: (err: any) => {
-        this.network = { nodes: [], edges: [] };
-        this.truncated = false;
-        this.totalNodes = null;
-        this.error = err?.error?.message || 'Could not load the network. Check your connection and try again.';
-        this.loading = false;
-      }
-    });
+  protected override buildNote(): string {
+    const people = this.key[0]?.count ?? 0, insts = this.key[1]?.count ?? 0;
+    const shown = `${people.toLocaleString()} people · ${insts.toLocaleString()} institutions`;
+    return this.truncated ? `${shown} (most connected of ${this.totalNodes.toLocaleString()})` : shown;
   }
 
-  ngOnDestroy(): void {
-    this.fetchSubscription?.unsubscribe();
-  }
-
-  onTimeWindowChange(event: { startYear: number; endYear: number }): void {
-    this.startYear = event.startYear;
-    this.endYear = event.endYear;
-    this.fetchNetwork(event.startYear, event.endYear);
+  protected computeTakeaway(nodes: any[], edges: any[]): string {
+    const degree = this.degrees(edges);
+    const person = this.top(nodes.filter(n => n.group === 'people'), degree);
+    const inst = this.top(nodes.filter(n => n.group === 'institutions'), degree);
+    if (!person || !inst) return '';
+    const where = inst.node.diocese && inst.node.diocese !== 'Unknown' && !this.isSet('diocese') ? ` (Diocese of ${spaceName(inst.node.diocese)})` : '';
+    return `${person.node.label} served at the most institutions in this view (${person.degree}); ${inst.node.label}${where} had the most people listed (${inst.degree}).`;
   }
 }

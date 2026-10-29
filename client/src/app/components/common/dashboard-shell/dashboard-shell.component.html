@@ -1,0 +1,27 @@
+<div class="page dashboard-page">
+    <app-page-header [crumbs]="crumbs" [title]="title" [subtitle]="purpose">
+        <div actions><ng-content select="[header-actions]"></ng-content></div>
+    </app-page-header>
+
+    @if (takeaway) {
+        <p class="takeaway" aria-live="polite">{{ takeaway }}</p>
+    }
+
+    <ng-content></ng-content>
+
+    @if (hasNotes) {
+        <details class="notes">
+            <summary>How this is built</summary>
+            <div class="notes-body"><ng-content select="[notes]"></ng-content></div>
+        </details>
+    }
+
+    @if (related.length) {
+        <nav class="related" aria-label="Related dashboards">
+            <span class="related-label">Related</span>
+            @for (r of related; track r.link) {
+                <a [routerLink]="r.link">{{ r.label }}</a>
+            }
+        </nav>
+    }
+</div>

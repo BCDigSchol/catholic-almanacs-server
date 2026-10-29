@@ -1,0 +1,11 @@
+@if (showLabel && label) {
+    <span class="label" aria-hidden="true">{{ label }}</span>
+}
+<div class="segments" role="radiogroup" [attr.aria-label]="label || null" (keydown)="onKeydown($event)">
+    @for (o of options; track o.label) {
+        <button type="button" role="radio"
+            [attr.aria-checked]="o.value === value"
+            [attr.tabindex]="o.value === value ? 0 : -1"
+            (click)="select(o.value)">{{ o.label }}</button>
+    }
+</div>
