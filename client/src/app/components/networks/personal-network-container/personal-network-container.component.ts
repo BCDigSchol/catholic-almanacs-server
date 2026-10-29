@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
-import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { DashboardShellComponent, RelatedDashboard } from '../../common/dashboard-shell/dashboard-shell.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { ControlBarComponent } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearRangeComponent } from '../../common/year-range/year-range.component';
@@ -13,15 +14,14 @@ const DEFAULTS = { diocese: '', state: '', role: '', title: '', order: '', city:
 /** The People Network: people linked when they served at the same institution. */
 @Component({
   selector: 'app-personal-network-container',
-  imports: [SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
+  imports: [SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './personal-network-container.component.html',
   styleUrl: './personal-network-container.component.scss'
 })
 export class PersonalNetworkContainerComponent extends NetworkDashboard<typeof DEFAULTS> {
-  readonly related = [
-    { label: 'The Institution Network', link: '/dashboards/network-institutions' },
-    { label: 'People Serving Institutions', link: '/dashboards/network-service' },
-    { label: 'The Shape of the Clergy', link: '/dashboards/clergy-hierarchy' },
+  readonly related: RelatedDashboard[] = [
+    { label: 'The Shape of the Clergy', link: '/dashboards/composition', queryParams: { entity: 'people', group: 'rank' } },
+    { label: 'Explore People on the Map', link: '/dashboards/explore', queryParams: { entity: 'people' } },
   ];
   protected readonly defaults = DEFAULTS;
   protected override readonly nodeNouns: [string, string] = ['person', 'people'];

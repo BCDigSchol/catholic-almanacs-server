@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
-import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { DashboardShellComponent, RelatedDashboard } from '../../common/dashboard-shell/dashboard-shell.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { ControlBarComponent } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearRangeComponent } from '../../common/year-range/year-range.component';
@@ -13,15 +14,13 @@ const DEFAULTS = { diocese: '', state: '', type: '', function: '', order: '', la
 /** The Institution Network: institutions linked when the same person served at both. */
 @Component({
   selector: 'app-institutional-network-container',
-  imports: [SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
+  imports: [SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './institutional-network-container.component.html',
   styleUrl: './institutional-network-container.component.scss'
 })
 export class InstitutionalNetworkContainerComponent extends NetworkDashboard<typeof DEFAULTS> {
-  readonly related = [
-    { label: 'The People Network', link: '/dashboards/network-people' },
-    { label: 'People Serving Institutions', link: '/dashboards/network-service' },
-    { label: 'Explore Institutions on the Map', link: '/dashboards/explore-institutions' },
+  readonly related: RelatedDashboard[] = [
+    { label: 'Explore Institutions on the Map', link: '/dashboards/explore' },
   ];
   protected readonly defaults = DEFAULTS;
   protected override readonly nodeNouns: [string, string] = ['institution', 'institutions'];

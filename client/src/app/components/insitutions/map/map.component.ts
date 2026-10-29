@@ -8,7 +8,7 @@ import { ApiService } from '../../../services/api.service';
 import { spaceName } from '../../../pipes/space-name.pipe';
 import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { buildGrouping, LegendEntry } from '../../common/map-vis/map-grouping';
-import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { DashboardShellComponent, RelatedDashboard } from '../../common/dashboard-shell/dashboard-shell.component';
 import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { SegmentedComponent } from '../../common/segmented/segmented.component';
@@ -46,8 +46,7 @@ const DATA_KEYS = ['year', 'type', 'fn', 'name', 'diocese'] as const;
 export class MapComponent implements OnInit, OnDestroy {
   @ViewChild(MapVisComponent) mapVis?: MapVisComponent;
 
-  readonly related = [
-    { label: 'Explore People on the Map', link: '/dashboards/explore-people' },
+  readonly related: RelatedDashboard[] = [
     { label: 'The Spread of the Church', link: '/dashboards/spread' },
     { label: 'The Almanacs at a Glance', link: '/dashboards/overview' },
   ];
@@ -89,8 +88,16 @@ export class MapComponent implements OnInit, OnDestroy {
   private fetchSub?: Subscription;
   private nameInput = new Subject<string>();
 
-  constructor(private api: ApiService, private http: HttpClient, router: Router, route: ActivatedRoute) {
+  readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
+  readonly entity = 'institutions';
+
+  constructor(private api: ApiService, private http: HttpClient, private router: Router, route: ActivatedRoute) {
     this.url = new UrlState(router, route, DEFAULTS);
+  }
+
+  /** Institutions and people share /dashboards/explore; their filters differ, so switching starts afresh. */
+  switchEntity(entity: string): void {
+    this.router.navigate(['/dashboards/explore'], { queryParams: { entity: entity === 'institutions' ? null : entity } });
   }
 
   ngOnInit(): void {

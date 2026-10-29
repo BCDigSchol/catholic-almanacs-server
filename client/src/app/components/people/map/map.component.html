@@ -5,6 +5,7 @@
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Show" [showLabel]="true" [options]="entities" [value]="entity" (valueChange)="switchEntity($event)"></app-segmented>
         <app-segmented primary label="Colour by" [showLabel]="true" [options]="colorOptions" [value]="state.color" (valueChange)="setColor($event)"></app-segmented>
         <ng-template #filters>
             <label class="ctl">

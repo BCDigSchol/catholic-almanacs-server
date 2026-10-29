@@ -19,8 +19,8 @@
     @if (related.length) {
         <nav class="related" aria-label="Related dashboards">
             <span class="related-label">Related</span>
-            @for (r of related; track r.link) {
-                <a [routerLink]="r.link">{{ r.label }}</a>
+            @for (r of related; track r.label) {
+                <a [routerLink]="r.link" [queryParams]="r.queryParams">{{ r.label }}</a>
             }
         </nav>
     }

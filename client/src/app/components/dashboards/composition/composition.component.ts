@@ -13,16 +13,11 @@ import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { UrlState } from '../../../utils/url-state';
 import { yearScale, drawYearAxis } from '../../../utils/year-scale';
 import { US_STATES, loadOptions, stateName } from '../../../utils/options';
+import { COMPOSITION_VIEWS, CompositionRow, CompositionView, CompositionViewKey } from './composition-views';
 
-interface CompositionRow {
-  year: number;
-  group: string;
-  count: number;
-  total: number;
-  share: number;
-}
 
-const DEFAULTS = { diocese: '', state: '', mode: 'share' };
+// entity: institutions | people; group (people only): function | rank
+const DEFAULTS = { entity: 'institutions', group: 'function', diocese: '', state: '', mode: 'share' };
 
 @Component({
   selector: 'app-composition-dashboard',
@@ -34,16 +29,18 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
   @ViewChild('chart', { static: true }) chartRef!: ElementRef<HTMLDivElement>;
 
   readonly related = [
-    { label: 'Who Served the Church', link: '/dashboards/people-composition' },
     { label: 'Comparing Places', link: '/dashboards/comparison' },
     { label: 'A Part Against the Whole', link: '/dashboards/subset-vs-whole' },
     { label: 'The Almanacs at a Glance', link: '/dashboards/overview' },
   ];
+  readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
+  readonly groups = [{ value: 'function', label: 'Kind of institution' }, { value: 'rank', label: 'Rank' }];
   readonly modes = [{ value: 'share', label: 'Share' }, { value: 'count', label: 'Count' }];
   readonly usStates = US_STATES;
   dioceseOptions: string[] = [];
 
   state = { ...DEFAULTS };
+  view: CompositionView = COMPOSITION_VIEWS.institutions;
   vizState: VizState = 'loading';
   note = '';
   takeaway = '';
@@ -59,35 +56,20 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
   private resizeObserver?: ResizeObserver;
   private lastWidth = 0;
 
-  private readonly labels: Record<string, string> = {
-    'religious institutions': 'Religious (parishes, missions)',
-    'educational institutions': 'Educational',
-    'consecrated life institutions': 'Consecrated life',
-    'charitable institutions': 'Charitable',
-    'healthcare institutions': 'Healthcare',
-    'other': 'Other / unclassified'
-  };
-  private readonly colors: Record<string, string> = {
-    'religious institutions': '#3c6e9e',
-    'educational institutions': '#e0a83b',
-    'consecrated life institutions': '#7b5aa6',
-    'charitable institutions': '#3f9e7a',
-    'healthcare institutions': '#c0504d',
-    'other': '#9aa0a6'
-  };
-
   constructor(private api: ApiService, private http: HttpClient, router: Router, route: ActivatedRoute) {
     this.url = new UrlState(router, route, DEFAULTS);
   }
 
   ngOnInit(): void {
     this.subs.push(loadOptions(this.http, 'diocese.csv').subscribe(o => this.dioceseOptions = o));
-    // Refetch only when the place changes; Share/Count just redraws.
-    let scope: string | null = null;
+    // Refetch only when the view or place changes; Share/Count just redraws.
+    let dataKey: string | null = null;
     this.subs.push(this.url.changes().subscribe(state => {
-      const scopeChanged = `${state.diocese}|${state.state}` !== scope;
-      scope = `${state.diocese}|${state.state}`;
+      const key = `${this.viewKey(state)}|${state.diocese}|${state.state}`;
+      const scopeChanged = key !== dataKey;
+      dataKey = key;
       this.state = state;
+      this.view = COMPOSITION_VIEWS[this.viewKey(state)];
       this.chips = [
         ...(state.diocese ? [{ label: `Diocese: ${spaceName(state.diocese)}`, clear: () => this.url.set({ diocese: '' }) }] : []),
         ...(state.state ? [{ label: `State: ${stateName(state.state)}`, clear: () => this.url.set({ state: '' }) }] : []),
@@ -125,6 +107,20 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
     this.url.set({ mode });
   }
 
+  setEntity(entity: string): void {
+    // "Group by" only applies to people; drop it from the URL otherwise.
+    this.url.set(entity === 'people' ? { entity } : { entity, group: DEFAULTS.group });
+  }
+
+  setGroup(group: string): void {
+    this.url.set({ group });
+  }
+
+  private viewKey(state: typeof DEFAULTS): CompositionViewKey {
+    if (state.entity !== 'people') return 'institutions';
+    return state.group === 'rank' ? 'rank' : 'people';
+  }
+
   clearAll = (): void => this.url.set({ diocese: '', state: '' });
 
   get scopeLabel(): string {
@@ -137,7 +133,7 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
 
   fetchData(): void {
     this.vizState = 'loading';
-    const q = new URLSearchParams();
+    const q = new URLSearchParams(this.view.api);
     if (this.state.diocese) q.set('diocese', this.state.diocese);
     if (this.state.state) q.set('state', this.state.state);
     this.fetchSub?.unsubscribe();
@@ -147,29 +143,13 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
         this.buckets = res.meta?.buckets ?? [];
         this.years = res.meta?.years ?? [];
         this.note = res.meta?.note ?? '';
-        this.legend = this.buckets.map(b => ({ group: b, label: this.labels[b] ?? b, color: this.colors[b] ?? '#999' }));
-        this.takeaway = this.computeTakeaway();
+        this.legend = this.buckets.map(b => ({ group: b, label: this.view.labels[b] ?? b, color: this.view.colors[b] ?? '#999' }));
+        this.takeaway = this.view.takeaway(this.rows, this.buckets, this.years, this.scopeLabel);
         this.vizState = this.years.length ? 'ready' : 'empty';
         requestAnimationFrame(() => this.render());
       },
       error: () => this.vizState = 'error',
     });
-  }
-
-  /** The function whose share of institutions changed most, first year to last. */
-  private computeTakeaway(): string {
-    if (this.years.length < 2) return '';
-    const [first, last] = [this.years[0], this.years[this.years.length - 1]];
-    const share = (year: number, bucket: string) => this.rows.find(r => r.year === year && r.group === bucket)?.share ?? 0;
-    const moves = this.buckets.filter(b => b !== 'other')
-      .map(b => ({ b, from: share(first, b), to: share(last, b) }))
-      .sort((a, z) => Math.abs(z.to - z.from) - Math.abs(a.to - a.from));
-    const top = moves[0];
-    if (!top || Math.abs(top.to - top.from) < 0.01) return '';
-    const pct = (v: number) => `${Math.round(v * 100)}%`;
-    const verb = top.to > top.from ? 'grew' : 'fell';
-    const name = top.b.charAt(0).toUpperCase() + top.b.slice(1);  // e.g. "Educational institutions"
-    return `${name} ${verb} from ${pct(top.from)} of those recorded ${this.scopeLabel} in ${first} to ${pct(top.to)} in ${last}.`;
   }
 
   // ---- chart ----------------------------------------------------------------
@@ -189,7 +169,7 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
     const innerH = height - margin.top - margin.bottom;
 
     const svg = d3.select(host).append('svg').attr('width', width).attr('height', height)
-      .attr('role', 'img').attr('aria-label', `Institutions by function ${this.scopeLabel}, ${this.years[0]}–${this.years[this.years.length - 1]}`);
+      .attr('role', 'img').attr('aria-label', `${this.view.heading} ${this.scopeLabel}, ${this.years[0]}–${this.years[this.years.length - 1]}`);
     const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
     const x = yearScale(this.years, [0, innerW]);
@@ -221,13 +201,13 @@ export class CompositionDashboardComponent implements OnInit, AfterViewInit, OnD
         g.append('rect')
           .attr('x', x(year) - barW / 2).attr('width', barW)
           .attr('y', y(top)).attr('height', Math.max(0, y(cumulative) - y(top)))
-          .attr('fill', this.colors[bucket] ?? '#999')
+          .attr('fill', this.view.colors[bucket] ?? '#999')
           .on('mousemove', (event: MouseEvent) => {
             const [mx, my] = d3.pointer(event, host);
             tooltip.style('opacity', '1')
               .style('left', `${Math.min(mx + 12, width - 200)}px`).style('top', `${my + 12}px`)
-              .html(`<strong>${year} · ${this.labels[bucket] ?? bucket}</strong><br>` +
-                `${row.count.toLocaleString()} institution${row.count === 1 ? '' : 's'} · ${(row.share * 100).toFixed(1)}% of ${total.toLocaleString()}`);
+              .html(`<strong>${year} · ${this.view.labels[bucket] ?? bucket}</strong><br>` +
+                `${row.count.toLocaleString()} ${row.count === 1 ? this.view.noun[0] : this.view.noun[1]} · ${(row.share * 100).toFixed(1)}% of ${total.toLocaleString()}`);
           })
           .on('mouseleave', () => tooltip.style('opacity', '0'));
         cumulative = top;

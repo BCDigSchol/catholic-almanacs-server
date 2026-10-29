@@ -58,7 +58,7 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
     { label: 'Coverage — the Shape of the Data', link: '/dashboards/coverage' },
     { label: 'The Shape of the Church', link: '/dashboards/composition' },
     { label: 'Diocese by Diocese', link: '/dashboards/diocese-tracker' },
-    { label: 'Who Served the Church', link: '/dashboards/people-composition' },
+    { label: 'Comparing Places', link: '/dashboards/comparison' },
   ];
   readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
 

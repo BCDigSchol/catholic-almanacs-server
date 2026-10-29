@@ -38,7 +38,7 @@ interface Scope {
 
 /** Places travel in the URL as `d:NewYorkCity:1864,s:IA:1864,n::1870`. */
 const KIND_CODES: Record<ScopeKind, string> = { national: 'n', diocese: 'd', state: 's' };
-const DEFAULTS = { places: 'd:NewYorkCity:1864,d:Dubuque:1864', mode: 'share' };
+const DEFAULTS = { entity: 'institutions', places: 'd:NewYorkCity:1864,d:Dubuque:1864', mode: 'share' };
 
 @Component({
   selector: 'app-comparison-dashboard',
@@ -50,8 +50,7 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
   @ViewChild('chart', { static: true }) chartRef!: ElementRef<HTMLDivElement>;
 
   readonly related = [
-    { label: 'Comparing People', link: '/dashboards/people-comparison' },
-    { label: 'The Shape of the Church', link: '/dashboards/composition' },
+        { label: 'The Shape of the Church', link: '/dashboards/composition' },
     { label: 'A Part Against the Whole', link: '/dashboards/subset-vs-whole' },
     { label: 'Diocese by Diocese', link: '/dashboards/diocese-tracker' },
   ];
@@ -77,13 +76,25 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
   private resizeObserver?: ResizeObserver;
   private lastWidth = 0;
 
-  private readonly entity: string = 'institutions';
-  private readonly noun = { one: 'institution', many: 'institutions' };
+  readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
+
+  get entity(): string {
+    return this.state.entity === 'people' ? 'people' : 'institutions';
+  }
+
+  get noun(): { one: string; many: string } {
+    return this.entity === 'people' ? { one: 'person', many: 'people' } : { one: 'institution', many: 'institutions' };
+  }
   private readonly buckets = [
     'religious institutions', 'educational institutions', 'consecrated life institutions',
     'charitable institutions', 'healthcare institutions', 'other'
   ];
-  private readonly labels: Record<string, string> = {
+  // People are grouped by the function of the institution they served.
+  private get labels(): Record<string, string> {
+    return this.entity === 'people' ? { ...this.instLabels, 'religious institutions': 'Parishes & missions' } : this.instLabels;
+  }
+
+  private readonly instLabels: Record<string, string> = {
     'religious institutions': 'Religious',
     'educational institutions': 'Educational',
     'consecrated life institutions': 'Consecrated life',
@@ -100,7 +111,7 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
     this.subs.push(loadOptions(this.http, 'diocese.csv').subscribe(o => this.dioceseOptions = o));
     // Places change what is fetched (cached per place); Share/Count just redraws.
     this.subs.push(this.url.changes().subscribe(state => {
-      const placesChanged = state.places !== this.state.places || !this.scopes.length;
+      const placesChanged = state.places !== this.state.places || state.entity !== this.state.entity || !this.scopes.length;
       this.state = state;
       if (placesChanged) {
         this.scopes = this.parse(state.places);
@@ -126,6 +137,14 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
   }
 
   // ---- controls -------------------------------------------------------------
+
+  setEntity(entity: string): void {
+    this.url.set({ entity });
+  }
+
+  get heading(): string {
+    return this.entity === 'people' ? 'People by the kind of institution they served' : 'Institutions by function';
+  }
 
   setMode(mode: string): void {
     this.url.set({ mode });
@@ -189,7 +208,8 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
   // ---- data -----------------------------------------------------------------
 
   private placeKey(scope: Scope): string {
-    return scope.kind === 'national' ? 'national' : `${scope.kind}:${scope.place}`;
+    const place = scope.kind === 'national' ? 'national' : `${scope.kind}:${scope.place}`;
+    return `${this.entity}|${place}`;
   }
 
   private queryFor(scope: Scope): string {
@@ -217,7 +237,7 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
   }
 
   private afterLoad(): void {
-    this.years = this.cache.get('national')?.years ?? [];
+    this.years = this.cache.get(`${this.entity}|national`)?.years ?? [];
     for (const s of this.scopes) {
       const data = this.isReady(s) ? this.cache.get(this.placeKey(s)) : undefined;
       s.total = data ? (data.rows.find(r => r.year === s.year)?.total ?? 0) : null;
@@ -251,6 +271,10 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
       .sort((p, q) => Math.abs(q.a - q.b) - Math.abs(p.a - p.b))[0];
     if (!top || Math.abs(top.a - top.b) < 0.02) return '';
     const pct = (v: number) => `${Math.round(v * 100)}%`;
+    if (this.entity === 'people') {
+      const kind = top.k === 'religious institutions' ? 'parishes and missions' : top.k;
+      return `People serving ${kind} were ${pct(top.a)} of those recorded in ${a.label}, against ${pct(top.b)} in ${b.label}.`;
+    }
     return `${this.capital(top.k)} made up ${pct(top.a)} of those recorded in ${a.label}, against ${pct(top.b)} in ${b.label}.`;
   }
 
@@ -278,7 +302,7 @@ export class ComparisonDashboardComponent implements OnInit, AfterViewInit, OnDe
     const isShare = this.state.mode === 'share';
 
     const svg = d3.select(host).append('svg').attr('width', width).attr('height', height)
-      .attr('role', 'img').attr('aria-label', `${this.capital(this.noun.many)} by function: ${active.map(s => s.label).join(', ')}`);
+      .attr('role', 'img').attr('aria-label', `${this.heading}: ${active.map(s => s.label).join(', ')}`);
     const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
     const x0 = d3.scaleBand<string>().domain(categories).range([0, innerW]).paddingInner(0.25);

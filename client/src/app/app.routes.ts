@@ -1,7 +1,13 @@
-import { Routes } from '@angular/router';
+import { inject } from '@angular/core';
+import { RedirectFunction, Router, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/common/not-found/not-found.component';
+
+/** Redirects to `path` with extra query params, keeping any the old link carried. */
+function redirectWith(path: string, params: Record<string, string>): RedirectFunction {
+    return ({ queryParams }) => inject(Router).createUrlTree([path], { queryParams: { ...queryParams, ...params } });
+}
 
 // Heavy feature areas (vis-network, d3, leaflet, google maps) are lazy-loaded
 // so the initial bundle stays small.
@@ -17,20 +23,24 @@ export const routes: Routes = [
     { path: 'dashboards', loadComponent: () => import('./components/dashboards/dashboards.component').then(m => m.DashboardsComponent) },
     { path: 'dashboards/overview', loadComponent: () => import('./components/dashboards/overview/overview.component').then(m => m.OverviewDashboardComponent) },
     { path: 'dashboards/coverage', loadComponent: () => import('./components/dashboards/coverage/coverage.component').then(m => m.CoverageComponent) },
+    // Institutions, people and clergy rank are views of one dashboard (?entity=, ?group=).
     { path: 'dashboards/composition', loadComponent: () => import('./components/dashboards/composition/composition.component').then(m => m.CompositionDashboardComponent) },
-    { path: 'dashboards/people-composition', loadComponent: () => import('./components/dashboards/people-composition/people-composition.component').then(m => m.PeopleCompositionDashboardComponent) },
     { path: 'dashboards/comparison', loadComponent: () => import('./components/dashboards/comparison/comparison.component').then(m => m.ComparisonDashboardComponent) },
-    { path: 'dashboards/people-comparison', loadComponent: () => import('./components/dashboards/people-comparison/people-comparison.component').then(m => m.PeopleComparisonDashboardComponent) },
     { path: 'dashboards/subset-vs-whole', loadComponent: () => import('./components/dashboards/subset-vs-whole/subset-vs-whole.component').then(m => m.SubsetVsWholeDashboardComponent) },
-    { path: 'dashboards/people-subset-vs-whole', loadComponent: () => import('./components/dashboards/people-subset-vs-whole/people-subset-vs-whole.component').then(m => m.PeopleSubsetVsWholeDashboardComponent) },
-    { path: 'dashboards/clergy-hierarchy', loadComponent: () => import('./components/dashboards/people-hierarchy/people-hierarchy.component').then(m => m.PeopleHierarchyDashboardComponent) },
     { path: 'dashboards/spread', loadComponent: () => import('./components/dashboards/spread/spread.component').then(m => m.SpreadDashboardComponent) },
     { path: 'dashboards/diocese-tracker', loadComponent: () => import('./components/dashboards/diocese-tracker/diocese-tracker.component').then(m => m.DioceseTrackerDashboardComponent) },
-    { path: 'dashboards/network-institutions', loadComponent: () => import('./components/networks/institutional-network-container/institutional-network-container.component').then(m => m.InstitutionalNetworkContainerComponent) },
-    { path: 'dashboards/network-people', loadComponent: () => import('./components/networks/personal-network-container/personal-network-container.component').then(m => m.PersonalNetworkContainerComponent) },
-    { path: 'dashboards/network-service', loadComponent: () => import('./components/networks/bipartite-network/bipartite-network.component').then(m => m.BipartiteNetworkComponent) },
-    { path: 'dashboards/explore-institutions', loadComponent: () => import('./components/insitutions/map/map.component').then(m => m.MapComponent) },
-    { path: 'dashboards/explore-people', loadComponent: () => import('./components/people/map/map.component').then(m => m.MapComponent) },
+    { path: 'dashboards/networks', loadComponent: () => import('./components/networks/networks/networks.component').then(m => m.NetworksComponent) },
+    { path: 'dashboards/explore', loadComponent: () => import('./components/dashboards/explore/explore.component').then(m => m.ExploreComponent) },
+    // Old addresses of the dashboards merged above keep working.
+    { path: 'dashboards/people-composition', redirectTo: redirectWith('/dashboards/composition', { entity: 'people' }) },
+    { path: 'dashboards/clergy-hierarchy', redirectTo: redirectWith('/dashboards/composition', { entity: 'people', group: 'rank' }) },
+    { path: 'dashboards/people-comparison', redirectTo: redirectWith('/dashboards/comparison', { entity: 'people' }) },
+    { path: 'dashboards/people-subset-vs-whole', redirectTo: redirectWith('/dashboards/subset-vs-whole', { entity: 'people' }) },
+    { path: 'dashboards/network-institutions', redirectTo: redirectWith('/dashboards/networks', {}) },
+    { path: 'dashboards/network-people', redirectTo: redirectWith('/dashboards/networks', { view: 'people' }) },
+    { path: 'dashboards/network-service', redirectTo: redirectWith('/dashboards/networks', { view: 'service' }) },
+    { path: 'dashboards/explore-institutions', redirectTo: redirectWith('/dashboards/explore', {}) },
+    { path: 'dashboards/explore-people', redirectTo: redirectWith('/dashboards/explore', { entity: 'people' }) },
     { path: 'export', loadComponent: () => import('./components/export/export.component').then(m => m.ExportComponent) },
     // Static content pages: drop .md or .html files into client/public/page-content/
     // and they are served at /pages/<file path without extension>

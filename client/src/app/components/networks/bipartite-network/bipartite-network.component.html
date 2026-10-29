@@ -5,6 +5,7 @@
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>

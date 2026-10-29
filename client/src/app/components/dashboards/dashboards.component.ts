@@ -17,8 +17,7 @@ interface DashboardGroup {
   cards: DashboardCard[];
 }
 
-// "Explore Institutions/People on the Map" (/dashboards/explore-institutions,
-// /dashboards/explore-people) are deliberately not listed here.
+// "Explore on the Map" (/dashboards/explore) is deliberately not listed here.
 @Component({
   selector: 'app-dashboards',
   imports: [RouterLink, MatIconModule, PageHeaderComponent],
@@ -35,7 +34,7 @@ export class DashboardsComponent {
           link: "/dashboards/overview",
           icon: "dashboard",
           title: "The Almanacs at a Glance",
-          description: "A single unified view of every institution the almanacs recorded. Map, function and type breakdowns, diocese rankings, and a year timeline — all linked, so clicking any function, diocese, type, or year filters the entire board at once."
+          description: "A single unified view of every institution and person the almanacs recorded. Map, function and type breakdowns, diocese rankings, and a year timeline — all linked, so clicking any function, diocese, type, or year filters the entire board at once."
         },
         {
           link: "/dashboards/coverage",
@@ -64,74 +63,38 @@ export class DashboardsComponent {
       ]
     },
     {
-      title: "Institutions",
-      subtitle: "How the network of Catholic institutions grew and shifted in shape.",
+      title: "Change over time",
+      subtitle: "How the church's institutions, and the people who served them, grew and shifted in shape.",
       cards: [
         {
           link: "/dashboards/composition",
           icon: "insights",
           title: "The Shape of the Church",
-          description: "See how the mix of institutions — parishes, schools, hospitals, and charities — shifted across the almanac years."
+          description: "See how the mix of institutions — parishes, schools, hospitals, and charities — shifted across the almanac years, and who served them, down to the rank in each person's title."
         },
         {
           link: "/dashboards/comparison",
           icon: "bar_chart",
           title: "Comparing Places",
-          description: "Set dioceses, states, or years side by side to compare how many institutions of each kind each one had."
+          description: "Set dioceses, states, or years side by side to compare how many institutions of each kind each one had, and how many people served them."
         },
         {
           link: "/dashboards/subset-vs-whole",
           icon: "trending_up",
           title: "A Part Against the Whole",
-          description: "Track one order, diocese, or state against the national total of the same kind to see who grew faster."
-        },
-        {
-          link: "/dashboards/network-institutions",
-          icon: "hub",
-          title: "The Institution Network",
-          description: "Explore how institutions connect through the people they shared — an interactive web you can filter, cluster, and search by place, type, and year."
+          description: "Track one order, diocese, or state against the national total of the same kind — institutions or the people serving them — to see who grew faster."
         }
       ]
     },
     {
-      title: "People",
-      subtitle: "The clergy and religious behind those institutions, across time.",
+      title: "Connections",
+      subtitle: "Who served alongside whom, and which institutions shared their clergy.",
       cards: [
         {
-          link: "/dashboards/people-composition",
-          icon: "groups",
-          title: "Who Served the Church",
-          description: "See the makeup of Catholic personnel over time by the kind of institution — parish, school, hospital, charity — they served."
-        },
-        {
-          link: "/dashboards/clergy-hierarchy",
-          icon: "church",
-          title: "The Shape of the Clergy",
-          description: "Watch the hierarchy grow — archbishops, bishops, vicars, and priests — by the rank in each person's title."
-        },
-        {
-          link: "/dashboards/people-comparison",
-          icon: "diversity_3",
-          title: "Comparing People",
-          description: "Set places and years side by side to compare how many people served institutions of each kind."
-        },
-        {
-          link: "/dashboards/people-subset-vs-whole",
-          icon: "moving",
-          title: "People: A Part Against the Whole",
-          description: "Track the people serving one order, diocese, or state against the national total serving the same kind of institution."
-        },
-        {
-          link: "/dashboards/network-people",
-          icon: "share",
-          title: "The People Network",
-          description: "See how people connect through the institutions they served together — an interactive web of shared service across the church."
-        },
-        {
-          link: "/dashboards/network-service",
-          icon: "account_tree",
-          title: "People Serving Institutions",
-          description: "People and institutions together in one web, linked by who served where — the connective tissue between the two."
+          link: "/dashboards/networks",
+          icon: "hub",
+          title: "Networks",
+          description: "Explore how institutions connect through the people they shared, how people connect through the places they served together, and both together in one web — filter, cluster, and search by place, type, and year."
         }
       ]
     }

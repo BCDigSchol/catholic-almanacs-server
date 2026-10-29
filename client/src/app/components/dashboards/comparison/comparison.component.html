@@ -1,11 +1,14 @@
 <app-dashboard-shell
     title="Comparing Places"
-    purpose="Two to four places and years side by side: how many institutions of each kind each one had."
+    purpose="Two to four places and years side by side: how many institutions of each kind each one had, and how many people served them."
     [takeaway]="takeaway"
     [related]="related">
 
     <app-control-bar>
-        <app-segmented primary label="Show as" [showLabel]="true" [options]="modes" [value]="state.mode" (valueChange)="setMode($event)"></app-segmented>
+        <div primary class="switches">
+            <app-segmented label="Count" [showLabel]="true" [options]="entities" [value]="entity" (valueChange)="setEntity($event)"></app-segmented>
+            <app-segmented label="Show as" [showLabel]="true" [options]="modes" [value]="state.mode" (valueChange)="setMode($event)"></app-segmented>
+        </div>
         <ng-template #filters>
             <div class="places">
                 @for (scope of scopes; track $index; let i = $index) {
@@ -64,10 +67,10 @@
     </app-control-bar>
 
     <app-viz-panel
-        heading="Institutions by function"
-        [note]="state.mode === 'share' ? 'Share of each place’s institutions that year' : 'Institutions recorded'"
+        [heading]="heading"
+        [note]="state.mode === 'share' ? 'Share of each place’s ' + noun.many + ' that year' : (entity === 'people' ? 'People recorded' : 'Institutions recorded')"
         [state]="vizState"
-        emptyText="No institutions are recorded for these places and years."
+        [emptyText]="'No ' + noun.many + ' are recorded for these places and years.'"
         [hasKey]="true"
         (retry)="load()">
         <ul key class="legend">
@@ -89,7 +92,7 @@
     }
 
     <div notes>
-        <p>Each place is a diocese, a state, or the whole country in one almanac year. Bars show how many of its institutions had each recorded function, or what share of its institutions that was.</p>
-        <p>Function categories with no institutions in any chosen place are left out.</p>
+        <p>Each place is a diocese, a state, or the whole country in one almanac year. For institutions, bars show how many had each recorded function, or what share of the place’s institutions that was. For people, bars count who served an institution of each function; someone serving several institutions in a year is counted once, by a representative affiliation.</p>
+        <p>Function categories with nothing recorded in any chosen place are left out.</p>
     </div>
 </app-dashboard-shell>

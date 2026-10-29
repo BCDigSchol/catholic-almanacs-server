@@ -77,6 +77,22 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   /** Text fields as typed (the URL catches up after a pause). */
   draft: Record<string, string> = {};
   moreOpen = false;
+
+  /** The three networks share one page (/dashboards/networks?view=…). */
+  readonly networkViews = [
+    { value: 'institutions', label: 'Institutions' },
+    { value: 'people', label: 'People' },
+    { value: 'service', label: 'Both' },
+  ];
+
+  get networkView(): string {
+    return this.route.snapshot.queryParamMap.get('view') || 'institutions';
+  }
+
+  /** Each network has its own filters, so switching starts from a clean slate. */
+  switchNetwork(view: string): void {
+    this.router.navigate(['/dashboards/networks'], { queryParams: { view: view === 'institutions' ? null : view } });
+  }
   /** The colour key starts collapsed on phones, where it would push the graph off screen. */
   keyOpen = !window.matchMedia('(max-width: 760px)').matches;
   vizState: VizState = 'loading';

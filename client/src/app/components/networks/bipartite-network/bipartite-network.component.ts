@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
-import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { DashboardShellComponent, RelatedDashboard } from '../../common/dashboard-shell/dashboard-shell.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { ControlBarComponent } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearRangeComponent } from '../../common/year-range/year-range.component';
@@ -17,16 +18,14 @@ const DEFAULTS = { diocese: DEFAULT_DIOCESE, state: '', type: '', order: '', rol
 /** People Serving Institutions: a two-mode graph of people and the institutions they served. */
 @Component({
   selector: 'app-bipartite-network',
-  imports: [SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
+  imports: [SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './bipartite-network.component.html',
   styleUrl: './bipartite-network.component.scss'
 })
 export class BipartiteNetworkComponent extends NetworkDashboard<typeof DEFAULTS> {
   readonly all = ALL;
-  readonly related = [
-    { label: 'The Institution Network', link: '/dashboards/network-institutions' },
-    { label: 'The People Network', link: '/dashboards/network-people' },
-    { label: 'Explore People on the Map', link: '/dashboards/explore-people' },
+  readonly related: RelatedDashboard[] = [
+    { label: 'Explore People on the Map', link: '/dashboards/explore', queryParams: { entity: 'people' } },
   ];
   protected readonly defaults = DEFAULTS;
   protected readonly endpoint = 'institution/network/bipartite';

@@ -8,7 +8,7 @@ import { ApiService } from '../../../services/api.service';
 import { spaceName } from '../../../pipes/space-name.pipe';
 import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { buildGrouping, LegendEntry } from '../../common/map-vis/map-grouping';
-import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { DashboardShellComponent, RelatedDashboard } from '../../common/dashboard-shell/dashboard-shell.component';
 import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { SegmentedComponent } from '../../common/segmented/segmented.component';
@@ -47,10 +47,9 @@ const DATA_KEYS = ['year', 'name', 'diocese'] as const;
 export class MapComponent implements OnInit, OnDestroy {
   @ViewChild(MapVisComponent) mapVis?: MapVisComponent;
 
-  readonly related = [
-    { label: 'Explore Institutions on the Map', link: '/dashboards/explore-institutions' },
-    { label: 'Who Served the Church', link: '/dashboards/people-composition' },
-    { label: 'The People Network', link: '/dashboards/network-people' },
+  readonly related: RelatedDashboard[] = [
+    { label: 'The Shape of the Church', link: '/dashboards/composition', queryParams: { entity: 'people' } },
+    { label: 'The People Network', link: '/dashboards/networks', queryParams: { view: 'people' } },
   ];
   readonly colorOptions = [
     { value: 'function', label: 'Function' },
@@ -87,8 +86,16 @@ export class MapComponent implements OnInit, OnDestroy {
   private fetchSub?: Subscription;
   private nameInput = new Subject<string>();
 
-  constructor(private api: ApiService, private http: HttpClient, router: Router, route: ActivatedRoute) {
+  readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
+  readonly entity = 'people';
+
+  constructor(private api: ApiService, private http: HttpClient, private router: Router, route: ActivatedRoute) {
     this.url = new UrlState(router, route, DEFAULTS);
+  }
+
+  /** Institutions and people share /dashboards/explore; their filters differ, so switching starts afresh. */
+  switchEntity(entity: string): void {
+    this.router.navigate(['/dashboards/explore'], { queryParams: { entity: entity === 'institutions' ? null : entity } });
   }
 
   ngOnInit(): void {

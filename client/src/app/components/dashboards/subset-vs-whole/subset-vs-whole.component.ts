@@ -21,7 +21,7 @@ interface SeriesPoint { year: number; count: number; }
  * kind never leaves a stale value in the URL); `base` 0 means the automatic
  * index base year.
  */
-const DEFAULTS = { kind: 'function', category: '', slice: 'state', value: '', mode: 'indexed', base: 0 };
+const DEFAULTS = { entity: 'institutions', kind: 'function', category: '', slice: 'state', value: '', mode: 'indexed', base: 0 };
 const DEFAULT_CATEGORY: Record<string, string> = { function: 'educational institutions', type: 'church' };
 
 @Component({
@@ -34,7 +34,6 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
   @ViewChild('chart', { static: true }) chartRef!: ElementRef<HTMLDivElement>;
 
   readonly related = [
-    { label: 'People: A Part Against the Whole', link: '/dashboards/people-subset-vs-whole' },
     { label: 'Comparing Places', link: '/dashboards/comparison' },
     { label: 'The Shape of the Church', link: '/dashboards/composition' },
     { label: 'Coverage — the Shape of the Data', link: '/dashboards/coverage' },
@@ -74,7 +73,20 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
   private lastWidth = 0;
 
   readonly wholeColor = 'var(--ink-3)';
-  readonly subsetColor = 'var(--c-inst)';
+  readonly entities = [{ value: 'institutions', label: 'Institutions' }, { value: 'people', label: 'People' }];
+
+  get people(): boolean {
+    return this.state.entity === 'people';
+  }
+
+  get subsetColor(): string {
+    return this.people ? 'var(--c-pers)' : 'var(--c-inst)';
+  }
+
+  /** "people at all schools" / "all schools" */
+  get wholeLabel(): string {
+    return (this.people ? 'people at all ' : 'all ') + this.categoryDisplay;
+  }
 
   constructor(private api: ApiService, private http: HttpClient, router: Router, route: ActivatedRoute) {
     this.url = new UrlState(router, route, DEFAULTS);
@@ -97,7 +109,7 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
         ...(state.category || state.kind !== DEFAULTS.kind ? [{ label: `Counting: ${this.category}`, clear: () => this.url.set({ kind: DEFAULTS.kind, category: '' }) }] : []),
         ...(state.value || state.slice !== DEFAULTS.slice ? [{ label: `Part: ${this.subsetLabel}`, clear: () => this.url.set({ slice: DEFAULTS.slice, value: '' }) }] : []),
       ];
-      const key = `${state.kind}|${this.category}|${state.slice}|${this.value}`;
+      const key = `${state.entity}|${state.kind}|${this.category}|${state.slice}|${this.value}`;
       if (key !== scope) {
         scope = key;
         this.fetchData();
@@ -123,6 +135,10 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
 
   // ---- controls -------------------------------------------------------------
 
+  setEntity(entity: string): void {
+    this.url.set({ entity });
+  }
+
   setMode(mode: string): void { this.url.set({ mode }); }
   setKind(kind: string): void { this.url.set({ kind, category: '' }); }
   setCategory(category: string): void { this.url.set({ category }); }
@@ -147,6 +163,7 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
     if (!this.category || !this.value) return;
     this.vizState = 'loading';
     const q = new URLSearchParams({
+      ...(this.people ? { entity: 'people' } : {}),
       categoryKind: this.state.kind, category: this.category,
       subsetKind: this.state.slice, subsetValue: this.value,
     });
@@ -202,14 +219,14 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
       const verb = pct > 0 ? `grew ${pct}%` : pct < 0 ? `fell ${-pct}%` : 'held steady';
       return `${verb} (${n(from)} → ${n(to)})`;
     };
-    const whole = wb > 0 ? `all ${this.categoryDisplay} ${change(wb, wl)}` : `all ${this.categoryDisplay} went from none to ${n(wl)}`;
+    const whole = wb > 0 ? `${this.wholeLabel} ${change(wb, wl)}` : `${this.wholeLabel} went from none to ${n(wl)}`;
     if (sb <= 0) return `Between ${base} and ${last}, ${whole}; ${this.subsetLabel} had none recorded in ${base}.`;
     let pace = '';
     if (wb > 0) {
       const ws = wl / wb, ss = sl / sb;
       pace = Math.abs(ss - ws) < 0.02 ? ' — about the same pace' : ss > ws ? ' — faster than the whole' : ' — slower than the whole';
     }
-    return `Between ${base} and ${last}, ${whole}, while those in ${this.subsetLabel} ${change(sb, sl)}${pace}.`;
+    return `Between ${base} and ${last}, ${whole}, while those ${this.people ? 'serving in' : 'in'} ${this.subsetLabel} ${change(sb, sl)}${pace}.`;
   }
 
   private computeCautions(): string[] {
@@ -224,7 +241,8 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
     }
     const min = this.years.length ? Math.min(...this.years.map(y => this.countAt(this.subset, y))) : 0;
     if (min > 0 && min < 5) {
-      out.push(`The part dips as low as ${min} institution${min === 1 ? '' : 's'} in some years — read the indexed growth cautiously and check the raw counts.`);
+      const noun = this.people ? (min === 1 ? 'person' : 'people') : (min === 1 ? 'institution' : 'institutions');
+      out.push(`The part dips as low as ${min} ${noun} in some years — read the indexed growth cautiously and check the raw counts.`);
     }
     return out;
   }
@@ -276,7 +294,7 @@ export class SubsetVsWholeDashboardComponent implements OnInit, AfterViewInit, O
     g.append('text').attr('transform', 'rotate(-90)')
       .attr('x', -innerH / 2).attr('y', -margin.left + 12).attr('text-anchor', 'middle')
       .style('font-size', '11px')
-      .text(indexed ? `${this.baseYear} = 100` : 'Institutions recorded');
+      .text(indexed ? `${this.baseYear} = 100` : this.people ? 'People recorded' : 'Institutions recorded');
 
     drawYearAxis(g, x, innerH, { minSpacing: compact ? 40 : 36 });
 

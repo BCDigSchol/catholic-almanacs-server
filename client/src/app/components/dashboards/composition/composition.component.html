@@ -1,11 +1,17 @@
 <app-dashboard-shell
     title="The Shape of the Church"
-    purpose="How the mix of Catholic institutions (parishes, schools, convents, hospitals and charities) changed across the almanac years."
+    purpose="How the mix of Catholic institutions, and of the clergy and religious who served them, changed across the almanac years."
     [takeaway]="takeaway"
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
-        <app-segmented primary label="Show as" [showLabel]="true" [options]="modes" [value]="state.mode" (valueChange)="setMode($event)"></app-segmented>
+        <div primary class="switches">
+            <app-segmented label="Count" [showLabel]="true" [options]="entities" [value]="state.entity" (valueChange)="setEntity($event)"></app-segmented>
+            @if (state.entity === 'people') {
+                <app-segmented label="Group by" [showLabel]="true" [options]="groups" [value]="state.group" (valueChange)="setGroup($event)"></app-segmented>
+            }
+            <app-segmented label="Show as" [showLabel]="true" [options]="modes" [value]="state.mode" (valueChange)="setMode($event)"></app-segmented>
+        </div>
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>
@@ -29,10 +35,10 @@
     </app-control-bar>
 
     <app-viz-panel
-        [heading]="'Institutions by function, ' + scopeLabel"
-        [note]="state.mode === 'share' ? 'Share of each year’s recorded institutions' : 'Institutions recorded each year'"
+        [heading]="view.heading + ', ' + scopeLabel"
+        [note]="state.mode === 'share' ? view.shareNote : view.countNote"
         [state]="vizState"
-        emptyText="No institutions are recorded for this place."
+        [emptyText]="view.emptyText"
         [hasKey]="true"
         (retry)="fetchData()">
         <ul key class="legend">
@@ -48,7 +54,7 @@
     }
 
     <div notes>
-        <p>Each column is one almanac year. Institutions are grouped by their recorded function; a few institutions with no function recorded are counted as “Other”.</p>
+        <p>Each column is one almanac year. {{ view.method }}</p>
         @if (note) { <p>{{ note }}</p> }
         <p>Years with no almanac data (the 1862–63 Civil War gap, and years not yet transcribed) are drawn as a break on the time axis rather than empty space.</p>
     </div>

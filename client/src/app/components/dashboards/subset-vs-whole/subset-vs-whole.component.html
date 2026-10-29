@@ -1,14 +1,17 @@
 <app-dashboard-shell
     title="A Part Against the Whole"
-    purpose="Did one state, diocese or religious order’s institutions grow faster or slower than the national total of the same kind?"
+    purpose="Did one state, diocese or religious order’s institutions, or the people serving them, grow faster or slower than the national total of the same kind?"
     [takeaway]="takeaway"
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
-        <app-segmented primary label="Show as" [showLabel]="true" [options]="modes" [value]="state.mode" (valueChange)="setMode($event)"></app-segmented>
+        <div primary class="switches">
+            <app-segmented label="Count" [showLabel]="true" [options]="entities" [value]="state.entity" (valueChange)="setEntity($event)"></app-segmented>
+            <app-segmented label="Show as" [showLabel]="true" [options]="modes" [value]="state.mode" (valueChange)="setMode($event)"></app-segmented>
+        </div>
         <ng-template #filters>
             <label class="ctl">
-                <span>Count by</span>
+                <span>{{ people ? 'Count people at' : 'Count by' }}</span>
                 <select class="control" (change)="setKind($any($event.target).value)">
                     @for (k of kinds; track k.value) {
                         <option [value]="k.value" [selected]="k.value === state.kind">{{ k.label }}</option>
@@ -63,14 +66,14 @@
     </app-control-bar>
 
     <app-viz-panel
-        [heading]="subsetLabel + ' against all ' + categoryDisplay"
-        [note]="state.mode === 'indexed' ? 'Each line indexed to ' + baseYear + ' = 100' : 'Institutions recorded each year'"
+        [heading]="(people ? 'People serving in ' : '') + subsetLabel + ' against ' + wholeLabel"
+        [note]="state.mode === 'indexed' ? 'Each line indexed to ' + baseYear + ' = 100' : (people ? 'People recorded each year' : 'Institutions recorded each year')"
         [state]="vizState"
         emptyText="Nothing is recorded for this selection."
         [hasKey]="true"
         (retry)="fetchData()">
         <ul key class="legend">
-            <li class="legend-item"><span class="legend-swatch line" [style.background]="wholeColor"></span>All {{ categoryDisplay }} (the whole)</li>
+            <li class="legend-item"><span class="legend-swatch line" [style.background]="wholeColor"></span>{{ people ? 'People at all' : 'All' }} {{ categoryDisplay }} (the whole)</li>
             <li class="legend-item"><span class="legend-swatch line" [style.background]="subsetColor"></span>{{ subsetLabel }} (the part)</li>
         </ul>
         <div class="chart" #chart></div>
@@ -81,7 +84,7 @@
     }
 
     <div notes>
-        <p>Both lines count the same kind of institution: the whole is every one recorded in the almanac that year; the part is those in the chosen state, diocese or religious order.</p>
+        <p>Both lines count the same kind of institution (or, for people, everyone listed at that kind of institution): the whole is every one recorded in the almanac that year; the part is those in the chosen state, diocese or religious order.</p>
         <p><strong>Indexed growth</strong> rebases each line to 100 in the base year, so a part and a much larger whole can be compared on one scale; 150 means half again as many as in the base year. The default base is the start of the latest unbroken run of years, so growth isn’t distorted by the long gap in coverage.</p>
         @if (note) { <p>{{ note }}</p> }
         <p>Years with no almanac data (the 1862–63 Civil War gap, and years not yet transcribed) are drawn as a break on the time axis; the lines break there too.</p>

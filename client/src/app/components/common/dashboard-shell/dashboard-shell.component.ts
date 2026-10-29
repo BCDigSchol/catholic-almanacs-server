@@ -6,6 +6,8 @@ import { Crumb, PageHeaderComponent } from '../page-header/page-header.component
 export interface RelatedDashboard {
   label: string;
   link: string;
+  /** e.g. { entity: 'people' } to open a dashboard on a particular view. */
+  queryParams?: Record<string, string>;
 }
 
 /**
