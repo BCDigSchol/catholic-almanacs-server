@@ -3,7 +3,7 @@ module.exports = {
     USER: process.env.DB_USER || 'root',
     PASSWORD: process.env.DB_PASSWORD || '123456',
     DB: process.env.DB_NAME || 'almanacs-database',
-    port: process.env.DB_PORT || '3307',
+    port: process.env.DB_PORT || '3317',
     dialect: 'mysql',
     pool: {
       max: 500,
