@@ -40,6 +40,65 @@
       }
     },
     {
+      "id": "history-foreign",
+      "type": "fill",
+      "source": "base",
+      "source-layer": "land",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "fill-color": "#ebe8e0",
+        "fill-antialias": false
+      }
+    },
+    {
+      "id": "history-fill",
+      "type": "fill",
+      "source": "history",
+      "source-layer": "states",
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "match",
+          [
+            "get",
+            "kind"
+          ],
+          [
+            "state",
+            "territory",
+            "district"
+          ],
+          true,
+          false
+        ]
+      ],
+      "paint": {
+        "fill-color": "#ffffff",
+        "fill-antialias": false
+      }
+    },
+    {
       "id": "coast",
       "type": "line",
       "source": "base",
@@ -654,28 +713,27 @@
           15
         ],
         "text-transform": [
-          "case",
+          "match",
           [
-            "==",
-            [
-              "get",
-              "kind"
-            ],
-            "state"
+            "get",
+            "kind"
+          ],
+          [
+            "state",
+            "nation"
           ],
           "uppercase",
           "none"
         ],
         "text-letter-spacing": [
-          "case",
+          "match",
           [
-            "==",
-            [
-              "get",
-              "kind"
-            ],
-            "state"
+            "get",
+            "kind"
           ],
+          "nation",
+          0.3,
+          "state",
           0.18,
           0.04
         ],

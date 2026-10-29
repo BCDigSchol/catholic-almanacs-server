@@ -91,15 +91,27 @@ the data.
 A map given a year (the dashboards' year controls, a record page's year)
 draws the states and territories **in force on 1 January of that year**, since
 each almanac was compiled at the turn of its year, instead of today's state
-lines, borders and state names. States are named in italic capitals,
+lines, borders and state names. All land is then tinted as foreign and the
+United States of that day (its states, territories and the District) is laid
+over it in paper, so the national border falls where it was: Mexico reaches
+the 42nd parallel before 1848, Texas is a republic from 1836 to 1845, Oregon
+Country is jointly held until 1846. States are named in italic capitals,
 territories and other areas (Texas Republic, Oregon Country, Indian Territory,
-unorganized federal territory) in italic lower case. A map showing all years
-keeps today's lines. The client side is map-vis' `[year]` input.
+unorganized federal territory) in italic lower case, the neighbouring
+countries in spaced capitals under their names of the time. A map showing all
+years keeps today's lines. The client side is map-vis' `[year]` input.
+
+The neighbours' names and dates are ours, not the Newberry's (in
+`history-features.py`): New Spain to 27 September 1821, then Mexico; British
+North America to 14 July 1870 (Rupert's Land joined Canada on the 15th), the
+Dominion of Canada from 1 July 1867; Russian America to 18 October 1867.
+Their land is today's coastline (Natural Earth / OpenStreetMap), tinted; only
+the US side of each border is dated.
 
 | Layer | Contents |
 |---|---|
 | `states` | one outline per version of a state or territory: `name`, `kind` (state / territory / district / other), `from` and `to` (the days it was in force, `yyyymmdd` integers, both inclusive) |
-| `state_labels` | one label point per version (the point deepest inside its largest piece), same properties plus `area` (square degrees, for label priority) |
+| `state_labels` | one label point per version (the point deepest inside its largest piece), same properties plus `area` (square degrees, for label priority); plus the neighbouring countries (`kind` nation) |
 
 ### Provenance
 
@@ -158,7 +170,7 @@ tiles/
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
   build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
   build-history.sh  Newberry AHCB states and territories → ogr2ogr → history-features.py → tippecanoe → history.pmtiles
-  history-features.py  dated outlines + label points, Hawaii dropped
+  history-features.py  dated outlines + label points (and the neighbours' names), Hawaii dropped
   make-area.py      grid cells of recorded places → one clip polygon
   pick-regions.py   the Geofabrik state extracts that touch that polygon
   entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data

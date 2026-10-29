@@ -19,8 +19,10 @@ import maplibregl from 'maplibre-gl';
 
 /** Base-map layers that draw today's state lines, borders and state names. */
 const MODERN_LAYERS = ['state-boundaries', 'state-labels', 'boundaries'];
-/** Base-map layers that draw the states and territories of one date instead. */
-const HISTORY_LAYERS = ['history-lines', 'history-labels'];
+/** Base-map layers that draw the United States of one date instead: all land
+ *  tinted foreign, that day's states and territories in paper over it, their
+ *  lines and names, and the neighbouring countries' names of the time. */
+const HISTORY_LAYERS = ['history-foreign', 'history-fill', 'history-lines', 'history-labels'];
 
 /** The given point, moved inside Settings.mapBounds if it lies outside. */
 function clampToUs(lngLat: maplibregl.LngLat): maplibregl.LngLat {
@@ -244,9 +246,14 @@ export class MapVisComponent {
     if (!map?.getLayer('history-lines')) return;
     const dated = this.year != null;
     const day = (this.year ?? 0) * 10000 + 101;
-    const filter = ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day]];
     for (const id of HISTORY_LAYERS) {
-      map.setFilter(id, filter);
+      if (!map.getLayer(id)) continue;
+      // a dated layer's filter is ['all', <from test>, <to test>, ...more]
+      // (tiles/make-styles.py): swap in this day, keep the rest
+      const filter = map.getFilter(id);
+      if (Array.isArray(filter) && filter[0] === 'all') {
+        map.setFilter(id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...filter.slice(3)]);
+      }
       map.setLayoutProperty(id, 'visibility', dated ? 'visible' : 'none');
     }
     for (const id of MODERN_LAYERS) {

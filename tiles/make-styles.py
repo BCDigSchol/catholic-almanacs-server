@@ -23,6 +23,7 @@ PALETTES = {
         "dot": "#3d3a33",
         "road_minor": "#dcd7cc", "road_secondary": "#c4bcae", "road_major": "#9a9384",
         "rail": "#8a8478", "green": "#f3f1ea", "cemetery": "#ebe9e0",
+        "foreign": "#ebe8e0",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
@@ -31,6 +32,7 @@ PALETTES = {
         "dot": "#cfc8b9",
         "road_minor": "#2e2c26", "road_secondary": "#403d35", "road_major": "#625d52",
         "rail": "#7a7466", "green": "#1a1915", "cemetery": "#1e1d19",
+        "foreign": "#22211c",
     },
 }
 
@@ -41,7 +43,9 @@ ATTRIBUTION = (
 )
 
 
-# the history layers' filter until a map picks a date: matches nothing
+# The history layers' filter until a map picks a date: matches nothing. A
+# history layer's filter is always ["all", <from test>, <to test>, ...more]:
+# map-vis replaces the two date tests with the year's day and keeps the rest.
 NO_DATE = ["all", ["<=", ["get", "from"], 0], [">=", ["get", "to"], 0]]
 
 # the historical boundaries' provenance, shown in the map's (i) credit line
@@ -62,6 +66,17 @@ def layers(c):
     return [
         {"id": "water", "type": "background", "paint": {"background-color": c["water"]}},
         {"id": "land", "type": "fill", "source": "base", "source-layer": "land",
+         "paint": {"fill-color": c["land"], "fill-antialias": False}},
+        # A dated map tints all land as foreign, then lays the United States of
+        # that day over it in paper, so the border falls wherever it was then
+        # (Mexico's north before 1848, Texas as a republic) rather than today.
+        {"id": "history-foreign", "type": "fill", "source": "base", "source-layer": "land",
+         "layout": {"visibility": "none"},
+         "paint": {"fill-color": c["foreign"], "fill-antialias": False}},
+        {"id": "history-fill", "type": "fill", "source": "history", "source-layer": "states",
+         "layout": {"visibility": "none"},
+         # the United States proper: not the Texas Republic or Oregon Country
+         "filter": [*NO_DATE, ["match", ["get", "kind"], ["state", "territory", "district"], True, False]],
          "paint": {"fill-color": c["land"], "fill-antialias": False}},
         # an engraved coastline: one fine ink line around the land
         {"id": "coast", "type": "line", "source": "base", "source-layer": "land",
@@ -141,14 +156,15 @@ def layers(c):
          "layout": {"text-field": ["get", "name"], "text-font": ITALIC, "text-size": 11, "text-max-width": 7},
          "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.2}},
         # a year's states in italic capitals, as below; territories and other
-        # areas (Texas Republic, Oregon Country) in italic lower case
+        # areas (Texas Republic, Oregon Country) in italic lower case; the
+        # neighbouring countries widely spaced
         {"id": "history-labels", "type": "symbol", "source": "history", "source-layer": "state_labels",
          "maxzoom": 8,
          "layout": {"visibility": "none",
                     "text-field": ["get", "name"], "text-font": ITALIC,
                     "text-size": zoom(3, 10, 7, 15),
-                    "text-transform": ["case", ["==", ["get", "kind"], "state"], "uppercase", "none"],
-                    "text-letter-spacing": ["case", ["==", ["get", "kind"], "state"], 0.18, 0.04],
+                    "text-transform": ["match", ["get", "kind"], ["state", "nation"], "uppercase", "none"],
+                    "text-letter-spacing": ["match", ["get", "kind"], "nation", 0.3, "state", 0.18, 0.04],
                     "text-max-width": 8,
                     # big areas claim their place first; small ones fit in where there is room
                     "symbol-sort-key": ["-", 0, ["get", "area"]]},
