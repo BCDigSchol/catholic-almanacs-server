@@ -11,9 +11,12 @@ import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
 import { TreeGraphComponent, DendrogramNode } from '../../common/tree-graph/tree-graph.component';
 import { PageHeaderComponent } from '../../common/page-header/page-header.component';
+import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearTabsComponent } from '../../common/year-tabs/year-tabs.component';
 import { CiteComponent } from '../../common/cite/cite.component';
 import { institutionLabel, isUnnamed, personLabel, placeLabel, yearRuns } from '../../../utils/record-labels';
+
+type RecordView = 'map' | 'network' | 'tree';
 
 interface TimelinePerson {
   ID: string;
@@ -61,7 +64,7 @@ interface Fact {
 @Component({
   selector: 'app-institution-details',
   imports: [RouterLink, MapVisComponent, NetworkGraphComponent, TreeGraphComponent,
-    PageHeaderComponent, YearTabsComponent, CiteComponent],
+    PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
 })
@@ -82,12 +85,16 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   networkStartYear: number | null = null;
   networkEndYear: number | null = null;
   dendrogram: any = null;
-  connectionsTab: 'network' | 'tree' = 'network';
+  /** Which view the side panel shows. */
+  view: RecordView = 'map';
+  views: { key: RecordView; label: string }[] = [];
+  /** Set once the user picks a tab; until then the panel shows the first view (the map). */
+  private viewChosen = false;
   /** Long people lists start collapsed to this many rows. */
   readonly peoplePreview = 15;
   showAllPeople = false;
 
-  readonly networkOptions = { height: '520px' };
+  readonly networkOptions = { height: '340px' };
 
   private subs: Subscription[] = [];
 
@@ -147,7 +154,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     const [start, end] = year === null ? [this.years[0], this.years[this.years.length - 1]] : [year, year];
     this.fetchNetwork(start, end);
     const tree = `institution/${this.id}/dendrogram` + (year === null ? '' : `?year=${year}`);
-    this.api.getTypeRequest(tree).pipe(catchError(() => of(null))).subscribe(res => this.dendrogram = res);
+    this.api.getTypeRequest(tree).pipe(catchError(() => of(null))).subscribe(res => { this.dendrogram = res; this.updateViews(); });
   }
 
   /** The diocese's own notes for the selected year, when the almanac printed any. */
@@ -176,7 +183,24 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     ).subscribe(res => {
       this.network = res;
       this.networkLoading = false;
+      this.updateViews();
     });
+  }
+
+  /** The side panel's tabs: what this record has to show. A windowed network
+      keeps its tab even when the window is empty, so the user can widen it. */
+  private updateViews(): void {
+    const views: { key: RecordView; label: string }[] = [];
+    if (this.mapData.length) views.push({ key: 'map', label: 'Location' });
+    if (this.network.nodes.length > 1 || this.networkStartYear != null) views.push({ key: 'network', label: 'Network' });
+    if (this.hasTree) views.push({ key: 'tree', label: 'Related' });
+    this.views = views;
+    if (!this.viewChosen || !views.some(v => v.key === this.view)) this.view = views[0]?.key ?? 'map';
+  }
+
+  chooseView(view: RecordView): void {
+    this.view = view;
+    this.viewChosen = true;
   }
 
   onNetworkWindow(event: { startYear: number; endYear: number }): void {
@@ -297,6 +321,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
       this.facts = [];
       this.related = [];
       this.mapData = [];
+      this.updateViews();
       return;
     }
     const printed = [r.placeName, r.countyOrig, r.cityOrig, r.stateOrig].filter(Boolean).join(', ');
@@ -335,6 +360,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
 
     const hasPoint = !!(r.latitude && r.longitude);
     this.mapData = hasPoint ? [{ latitude: r.latitude, longitude: r.longitude, title: this.heading, internalLink: null }] : [];
+    this.updateViews();
     if (hasPoint) {
       this.mapOptions = { ...this.mapOptions, center: { lat: r.latitude, lng: r.longitude } };
     }

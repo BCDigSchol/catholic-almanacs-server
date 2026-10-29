@@ -3,6 +3,7 @@
         <header class="head">
             <div class="titles">
                 @if (heading) { <h2>{{ heading }}</h2> }
+                <ng-content select="[panel-title]"></ng-content>
                 @if (note) { <span class="note">{{ note }}</span> }
             </div>
             <div class="actions">

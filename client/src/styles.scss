@@ -504,8 +504,29 @@ body {
     }
 }
 
-.record-connections {
-    margin-top: var(--space-7);
+/* Record pages' side panel: Location / Network / Related, one at a time, with
+   full screen for room to explore. The tabs are the panel's title. */
+.record-views {
+    display: block;
+
+    .record-conn-tabs {
+        margin: 0;
+        border-bottom: 0;
+
+        button {
+            font: 400 var(--text-lg) var(--font-display);
+        }
+    }
+
+    .note {
+        margin: 0 0 var(--space-2);
+        color: var(--ink-3);
+        font-size: var(--text-sm);
+    }
+
+    .is-fullscreen .record-map .map-vis__canvas {
+        height: calc(100vh - 120px) !important;
+    }
 }
 
 .record-conn-tabs {

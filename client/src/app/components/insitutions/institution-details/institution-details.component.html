@@ -94,13 +94,41 @@
             </div>
 
             <aside class="rail">
-                @if (mapData.length) {
-                    <section class="record-section" aria-labelledby="map-heading">
-                        <h2 id="map-heading">Location</h2>
-                        <div class="record-map">
-                            <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
+                @if (views.length) {
+                    <app-viz-panel #viewPanel class="record-views">
+                        <div panel-title class="record-conn-tabs" role="tablist" aria-label="Show this institution's">
+                            @for (v of views; track v.key) {
+                                <button type="button" role="tab" [attr.aria-selected]="view === v.key" (click)="chooseView(v.key)">{{ v.label }}</button>
+                            }
                         </div>
-                    </section>
+                        @switch (view) {
+                            @case ('map') {
+                                <div class="record-map">
+                                    <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
+                                </div>
+                            }
+                            @case ('network') {
+                                <p class="note">Institutions that shared clergy with this one.</p>
+                                <app-network-graph
+                                    [framed]="false"
+                                    [compact]="!viewPanel.fullscreen"
+                                    [data]="network"
+                                    [label]="'Institutions linked to ' + heading + ' by shared clergy'"
+                                    [options]="networkOptions"
+                                    [startYear]="networkStartYear"
+                                    [endYear]="networkEndYear"
+                                    [minYear]="years[0]"
+                                    [maxYear]="years[years.length - 1]"
+                                    [timeWindowLoading]="networkLoading"
+                                    (timeWindowChange)="onNetworkWindow($event)">
+                                </app-network-graph>
+                            }
+                            @case ('tree') {
+                                <app-tree-graph [data]="dendrogram" [label]="heading + ' and related institutions'"
+                                    (nodeDoubleClick)="onTreeNode($event)"></app-tree-graph>
+                            }
+                        }
+                    </app-viz-panel>
                 }
                 @for (g of related; track g.heading) {
                     <section class="record-section">
@@ -118,35 +146,5 @@
             </aside>
         </div>
 
-        @if (network.nodes.length > 1 || hasTree) {
-            <section class="record-section record-connections" aria-labelledby="connections-heading">
-                <h2 id="connections-heading">Connections</h2>
-                <div class="record-conn-tabs" role="tablist" aria-label="Connections view">
-                    @if (network.nodes.length > 1) {
-                        <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'network'" (click)="connectionsTab = 'network'">Institution network</button>
-                    }
-                    @if (hasTree) {
-                        <button type="button" role="tab" [attr.aria-selected]="connectionsTab === 'tree' || network.nodes.length <= 1" (click)="connectionsTab = 'tree'">Related institutions</button>
-                    }
-                </div>
-                @if (connectionsTab === 'network' && network.nodes.length > 1) {
-                    <app-network-graph
-                        [framed]="false"
-                        [data]="network"
-                        [label]="'Institutions linked to ' + heading + ' by shared clergy'"
-                        [options]="networkOptions"
-                        [startYear]="networkStartYear"
-                        [endYear]="networkEndYear"
-                        [minYear]="years[0]"
-                        [maxYear]="years[years.length - 1]"
-                        [timeWindowLoading]="networkLoading"
-                        (timeWindowChange)="onNetworkWindow($event)">
-                    </app-network-graph>
-                } @else if (hasTree) {
-                    <app-tree-graph [data]="dendrogram" [label]="heading + ' and related institutions'"
-                        (nodeDoubleClick)="onTreeNode($event)"></app-tree-graph>
-                }
-            </section>
-        }
     }
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, OnChanges, OnDestroy, Output, EventEmitter, SimpleChanges, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, OnDestroy, Output, EventEmitter, SimpleChanges, ViewChild, ElementRef, NgZone, HostListener } from '@angular/core';
 import { SpaceNamePipe, spaceName } from '../../../pipes/space-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -43,6 +43,8 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   @Input() showLegend = true;
   /** CSS height of the drawing area; defaults to options.height, else a responsive height. */
   @Input() height = '';
+  /** Small inset (e.g. a record page's side column): only the graph and its year window, no search, filters or legend. */
+  @Input() compact = false;
   /** Shown when there is nothing to draw; '' when the host shows its own empty state. */
   @Input() emptyText = 'No connections matched these filters. Try widening the year range or clearing a filter.';
   @Input() data: { nodes: any[]; edges: any[] } = {
@@ -180,6 +182,16 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     private _router: Router,
     private _ngZone: NgZone
   ) { }
+
+  /* Entering or leaving full screen (e.g. a viz-panel around the graph) resizes
+     the canvas; refit once the new size has settled. */
+  @HostListener('document:fullscreenchange')
+  onFullscreenChange(): void {
+    setTimeout(() => {
+      this.network?.redraw();
+      this.network?.fit({ animation: false });
+    }, 150);
+  }
 
   ngOnInit(): void {
     this.protectedData = this.data ?? { nodes: [], edges: [] };

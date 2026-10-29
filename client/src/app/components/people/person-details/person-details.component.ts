@@ -8,11 +8,14 @@ import { ApiService } from '../../../services/api.service';
 import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
 import { PageHeaderComponent } from '../../common/page-header/page-header.component';
+import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearTabsComponent } from '../../common/year-tabs/year-tabs.component';
 import { CiteComponent } from '../../common/cite/cite.component';
 import { institutionLabel, isUnnamed, placeLabel, yearRuns } from '../../../utils/record-labels';
 
 /** One (year, institution) listing from GET /person/:id/timeline. */
+type RecordView = 'map' | 'network';
+
 interface Listing {
   year: number;
   instID: string;
@@ -51,7 +54,7 @@ interface Fact {
 
 @Component({
   selector: 'app-person-details',
-  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, PageHeaderComponent, YearTabsComponent, CiteComponent],
+  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
 })
@@ -66,7 +69,12 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
   networkLoading = false;
   networkStartYear: number | null = null;
   networkEndYear: number | null = null;
-  readonly networkOptions = { height: '520px' };
+  readonly networkOptions = { height: '340px' };
+  /** Which view the side panel shows. */
+  view: RecordView = 'map';
+  views: { key: RecordView; label: string }[] = [];
+  /** Set once the user picks a tab; until then the panel shows the first view (the map). */
+  private viewChosen = false;
 
   private subs: Subscription[] = [];
 
@@ -116,7 +124,23 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
     ).subscribe(res => {
       this.network = res;
       this.networkLoading = false;
+      this.updateViews();
     });
+  }
+
+  /** The side panel's tabs: what this record has to show. A windowed network
+      keeps its tab even when the window is empty, so the user can widen it. */
+  private updateViews(): void {
+    const views: { key: RecordView; label: string }[] = [];
+    if (this.mapData.length) views.push({ key: 'map', label: 'Places' });
+    if (this.network.nodes.length > 1 || this.networkStartYear != null) views.push({ key: 'network', label: 'Network' });
+    this.views = views;
+    if (!this.viewChosen || !views.some(v => v.key === this.view)) this.view = views[0]?.key ?? 'map';
+  }
+
+  chooseView(view: RecordView): void {
+    this.view = view;
+    this.viewChosen = true;
   }
 
   onNetworkWindow(event: { startYear: number; endYear: number }): void {
@@ -223,6 +247,7 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
       }
     }
     this.mapData = [...points.values()];
+    this.updateViews();
   }
 
   /**

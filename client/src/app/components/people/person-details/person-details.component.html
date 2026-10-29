@@ -76,34 +76,37 @@
             </div>
 
             <aside class="rail">
-                @if (mapData.length) {
-                    <section class="record-section" aria-labelledby="map-heading">
-                        <h2 id="map-heading">Places served <small>{{ mapData.length }}</small></h2>
-                        <div class="record-map">
-                            <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
+                @if (views.length) {
+                    <app-viz-panel #viewPanel class="record-views">
+                        <div panel-title class="record-conn-tabs" role="tablist" aria-label="Show this person's">
+                            @for (v of views; track v.key) {
+                                <button type="button" role="tab" [attr.aria-selected]="view === v.key" (click)="chooseView(v.key)">{{ v.label }}</button>
+                            }
                         </div>
-                    </section>
+                        @if (view === 'map') {
+                            <div class="record-map">
+                                <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
+                            </div>
+                        } @else {
+                            <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
+                            <app-network-graph
+                                [framed]="false"
+                                [compact]="!viewPanel.fullscreen"
+                                [data]="network"
+                                [label]="'People who served alongside ' + heading"
+                                [options]="networkOptions"
+                                [startYear]="networkStartYear"
+                                [endYear]="networkEndYear"
+                                [minYear]="years[0]"
+                                [maxYear]="years[years.length - 1]"
+                                [timeWindowLoading]="networkLoading"
+                                (timeWindowChange)="onNetworkWindow($event)">
+                            </app-network-graph>
+                        }
+                    </app-viz-panel>
                 }
             </aside>
         </div>
 
-        @if (network.nodes.length > 1) {
-            <section class="record-section record-connections" aria-labelledby="connections-heading">
-                <h2 id="connections-heading">Connections</h2>
-                <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
-                <app-network-graph
-                    [framed]="false"
-                    [data]="network"
-                    [label]="'People who served alongside ' + heading"
-                    [options]="networkOptions"
-                    [startYear]="networkStartYear"
-                    [endYear]="networkEndYear"
-                    [minYear]="years[0]"
-                    [maxYear]="years[years.length - 1]"
-                    [timeWindowLoading]="networkLoading"
-                    (timeWindowChange)="onNetworkWindow($event)">
-                </app-network-graph>
-            </section>
-        }
     }
 </div>
