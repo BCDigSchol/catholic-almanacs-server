@@ -7,4 +7,6 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8090/api/',
   exportEnabled: false,
+  // the self-hosted tile server (docker compose up -d tiles; see tiles/README.md)
+  tilesUrl: 'http://localhost:8092' as string | null,
 };

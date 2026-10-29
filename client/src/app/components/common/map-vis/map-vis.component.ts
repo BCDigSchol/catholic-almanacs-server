@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { Settings } from '../../../app.settings';
+import { ThemeService } from '../../../services/theme.service';
+import { Subscription } from 'rxjs';
 import { LegendEntry } from './map-grouping';
 import { INKS, COUNT_RAMP, HIGHLIGHT_INK } from '../../../utils/palette';
 import maplibregl from 'maplibre-gl';
@@ -71,8 +73,9 @@ export class MapVisComponent {
 
   map: any = null;
   markers: any[] = [];
-  multipleStyles: boolean = Array.isArray(Settings.mapTilesUrl);
-  currentStyle: string = Array.isArray(Settings.mapTilesUrl) ? Settings.mapTilesUrl[0].url : Settings.mapTilesUrl;
+  /** The base-map style in use: the light or dark one, following the site theme. */
+  currentStyle: string = Settings.mapStyles.light;
+  private themeSub?: Subscription;
   settings = Settings;
   currentMode: string = 'normal';
   // Once the user picks a display mode from the control, remember it so a data
@@ -104,7 +107,7 @@ export class MapVisComponent {
   private startHeight = 0;
   private resizeObserver?: ResizeObserver;
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private theme: ThemeService) {}
 
   /**
    * On component initialization, sets the current map mode and loading state.
@@ -118,11 +121,12 @@ export class MapVisComponent {
    * After the view initializes, sets the current map style and initializes the map.
    */
   ngAfterViewInit(): void {
-    if (Array.isArray(Settings.mapTilesUrl)) {
-      this.currentStyle = Settings.mapTilesUrl[0].url;
-    } else {
-      this.currentStyle = Settings.mapTilesUrl;
-    }
+    // The first emission picks the style the map starts with; later ones
+    // (the theme toggle, or the OS switching) swap it in place.
+    this.themeSub = this.theme.isDarkTheme$.subscribe(dark => {
+      const style = dark ? Settings.mapStyles.dark : Settings.mapStyles.light;
+      if (style !== this.currentStyle) this.changeMapStyle(style);
+    });
     this.initializeMap();
     setTimeout(() => {
       if (!this.simple && this.fillScreen) {
@@ -171,6 +175,7 @@ export class MapVisComponent {
   }
 
   ngOnDestroy(): void {
+    this.themeSub?.unsubscribe();
     this.resizeObserver?.disconnect();
     this.resizeObserver = undefined;
     if (this.map) {
@@ -201,16 +206,15 @@ export class MapVisComponent {
   }
 
   /**
-   * Changes the current map style (backend tile set) and re-renders the map features.
+   * Swaps the base-map style (e.g. light to dark) and redraws the data layers,
+   * which a new style drops.
    * @param styleUrl The URL of the new map style to apply.
    */
-  changeMapStyle(styleUrl: string): void {
+  private changeMapStyle(styleUrl: string): void {
     this.currentStyle = styleUrl;
     if (this.map) {
       this.map.setStyle(this.currentStyle);
-      this.map.once('styledata', () => {
-        this.renderMapFeatures();
-      });
+      this.map.once('style.load', () => this.renderMapFeatures());
     }
   }
 
@@ -276,7 +280,8 @@ export class MapVisComponent {
       .addControl(new maplibregl.FullscreenControl())
       .addControl(new maplibregl.ScaleControl({ maxWidth: 80, unit: 'metric' }))
       // Compact: an (i) button that expands, instead of a long caption over the map.
-      .addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: Settings.mapTilesAttribution }))
+      // The credits come from the style's sources (Natural Earth, OpenStreetMap, GeoNames).
+      .addControl(new maplibregl.AttributionControl({ compact: true }))
       .addControl(new maplibregl.GlobeControl());
     this.map.on('load', () => {
       this.renderMapFeatures();
@@ -980,14 +985,6 @@ export class MapVisComponent {
     if (maxDiff < 1) return 8;
     if (maxDiff < 5) return 6;
     return 2;
-  }
-
-  /**
-   * Returns available map style options if multiple styles are configured.
-   * @returns {Array<{ name: string; url: string }>|null} Array of map style options or null
-   */
-  get mapStyleOptions(): { name: string; url: string }[] | null {
-    return this.multipleStyles ? Settings.mapTilesUrl : null;
   }
 
   /**

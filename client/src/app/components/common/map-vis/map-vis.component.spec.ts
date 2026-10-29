@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapVisComponent } from './map-vis.component';
+import { ThemeService } from '../../../services/theme.service';
 
 describe('MapVisComponent', () => {
   let component: MapVisComponent;
@@ -8,7 +9,9 @@ describe('MapVisComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MapVisComponent]
+      imports: [MapVisComponent],
+      // provided by AppComponent in the app
+      providers: [ThemeService]
     })
     .compileComponents();
 

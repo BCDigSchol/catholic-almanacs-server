@@ -77,9 +77,35 @@ services:
     networks:
       - server-network
 
+  # Map tiles (see tiles/README.md). tiles-build is a one-off job that builds
+  # the tiles into the tiles-data volume: docker compose run --rm tiles-build
+  tiles-build:
+    build:
+      context: tiles/
+      target: builder
+    profiles: ["build"]
+    volumes:
+      - tiles-data:/data
+      - tiles-work:/work
+
+  tiles:
+    build:
+      context: tiles/
+      target: server
+    restart: unless-stopped
+    ports:
+      - 8092:3000
+    environment:
+      - TILES_PUBLIC_URL=http://localhost:8092
+    volumes:
+      - tiles-data:/data:ro
+
 volumes:
   db-prod:
   db-dev:
+  tiles-data:
+  # the builder's downloads, kept between builds
+  tiles-work:
 
 networks:
   server-network:

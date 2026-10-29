@@ -9,17 +9,15 @@ import { environment } from '../environments/environment';
 export const Settings = {
     apiUrl: environment.apiUrl,
     exportEnabled: environment.exportEnabled,
-        // multiple styles (first style is the default)
-    mapTilesUrl: [{
-        name: 'OpenStreetMap',
-        url: 'https://raw.githubusercontent.com/go2garret/maps/main/src/assets/json/openStreetMap.json',
-    }, {
-        name: 'Map Libre Demo Tiles',
-        url: 'https://demotiles.maplibre.org/globe.json',
-    }, {
-        name: 'CartoDB Voyager',
-        url: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
-    }],
-    mapTilesAttribution: 'Powered by MapLibre... Use of OpenStreetMap and CartoDB for dev phase only',
-    mapTilesMaxZoom: 18
+    // Base-map styles, one per site theme: the self-hosted tile server
+    // (tiles/) where the environment has one, else Carto's public base maps.
+    mapStyles: environment.tilesUrl ? {
+        light: `${environment.tilesUrl}/style/almanac-light`,
+        dark: `${environment.tilesUrl}/style/almanac-dark`,
+    } : {
+        light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+        dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    },
+    // deep enough to tell apart churches a few blocks from each other
+    mapTilesMaxZoom: 15
 };

@@ -4,4 +4,6 @@ export const environment = {
   production: true,
   apiUrl: 'https://praetor.bc.edu/production/api/',
   exportEnabled: false,
+  // no tile server deployed yet: maps fall back to Carto's public base maps
+  tilesUrl: null as string | null,
 };

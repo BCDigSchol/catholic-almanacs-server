@@ -1,6 +1,6 @@
 <div class="map-vis" [class.map-vis--simple]="simple">
 
-  <!-- Chrome (title, base-map / display controls) — only in the full panel -->
+  <!-- Chrome (title, display-mode control) — only in the full panel -->
   @if (!simple) {
     <div #headerRef class="map-vis__header">
       <div class="map-vis__title">
@@ -11,18 +11,8 @@
         <span>{{ label }}</span>
       </div>
 
-      @if (isOpen && (multipleStyles || options.modeControl)) {
+      @if (isOpen && options.modeControl) {
         <div #dropdownRef class="map-vis__controls">
-          @if (multipleStyles) {
-            <mat-form-field appearance="outline" class="map-vis__select" subscriptSizing="dynamic">
-              <mat-label>Base map</mat-label>
-              <mat-select [value]="currentStyle" (selectionChange)="changeMapStyle($event.value)">
-                @for (style of mapStyleOptions; track style.url) {
-                  <mat-option [value]="style.url">{{ style.name }}</mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
-          }
           @if (options.modeControl) {
             <mat-form-field appearance="outline" class="map-vis__select" subscriptSizing="dynamic">
               <mat-label>Display</mat-label>
