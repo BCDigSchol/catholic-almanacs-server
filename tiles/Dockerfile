@@ -1,7 +1,7 @@
 # Catholic Almanacs map tiles: two images from one Dockerfile.
 #
 #   builder  downloads the open data and builds the tiles into /data
-#            (docker compose run --rm tiles-build [base|detail])
+#            (docker compose run --rm tiles-build [base|detail|history])
 #   server   Martin, serving whatever .pmtiles files are in /data, the label
 #            fonts and the map styles (docker compose up -d tiles)
 #
@@ -29,7 +29,7 @@ RUN git clone --depth 1 --branch "${TIPPECANOE_VERSION}" https://github.com/felt
     && make -C /tmp/tippecanoe install \
     && rm -rf /tmp/tippecanoe
 
-COPY build.sh build-tiles.sh build-detail.sh make-area.py pick-regions.py /tiles/
+COPY build.sh build-tiles.sh build-detail.sh build-history.sh make-area.py pick-regions.py history-features.py /tiles/
 # /work keeps the downloads between runs (mount a volume there to reuse them)
 ENV MAX_ZOOM=10 DETAIL_ZOOM=7
 ENTRYPOINT ["bash", "/tiles/build.sh"]

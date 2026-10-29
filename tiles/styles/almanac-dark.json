@@ -13,6 +13,11 @@
     "detail": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/detail"
+    },
+    "history": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/history",
+      "attribution": "Boundaries by year: <a href=\"https://publications.newberry.org/ahcb/\" target=\"_blank\" rel=\"noopener\">Atlas of Historical County Boundaries</a>, ed. John H. Long, The Newberry Library (<a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY-NC-SA 2.5</a>)"
     }
   },
   "glyphs": "${TILES_PUBLIC_URL}/font/{fontstack}/{range}",
@@ -328,6 +333,51 @@
       }
     },
     {
+      "id": "history-lines",
+      "type": "line",
+      "source": "history",
+      "source-layer": "states",
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "line-color": "#a39c8d",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.5,
+          8,
+          1.1
+        ]
+      }
+    },
+    {
       "id": "boundaries",
       "type": "line",
       "source": "base",
@@ -573,6 +623,95 @@
         "text-color": "#a39c8d",
         "text-halo-color": "#14130f",
         "text-halo-width": 1.2
+      }
+    },
+    {
+      "id": "history-labels",
+      "type": "symbol",
+      "source": "history",
+      "source-layer": "state_labels",
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "none",
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Old Standard TT Italic"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          10,
+          7,
+          15
+        ],
+        "text-transform": [
+          "case",
+          [
+            "==",
+            [
+              "get",
+              "kind"
+            ],
+            "state"
+          ],
+          "uppercase",
+          "none"
+        ],
+        "text-letter-spacing": [
+          "case",
+          [
+            "==",
+            [
+              "get",
+              "kind"
+            ],
+            "state"
+          ],
+          0.18,
+          0.04
+        ],
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "-",
+          0,
+          [
+            "get",
+            "area"
+          ]
+        ]
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "text-color": "#a39c8d",
+        "text-halo-color": "#14130f",
+        "text-halo-width": 1.5
       }
     },
     {

@@ -3,22 +3,24 @@
 Self-hosted base map for the site's maps, in place of OpenStreetMap / Carto.
 Two containers share one volume of tiles:
 
-- **`tiles-build`** is a one-off job. It writes two files into the
-  `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10) and
+- **`tiles-build`** is a one-off job. It writes three files into the
+  `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10),
+  `history.pmtiles` (US states and territories by date, zoom 0–10) and
   `detail.pmtiles` (streets around every recorded place, zoom 10–15).
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
 
 Keeping them apart means restarting or rebuilding the server never rebuilds the
-tiles, and later layers (street detail around recorded places, boundaries by
-year, historical streets) are just more files in the same volume.
+tiles, and later layers (historical streets) are just more files in the same
+volume.
 
 ## Running
 
 ```sh
-docker compose run --rm tiles-build          # build both (base, then detail)
+docker compose run --rm tiles-build          # build all three (base, history, detail)
 docker compose run --rm tiles-build base     # base map only: a few minutes
+docker compose run --rm tiles-build history  # boundaries by year only: a minute
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
@@ -31,7 +33,7 @@ Until the first build has run, the server waits and logs a reminder.
 | URL | What |
 |---|---|
 | `/style/almanac-light`, `/style/almanac-dark` | the map styles the client loads (one per site theme) |
-| `/base/{z}/{x}/{y}`, `/detail/{z}/{x}/{y}` | vector tiles; `/base` and `/detail` are the TileJSONs |
+| `/base/{z}/{x}/{y}`, `/history/…`, `/detail/…` | vector tiles; `/base`, `/history` and `/detail` are the TileJSONs |
 | `/font/Old Standard TT Regular/0-255` | label glyphs (`Regular`, `Italic`, `Bold`) |
 | `/catalog`, `/health` | what the server has; liveness |
 
@@ -84,6 +86,54 @@ What's drawn, from OpenStreetMap (ODbL, © OpenStreetMap contributors):
 No buildings or points of interest: they are modern and would compete with
 the data.
 
+## Boundaries by year
+
+A map given a year (the dashboards' year controls, a record page's year)
+draws the states and territories **in force on 1 January of that year**, since
+each almanac was compiled at the turn of its year, instead of today's state
+lines, borders and state names. States are named in italic capitals,
+territories and other areas (Texas Republic, Oregon Country, Indian Territory,
+unorganized federal territory) in italic lower case. A map showing all years
+keeps today's lines. The client side is map-vis' `[year]` input.
+
+| Layer | Contents |
+|---|---|
+| `states` | one outline per version of a state or territory: `name`, `kind` (state / territory / district / other), `from` and `to` (the days it was in force, `yyyymmdd` integers, both inclusive) |
+| `state_labels` | one label point per version (the point deepest inside its largest piece), same properties plus `area` (square degrees, for label priority) |
+
+### Provenance
+
+- **Dataset:** *U.S. Historical States and Territories* (Generalized .0001
+  deg), the national state-and-territory file of the **Atlas of Historical
+  County Boundaries** (AHCB), a project of the Dr. William M. Scholl Center for
+  American History and Culture at the Newberry Library, Chicago.
+- **Preferred citation** (from the dataset's metadata, for the .0001° file we
+  use): Siczewicz, Peter. *U.S. Historical States and Territories (Generalized
+  .0001 deg).* Emily Kelley, digital comp. Dataset. *Atlas of Historical County
+  Boundaries*, ed. by John H. Long. Chicago: The Newberry Library, 2011.
+  Available online from <https://publications.newberry.org/ahcb/>.
+- **What it records:** every change to a state's or territory's boundary from
+  3 September 1783 to 31 December 2000, each with its start and end date, the
+  legal source of the change and a note on it, compiled from the session laws,
+  statutes and other primary sources. The build keeps only the name, type and
+  dates; the notes and citations stay in the original.
+- **File:** `US_AtlasHCB_StateTerr_Gen0001.zip` from the AHCB's
+  [United States downloads](https://publications.newberry.org/ahcb/pages/United_States.html)
+  (shapefile, WGS 84), generalized to a tolerance of 0.0001° (about 10 m),
+  which is plenty at the zooms these lines are drawn. Downloaded by the build
+  on first run (override with `AHCB_URL`) and cached in `tiles-work`; first
+  fetched 29 October 2026.
+- **Changes made here:** Hawaii is dropped; the fields are reduced and renamed
+  as above; label points are computed; tippecanoe simplifies the outlines per
+  zoom (shared borders identically).
+- **Licence:** the download ships under
+  [Creative Commons BY-NC-SA 2.5](https://creativecommons.org/licenses/by-nc-sa/2.5/)
+  (attribution, non-commercial, share-alike), so `history.pmtiles` carries the
+  same terms. The maps credit it in their (i) line whenever these layers show.
+  (A 2019 donation of the AHCB shapefiles to the Library of Congress is reported
+  to have released them as CC0; we have not found that release at a primary
+  source, so we follow the licence in the file.)
+
 ## The styles
 
 `styles/almanac-light.json` and `almanac-dark.json` are generated by
@@ -104,9 +154,11 @@ is only published as a variable font.
 ```
 tiles/
   Dockerfile        builder target (tippecanoe + gdal + the script) and server target (Martin + fonts + styles)
-  build.sh          the build job's entry point: base | detail | all
+  build.sh          the build job's entry point: base | detail | history | all
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
   build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
+  build-history.sh  Newberry AHCB states and territories → ogr2ogr → history-features.py → tippecanoe → history.pmtiles
+  history-features.py  dated outlines + label points, Hawaii dropped
   make-area.py      grid cells of recorded places → one clip polygon
   pick-regions.py   the Geofabrik state extracts that touch that polygon
   entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data

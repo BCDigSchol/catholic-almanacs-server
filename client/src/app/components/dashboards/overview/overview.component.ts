@@ -162,6 +162,8 @@ export class OverviewDashboardComponent implements OnInit, OnDestroy {
   get activeCount(): number { return totalActive(this.filter); }
   get fnActive(): boolean { return this.filter.functions.size > 0; }
   get yearActive(): boolean { return this.filter.years.size > 0; }
+  /** The map draws a year's state lines when exactly one year is picked. */
+  get mapYear(): number | null { return this.filter.years.size === 1 ? [...this.filter.years][0] : null; }
 
   // --- Filter mutations: update state, reflect selection instantly, refetch ---
 

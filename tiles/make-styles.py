@@ -41,6 +41,18 @@ ATTRIBUTION = (
 )
 
 
+# the history layers' filter until a map picks a date: matches nothing
+NO_DATE = ["all", ["<=", ["get", "from"], 0], [">=", ["get", "to"], 0]]
+
+# the historical boundaries' provenance, shown in the map's (i) credit line
+# whenever a map is set to a year (see README "Boundaries by year")
+HISTORY_ATTRIBUTION = (
+    'Boundaries by year: <a href="https://publications.newberry.org/ahcb/" target="_blank" rel="noopener">'
+    'Atlas of Historical County Boundaries</a>, ed. John H. Long, The Newberry Library'
+    ' (<a href="https://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank" rel="noopener">CC BY-NC-SA 2.5</a>)'
+)
+
+
 def zoom(*stops):
     return ["interpolate", ["linear"], ["zoom"], *stops]
 
@@ -87,6 +99,13 @@ def layers(c):
                                       15, ["match", ["get", "kind"], "major", 3, "secondary", 2.5, "motorway", 2, 2])}},
         {"id": "state-boundaries", "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
+        # ── the states and territories of one date (history.pmtiles) ──
+        # Hidden here: a map given a year shows these in place of today's state
+        # lines, borders and names, filtered to that year (map-vis, HISTORY_LAYERS).
+        {"id": "history-lines", "type": "line", "source": "history", "source-layer": "states",
+         "layout": {"visibility": "none", "line-join": "round"},
+         "filter": NO_DATE,
+         "paint": {"line-color": c["border"], "line-width": zoom(3, 0.5, 8, 1.1)}},
         {"id": "boundaries", "type": "line", "source": "base", "source-layer": "boundaries",
          "layout": {"line-join": "round"},
          "paint": {"line-color": c["border"], "line-width": zoom(2, 0.6, 8, 1.4),
@@ -121,6 +140,20 @@ def layers(c):
          "minzoom": 15,
          "layout": {"text-field": ["get", "name"], "text-font": ITALIC, "text-size": 11, "text-max-width": 7},
          "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.2}},
+        # a year's states in italic capitals, as below; territories and other
+        # areas (Texas Republic, Oregon Country) in italic lower case
+        {"id": "history-labels", "type": "symbol", "source": "history", "source-layer": "state_labels",
+         "maxzoom": 8,
+         "layout": {"visibility": "none",
+                    "text-field": ["get", "name"], "text-font": ITALIC,
+                    "text-size": zoom(3, 10, 7, 15),
+                    "text-transform": ["case", ["==", ["get", "kind"], "state"], "uppercase", "none"],
+                    "text-letter-spacing": ["case", ["==", ["get", "kind"], "state"], 0.18, 0.04],
+                    "text-max-width": 8,
+                    # big areas claim their place first; small ones fit in where there is room
+                    "symbol-sort-key": ["-", 0, ["get", "area"]]},
+         "filter": NO_DATE,
+         "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.5}},
         # state names: italic capitals, spaced, as the almanacs set them
         {"id": "state-labels", "type": "symbol", "source": "base", "source-layer": "state_labels",
          "maxzoom": 8,
@@ -151,6 +184,9 @@ def style(name, c):
             "base": {"type": "vector", "url": "${TILES_PUBLIC_URL}/base", "attribution": ATTRIBUTION},
             # built by `tiles-build detail`; until then its layers simply draw nothing
             "detail": {"type": "vector", "url": "${TILES_PUBLIC_URL}/detail"},
+            # built by `tiles-build history`
+            "history": {"type": "vector", "url": "${TILES_PUBLIC_URL}/history",
+                        "attribution": HISTORY_ATTRIBUTION},
         },
         "glyphs": "${TILES_PUBLIC_URL}/font/{fontstack}/{range}",
         "layers": layers(c),

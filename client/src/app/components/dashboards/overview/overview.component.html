@@ -87,7 +87,7 @@
     <app-viz-panel heading="Where" note="Scroll to zoom, drag to move. Click a point to filter to its diocese."
         [state]="vizState" (retry)="retry()">
         <app-map-vis [data]="mapData" [isOpen]="true" [legend]="legend" [options]="mapOptions"
-            [clickToSelect]="true" [excludeModes]="['cluster']" (featureClick)="onMapSelect($event)"></app-map-vis>
+            [clickToSelect]="true" [excludeModes]="['cluster']" [year]="mapYear" (featureClick)="onMapSelect($event)"></app-map-vis>
     </app-viz-panel>
 
     <div notes>

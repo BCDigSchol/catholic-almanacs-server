@@ -19,5 +19,9 @@ export const Settings = {
         dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
     },
     // deep enough to tell apart churches a few blocks from each other
-    mapTilesMaxZoom: 15
+    mapTilesMaxZoom: 15,
+    // The lower 48, where every recorded place is: the maps keep their centre
+    // inside it and zoom out no further than fits it. [[west, south], [east,
+    // north]]. Widen west and north when Alaska's records arrive.
+    mapBounds: [[-125, 24], [-66, 50]] as [[number, number], [number, number]]
 };

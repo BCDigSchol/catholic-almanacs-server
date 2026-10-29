@@ -76,7 +76,8 @@
                     more institutions
                 </li>
             </ul>
-            <app-map-vis [simple]="true" [data]="mapData" [isOpen]="true" [options]="mapOptions" [autoCenter]="false"></app-map-vis>
+            <app-map-vis [simple]="true" [data]="mapData" [isOpen]="true" [options]="mapOptions" [autoCenter]="false"
+                [year]="state.year || null"></app-map-vis>
         </app-viz-panel>
     </div>
 

@@ -17,6 +17,17 @@ import { LegendEntry } from './map-grouping';
 import { INKS, COUNT_RAMP, HIGHLIGHT_INK } from '../../../utils/palette';
 import maplibregl from 'maplibre-gl';
 
+/** Base-map layers that draw today's state lines, borders and state names. */
+const MODERN_LAYERS = ['state-boundaries', 'state-labels', 'boundaries'];
+/** Base-map layers that draw the states and territories of one date instead. */
+const HISTORY_LAYERS = ['history-lines', 'history-labels'];
+
+/** The given point, moved inside Settings.mapBounds if it lies outside. */
+function clampToUs(lngLat: maplibregl.LngLat): maplibregl.LngLat {
+  const [[w, s], [e, n]] = Settings.mapBounds;
+  return new maplibregl.LngLat(Math.min(e, Math.max(w, lngLat.lng)), Math.min(n, Math.max(s, lngLat.lat)));
+}
+
 @Component({
   selector: 'app-map-vis',
     imports: [
@@ -52,6 +63,9 @@ export class MapVisComponent {
   /** When false, the map does NOT recenter on data updates (the host controls
    *  the view, e.g. via fitToBounds). Initial centering still applies. */
   @Input() autoCenter: boolean = true;
+  /** The almanac year shown: the base map then draws that year's states and
+   *  territories in place of today's. null = today's (e.g. all years). */
+  @Input() year: number | null = null;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
   @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
@@ -193,6 +207,7 @@ export class MapVisComponent {
     if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter) {
       this.updateMapCenter();
     }
+    if (changes['year']) this.applyYear();
     // Honour a user-selected mode over options.mode so it survives data updates.
     this.currentMode = this.userMode ?? (this.options.mode || 'normal');
     this.renderMapFeatures();
@@ -215,6 +230,27 @@ export class MapVisComponent {
     if (this.map) {
       this.map.setStyle(this.currentStyle);
       this.map.once('style.load', () => this.renderMapFeatures());
+    }
+  }
+
+  /**
+   * Shows the state and territory lines and names in force on 1 January of
+   * `year` (the almanacs were compiled at the turn of the year), hiding today's;
+   * with no year, today's. A style without the history layers (the Carto
+   * fallback) keeps its own.
+   */
+  private applyYear(): void {
+    const map = this.map;
+    if (!map?.getLayer('history-lines')) return;
+    const dated = this.year != null;
+    const day = (this.year ?? 0) * 10000 + 101;
+    const filter = ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day]];
+    for (const id of HISTORY_LAYERS) {
+      map.setFilter(id, filter);
+      map.setLayoutProperty(id, 'visibility', dated ? 'visible' : 'none');
+    }
+    for (const id of MODERN_LAYERS) {
+      if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', dated ? 'none' : 'visible');
     }
   }
 
@@ -275,14 +311,30 @@ export class MapVisComponent {
       maxZoom: Settings.mapTilesMaxZoom || 8,
       renderWorldCopies: false,
       attributionControl: false,
+      // keep the centre over the US (maxBounds would instead keep the whole
+      // view inside it, so a narrow map could never show the full country)
+      // (a custom constrain replaces the default one, so it clamps zoom too)
+      transformConstrain: (lngLat, zoom) => ({
+        center: clampToUs(lngLat),
+        zoom: Math.min(this.map?.getMaxZoom() ?? 24, Math.max(this.map?.getMinZoom() ?? 1, zoom)),
+      }),
     })
       .addControl(new maplibregl.NavigationControl())
       .addControl(new maplibregl.FullscreenControl())
       .addControl(new maplibregl.ScaleControl({ maxWidth: 80, unit: 'metric' }))
       // Compact: an (i) button that expands, instead of a long caption over the map.
       // The credits come from the style's sources (Natural Earth, OpenStreetMap, GeoNames).
-      .addControl(new maplibregl.AttributionControl({ compact: true }))
-      .addControl(new maplibregl.GlobeControl());
+      .addControl(new maplibregl.AttributionControl({ compact: true }));
+    // zoom out no further than shows the whole country in this container
+    const fitUs = () => {
+      const fit = this.map.cameraForBounds(Settings.mapBounds);
+      if (fit?.zoom != null) this.map.setMinZoom(Math.max(1, fit.zoom));
+    };
+    fitUs();
+    this.map.on('resize', fitUs);
+    // every style load (the first, and each theme swap) starts from the style's
+    // defaults, so set the year's boundaries again
+    this.map.on('style.load', () => this.applyYear());
     this.map.on('load', () => {
       this.renderMapFeatures();
       // MapLibre opens the compact attribution on wide maps; start it closed.

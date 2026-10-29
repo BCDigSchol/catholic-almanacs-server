@@ -85,7 +85,7 @@
                         </div>
                         @if (view === 'map') {
                             <div class="record-map">
-                                <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions"></app-map-vis>
+                                <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions" [year]="year"></app-map-vis>
                             </div>
                         } @else {
                             <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
