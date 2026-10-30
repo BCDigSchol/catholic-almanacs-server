@@ -42,6 +42,52 @@
             }
         </p>
 
+        @if (views.length) {
+            <app-viz-panel #viewPanel class="record-views" [hasKey]="view === 'map' && mapKey.length > 0">
+                <div panel-title class="record-conn-tabs" role="tablist" aria-label="Show this institution's">
+                    @for (v of views; track v.key) {
+                        <button type="button" role="tab" [attr.aria-selected]="view === v.key" (click)="chooseView(v.key)">{{ v.label }}</button>
+                    }
+                </div>
+                <div key>
+                    <ul class="legend" aria-label="Map key">
+                        @for (k of mapKey; track k.label) {
+                            <li class="legend-item"><span class="legend-swatch" [class]="k.shape" [style.background]="k.color"></span>{{ k.label }}</li>
+                        }
+                    </ul>
+                </div>
+                @switch (view) {
+                    @case ('map') {
+                        <div class="record-map">
+                            <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions" [year]="year"
+                                [links]="mapLinks" [context]="mapContext" [fitTo]="mapFit"></app-map-vis>
+                        </div>
+                        @if (mapSummary) { <p class="note record-map-summary">{{ mapSummary }}</p> }
+                    }
+                    @case ('network') {
+                        <p class="note">Institutions that shared clergy with this one.</p>
+                        <app-network-graph
+                            [framed]="false"
+                            [compact]="!viewPanel.fullscreen"
+                            [data]="network"
+                            [label]="'Institutions linked to ' + heading + ' by shared clergy'"
+                            [options]="networkOptions"
+                            [startYear]="networkStartYear"
+                            [endYear]="networkEndYear"
+                            [minYear]="years[0]"
+                            [maxYear]="years[years.length - 1]"
+                            [timeWindowLoading]="networkLoading"
+                            (timeWindowChange)="onNetworkWindow($event)">
+                        </app-network-graph>
+                    }
+                    @case ('tree') {
+                        <app-tree-graph [data]="dendrogram" [label]="heading + ' and related institutions'"
+                            (nodeDoubleClick)="onTreeNode($event)"></app-tree-graph>
+                    }
+                }
+            </app-viz-panel>
+        }
+
         <div class="record-layout" [class.busy]="loading">
             <div class="main">
                 <section class="record-section" aria-labelledby="facts-heading">
@@ -94,42 +140,6 @@
             </div>
 
             <aside class="rail">
-                @if (views.length) {
-                    <app-viz-panel #viewPanel class="record-views">
-                        <div panel-title class="record-conn-tabs" role="tablist" aria-label="Show this institution's">
-                            @for (v of views; track v.key) {
-                                <button type="button" role="tab" [attr.aria-selected]="view === v.key" (click)="chooseView(v.key)">{{ v.label }}</button>
-                            }
-                        </div>
-                        @switch (view) {
-                            @case ('map') {
-                                <div class="record-map">
-                                    <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions" [year]="year"></app-map-vis>
-                                </div>
-                            }
-                            @case ('network') {
-                                <p class="note">Institutions that shared clergy with this one.</p>
-                                <app-network-graph
-                                    [framed]="false"
-                                    [compact]="!viewPanel.fullscreen"
-                                    [data]="network"
-                                    [label]="'Institutions linked to ' + heading + ' by shared clergy'"
-                                    [options]="networkOptions"
-                                    [startYear]="networkStartYear"
-                                    [endYear]="networkEndYear"
-                                    [minYear]="years[0]"
-                                    [maxYear]="years[years.length - 1]"
-                                    [timeWindowLoading]="networkLoading"
-                                    (timeWindowChange)="onNetworkWindow($event)">
-                                </app-network-graph>
-                            }
-                            @case ('tree') {
-                                <app-tree-graph [data]="dendrogram" [label]="heading + ' and related institutions'"
-                                    (nodeDoubleClick)="onTreeNode($event)"></app-tree-graph>
-                            }
-                        }
-                    </app-viz-panel>
-                }
                 @for (g of related; track g.heading) {
                     <section class="record-section">
                         <h2>{{ g.heading }} <small>{{ g.items.length }}</small></h2>

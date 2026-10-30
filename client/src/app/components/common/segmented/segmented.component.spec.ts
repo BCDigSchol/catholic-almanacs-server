@@ -12,7 +12,7 @@ describe('SegmentedComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SegmentedComponent);
+    fixture = TestBed.createComponent(SegmentedComponent) as ComponentFixture<SegmentedComponent>;
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

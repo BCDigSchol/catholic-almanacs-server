@@ -14,6 +14,7 @@ import { Settings } from '../../../app.settings';
 import { ThemeService } from '../../../services/theme.service';
 import { Subscription } from 'rxjs';
 import { LegendEntry } from './map-grouping';
+import { MapContextPoint, MapLabel, MapLink } from './map-overlays';
 import { INKS, COUNT_RAMP, HIGHLIGHT_INK } from '../../../utils/palette';
 import maplibregl from 'maplibre-gl';
 
@@ -65,6 +66,15 @@ export class MapVisComponent {
   @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
   @Input() overlayTrack: [number, number][] = [];
+  /** Lines between places, drawn as arcs under the data (circuits, careers). */
+  @Input() links: MapLink[] = [];
+  /** Faint points under the data, for context; clickable when they carry a link. */
+  @Input() context: MapContextPoint[] = [];
+  /** Small italic labels beside places, drawn on top. */
+  @Input() labels: MapLabel[] = [];
+  /** A [west, south, east, north] box to frame (whenever it changes, and on
+   *  load); replaces the automatic centring. A tiny box opens at town zoom. */
+  @Input() fitTo: [number, number, number, number] | null = null;
   @Input() options: {
     zoom?: number;
     mode?: 'normal' | 'heatmap' | 'cluster' | 'point' | 'bins';
@@ -104,6 +114,8 @@ export class MapVisComponent {
   private heatConfig: any = null;
   private heatViewHandler?: any;
   private renderRetries = 0;
+  private dark = false;
+  private hoverPopup?: any;
 
   /** Modes shown in the Display control, minus any the host excluded. */
   get displayModes() {
@@ -133,6 +145,7 @@ export class MapVisComponent {
     // The first emission picks the style the map starts with; later ones
     // (the theme toggle, or the OS switching) swap it in place.
     this.themeSub = this.theme.isDarkTheme$.subscribe(dark => {
+      this.dark = dark;
       const style = dark ? Settings.mapStyles.dark : Settings.mapStyles.light;
       if (style !== this.currentStyle) this.changeMapStyle(style);
     });
@@ -141,7 +154,7 @@ export class MapVisComponent {
       if (!this.simple && this.fillScreen) {
         this.setMapHeightToFillScreen();
       }
-      if (this.autoCenter) this.updateMapCenter();
+      if (this.autoCenter && !this.fitTo) this.updateMapCenter();
       // The container may have been sized (or revealed) after the map was
       // created, which leaves MapLibre stuck at its 400x300 fallback canvas.
       // Sync the canvas to the real container size now and on any later change.
@@ -199,7 +212,8 @@ export class MapVisComponent {
    */
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.map) return;
-    if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter) {
+    if (changes['fitTo']) this.applyFit();
+    if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter && !this.fitTo) {
       this.updateMapCenter();
     }
     if (changes['year']) this.applyYear();
@@ -336,16 +350,30 @@ export class MapVisComponent {
       if (fit?.zoom != null) this.map.setMinZoom(Math.max(1, fit.zoom));
     };
     fitUs();
+    // frame the host's box straight away, so the first tiles fetched are the right ones
+    this.applyFit();
     this.map.on('resize', fitUs);
     // every style load (the first, and each theme swap) starts from the style's
     // defaults, so set the year's boundaries again
     this.map.on('style.load', () => this.applyYear());
+    this.bindUnderlayEvents();
     this.map.on('load', () => {
+      this.applyFit();
       this.renderMapFeatures();
-      // MapLibre opens the compact attribution on wide maps; start it closed.
-      this.map.getContainer().querySelector('.maplibregl-ctrl-attrib.maplibregl-compact-show')
-        ?.classList.remove('maplibregl-compact-show');
     });
+    // MapLibre opens the compact credits whenever a source adds its own
+    // (several times while a map loads), covering much of a small map: keep
+    // them closed until the reader opens them with the (i) button.
+    const container = this.map.getContainer();
+    let readerOpened = false;
+    container.addEventListener('click', (e: Event) => {
+      if ((e.target as HTMLElement).closest?.('.maplibregl-ctrl-attrib-button')) readerOpened = true;
+    });
+    const keepCreditsClosed = () => {
+      if (!readerOpened) container.querySelector('.maplibregl-ctrl-attrib.maplibregl-compact-show')?.classList.remove('maplibregl-compact-show');
+    };
+    this.map.on('sourcedata', keepCreditsClosed);
+    this.map.on('resize', keepCreditsClosed);
 
     // Cross-filter mode: a single map-level click/hover hit-test against the
     // data, so selection works regardless of the active display mode.
@@ -432,6 +460,7 @@ export class MapVisComponent {
     try {
       this.removeMapLayersAndSources();
       this.removeAllMarkers();
+      this.renderUnderlay();   // context points + links, beneath the data
       const features = this.data
         .filter(item => item.latitude && item.longitude)
         .map(item => ({
@@ -467,6 +496,107 @@ export class MapVisComponent {
       } else {
         console.warn('map-vis: could not render features', e);
       }
+    }
+  }
+
+  /**
+   * Draws the `context` points and the `links` (as arcs) beneath the data
+   * layer, so the data's own markers stay on top.
+   */
+  private renderUnderlay(): void {
+    this.removeUnderlay();
+    const paper = this.dark ? '#14130f' : '#ffffff';
+    const links = (this.links || []).filter(l => l && this.okLngLat(l.from) && this.okLngLat(l.to));
+    if (links.length) {
+      this.map.addSource('links-src', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: links.map((l, i) => ({
+            type: 'Feature', id: i,
+            geometry: { type: 'LineString', coordinates: l.straight ? [l.from, l.to] : this.arc(l.from, l.to) },
+            properties: {
+              color: l.color || INKS[5], width: l.width ?? 1.6, dashed: !!l.dashed,
+              title: l.title || '', link: l.link ? JSON.stringify(l.link) : '', query: l.query ? JSON.stringify(l.query) : '',
+            },
+          })),
+        },
+      });
+      const paint = { 'line-color': ['get', 'color'], 'line-width': ['get', 'width'], 'line-opacity': 0.85 };
+      this.map.addLayer({ id: 'links-line', type: 'line', source: 'links-src', filter: ['!', ['get', 'dashed']],
+        layout: { 'line-cap': 'round', 'line-join': 'round' }, paint });
+      this.map.addLayer({ id: 'links-dashed', type: 'line', source: 'links-src', filter: ['get', 'dashed'],
+        layout: { 'line-join': 'round' }, paint: { ...paint, 'line-dasharray': [2, 1.6] } });
+    }
+    const pts = (this.context || []).filter(p => p && Number.isFinite(p.lat) && Number.isFinite(p.lng));
+    if (pts.length) {
+      this.map.addSource('context-src', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: pts.map(p => ({
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
+            properties: {
+              color: p.color || INKS[5], radius: p.radius ?? 3.5,
+              title: p.title || '', link: p.link ? JSON.stringify(p.link) : '', query: p.query ? JSON.stringify(p.query) : '',
+            },
+          })),
+        },
+      });
+      this.map.addLayer({ id: 'context-points', type: 'circle', source: 'context-src', paint: {
+        'circle-radius': ['get', 'radius'], 'circle-color': ['get', 'color'], 'circle-opacity': 0.7,
+        'circle-stroke-width': 1, 'circle-stroke-color': paper,
+      } });
+    }
+  }
+
+  private removeUnderlay(): void {
+    if (!this.map) return;
+    ['links-line', 'links-dashed', 'context-points'].forEach(id => { if (this.map.getLayer(id)) this.map.removeLayer(id); });
+    ['links-src', 'context-src'].forEach(id => { if (this.map.getSource(id)) this.map.removeSource(id); });
+  }
+
+  private okLngLat(c: any): boolean {
+    return Array.isArray(c) && Number.isFinite(c[0]) && Number.isFinite(c[1]) && Math.abs(c[1]) <= 90;
+  }
+
+  /** A gentle arc from a to b (a quadratic curve bowed to one side). */
+  private arc(a: [number, number], b: [number, number]): [number, number][] {
+    const [dx, dy] = [b[0] - a[0], b[1] - a[1]];
+    const bow = 0.18;
+    const c: [number, number] = [(a[0] + b[0]) / 2 - dy * bow, (a[1] + b[1]) / 2 + dx * bow];
+    const pts: [number, number][] = [];
+    for (let i = 0; i <= 24; i++) {
+      const t = i / 24, u = 1 - t;
+      pts.push([u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]);
+    }
+    return pts;
+  }
+
+  /**
+   * Hover titles and click-through for the context points and links. Bound
+   * once: MapLibre keeps layer-scoped handlers across the layers being
+   * re-added and across style swaps.
+   */
+  private bindUnderlayEvents(): void {
+    for (const layer of ['context-points', 'links-line', 'links-dashed']) {
+      this.map.on('mousemove', layer, (e: any) => {
+        const f = e.features?.[0];
+        if (!f) return;
+        this.map.getCanvas().style.cursor = f.properties.link ? 'pointer' : '';
+        if (!f.properties.title) return;
+        this.hoverPopup ??= new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: 'map-vis-hover', offset: 8 });
+        this.hoverPopup.setLngLat(e.lngLat).setText(f.properties.title).addTo(this.map);
+      });
+      this.map.on('mouseleave', layer, () => {
+        this.map.getCanvas().style.cursor = '';
+        this.hoverPopup?.remove();
+      });
+      this.map.on('click', layer, (e: any) => {
+        const props = e.features?.[0]?.properties;
+        if (props?.link) this.router.navigate(JSON.parse(props.link), props.query ? { queryParams: JSON.parse(props.query) } : {});
+      });
     }
   }
 
@@ -519,14 +649,37 @@ export class MapVisComponent {
         }
       });
     }
+
+    const labels = (this.labels || []).filter(l => l && l.text && Number.isFinite(l.lat) && Number.isFinite(l.lng));
+    if (labels.length) {
+      this.map.addSource('overlay-labels-src', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: labels.map(l => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [l.lng, l.lat] }, properties: { text: l.text } })),
+        },
+      });
+      this.map.addLayer({
+        id: 'overlay-labels', type: 'symbol', source: 'overlay-labels-src',
+        layout: {
+          'text-field': ['get', 'text'], 'text-font': Settings.mapFonts.italic, 'text-size': 13,
+          'text-anchor': 'left', 'text-offset': [0.9, 0], 'text-max-width': 12,
+          'text-allow-overlap': false, 'text-optional': true,
+        },
+        paint: {
+          'text-color': this.dark ? '#ece7dc' : '#1b1a17',
+          'text-halo-color': this.dark ? '#14130f' : '#ffffff', 'text-halo-width': 1.6,
+        },
+      });
+    }
   }
 
   private removeOverlay(): void {
     if (!this.map) return;
-    ['overlay-markers', 'overlay-markers-halo', 'overlay-track'].forEach(id => {
+    ['overlay-labels', 'overlay-markers', 'overlay-markers-halo', 'overlay-track'].forEach(id => {
       if (this.map.getLayer(id)) this.map.removeLayer(id);
     });
-    ['overlay-markers-src', 'overlay-track-src'].forEach(id => {
+    ['overlay-labels-src', 'overlay-markers-src', 'overlay-track-src'].forEach(id => {
       if (this.map.getSource(id)) this.map.removeSource(id);
     });
   }
@@ -703,6 +856,15 @@ export class MapVisComponent {
   fitToData(padding = 48): void {
     const b = this.boundsOfPoints(this.data);
     if (b) this.fitToBounds(b, padding);
+  }
+
+  /** Frame the `fitTo` box, grown to at least ~10 km across. */
+  private applyFit(): void {
+    if (!this.map || !this.fitTo) return;
+    const [w, s, e, n] = this.fitTo;
+    const pad = (lo: number, hi: number, min: number) => hi - lo >= min ? [lo, hi] : [(lo + hi) / 2 - min / 2, (lo + hi) / 2 + min / 2];
+    const [x0, x1] = pad(w, e, 0.12), [y0, y1] = pad(s, n, 0.09);
+    this.map.fitBounds([[x0, y0], [x1, y1]], { padding: 40, maxZoom: 13, duration: 0 });
   }
 
   /** Fit the map to an explicit [west, south, east, north] box. */

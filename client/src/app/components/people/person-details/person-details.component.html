@@ -40,20 +40,47 @@
             }
         </p>
 
+        @if (views.length) {
+            <app-viz-panel #viewPanel class="record-views" [hasKey]="view === 'map' && mapKey.length > 0">
+                <div panel-title class="record-conn-tabs" role="tablist" aria-label="Show this person's">
+                    @for (v of views; track v.key) {
+                        <button type="button" role="tab" [attr.aria-selected]="view === v.key" (click)="chooseView(v.key)">{{ v.label }}</button>
+                    }
+                </div>
+                <div key>
+                    <ul class="legend" aria-label="Map key">
+                        @for (k of mapKey; track k.label) {
+                            <li class="legend-item"><span class="legend-swatch" [class]="k.shape" [style.background]="k.color"></span>{{ k.label }}</li>
+                        }
+                    </ul>
+                </div>
+                @if (view === 'map') {
+                    <div class="record-map">
+                        <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions" [year]="year"
+                            [links]="mapLinks" [context]="mapContext" [labels]="mapLabels" [fitTo]="mapFit"></app-map-vis>
+                    </div>
+                    @if (mapSummary) { <p class="note record-map-summary">{{ mapSummary }}</p> }
+                } @else {
+                    <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
+                    <app-network-graph
+                        [framed]="false"
+                        [compact]="!viewPanel.fullscreen"
+                        [data]="network"
+                        [label]="'People who served alongside ' + heading"
+                        [options]="networkOptions"
+                        [startYear]="networkStartYear"
+                        [endYear]="networkEndYear"
+                        [minYear]="years[0]"
+                        [maxYear]="years[years.length - 1]"
+                        [timeWindowLoading]="networkLoading"
+                        (timeWindowChange)="onNetworkWindow($event)">
+                    </app-network-graph>
+                }
+            </app-viz-panel>
+        }
+
         <div class="record-layout">
             <div class="main">
-                @if (facts.length) {
-                    <section class="record-section" aria-labelledby="facts-heading">
-                        <h2 id="facts-heading">Facts</h2>
-                        <dl class="fact-list">
-                            @for (f of facts; track f.label) {
-                                <dt>{{ f.label }}</dt>
-                                <dd>{{ f.value }}</dd>
-                            }
-                        </dl>
-                    </section>
-                }
-
                 <section class="record-section" aria-labelledby="service-heading">
                     <h2 id="service-heading">Service <small>{{ service.length }} {{ service.length === 1 ? 'institution' : 'institutions' }}</small></h2>
                     <p class="note">Where the almanac listed them{{ year ? ' in ' + year : ': institution, office, years' }}. Resident unless marked.</p>
@@ -76,34 +103,16 @@
             </div>
 
             <aside class="rail">
-                @if (views.length) {
-                    <app-viz-panel #viewPanel class="record-views">
-                        <div panel-title class="record-conn-tabs" role="tablist" aria-label="Show this person's">
-                            @for (v of views; track v.key) {
-                                <button type="button" role="tab" [attr.aria-selected]="view === v.key" (click)="chooseView(v.key)">{{ v.label }}</button>
+                @if (facts.length) {
+                    <section class="record-section" aria-labelledby="facts-heading">
+                        <h2 id="facts-heading">Facts</h2>
+                        <dl class="fact-list">
+                            @for (f of facts; track f.label) {
+                                <dt>{{ f.label }}</dt>
+                                <dd>{{ f.value }}</dd>
                             }
-                        </div>
-                        @if (view === 'map') {
-                            <div class="record-map">
-                                <app-map-vis [data]="mapData" [simple]="true" [options]="mapOptions" [year]="year"></app-map-vis>
-                            </div>
-                        } @else {
-                            <p class="note">People who served at the same institutions, linked by how many places they shared.</p>
-                            <app-network-graph
-                                [framed]="false"
-                                [compact]="!viewPanel.fullscreen"
-                                [data]="network"
-                                [label]="'People who served alongside ' + heading"
-                                [options]="networkOptions"
-                                [startYear]="networkStartYear"
-                                [endYear]="networkEndYear"
-                                [minYear]="years[0]"
-                                [maxYear]="years[years.length - 1]"
-                                [timeWindowLoading]="networkLoading"
-                                (timeWindowChange)="onNetworkWindow($event)">
-                            </app-network-graph>
-                        }
-                    </app-viz-panel>
+                        </dl>
+                    </section>
                 }
             </aside>
         </div>

@@ -508,6 +508,7 @@ body {
    full screen for room to explore. The tabs are the panel's title. */
 .record-views {
     display: block;
+    margin-top: var(--space-5);
 
     .record-conn-tabs {
         margin: 0;
@@ -526,6 +527,17 @@ body {
 
     .is-fullscreen .record-map .map-vis__canvas {
         height: calc(100vh - 120px) !important;
+    }
+
+    .record-map-summary {
+        margin: var(--space-2) 0 0;
+    }
+
+    // phones: a shorter band, so the record's facts stay in reach
+    @media (max-width: 600px) {
+        .record-map .map-vis__canvas {
+            height: 320px !important;
+        }
     }
 }
 
@@ -623,6 +635,22 @@ body {
     flex: none;
     width: 14px;
     height: 10px;
+
+    // map keys: a point, a line, a dashed line
+    &.dot {
+        width: 10px;
+        border-radius: 50%;
+    }
+
+    &.line,
+    &.dashed {
+        width: 18px;
+        height: 2px;
+    }
+
+    &.dashed {
+        mask: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 8px);
+    }
 }
 
 /* d3 charts: text and lines follow the theme. */
@@ -767,6 +795,67 @@ $dark-theme: (
 
     .page-content {
         @apply prose-invert;
+    }
+}
+
+/* Map popups (MapLibre appends them inside the map): set like a printed
+   note, square and ruled, in the site's colours. */
+.maplibregl-popup-content {
+    border-radius: 0;
+    padding: var(--space-1) var(--space-2);
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--rule-strong);
+    box-shadow: none;
+    font: var(--text-sm) / 1.4 var(--font-sans);
+}
+
+// Map controls (zoom, fullscreen, credits) in the site's paper and ink.
+// Scoped under .maplibregl-map: MapLibre's own stylesheet loads after ours.
+.maplibregl-map {
+    .maplibregl-ctrl-group {
+        border-radius: 0;
+        background: var(--paper);
+        box-shadow: none;
+        border: 1px solid var(--rule-strong);
+
+        button + button {
+            border-top-color: var(--rule);
+        }
+    }
+
+    .maplibregl-ctrl-attrib,
+    .maplibregl-ctrl-attrib.maplibregl-compact {
+        background: var(--paper);
+        color: var(--ink-2);
+        border-radius: 0;
+
+        a {
+            color: var(--ink-2);
+        }
+    }
+
+    .maplibregl-ctrl-scale {
+        background: color-mix(in srgb, var(--paper) 80%, transparent);
+        color: var(--ink-2);
+        border-color: var(--ink-3);
+    }
+}
+
+// the controls' icons are dark SVGs: turn them light on the dark page
+.dark-theme .maplibregl-map {
+    .maplibregl-ctrl button .maplibregl-ctrl-icon,
+    .maplibregl-ctrl-attrib-button {
+        filter: invert(1);
+    }
+}
+
+// a hover title must never catch the pointer meant for the dot beneath it
+.map-vis-hover {
+    pointer-events: none;
+
+    .maplibregl-popup-tip {
+        display: none;
     }
 }
 

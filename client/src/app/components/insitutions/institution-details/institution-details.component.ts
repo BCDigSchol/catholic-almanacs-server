@@ -15,6 +15,8 @@ import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearTabsComponent } from '../../common/year-tabs/year-tabs.component';
 import { CiteComponent } from '../../common/cite/cite.component';
 import { institutionLabel, isUnnamed, personLabel, placeLabel, yearRuns } from '../../../utils/record-labels';
+import { MapContextPoint, MapLink } from '../../common/map-vis/map-overlays';
+import { MapKeyItem, RECORD_MAP_INKS } from '../../../utils/record-map';
 
 type RecordView = 'map' | 'network' | 'tree';
 
@@ -61,6 +63,29 @@ interface Fact {
   value: string;
 }
 
+/** One place tied to this institution by a circuit (GET institution/:id/map). */
+interface MapTie {
+  instID: string;
+  name: string;
+  type: string;
+  place: string;
+  lat: number;
+  lng: number;
+  /** 'out': attended from here; 'in': this was attended from there. */
+  dir: 'out' | 'in';
+  via: ('station' | 'priest')[];
+  years: number[];
+  frequency: string;
+  priests: string[];
+}
+
+interface MapAround {
+  places: { year: number; lat: number; lng: number }[];
+  links: MapTie[];
+  neighbours: { instID: string; name: string; type: string; place: string; lat: number; lng: number }[];
+  see: { instID: string; name: string; place: string; lat: number; lng: number } | null;
+}
+
 @Component({
   selector: 'app-institution-details',
   imports: [RouterLink, MapVisComponent, NetworkGraphComponent, TreeGraphComponent,
@@ -94,7 +119,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   readonly peoplePreview = 15;
   showAllPeople = false;
 
-  readonly networkOptions = { height: '340px' };
+  readonly networkOptions = { height: '420px' };
 
   private subs: Subscription[] = [];
 
@@ -153,6 +178,8 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   private loadConnections(year: number | null): void {
     const [start, end] = year === null ? [this.years[0], this.years[this.years.length - 1]] : [year, year];
     this.fetchNetwork(start, end);
+    const around = `institution/${this.id}/map` + (year === null ? '' : `?year=${year}`);
+    this.api.getTypeRequest(around).pipe(catchError(() => of(null))).subscribe(res => this.buildMap(res as MapAround | null));
     const tree = `institution/${this.id}/dendrogram` + (year === null ? '' : `?year=${year}`);
     this.api.getTypeRequest(tree).pipe(catchError(() => of(null))).subscribe(res => { this.dendrogram = res; this.updateViews(); });
   }
@@ -243,7 +270,14 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   facts: Fact[] = [];
   related: Related[] = [];
   mapData: any[] = [];
-  mapOptions = { zoom: 7, center: { lat: 40, lng: -90 }, size: { width: '100%', height: '280px' } };
+  mapOptions = { zoom: 7, center: { lat: 40, lng: -90 }, size: { width: '100%', height: '420px' } };
+  /** Circuits (lines), the places around it (dots), the box to frame, the key. */
+  mapLinks: MapLink[] = [];
+  mapContext: MapContextPoint[] = [];
+  mapFit: [number, number, number, number] | null = null;
+  mapKey: MapKeyItem[] = [];
+  /** A sentence under the map summing up the circuits. */
+  mapSummary = '';
   readonly crumbs = [{ label: 'Institutions', link: '/institutions' }];
 
   get hasTree(): boolean {
@@ -327,7 +361,8 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     const printed = [r.placeName, r.countyOrig, r.cityOrig, r.stateOrig].filter(Boolean).join(', ');
     // No standardised town in the timeline: show the place as the almanac printed it.
     if (!this.place) this.place = printed;
-    const standard = [r.countyReg && `${r.countyReg} County`, r.cityReg, r.stateReg].filter(Boolean).join(', ');
+    const county = r.countyReg && (/\bcounty$/i.test(r.countyReg) ? r.countyReg : `${r.countyReg} County`);
+    const standard = [county, r.cityReg, r.stateReg].filter(Boolean).join(', ');
     const frequencies = (r.attendedFrequencies ?? []).map((f: any) => f.year ? `${f.frequency} (${f.year})` : f.frequency);
     this.facts = [
       { label: 'Type', value: r.instType },
@@ -359,10 +394,82 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     ].filter(g => g.items.length);
 
     const hasPoint = !!(r.latitude && r.longitude);
-    this.mapData = hasPoint ? [{ latitude: r.latitude, longitude: r.longitude, title: this.heading, internalLink: null }] : [];
+    this.mapData = hasPoint
+      ? [{ latitude: r.latitude, longitude: r.longitude, title: this.heading, internalLink: null, options: { color: RECORD_MAP_INKS.self } }]
+      : [];
     this.updateViews();
     if (hasPoint) {
       this.mapOptions = { ...this.mapOptions, center: { lat: r.latitude, lng: r.longitude } };
     }
+  }
+
+  /**
+   * The map around the record: its circuits as arcs (out from here solid,
+   * in from elsewhere dashed), the linked places and the other institutions
+   * of the year as dots, the bishop's see, a key and a one-line summary.
+   */
+  private buildMap(res: MapAround | null): void {
+    const here = res?.places[res.places.length - 1];
+    if (!res || !here) {
+      this.mapLinks = [];
+      this.mapContext = [];
+      this.mapFit = null;
+      this.mapKey = [];
+      this.mapSummary = '';
+      return;
+    }
+    const ink = RECORD_MAP_INKS;
+    const query = this.year === null ? undefined : { year: this.year };
+    const name = (x: { name: string; type: string; place: string }) => {
+      const label = institutionLabel(x.name, x.type);
+      return isUnnamed(x.name) && x.place ? `${label}, ${x.place}` : label;
+    };
+    const describe = (l: MapTie) => [
+      `${name(l)}: ${l.dir === 'out' ? 'attended from here' : 'attended this one'}`,
+      l.frequency,
+      this.year === null ? yearRuns(l.years) : '',
+      l.priests.length ? `by ${l.priests.join(', ')}` : '',
+    ].filter(Boolean).join(' · ');
+    const at: [number, number] = [here.lng, here.lat];
+
+    this.mapLinks = res.links.map(l => ({
+      from: l.dir === 'out' ? at : [l.lng, l.lat],
+      to: l.dir === 'out' ? [l.lng, l.lat] : at,
+      color: l.dir === 'out' ? ink.out : ink.in,
+      dashed: l.dir === 'in',
+      title: describe(l),
+      link: ['/institutions', l.instID],
+      query,
+    }));
+    const isSee = !!res.see && (res.see.instID === this.id || (Math.abs(res.see.lat - here.lat) < 1e-4 && Math.abs(res.see.lng - here.lng) < 1e-4));
+    this.mapContext = [
+      ...res.neighbours.map(n => ({ lat: n.lat, lng: n.lng, title: name(n), link: ['/institutions', n.instID], query, color: ink.other })),
+      ...res.links.map(l => ({ lat: l.lat, lng: l.lng, title: describe(l), link: ['/institutions', l.instID], query,
+        color: l.dir === 'out' ? ink.out : ink.in, radius: 4.5 })),
+      ...(res.see && !isSee ? [{ lat: res.see.lat, lng: res.see.lng, title: `${name({ ...res.see, type: 'cathedral' })}: the bishop’s see`,
+        link: ['/institutions', res.see.instID], query, color: ink.see, radius: 6.5 }] : []),
+    ];
+
+    // frame the institution and its circuits (not the neighbours, nor a far-off see)
+    const pts = [at, ...res.links.map(l => [l.lng, l.lat] as [number, number])];
+    this.mapFit = [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])),
+      Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))];
+
+    const outs = res.links.filter(l => l.dir === 'out').length;
+    const ins = res.links.filter(l => l.dir === 'in').length;
+    const when = this.year === null ? 'Over the years' : `In ${this.year}`;
+    this.mapKey = [
+      { label: 'This institution', color: ink.self, shape: 'dot' as const },
+      ...(outs ? [{ label: 'Attended from here', color: ink.out, shape: 'line' as const }] : []),
+      ...(ins ? [{ label: 'Attended this one', color: ink.in, shape: 'dashed' as const }] : []),
+      ...(res.see && !isSee ? [{ label: 'Bishop’s see', color: ink.see, shape: 'dot' as const }] : []),
+      ...(res.neighbours.length ? [{ label: `Other institutions in ${this.year}`, color: ink.other, shape: 'dot' as const }] : []),
+    ];
+    const count = (k: number, one: string, many: string) => k === 1 ? one : `${k} ${many}`;
+    const parts = [
+      outs ? `${count(outs, 'one place was', 'places were')} attended from here` : '',
+      ins ? `it was attended from ${count(ins, 'one other place', 'other places')}` : '',
+    ].filter(Boolean);
+    this.mapSummary = parts.length ? `${when}, ${parts.join(', and ')}.` : '';
   }
 }

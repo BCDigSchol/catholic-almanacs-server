@@ -18,6 +18,16 @@ export const Settings = {
         light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
         dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
     },
+    // Fonts for text the maps draw themselves (labels on circuits, careers):
+    // ones the base style can serve, i.e. our tile server's Old Standard TT,
+    // else what Carto's glyph server carries.
+    mapFonts: environment.tilesUrl ? {
+        regular: ['Old Standard TT Regular'],
+        italic: ['Old Standard TT Italic'],
+    } : {
+        regular: ['Open Sans Regular'],
+        italic: ['Open Sans Italic'],
+    },
     // deep enough to tell apart churches a few blocks from each other
     mapTilesMaxZoom: 15,
     // The lower 48, where every recorded place is: the maps keep their centre

@@ -1210,6 +1210,117 @@ exports.getTimeline = async (req, res) => {
     res.send({ years });
 };
 
+// What the record page's map draws around an institution, for one year
+// (?year=) or across all its years:
+//   places      where it stood ({year, lat, lng})
+//   links       the places tied to it by circuits, each with coordinates:
+//               dir 'out' = served from here (stations it attended, places its
+//               priests visited), 'in' = it was served from there; via
+//               'station' (the attending table) and/or 'priest' (a priest
+//               listed as visiting), with the years, a frequency when the
+//               almanac printed one, and up to three priests' names
+//   neighbours  other institutions listed within ~50 km that year (year only)
+//   see         the cathedral of its diocese (instID prefix) that year
+const mapCache = new Map();
+exports.getMap = async (req, res) => {
+    const id = req.params.id;
+    const yearParam = parseIntParam(req.query.year, 'year');
+    if (yearParam.error) {
+        return res.status(400).json({ message: yearParam.error });
+    }
+    const year = yearParam.value;
+    const key = `${id}|${year ?? ''}`;
+    if (mapCache.has(key)) return res.send(mapCache.get(key));
+
+    const q = (sql, replacements) => db.sequelize.query(sql, { replacements, type: db.Sequelize.QueryTypes.SELECT });
+    // this institution's records: its own id, or a branch id that includes it
+    const self = (alias) => `(${alias}.instID = :id OR FIND_IN_SET(:id, REPLACE(${alias}.instID, '&', ',')) > 0)`
+        + (year ? ` AND ${alias}.year = :year` : '');
+    const r = { id, year };
+    const place = 'instID, instName, instType, latitude, longitude, year, cityReg, placeName';
+
+    const [places, stations, servers, visitsOut, visitsIn] = await Promise.all([
+        q(`SELECT year, latitude AS lat, longitude AS lng FROM almanacRecords me
+            WHERE ${self('me')} AND latitude IS NOT NULL ORDER BY year`, r),
+        // stations it attended
+        q(`SELECT st.instID, st.instName, st.instType, st.latitude, st.longitude, st.year, st.cityReg, st.placeName, a.attendingFrequency AS frequency
+             FROM attendingInstitutions a
+             JOIN almanacRecords me ON me.ID = a.attendingInstRecordID
+             JOIN almanacRecords st ON st.ID = a.attendedInstRecordID
+            WHERE ${self('me')}`, r),
+        // the institution that attended it
+        q(`SELECT big.instID, big.instName, big.instType, big.latitude, big.longitude, big.year, big.cityReg, big.placeName, a.attendingFrequency AS frequency
+             FROM attendingInstitutions a
+             JOIN almanacRecords me ON me.ID = a.attendedInstRecordID
+             JOIN almanacRecords big ON big.ID = a.attendingInstRecordID
+            WHERE ${self('me')}`, r),
+        // places its priests were listed as visiting
+        q(`SELECT ar.instID, ar.instName, ar.instType, ar.latitude, ar.longitude, ar.year, ar.cityReg, ar.placeName, pia.name AS priest
+             FROM personInAlmanacRecords pia
+             JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
+            WHERE pia.isAttending = 1 AND pia.attendingInstID = :id` + (year ? ' AND ar.year = :year' : ''), r),
+        // priests listed here as visiting from elsewhere
+        q(`SELECT home.instID, home.instName, home.instType, home.latitude, home.longitude, home.year, home.cityReg, home.placeName, pia.name AS priest
+             FROM personInAlmanacRecords pia
+             JOIN almanacRecords me ON me.ID = pia.almanacRecordID
+             JOIN almanacRecords home ON home.instID = pia.attendingInstID AND home.year = me.year
+            WHERE pia.isAttending = 1 AND ${self('me')}`, r),
+    ]);
+
+    const links = new Map();
+    const add = (rows, dir, via) => {
+        for (const x of rows) {
+            if (!x.latitude || !x.longitude || x.instID === id) continue;
+            const k = `${dir}|${x.instID}`;
+            let l = links.get(k);
+            if (!l) {
+                l = { instID: x.instID, name: '', type: '', place: '', lat: 0, lng: 0, dir, via: [], years: [], frequency: '', priests: [] };
+                links.set(k, l);
+            }
+            if (!l.years.length || x.year >= Math.max(...l.years)) {  // latest year's name and place win
+                Object.assign(l, { name: x.instName || '', type: x.instType || '', place: x.cityReg || x.placeName || '', lat: x.latitude, lng: x.longitude });
+            }
+            if (!l.years.includes(x.year)) l.years.push(x.year);
+            if (!l.via.includes(via)) l.via.push(via);
+            if (x.frequency && !l.frequency) l.frequency = x.frequency;
+            if (x.priest && l.priests.length < 3 && !l.priests.includes(x.priest)) l.priests.push(x.priest);
+        }
+    };
+    add(stations, 'out', 'station');
+    add(visitsOut, 'out', 'priest');
+    add(servers, 'in', 'station');
+    add(visitsIn, 'in', 'priest');
+    for (const l of links.values()) l.years.sort((a, b) => a - b);
+
+    let neighbours = [];
+    const here = places[places.length - 1];
+    if (year && here) {
+        const linked = new Set([...links.values()].map(l => l.instID));
+        const rows = await q(`SELECT ${place} FROM almanacRecords
+            WHERE year = :year AND latitude BETWEEN :s AND :n AND longitude BETWEEN :w AND :e
+              AND NOT (instID = :id OR FIND_IN_SET(:id, REPLACE(instID, '&', ',')) > 0)
+            LIMIT 600`, { id, year, s: here.lat - 0.45, n: here.lat + 0.45, w: here.lng - 0.6, e: here.lng + 0.6 });
+        const seen = new Set();
+        neighbours = rows.filter(x => !linked.has(x.instID) && !seen.has(x.instID) && seen.add(x.instID))
+            .map(x => ({ instID: x.instID, name: x.instName || '', type: x.instType || '', place: x.cityReg || x.placeName || '', lat: x.latitude, lng: x.longitude }));
+    }
+
+    const [see] = await q(`SELECT ${place} FROM almanacRecords
+        WHERE instType = 'cathedral' AND latitude IS NOT NULL
+          AND SUBSTRING_INDEX(instID, '.', 2) = SUBSTRING_INDEX(:id, '.', 2)` + (year ? ' AND year <= :year' : '')
+        + ' ORDER BY year DESC LIMIT 1', r);
+
+    const out = {
+        places,
+        links: [...links.values()],
+        neighbours,
+        see: see ? { instID: see.instID, name: see.instName || '', place: see.cityReg || see.placeName || '', lat: see.latitude, lng: see.longitude } : null,
+    };
+    if (mapCache.size > 2000) mapCache.clear();
+    mapCache.set(key, out);
+    res.send(out);
+};
+
 exports.getDendrogramData = async (req, res) => {
     const targetID = req.params.id;
     const yearParam = parseIntParam(req.query.year, 'year');
