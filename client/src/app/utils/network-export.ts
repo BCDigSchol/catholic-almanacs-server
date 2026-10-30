@@ -39,6 +39,11 @@ function toCsv(rows: Record<string, any>[], note: string): string {
   return `# ${note.replace(/\n/g, ' ')}\n${lines.join('\n')}\n`;
 }
 
+/** Any table as one CSV file, with `note` (method, filters, citation) as a leading comment. */
+export function downloadTable(filename: string, rows: Record<string, any>[], note: string): void {
+  save(filename, toCsv(rows, note), 'text/csv;charset=utf-8');
+}
+
 /** Two CSV files, `<base>-nodes.csv` and `<base>-edges.csv`. */
 export function downloadCsv(base: string, graph: ExportGraph): void {
   save(`${base}-nodes.csv`, toCsv(graph.nodes, graph.description), 'text/csv;charset=utf-8');

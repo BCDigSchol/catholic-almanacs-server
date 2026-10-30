@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as d3 from 'd3';
 
@@ -9,10 +9,13 @@ import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { PALETTE, OTHER_COLOR } from '../../common/map-vis/map-grouping';
 import { spaceName } from '../../../pipes/space-name.pipe';
 import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { YearPlayerComponent } from '../../common/year-player/year-player.component';
 import { UrlState } from '../../../utils/url-state';
+import { citation, downloadTable } from '../../../utils/network-export';
+import { institutionLabel } from '../../../utils/record-labels';
 import { yearScale, drawYearAxis } from '../../../utils/year-scale';
 
 interface DioceseCat { key: string; total: number; name?: string; }
@@ -26,11 +29,17 @@ const MAP_VIEWS = [
   { value: 'cluster', label: 'Clusters' },
 ];
 
-const DEFAULTS = { diocese: '', year: 0, view: 'point' };
+interface CheckPair { listed: string; listedName: string; territory: string; territoryName: string; count: number; }
+interface CheckRecord {
+  rec: string; inst: string; name: string; type: string; label: string; place: string; year: number;
+  lat: number; lng: number; listed: string; listedName: string; territory: string; territoryName: string;
+}
+
+const DEFAULTS = { diocese: '', year: 0, view: 'point', bounds: 'show' };
 
 @Component({
   selector: 'app-diocese-tracker-dashboard',
-  imports: [DecimalPipe, MapVisComponent, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearPlayerComponent],
+  imports: [SegmentedComponent, RouterLink, DecimalPipe, MapVisComponent, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearPlayerComponent],
   templateUrl: './diocese-tracker.component.html',
   styleUrl: './diocese-tracker.component.scss'
 })
@@ -59,6 +68,12 @@ export class DioceseTrackerDashboardComponent implements OnInit, AfterViewInit, 
   selectedSpan = '';
   growthTitle = 'Dioceses represented';
   growthNote = '';
+
+  /** Records against the territories drawn for their year (GET stats/diocese-check). */
+  check: { available: boolean; state: VizState; placed: number; agree: number; pairs: CheckPair[]; records: CheckRecord[]; all: boolean } =
+    { available: true, state: 'loading', placed: 0, agree: 0, pairs: [], records: [], all: false };
+  private checkKey = '';
+  private checkSub?: Subscription;
 
   mapData: any[] = [];
   mapOptions = {
@@ -106,6 +121,7 @@ export class DioceseTrackerDashboardComponent implements OnInit, AfterViewInit, 
   ngOnDestroy(): void {
     this.subs.forEach(s => s.unsubscribe());
     this.fetchSub?.unsubscribe();
+    this.checkSub?.unsubscribe();
     this.resizeObserver?.disconnect();
   }
 
@@ -115,7 +131,44 @@ export class DioceseTrackerDashboardComponent implements OnInit, AfterViewInit, 
   toggleDiocese(diocese: string): void { this.url.set({ diocese: diocese === this.state.diocese ? '' : diocese }); }
   setYear(year: number): void { this.url.set({ year }); }
   setView(view: string): void { this.url.set({ view }); }
+  setBounds(bounds: string): void { this.url.set({ bounds }); }
+  readonly boundsOptions = [{ value: 'show', label: 'Show' }, { value: 'hide', label: 'Hide' }];
   clearAll = (): void => this.url.set({ diocese: '' });
+
+  /** Records listed under one diocese but inside another's territory, for the year and diocese shown. */
+  private fetchCheck(year: number | null, sel: string): void {
+    const key = `${year}|${sel}`;
+    if (!year || key === this.checkKey || !this.check.available) return;
+    this.checkKey = key;
+    this.check = { ...this.check, state: 'loading', all: false };
+    this.checkSub?.unsubscribe();
+    this.checkSub = this.api.getTypeRequest(`stats/diocese-check?year=${year}${sel ? '&diocese=' + encodeURIComponent(sel) : ''}`).subscribe({
+      next: (res: any) => {
+        const y = (res.years ?? []).find((v: any) => v.year === year);
+        const records: CheckRecord[] = (res.records ?? []).map((r: any) => ({ ...r, label: institutionLabel(r.name, r.type) }));
+        this.check = {
+          available: true, state: records.length ? 'ready' : 'empty', all: false,
+          placed: y?.placed ?? 0, agree: y?.agree ?? 0,
+          pairs: (res.pairs ?? []).filter((p: CheckPair) => !sel || p.listed === sel || p.territory === sel).slice(0, 10),
+          records,
+        };
+      },
+      // 404: the territories aren't built on this server; leave the panel out
+      error: (e: any) => this.check = { ...this.check, available: e?.status !== 404, state: 'error' },
+    });
+  }
+
+  checkKeyReset(): void { this.checkKey = ''; this.check = { ...this.check, available: true }; this.fetchCheck(this.year, this.state.diocese); }
+
+  showAllChecks(): void { this.check = { ...this.check, all: true }; }
+
+  downloadChecks(): void {
+    const sel = this.state.diocese;
+    downloadTable(`diocese-check-${this.year}${sel ? '-' + sel : ''}.csv`,
+      this.check.records.map(r => ({ record: r.rec, institution: r.inst, name: r.label, place: r.place, year: r.year,
+        latitude: r.lat, longitude: r.lng, listed_under: r.listed, listed_name: r.listedName, in_territory_of: r.territory, territory_name: r.territoryName })),
+      `Almanac records listed under one diocese but placed inside another diocese's territory as drawn for ${this.year}${sel ? ` (involving ${this.nameFor(sel)})` : ''}. ${citation()}`);
+  }
 
   nameFor(diocese: string): string {
     return this.dioceseName[diocese] || spaceName(diocese);
@@ -189,6 +242,7 @@ export class DioceseTrackerDashboardComponent implements OnInit, AfterViewInit, 
     this.takeaway = this.computeTakeaway(year, sel, present);
     this.renderGrowth();
     this.focusMap(sel);
+    this.fetchCheck(year, sel);
   }
 
   /** Zoom to a newly selected see (all its years, so playing doesn't jump), or back out to the country. */

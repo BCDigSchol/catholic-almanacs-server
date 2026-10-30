@@ -62,6 +62,11 @@ export class MapVisComponent {
   /** The almanac year shown: the base map then draws that year's states and
    *  territories in place of today's. null = today's (e.g. all years). */
   @Input() year: number | null = null;
+  /** Draw that year's diocese territories (needs a year; the self-hosted
+   *  base map's dioceses source, a work in progress). */
+  @Input() dioceses = false;
+  /** A diocese id (e.g. 'bal.md') whose territory is shaded, when dioceses are drawn. */
+  @Input() dioceseFocus: string | null = null;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
   @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
@@ -216,7 +221,7 @@ export class MapVisComponent {
     if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter && !this.fitTo) {
       this.updateMapCenter();
     }
-    if (changes['year']) this.applyYear();
+    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus']) this.applyYear();
     // Honour a user-selected mode over options.mode so it survives data updates.
     this.currentMode = this.userMode ?? (this.options.mode || 'normal');
     this.renderMapFeatures();
@@ -249,7 +254,9 @@ export class MapVisComponent {
    * year, today's. Each layer's `metadata['almanac:dated']` in the style
    * (tiles/make-styles.py) says what it does on a dated map: 'show' (a dated
    * layer, filtered to the day), 'hide' (today's lines and names), or an
-   * opacity to fade to. Styles without it (the Carto fallback) are untouched.
+   * opacity to fade to, or 'dioceses' (a dated layer drawn only when the
+   * host sets [dioceses]; diocese-focus only for [dioceseFocus]). Styles
+   * without it (the Carto fallback) are untouched.
    */
   private applyYear(): void {
     const layers: any[] = this.map?.getStyle?.()?.layers ?? [];
@@ -265,6 +272,14 @@ export class MapVisComponent {
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...f.slice(3)]);
         }
         this.map.setLayoutProperty(layer.id, 'visibility', dated ? 'visible' : 'none');
+      } else if (rule === 'dioceses') {
+        const f = layer.filter;
+        const show = dated && this.dioceses && (layer.id !== 'diocese-focus' || !!this.dioceseFocus);
+        if (show && Array.isArray(f) && f[0] === 'all') {
+          const rest = layer.id === 'diocese-focus' ? [['==', ['get', 'id'], this.dioceseFocus]] : f.slice(3);
+          this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...rest]);
+        }
+        this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
       } else if (rule === 'hide') {
         this.map.setLayoutProperty(layer.id, 'visibility', dated ? 'none' : 'visible');
       } else if (typeof rule === 'number') {

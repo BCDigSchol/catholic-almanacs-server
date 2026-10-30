@@ -955,3 +955,55 @@ exports.getPath = async (req, res) => {
     if (!result) networkCache.set(key, result = { ...(await findPath(from, to)), maxPeople: MAX_PEOPLE });
     res.json(result);
 };
+
+/**
+ * GET /api/stats/diocese-check?year=&diocese= — records against the diocese
+ * territories drawn for their year (utils/diocese-check.js):
+ *   years    [{year, placed, agree}]: records inside some territory, and of
+ *            those, inside the one of the diocese they were listed under
+ *   pairs    [{listed, listedName, territory, territoryName, count}] for the
+ *            year: listed under one diocese, inside another's territory
+ *   records  those records for the year (only ones touching `diocese` if given)
+ * 404 where the territories haven't been built.
+ */
+exports.getDioceseCheck = async (req, res) => {
+    const { loadCheck, dioceseName } = require('../utils/diocese-check');
+    const year = parseInt(req.query.year, 10) || 0;
+    const diocese = String(req.query.diocese || '');
+    const key = cacheKey('stats/diocese-check', { year, diocese });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    const check = await loadCheck();
+    if (!check) return res.status(404).json({ message: 'Diocese territories have not been built (tiles-build dioceses).' });
+
+    const byYear = new Map();
+    for (const c of check) {
+        if (!c.territory) continue;
+        const y = byYear.get(c.year) || { year: c.year, placed: 0, agree: 0 };
+        y.placed++;
+        if (c.territory === c.listed) y.agree++;
+        byYear.set(c.year, y);
+    }
+    const years = [...byYear.values()].sort((a, b) => a.year - b.year);
+    const shown = year || (years.length ? years[years.length - 1].year : 0);
+
+    const off = check.filter(c => c.year === shown && c.territory && c.territory !== c.listed);
+    const pairMap = new Map();
+    for (const c of off) {
+        const k = c.listed + '>' + c.territory;
+        const p = pairMap.get(k) || { listed: c.listed, listedName: dioceseName(c.listed, shown),
+            territory: c.territory, territoryName: dioceseName(c.territory, shown), count: 0 };
+        p.count++;
+        pairMap.set(k, p);
+    }
+    const pairs = [...pairMap.values()].sort((a, b) => b.count - a.count);
+    const records = off
+        .filter(c => !diocese || c.listed === diocese || c.territory === diocese)
+        .map(c => ({ ...c, listedName: dioceseName(c.listed, shown), territoryName: dioceseName(c.territory, shown) }))
+        .sort((a, b) => a.listedName.localeCompare(b.listedName) || a.name.localeCompare(b.name));
+
+    const result = { year: shown, years, pairs, records };
+    networkCache.set(key, result);
+    res.json(result);
+};

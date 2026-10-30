@@ -24,6 +24,7 @@ PALETTES = {
         "road_minor": "#dcd7cc", "road_secondary": "#c4bcae", "road_major": "#9a9384",
         "rail": "#8a8478", "green": "#f3f1ea", "cemetery": "#ebe9e0",
         "foreign": "#ebe8e0", "old_road": "#5f5a50",
+        "diocese": "#7a4a6a",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
@@ -33,6 +34,7 @@ PALETTES = {
         "road_minor": "#2e2c26", "road_secondary": "#403d35", "road_major": "#625d52",
         "rail": "#7a7466", "green": "#1a1915", "cemetery": "#1e1d19",
         "foreign": "#22211c", "old_road": "#b5ae9f",
+        "diocese": "#c49ab5",
     },
 }
 
@@ -47,6 +49,9 @@ ATTRIBUTION = (
 # dated layer, hidden otherwise), "hide" (today's lines and names), or an
 # opacity to fade to (today's streets, under the historical ones).
 SHOW, HIDE = {"almanac:dated": "show"}, {"almanac:dated": "hide"}
+# Diocese territories: dated like SHOW, but drawn only on maps that ask for
+# them (map-vis [dioceses]); the fill only for the diocese a map picks out.
+DIOCESES = {"almanac:dated": "dioceses"}
 
 
 def fade(opacity):
@@ -71,6 +76,8 @@ TRANSPORT_ATTRIBUTION = (
     'Railroads, canals and steamboat rivers by year: <a href="https://my.vanderbilt.edu/jeremyatack/data-downloads/"'
     ' target="_blank" rel="noopener">historical transportation GIS, Jeremy Atack, Vanderbilt University</a>'
 )
+
+DIOCESE_ATTRIBUTION = 'Diocese territories: Catholic Almanacs project, Boston College (in progress)'
 
 OHM_ATTRIBUTION = (
     'Streets by year: <a href="https://www.openhistoricalmap.org/copyright" target="_blank" rel="noopener">'
@@ -180,6 +187,16 @@ def layers(c):
          "layout": {"visibility": "none", "line-join": "round"},
          "filter": NO_DATE,
          "paint": {"line-color": c["border"], "line-width": zoom(3, 0.5, 8, 1.1)}},
+        # ── diocese territories of one date (dioceses.pmtiles), when a map asks ──
+        {"id": "diocese-focus", "metadata": DIOCESES, "type": "fill", "source": "dioceses", "source-layer": "dioceses",
+         "layout": {"visibility": "none"},
+         "filter": [*NO_DATE, ["==", ["get", "id"], ""]],
+         "paint": {"fill-color": c["diocese"], "fill-opacity": 0.1}},
+        {"id": "diocese-lines", "metadata": DIOCESES, "type": "line", "source": "dioceses", "source-layer": "dioceses",
+         "layout": {"visibility": "none", "line-join": "round"},
+         "filter": NO_DATE,
+         "paint": {"line-color": c["diocese"], "line-opacity": 0.9,
+                   "line-width": zoom(3, 1.2, 8, 2.6), "line-dasharray": [3, 1.2]}},
         {"id": "boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "boundaries",
          "layout": {"line-join": "round"},
          "paint": {"line-color": c["border"], "line-width": zoom(2, 0.6, 8, 1.4),
@@ -234,6 +251,14 @@ def layers(c):
                     "symbol-sort-key": ["-", 0, ["get", "area"]]},
          "filter": NO_DATE,
          "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.5}},
+        # diocese names in italic, in the diocese ink, the larger first
+        {"id": "diocese-labels", "metadata": DIOCESES, "type": "symbol", "source": "dioceses", "source-layer": "diocese_labels",
+         "layout": {"visibility": "none",
+                    "text-field": ["get", "name"], "text-font": ITALIC,
+                    "text-size": zoom(3, 10, 8, 14), "text-max-width": 7,
+                    "symbol-sort-key": ["-", 0, ["get", "area"]]},
+         "filter": NO_DATE,
+         "paint": {"text-color": c["diocese"], "text-halo-color": halo, "text-halo-width": 1.5}},
         # state names: italic capitals, spaced, as the almanacs set them
         {"id": "state-labels", "metadata": HIDE, "type": "symbol", "source": "base", "source-layer": "state_labels",
          "maxzoom": 8,
@@ -269,6 +294,8 @@ def style(name, c):
                         "attribution": HISTORY_ATTRIBUTION},
             # built by `tiles-build transport`
             "transport": {"type": "vector", "url": "${TILES_PUBLIC_URL}/transport", "attribution": TRANSPORT_ATTRIBUTION},
+            # built by `tiles-build dioceses`
+            "dioceses": {"type": "vector", "url": "${TILES_PUBLIC_URL}/dioceses", "attribution": DIOCESE_ATTRIBUTION},
             # built by `tiles-build ohm`
             "ohm": {"type": "vector", "url": "${TILES_PUBLIC_URL}/ohm", "attribution": OHM_ATTRIBUTION},
         },

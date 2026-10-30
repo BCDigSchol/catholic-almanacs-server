@@ -5,6 +5,7 @@
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Territories" [showLabel]="true" [options]="boundsOptions" [value]="state.bounds" (valueChange)="setBounds($event)"></app-segmented>
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>
@@ -73,10 +74,59 @@
             [simple]="true"
             [autoCenter]="false"
             [year]="year"
+            [dioceses]="state.bounds === 'show'"
+            [dioceseFocus]="state.diocese || null"
             label="Diocese by Diocese"
             [options]="mapOptions">
         </app-map-vis>
     </app-viz-panel>
+
+    @if (check.available && year) {
+        <app-viz-panel
+            [heading]="'Outside their diocese’s territory, ' + year"
+            [note]="state.diocese ? 'Records listed under ' + nameFor(state.diocese) + ' or lying in its territory' : 'Records listed under one diocese, lying in another’s territory as drawn'"
+            [state]="check.state"
+            [emptyText]="'Every record ' + (state.diocese ? 'involving ' + nameFor(state.diocese) + ' ' : '') + 'lies in its diocese’s territory in ' + year + '.'"
+            (retry)="checkKeyReset()">
+            <div panel-actions class="check-actions">
+                <button type="button" class="btn" (click)="downloadChecks()">CSV</button>
+            </div>
+            @if (check.placed) {
+                <p class="check-summary">
+                    {{ check.agree | number }} of {{ check.placed | number }} records placed in a drawn territory
+                    ({{ (100 * check.agree / check.placed) | number: '1.0-1' }}%) lie in the one of the diocese they were listed under.
+                </p>
+            }
+            <div class="check-grid">
+                @if (check.pairs.length) {
+                    <table class="data-table check-pairs">
+                        <caption class="visually-hidden">Listed under one diocese, in another's territory</caption>
+                        <thead><tr><th>Listed under</th><th>Lies in</th><th class="num">Records</th></tr></thead>
+                        <tbody>
+                            @for (p of check.pairs; track p.listed + p.territory) {
+                                <tr>
+                                    <td data-label="Listed under">{{ p.listedName }}</td>
+                                    <td data-label="Lies in">{{ p.territoryName }}</td>
+                                    <td data-label="Records" class="num">{{ p.count | number }}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                <ul class="entries check-records">
+                    @for (r of check.all ? check.records : check.records.slice(0, 40); track r.rec) {
+                        <li>
+                            <a class="record-link inst" [routerLink]="['/institutions', r.inst]" [queryParams]="{ year: r.year }">{{ r.label }}</a>{{ ' ' }}
+                            <span class="meta">{{ r.place ? r.place + ' · ' : '' }}listed under {{ r.listedName }}, lies in {{ r.territoryName }}</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+            @if (!check.all && check.records.length > 40) {
+                <button type="button" class="btn" (click)="showAllChecks()">Show all {{ check.records.length | number }}</button>
+            }
+        </app-viz-panel>
+    }
 
     <app-viz-panel
         [heading]="growthTitle"
@@ -89,6 +139,8 @@
     <div notes>
         <p>Each point is a place the almanac recorded that year, snapped to a ~0.1° grid and sized by how many institutions it had. Dioceses are matched by their canonical id (the prefix of each institution's id), so a see recorded under different names over the years stays one diocese, shown under its latest name.</p>
         <p>Colours are assigned largest diocese first, so the biggest sees get the most distinct colours; with more dioceses than colours, some smaller sees share one. Counts in the key are for the selected year; dimmed dioceses have nothing recorded that year.</p>
+        <p>The dashed lines are the dioceses' territories as they stood on 1 January of the year shown, drawn at Boston College from the almanacs and other sources; where a diocese is picked, its territory is shaded. They are a work in progress: fuller in the east, drawn for some years and carried forward until a diocese's next change, so a few lines may lag a change or be missing in the west.</p>
+        <p>"Outside their diocese’s territory" places every record with a location in the territory drawn for its year and compares it with the diocese the almanac listed it under. A disagreement can be a misplaced record, a parish attended across a diocesan line, or a territory still to be corrected; the CSV lists them for checking.</p>
         <p>Years with no almanac data (the 1862–63 Civil War gap, and years not yet transcribed) are skipped by the player and drawn as a break on the time axis.</p>
     </div>
 </app-dashboard-shell>

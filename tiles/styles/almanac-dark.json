@@ -24,6 +24,11 @@
       "url": "${TILES_PUBLIC_URL}/transport",
       "attribution": "Railroads, canals and steamboat rivers by year: <a href=\"https://my.vanderbilt.edu/jeremyatack/data-downloads/\" target=\"_blank\" rel=\"noopener\">historical transportation GIS, Jeremy Atack, Vanderbilt University</a>"
     },
+    "dioceses": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/dioceses",
+      "attribution": "Diocese territories: Catholic Almanacs project, Boston College (in progress)"
+    },
     "ohm": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/ohm",
@@ -869,6 +874,102 @@
       }
     },
     {
+      "id": "diocese-focus",
+      "metadata": {
+        "almanac:dated": "dioceses"
+      },
+      "type": "fill",
+      "source": "dioceses",
+      "source-layer": "dioceses",
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "id"
+          ],
+          ""
+        ]
+      ],
+      "paint": {
+        "fill-color": "#c49ab5",
+        "fill-opacity": 0.1
+      }
+    },
+    {
+      "id": "diocese-lines",
+      "metadata": {
+        "almanac:dated": "dioceses"
+      },
+      "type": "line",
+      "source": "dioceses",
+      "source-layer": "dioceses",
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "line-color": "#c49ab5",
+        "line-opacity": 0.9,
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          1.2,
+          8,
+          2.6
+        ],
+        "line-dasharray": [
+          3,
+          1.2
+        ]
+      }
+    },
+    {
       "id": "boundaries",
       "metadata": {
         "almanac:dated": "hide"
@@ -1268,6 +1369,71 @@
       ],
       "paint": {
         "text-color": "#a39c8d",
+        "text-halo-color": "#14130f",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "diocese-labels",
+      "metadata": {
+        "almanac:dated": "dioceses"
+      },
+      "type": "symbol",
+      "source": "dioceses",
+      "source-layer": "diocese_labels",
+      "layout": {
+        "visibility": "none",
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Old Standard TT Italic"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          10,
+          8,
+          14
+        ],
+        "text-max-width": 7,
+        "symbol-sort-key": [
+          "-",
+          0,
+          [
+            "get",
+            "area"
+          ]
+        ]
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "text-color": "#c49ab5",
         "text-halo-color": "#14130f",
         "text-halo-width": 1.5
       }

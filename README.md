@@ -120,7 +120,10 @@ Every institution and person has a record page (`/institutions/:id`,
 - **The Spread of the Church:** an animated map of institutions spreading west
   year by year, with the Church's centre of gravity drifting with them.
 - **Diocese by Diocese:** a map coloured by diocese that you can play through
-  the years or narrow to a single see.
+  the years or narrow to a single see. The dioceses' territories for that year
+  are drawn over it, with the chosen see's shaded. A panel lists the records
+  listed under one diocese but lying in another's territory, with a CSV for
+  checking them.
 - **Mission Circuits:** churches and stations with no priest of their own,
   each drawn as an arc from the church that served it. It also shows the share
   of the Church served from afar each year and the largest circuits.
@@ -213,6 +216,8 @@ year**:
 - **Railroads, canals and steamboat rivers** in operation that year. Railroads
   are drawn with the engraved cross-tie symbol of period maps, canals in blue,
   and steamboat rivers as dotted blue lines.
+- **Diocese territories** of that year, on maps that ask for them (Diocese by
+  Diocese). These are a work in progress, fuller in the east.
 - **Streets** that existed that year, where OpenHistoricalMap has mapped them.
   Today's streets fade into the background.
 
@@ -310,6 +315,8 @@ summarises them.
 - **Historical boundaries:** *U.S. Historical States and Territories*, Atlas
   of Historical County Boundaries, Dr. William M. Scholl Center for American
   History and Culture, The Newberry Library (CC BY-NC-SA 2.5).
+- **Diocese territories:** drawn at Boston College for this project (in
+  progress).
 - **Historical streets:**
   [OpenHistoricalMap](https://www.openhistoricalmap.org/copyright) (CC0).
 - **Railroads, canals and steamboat rivers:** Jeremy Atack's historical

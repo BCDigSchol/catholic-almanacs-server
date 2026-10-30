@@ -1,6 +1,6 @@
 #!/bin/sh
 # Fills the public URL into the map styles, waits for the tiles, then starts
-# Martin on everything in /data.
+# Martin on the .pmtiles files in /data.
 #
 # TILES_PUBLIC_URL  where browsers reach this server (no trailing slash), e.g.
 #                   http://localhost:8092 — the styles' tile and glyph URLs are
@@ -25,7 +25,9 @@ while ! ls /data/*.pmtiles >/dev/null 2>&1; do
   sleep 30
 done
 
-set -- --font /fonts --style /styles --cache-size "${CACHE_SIZE_MB:-128}" /data "$@"
+# only the tile files: /data also holds the API's JSON (transport distances,
+# diocese territories), which Martin would try to read as GeoJSON
+set -- --font /fonts --style /styles --cache-size "${CACHE_SIZE_MB:-128}" /data/*.pmtiles "$@"
 if [ -n "${ROUTE_PREFIX:-}" ]; then
   set -- --route-prefix "$ROUTE_PREFIX" "$@"
 fi

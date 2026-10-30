@@ -11,6 +11,7 @@ module.exports = app => {
     router.get('/railroads', wrap(controller.getRailroads));
     router.get('/clergy-flows', wrap(controller.getClergyFlows));
     router.get('/path', wrap(controller.getPath));
+    router.get('/diocese-check', wrap(controller.getDioceseCheck));
     router.get('/orders', wrap(controller.getOrders));
     app.use('/api/stats', router);
 }

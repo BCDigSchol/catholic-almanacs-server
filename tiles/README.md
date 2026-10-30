@@ -3,12 +3,15 @@
 Self-hosted base map for the site's maps, in place of OpenStreetMap / Carto.
 Two containers share one volume of tiles:
 
-- **`tiles-build`** is a one-off job. It writes five files into the
+- **`tiles-build`** is a one-off job. It writes six files into the
   `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10),
   `history.pmtiles` (US states and territories by date, zoom 0–10),
   `transport.pmtiles` (railroads, canals and steamboat rivers by year, zoom 3–12),
+  `dioceses.pmtiles` (diocese territories by year, zoom 0–10),
   `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15)
   and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
+  Two JSON files for the API go beside them: `transport-distances.json` and
+  `diocese-territories.json`.
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
@@ -19,11 +22,12 @@ tiles, and new layers are just more files in the same volume.
 ## Running
 
 ```sh
-docker compose run --rm tiles-build          # build them all (base, history, ohm, transport, detail)
+docker compose run --rm tiles-build          # build them all (base, history, ohm, transport, dioceses, detail)
 docker compose run --rm tiles-build base     # base map only: a few minutes
 docker compose run --rm tiles-build history  # boundaries by year only: a minute
 docker compose run --rm tiles-build ohm      # streets by year only: a few minutes (fetches the newest planet)
 docker compose run --rm tiles-build transport  # railroads, canals, steamboat rivers by year: a few minutes
+docker compose run --rm tiles-build dioceses   # diocese territories by year: a minute (places records if the DB is up)
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
@@ -36,7 +40,7 @@ Until the first build has run, the server waits and logs a reminder.
 | URL | What |
 |---|---|
 | `/style/almanac-light`, `/style/almanac-dark` | the map styles the client loads (one per site theme) |
-| `/base/{z}/{x}/{y}`, `/history/…`, `/transport/…`, `/ohm/…`, `/detail/…` | vector tiles; each name alone is its TileJSON |
+| `/base/{z}/{x}/{y}`, `/history/…`, `/transport/…`, `/dioceses/…`, `/ohm/…`, `/detail/…` | vector tiles; each name alone is its TileJSON |
 | `/font/Old Standard TT Regular/0-255` | label glyphs (`Regular`, `Italic`, `Bold`) |
 | `/catalog`, `/health` | what the server has; liveness |
 
@@ -244,6 +248,47 @@ after a reseed.
   suggested citation, which the maps' credit line and this README give. Atack
   asks to be told of corrections.
 
+## Diocese territories by year
+
+A map that asks for them (map-vis `[dioceses]`) draws the dioceses as they
+stood on 1 January of its year: dashed lines and italic names in the diocese
+ink, and a pale fill for a diocese it picks out (`[dioceseFocus]`). They are
+hidden on every other map.
+
+| Layer | Contents |
+|---|---|
+| `dioceses` | a diocese's territory for a stretch of years: `id` (the app's diocese id, e.g. `bal.md`), `name` (as the timeline gives it that year), `from`, `to` (`yyyymmdd`) |
+| `diocese_labels` | one point inside each, with the same properties and `area` |
+
+How they are made (`build-dioceses.sh`, `dioceses-features.py`):
+
+- **Source:** `dioceses/DioceseEachYear.zip`, territories drawn at Boston
+  College for the Catholic Almanacs project, one shape per diocese per year it
+  changed. A work in progress: fuller in the east, and drawn for some years.
+- **Ids:** `dioceses/names.csv` ties each shape (by its `GlobalID`) to a
+  diocese id from the app's timeline (`server/data/dioceses-by-year.csv`), with
+  the year it takes effect and how it was matched: the timeline's name, a close
+  spelling, by hand (with the reason: review these), unmatched, or left out for
+  a placeholder year (1800, 1900, 2000 …). Edit it by hand; after a new export,
+  rerun `dioceses/match-names.py <shapes.geojson> server/data/dioceses-by-year.csv tiles/dioceses`
+  and compare. It also writes `dioceses/labels.csv`, every diocese's name in
+  every year, with the timeline's compact `VA…` vicariates spelt out.
+- **Dates:** a shape holds from its year until the diocese's next shape; the
+  last one while the diocese is in the timeline.
+- **Overlaps:** the shapes were drawn as dioceses were founded, without always
+  redrawing the dioceses they came from, so in any year a newer territory is
+  cut out of the older ones it overlaps. That takes the overlap from up to 77%
+  of the drawn area to under 0.1%. Where a parent was redrawn after a child
+  was founded, the parent's newer shape wins, which is wrong; the record check
+  below finds these.
+- **Record check:** with the database up, every almanac record with a place is
+  put in the territory of its year (`diocese-territories.py`), into
+  `diocese-territories.json` (`{"records": {"<almanacRecordID>": "<diocese id>"}}`).
+  The API compares it with the diocese each record was listed under
+  (`GET /api/stats/diocese-check`, shown on the Diocese by Diocese dashboard).
+  98–100% agree in most years; the disagreements point at territories to
+  correct.
+
 ## The styles
 
 `styles/almanac-light.json` and `almanac-dark.json` are generated by
@@ -259,9 +304,10 @@ What a layer does on a map set to a year is in its
 `metadata["almanac:dated"]`: `"show"` (a dated layer: hidden until a year is
 set, then filtered to that day; its filter must start
 `["all", <from test>, <to test>, …]`), `"hide"` (today's borders, state names
-and street names) or an opacity to fade to (today's streets and rail). The
-client's map-vis applies whatever the style says, so new dated layers need no
-client change.
+and street names), an opacity to fade to (today's streets and rail), or
+`"dioceses"` (dated like `"show"`, but drawn only when the map asks for them).
+The client's map-vis applies whatever the style says, so new dated layers need
+no client change.
 
 Labels use Old Standard TT (OFL), the site's display face; Martin serves the
 glyphs straight from the TTFs. Libre Franklin isn't used on the map because it
@@ -272,7 +318,7 @@ is only published as a variable font.
 ```
 tiles/
   Dockerfile        builder target (tippecanoe + gdal + the script) and server target (Martin + fonts + styles)
-  build.sh          the build job's entry point: base | detail | history | ohm | transport | all
+  build.sh          the build job's entry point: base | detail | history | ohm | transport | dioceses | all
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
   build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
   build-history.sh  Newberry AHCB states and territories → ogr2ogr → history-features.py → tippecanoe → history.pmtiles
@@ -281,9 +327,13 @@ tiles/
   ohm-features.py   OHM dates → from/to days; road and rail kinds; undated ways dropped
   build-transport.sh  Atack railroads, canals, steamboat rivers → ogr2ogr (dates as from/to) → tippecanoe → transport.pmtiles
   transport-distances.py  each record's miles to the railroads and waterways of its year → transport-distances.json
+  build-dioceses.sh  Boston College diocese shapes + dioceses/names.csv → dioceses-features.py → tippecanoe → dioceses.pmtiles
+  dioceses-features.py  dated territories: shapes by diocese id, newer cut out of older, named per year
+  diocese-territories.py  each record's diocese territory of its year → diocese-territories.json
+  dioceses/         the shapes (DioceseEachYear.zip), names.csv and labels.csv, and match-names.py that writes them
   make-area.py      grid cells of recorded places → one clip polygon
   pick-regions.py   the Geofabrik state extracts that touch that polygon
-  entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data
+  entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data/*.pmtiles
   make-styles.py    writes styles/almanac-{light,dark}.json
   styles/
 ```
