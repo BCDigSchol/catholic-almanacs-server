@@ -8,6 +8,7 @@
         <div primary class="switches">
             <app-segmented label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
             <app-segmented label="Ties" [showLabel]="true" [options]="ties" [value]="state.tie" (valueChange)="set('tie', $event)"></app-segmented>
+            <app-segmented label="Show as" [showLabel]="true" [options]="layouts" [value]="state.layout" (valueChange)="set('layout', $event)"></app-segmented>
         </div>
         <ng-template #filters>
             <app-network-focus [kinds]="focusKinds" [idPrefix]="'inet-focus'" (pick)="setFocus($event)"></app-network-focus>
@@ -101,16 +102,32 @@
                 }
             </ul>
         </div>
-        <app-network-graph
-            [focusable]="true"
-            (focusNode)="setFocus($event)"
-            [framed]="false"
-            [showLegend]="false"
-            emptyText=""
-            label="Institutions linked through people"
-            [data]="network"
-            [options]="networkOptions">
-        </app-network-graph>
+        @if (state.layout === 'map') {
+            @if (unplaced) { <p class="key-hint">{{ unplaced }} {{ unplaced === 1 ? 'institution has' : 'institutions have' }} no recorded place and {{ unplaced === 1 ? 'is' : 'are' }} left off the map.</p> }
+            <app-map-vis
+                [data]="mapData"
+                [isOpen]="true"
+                [simple]="true"
+                [autoCenter]="false"
+                [links]="mapLinks"
+                [fitTo]="mapFit"
+                [clickToSelect]="true"
+                (featureClick)="onMapSelect($event)"
+                label="The institution network on the map"
+                [options]="mapOptions">
+            </app-map-vis>
+        } @else {
+            <app-network-graph
+                [focusable]="true"
+                (focusNode)="setFocus($event)"
+                [framed]="false"
+                [showLegend]="false"
+                emptyText=""
+                label="Institutions linked through people"
+                [data]="network"
+                [options]="networkOptions">
+            </app-network-graph>
+        }
     </app-viz-panel>
 
     @if (!state.focus && groups.length > 1) {

@@ -17,6 +17,7 @@ import { CiteComponent } from '../../common/cite/cite.component';
 import { institutionLabel, isUnnamed, personLabel, placeLabel, yearRuns } from '../../../utils/record-labels';
 import { MapContextPoint, MapLink } from '../../common/map-vis/map-overlays';
 import { MapKeyItem, RECORD_MAP_INKS } from '../../../utils/record-map';
+import { LadderRow, ServiceLadderComponent } from '../../common/service-ladder/service-ladder.component';
 
 type RecordView = 'map' | 'network' | 'tree';
 
@@ -89,7 +90,7 @@ interface MapAround {
 @Component({
   selector: 'app-institution-details',
   imports: [RouterLink, MapVisComponent, NetworkGraphComponent, TreeGraphComponent,
-    PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent],
+    PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent, ServiceLadderComponent],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
 })
@@ -147,6 +148,10 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
       switchMap(id => this.api.getTypeRequest(`institution/${id}/timeline`).pipe(catchError(() => of(null)))),
       shareReplay(1),
     );
+    // who served here over the years, and where they came from and went to
+    this.subs.push(id$.pipe(
+      switchMap(id => this.api.getTypeRequest(`institution/${id}/succession`).pipe(catchError(() => of(null)))),
+    ).subscribe((res: any) => this.buildLadder(res?.people ?? [])));
 
     this.subs.push(combineLatest([timeline$, year$]).pipe(
       tap(([res, year]) => {
@@ -269,6 +274,8 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   people: PersonRow[] = [];
   facts: Fact[] = [];
   related: Related[] = [];
+  /** Clergy over time: one row per resident person. */
+  ladder: LadderRow[] = [];
   mapData: any[] = [];
   mapOptions = { zoom: 7, center: { lat: 40, lng: -90 }, size: { width: '100%', height: '420px' } };
   /** Circuits (lines), the places around it (dots), the box to frame, the key. */
@@ -401,6 +408,21 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     if (hasPoint) {
       this.mapOptions = { ...this.mapOptions, center: { lat: r.latitude, lng: r.longitude } };
     }
+  }
+
+  /** The succession ladder: everyone resident here, in order, with the posts before and after. */
+  private buildLadder(people: any[]): void {
+    const post = (p: any) => p && { label: `${institutionLabel(p.name, p.type)} (${p.year})`, link: ['/institutions', p.instID], query: { year: p.year } };
+    this.ladder = people.map(p => ({
+      key: p.persID,
+      label: [p.title, p.name].filter(Boolean).join(' '),
+      link: ['/people', p.persID],
+      kind: 'pers' as const,
+      detail: p.roles.join('; '),
+      years: p.years,
+      before: post(p.cameFrom),
+      after: post(p.wentTo),
+    }));
   }
 
   /**

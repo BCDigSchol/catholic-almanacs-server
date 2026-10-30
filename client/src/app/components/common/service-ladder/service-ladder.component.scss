@@ -1,0 +1,85 @@
+// One grid for the whole table: the name column, then one column per year.
+.ladder {
+    display: grid;
+    font-size: var(--text-sm);
+}
+
+// rows lend their cells to the shared grid
+.row {
+    display: contents;
+
+    &:not(.head) > * {
+        border-bottom: 1px dotted var(--rule);
+    }
+}
+
+.name {
+    padding: var(--space-1) var(--space-2) var(--space-1) 0;
+    line-height: 1.35;
+
+    .detail {
+        margin-left: 0.4em;
+        color: var(--ink-3);
+        font-style: italic;
+    }
+
+    .moves {
+        display: block;
+        color: var(--ink-3);
+        font-size: var(--text-xs);
+
+        a {
+            color: var(--ink-2);
+        }
+    }
+}
+
+.year {
+    align-self: end;
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid var(--rule-strong);
+    color: var(--ink-3);
+    font-size: var(--text-xs);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    white-space: nowrap;
+
+    &.sel {
+        color: var(--rubric);
+        font-weight: 600;
+    }
+}
+
+// the gap (1839–1863): a marked break before the column
+.year.gap,
+.cell.gap {
+    border-left: 2px dashed var(--rule-strong);
+}
+
+.cell {
+    position: relative;
+
+    &.sel {
+        background: color-mix(in srgb, var(--rubric) 7%, transparent);
+    }
+
+    // a listed year: a bar through the middle, runs of years joined
+    &.on::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 8px;
+        margin-top: -4px;
+        background: var(--ink-2);
+    }
+
+    &.run-start::after { left: 3px; }
+    &.run-end::after { right: 3px; }
+}
+
+// the header's name cell
+.head .name {
+    border-bottom: 1px solid var(--rule-strong);
+}

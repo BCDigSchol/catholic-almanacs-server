@@ -137,6 +137,14 @@
                         <p class="record-empty">The almanac named no one here{{ year ? ' in ' + year : '' }}.</p>
                     }
                 </section>
+                @if (ladder.length > 1) {
+                    <section class="record-section" aria-labelledby="ladder-heading">
+                        <h2 id="ladder-heading">Clergy over time <small>{{ ladder.length }}</small></h2>
+                        <p class="note">Everyone listed as resident here, year by year{{ year ? ', ' + year + ' marked' : '' }}, with the post each came from and went to.</p>
+                        <app-service-ladder [rows]="ladder" [years]="years" [selectedYear]="year"
+                            [caption]="'Clergy at ' + heading + ', by year'"></app-service-ladder>
+                    </section>
+                }
             </div>
 
             <aside class="rail">

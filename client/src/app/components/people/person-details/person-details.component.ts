@@ -14,6 +14,7 @@ import { CiteComponent } from '../../common/cite/cite.component';
 import { institutionLabel, isUnnamed, placeLabel, yearRuns } from '../../../utils/record-labels';
 import { MapContextPoint, MapLabel, MapLink } from '../../common/map-vis/map-overlays';
 import { MapKeyItem, RECORD_MAP_INKS } from '../../../utils/record-map';
+import { LadderRow, ServiceLadderComponent } from '../../common/service-ladder/service-ladder.component';
 
 /** One (year, institution) listing from GET /person/:id/timeline. */
 type RecordView = 'map' | 'network';
@@ -67,7 +68,7 @@ interface Fact {
 
 @Component({
   selector: 'app-person-details',
-  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent],
+  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent, ServiceLadderComponent],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
 })
@@ -178,6 +179,8 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
   namesRecorded: { name: string; years: string }[] = [];
   facts: Fact[] = [];
   service: ServiceRow[] = [];
+  /** The career: one row per post, across all years. */
+  career: LadderRow[] = [];
   mapData: any[] = [];
   readonly mapOptions = {
     zoom: 5, center: { lat: 39, lng: -88 }, size: { width: '100%', height: '420px' },
@@ -260,6 +263,7 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
     this.showAllService = false;
 
     this.buildMap();
+    this.buildCareer();
     this.updateViews();
   }
 
@@ -356,6 +360,25 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
          visited.size ? `visited ${count(visited.size, 'one other place', 'other places')}` : ''].filter(Boolean).join('; ')
       : visited.size ? `In ${this.year}, visited ${count(visited.size, 'one place', 'places')} from ${residenceIn.get(this.year)?.label ?? 'here'}` : '';
     if (this.mapSummary) this.mapSummary += '.';
+  }
+
+  /** Every post across all years, in order of first year, resident or visiting. */
+  private buildCareer(): void {
+    const rows = new Map<string, LadderRow & { first: number; visiting: boolean; resident: boolean }>();
+    for (const l of this.listings) {
+      let r = rows.get(l.instID);
+      if (!r) {
+        r = { key: l.instID, label: '', link: ['/institutions', l.instID], kind: 'inst', detail: '', years: [], first: l.year, visiting: false, resident: false };
+        rows.set(l.instID, r);
+      }
+      r.label = institutionLabel(l.instName, l.instType);   // latest name
+      r.detail = placeLabel(l.city, l.state);
+      if (!r.years.includes(l.year)) r.years.push(l.year);
+      if (l.isAttending) r.visiting = true; else r.resident = true;
+    }
+    this.career = [...rows.values()]
+      .map(r => ({ ...r, detail: [r.detail, !r.resident ? 'visiting' : ''].filter(Boolean).join(' · ') }))
+      .sort((a, b) => a.first - b.first || a.label.localeCompare(b.label));
   }
 
   /** One label per place: a person can return to a place, so join its runs. */

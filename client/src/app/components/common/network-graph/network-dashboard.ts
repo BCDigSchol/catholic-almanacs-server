@@ -55,6 +55,8 @@ export interface FilterField {
   text?: boolean;
   /** A switch (e.g. what a link means), not a filter: sent to the API, never a chip, kept by "Clear all". */
   isSwitch?: boolean;
+  /** Only changes how the page draws (e.g. graph or map): never sent to the API. */
+  local?: boolean;
 }
 
 export interface KeyEntry {
@@ -276,7 +278,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   private query(state: T): string {
     const q = new URLSearchParams();
-    for (const f of this.allFields) if (this.isSet(f.key)) q.set(f.param, String(state[f.key]));
+    for (const f of this.allFields) if (!f.local && this.isSet(f.key)) q.set(f.param, String(state[f.key]));
     if (state.from) q.set('startYear', String(state.from));
     if (state.to) q.set('endYear', String(state.to));
     for (const [k, v] of Object.entries(this.extraParams)) q.set(k, v);

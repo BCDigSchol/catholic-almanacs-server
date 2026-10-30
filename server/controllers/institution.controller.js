@@ -113,7 +113,7 @@ exports.getAllInstitutionNetwork = async (req, res) => {
         // in time window) — one batched query instead of one per institution
         const metaMap = {};
         const metaRows = await db.sequelize.query(
-            `SELECT ar1.instID, ar1.instName, ar1.year, ar1.diocese_reg
+            `SELECT ar1.instID, ar1.instName, ar1.year, ar1.diocese_reg, ar1.latitude, ar1.longitude
              FROM almanacRecords ar1
              WHERE ar1.instID IN (:connectedIDs)
                ${endYear != null ? 'AND ar1.year <= :endYear' : ''}`,
@@ -124,7 +124,7 @@ exports.getAllInstitutionNetwork = async (req, res) => {
         );
         for (const rec of metaRows) {
             if (!metaMap[rec.instID] || rec.year > metaMap[rec.instID].year) {
-                metaMap[rec.instID] = { instName: rec.instName, diocese: rec.diocese_reg, year: rec.year };
+                metaMap[rec.instID] = { instName: rec.instName, diocese: rec.diocese_reg, year: rec.year, lat: rec.latitude, lng: rec.longitude };
             }
         }
         for (const instID of connectedIDs) {
@@ -155,7 +155,10 @@ exports.getAllInstitutionNetwork = async (req, res) => {
             diocese: metaMap[id].diocese || 'Unknown',
             routeSegment: 'institutions',
             pageRank: pr[id],
-            value: pr[id]
+            value: pr[id],
+            // where it stood (latest year in the window), for the map layout
+            lat: metaMap[id].lat ?? null,
+            lng: metaMap[id].lng ?? null
         }));
 
         // Cap the response at the most central nodes so huge unfiltered
@@ -1341,6 +1344,43 @@ exports.getMap = async (req, res) => {
     if (mapCache.size > 2000) mapCache.clear();
     mapCache.set(key, out);
     res.send(out);
+};
+
+// GET /api/institution/:id/succession — everyone listed as resident here, in
+// order, with the years and roles, and (from utils/careers.js) the post each
+// came from just before and went to just after: the record page's ladder.
+//   people  [{persID, name, title, years, roles, cameFrom, wentTo}]
+//           cameFrom/wentTo: {instID, name, type, year} or null
+exports.getSuccession = async (req, res) => {
+    const id = req.params.id;
+    const rows = await db.sequelize.query(
+        `SELECT pia.persID, pia.name, pia.title, pia.role, ar.year
+           FROM personInAlmanacRecords pia
+           JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
+          WHERE pia.isAttending = 0 AND pia.persID IS NOT NULL
+            AND (ar.instID = :id OR FIND_IN_SET(:id, REPLACE(ar.instID, '&', ',')) > 0)
+          ORDER BY ar.year`,
+        { replacements: { id }, type: db.Sequelize.QueryTypes.SELECT }
+    );
+    const people = new Map();
+    for (const r of rows) {
+        let p = people.get(r.persID);
+        if (!p) people.set(r.persID, p = { persID: r.persID, name: '', title: '', years: [], roles: [], cameFrom: null, wentTo: null });
+        p.name = r.name || p.name;
+        p.title = r.title || p.title;
+        if (!p.years.includes(r.year)) p.years.push(r.year);
+        if (r.role && !p.roles.includes(r.role)) p.roles.push(r.role);
+    }
+    const here = (inst) => inst === id || String(inst).split('&').includes(id);
+    for (const m of await loadMoves()) {
+        const arrive = here(m.to.inst) && !here(m.from.inst) && people.get(m.pers);
+        const leave = here(m.from.inst) && !here(m.to.inst) && people.get(m.pers);
+        const post = (x, year) => ({ instID: x.inst, name: x.name, type: x.type, year });
+        // the move into the first stay, and out of the last
+        if (arrive && m.y2 === arrive.years[0]) arrive.cameFrom = post(m.from, m.y1);
+        if (leave && m.y1 === leave.years[leave.years.length - 1]) leave.wentTo = post(m.to, m.y2);
+    }
+    res.send({ people: [...people.values()].sort((a, b) => a.years[0] - b.years[0] || a.name.localeCompare(b.name)) });
 };
 
 exports.getDendrogramData = async (req, res) => {

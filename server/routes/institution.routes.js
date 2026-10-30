@@ -10,6 +10,7 @@ module.exports = app => {
     router.get('/:id/network', wrap(controller.getPersonNetwork));
     router.get('/:id/timeline', wrap(controller.getTimeline));
     router.get('/:id/map', wrap(controller.getMap));
+    router.get('/:id/succession', wrap(controller.getSuccession));
     router.get('/:id/dendrogram', wrap(controller.getDendrogramData));
     router.get('/:id/:year', wrap(controller.findOne));
     router.delete('/:id', wrap(controller.delete));

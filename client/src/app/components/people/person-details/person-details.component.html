@@ -81,6 +81,14 @@
 
         <div class="record-layout">
             <div class="main">
+                @if (career.length > 1) {
+                    <section class="record-section" aria-labelledby="career-heading">
+                        <h2 id="career-heading">Career <small>{{ career.length }} posts</small></h2>
+                        <p class="note">Every post the almanacs listed, year by year{{ year ? ', ' + year + ' marked' : '' }}.</p>
+                        <app-service-ladder [rows]="career" [years]="years" [selectedYear]="year"
+                            [caption]="heading + ': posts by year'"></app-service-ladder>
+                    </section>
+                }
                 <section class="record-section" aria-labelledby="service-heading">
                     <h2 id="service-heading">Service <small>{{ service.length }} {{ service.length === 1 ? 'institution' : 'institutions' }}</small></h2>
                     <p class="note">Where the almanac listed them{{ year ? ' in ' + year : ': institution, office, years' }}. Resident unless marked.</p>

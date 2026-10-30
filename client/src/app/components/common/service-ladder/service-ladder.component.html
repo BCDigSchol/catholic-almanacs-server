@@ -1,0 +1,42 @@
+<div class="ladder" role="table" [attr.aria-label]="caption" [style.grid-template-columns]="columns">
+    <div class="row head" role="row">
+        <span class="name" role="columnheader"><span class="visually-hidden">Name</span></span>
+        @for (h of heads; track h.year) {
+            <span class="year" role="columnheader" [class.gap]="h.gapBefore" [class.sel]="h.year === selectedYear"
+                [attr.aria-label]="h.year">{{ h.label }}</span>
+        }
+    </div>
+    @for (r of view; track r.key) {
+        <div class="row" role="row">
+            <span class="name" role="rowheader">
+                @if (r.link) {
+                    <a class="record-link" [class.pers]="r.kind === 'pers'" [class.inst]="r.kind === 'inst'"
+                        [routerLink]="r.link" [queryParams]="linkQuery">{{ r.label }}</a>
+                } @else {
+                    {{ r.label }}
+                }
+                @if (r.detail) { <span class="detail">{{ r.detail }}</span> }
+                @if (r.before || r.after) {
+                    <span class="moves">
+                        @if (r.before) {
+                            from
+                            @if (r.before.link) { <a [routerLink]="r.before.link" [queryParams]="r.before.query">{{ r.before.label }}</a> } @else { {{ r.before.label }} }
+                        }
+                        @if (r.before && r.after) { · }
+                        @if (r.after) {
+                            to
+                            @if (r.after.link) { <a [routerLink]="r.after.link" [queryParams]="r.after.query">{{ r.after.label }}</a> } @else { {{ r.after.label }} }
+                        }
+                    </span>
+                }
+            </span>
+            @for (on of r.cells; track $index) {
+                <span class="cell" role="cell" [class.on]="on" [class.gap]="heads[$index].gapBefore"
+                    [class.sel]="heads[$index].year === selectedYear"
+                    [class.run-start]="on && ($index === 0 || !r.cells[$index - 1] || heads[$index].gapBefore)"
+                    [class.run-end]="on && ($index === r.cells.length - 1 || !r.cells[$index + 1] || heads[$index + 1].gapBefore)"
+                    [attr.aria-label]="on ? heads[$index].year : null"></span>
+            }
+        </div>
+    }
+</div>
