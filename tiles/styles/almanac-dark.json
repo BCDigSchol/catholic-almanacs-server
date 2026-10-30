@@ -19,6 +19,11 @@
       "url": "${TILES_PUBLIC_URL}/history",
       "attribution": "Boundaries by year: <a href=\"https://publications.newberry.org/ahcb/\" target=\"_blank\" rel=\"noopener\">Atlas of Historical County Boundaries</a>, ed. John H. Long, The Newberry Library (<a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY-NC-SA 2.5</a>)"
     },
+    "transport": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/transport",
+      "attribution": "Railroads, canals and steamboat rivers by year: <a href=\"https://my.vanderbilt.edu/jeremyatack/data-downloads/\" target=\"_blank\" rel=\"noopener\">historical transportation GIS, Jeremy Atack, Vanderbilt University</a>"
+    },
     "ohm": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/ohm",
@@ -523,6 +528,255 @@
             1.8
           ]
         ]
+      }
+    },
+    {
+      "id": "transport-steamboat",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "line",
+      "source": "transport",
+      "source-layer": "transport",
+      "maxzoom": 12,
+      "layout": {
+        "visibility": "none",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "kind"
+          ],
+          "steamboat"
+        ]
+      ],
+      "paint": {
+        "line-color": "#7f97a4",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          1,
+          8,
+          2.2
+        ],
+        "line-dasharray": [
+          0.2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "transport-canals",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "line",
+      "source": "transport",
+      "source-layer": "transport",
+      "maxzoom": 12,
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "kind"
+          ],
+          "canal"
+        ]
+      ],
+      "paint": {
+        "line-color": "#7f97a4",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          0.8,
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "transport-rail",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "line",
+      "source": "transport",
+      "source-layer": "transport",
+      "maxzoom": 12,
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "kind"
+          ],
+          "rail"
+        ]
+      ],
+      "paint": {
+        "line-color": "#cfc8b9",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.6,
+          6,
+          1.1,
+          10,
+          1.4
+        ]
+      }
+    },
+    {
+      "id": "transport-rail-ties",
+      "metadata": {
+        "almanac:dated": "show"
+      },
+      "type": "symbol",
+      "source": "transport",
+      "source-layer": "transport",
+      "minzoom": 6.5,
+      "maxzoom": 12,
+      "layout": {
+        "visibility": "none",
+        "symbol-placement": "line",
+        "symbol-spacing": 7,
+        "text-field": "|",
+        "text-font": [
+          "Old Standard TT Regular"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6.5,
+          7,
+          9,
+          9,
+          11,
+          12
+        ],
+        "text-keep-upright": false,
+        "text-rotation-alignment": "map",
+        "text-pitch-alignment": "map",
+        "text-allow-overlap": true,
+        "text-ignore-placement": true,
+        "text-padding": 0
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "kind"
+          ],
+          "rail"
+        ]
+      ],
+      "paint": {
+        "text-color": "#cfc8b9"
       }
     },
     {

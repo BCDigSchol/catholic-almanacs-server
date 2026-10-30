@@ -67,6 +67,11 @@ HISTORY_ATTRIBUTION = (
 )
 
 
+TRANSPORT_ATTRIBUTION = (
+    'Railroads, canals and steamboat rivers by year: <a href="https://my.vanderbilt.edu/jeremyatack/data-downloads/"'
+    ' target="_blank" rel="noopener">historical transportation GIS, Jeremy Atack, Vanderbilt University</a>'
+)
+
 OHM_ATTRIBUTION = (
     'Streets by year: <a href="https://www.openhistoricalmap.org/copyright" target="_blank" rel="noopener">'
     '© OpenHistoricalMap contributors</a> (CC0)'
@@ -140,6 +145,30 @@ def layers(c):
                    "line-width": zoom(10, ["match", ["get", "kind"], "major", 0.8, "secondary", 0.6, 0.4],
                                       13, ["match", ["get", "kind"], "major", 1.6, "secondary", 1.2, "alley", 0.5, 0.9],
                                       15, ["match", ["get", "kind"], "major", 3, "secondary", 2.4, "alley", 1, 1.8])}},
+        # ── the railroads, canals and steamboat rivers of one year
+        # (transport.pmtiles); to zoom 12, where they would sit off the streets
+        {"id": "transport-steamboat", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
+         "maxzoom": 12, "layout": {"visibility": "none", "line-cap": "round", "line-join": "round"},
+         "filter": [*NO_DATE, ["==", ["get", "kind"], "steamboat"]],
+         "paint": {"line-color": c["water_label"], "line-width": zoom(3, 1, 8, 2.2), "line-dasharray": [0.2, 2]}},
+        {"id": "transport-canals", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
+         "maxzoom": 12, "layout": {"visibility": "none", "line-join": "round"},
+         "filter": [*NO_DATE, ["==", ["get", "kind"], "canal"]],
+         "paint": {"line-color": c["water_label"], "line-width": zoom(4, 0.8, 10, 2)}},
+        {"id": "transport-rail", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
+         "maxzoom": 12, "layout": {"visibility": "none", "line-join": "round"},
+         "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],
+         "paint": {"line-color": c["ink2"], "line-width": zoom(3, 0.6, 6, 1.1, 10, 1.4)}},
+        # the map railway: short ties across the line, a "|" set every few
+        # pixels along it (placed along a line, each glyph turns to cross it)
+        {"id": "transport-rail-ties", "metadata": SHOW, "type": "symbol", "source": "transport", "source-layer": "transport",
+         "minzoom": 6.5, "maxzoom": 12,
+         "layout": {"visibility": "none", "symbol-placement": "line", "symbol-spacing": 7,
+                    "text-field": "|", "text-font": REGULAR, "text-size": zoom(6.5, 7, 9, 9, 11, 12),
+                    "text-keep-upright": False, "text-rotation-alignment": "map", "text-pitch-alignment": "map",
+                    "text-allow-overlap": True, "text-ignore-placement": True, "text-padding": 0},
+         "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],
+         "paint": {"text-color": c["ink2"]}},
         {"id": "state-boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
         # ── the states and territories of one date (history.pmtiles) ──
@@ -236,6 +265,8 @@ def style(name, c):
             # built by `tiles-build history`
             "history": {"type": "vector", "url": "${TILES_PUBLIC_URL}/history",
                         "attribution": HISTORY_ATTRIBUTION},
+            # built by `tiles-build transport`
+            "transport": {"type": "vector", "url": "${TILES_PUBLIC_URL}/transport", "attribution": TRANSPORT_ATTRIBUTION},
             # built by `tiles-build ohm`
             "ohm": {"type": "vector", "url": "${TILES_PUBLIC_URL}/ohm", "attribution": OHM_ATTRIBUTION},
         },
