@@ -1,0 +1,101 @@
+// The chain reads down the page: a hairline joins each step, and the years
+// that join a step to the next hang off it.
+.chain {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-3) 0 0;
+    max-width: 44rem;
+}
+
+.chain-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    column-gap: var(--space-3);
+    padding: 0 0 var(--space-4) var(--space-4);
+    border-left: 1px solid var(--rule-strong);
+
+    &:last-child {
+        border-left-color: transparent;
+        padding-bottom: 0;
+    }
+
+    // the mark on the line: a dot for a person, a square for an institution
+    &::before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: 0.35em;
+        width: 9px;
+        height: 9px;
+        background: var(--c-pers);
+        border-radius: 50%;
+    }
+
+    &.inst::before {
+        background: var(--c-inst);
+        border-radius: 0;
+    }
+
+    .record-link {
+        font-size: var(--text-lg);
+    }
+}
+
+.chain-kind {
+    grid-row: span 3;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-sm);
+    color: var(--ink-3);
+}
+
+.chain-place {
+    grid-column: 2;
+    font-size: var(--text-sm);
+    color: var(--ink-3);
+}
+
+.chain-years {
+    grid-column: 2;
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+}
+
+.chain-more {
+    margin: var(--space-4) 0 0;
+}
+
+.swap {
+    align-self: end;
+}
+
+.example {
+    color: var(--ink-2);
+}
+
+.link-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--link);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .chain-step {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .chain-kind {
+        grid-row: auto;
+    }
+
+    .chain-place,
+    .chain-years {
+        grid-column: auto;
+    }
+}

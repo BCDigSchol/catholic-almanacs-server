@@ -1,0 +1,41 @@
+// Shared dashboard styles (.ctl, .control, .legend, .chart, .stat-strip, .data-table) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+}
+
+.order-pick .control {
+    min-width: 16rem;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}
+
+// the comparison and the dioceses side by side on wide screens
+.orders-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.compare {
+    ::ng-deep .end-label {
+        fill: var(--ink-3);
+        font-size: var(--text-xs);
+
+        &.chosen {
+            fill: var(--ink);
+            font-weight: 600;
+        }
+    }
+}
+
+.data-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}

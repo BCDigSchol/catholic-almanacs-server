@@ -15,6 +15,7 @@ import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
 import { NetworkGraphComponent } from './network-graph.component';
 import { HIGHLIGHT_INK, MANY_INKS, OTHER_INK } from '../../../utils/palette';
 import { citation, downloadCsv, downloadGexf, ExportGraph } from '../../../utils/network-export';
+import { computeMeasures } from '../../../utils/network-measures';
 import { FocusPick } from '../network-focus/network-focus.component';
 
 /** Almanac years the network endpoints can filter on. */
@@ -70,6 +71,14 @@ export interface KeyEntry {
 /** 20 distinguishable categorical colours, for dioceses. */
 const PALETTE = MANY_INKS;
 
+/** The views of /dashboards/networks?view=… */
+export const NETWORK_VIEWS = [
+  { value: 'institutions', label: 'Institutions' },
+  { value: 'people', label: 'People' },
+  { value: 'service', label: 'Both' },
+  { value: 'path', label: 'Path' },
+];
+
 /**
  * Shared behaviour of the three network dashboards: filters in the URL,
  * debounced text fields, chips, fetching, a colour key and the takeaway.
@@ -119,12 +128,8 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   draft: Record<string, string> = {};
   moreOpen = false;
 
-  /** The three networks share one page (/dashboards/networks?view=…). */
-  readonly networkViews = [
-    { value: 'institutions', label: 'Institutions' },
-    { value: 'people', label: 'People' },
-    { value: 'service', label: 'Both' },
-  ];
+  /** The three networks and the path finder share one page (/dashboards/networks?view=…). */
+  readonly networkViews = NETWORK_VIEWS;
 
   get networkView(): string {
     return this.route.snapshot.queryParamMap.get('view') || 'institutions';
@@ -392,6 +397,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   private exportGraph(): ExportGraph {
     const kind = (n: any) => n.routeSegment === 'people' ? 'person' : n.routeSegment === 'institutions' ? 'institution' : 'node';
     const cut = this.truncated ? ` Only the ${this.network.nodes.length} most central of ${this.totalNodes} matching nodes (by PageRank) are included.` : '';
+    const measures = computeMeasures(this.network.nodes, this.network.edges);
     return {
       directed: this.network.edges.some(e => e.arrows),
       description: `${this.tieDescription()} Years: ${this.yearLabel}. Filters: ${this.chips.filter(c => !c.label.startsWith('Years')).map(c => c.label).join('; ') || 'none'}.${cut} ${citation()}`,
@@ -399,6 +405,9 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
         id: n.id, label: n.label, kind: kind(n),
         diocese: n.diocese ?? (['people', 'institutions'].includes(n.group) ? undefined : n.group),
         pageRank: typeof n.pageRank === 'number' ? Number(n.pageRank.toFixed(6)) : undefined,
+        // over the graph exported, ties taken as undirected
+        links: measures.get(String(n.id))?.links,
+        betweenness: ((b?: number | null) => b == null ? undefined : Number(b.toFixed(6)))(measures.get(String(n.id))?.betweenness),
       })),
       edges: this.network.edges.map(e => ({ source: e.from, target: e.to, weight: Number(e.weight) || 1 })),
     };

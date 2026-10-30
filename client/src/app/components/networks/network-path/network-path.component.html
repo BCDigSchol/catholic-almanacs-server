@@ -1,0 +1,50 @@
+<app-dashboard-shell
+    title="How Are They Connected?"
+    purpose="The shortest chain of people linking any two people or institutions, each step two people the almanac listed at the same place in the same year."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Network" [showLabel]="true" [options]="networkViews" [value]="'path'" (valueChange)="switchNetwork($event)"></app-segmented>
+        <ng-template #filters>
+            <app-network-focus label="From" idPrefix="path-from" (pick)="pickFrom($event)"></app-network-focus>
+            <app-network-focus label="To" idPrefix="path-to" (pick)="pickTo($event)"></app-network-focus>
+            @if (state.from && state.to) {
+                <button type="button" class="btn swap" (click)="swap()">Swap</button>
+            }
+        </ng-template>
+    </app-control-bar>
+
+    <app-viz-panel
+        [heading]="heading"
+        [note]="chain.length ? 'Each step: two people listed at the same place in the same year' : ''"
+        [state]="vizState"
+        [emptyText]="state.from && state.to ? 'No chain of up to ' + maxPeople + ' people links them.' : 'Pick a person or institution in From and To.'"
+        (retry)="fetchData()">
+        <ol class="chain" aria-label="The chain, from first to last">
+            @for (c of chain; track $index) {
+                <li class="chain-step" [class.pers]="c.kind === 'pers'" [class.inst]="c.kind === 'inst'">
+                    <span class="chain-kind">{{ c.kind === 'pers' ? 'Person' : 'Institution' }}</span>
+                    <a class="record-link" [class.pers]="c.kind === 'pers'" [class.inst]="c.kind === 'inst'" [routerLink]="c.link">{{ c.label }}</a>
+                    @if (c.place) { <span class="chain-place">{{ c.place }}</span> }
+                    @if (c.years) {
+                        <span class="chain-years">{{ c.together ? 'both listed' : 'listed' }} {{ c.years }}</span>
+                    }
+                </li>
+            }
+        </ol>
+        @if (focusLink) {
+            <p class="chain-more"><a class="record-link" routerLink="/dashboards/networks" [queryParams]="focusLink.params">{{ focusLink.label }} →</a></p>
+        }
+    </app-viz-panel>
+
+    @if (!state.from && !state.to) {
+        <p class="example">For example, <button type="button" class="link-btn" (click)="showExample()">how Boston's cathedral is connected to Albany's</button>.</p>
+    }
+
+    <div notes>
+        <p>Two people are linked when one almanac year lists both at the same institution, residents or visiting priests alike. The page finds the fewest people that join the two records you pick (a breadth-first search over every listing), so it shows one shortest chain: there may be others of the same length.</p>
+        <p>Under each institution in the chain are the years both people beside it were listed there; at the ends of a chain, the years the person beside it was listed at the institution you picked. Chains longer than {{ maxPeople }} people are not looked for.</p>
+        <p>A link says the almanac printed two names under one heading, not that they knew each other, though in a parish or college of a few priests they very likely did.</p>
+    </div>
+</app-dashboard-shell>

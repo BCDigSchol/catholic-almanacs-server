@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
 import { INKS } from '../../../utils/palette';
+import { computeMeasures, NodeMeasures, ordinal } from '../../../utils/network-measures';
 
 /** What the details card shows for the clicked node. */
 export interface SelectedNode {
@@ -18,6 +19,8 @@ export interface SelectedNode {
   unnamed: boolean;
   group: string;
   links: string;
+  /** Its rank in this view by links and as a go-between. */
+  measures: { label: string; value: string; hint: string }[];
   link: string | null;
 }
 
@@ -99,6 +102,8 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   clustered = false;
   private nodesDataSet: DataSet<any> | null = null;
   private edgesDataSet: DataSet<any> | null = null;
+  /** Degree and betweenness of every node drawn, worked out on the first click. */
+  private measures: Map<string, NodeMeasures> | null = null;
   private hiddenGroups = new Set<string>();
   private highlightActive = false;
   private searchBlurTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -272,8 +277,29 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
       unnamed: !!node.unnamed,
       group: groupName && groupName !== 'Unknown' ? `Diocese of ${spaceName(groupName)}` : '',
       links: parts.length ? `Linked to ${parts.join(' and ')} in this view` : 'No links in this view',
+      measures: this.measuresOf(String(node.id)),
       link: node.routeSegment ? `/${node.routeSegment}/${node.id}` : null,
     };
+  }
+
+  private measuresOf(id: string): SelectedNode['measures'] {
+    if (!this.nodesDataSet || !this.edgesDataSet) return [];
+    this.measures ??= computeMeasures(this.nodesDataSet.get(), this.edgesDataSet.get());
+    const m = this.measures.get(id);
+    if (!m || m.of < 3) return [];
+    const out = [{
+      label: 'Most linked',
+      value: `${ordinal(m.linksRank)} of ${m.of.toLocaleString()}`,
+      hint: `Ranked by how many others it is tied to in this view (${m.links}).`,
+    }];
+    if (m.betweenness && m.betweennessRank) {
+      out.push({
+        label: 'Go-between',
+        value: `${ordinal(m.betweennessRank)} of ${m.of.toLocaleString()}`,
+        hint: `Lies on ${(m.betweenness * 100).toFixed(m.betweenness < 0.01 ? 2 : 1)}% of the shortest paths between other nodes in this view (betweenness centrality).`,
+      });
+    }
+    return out;
   }
 
   ngAfterViewInit(): void {
@@ -620,6 +646,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     });
     this.nodesDataSet = new DataSet<any>(nodes);
     this.edgesDataSet = new DataSet<any>(edges);
+    this.measures = null;
     this.network.setData({
       nodes: this.nodesDataSet,
       edges: this.edgesDataSet

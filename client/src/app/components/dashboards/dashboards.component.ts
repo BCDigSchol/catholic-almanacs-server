@@ -113,6 +113,12 @@ export class DashboardsComponent {
           icon: "swap_horiz",
           title: "Clergy Flows",
           description: "Where priests went when they moved between posts: arcs between the sees, which dioceses sent clergy to which, and which received more than they gave."
+        },
+        {
+          link: "/dashboards/orders",
+          icon: "groups",
+          title: "Religious Orders",
+          description: "Where the Jesuits, Redemptorists, Benedictines and the other orders served, year by year — mapped from their members' listings, with the orders compared over time."
         }
       ]
     }

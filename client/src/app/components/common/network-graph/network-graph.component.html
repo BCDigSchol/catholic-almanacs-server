@@ -101,6 +101,13 @@
         <strong class="name" [class.unnamed]="selected.unnamed">{{ selected.label }}</strong>
         @if (selected.group) { <span class="meta">{{ selected.group }}</span> }
         <span class="meta">{{ selected.links }}</span>
+        @if (selected.measures.length) {
+          <dl class="measures">
+            @for (m of selected.measures; track m.label) {
+              <div [title]="m.hint"><dt>{{ m.label }}</dt><dd>{{ m.value }}</dd></div>
+            }
+          </dl>
+        }
         <span class="card-actions">
           @if (focusable && !selected.isTarget) {
             <button type="button" class="link-btn" (click)="focusNode.emit({ id: selected.id, label: selected.label })">Focus here</button>

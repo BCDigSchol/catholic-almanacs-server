@@ -1,5 +1,5 @@
 <label class="ctl focus-field">
-    <span>Focus on</span>
+    <span>{{ label }}</span>
     <input class="control" type="search" [id]="idPrefix + '-input'" autocomplete="off"
         [placeholder]="kinds.length === 1 ? (kinds[0] === 'person' ? 'A person…' : 'An institution…') : 'A person or institution…'"
         [value]="query" (input)="onInput($any($event.target).value)" (focus)="open = true" (blur)="onBlur()"

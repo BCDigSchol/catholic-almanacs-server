@@ -25,6 +25,7 @@ export class NetworkFocusComponent implements OnInit, OnDestroy {
   /** Which kinds of record the network's nodes are. */
   @Input() kinds: ('institution' | 'person')[] = ['institution', 'person'];
   @Input() idPrefix = 'focus';
+  @Input() label = 'Focus on';
   @Output() pick = new EventEmitter<FocusPick>();
 
   query = '';

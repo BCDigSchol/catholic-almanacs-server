@@ -854,3 +854,104 @@ exports.getClergyFlows = async (req, res) => {
     networkCache.set(key, result);
     res.send(result);
 };
+
+// GET /api/stats/orders?order=sj&year=1870 — the religious orders' footprint,
+// read from their members' listings (utils/orders.js: a person belongs to the
+// order a suffix on any of their listings marks, so a Jesuit printed once
+// without "S.J." still counts).
+//   orders    [{id, name, common, members, years: [{year, members, institutions, dioceses}]}]
+//   selected  for ?order= and ?year=: {points: [[lat, lng, instID, name, members]],
+//             dioceses: [{id, name, members, institutions}]}
+let _orderListings = null;
+async function orderListings() {
+    if (_orderListings) return _orderListings;
+    const { orderOfSuffix } = require('../utils/orders');
+    const rows = await db.sequelize.query(
+        `SELECT pia.persID, pia.suffix, ar.year, ar.instID, ar.instName, ar.instType, ar.diocese, ar.latitude, ar.longitude
+           FROM personInAlmanacRecords pia
+           JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
+          WHERE pia.persID IS NOT NULL AND ar.year IS NOT NULL`,
+        { type: db.Sequelize.QueryTypes.SELECT }
+    );
+    const orderOf = new Map();
+    for (const r of rows) {
+        const o = orderOfSuffix(r.suffix);
+        if (o && !orderOf.has(r.persID)) orderOf.set(r.persID, o.id);
+    }
+    _orderListings = rows.filter(r => orderOf.has(r.persID)).map(r => ({
+        order: orderOf.get(r.persID), pers: r.persID, year: r.year, inst: r.instID,
+        name: r.instName || '', type: r.instType || '',
+        dio: dioceses.dioceseIdAsListed(r.instID, r.diocese) || 'unknown',
+        lat: r.latitude, lng: r.longitude,
+    }));
+    return _orderListings;
+}
+
+exports.getOrders = async (req, res) => {
+    const { ORDERS } = require('../utils/orders');
+    const yearParam = parseIntParam(req.query.year, 'year');
+    if (yearParam.error) return res.status(400).json({ message: yearParam.error });
+    const order = typeof req.query.order === 'string' ? req.query.order : '';
+    const key = cacheKey('stats/orders', { order, year: yearParam.value });
+    const cached = networkCache.get(key);
+    if (cached) return res.send(cached);
+
+    const listings = await orderListings();
+    const names = dioceseNameMap();
+    const per = new Map();   // order -> year -> {members, insts, dios}
+    const all = new Map();   // order -> members
+    for (const l of listings) {
+        let byYear = per.get(l.order);
+        if (!byYear) per.set(l.order, byYear = new Map());
+        let y = byYear.get(l.year);
+        if (!y) byYear.set(l.year, y = { members: new Set(), insts: new Set(), dios: new Set() });
+        y.members.add(l.pers); y.insts.add(l.inst);
+        if (l.dio !== 'unknown') y.dios.add(l.dio);
+        if (!all.has(l.order)) all.set(l.order, new Set());
+        all.get(l.order).add(l.pers);
+    }
+    const orders = ORDERS.filter(o => per.has(o.id)).map(o => ({
+        id: o.id, name: o.name, common: o.common, members: all.get(o.id).size,
+        years: [...per.get(o.id)].sort((a, b) => a[0] - b[0])
+            .map(([year, y]) => ({ year, members: y.members.size, institutions: y.insts.size, dioceses: y.dios.size })),
+    })).sort((a, b) => b.members - a.members);
+
+    let selected = null;
+    if (order && yearParam.value) {
+        const places = new Map(), dios = new Map();
+        for (const l of listings) {
+            if (l.order !== order || l.year !== yearParam.value) continue;
+            let p = places.get(l.inst);
+            if (!p) places.set(l.inst, p = { lat: l.lat, lng: l.lng, name: l.name, type: l.type, members: new Set() });
+            p.members.add(l.pers);
+            let d = dios.get(l.dio);
+            if (!d) dios.set(l.dio, d = { members: new Set(), insts: new Set() });
+            d.members.add(l.pers); d.insts.add(l.inst);
+        }
+        selected = {
+            points: [...places].filter(([, p]) => p.lat && p.lng).map(([id, p]) => [p.lat, p.lng, id, p.name, p.members.size, p.type]),
+            dioceses: [...dios].filter(([id]) => id !== 'unknown')
+                .map(([id, d]) => ({ id, name: names[id] || id, members: d.members.size, institutions: d.insts.size }))
+                .sort((a, b) => b.members - a.members),
+        };
+    }
+    const result = { orders, selected, note: 'Members are the clergy and religious whose names the almanacs print with an order\'s initials (S.J., C.SS.R., O.S.B. …); an order\'s footprint is where they were listed.' };
+    networkCache.set(key, result);
+    res.send(result);
+};
+
+/**
+ * GET /api/stats/path?from=&to= — the shortest chain of people linking two
+ * records (people or institutions), each step two people listed at the same
+ * institution in the same year. See utils/paths.js.
+ */
+exports.getPath = async (req, res) => {
+    const { findPath, MAX_PEOPLE } = require('../utils/paths');
+    const from = String(req.query.from || ''), to = String(req.query.to || '');
+    // one end alone just names it (the page shows the pick while the other is chosen)
+    if (!from && !to) return res.status(400).json({ message: 'from or to is required.' });
+    const key = cacheKey('path', { from, to });
+    let result = networkCache.get(key);
+    if (!result) networkCache.set(key, result = { ...(await findPath(from, to)), maxPeople: MAX_PEOPLE });
+    res.json(result);
+};

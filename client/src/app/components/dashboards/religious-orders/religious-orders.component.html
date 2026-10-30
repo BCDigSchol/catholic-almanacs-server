@@ -1,0 +1,93 @@
+<app-dashboard-shell
+    title="Religious Orders"
+    purpose="Where the Jesuits, Redemptorists, Benedictines and the other orders served, year by year, as the almanacs listed their members."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <label primary class="ctl order-pick">
+            <span>Order</span>
+            <select class="control" (change)="setOrder($any($event.target).value)">
+                @for (o of orders; track o.id) {
+                    <option [value]="o.id" [selected]="o.id === state.order">{{ o.common }} ({{ o.members | number }})</option>
+                }
+            </select>
+        </label>
+    </app-control-bar>
+
+    @if (current && order) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">{{ order.common }} listed, {{ current.year }}</dt>
+                <dd class="stat-value">{{ current.members | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">institutions</dt>
+                <dd class="stat-value">{{ current.institutions | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">dioceses</dt>
+                <dd class="stat-value">{{ current.dioceses | number }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="(order ? 'Where the ' + order.common + ' served' : 'Where the order served') + (year ? ', ' + year : '')"
+        note="Each place where the almanac listed members, sized by how many"
+        [state]="vizState"
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <div key>
+            <ul class="legend" aria-label="Map key">
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ink"></span>{{ order?.common }} listed there (larger: more members)</li>
+            </ul>
+        </div>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="orders-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            label="Where the order served"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="orders-lower">
+        <app-viz-panel
+            heading="The orders compared"
+            note="Members listed each year; click an order to show it"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <div class="chart compare" #compare></div>
+        </app-viz-panel>
+
+        <app-viz-panel
+            [heading]="'Dioceses' + (year ? ', ' + year : '')"
+            [note]="'Where the ' + (order?.common ?? 'order') + ' were listed'"
+            [state]="vizState"
+            emptyText="No members listed this year."
+            (retry)="fetchData()">
+            <table class="data-table">
+                <thead><tr><th>Diocese</th><th class="num">Members</th><th class="num">Institutions</th></tr></thead>
+                <tbody>
+                    @for (d of dioceses; track d.id) {
+                        <tr>
+                            <td data-label="Diocese">{{ d.name }}</td>
+                            <td data-label="Members" class="num">{{ d.members }}</td>
+                            <td data-label="Institutions" class="num">{{ d.institutions }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p>The almanacs seldom tie an order to an institution, but they print a member's order after the name: S.J. for the Jesuits, C.SS.R. for the Redemptorists, O.S.B., O.S.F., C.M., O.P. and so on. A person counts as a member of the order any of their listings marks, so a Jesuit printed once without "S.J." still counts, and an order's footprint is every place its members were listed that year. Titles that are not orders (D.D., V.G.) are not counted.</p>
+        <p>Women's congregations are seldom marked this way in the almanacs, so they are mostly missing here; the orders named on institutions are too few to chart.</p>
+        <p>Click a place on the map to open that institution for the year.</p>
+    </div>
+</app-dashboard-shell>

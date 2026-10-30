@@ -6,16 +6,17 @@ import { AsyncPipe } from '@angular/common';
 import { InstitutionalNetworkContainerComponent } from '../institutional-network-container/institutional-network-container.component';
 import { PersonalNetworkContainerComponent } from '../personal-network-container/personal-network-container.component';
 import { BipartiteNetworkComponent } from '../bipartite-network/bipartite-network.component';
+import { NetworkPathComponent } from '../network-path/network-path.component';
 
 /**
- * /dashboards/networks: one page for the three networks, chosen by ?view=
- * (institutions, the default; people; service — people and institutions
- * together). Each network keeps its own filters; the switch lives in each
- * network's control bar.
+ * /dashboards/networks: one page for the three networks and the path finder,
+ * chosen by ?view= (institutions, the default; people; service — people and
+ * institutions together; path — how two records are connected). Each keeps
+ * its own state; the switch lives in each one's control bar.
  */
 @Component({
   selector: 'app-networks',
-  imports: [AsyncPipe, InstitutionalNetworkContainerComponent, PersonalNetworkContainerComponent, BipartiteNetworkComponent],
+  imports: [AsyncPipe, InstitutionalNetworkContainerComponent, PersonalNetworkContainerComponent, BipartiteNetworkComponent, NetworkPathComponent],
   templateUrl: './networks.component.html',
   styleUrl: './networks.component.scss'
 })

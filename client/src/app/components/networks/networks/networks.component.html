@@ -1,5 +1,6 @@
 @switch (view$ | async) {
     @case ('people') { <app-personal-network-container></app-personal-network-container> }
     @case ('service') { <app-bipartite-network></app-bipartite-network> }
+    @case ('path') { <app-network-path></app-network-path> }
     @default { <app-institutional-network-container></app-institutional-network-container> }
 }
