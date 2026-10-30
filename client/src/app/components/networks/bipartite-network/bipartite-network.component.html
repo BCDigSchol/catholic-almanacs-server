@@ -7,6 +7,10 @@
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
         <app-segmented primary label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
         <ng-template #filters>
+            <app-network-focus [kinds]="focusKinds" [idPrefix]="'snet-focus'" (pick)="setFocus($event)"></app-network-focus>
+            @if (state.focus) {
+                <app-segmented label="Steps out" [showLabel]="true" [options]="hopOptions" [value]="state.hops" (valueChange)="set('hops', $event)"></app-segmented>
+            }
             <label class="ctl">
                 <span>Diocese</span>
                 <select class="control" (change)="set('diocese', $any($event.target).value)">
@@ -89,6 +93,8 @@
             </ul>
         </div>
         <app-network-graph
+            [focusable]="true"
+            (focusNode)="setFocus($event)"
             [framed]="false"
             [showLegend]="false"
             emptyText=""
@@ -98,7 +104,26 @@
         </app-network-graph>
     </app-viz-panel>
 
+    @if (!state.focus && groups.length > 1) {
+        <app-viz-panel
+            heading="The largest connected groups"
+            note="The network falls apart into separate groups; open one to see it whole"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <ol class="group-list">
+                @for (g of groups; track g.id) {
+                    <li>
+                        <button type="button" class="link-btn" (click)="showGroup(g)">{{ g.label }}</button>
+                        and {{ (g.size - 1).toLocaleString() }} {{ g.size === 2 ? 'other' : 'others' }}
+                        @if (g.dioceses.length) { <span class="muted">· {{ groupDioceses(g) }}</span> }
+                    </li>
+                }
+            </ol>
+        </app-viz-panel>
+    }
+
     <div notes>
+        <p><strong>Focus on</strong> any person or institution (search above, or <em>Focus here</em> in a node's details) to see its neighbourhood from the whole network, not just the most central nodes: one step out, two, or its whole connected group. The network falls apart into separate groups; the list under the graph opens the largest of them.</p>
         <p>Hexagons are institutions and dots are people. A line joins a person to each institution where they are listed within the selected years; its number and thickness count the years of that listing. Size reflects PageRank, a measure of how central a node is.</p>
         <p>The page opens on the Diocese of Baltimore, the oldest American see, because the whole church (about 10,700 people and institutions) is far too large to draw: cut down to its 500 most central nodes it is mostly disconnected fragments. Choose another diocese, or “All dioceses” to see the most central 1,000 nodes nationally (those left without a link are dropped). The panel note says how many are shown.</p>
         <p>Click a node for details and a link to its record; double-click to open the record.</p>

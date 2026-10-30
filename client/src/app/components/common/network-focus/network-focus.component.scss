@@ -1,0 +1,45 @@
+:host {
+    position: relative;
+    display: block;
+}
+
+.focus-field {
+    min-width: 240px;
+}
+
+// the matches drop below the field, set like the header search's
+.focus-options {
+    position: absolute;
+    z-index: 20;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 2px 0 0;
+    padding: 0;
+    list-style: none;
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+
+    button {
+        display: block;
+        width: 100%;
+        padding: var(--space-1) var(--space-2);
+        border: 0;
+        background: none;
+        color: var(--ink);
+        font: inherit;
+        font-size: var(--text-sm);
+        text-align: left;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--sunk);
+        }
+    }
+
+    .detail {
+        color: var(--ink-3);
+        font-size: var(--text-xs);
+    }
+}

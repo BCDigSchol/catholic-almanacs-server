@@ -8,13 +8,14 @@ import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearRangeComponent } from '../../common/year-range/year-range.component';
 import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
 import { FilterField, NetworkDashboard } from '../../common/network-graph/network-dashboard';
+import { NetworkFocusComponent } from '../../common/network-focus/network-focus.component';
 
-const DEFAULTS = { diocese: '', state: '', role: '', title: '', order: '', city: '', from: 0, to: 0 };
+const DEFAULTS = { diocese: '', state: '', role: '', title: '', order: '', city: '', from: 0, to: 0, focus: '', hops: '1' };
 
 /** The People Network: people linked when they served at the same institution. */
 @Component({
   selector: 'app-personal-network-container',
-  imports: [SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
+  imports: [NetworkFocusComponent, SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './personal-network-container.component.html',
   styleUrl: './personal-network-container.component.scss'
 })
@@ -25,6 +26,7 @@ export class PersonalNetworkContainerComponent extends NetworkDashboard<typeof D
   ];
   protected readonly defaults = DEFAULTS;
   protected override readonly nodeNouns: [string, string] = ['person', 'people'];
+  readonly focusKinds: ('institution' | 'person')[] = ['person'];
   protected readonly endpoint = 'person/network';
   protected readonly exportName = 'people-network';
 

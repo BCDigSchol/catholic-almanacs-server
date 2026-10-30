@@ -7,6 +7,10 @@
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
         <app-segmented primary label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
         <ng-template #filters>
+            <app-network-focus [kinds]="focusKinds" [idPrefix]="'pnet-focus'" (pick)="setFocus($event)"></app-network-focus>
+            @if (state.focus) {
+                <app-segmented label="Steps out" [showLabel]="true" [options]="hopOptions" [value]="state.hops" (valueChange)="set('hops', $event)"></app-segmented>
+            }
             <label class="ctl">
                 <span>Diocese</span>
                 <select class="control" (change)="set('diocese', $any($event.target).value)">
@@ -82,6 +86,8 @@
             </ul>
         </div>
         <app-network-graph
+            [focusable]="true"
+            (focusNode)="setFocus($event)"
             [framed]="false"
             [showLegend]="false"
             emptyText=""
@@ -91,7 +97,26 @@
         </app-network-graph>
     </app-viz-panel>
 
+    @if (!state.focus && groups.length > 1) {
+        <app-viz-panel
+            heading="The largest connected groups"
+            note="The network falls apart into separate groups; open one to see it whole"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <ol class="group-list">
+                @for (g of groups; track g.id) {
+                    <li>
+                        <button type="button" class="link-btn" (click)="showGroup(g)">{{ g.label }}</button>
+                        and {{ (g.size - 1).toLocaleString() }} {{ g.size === 2 ? 'other' : 'others' }}
+                        @if (g.dioceses.length) { <span class="muted">· {{ groupDioceses(g) }}</span> }
+                    </li>
+                }
+            </ol>
+        </app-viz-panel>
+    }
+
     <div notes>
+        <p><strong>Focus on</strong> any person (search above, or <em>Focus here</em> in a node's details) to see its neighbourhood from the whole network, not just the most central nodes: one step out, two, or its whole connected group. The network falls apart into separate groups; the list under the graph opens the largest of them.</p>
         <p>Each dot is a person. Two people are linked when both are listed at the same institution within the selected years; the line's number and thickness count the institutions they shared. Dot size reflects PageRank, a measure of how central a person is to the whole web. A person's colour is the diocese of their latest listing.</p>
         <p>The full network is too large to draw at once, so the server keeps the most central people (by PageRank, up to 500) and drops any left without a link. The panel note says how many of the matching people are shown; narrow the filters to see the rest.</p>
         <p>Role and title match any part of the recorded text (“pastor” also finds “assistant pastor”). Click a person for details and a link to their record; double-click to open it.</p>

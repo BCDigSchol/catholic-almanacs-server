@@ -11,6 +11,8 @@ import { INKS } from '../../../utils/palette';
 /** What the details card shows for the clicked node. */
 export interface SelectedNode {
   id: string;
+  /** The node the graph is centred on already. */
+  isTarget: boolean;
   kind: 'Institution' | 'Person' | 'Node';
   label: string;
   unnamed: boolean;
@@ -61,6 +63,9 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   @Input() truncated = false;
   @Input() totalNodes: number | null = null;
   @Output() timeWindowChange = new EventEmitter<{ startYear: number; endYear: number }>();
+  /** Offer "Focus here" in a node's details card (network dashboards re-centre the graph on it). */
+  @Input() focusable = false;
+  @Output() focusNode = new EventEmitter<{ id: string; label: string }>();
 
   network: any;
   isOpen = true;
@@ -149,7 +154,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
           min: 10,
           max: 60,
           label: {
-            min: 8,
+            min: 11,   // legible on a focused graph of a hundred or so
             max: 20
           }
         },
@@ -261,6 +266,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     const groupName = node.diocese ?? (['institutions', 'people'].includes(node.group) ? '' : node.group);
     this.selected = {
       id: String(node.id),
+      isTarget: !!node.isTarget,
       kind: kindOf(node),
       label: node.label ?? String(node.id),
       unnamed: !!node.unnamed,
@@ -709,7 +715,8 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   }
 
   private getEffectiveOptions(nodeCount: number, edgeCount: number) {
-    const isLargeGraph = nodeCount > 75 || edgeCount > 150;
+    // a focused neighbourhood or group (a few hundred at most) keeps full-size labels
+    const isLargeGraph = nodeCount > 200 || edgeCount > 400;
 
     if (!isLargeGraph) {
       return Object.assign({}, this.protectedOptions, {

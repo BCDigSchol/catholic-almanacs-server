@@ -108,6 +108,89 @@ function truncateToTopNodes(nodes, edges, limit) {
     };
 }
 
+const FOCUS_NODE_LIMIT = 400;
+const GROUP_COUNT = 12;
+
+/* The response of a network endpoint, shaped by the query:
+     ?focus=<node id>&hops=1|2|all  the neighbourhood of one node, from the
+       whole network (not the PageRank cut): every node within `hops` links
+       (all = its whole connected group), capped at FOCUS_NODE_LIMIT nearest
+       then most central; the focus node is marked `isTarget`, every node
+       carries its `distance`
+     otherwise  the top `limit` nodes by PageRank (truncateToTopNodes)
+   Either way `groups` lists the whole network's largest connected groups
+   (size, the most central member as id/label, their dioceses), and `focus`
+   says whether the focus node was found under the filters. */
+function shapeNetwork(nodes, edges, query, limit) {
+    const byId = new Map(nodes.map(n => [n.id, n]));
+    const adj = new Map(nodes.map(n => [n.id, []]));
+    for (const e of edges) {
+        adj.get(e.from)?.push(e.to);
+        adj.get(e.to)?.push(e.from);
+    }
+
+    // connected groups
+    const groupOf = new Map();
+    const members = [];
+    for (const n of nodes) {
+        if (groupOf.has(n.id)) continue;
+        const list = [n.id];
+        groupOf.set(n.id, members.length);
+        for (let i = 0; i < list.length; i++) {
+            for (const m of adj.get(list[i]) || []) {
+                if (!groupOf.has(m)) { groupOf.set(m, members.length); list.push(m); }
+            }
+        }
+        members.push(list);
+    }
+    const groups = members
+        .filter(list => list.length > 1)
+        .sort((a, b) => b.length - a.length)
+        .slice(0, GROUP_COUNT)
+        .map(list => {
+            const top = list.map(id => byId.get(id)).sort((a, b) => (b.pageRank || 0) - (a.pageRank || 0))[0];
+            const dioceses = new Map();
+            for (const id of list) {
+                const n = byId.get(id);
+                const d = n.diocese || (['people', 'institutions'].includes(n.group) ? null : n.group);
+                if (d && d !== 'Unknown') dioceses.set(d, (dioceses.get(d) || 0) + 1);
+            }
+            return {
+                id: top.id, label: top.label, size: list.length,
+                dioceses: [...dioceses.entries()].sort((a, b) => b[1] - a[1]).map(([d]) => d),
+            };
+        });
+
+    const focus = query.focus ? String(query.focus) : '';
+    if (!focus) return { ...truncateToTopNodes(nodes, edges, limit), groups };
+    if (!byId.has(focus)) {
+        return { ...truncateToTopNodes(nodes, edges, limit), groups, focus: { id: focus, found: false } };
+    }
+    const hops = query.hops === 'all' ? Infinity : Number(query.hops) === 2 ? 2 : 1;
+    const distance = new Map([[focus, 0]]);
+    const queue = [focus];
+    for (let i = 0; i < queue.length; i++) {
+        const d = distance.get(queue[i]);
+        if (d >= hops) continue;
+        for (const m of adj.get(queue[i]) || []) {
+            if (!distance.has(m)) { distance.set(m, d + 1); queue.push(m); }
+        }
+    }
+    const reached = [...distance.keys()];
+    const kept = reached.length <= FOCUS_NODE_LIMIT ? reached : reached
+        .sort((a, b) => distance.get(a) - distance.get(b) || (byId.get(b).pageRank || 0) - (byId.get(a).pageRank || 0))
+        .slice(0, FOCUS_NODE_LIMIT);
+    const keep = new Set(kept);
+    return {
+        nodes: kept.map(id => ({ ...byId.get(id), distance: distance.get(id), ...(id === focus ? { isTarget: true } : {}) })),
+        edges: edges.filter(e => keep.has(e.from) && keep.has(e.to)),
+        truncated: kept.length < reached.length,
+        totalNodes: reached.length,
+        groups,
+        focus: { id: focus, found: true, label: byId.get(focus).label, hops: query.hops === 'all' ? 'all' : hops },
+    };
+}
+
 /* Small in-memory TTL cache for expensive network responses. The almanac
    data is effectively read-only, so a short TTL is only a safety valve. */
 class TtlCache {
@@ -151,6 +234,7 @@ module.exports = {
     parseIntParam,
     computePageRank,
     truncateToTopNodes,
+    shapeNetwork,
     networkCache,
     cacheKey,
     DEFAULT_NODE_LIMIT,

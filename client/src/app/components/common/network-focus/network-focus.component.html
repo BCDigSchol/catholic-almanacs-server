@@ -1,0 +1,17 @@
+<label class="ctl focus-field">
+    <span>Focus on</span>
+    <input class="control" type="search" [id]="idPrefix + '-input'" autocomplete="off"
+        [placeholder]="kinds.length === 1 ? (kinds[0] === 'person' ? 'A person…' : 'An institution…') : 'A person or institution…'"
+        [value]="query" (input)="onInput($any($event.target).value)" (focus)="open = true" (blur)="onBlur()"
+        (keydown.enter)="onEnter()" role="combobox" [attr.aria-expanded]="open && options.length > 0"
+        [attr.aria-controls]="idPrefix + '-options'">
+</label>
+@if (open && options.length) {
+    <ul class="focus-options" role="listbox" [id]="idPrefix + '-options'">
+        @for (o of options; track o.id) {
+            <li role="option" [attr.aria-selected]="false">
+                <button type="button" (click)="choose(o)">{{ o.label }} @if (o.detail) { <span class="detail">{{ o.detail }}</span> }</button>
+            </li>
+        }
+    </ul>
+}

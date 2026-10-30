@@ -101,10 +101,15 @@
         <strong class="name" [class.unnamed]="selected.unnamed">{{ selected.label }}</strong>
         @if (selected.group) { <span class="meta">{{ selected.group }}</span> }
         <span class="meta">{{ selected.links }}</span>
-        @if (selected.link) {
-          <a class="record-link" [class.inst]="selected.kind === 'Institution'" [class.pers]="selected.kind === 'Person'"
-             [routerLink]="selected.link">Open record</a>
-        }
+        <span class="card-actions">
+          @if (focusable && !selected.isTarget) {
+            <button type="button" class="link-btn" (click)="focusNode.emit({ id: selected.id, label: selected.label })">Focus here</button>
+          }
+          @if (selected.link) {
+            <a class="record-link" [class.inst]="selected.kind === 'Institution'" [class.pers]="selected.kind === 'Person'"
+               [routerLink]="selected.link">Open record</a>
+          }
+        </span>
       </aside>
     }
   </div>

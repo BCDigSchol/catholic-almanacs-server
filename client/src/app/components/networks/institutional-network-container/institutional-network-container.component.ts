@@ -8,8 +8,9 @@ import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearRangeComponent } from '../../common/year-range/year-range.component';
 import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
 import { FilterField, NetworkDashboard } from '../../common/network-graph/network-dashboard';
+import { NetworkFocusComponent } from '../../common/network-focus/network-focus.component';
 
-const DEFAULTS = { tie: 'together', diocese: '', state: '', type: '', function: '', order: '', language: '', city: '', from: 0, to: 0 };
+const DEFAULTS = { tie: 'together', diocese: '', state: '', type: '', function: '', order: '', language: '', city: '', from: 0, to: 0, focus: '', hops: '1' };
 
 /** What links two institutions (GET institution/network?tie=). */
 const TIES = [
@@ -20,7 +21,7 @@ const TIES = [
 /** The Institution Network: institutions linked by the people who served at both, in one year or in turn. */
 @Component({
   selector: 'app-institutional-network-container',
-  imports: [SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
+  imports: [NetworkFocusComponent, SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './institutional-network-container.component.html',
   styleUrl: './institutional-network-container.component.scss'
 })
@@ -29,6 +30,7 @@ export class InstitutionalNetworkContainerComponent extends NetworkDashboard<typ
     { label: 'Explore Institutions on the Map', link: '/dashboards/explore' },
   ];
   protected readonly defaults = DEFAULTS;
+  readonly focusKinds: ('institution' | 'person')[] = ['institution'];
   readonly ties = TIES;
   protected override readonly nodeNouns: [string, string] = ['institution', 'institutions'];
   protected readonly endpoint = 'institution/network';
@@ -53,7 +55,7 @@ export class InstitutionalNetworkContainerComponent extends NetworkDashboard<typ
   }
 
   protected override clearedValue(key: string): string {
-    return key === 'tie' ? 'together' : '';
+    return key === 'tie' ? 'together' : super.clearedValue(key);
   }
 
   get moved(): boolean {

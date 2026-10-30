@@ -166,7 +166,7 @@ exports.getAllPersonNetwork = async (req, res) => {
 
         // Cap the response at the most central nodes so huge unfiltered
         // queries stay renderable; truncated/totalNodes let the UI say so
-        const result = truncateToTopNodes(allNodes, edgeList, limit);
+        const result = shapeNetwork(allNodes, edgeList, req.query, limit);
         networkCache.set(key, result);
         res.send(result);
     } catch (error) {
@@ -179,7 +179,7 @@ const Op = db.Sequelize.Op;
 const { Sequelize } = db.sequelize;
 
 const getPagination = require("../utils/get-pagination");
-const { parseNetworkParams, computePageRank, truncateToTopNodes, networkCache, cacheKey } = require("../utils/network");
+const { parseNetworkParams, computePageRank, truncateToTopNodes, shapeNetwork, networkCache, cacheKey } = require("../utils/network");
 const { orderCondition } = require('../utils/religious-orders');
 
 const almanacRecord = db.almanacRecord;

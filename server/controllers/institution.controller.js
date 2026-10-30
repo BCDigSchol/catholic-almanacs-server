@@ -160,7 +160,7 @@ exports.getAllInstitutionNetwork = async (req, res) => {
 
         // Cap the response at the most central nodes so huge unfiltered
         // queries stay renderable; truncated/totalNodes let the UI say so
-        const result = truncateToTopNodes(allNodes, edgeList, limit);
+        const result = shapeNetwork(allNodes, edgeList, req.query, limit);
         networkCache.set(key, result);
         res.send(result);
     } catch (error) {
@@ -308,7 +308,7 @@ exports.getBipartiteNetwork = async (req, res) => {
             }))
         ];
 
-        const result = truncateToTopNodes(allNodes, edgeList, limit);
+        const result = shapeNetwork(allNodes, edgeList, req.query, limit);
         networkCache.set(key, result);
         res.send(result);
     } catch (error) {
@@ -320,7 +320,7 @@ const db = require("../models");
 const { Sequelize } = db.sequelize;
 const getPagination = require("../utils/get-pagination");
 const { orderCondition } = require("../utils/religious-orders");
-const { parseNetworkParams, parseIntParam, computePageRank, truncateToTopNodes, networkCache, cacheKey } = require("../utils/network");
+const { parseNetworkParams, parseIntParam, computePageRank, truncateToTopNodes, shapeNetwork, networkCache, cacheKey } = require("../utils/network");
 const { loadMoves } = require("../utils/careers");
 
 /** Edges of the 'moved' tie: [{instID1: from, instID2: to, weight: people}] among `inSet`. */

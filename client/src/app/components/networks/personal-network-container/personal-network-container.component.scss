@@ -16,3 +16,34 @@
     padding-block: 0;
     font-size: var(--text-xs);
 }
+
+// the largest connected groups, under the graph
+.group-list {
+    margin: 0;
+    padding-left: 1.6em;
+    columns: 2 22rem;
+    column-gap: var(--space-6);
+    font-size: var(--text-sm);
+
+    li {
+        break-inside: avoid;
+        padding: 3px 0;
+    }
+
+    .muted {
+        color: var(--ink-3);
+    }
+}
+
+.link-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: var(--rule-strong);
+    text-underline-offset: 3px;
+    cursor: pointer;
+}

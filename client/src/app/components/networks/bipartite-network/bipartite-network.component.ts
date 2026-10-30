@@ -8,17 +8,18 @@ import { VizPanelComponent } from '../../common/viz-panel/viz-panel.component';
 import { YearRangeComponent } from '../../common/year-range/year-range.component';
 import { NetworkGraphComponent } from '../../common/network-graph/network-graph.component';
 import { FilterField, NetworkDashboard } from '../../common/network-graph/network-dashboard';
+import { NetworkFocusComponent } from '../../common/network-focus/network-focus.component';
 
 /** Opens on one diocese: the whole church is ~10,700 people and institutions,
  *  too many to draw, and its top-N slice is mostly disconnected fragments. */
 const DEFAULT_DIOCESE = 'Baltimore';
 const ALL = 'all';
-const DEFAULTS = { diocese: DEFAULT_DIOCESE, state: '', type: '', order: '', role: '', title: '', city: '', from: 0, to: 0 };
+const DEFAULTS = { diocese: DEFAULT_DIOCESE, state: '', type: '', order: '', role: '', title: '', city: '', from: 0, to: 0, focus: '', hops: '1' };
 
 /** People Serving Institutions: a two-mode graph of people and the institutions they served. */
 @Component({
   selector: 'app-bipartite-network',
-  imports: [SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
+  imports: [NetworkFocusComponent, SegmentedComponent, SpaceNamePipe, DashboardShellComponent, ControlBarComponent, VizPanelComponent, YearRangeComponent, NetworkGraphComponent],
   templateUrl: './bipartite-network.component.html',
   styleUrl: './bipartite-network.component.scss'
 })
@@ -29,6 +30,7 @@ export class BipartiteNetworkComponent extends NetworkDashboard<typeof DEFAULTS>
   ];
   protected readonly defaults = DEFAULTS;
   protected readonly endpoint = 'institution/network/bipartite';
+  readonly focusKinds: ('institution' | 'person')[] = ['institution', 'person'];
   protected readonly exportName = 'service-network';
 
   protected tieDescription(): string {
@@ -48,7 +50,7 @@ export class BipartiteNetworkComponent extends NetworkDashboard<typeof DEFAULTS>
   protected readonly moreKeys = ['role', 'title', 'order', 'city'];
 
   protected override clearedValue(key: string): string {
-    return key === 'diocese' ? ALL : '';
+    return key === 'diocese' ? ALL : super.clearedValue(key);
   }
 
   /** Two kinds of node, coloured with the site's institution and person colours. */

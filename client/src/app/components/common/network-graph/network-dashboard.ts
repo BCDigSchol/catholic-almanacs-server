@@ -13,15 +13,38 @@ import { US_STATES, loadOptions, stateName } from '../../../utils/options';
 import { UrlState } from '../../../utils/url-state';
 import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
 import { NetworkGraphComponent } from './network-graph.component';
-import { MANY_INKS, OTHER_INK } from '../../../utils/palette';
+import { HIGHLIGHT_INK, MANY_INKS, OTHER_INK } from '../../../utils/palette';
 import { citation, downloadCsv, downloadGexf, ExportGraph } from '../../../utils/network-export';
+import { FocusPick } from '../network-focus/network-focus.component';
 
 /** Almanac years the network endpoints can filter on. */
 export const NETWORK_MIN_YEAR = 1833;
 export const NETWORK_MAX_YEAR = 1870;
 
-/** Every network dashboard keeps these in the URL; from/to of 0 mean "all years". */
-export type NetworkFilters = Record<string, string | number> & { from: number; to: number };
+/** Every network dashboard keeps these in the URL; from/to of 0 mean "all years";
+    focus/hops centre the graph on one node (hops '1' | '2' | 'all'). */
+export type NetworkFilters = Record<string, string | number> & { from: number; to: number; focus: string; hops: string };
+
+/** A connected group of the whole network (GET …/network: `groups`). */
+export interface NetworkGroup {
+  id: string;
+  label: string;
+  size: number;
+  dioceses: string[];
+}
+
+/** The focus node, as the server found it under the filters. */
+export interface NetworkFocus {
+  id: string;
+  found: boolean;
+  label?: string;
+  hops?: number | 'all';
+}
+
+const FOCUS_FIELDS: FilterField[] = [
+  { key: 'focus', param: 'focus', label: 'Focus' },
+  { key: 'hops', param: 'hops', label: 'Steps', isSwitch: true },
+];
 
 /** One filter: its URL key, the API param it maps to and how its chip reads. */
 export interface FilterField {
@@ -61,6 +84,22 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   protected abstract readonly defaults: T;
   protected abstract readonly endpoint: string;
   protected abstract readonly fields: FilterField[];
+  /** The page's filters plus focus and steps, which every network has. */
+  protected get allFields(): FilterField[] {
+    return [...this.fields, ...FOCUS_FIELDS];
+  }
+  /** What kinds of record the nodes are, for the "Focus on" search. */
+  abstract readonly focusKinds: ('institution' | 'person')[];
+  readonly hopOptions = [
+    { value: '1', label: '1 step' },
+    { value: '2', label: '2 steps' },
+    { value: 'all', label: 'Whole group' },
+  ];
+  /** The largest connected groups of the whole (filtered) network. */
+  groups: NetworkGroup[] = [];
+  focusInfo: NetworkFocus | null = null;
+  /** The name picked in the search, until the server answers with its own. */
+  private pickedLabel = '';
   /** Filters shown only after "More filters" (on wide screens). */
   protected abstract readonly moreKeys: string[];
   /** What a node is, singular and plural, for the panel note. */
@@ -125,7 +164,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
     let last: string | null = null;
     this.subs.push(this.url.changes().subscribe(state => {
       this.state = state;
-      for (const f of this.fields) if (f.text) this.draft[f.key] = String(state[f.key] ?? '');
+      for (const f of this.allFields) if (f.text) this.draft[f.key] = String(state[f.key] ?? '');
       this.chips = this.buildChips(state);
       this.moreCount = this.moreKeys.filter(k => this.isSet(k)).length;
       if (this.moreCount) this.moreOpen = true;
@@ -163,13 +202,36 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   clearAll = (): void => {
     const cleared: Record<string, string | number> = { from: 0, to: 0 };
-    for (const f of this.fields) if (!f.isSwitch) cleared[f.key] = this.clearedValue(f.key);
+    for (const f of this.allFields) if (!f.isSwitch) cleared[f.key] = this.clearedValue(f.key);
     this.url.set(cleared as Partial<T>);
   };
 
   /** The value that means "no filter" (a page may default a filter to something else). */
-  protected clearedValue(_key: string): string {
-    return '';
+  protected clearedValue(key: string): string {
+    return key === 'hops' ? '1' : '';
+  }
+
+  // ---- focus ----------------------------------------------------------------
+
+  setFocus(pick: FocusPick): void {
+    this.pickedLabel = pick.label;
+    this.url.set({ focus: pick.id } as unknown as Partial<T>);
+  }
+
+  /** "Show this group": its most central member, every step out. */
+  showGroup(group: NetworkGroup): void {
+    this.pickedLabel = group.label;
+    this.url.set({ focus: group.id, hops: 'all' } as unknown as Partial<T>);
+  }
+
+  get focusLabel(): string {
+    return this.focusInfo?.found && this.focusInfo.id === this.state.focus ? this.focusInfo.label ?? this.state.focus : this.pickedLabel || String(this.state.focus);
+  }
+
+  /** "the Diocese of Galveston, Texas" etc. for a group's dioceses. */
+  groupDioceses(group: NetworkGroup): string {
+    const d = group.dioceses.map(x => spaceName(x));
+    return d.length <= 2 ? d.join(' and ') : `${d.slice(0, 2).join(', ')} and ${d.length - 2} more`;
   }
 
   protected isSet(key: string): boolean {
@@ -183,10 +245,10 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   private buildChips(state: T): ControlChip[] {
     const chips: ControlChip[] = [];
-    for (const f of this.fields) {
+    for (const f of this.allFields) {
       if (f.isSwitch || !this.isSet(f.key)) continue;
       const v = String(state[f.key]);
-      const shown = f.key === 'state' ? stateName(v) : f.key === 'diocese' ? spaceName(v) : v;
+      const shown = f.key === 'state' ? stateName(v) : f.key === 'diocese' ? spaceName(v) : f.key === 'focus' ? this.focusLabel : v;
       chips.push({ label: `${f.label}: ${shown}`, clear: () => this.set(f.key, this.clearedValue(f.key)) });
     }
     if (state.from || state.to) {
@@ -198,6 +260,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   /** "in the Diocese of Boston, Massachusetts, 1864–1870" for headings. */
   get scopeLabel(): string {
     const parts: string[] = [];
+    if (this.state.focus) parts.push(`around ${this.focusLabel}`);
     if (this.isSet('diocese')) parts.push(`in the Diocese of ${spaceName(String(this.state['diocese']))}`);
     if (this.isSet('state')) parts.push(`in ${stateName(String(this.state['state']))}`);
     if (!parts.length) parts.push('across all dioceses');
@@ -213,7 +276,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   private query(state: T): string {
     const q = new URLSearchParams();
-    for (const f of this.fields) if (this.isSet(f.key)) q.set(f.param, String(state[f.key]));
+    for (const f of this.allFields) if (this.isSet(f.key)) q.set(f.param, String(state[f.key]));
     if (state.from) q.set('startYear', String(state.from));
     if (state.to) q.set('endYear', String(state.to));
     for (const [k, v] of Object.entries(this.extraParams)) q.set(k, v);
@@ -230,9 +293,14 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
         this.network = { nodes, edges: res.edges ?? [] };
         this.truncated = !!res.truncated;
         this.totalNodes = res.totalNodes ?? nodes.length;
+        this.groups = (res.groups ?? []).map((g: NetworkGroup) => isUnnamed(g.label) ? { ...g, label: institutionLabel(g.label) } : g);
+        this.focusInfo = res.focus ?? null;
+        this.chips = this.buildChips(this.state);   // the focus chip now has its name
         this.networkOptions = this.buildOptions(nodes);
         this.panelNote = this.buildNote();
-        this.takeaway = nodes.length ? this.computeTakeaway(nodes, this.network.edges) : '';
+        this.takeaway = !nodes.length ? ''
+          : this.focusInfo?.found ? this.focusTakeaway(nodes)
+          : this.computeTakeaway(nodes, this.network.edges);
         this.vizState = nodes.length ? 'ready' : 'empty';
       },
       error: () => {
@@ -243,8 +311,20 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
     });
   }
 
+  /** While focused: who is linked directly, and further out. */
+  private focusTakeaway(nodes: any[]): string {
+    const near = nodes.filter(n => n.distance === 1).length;
+    const far = nodes.filter(n => n.distance >= 2).length;
+    const noun = (k: number) => this.nodeNouns[k === 1 ? 0 : 1];
+    const whole = this.state.hops === 'all';
+    return `${this.focusLabel} is linked directly to ${near.toLocaleString()} ${noun(near)} in this view`
+      + (far ? (whole ? `, and through them to ${far.toLocaleString()} more: a connected group of ${(nodes.length).toLocaleString()}.` : `, and to ${far.toLocaleString()} more two steps away.`) : '.');
+  }
+
   /** Readable labels: unnamed institutions become "Unnamed church" etc. */
   protected prepareNode(n: any): any {
+    // the focus node: a rubric ring and a larger, bold name (vis draws on a canvas, so no CSS variables)
+    if (n.isTarget) n = { ...n, borderWidth: 5, color: { border: HIGHLIGHT_INK }, font: { size: 20, bold: true } };
     if (n.routeSegment === 'institutions' && isUnnamed(n.label)) return { ...n, label: institutionLabel(n.label), unnamed: true };
     if (!n.label) return { ...n, label: n.id };
     return n;
@@ -266,6 +346,9 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   protected buildNote(): string {
     const shown = this.network.nodes.length.toLocaleString();
+    if (this.focusInfo?.found) {
+      return this.truncated ? `${shown} nearest of ${this.totalNodes.toLocaleString()} reached` : `${shown} ${this.nodeNouns[this.network.nodes.length === 1 ? 0 : 1]}`;
+    }
     return this.truncated
       ? `${shown} most connected of ${this.totalNodes.toLocaleString()}`
       : `${shown} ${this.nodeNouns[this.network.nodes.length === 1 ? 0 : 1]}`;
