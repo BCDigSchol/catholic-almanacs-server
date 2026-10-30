@@ -1,0 +1,33 @@
+// Shared dashboard styles (.ctl, .control, .legend, .chart, .stat-strip) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}
+
+// the trend chart and the year's distance bands side by side on wide screens
+.rails-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.bands {
+    ::ng-deep .band-label {
+        fill: var(--ink-2);
+        font-size: var(--text-sm);
+    }
+
+    ::ng-deep .band-value {
+        fill: var(--ink-3);
+        font-size: var(--text-xs);
+        font-variant-numeric: tabular-nums;
+    }
+}

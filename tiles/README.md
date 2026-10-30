@@ -202,6 +202,18 @@ off the real streets closer in, where OpenHistoricalMap's rail takes over.
 |---|---|
 | `transport` | `kind` (rail / canal / steamboat), `name` (the railroad company, canal or river), `from`, `to` (`yyyymmdd`, as `history.pmtiles`) |
 
+The same build also measures, for every almanac record with a location, the
+straight-line miles to the nearest railroad in operation on 1 January of its
+year and to the nearest canal or steamboat river in use
+(`transport-distances.py`, in USA Contiguous Albers, Atack's own projection),
+into `transport-distances.json` beside the tiles
+(`{"records": {"<almanacRecordID>": [railMiles, waterMiles]}}`, `null` when
+none lay within 500 miles). The API mounts the volume read-only and serves the
+figures as `GET /api/stats/railroads` for the Rails and Rivers dashboard; it
+answers 404 where the file hasn't been built. The distances need the database
+(it reads `mysqldb-prod`, like the street detail), so rebuild `transport`
+after a reseed.
+
 ### Provenance
 
 - **Datasets:** Jeremy Atack's historical transportation GIS databases,
@@ -268,6 +280,7 @@ tiles/
   build-ohm.sh      newest OpenHistoricalMap planet → osmium (US, streets, rail) → ohm-features.py → tippecanoe → ohm.pmtiles
   ohm-features.py   OHM dates → from/to days; road and rail kinds; undated ways dropped
   build-transport.sh  Atack railroads, canals, steamboat rivers → ogr2ogr (dates as from/to) → tippecanoe → transport.pmtiles
+  transport-distances.py  each record's miles to the railroads and waterways of its year → transport-distances.json
   make-area.py      grid cells of recorded places → one clip polygon
   pick-regions.py   the Geofabrik state extracts that touch that polygon
   entrypoint.sh     fills TILES_PUBLIC_URL into the styles, waits for tiles, starts Martin on /data

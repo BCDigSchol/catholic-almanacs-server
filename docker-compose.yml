@@ -51,6 +51,9 @@ services:
     tty: true
     networks:
       - server-network
+    volumes:
+      # the tile build's railroad distances (stats/railroads), read-only
+      - tiles-data:/tiles-data:ro
 
   nodejs-dev:
     depends_on:
@@ -76,6 +79,9 @@ services:
     tty: true
     networks:
       - server-network
+    volumes:
+      # the tile build's railroad distances (stats/railroads), read-only
+      - tiles-data:/tiles-data:ro
 
   # Map tiles (see tiles/README.md). tiles-build is a one-off job that builds
   # the tiles into the tiles-data volume:

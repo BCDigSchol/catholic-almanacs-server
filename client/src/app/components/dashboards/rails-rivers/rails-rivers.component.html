@@ -1,0 +1,112 @@
+<app-dashboard-shell
+    title="Rails and Rivers"
+    purpose="How near the church's institutions stood to the railroads, and to the canals and steamboat rivers, of each year: did the church follow the water, then the rails?"
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" [value]="state.diocese" (change)="setDiocese($any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Function</span>
+                <select class="control" [value]="state.fn" (change)="setFunction($any($event.target).value)">
+                    <option value="">All institutions</option>
+                    @for (f of functions; track f.id) {
+                        <option [value]="f.key" [selected]="f.key === state.fn">{{ f.label }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (notBuilt) {
+        <p class="caution">The railroad distances haven't been built on this server yet. They come from the map tiles' transport build (<code>tiles-build transport</code>).</p>
+    }
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">within {{ nearMiles }} mi of a working railroad, {{ current.year }}</dt>
+                <dd class="stat-value">{{ share(current.nearRail, current.n) | percent }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">within {{ nearMiles }} mi of a canal or steamboat river</dt>
+                <dd class="stat-value">{{ share(current.nearWater, current.n) | percent }}</dd>
+            </div>
+            @if (current.medianRail !== null) {
+                <div class="stat">
+                    <dt class="stat-label">median distance to a railroad</dt>
+                    <dd class="stat-value">{{ current.medianRail | number: '1.0-1' }} mi</dd>
+                </div>
+            }
+            <div class="stat">
+                <dt class="stat-label">institutions measured</dt>
+                <dd class="stat-value">{{ current.n | number }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'Distance to the railroad' + (year ? ', ' + year : '')"
+        note="Each institution coloured by how far it stood from a working railroad; the map draws that year's railroads, canals and steamboat rivers"
+        [state]="vizState"
+        [emptyText]="notBuilt ? 'The railroad distances are not built on this server.' : 'Nothing to show for these filters.'"
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <div key>
+            <ul class="legend" aria-label="Distance to a railroad">
+                @for (b of bands; track b.label) {
+                    <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
+                }
+            </ul>
+        </div>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="rails-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            label="Distance to the railroad"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="rails-lower">
+        <app-viz-panel
+            heading="Near the railroad, near the water"
+            [note]="'Share of the institutions recorded within ' + nearMiles + ' miles of each, by year'"
+            [state]="vizState"
+            [hasKey]="true"
+            (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item"><span class="legend-swatch line" [style.background]="railInk"></span>A working railroad</li>
+                <li class="legend-item"><span class="legend-swatch dashed" [style.background]="waterInk"></span>A canal or steamboat river</li>
+            </ul>
+            <div class="chart" #trend></div>
+        </app-viz-panel>
+
+        <app-viz-panel
+            [heading]="'How far from a railroad' + (year ? ', ' + year : '')"
+            note="Institutions by straight-line distance to the nearest working railroad"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <div class="chart bands" #bandChart></div>
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p>For every institution the almanac recorded with a location, the tile build measures the straight-line distance to the nearest <strong>railroad in operation</strong> on 1 January of that year, and to the nearest <strong>canal or steamboat river</strong> in use, from Jeremy Atack's historical transportation GIS (Vanderbilt University). "Near" means within {{ nearMiles }} miles, about a morning's travel by road.</p>
+        <p>Atack dates railroads by the survey maps that first show them (1830, 1835, 1840 … 1861, 1863, 1868 …), so a line can count a few years after it opened. Many institutions are placed at their town rather than their street, which matters little at these distances.</p>
+        <p>Nearness is not cause: towns, railroads and churches grew together, and the almanacs of the 1860s record many more small places than those of the 1830s. Read the change over time alongside Coverage.</p>
+        <p>Click a point to open that institution's record for the year.</p>
+    </div>
+</app-dashboard-shell>

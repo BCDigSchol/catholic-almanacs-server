@@ -8,5 +8,6 @@ module.exports = app => {
     router.post('/overview', wrap(controller.getOverview));
     router.get('/coverage', wrap(controller.getCoverage));
     router.get('/circuits', wrap(controller.getCircuits));
+    router.get('/railroads', wrap(controller.getRailroads));
     app.use('/api/stats', router);
 }

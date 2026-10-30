@@ -21,7 +21,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # of OpenStreetMap around the places the database records
 RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential git ca-certificates curl jq unzip gdal-bin libsqlite3-dev zlib1g-dev \
-      osmium-tool python3 python3-shapely default-mysql-client \
+      osmium-tool python3 python3-shapely python3-pyproj python3-numpy default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 RUN git clone --depth 1 --branch "${TIPPECANOE_VERSION}" https://github.com/felt/tippecanoe.git /tmp/tippecanoe \
@@ -30,7 +30,7 @@ RUN git clone --depth 1 --branch "${TIPPECANOE_VERSION}" https://github.com/felt
     && rm -rf /tmp/tippecanoe
 
 COPY build.sh build-tiles.sh build-detail.sh build-history.sh build-ohm.sh build-transport.sh \
-     make-area.py pick-regions.py history-features.py ohm-features.py /tiles/
+     make-area.py pick-regions.py history-features.py ohm-features.py transport-distances.py /tiles/
 # /work keeps the downloads between runs (mount a volume there to reuse them)
 ENV MAX_ZOOM=10 DETAIL_ZOOM=7
 ENTRYPOINT ["bash", "/tiles/build.sh"]

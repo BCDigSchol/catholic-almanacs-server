@@ -11,8 +11,14 @@
 # and never close; canals the years they opened and closed; rivers the years
 # steamboats ran on them (2100 = still in use).
 #
+# It also measures how far each almanac record lay from the railroads, and
+# from the canals and steamboat rivers, of its year (transport-distances.py),
+# into transport-distances.json beside the tiles; the API reads it from the
+# shared volume for its railroad statistics. Skipped without a database.
+#
 # Usage: build-transport.sh <out.pmtiles> [work-dir]
-# Needs: curl, unzip, ogr2ogr (gdal), tippecanoe.
+# Needs: curl, unzip, ogr2ogr (gdal), tippecanoe, python3 + shapely + pyproj,
+# mysql client. Database: DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME.
 set -euo pipefail
 
 OUT=${1:?usage: build-transport.sh <out.pmtiles> [work-dir]}
@@ -38,13 +44,14 @@ fetch() {
   find "$SRC/$name" -name '*.shp' ! -path '*__MACOSX*' -print -quit
 }
 
-# export <shp> <out> <select>: reprojected to WGS 84, one GeoJSON feature per
-# line, properties from the SQL select (kind, name, from, to as yyyymmdd days,
-# the same encoding as history.pmtiles, so map-vis filters them alike)
+# export <shp> <out> <select> [ogr2ogr options]: one GeoJSON feature per line,
+# properties from the SQL select (kind, name, from, to as yyyymmdd days, the
+# same encoding as history.pmtiles, so map-vis filters them alike)
 export_layer() {
   local shp=$1 out=$2 select=$3 layer
+  shift 3
   layer=$(basename "$shp" .shp)
-  ogr2ogr -f GeoJSONSeq -lco RS=NO -t_srs EPSG:4326 -dialect sqlite \
+  ogr2ogr -f GeoJSONSeq -lco RS=NO "$@" -dialect sqlite \
     -sql "SELECT $select, Geometry FROM \"$layer\"" "$out" "$shp"
 }
 
@@ -52,12 +59,28 @@ export_layer() {
 # year before (2100 means still in use)
 until_sql() { echo "CASE WHEN $1 >= 2100 OR $1 IS NULL THEN 99991231 ELSE ($1 - 1) * 10000 + 1231 END"; }
 
-export_layer "$(fetch "$RAIL_ZIP")" "$D/rail.geojsonl" \
-  "'rail' AS kind, RRname AS name, InOpBy * 10000 + 101 AS \"from\", 99991231 AS \"to\""
-export_layer "$(fetch "$CANAL_ZIP")" "$D/canals.geojsonl" \
-  "'canal' AS kind, NAME AS name, OPENED * 10000 + 101 AS \"from\", $(until_sql CLOSED) AS \"to\""
-export_layer "$(fetch "$RIVER_ZIP")" "$D/rivers.geojsonl" \
-  "'steamboat' AS kind, NAME AS name, START * 10000 + 101 AS \"from\", $(until_sql '"END"') AS \"to\""
+RAIL_SQL="'rail' AS kind, RRname AS name, InOpBy * 10000 + 101 AS \"from\", 99991231 AS \"to\""
+CANAL_SQL="'canal' AS kind, NAME AS name, OPENED * 10000 + 101 AS \"from\", $(until_sql CLOSED) AS \"to\""
+RIVER_SQL="'steamboat' AS kind, NAME AS name, START * 10000 + 101 AS \"from\", $(until_sql '"END"') AS \"to\""
+for layer in rail:RAIL canals:CANAL rivers:RIVER; do
+  name=${layer%%:*}; key=${layer##*:}
+  zip_var="${key}_ZIP"; sql_var="${key}_SQL"
+  shp=$(fetch "${!zip_var}")
+  export_layer "$shp" "$D/$name.geojsonl" "${!sql_var}" -t_srs EPSG:4326
+done
+
+DIST="$(dirname "$OUT")/transport-distances.json"
+if [ -n "${DB_HOST:-}" ]; then
+  echo "[transport] measuring each record's distance to the railroads and waterways of its year"
+  mysql -h "$DB_HOST" -P "${DB_PORT:-3306}" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" -N -B -e \
+    "SELECT ID, year, latitude, longitude FROM almanacRecords WHERE latitude IS NOT NULL AND longitude IS NOT NULL" 2>/dev/null \
+    | python3 /tiles/transport-distances.py "$D/rail.geojsonl" "$D/canals.geojsonl" "$D/rivers.geojsonl" \
+    > "$DIST.tmp"
+  mv "$DIST.tmp" "$DIST"
+  echo "[transport] wrote $DIST ($(du -h "$DIST" | cut -f1))"
+else
+  echo "[transport] no database configured: skipping the distances"
+fi
 
 echo "[transport] $(cat "$D"/*.geojsonl | wc -l) features → $OUT (z3–12)"
 mkdir -p "$(dirname "$OUT")"

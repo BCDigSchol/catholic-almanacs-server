@@ -65,6 +65,12 @@ export class DashboardsComponent {
           icon: "route",
           title: "Mission Circuits",
           description: "Where churches and missions had no priest of their own and were attended from another place — every circuit drawn as a line from the serving church, year by year, with the share of the church that was served from afar."
+        },
+        {
+          link: "/dashboards/rails-rivers",
+          icon: "train",
+          title: "Rails and Rivers",
+          description: "Did the church follow the water, then the railroad? How near each year's institutions stood to the railroads, canals and steamboat rivers of that year, mapped and charted over time."
         }
       ]
     },

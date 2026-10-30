@@ -700,9 +700,9 @@
             "zoom"
           ],
           3,
-          0.6,
+          0.5,
           6,
-          1.1,
+          0.9,
           10,
           1.4
         ]
@@ -716,12 +716,26 @@
       "type": "symbol",
       "source": "transport",
       "source-layer": "transport",
-      "minzoom": 6.5,
+      "minzoom": 3.5,
       "maxzoom": 12,
       "layout": {
         "visibility": "none",
         "symbol-placement": "line",
-        "symbol-spacing": 7,
+        "symbol-spacing": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3.5,
+          4,
+          7,
+          6,
+          11,
+          7
+        ],
         "text-field": "|",
         "text-font": [
           "Old Standard TT Regular"
@@ -734,7 +748,9 @@
           [
             "zoom"
           ],
-          6.5,
+          3.5,
+          5,
+          6,
           7,
           9,
           9,

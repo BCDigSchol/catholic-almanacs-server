@@ -158,13 +158,15 @@ def layers(c):
         {"id": "transport-rail", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
          "maxzoom": 12, "layout": {"visibility": "none", "line-join": "round"},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],
-         "paint": {"line-color": c["ink2"], "line-width": zoom(3, 0.6, 6, 1.1, 10, 1.4)}},
+         "paint": {"line-color": c["ink2"], "line-width": zoom(3, 0.5, 6, 0.9, 10, 1.4)}},
         # the map railway: short ties across the line, a "|" set every few
         # pixels along it (placed along a line, each glyph turns to cross it)
         {"id": "transport-rail-ties", "metadata": SHOW, "type": "symbol", "source": "transport", "source-layer": "transport",
-         "minzoom": 6.5, "maxzoom": 12,
-         "layout": {"visibility": "none", "symbol-placement": "line", "symbol-spacing": 7,
-                    "text-field": "|", "text-font": REGULAR, "text-size": zoom(6.5, 7, 9, 9, 11, 12),
+         "minzoom": 3.5, "maxzoom": 12,
+         "layout": {"visibility": "none", "symbol-placement": "line",
+                    # small and close at country zoom, so a line still reads as track
+                    "symbol-spacing": zoom(3.5, 4, 7, 6, 11, 7),
+                    "text-field": "|", "text-font": REGULAR, "text-size": zoom(3.5, 5, 6, 7, 9, 9, 11, 12),
                     "text-keep-upright": False, "text-rotation-alignment": "map", "text-pitch-alignment": "map",
                     "text-allow-overlap": True, "text-ignore-placement": True, "text-padding": 0},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],

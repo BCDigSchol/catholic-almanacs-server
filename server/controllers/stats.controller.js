@@ -498,6 +498,7 @@ async function buildFactArray() {
         const i = r.instID;
         const d = clean(r.diocese) || 'Unknown';
         return {
+            rec: r.recID,   // the almanac record (one institution in one year)
             i,
             y: Number(r.year),
             f: primaryFunction(r.fn),
@@ -682,6 +683,84 @@ exports.getCircuits = async (req, res) => {
         dioceseNames,
         misplaced: [...misplaced.values()],
         note: 'A circuit link is a station recorded as attended from another institution, or a priest listed at a place as visiting from his own. The almanacs of the 1830s printed few such links; from 1864 they list most stations, so much of the rise reflects fuller reporting.',
+    };
+    networkCache.set(key, result);
+    res.send(result);
+};
+
+// GET /api/stats/railroads?diocese=&fn=&year= — how near the institutions of
+// each year stood to the railroads, and to the canals and steamboat rivers, in
+// use that year. The distances are measured by the tile build
+// (tiles/transport-distances.py) into the shared tiles volume; without that
+// file this answers 404 and the dashboard says the data isn't built.
+//   years   [{year, n, nearRail, nearWater, nearEither, medianRail, bands}]
+//           near = within NEAR_MILES; bands = counts by distance to a railroad
+//   points  for ?year=: [[lat, lng, railMiles|null, instID]]
+//   dioceses  {id: name} with any measured institution, for the filter
+const NEAR_MILES = 5;
+const RAIL_BANDS = [1, 5, 15, 50];   // ≤1, ≤5, ≤15, ≤50, farther or none
+let _transport = null;
+function loadTransportDistances() {
+    if (_transport) return _transport;
+    const file = process.env.TRANSPORT_DISTANCES || '/tiles-data/transport-distances.json';
+    try {
+        _transport = JSON.parse(require('fs').readFileSync(file, 'utf8')).records;
+    } catch {
+        return null;   // not built here: try again next time
+    }
+    return _transport;
+}
+
+exports.getRailroads = async (req, res) => {
+    const distances = loadTransportDistances();
+    if (!distances) {
+        return res.status(404).json({ message: 'The railroad distances are not built on this server (tiles-build transport).' });
+    }
+    const diocese = typeof req.query.diocese === 'string' ? req.query.diocese : '';
+    const fn = typeof req.query.fn === 'string' ? req.query.fn : '';
+    const yearParam = parseIntParam(req.query.year, 'year');
+    if (yearParam.error) return res.status(400).json({ message: yearParam.error });
+    const year = yearParam.value;
+
+    const key = cacheKey('stats/railroads', { diocese, fn, year });
+    const cached = networkCache.get(key);
+    if (cached) return res.send(cached);
+
+    const facts = await loadFacts();
+    const names = dioceseNameMap();
+    const dioceseNames = {};
+    const byYear = new Map();
+    const points = [];
+    for (const f of facts) {
+        const d = distances[f.rec];
+        if (!d) continue;
+        dioceseNames[f._dio] = names[f._dio] || f.d;
+        if (diocese && f._dio !== diocese) continue;
+        if (fn && f.f !== fn) continue;
+        let y = byYear.get(f.y);
+        if (!y) byYear.set(f.y, y = { year: f.y, n: 0, nearRail: 0, nearWater: 0, nearEither: 0, rail: [], bands: [0, 0, 0, 0, 0] });
+        const [rail, water] = d;
+        const nr = rail != null && rail <= NEAR_MILES, nw = water != null && water <= NEAR_MILES;
+        y.n++;
+        if (nr) y.nearRail++;
+        if (nw) y.nearWater++;
+        if (nr || nw) y.nearEither++;
+        if (rail != null) y.rail.push(rail);
+        const band = rail == null ? RAIL_BANDS.length : RAIL_BANDS.findIndex(b => rail <= b);
+        y.bands[band === -1 ? RAIL_BANDS.length : band]++;
+        if (year && f.y === year && f.lat != null && f.lng != null) points.push([f.lat, f.lng, rail, f.i]);
+    }
+    const years = [...byYear.values()].sort((a, b) => a.year - b.year).map(y => {
+        const sorted = y.rail.sort((a, b) => a - b);
+        const medianRail = sorted.length ? sorted[Math.floor(sorted.length / 2)] : null;
+        const { rail, ...rest } = y;
+        return { ...rest, medianRail };
+    });
+    const result = {
+        years,
+        points,
+        dioceses: dioceseNames,
+        meta: { nearMiles: NEAR_MILES, bands: RAIL_BANDS },
     };
     networkCache.set(key, result);
     res.send(result);

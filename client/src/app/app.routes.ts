@@ -29,6 +29,7 @@ export const routes: Routes = [
     { path: 'dashboards/subset-vs-whole', loadComponent: () => import('./components/dashboards/subset-vs-whole/subset-vs-whole.component').then(m => m.SubsetVsWholeDashboardComponent) },
     { path: 'dashboards/spread', loadComponent: () => import('./components/dashboards/spread/spread.component').then(m => m.SpreadDashboardComponent) },
     { path: 'dashboards/circuits', loadComponent: () => import('./components/dashboards/circuits/circuits.component').then(m => m.CircuitsComponent) },
+    { path: 'dashboards/rails-rivers', loadComponent: () => import('./components/dashboards/rails-rivers/rails-rivers.component').then(m => m.RailsRiversComponent) },
     { path: 'dashboards/diocese-tracker', loadComponent: () => import('./components/dashboards/diocese-tracker/diocese-tracker.component').then(m => m.DioceseTrackerDashboardComponent) },
     { path: 'dashboards/networks', loadComponent: () => import('./components/networks/networks/networks.component').then(m => m.NetworksComponent) },
     { path: 'dashboards/explore', loadComponent: () => import('./components/dashboards/explore/explore.component').then(m => m.ExploreComponent) },
