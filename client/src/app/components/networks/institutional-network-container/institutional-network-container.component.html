@@ -5,7 +5,10 @@
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
-        <app-segmented primary label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
+        <div primary class="switches">
+            <app-segmented label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
+            <app-segmented label="Ties" [showLabel]="true" [options]="ties" [value]="state.tie" (valueChange)="set('tie', $event)"></app-segmented>
+        </div>
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>
@@ -75,13 +78,15 @@
     </app-control-bar>
 
     <app-viz-panel
-        [heading]="'Institutions sharing people, ' + scopeLabel"
+        [heading]="(moved ? 'Clergy moving between institutions, ' : 'Institutions sharing people, ') + scopeLabel"
         [note]="panelNote"
         [state]="vizState"
-        emptyText="No institutions shared people under these filters. Try widening the years or clearing a filter."
+        [emptyText]="moved ? 'No one moved between these institutions under these filters. Try widening the years or clearing a filter.' : 'No institutions shared people under these filters. Try widening the years or clearing a filter.'"
         [hasKey]="key.length > 1"
         [keyOpen]="keyOpen"
         (retry)="fetchData()">
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="This network as a GEXF file for Gephi">GEXF</button>
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="This network's nodes and edges as two CSV files">CSV</button>
         <div key>
             <p class="key-hint">Colour shows the diocese. Click a diocese to hide or show its institutions.</p>
             <ul class="legend">
@@ -103,7 +108,7 @@
     </app-viz-panel>
 
     <div notes>
-        <p>Each dot is an institution. Two institutions are linked when at least one person is listed at both within the selected years; the line's number and thickness count the people they shared. Dot size reflects PageRank, a measure of how central an institution is to the whole web.</p>
+        <p>Each dot is an institution. <strong>Ties</strong> sets what links two of them. <em>Served together</em>: the same person listed at both in the same year, as a priest covering a parish and its stations, or a pastor who also taught at a college. <em>Moved between</em>: people who left one for the other from one almanac year to the next they appear in, with the arrow pointing to where they went; the year range counts a move by the year they arrived. A move across the 1838–1864 gap happened somewhere in those years. The line's number and thickness count the people. Dot size reflects PageRank, a measure of how central an institution is to the whole web.</p>
         <p>The full network is too large to draw at once, so the server keeps the most central institutions (by PageRank, up to 500) and drops any left without a link. The panel note says how many of the matching institutions are shown; narrow the filters to see the rest.</p>
         <p>Click an institution for its details and a link to its record; double-click to open the record. Use “Min. shared” to keep only stronger ties, and “Cluster groups” to fold each diocese into one bubble.</p>
     </div>

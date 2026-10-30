@@ -1,0 +1,63 @@
+// Shared dashboard styles (.ctl, .control, .legend, .stat-strip, .data-table) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+
+    small {
+        color: var(--ink-3);
+        font-size: var(--text-sm);
+    }
+}
+
+.flow-value {
+    font-size: var(--text-xl);
+}
+
+.switches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-3) var(--space-4);
+}
+
+.export-btn {
+    height: 30px;
+    padding-block: 0;
+    font-size: var(--text-xs);
+}
+
+// the flows table and the balance table side by side on wide screens
+.flows-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.data-table {
+    .num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+
+    tr.sel td {
+        color: var(--rubric);
+    }
+}
+
+// a diocese name that focuses the page on it
+.link-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: var(--rule-strong);
+    text-underline-offset: 3px;
+    cursor: pointer;
+}

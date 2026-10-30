@@ -77,6 +77,8 @@
         emptyText="No one is listed at an institution under these filters. Try widening the years or clearing a filter."
         [hasKey]="true"
         (retry)="fetchData()">
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="This network as a GEXF file for Gephi">GEXF</button>
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="This network's nodes and edges as two CSV files">CSV</button>
         <div key>
             <ul class="legend">
                 @for (entry of key; track entry.group) {

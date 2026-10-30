@@ -14,6 +14,7 @@ import { UrlState } from '../../../utils/url-state';
 import { institutionLabel, isUnnamed } from '../../../utils/record-labels';
 import { NetworkGraphComponent } from './network-graph.component';
 import { MANY_INKS, OTHER_INK } from '../../../utils/palette';
+import { citation, downloadCsv, downloadGexf, ExportGraph } from '../../../utils/network-export';
 
 /** Almanac years the network endpoints can filter on. */
 export const NETWORK_MIN_YEAR = 1833;
@@ -29,6 +30,8 @@ export interface FilterField {
   label: string;
   /** Free text (debounced) rather than a pick list. */
   text?: boolean;
+  /** A switch (e.g. what a link means), not a filter: sent to the API, never a chip, kept by "Clear all". */
+  isSwitch?: boolean;
 }
 
 export interface KeyEntry {
@@ -160,7 +163,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   clearAll = (): void => {
     const cleared: Record<string, string | number> = { from: 0, to: 0 };
-    for (const f of this.fields) cleared[f.key] = this.clearedValue(f.key);
+    for (const f of this.fields) if (!f.isSwitch) cleared[f.key] = this.clearedValue(f.key);
     this.url.set(cleared as Partial<T>);
   };
 
@@ -181,7 +184,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   private buildChips(state: T): ControlChip[] {
     const chips: ControlChip[] = [];
     for (const f of this.fields) {
-      if (!this.isSet(f.key)) continue;
+      if (f.isSwitch || !this.isSet(f.key)) continue;
       const v = String(state[f.key]);
       const shown = f.key === 'state' ? stateName(v) : f.key === 'diocese' ? spaceName(v) : v;
       chips.push({ label: `${f.label}: ${shown}`, clear: () => this.set(f.key, this.clearedValue(f.key)) });
@@ -292,4 +295,30 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   }
 
   protected abstract computeTakeaway(nodes: any[], edges: any[]): string;
+
+  // ---- export -----------------------------------------------------------------
+
+  /** What a link means on this page, for the downloaded file's description. */
+  protected abstract tieDescription(): string;
+  /** File name stem, e.g. 'institution-network'. */
+  protected abstract readonly exportName: string;
+
+  /** The graph as drawn (after the server's cut to the most central nodes), with its filters and a citation. */
+  private exportGraph(): ExportGraph {
+    const kind = (n: any) => n.routeSegment === 'people' ? 'person' : n.routeSegment === 'institutions' ? 'institution' : 'node';
+    const cut = this.truncated ? ` Only the ${this.network.nodes.length} most central of ${this.totalNodes} matching nodes (by PageRank) are included.` : '';
+    return {
+      directed: this.network.edges.some(e => e.arrows),
+      description: `${this.tieDescription()} Years: ${this.yearLabel}. Filters: ${this.chips.filter(c => !c.label.startsWith('Years')).map(c => c.label).join('; ') || 'none'}.${cut} ${citation()}`,
+      nodes: this.network.nodes.map(n => ({
+        id: n.id, label: n.label, kind: kind(n),
+        diocese: n.diocese ?? (['people', 'institutions'].includes(n.group) ? undefined : n.group),
+        pageRank: typeof n.pageRank === 'number' ? Number(n.pageRank.toFixed(6)) : undefined,
+      })),
+      edges: this.network.edges.map(e => ({ source: e.from, target: e.to, weight: Number(e.weight) || 1 })),
+    };
+  }
+
+  downloadCsv(): void { downloadCsv(this.exportName, this.exportGraph()); }
+  downloadGexf(): void { downloadGexf(this.exportName, this.exportGraph()); }
 }

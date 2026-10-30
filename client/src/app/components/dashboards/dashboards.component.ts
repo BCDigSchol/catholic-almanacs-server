@@ -100,13 +100,19 @@ export class DashboardsComponent {
     },
     {
       title: "Connections",
-      subtitle: "Who served alongside whom, and which institutions shared their clergy.",
+      subtitle: "Who served alongside whom, which institutions shared their clergy, and where clergy moved.",
       cards: [
         {
           link: "/dashboards/networks",
           icon: "hub",
           title: "Networks",
-          description: "Explore how institutions connect through the people they shared, how people connect through the places they served together, and both together in one web — filter, cluster, and search by place, type, and year."
+          description: "Explore how institutions connect through the people they shared or the clergy who moved between them, how people connect through the places they served together, and both together in one web — filter, cluster, and search by place, type, and year."
+        },
+        {
+          link: "/dashboards/clergy-flows",
+          icon: "swap_horiz",
+          title: "Clergy Flows",
+          description: "Where priests went when they moved between posts: arcs between the sees, which dioceses sent clergy to which, and which received more than they gave."
         }
       ]
     }

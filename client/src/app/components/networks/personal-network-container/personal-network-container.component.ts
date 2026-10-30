@@ -26,6 +26,11 @@ export class PersonalNetworkContainerComponent extends NetworkDashboard<typeof D
   protected readonly defaults = DEFAULTS;
   protected override readonly nodeNouns: [string, string] = ['person', 'people'];
   protected readonly endpoint = 'person/network';
+  protected readonly exportName = 'people-network';
+
+  protected tieDescription(): string {
+    return 'People linked when listed at the same institution in the same almanac year (weight = institutions shared).';
+  }
   protected readonly fields: FilterField[] = [
     { key: 'diocese', param: 'diocese', label: 'Diocese' },
     { key: 'state', param: 'state', label: 'State' },

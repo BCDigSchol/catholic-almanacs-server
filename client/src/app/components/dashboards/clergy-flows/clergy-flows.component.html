@@ -1,0 +1,128 @@
+<app-dashboard-shell
+    title="Clergy Flows"
+    purpose="Where priests went when they moved between posts: which dioceses sent clergy to which, and which received more than they gave."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <div primary class="switches">
+            <app-segmented label="Moves across the 1838–1864 gap" [showLabel]="true" [options]="gapOptions" [value]="state.gap" (valueChange)="setGap($event)"></app-segmented>
+        </div>
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setFocus($any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of balances; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.focus">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+            <div class="ctl">
+                <span>Years moved</span>
+                <app-year-range idPrefix="flows-years" [min]="minYear" [max]="maxYear"
+                    [from]="state.from || minYear" [to]="state.to || maxYear" (rangeChange)="setYears($event)"></app-year-range>
+            </div>
+        </ng-template>
+    </app-control-bar>
+
+    @if (data && data.totals.moves) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">clergy who moved between posts</dt>
+                <dd class="stat-value">{{ data.totals.people | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">moves into another diocese</dt>
+                <dd class="stat-value">{{ data.totals.cross | number }} <small>{{ crossShare | percent }}</small></dd>
+            </div>
+            @if (flows.length) {
+                <div class="stat">
+                    <dt class="stat-label">largest flow</dt>
+                    <dd class="stat-value flow-value">{{ flows[0].fromName }} → {{ flows[0].toName }} <small>{{ flows[0].people }}</small></dd>
+                </div>
+            }
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'Moves between dioceses, ' + yearLabel + (focusName ? ', Diocese of ' + focusName : '')"
+        note="Each arc runs from the sending see to the receiving one; click a see to follow its flows"
+        [state]="vizState"
+        emptyText="No one moved between dioceses in these years."
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="The flows as a GEXF file for Gephi">GEXF</button>
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="The dioceses and flows as two CSV files">CSV</button>
+        <div key>
+            <ul class="legend" aria-label="Map key">
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ink.sender"></span>Sent more than it received</li>
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ink.receiver"></span>Received more than it sent</li>
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ink.even"></span>About even</li>
+                <li class="legend-item"><span class="legend-swatch line" [style.background]="ink.flow"></span>Priests moving (thicker: more); moves each way draw as two arcs</li>
+            </ul>
+        </div>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [links]="mapLinks"
+            [fitTo]="mapFit"
+            [clickToSelect]="true"
+            (featureClick)="onMapSelect($event)"
+            label="Clergy moving between dioceses"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="flows-lower">
+        <app-viz-panel
+            [heading]="focusName ? 'Flows of the Diocese of ' + focusName : 'The largest flows'"
+            note="People who left a post in one diocese for a post in the other"
+            [state]="vizState"
+            emptyText="No flows for this selection."
+            (retry)="fetchData()">
+            <table class="data-table">
+                <thead><tr><th>From</th><th>To</th><th class="num">Clergy</th><th>Years</th></tr></thead>
+                <tbody>
+                    @for (f of flows.slice(0, 25); track f.from + f.to) {
+                        <tr [title]="f.names.join(', ') + (f.people > f.names.length ? '…' : '')">
+                            <td data-label="From"><button type="button" class="link-btn" (click)="setFocus(f.from)">{{ f.fromName }}</button></td>
+                            <td data-label="To"><button type="button" class="link-btn" (click)="setFocus(f.to)">{{ f.toName }}</button></td>
+                            <td data-label="Clergy" class="num">{{ f.people }}</td>
+                            <td data-label="Years">{{ f.yearsLabel }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </app-viz-panel>
+
+        <app-viz-panel
+            heading="Sent and received"
+            note="Clergy each diocese sent to and received from other dioceses, and moves within it"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <table class="data-table">
+                <thead><tr><th>Diocese</th><th class="num">Sent</th><th class="num">Received</th><th class="num">Within</th></tr></thead>
+                <tbody>
+                    @for (d of balances.slice(0, 25); track d.id) {
+                        <tr [class.sel]="d.id === state.focus">
+                            <td data-label="Diocese"><button type="button" class="link-btn" (click)="setFocus(d.id)">{{ d.name }}</button></td>
+                            <td data-label="Sent" class="num">{{ d.out }}</td>
+                            <td data-label="Received" class="num">{{ d.in }}</td>
+                            <td data-label="Within" class="num">{{ d.within }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p>A <strong>move</strong> is read from the almanacs year by year: between two years a priest (or brother or sister) is listed, they left one resident post and took up another. Keeping a post while adding one (a pastor who also became a college's president), or leaving without a new post, is not a move. A move counts in the diocese each post was listed under that year, so a parish that later passed to a new see (Rochester, from Buffalo, in 1868) counts in the old one until it changed, and in the year it arrived.</p>
+        <p>The almanacs skip 1839–1863. A priest listed in 1838 at one post and in 1864 at another moved somewhere in between: those {{ data?.totals?.gapMoves ?? 0 }} moves are left out unless you include them. Visits to stations are not moves (see Mission Circuits).</p>
+        @if (data?.meta?.includesGap) { <p>Moves across the gap are included.</p> }
+        <p>Each see sits at its cathedral, or the centre of its institutions where no cathedral is recorded. Download the flows (GEXF for Gephi, or CSV) with the buttons above the map; each file names the filters and how to cite it.</p>
+    </div>
+</app-dashboard-shell>

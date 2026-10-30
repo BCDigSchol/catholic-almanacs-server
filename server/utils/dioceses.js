@@ -158,11 +158,24 @@ function resolveDioceseId(instID, dioceseName) {
   return fromId || null;   // keep the prefix even if unknown, else null
 }
 
+// The diocese a record was listed under that year: the printed name first
+// (via the timeline's aliases), since an institution's id prefix names the see
+// it ended up in (a Rochester parish is `roc.ny` even while the almanac lists
+// it under Buffalo, before 1868); the prefix only when the name is unknown.
+function dioceseIdAsListed(instID, dioceseName) {
+  const { aliasToId } = load();
+  if (dioceseName) {
+    const viaAlias = aliasToId.get(normalizeName(dioceseName));
+    if (viaAlias) return viaAlias;
+  }
+  return resolveDioceseId(instID, dioceseName);
+}
+
 function meta(id) { return load().byId.get(id) || null; }
 function exists(id, year) { const d = load().byId.get(id); return !!d && d.existsYears.has(year); }
 function allYears() { return load().years.slice(); }
 
 module.exports = {
-  load, resolveDioceseId, canonicalDioceseId, meta, exists, allYears,
+  load, resolveDioceseId, dioceseIdAsListed, canonicalDioceseId, meta, exists, allYears,
   cleanName, normalizeName
 };

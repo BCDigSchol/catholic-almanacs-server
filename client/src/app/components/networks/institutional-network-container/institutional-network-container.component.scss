@@ -10,3 +10,16 @@
     color: var(--ink-3);
     font-size: var(--text-xs);
 }
+
+.switches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-3) var(--space-4);
+}
+
+.export-btn {
+    height: 30px;
+    padding-block: 0;
+    font-size: var(--text-xs);
+}

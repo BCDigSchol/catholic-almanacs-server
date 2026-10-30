@@ -69,6 +69,8 @@
         [hasKey]="key.length > 1"
         [keyOpen]="keyOpen"
         (retry)="fetchData()">
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="This network as a GEXF file for Gephi">GEXF</button>
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="This network's nodes and edges as two CSV files">CSV</button>
         <div key>
             <p class="key-hint">Colour shows each person's diocese. Click a diocese to hide or show its people.</p>
             <ul class="legend">

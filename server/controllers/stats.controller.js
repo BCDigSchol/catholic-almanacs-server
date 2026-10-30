@@ -11,6 +11,7 @@ const { parseIntParam, networkCache, cacheKey } = require("../utils/network");
 const { childIds, buildOverview } = require("../utils/overview");
 const { buildCoverage } = require("../utils/coverage");
 const dioceses = require("../utils/dioceses");
+const { loadMoves, GAP_YEARS } = require("../utils/careers");
 
 // The five canonical institution functions (from functions.csv). instFunction
 // can be a compound string like "consecrated life institutions and educational
@@ -761,6 +762,94 @@ exports.getRailroads = async (req, res) => {
         points,
         dioceses: dioceseNames,
         meta: { nearMiles: NEAR_MILES, bands: RAIL_BANDS },
+    };
+    networkCache.set(key, result);
+    res.send(result);
+};
+
+// GET /api/stats/clergy-flows?from=&to=&gap=include — clergy moving between
+// dioceses (utils/careers.js), for the Clergy Flows dashboard. A move counts
+// in the years it arrived (from/to); moves across the almanacs' 1838–1864 gap
+// are left out unless gap=include.
+//   dioceses  [{id, name, lat, lng, out, in, within}]  (lat/lng: the see's
+//             cathedral, else the centre of its institutions)
+//   flows     [{from, to, people, names, years}]  between different dioceses
+//   totals    {moves, people, cross, gapMoves}
+let _seeAt = null;
+// A point in the lower 48 (a few records carry swapped or zeroed coordinates).
+const inUS = (lat, lng) => lat >= 24 && lat <= 50 && lng >= -125 && lng <= -66;
+async function seeLocations() {
+    if (_seeAt) return _seeAt;
+    const at = new Map();
+    const cathedrals = await db.sequelize.query(
+        `SELECT instID, diocese, year, latitude, longitude FROM almanacRecords
+          WHERE instType = 'cathedral' AND latitude IS NOT NULL ORDER BY year`,
+        { type: db.Sequelize.QueryTypes.SELECT }
+    );
+    for (const c of cathedrals) {
+        if (inUS(c.latitude, c.longitude)) at.set(dioceses.resolveDioceseId(c.instID, c.diocese) || 'unknown', [c.latitude, c.longitude]);
+    }
+    // no cathedral recorded: the median of the diocese's institutions (robust to stray points)
+    const pts = new Map();
+    for (const f of await loadFacts()) {
+        if (f.lat == null || f.lng == null || at.has(f._dio) || !inUS(f.lat, f.lng)) continue;
+        const p = pts.get(f._dio) || [[], []];
+        p[0].push(f.lat); p[1].push(f.lng);
+        pts.set(f._dio, p);
+    }
+    const median = a => a.sort((x, y) => x - y)[Math.floor(a.length / 2)];
+    for (const [id, [lats, lngs]] of pts) at.set(id, [median(lats), median(lngs)]);
+    _seeAt = at;
+    return at;
+}
+
+exports.getClergyFlows = async (req, res) => {
+    const from = parseIntParam(req.query.from, 'from');
+    const to = parseIntParam(req.query.to, 'to');
+    if (from.error || to.error) return res.status(400).json({ message: from.error || to.error });
+    const withGap = req.query.gap === 'include';
+    const key = cacheKey('stats/clergy-flows', { from: from.value, to: to.value, gap: withGap });
+    const cached = networkCache.get(key);
+    if (cached) return res.send(cached);
+
+    const [moves, seeAt] = await Promise.all([loadMoves(), seeLocations()]);
+    const names = dioceseNameMap();
+    const stats = new Map();
+    const stat = id => {
+        let s = stats.get(id);
+        if (!s) stats.set(id, s = { id, name: names[id] || id, out: new Set(), in: new Set(), within: new Set() });
+        return s;
+    };
+    const flows = new Map();
+    const people = new Set();
+    let count = 0, gapMoves = 0;
+    for (const m of moves) {
+        if ((from.value != null && m.y2 < from.value) || (to.value != null && m.y2 > to.value)) continue;
+        if (m.gap) { gapMoves++; if (!withGap) continue; }
+        if (m.from.dio === 'unknown' || m.to.dio === 'unknown') continue;
+        count++;
+        people.add(m.pers);
+        if (m.from.dio === m.to.dio) { stat(m.from.dio).within.add(m.pers); continue; }
+        stat(m.from.dio).out.add(m.pers);
+        stat(m.to.dio).in.add(m.pers);
+        const k = `${m.from.dio}|${m.to.dio}`;
+        let f = flows.get(k);
+        if (!f) flows.set(k, f = { from: m.from.dio, to: m.to.dio, people: new Map(), years: new Set() });
+        f.people.set(m.pers, m.name);
+        f.years.add(m.y2);
+    }
+    const result = {
+        dioceses: [...stats.values()].map(s => {
+            const at = seeAt.get(s.id);
+            return { id: s.id, name: s.name, lat: at ? at[0] : null, lng: at ? at[1] : null,
+                out: s.out.size, in: s.in.size, within: s.within.size };
+        }),
+        flows: [...flows.values()]
+            .map(f => ({ from: f.from, to: f.to, people: f.people.size, names: [...f.people.values()].slice(0, 6),
+                years: [...f.years].sort((a, b) => a - b) }))
+            .sort((a, b) => b.people - a.people),
+        totals: { moves: count, people: people.size, cross: [...flows.values()].reduce((n, f) => n + f.people.size, 0), gapMoves },
+        meta: { gapYears: GAP_YEARS, includesGap: withGap },
     };
     networkCache.set(key, result);
     res.send(result);

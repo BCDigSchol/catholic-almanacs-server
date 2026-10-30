@@ -1,6 +1,11 @@
-// Returns a network graph of all institutions connected by shared persons, with optional filters
+// Returns a network graph of all institutions, with optional filters. `tie`
+// says what links two institutions: 'together' (default) = the same person
+// listed at both in the same year (circuits, double duty); 'moved' = people
+// who left one for the other (utils/careers.js), directed, in the year window
+// by the year they arrived.
 exports.getAllInstitutionNetwork = async (req, res) => {
     const { diocese, state, city, instType, instFunction, language, order } = req.query;
+    const tie = req.query.tie === 'moved' ? 'moved' : 'together';
     const params = parseNetworkParams(req.query);
     if (params.error) {
         return res.status(400).json({ message: params.error });
@@ -80,7 +85,7 @@ exports.getAllInstitutionNetwork = async (req, res) => {
             edgeWhere.push(...arWhere);
         }
         const edgeWhereClause = edgeWhere.length ? 'WHERE ' + edgeWhere.join(' AND ') : '';
-        const edges = await db.sequelize.query(
+        const edges = tie === 'moved' ? await movedEdges(new Set(instIDs), startYear, endYear) : await db.sequelize.query(
             `SELECT
                 ar1.instID AS instID1,
                 ar2.instID AS instID2,
@@ -133,7 +138,9 @@ exports.getAllInstitutionNetwork = async (req, res) => {
             to: row.instID2,
             weight: Number(row.weight),
             value: Number(row.weight),
-            label: String(row.weight)
+            label: String(row.weight),
+            // curved, so moves both ways between two institutions draw as two lines
+            ...(tie === 'moved' ? { arrows: 'to', tie, smooth: { enabled: true, type: 'curvedCW', roundness: 0.15 } } : {})
         }));
 
         // Weighted PageRank (using shared-person counts as edge weights)
@@ -314,6 +321,21 @@ const { Sequelize } = db.sequelize;
 const getPagination = require("../utils/get-pagination");
 const { orderCondition } = require("../utils/religious-orders");
 const { parseNetworkParams, parseIntParam, computePageRank, truncateToTopNodes, networkCache, cacheKey } = require("../utils/network");
+const { loadMoves } = require("../utils/careers");
+
+/** Edges of the 'moved' tie: [{instID1: from, instID2: to, weight: people}] among `inSet`. */
+async function movedEdges(inSet, startYear, endYear) {
+    const pairs = new Map();
+    for (const m of await loadMoves()) {
+        if ((startYear != null && m.y2 < startYear) || (endYear != null && m.y2 > endYear)) continue;
+        if (m.from.inst === m.to.inst || !inSet.has(m.from.inst) || !inSet.has(m.to.inst)) continue;
+        const k = `${m.from.inst}|${m.to.inst}`;
+        let p = pairs.get(k);
+        if (!p) pairs.set(k, p = { instID1: m.from.inst, instID2: m.to.inst, people: new Set() });
+        p.people.add(m.pers);
+    }
+    return [...pairs.values()].map(p => ({ instID1: p.instID1, instID2: p.instID2, weight: p.people.size }));
+}
 const Op = db.Sequelize.Op;
 const { where } = require("sequelize");
 

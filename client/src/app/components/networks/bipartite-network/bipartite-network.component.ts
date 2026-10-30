@@ -29,6 +29,11 @@ export class BipartiteNetworkComponent extends NetworkDashboard<typeof DEFAULTS>
   ];
   protected readonly defaults = DEFAULTS;
   protected readonly endpoint = 'institution/network/bipartite';
+  protected readonly exportName = 'service-network';
+
+  protected tieDescription(): string {
+    return 'People linked to the institutions they were listed at (weight = years listed there).';
+  }
   // A whole diocese is ~500–650 nodes; ask for enough to draw it complete.
   protected override readonly extraParams = { limit: '1000' };
   protected readonly fields: FilterField[] = [
