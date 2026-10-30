@@ -7,5 +7,6 @@ module.exports = app => {
     router.get('/geo', wrap(controller.getGeo));
     router.post('/overview', wrap(controller.getOverview));
     router.get('/coverage', wrap(controller.getCoverage));
+    router.get('/circuits', wrap(controller.getCircuits));
     app.use('/api/stats', router);
 }

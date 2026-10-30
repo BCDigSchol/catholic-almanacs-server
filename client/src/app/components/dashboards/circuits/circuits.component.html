@@ -1,0 +1,110 @@
+<app-dashboard-shell
+    title="Mission Circuits"
+    purpose="Where churches and missions had no priest of their own and were attended from another place, and how far each priest's circuit reached, year by year."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" [value]="state.diocese" (change)="setDiocese($any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">places attended from elsewhere, {{ current.year }}</dt>
+                <dd class="stat-value">{{ current.stations | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">of all institutions recorded</dt>
+                <dd class="stat-value">{{ current.share | percent }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">churches serving them</dt>
+                <dd class="stat-value">{{ current.hubs | number }}</dd>
+            </div>
+            @if (farthest && farthest.farthest > 0) {
+                <div class="stat">
+                    <dt class="stat-label">farthest reach</dt>
+                    <dd class="stat-value">{{ farthest.farthest | number }} mi</dd>
+                </div>
+            }
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'Circuits' + (year ? ', ' + year : '')"
+        note="Each line runs from a church to a place its priest attended"
+        [state]="vizState"
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <div key>
+            <ul class="legend" aria-label="Map key">
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ink.self"></span>A church serving others (larger: more places)</li>
+                <li class="legend-item"><span class="legend-swatch line" [style.background]="ink.out"></span>Attended from it</li>
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ink.out"></span>A place attended</li>
+            </ul>
+        </div>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="circuits-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            [links]="mapLinks"
+            [context]="mapContext"
+            [fitTo]="mapFit"
+            label="Mission circuits"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="circuits-lower">
+        <app-viz-panel
+            heading="Served from afar"
+            note="Share of the institutions recorded each year that were attended from another place"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <div class="chart" #share></div>
+        </app-viz-panel>
+
+        <app-viz-panel
+            [heading]="'The largest circuits' + (year ? ', ' + year : '')"
+            note="Churches by how many places they attended"
+            [state]="vizState"
+            [emptyText]="'No circuits recorded for this selection.'"
+            (retry)="fetchData()">
+            <ol class="circuit-list">
+                @for (h of hubs.slice(0, topHubs); track h.instID) {
+                    <li>
+                        <span class="circuit-name">
+                            <a class="record-link inst" [routerLink]="['/institutions', h.instID]" [queryParams]="{ year: year }">{{ h.label }}</a>
+                            @if (h.town && !h.label.includes(h.town)) { <span class="muted">, {{ h.town }}</span> }
+                        </span>
+                        <span class="circuit-figures">{{ h.stations }} {{ h.stations === 1 ? 'place' : 'places' }}{{ h.farthest ? ', up to ' + h.farthest + ' mi' : '' }}</span>
+                    </li>
+                }
+            </ol>
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p>A <strong>circuit</strong> is what the almanacs record when a church or mission is "attended from" another: it had no resident priest, and one rode out from the larger church, often monthly or less. Two kinds of entry are joined: stations listed as attended from an institution, and priests listed at a place as visiting from their own. Each line runs from the serving church to the place it served; distances are straight-line miles.</p>
+        <p>The share compares the places attended from elsewhere with all the institutions recorded that year (in the chosen diocese, by the serving church's diocese).</p>
+        @if (note) { <p>{{ note }}</p> }
+        @if (misplaced) {
+            <p>{{ misplaced }} links are left out because their two ends lie more than 500 miles apart: one of the places has wrong coordinates in the data (Viota, Wisconsin placed in Colombia, for one), not a real circuit.</p>
+        }
+        <p>Click a church on the map or in the list to open its record for that year.</p>
+    </div>
+</app-dashboard-shell>

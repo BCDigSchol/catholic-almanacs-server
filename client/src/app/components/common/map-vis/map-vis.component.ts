@@ -711,9 +711,7 @@ export class MapVisComponent {
     });
     this.map.on('click', 'data-point-layer', (e: any) => {
       const feature = e.features[0];
-      if (feature.properties.internalLink) {
-        this.router.navigate([feature.properties.internalLink]);
-      }
+      this.followLink(feature.properties.internalLink);
     });
     // Hover names the point, so it's clear what a click will open.
     this.pointPopup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8 });
@@ -1074,9 +1072,7 @@ export class MapVisComponent {
     });
     this.map.on('click', 'data-unclustered-point', (e: any) => {
       const feature = e.features[0];
-      if (feature.properties.internalLink) {
-        this.router.navigate([feature.properties.internalLink]);
-      }
+      this.followLink(feature.properties.internalLink);
     });
     this.map.on('mouseenter', 'data-cluster', () => {
       this.map.getCanvas().style.cursor = 'pointer';
@@ -1084,6 +1080,20 @@ export class MapVisComponent {
     this.map.on('mouseleave', 'data-cluster', () => {
       this.map.getCanvas().style.cursor = '';
     });
+  }
+
+  /**
+   * Opens a data point's `internalLink`: router commands (an array, which
+   * MapLibre hands back JSON-encoded from a feature's properties) or a URL,
+   * which may carry a query (`/institutions/x?year=1868`).
+   */
+  private followLink(link: any): void {
+    if (!link) return;
+    if (typeof link === 'string' && link.startsWith('[')) {
+      try { link = JSON.parse(link); } catch { /* a plain URL after all */ }
+    }
+    if (Array.isArray(link)) this.router.navigate(link);
+    else this.router.navigateByUrl(String(link));
   }
 
   /**
@@ -1101,8 +1111,7 @@ export class MapVisComponent {
           .setPopup(new maplibregl.Popup({ offset: 25 }).setText(item.title || 'No label'))
           .addTo(this.map);
         marker.getElement().addEventListener('click', () => {
-          const link = item.internalLink;
-          if (link) this.router.navigate(Array.isArray(link) ? link : [link]);
+          this.followLink(item.internalLink);
         });
         this.markers.push(marker);
       }

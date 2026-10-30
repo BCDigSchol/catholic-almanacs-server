@@ -1,0 +1,40 @@
+// Shared dashboard styles (.ctl, .control, .legend, .chart, .stat-strip) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}
+
+// the share chart and the list of largest circuits side by side on wide screens
+.circuits-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.circuit-list {
+    margin: 0;
+    padding-left: 1.6em;
+    font-size: var(--text-sm);
+
+    li {
+        padding: 3px 0;
+        border-bottom: 1px dotted var(--rule);
+    }
+}
+
+// the figures on their own small line under the name: the column is narrow
+// and names run long
+.circuit-figures {
+    display: block;
+    color: var(--ink-3);
+    font-size: var(--text-xs);
+    font-variant-numeric: tabular-nums;
+}

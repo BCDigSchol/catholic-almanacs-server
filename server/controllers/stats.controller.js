@@ -573,3 +573,116 @@ exports.getCoverage = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+// GET /api/stats/circuits — every circuit link of every year, for the national
+// Circuits dashboard: a station (a church or mission without a resident
+// priest) served from a hub (the institution its priest came from). Two
+// sources, merged: the attending table, and priests listed at a place as
+// visiting from another institution.
+//   years   [{year, institutions, stations, hubs, links, byDiocese}]  (distinct
+//           counts; byDiocese = institutions per diocese id, for shares)
+//   places  {instID: [name, type, town, dioceseId]}  (latest year's details)
+//   links   [[year, hub, station, hubLat, hubLng, stLat, stLng, via]]
+//           via: 1 = attending table, 2 = visiting priest, 3 = both
+//   dioceseNames  {id: display name} for the hubs' dioceses
+//   misplaced  links left out as longer than MAX_CIRCUIT_MILES: one end's
+//           coordinates are wrong (e.g. Viota, WI geocoded to Colombia), not a
+//           real ride; [[year, hub, station, miles]], for cleaning the data
+const MAX_CIRCUIT_MILES = 500;
+const milesBetween = (lat1, lng1, lat2, lng2) => {
+    const rad = Math.PI / 180;
+    const a = Math.sin((lat2 - lat1) * rad / 2) ** 2
+        + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin((lng2 - lng1) * rad / 2) ** 2;
+    return 3959 * 2 * Math.asin(Math.sqrt(a));
+};
+
+exports.getCircuits = async (req, res) => {
+    const key = cacheKey('stats/circuits', {});
+    const cached = networkCache.get(key);
+    if (cached) return res.send(cached);
+
+    const q = (sql) => db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT });
+    const [table, visits, records] = await Promise.all([
+        q(`SELECT me.year, me.instID AS hub, me.latitude AS hlat, me.longitude AS hlng,
+                  st.instID AS st, st.latitude AS slat, st.longitude AS slng
+             FROM attendingInstitutions a
+             JOIN almanacRecords me ON me.ID = a.attendingInstRecordID
+             JOIN almanacRecords st ON st.ID = a.attendedInstRecordID`),
+        q(`SELECT ar.year, home.instID AS hub, home.latitude AS hlat, home.longitude AS hlng,
+                  ar.instID AS st, ar.latitude AS slat, ar.longitude AS slng
+             FROM personInAlmanacRecords pia
+             JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
+             JOIN almanacRecords home ON home.instID = pia.attendingInstID AND home.year = ar.year
+            WHERE pia.isAttending = 1`),
+        q(`SELECT instID, year, instName, instType, cityReg, placeName, diocese FROM almanacRecords`),
+    ]);
+
+    const round = v => Math.round(v * 1e4) / 1e4;
+    const links = new Map();
+    const misplaced = new Map();
+    const add = (rows, bit) => {
+        for (const r of rows) {
+            if (!r.hlat || !r.hlng || !r.slat || !r.slng || r.hub === r.st) continue;
+            const k = `${r.year}|${r.hub}|${r.st}`;
+            const miles = milesBetween(r.hlat, r.hlng, r.slat, r.slng);
+            if (miles > MAX_CIRCUIT_MILES) {
+                misplaced.set(k, [r.year, r.hub, r.st, Math.round(miles)]);
+                continue;
+            }
+            const l = links.get(k);
+            if (l) { l[7] |= bit; continue; }
+            links.set(k, [r.year, r.hub, r.st, round(r.hlat), round(r.hlng), round(r.slat), round(r.slng), bit]);
+        }
+    };
+    add(table, 1);
+    add(visits, 2);
+
+    const involved = new Set();
+    for (const l of links.values()) { involved.add(l[1]); involved.add(l[2]); }
+    const latest = new Map();
+    const perYear = new Map();
+    const perYearDio = new Map();
+    for (const r of records) {
+        let s = perYear.get(r.year);
+        if (!s) perYear.set(r.year, s = new Set());
+        if (!s.has(r.instID)) {
+            s.add(r.instID);
+            const dio = dioceses.resolveDioceseId(r.instID, r.diocese) || 'unknown';
+            let d = perYearDio.get(r.year);
+            if (!d) perYearDio.set(r.year, d = {});
+            d[dio] = (d[dio] || 0) + 1;
+        }
+        if (involved.has(r.instID) && (!latest.has(r.instID) || r.year >= latest.get(r.instID).year)) latest.set(r.instID, r);
+    }
+    const places = {};
+    const dioceseNames = {};
+    const names = dioceseNameMap();
+    for (const [id, r] of latest) {
+        const dio = dioceses.resolveDioceseId(id, r.diocese) || 'unknown';
+        places[id] = [r.instName || '', r.instType || '', r.cityReg || r.placeName || '', dio];
+        dioceseNames[dio] = names[dio] || r.diocese || dio;
+    }
+
+    const byYear = new Map();
+    for (const l of links.values()) {
+        let y = byYear.get(l[0]);
+        if (!y) byYear.set(l[0], y = { hubs: new Set(), stations: new Set(), links: 0 });
+        y.hubs.add(l[1]); y.stations.add(l[2]); y.links++;
+    }
+    const years = [...perYear.keys()].sort((a, b) => a - b).map(year => {
+        const y = byYear.get(year);
+        return { year, institutions: perYear.get(year).size, stations: y ? y.stations.size : 0, hubs: y ? y.hubs.size : 0,
+            links: y ? y.links : 0, byDiocese: perYearDio.get(year) };
+    });
+
+    const result = {
+        years,
+        places,
+        links: [...links.values()].sort((a, b) => a[0] - b[0]),
+        dioceseNames,
+        misplaced: [...misplaced.values()],
+        note: 'A circuit link is a station recorded as attended from another institution, or a priest listed at a place as visiting from his own. The almanacs of the 1830s printed few such links; from 1864 they list most stations, so much of the rise reflects fuller reporting.',
+    };
+    networkCache.set(key, result);
+    res.send(result);
+};

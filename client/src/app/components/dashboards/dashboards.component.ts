@@ -59,6 +59,12 @@ export class DashboardsComponent {
           icon: "map",
           title: "Diocese by Diocese",
           description: "Trace the spread of the church one jurisdiction at a time — a map coloured by diocese that you can play through the years or filter to a single see."
+        },
+        {
+          link: "/dashboards/circuits",
+          icon: "route",
+          title: "Mission Circuits",
+          description: "Where churches and missions had no priest of their own and were attended from another place — every circuit drawn as a line from the serving church, year by year, with the share of the church that was served from afar."
         }
       ]
     },
