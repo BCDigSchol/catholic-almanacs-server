@@ -1,0 +1,89 @@
+<app-dashboard-shell
+    title="The Southwest"
+    purpose="The Church on land the United States took from Mexico, and its Hispanic Catholics as the almanacs show them: Spanish-surnamed clergy, Spanish-named churches, and congregations marked Spanish or Mexican."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setDiocese($any($event.target).value)">
+                    <option value="" [selected]="!state.diocese">All on this land</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">institutions on land taken from Mexico, {{ year }}</dt>
+                <dd class="stat-value">{{ current.institutions | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">with Spanish names</dt>
+                <dd class="stat-value">{{ current.spanishNamed | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">clergy with Spanish surnames{{ state.diocese ? ', ' + nameFor(state.diocese) : '' }}</dt>
+                <dd class="stat-value">{{ spanishCount }} <small>of {{ clergy.length }}</small></dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel [heading]="'The land in ' + (year ?? '')" note="Each institution coloured by how its land came to the United States; larger where its name is Spanish or its congregation was marked Spanish or Mexican"
+        [state]="vizState" [hasKey]="true" emptyText="The land taken from Mexico hasn't been built on this server." (retry)="fetchData()">
+        <ul key class="legend">
+            @for (l of lands; track l.key) {
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="landInk[l.key]"></span>{{ l.label }}, {{ l.date }}</li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="sw-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [fitTo]="mapFit"
+            [year]="year"
+            [dioceses]="!!state.diocese"
+            [dioceseFocus]="state.diocese || null"
+            label="The Southwest"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="two-up">
+        <app-viz-panel heading="Clergy on this land" [note]="state.diocese ? 'In the Diocese of ' + nameFor(state.diocese) + ', each year' : 'Each year, with and without Spanish surnames'"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item"><span class="legend-swatch" [style.background]="spanishInk"></span>Spanish surname</li>
+                <li class="legend-item"><span class="legend-swatch" [style.background]="otherInk"></span>other</li>
+            </ul>
+            <div class="chart" #clergyChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel [heading]="'Clergy, ' + (year ?? '')" [note]="state.diocese ? 'Diocese of ' + nameFor(state.diocese) : 'Choose a diocese to narrow the list'"
+            [state]="clergy.length ? 'ready' : (vizState === 'ready' ? 'empty' : vizState)" emptyText="No clergy listed here this year." (retry)="fetchData()">
+            <ol class="entries clergy">
+                @for (c of clergy; track c.pers) {
+                    <li>
+                        <a class="record-link pers" [routerLink]="['/people', c.pers]">{{ c.name }}</a>
+                        @if (c.spanish) { {{ ' ' }}<span class="tag">Spanish surname</span> }
+                        @if (c.places.length) { {{ ' ' }}<span class="muted">{{ c.places.slice(0, 3).join('; ') }}{{ c.places.length > 3 ? '…' : '' }}</span> }
+                    </li>
+                }
+            </ol>
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p><strong>The land.</strong> Each record's place is set against the Newberry atlas's states and territories by date: land first in a U.S. state or territory as Texas (annexed 29 December 1845), as the Mexican Cession (the Treaty of Guadalupe Hidalgo, in force 4 July 1848) or as the Gadsden Purchase (30 December 1853) is land the United States took from Mexico. Santa Fe and the upper Rio Grande were claimed by Texas from 1845 but held by Mexico until 1848, and are shown so. No almanac record with a location falls in the Gadsden Purchase.</p>
+        <p><strong>Spanish surnames.</strong> A surname counts as Spanish when 75% or more of the people bearing it reported themselves Hispanic in the 2010 census (the Census Bureau's surname file, public domain). It is a marker, not an identity: a modern list applied to nineteenth-century names. It counts missionaries from Spain and Catalonia (Archbishop Alemany, Francis Mora) as well as New Mexican and Californian priests, and it misses Hispanic clergy with other surnames. In New Mexico the change it shows is the arrival, under Bishop Lamy, of French clergy alongside the New Mexican priests.</p>
+        <p><strong>Spanish names and marks.</strong> Institutions named in Spanish (Nuestra Señora, Guadalupe, San, Santa …) and congregations whose language or note says Spanish or Mexican ("sermon in Spanish", "Mexican population"). A Spanish name may be the founders' rather than the congregation's. The almanacs of these years mark very few congregations by language here, so most of the evidence is in names.</p>
+    </div>
+</app-dashboard-shell>

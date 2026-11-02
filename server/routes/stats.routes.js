@@ -16,6 +16,7 @@ module.exports = app => {
     router.get('/data-issues', wrap(controller.getDataIssues));
     router.get('/turnover', wrap(controller.getTurnover));
     router.get('/cessions', wrap(controller.getCessions));
+    router.get('/southwest', wrap(controller.getSouthwest));
     router.get('/orders', wrap(controller.getOrders));
     app.use('/api/stats', router);
 }

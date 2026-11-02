@@ -11,7 +11,8 @@ const { networkCache, cacheKey } = require('../utils/network');
  * GET /api/institution/:id/land — for each year of the institution (and of the
  * institutions it branched into, "a&b"), its county that year and the
  * cessions its land came from:
- *   {years: [{year, county: {id, name, state} | null, cessions: [{number, tribes, ceded, treaty, schedule, present}]}]}
+ *   {years: [{year, county: {id, name, state} | null, cessions: [{number, tribes, ceded, treaty, schedule, present}],
+ *     mexico: {how: texas|claim|cession|gadsden, since: yyyymmdd} | null}]}
  */
 exports.getInstitutionLand = async (req, res) => {
     const places = await loadPlaces();
@@ -25,6 +26,7 @@ exports.getInstitutionLand = async (req, res) => {
             year: r.year,
             county: r.county,
             cessions: r.cessions.map(n => ({ number: n, ...places.cessions[n] })),
+            mexico: r.mexico,
         })),
     });
 };

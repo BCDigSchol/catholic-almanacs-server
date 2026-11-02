@@ -44,6 +44,7 @@ const NOTED = [
     [/^\(?german\)?\.?$|\bgerman (church|ch\.|congregation|catholics?|children|orphans?|parish|settlement|people|population|parochial)/i, 'german'],
     [/^\(?french\)?\.?$|\bfrench (church|ch\.|congregation|catholics?|canadians?|parish|settlement|people|population)/i, 'french'],
     [/\bpolish (church|congregation|catholics?|parish|settlement|people)/i, 'polish'],
+    [/(sermon|service|instruction|preaching|confessions|mass)[^.;]{0,30}\bspanish\b|\bspanish[- ]speaking|\bmexican (population|congregation|people|catholics?|church)|\bmexicans\b/i, 'spanish'],
     [/\bbohemian (church|congregation|catholics?|parish|settlement|people)/i, 'bohemian'],
     [/\bindians?\b|\bhalf-breeds?\b|\bchippew|\bojibw|\bpotawatom|\bpottawatom|\bmenomon|\bwinneba|\bpenobscot|\bpassamaquoddy|\bpapagos?\b|\bnavajo|\bnevajo/i, 'native'],
     [/\bcolou?red (people|children|girls|boys|orphans?|congregation|catholics?|persons|population)|\(colou?red\)|^colou?red$/i, 'black'],

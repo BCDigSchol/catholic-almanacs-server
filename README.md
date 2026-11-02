@@ -34,6 +34,7 @@ collection as maps, networks and charts.
   - the Church's spread west, diocese by diocese
   - mission circuits, and distance to railroads and rivers
   - missions and the Native land cessions
+  - the Southwest: land taken from Mexico, and Spanish-surnamed clergy
   - languages and congregations
   - the changing mix of institutions and clergy, lifespans and turnover
   - clergy flows between dioceses, and religious orders
@@ -135,7 +136,8 @@ Every institution and person has a record page (`/institutions/:id`,
 - **Career** (person pages): the same ladder, with one row per post.
 - **County and land:** institution pages give the county the place lay in
   that year (linked to its county page) and, where Royce mapped it, the Indian
-  land cession(s) it stood on, with the nation, date and treaty.
+  land cession(s) it stood on, with the nation, date and treaty. Land taken
+  from Mexico says how and when (annexed with Texas, the Mexican Cession).
 - **Cite** gives a copyable citation of the record as viewed.
 
 ## County pages
@@ -219,6 +221,12 @@ Record pages link to it.
   ceded in the ten years before, how much of the Church stood on each, and
   every Native American mission with the nation, date and treaty of the land
   it stood on.
+- **The Southwest:** the Church on land the United States took from Mexico
+  (Texas, the land Texas claimed, the Mexican Cession), year by year, with
+  three markers of its Hispanic Catholics: clergy with Spanish surnames,
+  institutions with Spanish names, and congregations marked Spanish or
+  Mexican. A diocese can be chosen; the page explains what a surname can and
+  cannot tell.
 
 **Change over time**
 
@@ -438,6 +446,9 @@ summarises them.
   American Ethnology, 1899; public domain). For information only: it is not a
   source of title or legal boundaries, and it has not been reviewed by the
   National NAGPRA Program.
+- **Spanish surnames:** *Frequently Occurring Surnames from the 2010 Census*,
+  U.S. Census Bureau (a work of the federal government, public domain); the
+  surnames that 75% or more of their bearers reported as Hispanic.
 - **Historical streets:**
   [OpenHistoricalMap](https://www.openhistoricalmap.org/copyright) (CC0).
 - **Railroads, canals and steamboat rivers:** Jeremy Atack's historical

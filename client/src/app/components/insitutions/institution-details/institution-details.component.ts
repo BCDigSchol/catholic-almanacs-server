@@ -105,8 +105,8 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   record: any = null;
   timeline: TimelineYear[] = [];
   /** County and ceded land by year (GET institution/:id/land), and for the year shown. */
-  private landYears: { year: number; county: { id: string; name: string; state: string } | null; cessions: any[] }[] = [];
-  land: { year: number; county: { id: string; name: string; state: string } | null;
+  private landYears: { year: number; county: { id: string; name: string; state: string } | null; cessions: any[]; mexico?: { how: string; since: number } | null }[] = [];
+  land: { year: number; county: { id: string; name: string; state: string } | null; mexico: string;
     cessions: { number: string; tribes: string; date: string; before: number; treaty: string; schedule: string }[] } | null = null;
   dioceseInfo: any[] = [];
 
@@ -318,9 +318,16 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     if (!at) { this.land = null; return; }
     const date = (n: number) => new Date(Date.UTC(Math.floor(n / 10000), Math.floor(n / 100) % 100 - 1, n % 100))
       .toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    const how: Record<string, string> = {
+      texas: 'annexed with Texas',
+      claim: 'claimed by Texas from 1845, held by Mexico until the Treaty of Guadalupe Hidalgo',
+      cession: 'the Mexican Cession, by the Treaty of Guadalupe Hidalgo',
+      gadsden: 'the Gadsden Purchase',
+    };
     this.land = {
       year: at.year,
       county: at.county,
+      mexico: at.mexico ? `${how[at.mexico.how] ?? at.mexico.how}, ${date(at.mexico.since)} (${at.year - Math.floor(at.mexico.since / 10000)} years before ${at.year})` : '',
       // the latest cession of this ground first: the one that made it United States land
       cessions: [...at.cessions].reverse().map(c => ({ ...c, date: date(c.ceded), before: at.year - Math.floor(c.ceded / 10000) })),
     };

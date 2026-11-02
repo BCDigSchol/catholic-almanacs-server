@@ -102,6 +102,10 @@
                                 <dt>County{{ year === null ? ' in ' + land!.year : ' that year' }}</dt>
                                 <dd><a class="record-link place" [routerLink]="['/places/county', county.id]">{{ county.name }} County, {{ county.state }}</a></dd>
                             }
+                            @if (land?.mexico) {
+                                <dt>From Mexico</dt>
+                                <dd>{{ land!.mexico }}</dd>
+                            }
                             @if (land?.cessions?.length) {
                                 <dt>Land</dt>
                                 <dd class="long">

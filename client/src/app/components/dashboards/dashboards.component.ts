@@ -89,6 +89,12 @@ export class DashboardsComponent {
           icon: "landscape",
           title: "Missions and Ceded Lands",
           description: "The Church set against the land cessions of the Native nations it lived among: missions on land a nation still held, parishes on land ceded only years before — year by year, with the treaties."
+        },
+        {
+          link: "/dashboards/southwest",
+          icon: "wb_sunny",
+          title: "The Southwest",
+          description: "The Church on land the United States took from Mexico, with Spanish-surnamed clergy, Spanish-named churches and congregations marked Spanish or Mexican, year by year."
         }
       ]
     },

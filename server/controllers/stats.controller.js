@@ -1303,3 +1303,84 @@ exports.getCessions = async (req, res) => {
     networkCache.set(key, result);
     res.json(result);
 };
+
+/**
+ * GET /api/stats/southwest?year=&diocese= — the Church on land the United
+ * States took from Mexico, with its Hispanic markers (utils/southwest.js):
+ *   years     [{year, institutions, spanishNamed, marked, clergy, spanishClergy}]
+ *   dioceses  [{id, name, years: [{year, clergy, spanishClergy, institutions}]}]
+ *   clergy    for ?year= (and ?diocese=): [{pers, name, spanish, places: [inst name]}]
+ *   points    for ?year=: [lat, lng, instID, name, type, how, spanishName, marked, dioceseId]
+ *   lands     {how: {label, since}} for the kinds present
+ * 404 where the land taken from Mexico hasn't been built (tiles-build history).
+ */
+exports.getSouthwest = async (req, res) => {
+    const year = parseInt(req.query.year, 10) || 0;
+    const diocese = String(req.query.diocese || '');
+    const key = cacheKey('stats/southwest', { year, diocese });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+    const { loadSouthwest } = require('../utils/southwest');
+    const sw = await loadSouthwest();
+    if (!sw.hasLands) return res.status(404).json({ message: 'The land taken from Mexico has not been built (tiles-build history).' });
+
+    const onLand = [...sw.recs.values()].filter(r => r.land);
+    const names = dioceseNameMap();
+    const byYear = new Map(), byDio = new Map();
+    for (const r of onLand) {
+        const y = byYear.get(r.year) || { year: r.year, institutions: 0, spanishNamed: 0, marked: 0, clergy: new Set(), spanishClergy: new Set() };
+        y.institutions++;
+        if (r.spanishName) y.spanishNamed++;
+        if (r.spanishMarked) y.marked++;
+        byYear.set(r.year, y);
+        let d = byDio.get(r.dio);
+        if (!d) byDio.set(r.dio, d = { id: r.dio, name: names[r.dio] || r.dio, years: new Map() });
+        const dy = d.years.get(r.year) || { year: r.year, institutions: 0, clergy: new Set(), spanishClergy: new Set() };
+        dy.institutions++;
+        d.years.set(r.year, dy);
+        for (const l of sw.atRec.get(r.rec) || []) {
+            const p = sw.people.get(l.pers);
+            y.clergy.add(l.pers); dy.clergy.add(l.pers);
+            if (p?.spanish) { y.spanishClergy.add(l.pers); dy.spanishClergy.add(l.pers); }
+        }
+    }
+    const years = [...byYear.values()].sort((a, b) => a.year - b.year)
+        .map(y => ({ ...y, clergy: y.clergy.size, spanishClergy: y.spanishClergy.size }));
+    const shown = year || (years.length ? years[years.length - 1].year : 0);
+    const dios = [...byDio.values()].map(d => ({
+        id: d.id, name: d.name,
+        years: [...d.years.values()].sort((a, b) => a.year - b.year)
+            .map(y => ({ year: y.year, institutions: y.institutions, clergy: y.clergy.size, spanishClergy: y.spanishClergy.size })),
+    })).filter(d => d.years.some(y => y.clergy > 0)).sort((a, b) => a.name.localeCompare(b.name));
+
+    const thisYear = onLand.filter(r => r.year === shown);
+    const clergy = new Map();
+    for (const r of thisYear) {
+        if (diocese && r.dio !== diocese) continue;
+        for (const l of sw.atRec.get(r.rec) || []) {
+            const p = sw.people.get(l.pers);
+            if (!p) continue;
+            let c = clergy.get(l.pers);
+            if (!c) clergy.set(l.pers, c = { pers: l.pers, name: p.name, spanish: p.spanish, places: [] });
+            const label = r.name && !/not recorded/i.test(r.name) ? r.name : r.place || r.type;
+            if (label && !c.places.includes(label)) c.places.push(label);
+        }
+    }
+    const LANDS = {
+        texas: { label: 'Texas, annexed', since: 18451229 },
+        claim: { label: 'claimed by Texas, held by Mexico until the Treaty of Guadalupe Hidalgo', since: 18480704 },
+        cession: { label: 'the Mexican Cession, Treaty of Guadalupe Hidalgo', since: 18480704 },
+        gadsden: { label: 'the Gadsden Purchase', since: 18531230 },
+    };
+    const present = new Set(onLand.map(r => r.land.how));
+    const result = {
+        year: shown, years, dioceses: dios,
+        clergy: [...clergy.values()].sort((a, b) => (b.spanish - a.spanish) || a.name.localeCompare(b.name)),
+        points: thisYear.filter(r => r.lat != null && r.lng != null && (!diocese || r.dio === diocese))
+            .map(r => [Math.round(r.lat * 1e4) / 1e4, Math.round(r.lng * 1e4) / 1e4, r.inst, r.name, r.type, r.land.how, r.spanishName ? 1 : 0, r.spanishMarked ? 1 : 0, r.dio]),
+        lands: Object.fromEntries([...present].map(h => [h, LANDS[h]])),
+        hasSurnames: sw.hasSurnames,
+    };
+    networkCache.set(key, result);
+    res.json(result);
+};

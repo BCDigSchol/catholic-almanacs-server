@@ -31,6 +31,7 @@ export const routes: Routes = [
     { path: 'dashboards/spread', loadComponent: () => import('./components/dashboards/spread/spread.component').then(m => m.SpreadDashboardComponent) },
     { path: 'dashboards/circuits', loadComponent: () => import('./components/dashboards/circuits/circuits.component').then(m => m.CircuitsComponent) },
     { path: 'dashboards/cessions', loadComponent: () => import('./components/dashboards/cessions/cessions.component').then(m => m.CessionsComponent) },
+    { path: 'dashboards/southwest', loadComponent: () => import('./components/dashboards/southwest/southwest.component').then(m => m.SouthwestComponent) },
     { path: 'dashboards/turnover', loadComponent: () => import('./components/dashboards/turnover/turnover.component').then(m => m.TurnoverComponent) },
     { path: 'dashboards/data-issues', loadComponent: () => import('./components/dashboards/data-issues/data-issues.component').then(m => m.DataIssuesComponent) },
     { path: 'dashboards/languages', loadComponent: () => import('./components/dashboards/languages/languages.component').then(m => m.LanguagesComponent) },

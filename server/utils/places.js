@@ -1,6 +1,7 @@
 // Where each record stood, from the tile build's placements (tiles volume,
 // /tiles-data): its historical county of that year (record-counties.json) and
-// the Indian land cession(s) its land came from (record-cessions.json), joined
+// the Indian land cession(s) its land came from (record-cessions.json) and, in
+// the Southwest, how it was taken from Mexico (mexican-lands.json), joined
 // to institutions and years. Built once per process; restart the API after
 // rebuilding the tiles. Either file may be missing where it isn't built.
 
@@ -18,7 +19,7 @@ function readJson(env, file) {
 }
 
 /**
- * {byInst: Map(instID -> [{rec, year, county, cessions}]),
+ * {byInst: Map(instID -> [{rec, year, county, cessions, mexico}]),
  *  byCounty: Map(countyId -> {id, name, state, recs: [rec], insts: Set(instID)}),
  *  cessions: {number: {tribes, ceded, dates, present, treaty, schedule}},
  *  hasCounties, hasCessions}
@@ -28,6 +29,7 @@ async function loadPlaces() {
     if (_places) return _places;
     const counties = readJson('RECORD_COUNTIES', 'record-counties.json');
     const cessionFile = readJson('RECORD_CESSIONS', 'record-cessions.json');
+    const mexican = readJson('MEXICAN_LANDS', 'mexican-lands.json')?.records || {};
     const rows = await db.sequelize.query(
         'SELECT ID, instID, year FROM almanacRecords WHERE year IS NOT NULL',
         { type: db.Sequelize.QueryTypes.SELECT });
@@ -37,9 +39,10 @@ async function loadPlaces() {
         const c = counties?.records[r.ID];
         const county = c ? { id: c[0], name: c[1], state: c[2] } : null;
         const ces = (cessionFile?.records[r.ID] || []).slice().sort((a, b) => (cessions[a]?.ceded || 0) - (cessions[b]?.ceded || 0));
-        if (!county && !ces.length) continue;
+        const mx = mexican[r.ID] ? { how: mexican[r.ID][0], since: mexican[r.ID][1] } : null;
+        if (!county && !ces.length && !mx) continue;
         if (!byInst.has(r.instID)) byInst.set(r.instID, []);
-        byInst.get(r.instID).push({ rec: r.ID, year: Number(r.year), county, cessions: ces });
+        byInst.get(r.instID).push({ rec: r.ID, year: Number(r.year), county, cessions: ces, mexico: mx });
         if (county) {
             if (!byCounty.has(county.id)) byCounty.set(county.id, { ...county, recs: [], insts: new Set() });
             byCounty.get(county.id).recs.push(r.ID);

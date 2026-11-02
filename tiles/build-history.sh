@@ -8,6 +8,9 @@
 # (about 10 m). Each feature is one version of a state or territory with the
 # dates it was in force; the map filters on them (see history-features.py).
 #
+# It also writes mexican-lands.json beside the tiles (with the database up):
+# the records on land the United States took from Mexico, and how and when.
+#
 # Usage: build-history.sh <out.pmtiles> [work-dir]
 # Needs: curl, unzip, ogr2ogr (gdal), python3 + shapely, tippecanoe.
 set -euo pipefail
@@ -29,6 +32,21 @@ SHP=$(find "$SRC" -name '*.shp' -print -quit)
 FEATURES="$WORK/history.geojsonl"
 ogr2ogr -f GeoJSONSeq -lco RS=NO -t_srs EPSG:4326 -select NAME,FULL_NAME,TERR_TYPE,START_N,END_N /vsistdout/ "$SHP" \
   | python3 /tiles/history-features.py > "$FEATURES"
+
+# which records stand on land the United States took from Mexico (needs the database)
+LANDS="$(dirname "$OUT")/mexican-lands.json"
+if [ -n "${DB_HOST:-}" ]; then
+  STATES="$WORK/history-states.geojsonl"
+  ogr2ogr -f GeoJSONSeq -lco RS=NO -t_srs EPSG:4326 -select NAME,TERR_TYPE,START_N,END_N /vsistdout/ "$SHP" > "$STATES"
+  mysql -h "$DB_HOST" -P "${DB_PORT:-3306}" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" -N -B -e \
+    "SELECT ID, year, latitude, longitude FROM almanacRecords WHERE latitude IS NOT NULL AND longitude IS NOT NULL" 2>/dev/null \
+    | python3 /tiles/record-mexican-lands.py "$STATES" > "$LANDS.tmp"
+  mv "$LANDS.tmp" "$LANDS"
+  rm -f "$STATES"
+  echo "[history] wrote $LANDS"
+else
+  echo "[history] no database configured: skipping the land taken from Mexico"
+fi
 
 echo "[history] $(wc -l < "$FEATURES") features → $OUT (z0–10)"
 mkdir -p "$(dirname "$OUT")"

@@ -12,8 +12,10 @@ Two containers share one volume of tiles:
   `dioceses.pmtiles` (diocese territories by year, zoom 0–10),
   `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15)
   and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
-  Four JSON files for the API go beside them: `transport-distances.json`,
-  `diocese-territories.json`, `record-counties.json` and `record-cessions.json`.
+  Five JSON files for the API go beside them: `transport-distances.json`,
+  `diocese-territories.json`, `record-counties.json`, `record-cessions.json`
+  and `mexican-lands.json` (written by the `history` build when the DB is up:
+  which records stand on land taken from Mexico, and how).
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
