@@ -12,6 +12,8 @@ module.exports = app => {
     router.get('/:id/map', wrap(controller.getMap));
     router.get('/:id/succession', wrap(controller.getSuccession));
     router.get('/:id/dendrogram', wrap(controller.getDendrogramData));
+    // a record's county and ceded land by year (controllers/place.controller.js)
+    router.get('/:id/land', wrap(require('../controllers/place.controller').getInstitutionLand));
     router.get('/:id/:year', wrap(controller.findOne));
     router.delete('/:id', wrap(controller.delete));
     app.use('/api/institution', router);

@@ -104,6 +104,10 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   /** findByID (all years) or findOne (one year) response. */
   record: any = null;
   timeline: TimelineYear[] = [];
+  /** County and ceded land by year (GET institution/:id/land), and for the year shown. */
+  private landYears: { year: number; county: { id: string; name: string; state: string } | null; cessions: any[] }[] = [];
+  land: { year: number; county: { id: string; name: string; state: string } | null;
+    cessions: { number: string; tribes: string; date: string; before: number; treaty: string; schedule: string }[] } | null = null;
   dioceseInfo: any[] = [];
 
   network: any = { nodes: [], edges: [] };
@@ -148,6 +152,10 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
       switchMap(id => this.api.getTypeRequest(`institution/${id}/timeline`).pipe(catchError(() => of(null)))),
       shareReplay(1),
     );
+    // its county and ceded land, year by year (the tile build's placements)
+    this.subs.push(id$.pipe(
+      switchMap(id => this.api.getTypeRequest(`institution/${id}/land`).pipe(catchError(() => of(null)))),
+    ).subscribe((res: any) => { this.landYears = res?.years ?? []; this.updateLand(); }));
     // who served here over the years, and where they came from and went to
     this.subs.push(id$.pipe(
       switchMap(id => this.api.getTypeRequest(`institution/${id}/succession`).pipe(catchError(() => of(null)))),
@@ -304,8 +312,23 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     return yearRuns(row.years);
   }
 
+  /** The county and ceded land for the year shown (all years: the latest). */
+  private updateLand(): void {
+    const at = this.year === null ? this.landYears[this.landYears.length - 1] : this.landYears.find(l => l.year === this.year);
+    if (!at) { this.land = null; return; }
+    const date = (n: number) => new Date(Date.UTC(Math.floor(n / 10000), Math.floor(n / 100) % 100 - 1, n % 100))
+      .toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    this.land = {
+      year: at.year,
+      county: at.county,
+      // the latest cession of this ground first: the one that made it United States land
+      cessions: [...at.cessions].reverse().map(c => ({ ...c, date: date(c.ceded), before: at.year - Math.floor(c.ceded / 10000) })),
+    };
+  }
+
   /** After the timeline or the selected year changes. */
   private recomputeTimeline(): void {
+    this.updateLand();
     this.years = [...new Set(this.timeline.map(t => t.year))];
     this.entries = this.year === null ? this.timeline : this.timeline.filter(t => t.year === this.year);
     // The header describes the selected year, else the latest.

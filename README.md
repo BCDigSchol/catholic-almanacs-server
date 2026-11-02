@@ -60,6 +60,7 @@ collection as maps, networks and charts.
 - [How the records work](#how-the-records-work)
 - [Browsing and search](#browsing-and-search)
 - [Record pages](#record-pages)
+- [County pages](#county-pages)
 - [Dashboards](#dashboards)
 - [Networks](#networks)
 - [Maps](#maps)
@@ -92,7 +93,11 @@ year's listing of it is kept separately.
 
 ## Browsing and search
 
-- **Header search** finds institutions and people by name from any page.
+- **Header search** finds institutions, people and places by name from any
+  page. Typing "Kane" lists Kane County, Illinois (with its number of
+  institutions) above the people named Kane, and a county opens its county
+  page. The selector beside it limits the search to institutions, people or
+  places.
 - **Note search:** the institution browser's "Notes mention" filter searches
   the almanacs' notes. Every word must appear, and "quoted phrases" stay
   together. Each result shows the passage that matched, with the words
@@ -102,7 +107,9 @@ year's listing of it is kept separately.
   list every record, as of its latest year. You can filter by name, diocese,
   state, type, religious order and years, and sort by name, year or diocese.
   Every filter, sort and page lives in the URL, so a filtered list can be
-  bookmarked or shared.
+  bookmarked or shared. "County as it was" finds institutions by the
+  historical county they lay in ("Noble" or "Noble, Ohio"), whatever the
+  transcription called it.
 
 ## Record pages
 
@@ -126,7 +133,22 @@ Every institution and person has a record page (`/institutions/:id`,
   glance, with the gap between almanac runs marked, the chosen year picked
   out, and where each pastor came from and went next.
 - **Career** (person pages): the same ladder, with one row per post.
+- **County and land:** institution pages give the county the place lay in
+  that year (linked to its county page) and, where Royce mapped it, the Indian
+  land cession(s) it stood on, with the nation, date and treaty.
 - **Cite** gives a copyable citation of the record as viewed.
+
+## County pages
+
+Every historical county with records has a page (`/places/county/:id`, e.g.
+`/places/county/ohs_noble`). It shows the county shaded on a map as it stood
+in its last listed year, with:
+- every institution the almanacs placed in it, with years and dioceses
+- the clergy and religious listed there
+- the dioceses it belonged to
+- the land cessions its institutions stood on
+
+Record pages link to it.
 
 ## Dashboards
 
@@ -292,7 +314,10 @@ year**:
   and steamboat rivers as dotted blue lines.
 - **Indian land cessions** on maps that ask for them (Missions and Ceded
   Lands): land still held by a nation that year, and land ceded in the ten
-  years before.
+  years before. Hovering shows each cession's nations, date and status; a click
+  pins it with links to the treaty and Royce's schedule.
+- **Diocese territories** show their name and the years that outline held when
+  hovered.
 - **Diocese territories** of that year, on maps that ask for them (Diocese by
   Diocese). These are a work in progress, fuller in the east.
 - **Streets** that existed that year, where OpenHistoricalMap has mapped them.

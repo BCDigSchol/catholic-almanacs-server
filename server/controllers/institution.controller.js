@@ -456,7 +456,7 @@ exports.findAll = async (req, res) => {
             size = 3;
         };
         let {limit, offset} = getPagination(page, size);
-        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder, instNote, sort } = req.query;
+        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder, instNote, histCounty, sort } = req.query;
 
         // Same filters as before, as raw SQL conditions on almanacRecords (ar),
         // personInAlmanacRecords (pia) and orderInAlmanacRecords (oia).
@@ -509,6 +509,20 @@ exports.findAll = async (req, res) => {
             );
             const matchedIds = new Set(matched.map(r => r.instID));
             ids = ids.filter(id => matchedIds.has(id));
+        }
+        // the historical county an institution lay in, in any year ("Noble" or
+        // "Noble, Ohio"), from the tile build's placements
+        if (histCounty && String(histCounty).trim()) {
+            const { loadPlaces, countyKey } = require('../utils/places');
+            const places = await loadPlaces();
+            const [name, state] = String(histCounty).split(',').map(x => x.trim());
+            const want = countyKey(name), wantState = state ? state.toLowerCase() : '';
+            const inCounty = new Set();
+            for (const [inst, rows] of places.byInst) {
+                if (rows.some(r => r.county && countyKey(r.county.name).startsWith(want)
+                    && (!wantState || r.county.state.toLowerCase().startsWith(wantState)))) inCounty.add(inst);
+            }
+            ids = ids.filter(id => inCounty.has(id) || id.split(/[&=]/).some(part => inCounty.has(part)));
         }
         // Rows summarise each institution as of its latest year, whatever the filters.
         let rows = ids.slice(offset, offset + limit).map(id => index.byId.get(id));

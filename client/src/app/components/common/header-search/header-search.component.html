@@ -25,7 +25,20 @@
             @if (loading && !hasResults) {
                 <p class="status">Searching…</p>
             } @else if (!hasResults) {
-                <p class="status">No {{ scope === 'all' ? 'institutions or people' : scope }} named “{{ query.trim() }}”.</p>
+                <p class="status">No {{ scope === 'all' ? 'institutions, people or places' : scope }} named “{{ query.trim() }}”.</p>
+            }
+
+            @if (shownPlaces.length) {
+                <div class="group">
+                    <div class="group-label place">Places</div>
+                    @for (hit of shownPlaces; track hit.link) {
+                        <a class="hit" role="option" [class.active]="isActive(hit)" [attr.aria-selected]="isActive(hit)"
+                            [href]="hit.link" (click)="$event.preventDefault(); go(hit.link)">
+                            <span class="hit-label">{{ hit.label }}</span>
+                            <span class="hit-detail">{{ hit.detail }}</span>
+                        </a>
+                    }
+                </div>
             }
 
             @if (shownInstitutions.length) {

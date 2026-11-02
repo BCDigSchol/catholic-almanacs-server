@@ -209,6 +209,11 @@ def layers(c):
         {"id": "state-boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
         # ── the counties of one date (counties.pmtiles), from zoom 6 ──
+        # the county a map picks out (map-vis [countyFocus]), shaded
+        {"id": "county-focus", "metadata": LATEST, "type": "fill", "source": "counties", "source-layer": "counties",
+         "layout": {"visibility": "none"},
+         "filter": [*NO_DATE, ["==", ["get", "id"], ""]],
+         "paint": {"fill-color": c["recent"], "fill-opacity": 0.12}},
         {"id": "county-lines", "metadata": LATEST, "type": "line", "source": "counties", "source-layer": "counties",
          "minzoom": 6,
          "layout": {"visibility": "none", "line-join": "round"},
@@ -242,6 +247,11 @@ def layers(c):
          "layout": {"visibility": "none"},
          "filter": [*NO_DATE, ["==", ["get", "id"], ""]],
          "paint": {"fill-color": c["diocese"], "fill-opacity": 0.1}},
+        # invisible, over every territory: what the pointer hovers for its tooltip
+        {"id": "diocese-hit", "metadata": DIOCESES, "type": "fill", "source": "dioceses", "source-layer": "dioceses",
+         "layout": {"visibility": "none"},
+         "filter": NO_DATE,
+         "paint": {"fill-color": c["diocese"], "fill-opacity": 0}},
         {"id": "diocese-lines", "metadata": DIOCESES, "type": "line", "source": "dioceses", "source-layer": "dioceses",
          "layout": {"visibility": "none", "line-join": "round"},
          "filter": NO_DATE,

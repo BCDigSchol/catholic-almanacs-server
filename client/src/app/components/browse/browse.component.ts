@@ -45,6 +45,8 @@ const PAGE_SIZES = [25, 50, 100];
 
 const STATE: FilterDef = { param: 'state', api: 'stateOrig', label: 'State', kind: 'select', optionsFile: 'states.csv' };
 const COUNTY: FilterDef = { param: 'county', api: 'countyOrig', label: 'County', kind: 'text' };
+// the county the institution lay in, as the county stood that year (Newberry atlas)
+const HIST_COUNTY: FilterDef = { param: 'hcounty', api: 'histCounty', label: 'County as it was', kind: 'text' };
 const CITY: FilterDef = { param: 'city', api: 'cityOrig', label: 'City or town', kind: 'text' };
 const DIOCESE: FilterDef = { param: 'diocese', api: 'diocese', label: 'Diocese', kind: 'suggest', optionsFile: 'diocese.csv' };
 const ORDER: FilterDef = { param: 'order', api: 'religiousOrder', label: 'Religious order', kind: 'suggest', optionsFile: 'order.csv' };
@@ -56,7 +58,7 @@ const CONFIG: Record<BrowseEntity, EntityConfig> = {
     nameApi: 'instName',
     searchPlaceholder: 'Search institutions by name',
     groups: [
-      { label: 'Place', filters: [DIOCESE, STATE, COUNTY, CITY] },
+      { label: 'Place', filters: [DIOCESE, STATE, COUNTY, HIST_COUNTY, CITY] },
       { label: 'Institution', filters: [
         { param: 'type', api: 'instType', label: 'Type', kind: 'suggest', optionsFile: 'types.csv' },
         { param: 'function', api: 'instFunction', label: 'Function', kind: 'select', optionsFile: 'functions.csv' },

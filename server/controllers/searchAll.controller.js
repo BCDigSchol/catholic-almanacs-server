@@ -145,7 +145,10 @@ exports.findAllInfo = async (req, res) => {
             if (!aAlphabetical && bAlphabetical) return 1;
             return a.name.localeCompare(b.name);
         })*/
-        allData = instResults.slice(0, 30).concat(persResults.slice(0, 30));
+        // historical counties by name (from the tile build's placements), so
+        // "Kane" finds Kane County as well as the Kanes
+        const counties = name ? await require('../utils/places').findCounties(name).catch(() => []) : [];
+        allData = instResults.slice(0, 30).concat(persResults.slice(0, 30), counties);
         res.send(allData);
     } catch (error) {
         return res.status(500).json({ message: error.message });

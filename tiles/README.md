@@ -385,6 +385,8 @@ and street names), an opacity to fade to (today's streets and rail), or
 `"dioceses"` (dated like `"show"`, but drawn only when the map asks for them),
 `"cessions"` (drawn only when the map asks; `metadata["almanac:cession"]` says
 which part: `held`, `recent`, `lines` or `hit`),
+`county-focus` (a `"latest"` layer shading the county a map picks, map-vis
+`[countyFocus]`), `diocese-hit` (an invisible fill for diocese tooltips),
 or `"latest"` (dated like `"show"`, but with no year drawn as of the latest
 almanac year rather than hidden: the counties).
 The client's map-vis applies whatever the style says, so new dated layers need

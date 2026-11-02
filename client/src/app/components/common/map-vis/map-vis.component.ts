@@ -73,6 +73,8 @@ export class MapVisComponent {
   /** Draw the Indian land cessions (Royce): with a year, land still held then
    *  apart from land ceded in the ten years before; without, their outlines. */
   @Input() cessions = false;
+  /** A historical county id (e.g. 'ohs_noble') to shade, as it stood in the map's year (or 1870). */
+  @Input() countyFocus: string | null = null;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
   @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
@@ -229,7 +231,7 @@ export class MapVisComponent {
     if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter && !this.fitTo) {
       this.updateMapCenter();
     }
-    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions']) this.applyYear();
+    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions'] || changes['countyFocus']) this.applyYear();
     // Honour a user-selected mode over options.mode so it survives data updates.
     this.currentMode = this.userMode ?? (this.options.mode || 'normal');
     this.renderMapFeatures();
@@ -284,10 +286,12 @@ export class MapVisComponent {
       } else if (rule === 'latest') {
         const f = layer.filter;
         const at = (this.year ?? LATEST_ALMANAC_YEAR) * 10000 + 101;
+        const focus = layer.id === 'county-focus';
         if (Array.isArray(f) && f[0] === 'all') {
-          this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], at], ['>=', ['get', 'to'], at], ...f.slice(3)]);
+          const rest = focus ? [['==', ['get', 'id'], this.countyFocus ?? '']] : f.slice(3);
+          this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], at], ['>=', ['get', 'to'], at], ...rest]);
         }
-        this.map.setLayoutProperty(layer.id, 'visibility', 'visible');
+        this.map.setLayoutProperty(layer.id, 'visibility', !focus || this.countyFocus ? 'visible' : 'none');
       } else if (rule === 'cessions') {
         // ceded is the treaty's date (yyyymmdd): held = ceded after the map's
         // day; recent = ceded within the ten years before it
@@ -397,6 +401,7 @@ export class MapVisComponent {
     this.map.on('style.load', () => this.applyYear());
     this.bindUnderlayEvents();
     this.bindCessionEvents();
+    this.bindDioceseEvents();
     this.map.on('load', () => {
       this.applyFit();
       this.renderMapFeatures();
@@ -646,6 +651,27 @@ export class MapVisComponent {
         .setLngLat(e.lngLat).setHTML(html).addTo(this.map);
       this.cessionPin.on('close', () => this.cessionPin = undefined);
     });
+  }
+
+  /**
+   * Diocese territories: hovering one shows its name that year and the years
+   * this outline of it held (the shapes are a work in progress). Dots win.
+   */
+  private bindDioceseEvents(): void {
+    const overData = (point: any) => this.map.getLayer('data-point-layer')
+      && this.map.queryRenderedFeatures(point, { layers: ['data-point-layer'] }).length > 0;
+    const esc = (s: unknown) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+    this.map.on('mousemove', 'diocese-hit', (e: any) => {
+      const p = e.features?.[0]?.properties;
+      if (!p || overData(e.point)) { this.hoverPopup?.remove(); return; }
+      const from = Math.floor(p.from / 10000), to = Math.floor(p.to / 10000);
+      const span = from === to ? `${from}` : `${from}–${to}`;
+      this.hoverPopup ??= new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: 'map-vis-hover', offset: 8 });
+      this.hoverPopup.setLngLat(e.lngLat).setHTML(
+        `<div class="cession-tip"><p><strong>${esc(p.name)}</strong><span class="cession-num">territory as drawn for ${esc(span)}</span></p></div>`,
+      ).addTo(this.map);
+    });
+    this.map.on('mouseleave', 'diocese-hit', () => this.hoverPopup?.remove());
   }
 
   /** The cessions under a point, oldest first, as the tooltip's HTML (with links when pinned). */

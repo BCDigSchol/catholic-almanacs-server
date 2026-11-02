@@ -837,6 +837,49 @@
       }
     },
     {
+      "id": "county-focus",
+      "metadata": {
+        "almanac:dated": "latest"
+      },
+      "type": "fill",
+      "source": "counties",
+      "source-layer": "counties",
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "id"
+          ],
+          ""
+        ]
+      ],
+      "paint": {
+        "fill-color": "#8a5a3a",
+        "fill-opacity": 0.12
+      }
+    },
+    {
       "id": "county-lines",
       "metadata": {
         "almanac:dated": "latest"
@@ -1060,6 +1103,41 @@
       "paint": {
         "fill-color": "#7a4a6a",
         "fill-opacity": 0.1
+      }
+    },
+    {
+      "id": "diocese-hit",
+      "metadata": {
+        "almanac:dated": "dioceses"
+      },
+      "type": "fill",
+      "source": "dioceses",
+      "source-layer": "dioceses",
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "fill-color": "#7a4a6a",
+        "fill-opacity": 0
       }
     },
     {

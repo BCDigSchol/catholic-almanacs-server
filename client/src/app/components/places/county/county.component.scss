@@ -1,0 +1,11 @@
+// Record pages share their styles: see "Record pages" in src/styles.scss.
+
+.county-map {
+    margin-bottom: var(--space-5);
+}
+
+.map-note {
+    margin: var(--space-2) 0 0;
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}

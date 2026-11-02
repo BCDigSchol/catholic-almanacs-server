@@ -7,10 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ApiService } from '../../../services/api.service';
 
-export type SearchScope = 'all' | 'institutions' | 'people';
+export type SearchScope = 'all' | 'institutions' | 'people' | 'places';
 
 interface SearchHit {
-  kind: 'institution' | 'person';
+  kind: 'institution' | 'person' | 'place';
   label: string;
   detail: string;
   link: string;
@@ -23,8 +23,9 @@ const SHOWN = 6;
 
 /**
  * Site-wide quick search in the header. Searches institution and person
- * names (GET /api/all) as you type, scoped by the selector beside the input;
- * Enter or "See all" opens the matching Browse page pre-filtered by name.
+ * names and historical counties (GET /api/all) as you type, scoped by the
+ * selector beside the input; Enter or "See all" opens the matching Browse page
+ * pre-filtered by name. A county opens its county page.
  */
 @Component({
   selector: 'app-header-search',
@@ -47,6 +48,7 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
   query = '';
   institutions: SearchHit[] = [];
   people: SearchHit[] = [];
+  places: SearchHit[] = [];
   open = false;
   loading = false;
   activeIndex = -1;
@@ -55,6 +57,7 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
     { value: 'all', label: 'All' },
     { value: 'institutions', label: 'Institutions' },
     { value: 'people', label: 'People' },
+    { value: 'places', label: 'Places' },
   ];
 
   private queries = new Subject<string>();
@@ -66,21 +69,26 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
     switch (this.scope) {
       case 'institutions': return 'Search institutions by name';
       case 'people': return 'Search people by name';
-      default: return 'Search institutions and people';
+      case 'places': return 'Search counties by name';
+      default: return 'Search names and places';
     }
   }
 
+  get shownPlaces(): SearchHit[] {
+    return this.scope === 'all' || this.scope === 'places' ? this.places.slice(0, this.scope === 'places' ? 10 : 3) : [];
+  }
+
   get shownInstitutions(): SearchHit[] {
-    return this.scope === 'people' ? [] : this.institutions.slice(0, SHOWN);
+    return this.scope === 'all' || this.scope === 'institutions' ? this.institutions.slice(0, SHOWN) : [];
   }
 
   get shownPeople(): SearchHit[] {
-    return this.scope === 'institutions' ? [] : this.people.slice(0, SHOWN);
+    return this.scope === 'all' || this.scope === 'people' ? this.people.slice(0, SHOWN) : [];
   }
 
   /** Hits in on-screen order, for keyboard navigation. */
   get visibleHits(): SearchHit[] {
-    return [...this.shownInstitutions, ...this.shownPeople];
+    return [...this.shownPlaces, ...this.shownInstitutions, ...this.shownPeople];
   }
 
   get hasResults(): boolean {
@@ -109,6 +117,12 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
         label: [r.title, r.name, r.suffix].filter(Boolean).join(' '),
         detail: r.yearStart === r.yearEnd ? `${r.yearStart}` : `${r.yearStart}–${r.yearEnd}`,
         link: '/people/' + r.persID,
+      }));
+      this.places = (rows as any[]).filter(r => r.type === 'county').map(r => ({
+        kind: 'place' as const,
+        label: `${r.name} County, ${r.state}`,
+        detail: `${r.institutions} ${r.institutions === 1 ? 'institution' : 'institutions'}`,
+        link: '/places/county/' + r.countyID,
       }));
     });
     if (this.autofocus) {
@@ -152,6 +166,8 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
       event.preventDefault();
       if (this.activeIndex >= 0 && hits[this.activeIndex]) {
         this.go(hits[this.activeIndex].link);
+      } else if (this.scope === 'places') {
+        if (hits[0]) this.go(hits[0].link);
       } else {
         this.seeAll(this.scope === 'people' ? 'people' : 'institutions');
       }
@@ -189,6 +205,7 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
     this.query = '';
     this.institutions = [];
     this.people = [];
+    this.places = [];
     this.queries.next('');
     this.navigated.emit();
   }
