@@ -1,0 +1,66 @@
+.picker {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--rule-strong);
+    background: var(--surface);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-3);
+}
+
+.grow {
+    flex: 1;
+    min-width: 220px;
+}
+
+.year {
+    width: 6em;
+}
+
+.results {
+    max-height: 280px;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    overflow: auto;
+    list-style: none;
+
+    li {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 0 var(--space-3);
+        padding: var(--space-2) 0;
+        border-top: 1px solid var(--rule);
+    }
+}
+
+.name {
+    font: 500 var(--text-base) var(--font-display);
+
+    &.institution { color: var(--c-inst); }
+    &.person { color: var(--c-pers); }
+    &.county { color: var(--c-place); }
+}
+
+.detail {
+    grid-column: 1;
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+}
+
+.acts {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    gap: var(--space-2);
+    align-self: center;
+}
+
+.hint {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: var(--ink-3);
+}

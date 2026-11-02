@@ -75,6 +75,7 @@ collection as maps, networks and charts.
 - [Networks](#networks)
 - [Maps](#maps)
 - [Exports and citation](#exports-and-citation)
+- [Pages and the writing tool](#pages-and-the-writing-tool)
 - [Architecture](#architecture)
 - [Running locally](#running-locally)
 - [Data sources and licences](#data-sources-and-licences)
@@ -432,6 +433,45 @@ record for that year.
   `server/data/person-decisions.csv`.
 - Record pages have a copyable citation.
 - The Export page (where enabled) offers bulk downloads of the data.
+
+## Pages and the writing tool
+
+Essays, guides and project pages are files in `client/public/page-content/`
+(see its [README](client/public/page-content/README.md)); the site serves
+them at `/pages/<slug>`, lists them at `/pages`, and puts them in the top
+menu.
+
+- **Top menu.** `page-content/site-nav.json` adds items after the built-in
+  Institutions · People · Dashboards: each a label with a link or
+  `children`, nested to any depth (dropdowns on wide screens, an accordion
+  on phones). `"pages": true` lists every published page; a page's own
+  `menu: The Almanacs > The data` front matter places it under the groups
+  it names.
+- **A page** is a folder (`essays/my-essay/index.md` with its pictures and an
+  optional `style.css`, scoped to the page) or a single `.md`/`.html` file.
+  Front matter: `title, description, authors (Name (Affiliation); …), date,
+  kind, abstract, menu, draft, cite`. The site draws the masthead and
+  byline, numbered footnotes gathered under *Notes*, and a "How to cite"
+  block with a permanent link. Named layouts (`pull`, `note`, `columns`,
+  `beside`), figures with captions, live `<almanac-record>` cards and
+  `<almanac-embed>` views (any dashboard, map or record page in the state
+  its address gives) all work in Markdown. The worked example is
+  `/pages/essays/writing-a-page`.
+- **The listing** (`pages.json`) is generated from the files by `npm start`
+  and `npm run build` (`npm run pages:index`); drafts are reachable but
+  unlisted.
+- **Writing tool** (`/write`, for editors who have signed in): a WYSIWYG
+  editor with the live page beside it — pictures, record cards (via the
+  site search), embedded views (open a dashboard, set it up, keep its
+  address), footnotes, layouts, a details form for the front matter, an
+  advanced box for the page's own CSS, Markdown import, and a draft kept in
+  the browser. **Export for the team** downloads a zip of the page folder
+  with its pictures; existing pages open for revision and export the same
+  way. The team adds a page with `npm run pages:import <zip>` from
+  `client/` (or by unzipping into `page-content/`) and commits.
+- The pages of the project's companion site (about the almanacs, the data,
+  how to search, staff, contact) live here under `page-content/almanacs/`
+  and the "The Almanacs" menu.
 
 ## Architecture
 

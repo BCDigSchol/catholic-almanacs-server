@@ -1,0 +1,235 @@
+<div class="page write">
+    <header class="write-head">
+        <div>
+            <div class="eyebrow">Editors</div>
+            <h1>Write a page</h1>
+        </div>
+        <div class="acts">
+            <button type="button" class="btn" (click)="newPage()"><mat-icon aria-hidden="true">note_add</mat-icon> New</button>
+            <button type="button" class="btn" (click)="openPanel('open')" [attr.aria-expanded]="panel === 'open'"><mat-icon aria-hidden="true">folder_open</mat-icon> Open…</button>
+            <button type="button" class="btn btn-primary" (click)="exportZip()"><mat-icon aria-hidden="true">archive</mat-icon> Export for the team</button>
+        </div>
+    </header>
+
+    @if (restored) {
+        <p class="notice">Restored your draft from {{ draftSavedAt | date:'medium' }}. Pictures are not kept between visits: add them again before exporting.
+            <button type="button" class="btn" (click)="discardDraft()">Start fresh</button></p>
+    }
+    @if (notice) {<p class="notice">{{ notice }} <button type="button" class="link-btn" (click)="notice = ''">Dismiss</button></p>}
+
+    @if (panel === 'open') {
+        <div class="panel-box">
+            <div class="open-row">
+                <label class="ctl"><span>A page of the site, to revise</span>
+                    <select class="control" #sitePage (change)="openSitePage(sitePage.value)">
+                        <option value="">Choose a page…</option>
+                        @for (p of pages; track p.slug) {<option [value]="p.slug">{{ p.title }}</option>}
+                    </select>
+                </label>
+                <span class="or">or</span>
+                <button type="button" class="btn" (click)="pickFiles()"><mat-icon aria-hidden="true">upload_file</mat-icon> Files from your computer</button>
+                <span class="hint">A page file (<code>index.md</code>) with its pictures, or the zip this tool exported.</span>
+                <input #fileInput type="file" class="visually-hidden" multiple accept=".md,.markdown,.html,.css,.zip,image/*" (change)="openFiles(fileInput.files)">
+                <span class="or">or</span>
+                <button type="button" class="btn" (click)="openPanel('markdown')">Paste Markdown</button>
+            </div>
+        </div>
+    }
+    @if (panel === 'markdown') {
+        <div class="panel-box">
+            <label class="ctl block"><span>Markdown to import (replaces what is in the editor)</span>
+                <textarea class="control" rows="8" [(ngModel)]="markdownText"></textarea></label>
+            <div class="acts"><button type="button" class="btn btn-primary" (click)="importMarkdown()">Import</button>
+                <button type="button" class="btn" (click)="panel = null">Cancel</button></div>
+        </div>
+    }
+
+    <div class="work">
+        <section class="editor-pane" aria-label="Editor">
+            <div class="toolbar" role="toolbar" aria-label="Formatting">
+                <select class="control block-type" [ngModel]="blockType" (ngModelChange)="setBlock($event)" aria-label="Paragraph style">
+                    <option value="paragraph">Paragraph</option>
+                    <option value="h2">Heading</option>
+                    <option value="h3">Subheading</option>
+                    <option value="h4">Small heading</option>
+                </select>
+                <span class="group">
+                    <button type="button" [class.on]="isActive('bold')" (click)="toggle('bold')" title="Bold" aria-label="Bold"><mat-icon>format_bold</mat-icon></button>
+                    <button type="button" [class.on]="isActive('italic')" (click)="toggle('italic')" title="Italic" aria-label="Italic"><mat-icon>format_italic</mat-icon></button>
+                    <button type="button" [class.on]="isActive('underline')" (click)="toggle('underline')" title="Underline" aria-label="Underline"><mat-icon>format_underlined</mat-icon></button>
+                    <button type="button" [class.on]="isActive('link')" (click)="openPanel('link')" title="Link" aria-label="Link"><mat-icon>link</mat-icon></button>
+                </span>
+                <span class="group">
+                    <button type="button" [class.on]="isActive({ textAlign: 'left' })" (click)="align('left')" title="Align left" aria-label="Align left"><mat-icon>format_align_left</mat-icon></button>
+                    <button type="button" [class.on]="isActive({ textAlign: 'center' })" (click)="align('center')" title="Centre" aria-label="Centre"><mat-icon>format_align_center</mat-icon></button>
+                    <button type="button" [class.on]="isActive({ textAlign: 'right' })" (click)="align('right')" title="Align right" aria-label="Align right"><mat-icon>format_align_right</mat-icon></button>
+                </span>
+                <span class="group">
+                    <button type="button" [class.on]="isActive('bulletList')" (click)="list('bullet')" title="Bulleted list" aria-label="Bulleted list"><mat-icon>format_list_bulleted</mat-icon></button>
+                    <button type="button" [class.on]="isActive('orderedList')" (click)="list('ordered')" title="Numbered list" aria-label="Numbered list"><mat-icon>format_list_numbered</mat-icon></button>
+                    <button type="button" [class.on]="isActive('blockquote')" (click)="quote()" title="Quotation" aria-label="Quotation"><mat-icon>format_quote</mat-icon></button>
+                    <button type="button" (click)="table()" title="Table" aria-label="Table"><mat-icon>table_chart</mat-icon></button>
+                    <button type="button" (click)="rule()" title="Rule" aria-label="Horizontal rule"><mat-icon>horizontal_rule</mat-icon></button>
+                </span>
+                <span class="group">
+                    <button type="button" class="word" (click)="pickImages()" title="Add a picture"><mat-icon>image</mat-icon> Picture</button>
+                    <button type="button" class="word" (click)="openPanel('record')" [class.on]="panel === 'record'" title="A card or link for an institution, person or county"><mat-icon>badge</mat-icon> Record</button>
+                    <button type="button" class="word" (click)="openPanel('embed')" [class.on]="panel === 'embed'" title="Embed a dashboard or map"><mat-icon>insert_chart</mat-icon> Visualization</button>
+                    <button type="button" class="word" (click)="openPanel('footnote')" [class.on]="panel === 'footnote'" title="Footnote"><mat-icon>superscript</mat-icon> Footnote</button>
+                    <select #layoutSel class="control layout" (change)="layoutSel.value === 'none' ? unwrap() : layoutSel.value && wrap($any(layoutSel.value)); layoutSel.value = ''" aria-label="Layout">
+                        <option value="">Layout…</option>
+                        @for (k of layoutKinds; track k) {<option [value]="k">{{ layoutLabels[k] }}</option>}
+                        @if (isActive('layout')) {<option value="none">Remove layout</option>}
+                    </select>
+                </span>
+                <span class="group right">
+                    <button type="button" (click)="undo()" title="Undo" aria-label="Undo"><mat-icon>undo</mat-icon></button>
+                    <button type="button" (click)="redo()" title="Redo" aria-label="Redo"><mat-icon>redo</mat-icon></button>
+                </span>
+                <input #imageInput type="file" class="visually-hidden" multiple accept="image/*" (change)="addImages(imageInput.files)">
+            </div>
+
+            @if (panel === 'link') {
+                <div class="panel-box inline">
+                    <label class="ctl grow"><span>Link address (a path like /institution/alb.ny.0001, or a full URL)</span>
+                        <input class="control" type="text" [(ngModel)]="linkHref" (keydown.enter)="setLink()"></label>
+                    <button type="button" class="btn btn-primary" (click)="setLink()">{{ linkHref ? 'Set link' : 'Remove link' }}</button>
+                    <button type="button" class="btn" (click)="panel = null">Cancel</button>
+                </div>
+            }
+            @if (panel === 'footnote') {
+                <div class="panel-box inline">
+                    <label class="ctl grow"><span>Footnote text (Markdown allowed: *italics*, [links](/people))</span>
+                        <input class="control" type="text" [(ngModel)]="footnoteText" (keydown.enter)="addFootnote()"></label>
+                    <button type="button" class="btn btn-primary" (click)="addFootnote()">Add footnote</button>
+                    <button type="button" class="btn" (click)="panel = null">Cancel</button>
+                </div>
+            }
+            @if (panel === 'record') {
+                <app-record-picker (card)="insertCard($event)" (link)="insertRecordLink($event)" (closed)="panel = null"></app-record-picker>
+            }
+            @if (panel === 'embed') {
+                <app-embed-picker (picked)="insertEmbed($event)" (closed)="panel = null"></app-embed-picker>
+            }
+
+            @if (selected) {
+                <div class="inspector">
+                    @switch (selected.type) {
+                        @case ('figure') {
+                            <span class="what">Picture</span>
+                            <label class="ctl grow"><span>Caption</span><input class="control" type="text" [(ngModel)]="selected.attrs['caption']" (change)="applySelected()"></label>
+                            <label class="ctl grow"><span>Alt text (for readers who cannot see it)</span><input class="control" type="text" [(ngModel)]="selected.attrs['alt']" (change)="applySelected()"></label>
+                            <label class="ctl"><span>Width</span>
+                                <select class="control" [(ngModel)]="selected.attrs['layout']" (change)="applySelected()">
+                                    <option value="">Text column</option><option value="wide">Wide</option><option value="full">Full width</option>
+                                </select></label>
+                        }
+                        @case ('almanacRecord') {
+                            <span class="what">Record card</span>
+                            <label class="ctl"><span>Record id</span><input class="control" type="text" [(ngModel)]="selected.attrs['record']" (change)="applySelected()"></label>
+                            <label class="ctl"><span>As of year</span><input class="control" type="number" [(ngModel)]="selected.attrs['year']" (change)="applySelected()"></label>
+                        }
+                        @case ('almanacEmbed') {
+                            <span class="what">Embedded view</span>
+                            <label class="ctl grow"><span>Address</span><input class="control" type="text" [(ngModel)]="selected.attrs['src']" (change)="applySelected()"></label>
+                            <label class="ctl grow"><span>Caption</span><input class="control" type="text" [(ngModel)]="selected.attrs['caption']" (change)="applySelected()"></label>
+                            <label class="ctl"><span>Height</span><input class="control" type="number" [(ngModel)]="selected.attrs['height']" (change)="applySelected()"></label>
+                            <label class="ctl check"><input type="checkbox" [(ngModel)]="selected.attrs['lazy']" (change)="applySelected()"> Load on request</label>
+                        }
+                        @case ('footnote') {
+                            <span class="what">Footnote</span>
+                            <label class="ctl grow"><span>Text</span><input class="control" type="text" [(ngModel)]="selected.attrs['text']" (change)="applySelected()"></label>
+                        }
+                        @case ('layout') {
+                            <span class="what">Layout</span>
+                            <label class="ctl"><span>Kind</span>
+                                <select class="control" [(ngModel)]="selected.attrs['kind']" (change)="applySelected()">
+                                    @for (k of layoutKinds; track k) {<option [value]="k">{{ layoutLabels[k] }}</option>}
+                                </select></label>
+                        }
+                    }
+                    <button type="button" class="btn" (click)="removeSelected()">{{ selected.type === 'layout' ? 'Remove layout' : 'Remove' }}</button>
+                </div>
+            }
+
+            <div class="editor-frame">
+                <div #editorHost class="editor"></div>
+            </div>
+        </section>
+
+        <section class="side-pane" aria-label="Preview and details">
+            <div class="tabs" role="tablist">
+                <button type="button" role="tab" [attr.aria-selected]="tab === 'preview'" [class.on]="tab === 'preview'" (click)="tab = 'preview'">Preview</button>
+                <button type="button" role="tab" [attr.aria-selected]="tab === 'details'" [class.on]="tab === 'details'" (click)="tab = 'details'">Page details</button>
+                <button type="button" role="tab" [attr.aria-selected]="tab === 'source'" [class.on]="tab === 'source'" (click)="tab = 'source'">File</button>
+                <button type="button" role="tab" [attr.aria-selected]="tab === 'help'" [class.on]="tab === 'help'" (click)="tab = 'help'">Help</button>
+                @if (draftSavedAt) {<span class="saved">Draft kept {{ draftSavedAt | date:'shortTime' }}</span>}
+            </div>
+
+            @switch (tab) {
+                @case ('preview') {
+                    <div class="preview">
+                        <app-page-view [meta]="previewMeta" [html]="previewHtml" [css]="previewCss" [slug]="slug" [preview]="true"></app-page-view>
+                    </div>
+                }
+                @case ('details') {
+                    <form class="details" (submit)="$event.preventDefault()">
+                        <label class="ctl block"><span>Title</span><input class="control" type="text" [(ngModel)]="meta.title" name="title" (ngModelChange)="changed()" required></label>
+                        <label class="ctl block"><span>One-line description (shown in the listing)</span><input class="control" type="text" [(ngModel)]="meta.description" name="description" (ngModelChange)="changed()"></label>
+                        <fieldset class="authors">
+                            <legend>Authors</legend>
+                            @for (a of meta.authors; track $index) {
+                                <div class="author-row">
+                                    <label class="ctl grow"><span>Name</span><input class="control" type="text" [(ngModel)]="a.name" [name]="'author' + $index" (ngModelChange)="changed()"></label>
+                                    <label class="ctl grow"><span>Affiliation</span><input class="control" type="text" [(ngModel)]="a.affiliation" [name]="'affiliation' + $index" (ngModelChange)="changed()"></label>
+                                    <button type="button" class="btn" (click)="removeAuthor(a)" aria-label="Remove author"><mat-icon>close</mat-icon></button>
+                                </div>
+                            }
+                            <button type="button" class="btn" (click)="addAuthor()">Add an author</button>
+                        </fieldset>
+                        <div class="two">
+                            <label class="ctl block"><span>Date</span><input class="control" type="text" [(ngModel)]="meta.date" name="date" placeholder="2026-03-01 or March 2026" (ngModelChange)="changed()"></label>
+                            <label class="ctl block"><span>Kind (groups the listing)</span><input class="control" type="text" [(ngModel)]="meta.kind" name="kind" placeholder="essay" list="kinds" (ngModelChange)="changed()">
+                                <datalist id="kinds"><option value="essay"><option value="guide"><option value="note"><option value="Project page"></datalist></label>
+                        </div>
+                        <label class="ctl block"><span>Abstract (set in italics under the title)</span><textarea class="control" rows="3" [(ngModel)]="meta.abstract" name="abstract" (ngModelChange)="changed()"></textarea></label>
+                        <label class="ctl block"><span>Place in the top menu (optional), e.g. <code>The Almanacs &gt; The data</code></span><input class="control" type="text" [(ngModel)]="menuText" name="menu" (ngModelChange)="changed()"></label>
+                        <label class="ctl block"><span>Address under /pages/ (made from the title unless you set it)</span><input class="control mono" type="text" [(ngModel)]="slug" name="slug" (ngModelChange)="slugChanged()" [class.bad]="slug && !slugOk"></label>
+                        <label class="ctl check"><input type="checkbox" [(ngModel)]="meta.draft" name="draft" (ngModelChange)="changed()"> Draft — reachable at its address, but not listed</label>
+                        <label class="ctl check"><input type="checkbox" [(ngModel)]="meta.editors" name="editors" (ngModelChange)="changed()"> Editors only — listed and readable only when signed in</label>
+                        <details class="advanced">
+                            <summary>Advanced</summary>
+                            <label class="ctl block"><span>Citation written out (replaces the generated one)</span><input class="control" type="text" [(ngModel)]="meta.cite" name="cite" (ngModelChange)="changed()"></label>
+                            <label class="ctl block"><span>This page's own CSS (scoped to the page; the site's tokens such as <code>var(--rubric)</code> work)</span>
+                                <textarea class="control mono" rows="8" [(ngModel)]="css" name="css" (ngModelChange)="changed()" spellcheck="false"></textarea></label>
+                        </details>
+                    </form>
+                }
+                @case ('source') {
+                    <div class="source">
+                        <p class="hint">The file the export writes as <code>{{ slug || '…' }}/index.md</code>. Markdown: it can be edited by hand later.
+                            <button type="button" class="btn" (click)="copySource()">Copy</button></p>
+                        <pre class="mono">{{ pageFile }}</pre>
+                    </div>
+                }
+                @case ('help') {
+                    <div class="help prose-like">
+                        <h2>How this works</h2>
+                        <p>Write on the left; the right shows the page as readers will see it. <strong>Page details</strong> holds the title, authors, date and abstract, which the site sets above the text. When you are done, <strong>Export for the team</strong> downloads a zip of the page with its pictures; send it to the team, who drop it into the site.</p>
+                        <h3>Things you can put in a page</h3>
+                        <ul>
+                            <li><strong>Picture</strong> adds a figure from your computer; select it to set its caption, alt text and width. Pictures travel with the page.</li>
+                            <li><strong>Record</strong> finds an institution, person or county and inserts a live card (as of a year) or a link.</li>
+                            <li><strong>Visualization</strong> opens a dashboard here; set it up, then <em>Use this view</em> to embed it exactly as it stands.</li>
+                            <li><strong>Footnote</strong> adds a numbered note at the cursor; notes are gathered at the end. Write the bibliography yourself under a heading of its own.</li>
+                            <li><strong>Layout</strong> wraps the paragraph the cursor is in: a pull quote, a note, two columns, or a picture beside its text (put the picture first).</li>
+                        </ul>
+                        <h3>Revising a page</h3>
+                        <p><strong>Open…</strong> lists the site's pages; opening one loads its text and pictures. Export the revision and send it as you would a new page.</p>
+                        <p>Your work is kept in this browser as a draft as you type (pictures excepted). See the worked example at <a href="/pages/essays/writing-a-page" target="_blank">Writing a page for this site</a>.</p>
+                    </div>
+                }
+            }
+        </section>
+    </div>
+</div>

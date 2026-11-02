@@ -1,0 +1,28 @@
+<div class="picker">
+    <div class="row">
+        <label class="ctl grow"><span>Find an institution, person or county</span>
+            <input class="control" type="search" [(ngModel)]="query" (ngModelChange)="search()" placeholder="Name" autofocus>
+        </label>
+        <label class="ctl"><span>As of year</span>
+            <input class="control year" type="number" min="1833" max="1900" [(ngModel)]="year" placeholder="any">
+        </label>
+        <button type="button" class="btn" (click)="closed.emit()">Close</button>
+    </div>
+    @if (searching) {<p class="hint">Searching…</p>}
+    <ul class="results">
+        @for (r of results; track r.link) {
+            <li>
+                <span class="name" [class]="'name ' + r.kind">{{ r.name }}</span>
+                <span class="detail">{{ r.detail }}</span>
+                <span class="acts">
+                    @if (r.kind !== 'county') {
+                        <button type="button" class="btn" (click)="pickCard(r)">Insert card</button>
+                    }
+                    <button type="button" class="btn" (click)="link.emit(r)">Insert link</button>
+                </span>
+            </li>
+        } @empty {
+            @if (query.length >= 2 && !searching) {<li class="hint">Nothing found.</li>}
+        }
+    </ul>
+</div>

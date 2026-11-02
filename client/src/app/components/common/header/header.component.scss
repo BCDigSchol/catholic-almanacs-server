@@ -44,15 +44,19 @@ $compact: 960px;
 
 .primary {
     display: flex;
+    align-items: center;
     gap: var(--space-5);
 
-    a {
+    a, .drop-btn {
         padding: 4px 0;
+        border: 0;
+        background: none;
         color: var(--nav-fg-muted);
         text-decoration: none;
         font: 500 var(--text-sm) var(--font-sans);
         white-space: nowrap;
         border-bottom: 2px solid transparent;
+        cursor: pointer;
 
         &:hover {
             color: var(--nav-fg);
@@ -61,6 +65,56 @@ $compact: 960px;
         &.active {
             color: var(--nav-fg);
             border-bottom-color: var(--nav-fg);
+        }
+    }
+
+    .drop-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .caret {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+// A dropdown: a sheet of the page hung from the rule, hairline-bordered, no shadow.
+.drop {
+    position: relative;
+    // keeps the pointer inside the group while it crosses to the panel
+    padding-bottom: 12px;
+    margin-bottom: -12px;
+}
+
+.drop-panel {
+    position: absolute;
+    top: 100%;
+    left: calc(-1 * var(--space-4));
+    z-index: 101;
+    min-width: 240px;
+    max-width: 360px;
+    padding: var(--space-2) var(--space-4) var(--space-3);
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--rule-strong);
+    border-top-width: 0;
+    --nav-row-pad: 6px;
+
+    .drop-all {
+        display: block;
+        padding: 6px 0;
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: var(--space-1);
+        color: var(--nav-fg);
+        text-decoration: none;
+        font: italic 400 var(--text-sm) var(--font-display);
+        white-space: nowrap;
+
+        &:hover, &.active {
+            color: var(--rubric);
         }
     }
 }
@@ -97,6 +151,16 @@ $compact: 960px;
     padding: var(--space-3) var(--gutter);
 }
 
+// the editors' writing tool, shown once signed in
+.write-link {
+    color: var(--nav-fg-muted);
+    margin-left: calc(-1 * var(--space-3));
+
+    &.active {
+        color: var(--rubric);
+    }
+}
+
 // the editors' sign-in: a quiet lock beside the theme toggle
 .sign-in {
     color: var(--nav-fg-muted);
@@ -111,7 +175,33 @@ $compact: 960px;
     flex-direction: column;
     padding-top: var(--space-2);
 
-    a, .menu-theme {
+    // the top-level rows large, in the display face; nested rows smaller, indented
+    app-nav-list {
+        --nav-row-pad: var(--space-3);
+
+        ::ng-deep > .list > li > a,
+        ::ng-deep > .list > li > .group-row {
+            border-bottom: 1px solid var(--rule);
+            font: 400 var(--text-xl) var(--font-display);
+        }
+
+        ::ng-deep > .list > li > .group-row .label {
+            font: 400 var(--text-xl) var(--font-display);
+        }
+
+        ::ng-deep .nested {
+            --nav-row-pad: var(--space-2);
+            padding-bottom: var(--space-2);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        ::ng-deep .nested .nested {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .menu-theme {
         display: flex;
         align-items: center;
         gap: var(--space-2);
@@ -120,10 +210,6 @@ $compact: 960px;
         color: var(--nav-fg);
         text-decoration: none;
         font: 400 var(--text-xl) var(--font-display);
-    }
-
-    a.active {
-        color: var(--rubric);
     }
 
     .menu-theme {
@@ -137,7 +223,7 @@ $compact: 960px;
 }
 
 @media (max-width: $compact) {
-    .primary, .inline-search, .theme-toggle, .sign-in {
+    .primary, .inline-search, .theme-toggle, .sign-in, .write-link {
         display: none;
     }
 

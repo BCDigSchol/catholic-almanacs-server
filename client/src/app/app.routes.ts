@@ -44,6 +44,10 @@ export const routes: Routes = [
         || inject(Router).createUrlTree(['/sign-in'], { queryParams: { next: state.url } })],
       loadComponent: () => import('./components/dashboards/data-issues/data-issues.component').then(m => m.DataIssuesComponent) },
     { path: 'sign-in', loadComponent: () => import('./components/sign-in/sign-in.component').then(m => m.SignInComponent) },
+    // the editors' writing tool for content pages
+    { path: 'write', canActivate: [(_r: unknown, state: { url: string }) => inject(ReviewAuthService).isSignedIn
+        || inject(Router).createUrlTree(['/sign-in'], { queryParams: { next: state.url } })],
+      loadComponent: () => import('./components/write/write.component').then(m => m.WriteComponent) },
     { path: 'dashboards/languages', loadComponent: () => import('./components/dashboards/languages/languages.component').then(m => m.LanguagesComponent) },
     { path: 'dashboards/orders', loadComponent: () => import('./components/dashboards/religious-orders/religious-orders.component').then(m => m.ReligiousOrdersComponent) },
     { path: 'dashboards/clergy-flows', loadComponent: () => import('./components/dashboards/clergy-flows/clergy-flows.component').then(m => m.ClergyFlowsComponent) },
@@ -66,10 +70,11 @@ export const routes: Routes = [
     // and they are served at /pages/<file path without extension>
     {
         path: 'pages',
-        children: [{
-            path: '**',
-            loadComponent: () => import('./components/pages/page.component').then(m => m.PageComponent)
-        }]
+        children: [
+            // the listing, generated from the files (page-content/pages.json)
+            { path: '', loadComponent: () => import('./components/pages/pages-index/pages-index.component').then(m => m.PagesIndexComponent) },
+            { path: '**', loadComponent: () => import('./components/pages/page.component').then(m => m.PageComponent) },
+        ]
     },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' }

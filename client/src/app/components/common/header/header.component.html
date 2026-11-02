@@ -4,10 +4,34 @@
         <a class="brand" routerLink="/">{{ title }}</a>
 
         <nav class="primary" aria-label="Main">
-            @for (item of navItems; track item.route) {
-                <a [routerLink]="item.route" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.name }}</a>
+            @for (item of navItems; track item.label) {
+                @if (item.children?.length) {
+                    <div class="drop" [class.open]="openDrop === item"
+                        (mouseenter)="hoverDrop(item)" (mouseleave)="hoverDrop(null)">
+                        <button type="button" class="drop-btn" [class.active]="openDrop === item"
+                            (click)="toggleDrop(item)" aria-haspopup="true" [attr.aria-expanded]="openDrop === item">
+                            {{ item.label }}<mat-icon class="caret" aria-hidden="true">expand_more</mat-icon>
+                        </button>
+                        @if (openDrop === item) {
+                            <div class="drop-panel">
+                                @if (item.link) {
+                                    <a class="drop-all" [routerLink]="item.link" routerLinkActive="active" ariaCurrentWhenActive="page">All {{ item.label.toLowerCase() }}</a>
+                                }
+                                <app-nav-list [items]="item.children!"></app-nav-list>
+                            </div>
+                        }
+                    </div>
+                } @else if (item.link) {
+                    <a [routerLink]="item.link" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.label }}</a>
+                }
             }
         </nav>
+
+        @if (signedIn) {
+            <a class="icon-btn write-link" routerLink="/write" routerLinkActive="active" aria-label="Write a page" title="Write a page">
+                <mat-icon>edit_note</mat-icon>
+            </a>
+        }
 
         <app-header-search class="inline-search"></app-header-search>
 
@@ -42,13 +66,14 @@
 
     @if (menuOpen) {
         <nav class="panel menu" id="compact-menu" aria-label="Main">
-            @for (item of navItems; track item.route) {
-                <a [routerLink]="item.route" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.name }}</a>
-            }
+            <app-nav-list [items]="navItems" [collapsible]="true"></app-nav-list>
             <button type="button" class="menu-theme" (click)="toggleTheme()">
                 <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
                 {{ isDarkTheme ? 'Light theme' : 'Dark theme' }}
             </button>
+            @if (signedIn) {
+                <a class="menu-theme" routerLink="/write"><mat-icon>edit_note</mat-icon> Write a page</a>
+            }
             <a class="menu-theme" routerLink="/sign-in">
                 <mat-icon>{{ signedIn ? 'lock_open' : 'lock' }}</mat-icon>
                 {{ signedIn ? 'Editors: signed in' : 'Editors’ sign in' }}

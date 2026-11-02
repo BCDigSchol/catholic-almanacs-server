@@ -1,12 +1,13 @@
 <div class="page">
     <app-page-header title="Editors’ sign in" eyebrow="Editors"
-        subtitle="The Data Issues page, for the people correcting the transcriptions, opens with the editors’ password.">
+        subtitle="The editors’ password opens the Data Issues page, for the people correcting the transcriptions, and the writing tool for new pages.">
     </app-page-header>
 
     @if (auth.isSignedIn) {
         <p class="signed-in">This browser is signed in.</p>
         <p class="actions">
             <a class="btn btn-primary" routerLink="/dashboards/data-issues">Open Data Issues</a>
+            <a class="btn" routerLink="/write">Write a page</a>
             <button type="button" class="btn" (click)="signOut()">Sign out</button>
         </p>
     } @else {

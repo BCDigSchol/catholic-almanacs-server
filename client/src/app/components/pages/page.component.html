@@ -1,7 +1,1 @@
-<div class="page">
-    <article *ngIf="content"
-        class="page-content prose"
-        [innerHTML]="content"
-        (click)="onContentClick($event)">
-    </article>
-</div>
+<app-page-view [meta]="meta" [html]="html" [css]="css" [slug]="slug"></app-page-view>

@@ -1,0 +1,49 @@
+[
+  {
+    "slug": "essays/writing-a-page",
+    "title": "Writing a Page for This Site",
+    "description": "A worked example of everything a page can do, which you can copy",
+    "date": "2026-11-02",
+    "authors": [
+      "Jane Doe (Boston College)",
+      "John Roe (Catholic University of America)"
+    ],
+    "kind": "guide",
+    "editors": true
+  },
+  {
+    "slug": "about",
+    "title": "About the Catholic Almanacs Database",
+    "description": "What the database is, where its data comes from, and how to read it"
+  },
+  {
+    "slug": "almanacs/contact",
+    "title": "Contact",
+    "description": "Who to write to about the project, the data and the site",
+    "kind": "Project page"
+  },
+  {
+    "slug": "example-html",
+    "title": "Example HTML Page",
+    "description": "A page written in plain HTML with Tailwind classes",
+    "draft": true
+  },
+  {
+    "slug": "almanacs/how-to-search",
+    "title": "How to Search",
+    "description": "Finding institutions, people and places in the database",
+    "kind": "guide"
+  },
+  {
+    "slug": "almanacs/project-staff",
+    "title": "Project Staff",
+    "description": "The people who built the Catholic Almanacs project",
+    "kind": "Project page"
+  },
+  {
+    "slug": "almanacs/the-data",
+    "title": "What the Data Holds",
+    "description": "How the almanacs' entries were simplified, structured and encoded",
+    "kind": "Project page"
+  }
+]

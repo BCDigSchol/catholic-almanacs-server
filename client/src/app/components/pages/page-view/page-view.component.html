@@ -1,0 +1,48 @@
+<div class="page">
+    @if (meta) {
+        <app-page-header [crumbs]="[{ label: 'Pages', link: '/pages' }]" [title]="meta.title || 'Untitled'"
+            [eyebrow]="kindLabel" [subtitle]="meta.description || ''">
+            <div below-title class="byline">
+                @if (meta.authors.length) {
+                    <p class="authors">
+                        @for (author of meta.authors; track author.name) {
+                            <span class="author">{{ author.name }}@if (author.affiliation) {<span class="affiliation">, {{ author.affiliation }}</span>}</span>
+                        }
+                    </p>
+                }
+                @if (meta.date) {
+                    <p class="date">{{ meta.date }}</p>
+                }
+            </div>
+        </app-page-header>
+
+        @if (meta.draft) {
+            <p class="draft-note"><mat-icon aria-hidden="true">edit_note</mat-icon> Draft — reachable at this address, but not listed on the site.</p>
+        }
+
+        @if (meta.abstract) {
+            <p class="abstract">{{ meta.abstract }}</p>
+        }
+    }
+
+    @if (content) {
+        <article class="page-content prose" [attr.data-page]="slug"
+            [innerHTML]="content"
+            (click)="onContentClick($event)">
+        </article>
+    }
+
+    @if (meta) {
+        <section class="cite-block" aria-labelledby="how-to-cite">
+            <h2 id="how-to-cite">How to cite</h2>
+            <p class="cite-text">{{ citation }}</p>
+            <p class="cite-actions">
+                <button type="button" class="btn" (click)="copyCitation()">
+                    <mat-icon aria-hidden="true">{{ copied ? 'check' : 'content_copy' }}</mat-icon>
+                    {{ copied ? 'Copied' : 'Copy citation' }}
+                </button>
+                <span class="permalink">Permanent link: <a [routerLink]="'/pages/' + slug">{{ permalink }}</a></span>
+            </p>
+        </section>
+    }
+</div>

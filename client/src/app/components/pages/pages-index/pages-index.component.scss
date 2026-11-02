@@ -1,0 +1,42 @@
+.group {
+    max-width: 72ch;
+    margin-bottom: var(--space-6);
+
+    h2 {
+        margin: 0 0 var(--space-2);
+        padding-bottom: var(--space-1);
+        border-bottom: 1px solid var(--rule-strong);
+        font: italic 400 var(--text-xl) var(--font-display);
+        color: var(--ink-2);
+    }
+}
+
+.title {
+    font: 500 var(--text-lg) var(--font-display);
+    color: var(--ink);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--link);
+        text-decoration: underline;
+    }
+}
+
+.who {
+    font-style: italic;
+    color: var(--ink-2);
+}
+
+.when {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}
+
+.what {
+    color: var(--ink-2);
+}
+
+.empty {
+    color: var(--ink-3);
+    font-style: italic;
+}

@@ -3,8 +3,6 @@ title: About the Catholic Almanacs Database
 description: What the database is, where its data comes from, and how to read it
 ---
 
-# About the database
-
 The Catholic Almanacs Database reconstructs the people, institutions and
 dioceses of the nineteenth-century American Catholic Church from the annual
 *Catholic Almanac* directories. Each year's almanac listed the Church's
@@ -45,7 +43,39 @@ lists show how the Church grew, moved west and changed shape.
 - The [dashboards](/dashboards) show the collection as maps, networks and
   charts, starting with [The Almanacs at a Glance](/dashboards/overview).
 
-<!--
-Editors: add sections here for the project team, funding and partners, the
-data repository, how to cite the database, and contact details.
--->
+## The project
+
+The Catholic Almanacs Database is a project of the Boston College Libraries'
+Digital Scholarship Group, part of the Libraries' Catholic Collections
+Initiative, making Catholic almanac data from the nineteenth-century United
+States more widely available and searchable. Each almanac includes a list of
+all the institutions in each of the country's dioceses—every elementary and
+secondary school; every university and college; and every hospital, orphanage
+and asylum that was under a diocese's supervision—as well as the names of
+their leaders. The team that transcribed and encoded them is listed under
+[Project staff](/pages/almanacs/project-staff); how the entries were encoded
+is set out in [What the data holds](/pages/almanacs/the-data).
+
+## The almanacs themselves
+
+The *Catholic Almanac* (later the *Metropolitan Catholic Almanac and Laity's
+Directory*) was published annually from 1833, each volume carrying, diocese
+by diocese, the Church's clergy and institutions as its editors knew them.
+For a list of where each almanac is available digitally, see
+[the project's spreadsheet of scans](https://docs.google.com/spreadsheets/d/1IU1z0HL9ReQDMbPcQE1sGFDlyfqu7fJYhQXh7-nbA9Y/edit?usp=sharing).
+
+## The data
+
+The database holds the project's current dataset; the spreadsheets it is
+built from will also be published in the project's GitHub repository. The
+project's own ArcGIS map of
+[diocese territories over time](https://bostoncollege.maps.arcgis.com/apps/instant/slider/index.html?appid=955225820a1b40b58a3f8b09155dfcca)
+shows how the borders of US dioceses shifted across the century, from a dozen
+sees in 1833 to eighty-nine by 1895; the same territories are drawn here on
+[Diocese by Diocese](/dashboards/diocese-tracker).
+
+## Citing and contacting
+
+Every record and page has a *Cite* button with a permanent link. Questions,
+corrections and requests go to the people listed under
+[Contact](/pages/almanacs/contact).

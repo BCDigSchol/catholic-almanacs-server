@@ -1,0 +1,21 @@
+{
+  "_comment": "Items added to the top navigation after the built-in ones (Institutions, People, Dashboards). Each item has a label and either a link or children; children may have children. An item with \"pages\": true lists every published content page (from pages.json); a page's own front matter (menu: Group > Subgroup) can also place it. See page-content/README.md.",
+  "items": [
+    {
+      "label": "The Almanacs",
+      "children": [
+        { "label": "About", "link": "/pages/about" },
+        { "label": "Essays", "pages": true },
+        {
+          "label": "The data",
+          "children": [
+            { "label": "What the data holds", "link": "/pages/almanacs/the-data" },
+            { "label": "How to search", "link": "/pages/almanacs/how-to-search" }
+          ]
+        },
+        { "label": "Project staff", "link": "/pages/almanacs/project-staff" },
+        { "label": "Contact", "link": "/pages/almanacs/contact" }
+      ]
+    }
+  ]
+}

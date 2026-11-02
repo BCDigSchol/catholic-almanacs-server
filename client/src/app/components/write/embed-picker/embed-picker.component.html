@@ -1,0 +1,28 @@
+<div class="picker">
+    <div class="row">
+        <label class="ctl"><span>View</span>
+            <select class="control" [ngModel]="path" (ngModelChange)="open($event)">
+                @for (v of views; track v.link) {<option [value]="v.link">{{ v.title }}</option>}
+            </select>
+        </label>
+        <label class="ctl grow"><span>Or any address on this site</span>
+            <input class="control" type="text" [(ngModel)]="path" (change)="open(path)" placeholder="/institution/alb.ny.0001?year=1850">
+        </label>
+        <button type="button" class="btn" (click)="open(path)">Show</button>
+        <button type="button" class="btn" (click)="closed.emit()">Close</button>
+    </div>
+    <p class="hint">Set the view up below — pick the year, filters and map — then <em>Use this view</em>: the page embeds it exactly as it stands.</p>
+    @if (frameUrl) {
+        <iframe #frame class="frame" [src]="frameUrl" title="The view to embed"></iframe>
+    }
+    <div class="row">
+        <label class="ctl grow"><span>Caption</span>
+            <input class="control" type="text" [(ngModel)]="caption" placeholder="What the reader is looking at">
+        </label>
+        <label class="ctl"><span>Height (px)</span>
+            <input class="control height" type="number" min="200" max="1600" step="20" [(ngModel)]="height">
+        </label>
+        <label class="ctl check"><input type="checkbox" [(ngModel)]="lazy"> Load only when the reader asks</label>
+        <button type="button" class="btn btn-primary" (click)="use()">Use this view</button>
+    </div>
+</div>

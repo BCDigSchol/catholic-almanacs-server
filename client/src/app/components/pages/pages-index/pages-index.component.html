@@ -1,0 +1,22 @@
+<div class="page">
+    <app-page-header title="Essays and Pages" eyebrow="Catholic Almanacs"
+        subtitle="Writing that accompanies the database: essays, guides and notes on the almanacs and their data."></app-page-header>
+
+    @for (group of groups; track group.label) {
+        <section class="group">
+            <h2>{{ group.label }}</h2>
+            <ul class="entries">
+                @for (page of group.pages; track page.slug) {
+                    <li>
+                        <a class="title" [routerLink]="'/pages/' + page.slug">{{ page.title }}</a>
+                        @if (page.authors?.length) {{{ ' ' }}<span class="who">{{ page.authors!.join('; ') }}</span>}
+                        @if (page.date) {{{ ' ' }}<span class="when">{{ page.date }}</span>}
+                        @if (page.description) {{{ ' ' }}<span class="what">— {{ page.description }}</span>}
+                    </li>
+                }
+            </ul>
+        </section>
+    } @empty {
+        <p class="empty">No pages yet.</p>
+    }
+</div>

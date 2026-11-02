@@ -1,0 +1,28 @@
+<ul class="list" [class.nested]="depth > 0" role="list">
+    @for (item of items; track $index) {
+        @if (item.children?.length) {
+            <li class="group">
+                @if (collapsible) {
+                    <button type="button" class="group-row" (click)="toggle(item)" [attr.aria-expanded]="isOpen(item)" [attr.aria-label]="item.label">
+                        <span class="label">{{ item.label }}</span>
+                        <mat-icon class="chevron" aria-hidden="true">{{ isOpen(item) ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </button>
+                } @else if (item.link) {
+                    <a class="group-row label" [routerLink]="item.link" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.label }}</a>
+                } @else {
+                    <span class="group-row label">{{ item.label }}</span>
+                }
+                @if (isOpen(item)) {
+                    @if (collapsible && item.link) {
+                        <ul class="list nested" role="list">
+                            <li><a [routerLink]="item.link" routerLinkActive="active" ariaCurrentWhenActive="page" class="all">All {{ item.label.toLowerCase() }}</a></li>
+                        </ul>
+                    }
+                    <app-nav-list [items]="item.children!" [depth]="depth + 1" [collapsible]="collapsible"></app-nav-list>
+                }
+            </li>
+        } @else if (item.link) {
+            <li><a [routerLink]="item.link" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.label }}</a></li>
+        }
+    }
+</ul>

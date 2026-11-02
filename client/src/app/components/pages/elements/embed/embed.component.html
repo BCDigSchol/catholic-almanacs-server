@@ -1,0 +1,15 @@
+@if (url) {
+    <figure class="embed">
+        <div class="frame" [style.height]="frameHeight">
+            @if (loaded) {
+                <iframe [src]="url" [title]="title || caption || 'Embedded view'" loading="lazy"></iframe>
+            } @else {
+                <button type="button" class="btn load" (click)="loaded = true">Load the visualization</button>
+            }
+        </div>
+        <figcaption>
+            @if (caption) {<span class="caption">{{ caption }}</span>}
+            <a class="open" [href]="fullUrl" target="_blank" rel="noopener">Open full size ↗</a>
+        </figcaption>
+    </figure>
+}

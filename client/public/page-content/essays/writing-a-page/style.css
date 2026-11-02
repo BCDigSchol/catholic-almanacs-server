@@ -1,0 +1,4 @@
+/* This page's own styles. Each rule reaches this page only. */
+.pull p::first-letter {
+  color: var(--rubric);
+}

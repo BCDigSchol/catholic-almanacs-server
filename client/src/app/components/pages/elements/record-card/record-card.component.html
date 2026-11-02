@@ -1,0 +1,11 @@
+@if (view) {
+    <a class="card" [class.inst]="view.kind === 'institution'" [class.pers]="view.kind === 'person'"
+        [href]="view.link" (click)="open($event)">
+        <span class="eyebrow">{{ view.kind }}@if (year) { in {{ year }}}</span>
+        <span class="name">{{ view.name }}</span>
+        @if (view.detail) {<span class="detail">{{ view.detail }}</span>}
+        @if (view.years) {<span class="years">Listed {{ view.years }}</span>}
+    </a>
+} @else if (missing) {
+    <span class="missing">No record “{{ record }}”</span>
+}

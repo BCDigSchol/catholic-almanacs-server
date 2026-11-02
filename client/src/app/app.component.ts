@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/common/header/header.component';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NavigationService } from './services/navigation.service';
 import { ThemeService } from './services/theme.service';
+import { defineAlmanacElements } from './components/pages/elements/register';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,10 @@ export class AppComponent implements OnInit {
   constructor (
     private router: Router,
     private navigationService: NavigationService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    injector: Injector,
   ) {
+    defineAlmanacElements(injector); // the <almanac-*> tags content pages use
     this.router.events
     .pipe(filter(event => event instanceof NavigationStart))
     .subscribe((event: any) => {
