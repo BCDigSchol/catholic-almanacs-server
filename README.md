@@ -252,19 +252,22 @@ pages link to their metro, and the header search finds metros by city name.
   overland trails and wagon roads in use that year (the Santa Fe, Oregon,
   California and Mormon trails, the caminos reales, the Butterfield mail and
   Pony Express routes), with the map coloured by distance to either a
-  railroad or a trail, the shares near each over time, and distance bands.
+  railroad or a trail, the shares near each over time, distance bands, and
+  the dioceses shaded by the share of their institutions near each network.
 - **The Frontier:** the Church against the settled country, with the post
   office as the measure of settlement. Every post office open in a year on
   the map, each institution coloured by its distance to the nearest, the
   share listed before that office opened ("the church first"), the
   institutions farthest from any office, and the settled places with no
-  Catholic institution within 25 miles.
+  Catholic institution within 25 miles. Settlement can be shown as a wash
+  or as counties shaded by post offices per hundred square miles.
 - **Center and Periphery:** where institutions sat between a center and its
   hinterland, read three ways: from the see of each diocese, from the nearest
   metro area, or by the circuit ties between hubs and the stations their
   clergy rode to. Rings of 5, 25 and 100 miles over time; what kinds of
   institution stood in each ring; whether clergy moved toward the center or
-  away; and each see's or city's primacy, with its hinterland shown alone.
+  away; and each see's or city's primacy, with its hinterland shown alone
+  or the dioceses shaded by it.
 - **Languages and Congregations:** where the almanacs marked a church,
   school or mission as German, French, Polish, Bohemian, Dutch, Italian,
   Spanish or Irish, or as serving Native American or Black Catholics. It has

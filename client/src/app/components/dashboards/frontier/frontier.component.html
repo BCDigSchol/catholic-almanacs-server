@@ -8,6 +8,9 @@
         <div primary class="switches">
             <app-segmented label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
             <app-segmented label="Mark" [showLabel]="true" [options]="markOptions" [value]="state.mark" (valueChange)="setMark($event)"></app-segmented>
+            @if (hasCounties) {
+                <app-segmented label="Settlement as" [showLabel]="true" [options]="shadeOptions" [value]="state.shade" (valueChange)="setShade($event)"></app-segmented>
+            }
         </div>
         <ng-template #filters>
             <label class="ctl">
@@ -48,13 +51,20 @@
     }
 
     <app-viz-panel
-        [heading]="'The settled country in ' + (year ?? '')"
+        [heading]="(state.show === 'all' ? 'The settled country in ' : 'Beyond the settled country, ') + (year ?? '')"
         [note]="'The settled country as a wash of that year\'s post offices (the offices themselves from a regional zoom); ' + (state.show === 'all' ? 'every institution' : 'the institutions more than 5 miles from any post office') + ' coloured by distance to the nearest' + (state.mark === 'unchurched' ? '; settled places with no Catholic institution within 25 miles marked' : '')"
         [state]="vizState"
         [emptyText]="notBuilt ? 'The post offices are not built on this server.' : 'Nothing to show for these filters.'"
         [hasKey]="true"
         (retry)="fetchData()">
         <ul key class="legend" aria-label="Distance to the nearest post office">
+            @if (state.shade === 'density' && countyShades) {
+                @for (s of shadeSteps; track s.from) {
+                    <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>{{ s.label }} post offices per 100 sq mi</li>
+                }
+            } @else {
+                <li class="legend-item"><span class="legend-swatch area wash"></span>The settled country: where post offices were open</li>
+            }
             @for (b of bands; track b.id) {
                 <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
             }
@@ -70,7 +80,8 @@
             [simple]="true"
             [autoCenter]="false"
             [year]="year"
-            [postOffices]="true"
+            [postOffices]="state.shade !== 'density'"
+            [countyShades]="countyShades"
             [dioceses]="!!state.diocese"
             [dioceseFocus]="state.diocese || null"
             label="The settled country"

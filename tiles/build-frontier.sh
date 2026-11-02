@@ -4,7 +4,9 @@
 # against the post offices open in its year (frontier.json beside the tiles,
 # read by the API for the Frontier dashboard): the distance to the nearest
 # one, when that one opened, and how many stood within 25 miles; and, per
-# year, the open offices with no Catholic institution within 25 miles.
+# year, the open offices with no Catholic institution within 25 miles and, where
+# the counties build has left its outlines in the work dir, each county's post
+# offices per 100 square miles (run `tiles-build counties` first for that).
 #
 # A post office is the closest thing to a year-by-year record of where people
 # had settled. The data is Blevins and Helbock, "US Post Offices" (Harvard
@@ -38,7 +40,7 @@ if [ -n "${DB_HOST:-}" ]; then
   echo "[frontier] measuring each record against the post offices of its year"
   mysql -h "$DB_HOST" -P "${DB_PORT:-3306}" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" -N -B -e \
     "SELECT ID, year, latitude, longitude FROM almanacRecords WHERE latitude IS NOT NULL AND longitude IS NOT NULL" 2>/dev/null \
-    | python3 "$HERE/frontier-measures.py" "$D/features.geojsonl" > "$MEASURES.tmp"
+    | python3 "$HERE/frontier-measures.py" "$D/features.geojsonl" $( [ -s "$WORK/counties/counties.geojsonl" ] && echo "$WORK/counties/counties.geojsonl" ) > "$MEASURES.tmp"
   mv "$MEASURES.tmp" "$MEASURES"
   echo "[frontier] wrote $MEASURES ($(du -h "$MEASURES" | cut -f1))"
 else

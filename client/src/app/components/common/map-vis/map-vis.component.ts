@@ -95,6 +95,12 @@ export class MapVisComponent {
   /** Draw the Indian land cessions (Royce): with a year, land still held then
    *  apart from land ceded in the ten years before; without, their outlines. */
   @Input() cessions = false;
+  /** Shade each diocese territory with a colour (id -> colour; a choropleth); needs [dioceses]. */
+  @Input() dioceseShades: Record<string, string> | null = null;
+  /** Shade each county of the map's year with a colour (id -> colour). */
+  @Input() countyShades: Record<string, string> | null = null;
+  /** The focus layers' own paint, kept to restore when a shading is cleared. */
+  private focusPaint: Record<string, { color: any; opacity: any }> = {};
   /** Draw the post offices open in the map's year (the Frontier dashboard). */
   @Input() postOffices = false;
   /** Historical county id(s) to shade (e.g. 'ohs_noble', or a metro's counties), as they stood in the map's year (or 1870). */
@@ -257,7 +263,7 @@ export class MapVisComponent {
     if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter && !this.fitTo) {
       this.updateMapCenter();
     }
-    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions'] || changes['countyFocus'] || changes['postOffices']) this.applyYear();
+    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions'] || changes['countyFocus'] || changes['postOffices'] || changes['dioceseShades'] || changes['countyShades']) this.applyYear();
     // Honour a user-selected mode over options.mode so it survives data updates.
     this.currentMode = this.userMode ?? (this.options.mode || 'normal');
     this.renderMapFeatures();
@@ -313,12 +319,13 @@ export class MapVisComponent {
         const f = layer.filter;
         const at = (this.year ?? LATEST_ALMANAC_YEAR) * 10000 + 101;
         const focus = layer.id === 'county-focus';
+        const shaded = focus && this.shadeFocus(layer, this.countyShades);
         if (Array.isArray(f) && f[0] === 'all') {
-          const ids = [this.countyFocus ?? []].flat();
+          const ids = shaded ? Object.keys(this.countyShades!) : [this.countyFocus ?? []].flat();
           const rest = focus ? [['in', ['get', 'id'], ['literal', ids]]] : f.slice(3);
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], at], ['>=', ['get', 'to'], at], ...rest]);
         }
-        this.map.setLayoutProperty(layer.id, 'visibility', !focus || [this.countyFocus ?? []].flat().length ? 'visible' : 'none');
+        this.map.setLayoutProperty(layer.id, 'visibility', !focus || shaded || [this.countyFocus ?? []].flat().length ? 'visible' : 'none');
       } else if (rule === 'cessions') {
         // ceded is the treaty's date (yyyymmdd): held = ceded after the map's
         // day; recent = ceded within the ten years before it
@@ -329,9 +336,12 @@ export class MapVisComponent {
         this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
       } else if (rule === 'dioceses') {
         const f = layer.filter;
-        const show = dated && this.dioceses && (layer.id !== 'diocese-focus' || !!this.dioceseFocus);
+        const shaded = layer.id === 'diocese-focus' && this.shadeFocus(layer, this.dioceseShades);
+        const show = dated && this.dioceses && (layer.id !== 'diocese-focus' || shaded || !!this.dioceseFocus);
         if (show && Array.isArray(f) && f[0] === 'all') {
-          const rest = layer.id === 'diocese-focus' ? [['==', ['get', 'id'], this.dioceseFocus]] : f.slice(3);
+          const rest = layer.id !== 'diocese-focus' ? f.slice(3)
+            : shaded ? [['in', ['get', 'id'], ['literal', Object.keys(this.dioceseShades!)]]]
+            : [['==', ['get', 'id'], this.dioceseFocus]];
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...rest]);
         }
         this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
@@ -864,6 +874,27 @@ export class MapVisComponent {
     ['overlay-labels-src', 'overlay-markers-src', 'overlay-track-src', 'overlay-rings-src'].forEach(id => {
       if (this.map.getSource(id)) this.map.removeSource(id);
     });
+  }
+
+  /**
+   * Paints a focus fill layer by area id from `shades` (a choropleth), or
+   * restores its own paint when there is nothing to shade. True when shaded.
+   */
+  private shadeFocus(layer: any, shades: Record<string, string> | null): boolean {
+    const ids = shades ? Object.keys(shades) : [];
+    if (!this.focusPaint[layer.id]) {
+      const p = layer.paint || {};
+      this.focusPaint[layer.id] = { color: p['fill-color'], opacity: p['fill-opacity'] };
+    }
+    if (ids.length) {
+      this.map.setPaintProperty(layer.id, 'fill-color', ['match', ['get', 'id'], ...ids.flatMap(id => [id, shades![id]]), 'rgba(0,0,0,0)']);
+      this.map.setPaintProperty(layer.id, 'fill-opacity', 0.55);
+      return true;
+    }
+    const own = this.focusPaint[layer.id];
+    this.map.setPaintProperty(layer.id, 'fill-color', own.color);
+    this.map.setPaintProperty(layer.id, 'fill-opacity', own.opacity);
+    return false;
   }
 
   /**

@@ -5,9 +5,12 @@
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
-        @if (hasTrails) {
-            <app-segmented primary label="Distance to" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
-        }
+        <div primary class="switches">
+            @if (hasTrails) {
+                <app-segmented label="Distance to" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
+            }
+            <app-segmented label="Shade dioceses by" [showLabel]="true" [options]="shadeOptions" [value]="state.shade" (valueChange)="setShade($event)"></app-segmented>
+        </div>
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>
@@ -75,6 +78,9 @@
                 @for (b of bands; track b.label) {
                     <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
                 }
+                @for (s of shadeSteps; track s.from) {
+                    <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>Diocese: {{ s.label }} {{ shadeLabel }}</li>
+                }
             </ul>
         </div>
         <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="rails-year" (yearChange)="setYear($event)"></app-year-player>
@@ -84,6 +90,8 @@
             [simple]="true"
             [autoCenter]="false"
             [year]="year"
+            [dioceses]="!!dioceseShades"
+            [dioceseShades]="dioceseShades"
             [label]="state.by === 'trail' && hasTrails ? 'Distance to a trail or road' : 'Distance to the railroad'"
             [options]="mapOptions">
         </app-map-vis>

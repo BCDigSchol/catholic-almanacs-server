@@ -9,6 +9,9 @@
             <app-segmented label="The center is" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
             <app-segmented label="The map shows" [showLabel]="true" [options]="viewOptions" [value]="state.view" (valueChange)="setView($event)"></app-segmented>
             <app-segmented label="Charts show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+            @if (state.by === 'diocese') {
+                <app-segmented label="Shade dioceses by" [showLabel]="true" [options]="shadeOptions" [value]="state.shade" (valueChange)="setShade($event)"></app-segmented>
+            }
         </div>
     </app-control-bar>
 
@@ -30,6 +33,9 @@
             @for (r of rings; track r.id) {
                 <li class="legend-item"><span class="legend-swatch dot" [style.background]="ringInk[r.id]"></span>{{ r.label }}</li>
             }
+            @for (s of shadeSteps; track s.from) {
+                <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>Primacy {{ s.label }}</li>
+            }
         </ul>
         <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="cp-year" (yearChange)="setYear($event)"></app-year-player>
         <app-map-vis
@@ -42,8 +48,9 @@
             [autoCenter]="false"
             [fitTo]="mapFit"
             [year]="year"
-            [dioceses]="state.by === 'diocese' && !!state.focus"
+            [dioceses]="state.by === 'diocese' && (!!state.focus || !!dioceseShades)"
             [dioceseFocus]="state.by === 'diocese' ? (state.focus || null) : null"
+            [dioceseShades]="dioceseShades"
             label="Center and periphery"
             [options]="mapOptions">
         </app-map-vis>

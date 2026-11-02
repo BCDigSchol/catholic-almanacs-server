@@ -703,6 +703,7 @@ async function circuitsData() {
 //           near = within NEAR_MILES; bands = counts by distance to a railroad
 //           (trailBands: to a historic trail, from tiles-build trails' trail-distances.json)
 //   points  for ?year=: [[lat, lng, railMiles|null, instID, trailMiles|null]]
+//   byDiocese  for ?year=: {dioceseId: {n, nearRail, nearWater, nearTrail}}
 //   meta.trails  whether the trail distances are built here
 //   dioceses  {id: name} with any measured institution, for the filter
 const NEAR_MILES = 5;
@@ -754,6 +755,8 @@ exports.getRailroads = async (req, res) => {
     const dioceseNames = {};
     const byYear = new Map();
     const points = [];
+    // the year's institutions by diocese, for shading the territories
+    const byDio = new Map();
     for (const f of facts) {
         const d = distances[f.rec];
         if (!d) continue;
@@ -776,6 +779,14 @@ exports.getRailroads = async (req, res) => {
         const band = rail == null ? RAIL_BANDS.length : RAIL_BANDS.findIndex(b => rail <= b);
         y.bands[band === -1 ? RAIL_BANDS.length : band]++;
         if (year && f.y === year && f.lat != null && f.lng != null) points.push([f.lat, f.lng, rail, f.i, trail]);
+        if (year && f.y === year) {
+            let b = byDio.get(f._dio);
+            if (!b) byDio.set(f._dio, b = { n: 0, nearRail: 0, nearWater: 0, nearTrail: 0 });
+            b.n++;
+            if (nr) b.nearRail++;
+            if (nw) b.nearWater++;
+            if (trail != null && trail <= NEAR_MILES) b.nearTrail++;
+        }
     }
     const years = [...byYear.values()].sort((a, b) => a.year - b.year).map(y => {
         const sorted = y.rail.sort((a, b) => a - b);
@@ -787,6 +798,8 @@ exports.getRailroads = async (req, res) => {
         years,
         points,
         dioceses: dioceseNames,
+        // for ?year=: {dioceseId: {n, nearRail, nearWater, nearTrail}}
+        byDiocese: Object.fromEntries(byDio),
         meta: { nearMiles: NEAR_MILES, bands: RAIL_BANDS, trails: !!trails },
     };
     networkCache.set(key, result);
@@ -1238,6 +1251,7 @@ exports.getMeans = async (req, res) => {
  *   points    for the year: [lat, lng, instID, miles|null, churchFirst 0|1]
  *   unchurched  the year's sample of open offices with no institution within
  *              25 miles: [[lat, lng, name, state]]
+ *   counties  {countyId: post offices per 100 sq mi} for the year, or null
  *   farthest  the year's institutions farthest from any office:
  *              [{inst, name, type, place, miles|null, dio}]
  *   dioceses  {id: name}; meta {bands, far}
@@ -1312,6 +1326,8 @@ exports.getFrontier = async (req, res) => {
         years,
         points,
         unchurched: (data.years[year] || {}).sample || [],
+        // post offices per 100 sq mi by county of that year, where the build had the outlines
+        counties: (data.years[year] || {}).counties || null,
         farthest: far.map(r => {
             const n = named.get(r.inst) || {};
             return { inst: r.inst, name: n.instName || '', type: n.instType || '', place: [n.cityReg, n.stateReg].filter(Boolean).join(', '),

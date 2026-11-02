@@ -31,3 +31,9 @@ app-year-player {
         font-variant-numeric: tabular-nums;
     }
 }
+
+.switches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+}

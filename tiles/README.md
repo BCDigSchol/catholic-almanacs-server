@@ -6,7 +6,7 @@ Two containers share one volume of tiles:
 - **`tiles-build`** is a one-off job. It writes eight files into the
   `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10),
   `history.pmtiles` (US states and territories by date, zoom 0–10),
-  `counties.pmtiles` (US counties by date, 1830–1875, zoom 4–10),
+  `counties.pmtiles` (US counties by date, 1830–1875, zoom 2–10: shaded as a choropleth from zoom 2, lines drawn from zoom 6),
   `cessions.pmtiles` (Indian land cessions with their dates, zoom 2–10),
   `transport.pmtiles` (railroads, canals and steamboat rivers by year, zoom 3–12),
   `dioceses.pmtiles` (diocese territories by year, zoom 0–10),

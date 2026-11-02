@@ -15,6 +15,7 @@ import { drawStackedYears } from '../../../utils/stacked-years';
 import { institutionLabel } from '../../../utils/record-labels';
 import { INKS } from '../../../utils/palette';
 import { downloadTable, citation } from '../../../utils/network-export';
+import { shadeByValue, percentFormat, ShadeStep } from '../../../utils/choropleth';
 
 type Counts = Record<string, number>;
 interface Option { id: string; label: string; }
@@ -40,7 +41,7 @@ const RING_INK: Record<string, string> = {
 };
 const MOVE_INK: Record<string, string> = { toward: INKS[4], same: '#b9b3a7', away: INKS[0] };
 
-const DEFAULTS = { by: 'diocese', year: 0, focus: '', show: 'share', view: 'periphery' };
+const DEFAULTS = { by: 'diocese', year: 0, focus: '', show: 'share', view: 'periphery', shade: 'none' };
 
 /**
  * Center and Periphery: where the Church's institutions sat between a center
@@ -73,6 +74,10 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
   readonly showOptions = [{ value: 'share', label: 'Share' }, { value: 'count', label: 'Count' }];
   /** The map's institutions: the periphery (all but the center ring), everything, or one ring. */
   viewOptions: { value: string; label: string }[] = [];
+  /** Shade each diocese's territory by its primacy (the see reading only). */
+  readonly shadeOptions = [{ value: 'none', label: 'None' }, { value: 'primacy', label: 'Primacy' }];
+  dioceseShades: Record<string, string> | null = null;
+  shadeSteps: ShadeStep[] = [];
   readonly ringInk = RING_INK;
   readonly moveInk = MOVE_INK;
 
@@ -115,7 +120,7 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
 
   ngOnInit(): void {
     this.subs.push(this.url.changes().subscribe(state => {
-      const pageOnly = !!this.data && (state.show !== this.state.show || state.view !== this.state.view) && state.by === this.state.by && state.year === this.state.year && state.focus === this.state.focus;
+      const pageOnly = !!this.data && (state.show !== this.state.show || state.view !== this.state.view || state.shade !== this.state.shade) && state.by === this.state.by && state.year === this.state.year && state.focus === this.state.focus;
       this.state = state;
       if (pageOnly) { this.show(this.data!); return; }
       this.fetchData();
@@ -140,8 +145,9 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
   setYear(year: number): void { this.url.set({ year }); }
   setShow(show: string): void { this.url.set({ show }); }
   setView(view: string): void { this.url.set({ view }); }
+  setShade(shade: string): void { this.url.set({ shade }); }
   setFocus(focus: string): void { this.url.set({ focus: focus === this.state.focus ? '' : focus }); }
-  clearAll = (): void => this.url.set({ focus: '', show: DEFAULTS.show, view: DEFAULTS.view });
+  clearAll = (): void => this.url.set({ focus: '', show: DEFAULTS.show, view: DEFAULTS.view, shade: DEFAULTS.shade });
   share(n: number, of: number): number { return of ? n / of : 0; }
   nameOf(list: Option[], id: string): string { return list.find(o => o.id === id)?.label ?? id; }
   get isTies(): boolean { return this.state.by === 'ties'; }
@@ -198,6 +204,15 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
       options: { color: RING_INK[ring] ?? '#b9b3a7', radius: ring === 'remote' || ring === 'alone' ? 3 : 4.5 },
     }));
     // the centers themselves, named on the map
+    // the dioceses shaded by primacy: a fifth of the ramp per fifth of the share
+    if (d.by === 'diocese' && this.state.shade === 'primacy') {
+      const shading = shadeByValue(Object.fromEntries(this.centers.map(c => [c.id, c.primacy])), { max: 1, format: percentFormat });
+      this.dioceseShades = shading.colors;
+      this.shadeSteps = shading.steps;
+    } else {
+      this.dioceseShades = null;
+      this.shadeSteps = [];
+    }
     const named = d.by === 'ties' ? [] : this.centers.filter(c => c.n >= 10);
     this.mapLabels = named.map(c => ({ lat: c.lat, lng: c.lng, text: c.name.replace(/^Greater /, '') }));
     // the centers themselves, sized by their primacy, with their rings of 5, 25 and 100 miles

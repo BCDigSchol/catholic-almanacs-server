@@ -2,14 +2,17 @@
 """Each almanac record against the post offices open in its year
 (build-frontier.sh), for the Frontier dashboard.
 
-Usage: frontier-measures.py <features.geojsonl> < points.tsv > frontier.json
+Usage: frontier-measures.py <features.geojsonl> [counties.geojsonl] < points.tsv > frontier.json
   features  the post offices from frontier-features.py (with from/to and est)
+  counties  the dated county outlines (the counties build's counties.geojsonl):
+            with them, each year's post offices per 100 square miles by county
   points    tab-separated `ID year latitude longitude` from the database
 
 Writes:
   {"meta": {...},
    "records": {"<almanacRecordID>": [miles, estYear, within25]},
-   "years": {"<year>": {"offices": n, "unchurched": n, "sample": [[lat, lng, name, state], ...]}}}
+   "years": {"<year>": {"offices": n, "unchurched": n, "sample": [[lat, lng, name, state], ...],
+                       "counties": {"<county id>": offices per 100 sq mi}}}}
 
 miles     straight-line miles to the nearest post office open on 1 January
           of the record's year (null if none within 500 miles)
@@ -27,8 +30,9 @@ from collections import defaultdict
 
 import numpy as np
 from pyproj import Transformer
+import shapely
 from shapely import STRtree
-from shapely.geometry import Point
+from shapely.geometry import Point, shape
 
 MILE = 1609.344
 FAR = 500 * MILE
@@ -43,6 +47,16 @@ for row in open(sys.argv[1]):
         continue
     x, y = to_albers.transform(lng, lat)
     offices.append((x, y, p["from"], p["to"], p["est"], p["name"], p["state"], lat, lng))
+
+# the counties, projected, with their area in square miles
+counties = []
+if len(sys.argv) > 2:
+    for row in open(sys.argv[2]):
+        f = json.loads(row)
+        p = f["properties"]
+        g = shapely.transform(shape(f["geometry"]), lambda xy: np.column_stack(to_albers.transform(xy[:, 0], xy[:, 1])))
+        counties.append((p["id"], p["from"], p["to"], g, g.area / MILE ** 2))
+    print(f"[frontier] {len(counties)} county outlines", file=sys.stderr)
 
 points = defaultdict(list)   # year -> [(id, x, y)]
 for row in sys.stdin:
@@ -85,6 +99,12 @@ for year in sorted(points):
         info["unchurched"] = len(unchurched)
         sample = random.sample(unchurched, min(500, len(unchurched)))
         info["sample"] = [[round(o[7], 4), round(o[8], 4), o[5], o[6]] for o in sample]
+        # the year's post offices per 100 square miles, by the county of that year
+        if counties:
+            valid = [c for c in counties if c[1] <= day <= c[2]]
+            hits = tree.query([c[3] for c in valid], predicate="contains")
+            per = np.bincount(hits[0], minlength=len(valid)) if hits.size else np.zeros(len(valid), dtype=int)
+            info["counties"] = {c[0]: round(100 * int(n) / c[4], 2) for c, n in zip(valid, per) if c[4] > 0}
     else:
         for rid, _, _ in pts:
             records[rid] = [None, None, 0]

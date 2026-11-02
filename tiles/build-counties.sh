@@ -51,14 +51,14 @@ else
   echo "[counties] no database configured: skipping placing the records"
 fi
 
-echo "[counties] $(wc -l < "$FEATURES") features → $OUT (z4–10)"
+echo "[counties] $(wc -l < "$FEATURES") features → $OUT (z2–10)"
 mkdir -p "$(dirname "$OUT")"
 tippecanoe \
   --force --output="$OUT.tmp.pmtiles" \
   --name="Catholic Almanacs historical counties" \
-  --description="US counties by date, 1830-1875 (Hawaii excluded); zoom 4-10" \
+  --description="US counties by date, 1830-1875 (Hawaii excluded); zoom 2-10" \
   --attribution="Atlas of Historical County Boundaries, The Newberry Library" \
-  --minimum-zoom=4 --maximum-zoom=10 \
+  --minimum-zoom=2 --maximum-zoom=10 \
   --drop-rate=1 --detect-shared-borders --no-tiny-polygon-reduction \
   --no-feature-limit --no-tile-size-limit \
   --quiet \
