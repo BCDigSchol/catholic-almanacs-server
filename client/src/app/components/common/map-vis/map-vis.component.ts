@@ -24,6 +24,23 @@ function clampToUs(lngLat: maplibregl.LngLat): maplibregl.LngLat {
   return new maplibregl.LngLat(Math.min(e, Math.max(w, lngLat.lng)), Math.min(n, Math.max(s, lngLat.lat)));
 }
 
+/**
+ * The centre that keeps a view of `width` × `height` pixels at `zoom` inside
+ * Settings.mapViewBounds (the relief's extent), nearest to the centre asked
+ * for. Along an axis where the view is larger than the box, it is centred on
+ * the box instead. MapLibre's world is 512 px at zoom 0.
+ */
+function keepViewInside(lngLat: maplibregl.LngLat, zoom: number, width: number, height: number): maplibregl.LngLat {
+  const [[w, s], [e, n]] = Settings.mapViewBounds;
+  const world = 512 * Math.pow(2, zoom);
+  const sw = maplibregl.MercatorCoordinate.fromLngLat([w, s]), ne = maplibregl.MercatorCoordinate.fromLngLat([e, n]);
+  const c = maplibregl.MercatorCoordinate.fromLngLat(clampToUs(lngLat));
+  const half = (px: number) => px / world / 2;
+  const axis = (v: number, lo: number, hi: number, h: number) => hi - lo <= 2 * h ? (lo + hi) / 2 : Math.min(hi - h, Math.max(lo + h, v));
+  // mercator y grows southward: ne.y is the top edge, sw.y the bottom
+  return new maplibregl.MercatorCoordinate(axis(c.x, sw.x, ne.x, half(width)), axis(c.y, ne.y, sw.y, half(height))).toLngLat();
+}
+
 /** The last almanac year in the data: what county lines show on a map with no year. */
 const LATEST_ALMANAC_YEAR = 1870;
 
@@ -374,13 +391,15 @@ export class MapVisComponent {
       maxZoom: Settings.mapTilesMaxZoom || 8,
       renderWorldCopies: false,
       attributionControl: false,
-      // keep the centre over the US (maxBounds would instead keep the whole
-      // view inside it, so a narrow map could never show the full country)
-      // (a custom constrain replaces the default one, so it clamps zoom too)
-      transformConstrain: (lngLat, zoom) => ({
-        center: clampToUs(lngLat),
-        zoom: Math.min(this.map?.getMaxZoom() ?? 24, Math.max(this.map?.getMinZoom() ?? 1, zoom)),
-      }),
+      // keep the centre over the US and the whole view over the relief
+      // (maxBounds would keep the view inside the country, so a narrow map could
+      // never show all of it); a custom constrain replaces the default one, so
+      // it clamps zoom too
+      transformConstrain: (lngLat, zoom) => {
+        const z = Math.min(this.map?.getMaxZoom() ?? 24, Math.max(this.map?.getMinZoom() ?? 1, zoom));
+        const el = this.map?.getContainer();
+        return { center: el ? keepViewInside(lngLat, z, el.clientWidth, el.clientHeight) : clampToUs(lngLat), zoom: z };
+      },
     })
       .addControl(new maplibregl.NavigationControl())
       .addControl(new maplibregl.FullscreenControl())

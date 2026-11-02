@@ -12,7 +12,7 @@
 #
 # Downloads are kept in the work dir (one PNG per tile), so a rebuild only
 # fetches what is missing; MAX_ZOOM (default 10) sets how far in the relief
-# goes (each zoom is four times the tiles of the one before: about 1 GB in
+# goes (each zoom is four times the tiles of the one before: about 2.5 GB in
 # all at 10).
 #
 # Usage: build-terrain.sh <out.pmtiles> [work-dir]
@@ -24,8 +24,9 @@ WORK=${2:-$(mktemp -d)}
 MAX_ZOOM=${TERRAIN_MAX_ZOOM:-10}
 SRC=${TERRAIN_TILES:-https://s3.amazonaws.com/elevation-tiles-prod/terrarium}
 HERE=$(cd "$(dirname "$0")" && pwd)
-# the lower 48, with a margin: west, south, east, north
-BOX=${TERRAIN_BOX:--126,23.5,-65,50.5}
+# the lower 48 with a wide margin, so a zoomed-out view on a wide screen stays
+# over relief (Settings.mapViewBounds keeps the view inside it): west, south, east, north
+BOX=${TERRAIN_BOX:--131,17,-60,55}
 
 D="$WORK/terrain"
 mkdir -p "$D/tiles"

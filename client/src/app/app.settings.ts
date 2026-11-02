@@ -33,5 +33,10 @@ export const Settings = {
     // The lower 48, where every recorded place is: the maps keep their centre
     // inside it and zoom out no further than fits it. [[west, south], [east,
     // north]]. Widen west and north when Alaska's records arrive.
-    mapBounds: [[-125, 24], [-66, 50]] as [[number, number], [number, number]]
+    mapBounds: [[-125, 24], [-66, 50]] as [[number, number], [number, number]],
+    // How far the view may reach: the extent of the relief (tiles-build
+    // terrain, TERRAIN_BOX), so the edge of the elevation never shows. The
+    // whole view stays inside it wherever the view is smaller than it; a view
+    // taller or wider than it (a phone at country zoom) is centred on it.
+    mapViewBounds: [[-131, 17], [-60, 55]] as [[number, number], [number, number]],
 };

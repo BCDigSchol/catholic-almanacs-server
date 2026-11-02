@@ -64,7 +64,7 @@ def main():
                 rows = []
         if rows:
             db.executemany("INSERT INTO tiles VALUES (?, ?, ?, ?)", rows)
-        box = os.environ.get("TERRAIN_BOX", "-126,23.5,-65,50.5")
+        box = os.environ.get("TERRAIN_BOX", "-131,17,-60,55")
         meta = {
             "name": "Catholic Almanacs terrain",
             "description": "Elevation (terrarium-encoded) over the lower 48 for hillshading; "

@@ -41,7 +41,7 @@ docker compose run --rm tiles-build counties   # county lines by year: a minute 
 docker compose run --rm tiles-build cessions   # Indian land cessions: seconds (places records if the DB is up)
 docker compose run --rm tiles-build links      # present-day places to link institutions to: needs the DB; the first run downloads the states (as detail does)
 docker compose run --rm tiles-build trails     # historic trails and roads with their years: a minute
-docker compose run --rm tiles-build terrain    # elevation for the relief: about 1 GB of tiles the first time (10–20 minutes), kept for reruns
+docker compose run --rm tiles-build terrain    # elevation for the relief: about 2.5 GB of tiles the first time (20–30 minutes), kept for reruns
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
