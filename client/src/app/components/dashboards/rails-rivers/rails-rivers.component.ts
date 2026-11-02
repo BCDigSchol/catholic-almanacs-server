@@ -51,7 +51,7 @@ const RAIL_INK = INKS[0];
 const WATER_INK = INKS[7];
 
 /** by: what the map and the bands measure the distance to. */
-const DEFAULTS = { year: 0, diocese: '', fn: '', by: 'rail', shade: 'none' };
+const DEFAULTS = { year: 0, diocese: '', fn: '', by: 'rail', shade: 'rail' };
 
 @Component({
   selector: 'app-rails-rivers',
@@ -72,7 +72,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly functions = FUNCTIONS;
   readonly byOptions = [{ value: 'rail', label: 'A railroad' }, { value: 'trail', label: 'A trail or road' }];
   /** Shade each diocese's territory by the share of its institutions near a network. */
-  shadeOptions = [{ value: 'none', label: 'None' }, { value: 'rail', label: 'Near a railroad' }, { value: 'water', label: 'Near the water' }];
+  shadeOptions = [{ value: 'rail', label: 'Near a railroad' }, { value: 'water', label: 'Near the water' }, { value: 'none', label: 'None' }];
   dioceseShades: Record<string, string> | null = null;
   shadeSteps: ShadeStep[] = [];
   shadeLabel = '';
@@ -153,7 +153,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   setFunction(fn: string): void { this.url.set({ fn }); }
   setBy(by: string): void { this.url.set({ by }); }
   setShade(shade: string): void { this.url.set({ shade }); }
-  clearAll = (): void => this.url.set({ diocese: '', fn: '', shade: 'none' });
+  clearAll = (): void => this.url.set({ diocese: '', fn: '', shade: DEFAULTS.shade });
 
   // ---- data -----------------------------------------------------------------
 
@@ -176,8 +176,8 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
       this.data = res as RailroadsResponse;
       this.nearMiles = this.data.meta.nearMiles;
       this.hasTrails = !!this.data.meta.trails;
-      this.shadeOptions = [{ value: 'none', label: 'None' }, { value: 'rail', label: 'Near a railroad' }, { value: 'water', label: 'Near the water' },
-        ...(this.hasTrails ? [{ value: 'trail', label: 'Near a trail' }] : [])];
+      this.shadeOptions = [{ value: 'rail', label: 'Near a railroad' }, { value: 'water', label: 'Near the water' },
+        ...(this.hasTrails ? [{ value: 'trail', label: 'Near a trail' }] : []), { value: 'none', label: 'None' }];
       this.dioceseOptions = Object.entries(this.data.dioceses)
         .filter(([id]) => id !== 'unknown')
         .map(([id, name]) => ({ id, name }))

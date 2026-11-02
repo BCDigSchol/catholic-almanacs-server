@@ -46,7 +46,7 @@ const BANDS = [
 const FIRST_INK: Record<string, string> = { first: INKS[4], after: INKS[0] };
 const UNCHURCHED_INK = INKS[6];
 
-const DEFAULTS = { year: 0, diocese: '', mark: 'none', show: 'beyond', shade: 'none' };
+const DEFAULTS = { year: 0, diocese: '', mark: 'none', show: 'beyond', shade: 'density' };
 
 /**
  * The Frontier: the Church against the settled country, with post offices as
@@ -78,7 +78,7 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
   /** The map's institutions: those beyond 5 miles of any post office (the exceptions), or all. */
   readonly showOptions = [{ value: 'beyond', label: 'Beyond the settled country' }, { value: 'all', label: 'All institutions' }];
   /** Shade each county of the year by its post offices per 100 square miles. */
-  readonly shadeOptions = [{ value: 'none', label: 'The wash' }, { value: 'density', label: 'Counties by density' }];
+  readonly shadeOptions = [{ value: 'density', label: 'Counties by density' }, { value: 'none', label: 'A wash' }];
   countyShades: Record<string, string> | null = null;
   shadeSteps: ShadeStep[] = [];
   hasCounties = false;
@@ -146,7 +146,7 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
   setMark(mark: string): void { this.url.set({ mark }); }
   setShow(show: string): void { this.url.set({ show }); }
   setShade(shade: string): void { this.url.set({ shade }); }
-  clearAll = (): void => this.url.set({ diocese: '', mark: 'none', show: 'beyond', shade: 'none' });
+  clearAll = (): void => this.url.set({ diocese: '', mark: 'none', show: 'beyond', shade: DEFAULTS.shade });
   share(n: number, of: number): number { return of ? n / of : 0; }
 
   fetchData(): void {
