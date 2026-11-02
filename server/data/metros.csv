@@ -1,0 +1,33 @@
+# Metro areas: each a city of 50,000 or more in 1870 and the counties around it
+# (DRAFT for review). Cities and populations: U.S. Census Bureau, Campbell
+# Gibson, "Population of the 100 Largest Cities and Other Urban Places in the
+# United States: 1790 to 1990" (Population Division Working Paper 27, 1998;
+# a federal work, public domain). Counties: the Newberry Library's Atlas of
+# Historical County Boundaries (CC BY-NC-SA 2.5), ids as in counties.pmtiles,
+# as their lines stood in 1870: the county holding the city, and each county
+# with a quarter or more of its area within 20 miles of it, given to the
+# nearest city (a city in the county's own state counts as nearer by half).
+# also: cities counted with this one. Edit by hand; rebuild the API after.
+id,name,state,lat,lng,also,counties,pop1830,pop1840,pop1850,pop1860,pop1870
+new-york-ny,New York,NY,40.7143,-74.006,Brooklyn;Jersey City,njs_hudson;nys_kings;nys_newyork;nys_queens;nys_richmond,202589,312710,515547,813669,942292
+philadelphia-pa,Philadelphia,PA,39.9524,-75.1636,,njs_camden;njs_gloucester;pas_delaware;pas_montgomery;pas_philadelphia,80462,93665,121376,565529,674022
+st-louis-mo,St. Louis,MO,38.6273,-90.1979,,ils_madison;ils_stclair;mos_stlouis,4977,16469,77860,160773,310864
+chicago-il,Chicago,IL,41.85,-87.65,,ils_cook;ils_dupage,,4470,29963,112172,298977
+baltimore-md,Baltimore,MD,39.2904,-76.6122,,mds_annearundel;mds_baltimore;mds_baltimorecityic;mds_howard,80620,102313,169054,212418,267354
+boston-ma,Boston,MA,42.3584,-71.0598,,mas_essex;mas_middlesex;mas_norfolk;mas_suffolk,61392,93383,136881,177840,250526
+cincinnati-oh,Cincinnati,OH,39.1271,-84.5144,,kys_boone;kys_campbell;kys_kenton;ohs_butler;ohs_clermont;ohs_hamilton,24831,46338,115435,161044,216239
+new-orleans-la,New Orleans,LA,29.9547,-90.0751,,las_jefferson;las_orleans;las_stcharles,46082,102193,116375,168675,191418
+san-francisco-ca,San Francisco,CA,37.7749,-122.4194,,cas_marin;cas_sanfrancisco;cas_sanmateo,,,,56802,149473
+buffalo-ny,Buffalo,NY,42.8865,-78.8784,,nys_erie;nys_niagara,,18213,42261,81129,117714
+washington-dc,Washington,DC,38.8951,-77.0364,,dcs_washington;mds_montgomery;mds_princegeorges;vas_arlington;vas_fairfax,18826,23364,40001,61122,109199
+newark-nj,Newark,NJ,40.7357,-74.1724,,njs_bergen;njs_essex;njs_middlesex;njs_morris;njs_passaic;njs_union,,17290,38894,71941,105059
+louisville-ky,Louisville,KY,38.2542,-85.7594,,ins_clark;ins_floyd;ins_harrison;kys_bullitt;kys_jefferson;kys_oldham,10341,21210,43194,68033,100753
+cleveland-oh,Cleveland,OH,41.4995,-81.6954,,ohs_cuyahoga,,6071,17034,43417,92829
+pittsburgh-pa,Pittsburgh,PA,40.4406,-79.9959,Allegheny,pas_allegheny;pas_washington,12568,21115,46601,49221,86076
+detroit-mi,Detroit,MI,42.3314,-83.0457,,mis_macomb;mis_wayne,,9102,21019,45619,79577
+milwaukee-wi,Milwaukee,WI,43.0389,-87.9065,,wis_milwaukee;wis_ozaukee;wis_racine;wis_waukesha,,,20061,45246,71440
+albany-ny,Albany,NY,42.6526,-73.7562,,nys_albany;nys_rensselaer;nys_schenectady,24209,33721,50763,62367,69422
+providence-ri,Providence,RI,41.824,-71.4128,,mas_bristol;ris_bristol;ris_kent;ris_newport;ris_providence,,23171,41513,50666,68904
+rochester-ny,Rochester,NY,43.1548,-77.6156,,nys_monroe,,20191,36403,48204,62386
+richmond-va,Richmond,VA,37.5538,-77.4603,,vas_chesterfield;vas_hanover;vas_henrico,16060,20153,27570,37910,51038
+new-haven-ct,New Haven,CT,41.3081,-72.9282,,cts_fairfield;cts_newhaven,10180,12960,20345,39267,50840

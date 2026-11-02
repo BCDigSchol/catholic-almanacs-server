@@ -15,6 +15,7 @@ import { RECORD_MAP_INKS } from '../../../utils/record-map';
 /** GET /api/place/county/:id */
 interface CountyPlace {
   county: { id: string; name: string; state: string };
+  metro: { id: string; name: string } | null;
   years: { year: number; institutions: number; people: number }[];
   institutions: { inst: string; name: string; type: string; place: string; dioceses: string[]; years: number[]; lat: number | null; lng: number | null }[];
   people: { pers: string; name: string; years: number[]; institutions: string[]; visiting: boolean }[];

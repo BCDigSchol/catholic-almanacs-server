@@ -73,8 +73,8 @@ export class MapVisComponent {
   /** Draw the Indian land cessions (Royce): with a year, land still held then
    *  apart from land ceded in the ten years before; without, their outlines. */
   @Input() cessions = false;
-  /** A historical county id (e.g. 'ohs_noble') to shade, as it stood in the map's year (or 1870). */
-  @Input() countyFocus: string | null = null;
+  /** Historical county id(s) to shade (e.g. 'ohs_noble', or a metro's counties), as they stood in the map's year (or 1870). */
+  @Input() countyFocus: string | string[] | null = null;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
   @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
@@ -288,10 +288,11 @@ export class MapVisComponent {
         const at = (this.year ?? LATEST_ALMANAC_YEAR) * 10000 + 101;
         const focus = layer.id === 'county-focus';
         if (Array.isArray(f) && f[0] === 'all') {
-          const rest = focus ? [['==', ['get', 'id'], this.countyFocus ?? '']] : f.slice(3);
+          const ids = [this.countyFocus ?? []].flat();
+          const rest = focus ? [['in', ['get', 'id'], ['literal', ids]]] : f.slice(3);
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], at], ['>=', ['get', 'to'], at], ...rest]);
         }
-        this.map.setLayoutProperty(layer.id, 'visibility', !focus || this.countyFocus ? 'visible' : 'none');
+        this.map.setLayoutProperty(layer.id, 'visibility', !focus || [this.countyFocus ?? []].flat().length ? 'visible' : 'none');
       } else if (rule === 'cessions') {
         // ceded is the treaty's date (yyyymmdd): held = ceded after the map's
         // day; recent = ceded within the ten years before it

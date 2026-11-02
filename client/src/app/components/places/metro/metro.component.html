@@ -1,0 +1,141 @@
+<div class="page">
+    @if (notFound) {
+        <app-page-header [crumbs]="crumbs" eyebrow="Place not found" title="No such metro area"
+            [subtitle]="'There is no metro area “' + id + '”, or the historical counties are not built on this server.'">
+        </app-page-header>
+    } @else if (!data) {
+        <div class="record-skeleton" aria-busy="true" aria-label="Loading place"><span></span><span></span><span></span></div>
+    } @else {
+        <app-page-header [crumbs]="crumbs" [title]="title" eyebrow="Metro area" eyebrowColor="var(--c-place)">
+            <div below-title class="record-summary">
+                <p class="record-meta">
+                    <span>{{ institutions.length | number }} {{ institutions.length === 1 ? 'institution' : 'institutions' }}</span>
+                    <span>{{ people.length | number }} clergy and religious</span>
+                    <span>{{ data.counties.length }} {{ data.counties.length === 1 ? 'county' : 'counties' }}</span>
+                    <span>listed {{ yearsLabel }}</span>
+                </p>
+            </div>
+        </app-page-header>
+
+        <aside class="anachronism" aria-labelledby="anachronism-heading">
+            <h2 id="anachronism-heading">About this boundary</h2>
+            <p>
+                This area is drawn for this site; it is not one the people of the time would have recognised. The census defined no
+                metropolitan areas before 1910, and this boundary looks back from today's idea of a metro area. It takes
+                {{ data.metro.name }}{{ data.metro.also.length ? ' (with ' + data.metro.also.join(' and ') + ')' : '' }}, a city of
+                {{ data.metro.populations['1870'] | number }} in 1870, and the counties around it as their lines stood in 1870: the
+                county holding the city and each county with a quarter or more of its area within 20 miles. Every county is counted
+                in every year, even before its city grew, and a county near two cities goes to the nearer. Use it to gather records,
+                not as a claim about how anyone then lived or saw the place.
+            </p>
+        </aside>
+
+        <div class="metro-map">
+            <app-map-vis
+                [data]="mapData"
+                [isOpen]="true"
+                [simple]="true"
+                [autoCenter]="false"
+                [fitTo]="mapFit"
+                [year]="lastYear"
+                [countyFocus]="countyIds"
+                [label]="title"
+                [options]="mapOptions">
+            </app-map-vis>
+            <p class="map-note">Its counties shaded as they stood in {{ lastYear }}, with the institutions the almanacs placed in them.</p>
+        </div>
+
+        <div class="record-layout">
+            <div class="main">
+                <section class="record-section" aria-labelledby="inst-heading">
+                    <h2 id="inst-heading">Institutions <small>{{ institutions.length }}</small></h2>
+                    <p class="note">Every institution the almanacs listed at a place in one of these counties, as the county stood that year.</p>
+                    <ol class="entries">
+                        @for (i of institutions; track i.inst) {
+                            <li>
+                                <a class="record-link inst" [routerLink]="['/institutions', i.inst]">{{ i.label }}</a>{{ i.place ? ', ' + i.place : '' }}.{{ ' ' }}
+                                <span class="muted">{{ i.span }}{{ i.county ? ' · ' + i.county.name + ' County' : '' }}{{ i.dioceses.length ? ' · Diocese of ' + i.dioceses.join(', then ') : '' }}</span>
+                            </li>
+                        }
+                    </ol>
+                </section>
+
+                <section class="record-section" aria-labelledby="people-heading">
+                    <h2 id="people-heading">People <small>{{ people.length }}</small></h2>
+                    @if (people.length) {
+                        <p class="note">Clergy and religious listed at its institutions. Visiting unless they were also listed as resident here.</p>
+                        <ol class="entries two-col">
+                            @for (p of people; track p.pers) {
+                                <li>
+                                    <a class="record-link pers" [routerLink]="['/people', p.pers]">{{ p.name }}</a>.{{ ' ' }}
+                                    <span class="muted">{{ p.span }}{{ p.visiting ? ', visiting' : '' }}</span>
+                                </li>
+                            }
+                        </ol>
+                    } @else {
+                        <p class="record-empty">The almanacs named no one at its institutions.</p>
+                    }
+                </section>
+            </div>
+
+            <aside class="rail">
+                <section class="record-section" aria-labelledby="pop-heading">
+                    <h2 id="pop-heading">{{ data.metro.name }} at the census</h2>
+                    <p class="note">The city alone{{ data.metro.also.length ? ', not ' + data.metro.also.join(' or ') : '' }} (U.S. Census Bureau).</p>
+                    <dl class="fact-list pops">
+                        @for (p of populations; track p.year) {
+                            <dt>{{ p.year }}</dt><dd>{{ p.n | number }}</dd>
+                        }
+                    </dl>
+                </section>
+
+                <section class="record-section" aria-labelledby="county-heading">
+                    <h2 id="county-heading">Counties</h2>
+                    <ul class="entries">
+                        @for (c of data.counties; track c.id) {
+                            <li><a class="record-link place" [routerLink]="['/places/county', c.id]">{{ c.name }} County, {{ c.state }}</a>{{ ' ' }}<span class="muted">{{ c.institutions }}</span></li>
+                        }
+                    </ul>
+                </section>
+
+                <section class="record-section" aria-labelledby="dio-heading">
+                    <h2 id="dio-heading">Dioceses</h2>
+                    <ul class="entries">
+                        @for (d of data.dioceses; track d.id) {
+                            <li>{{ d.name }}{{ ' ' }}<span class="muted">{{ yearSpan(d.years) }}</span></li>
+                        }
+                    </ul>
+                </section>
+
+                @if (cessions.length) {
+                    <section class="record-section" aria-labelledby="land-heading">
+                        <h2 id="land-heading">Land</h2>
+                        <p class="note">The Indian land cessions its institutions stood on (Royce, 1899, via the U.S. Forest Service; for information only).</p>
+                        <ul class="entries">
+                            @for (c of cessions; track c.number) {
+                                <li>
+                                    Ceded by the {{ c.tribes }} on {{ c.date }}.{{ ' ' }}
+                                    <span class="muted">Royce {{ c.number }}@if (c.treaty) { · <a [href]="c.treaty" target="_blank" rel="noopener">treaty</a>}</span>
+                                </li>
+                            }
+                        </ul>
+                    </section>
+                }
+
+                <section class="record-section" aria-labelledby="others-heading">
+                    <h2 id="others-heading">Other metro areas</h2>
+                    <ul class="entries others">
+                        @for (o of data.others; track o.id) {
+                            <li><a class="record-link place" [routerLink]="['/places/metro', o.id]">{{ o.name }}</a></li>
+                        }
+                    </ul>
+                </section>
+
+                <section class="record-section">
+                    <h2>Cite</h2>
+                    <app-cite [title]="title" kind="Metro area" [recordId]="data.metro.id" [years]="yearsLabel"></app-cite>
+                </section>
+            </aside>
+        </div>
+    }
+</div>

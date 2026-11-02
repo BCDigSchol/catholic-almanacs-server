@@ -66,6 +66,7 @@ collection as maps, networks and charts.
 - [Browsing and search](#browsing-and-search)
 - [Record pages](#record-pages)
 - [County pages](#county-pages)
+- [Metro areas](#metro-areas)
 - [Dashboards](#dashboards)
 - [Networks](#networks)
 - [Maps](#maps)
@@ -157,6 +158,23 @@ in its last listed year, with:
 - the land cessions its institutions stood on
 
 Record pages link to it.
+
+## Metro areas
+
+The 22 cities of 50,000 or more at the 1870 census each have a metro area page
+(`/places/metro/:id`, e.g. `/places/metro/boston-ma`). Each page gathers
+everything the almanacs recorded in the city's county and the counties around
+it, as county pages do, with the counties shaded on the map and the city's
+population at each census from 1830 to 1870.
+
+The boundaries are drawn for this site and are anachronistic: the census
+defined no metropolitan areas before 1910. A metro is the county holding the
+city plus each county with a quarter or more of its area within 20 miles, as
+the lines stood in 1870, with each county given to the nearer city (Brooklyn
+and Jersey City are counted with New York, Allegheny with Pittsburgh). Every
+metro page says so at the top. The areas are defined in
+`server/data/metros.csv`, which can be edited by hand. Record pages and county
+pages link to their metro, and the header search finds metros by city name.
 
 ## Dashboards
 
@@ -466,6 +484,9 @@ summarises them.
   polygons, street detail and the present-day places institutions are linked
   to (ODbL, © OpenStreetMap contributors), and
   [GeoNames](https://www.geonames.org/) towns (CC BY 4.0).
+- **City populations:** U.S. Census Bureau, Campbell Gibson, *Population of
+  the 100 Largest Cities and Other Urban Places in the United States: 1790 to
+  1990* (Working Paper 27, 1998; public domain).
 - **Historical boundaries:** *U.S. Historical States and Territories* and
   *U.S. Historical Counties*, Atlas of Historical County Boundaries, Dr. William M. Scholl Center for American
   History and Culture, The Newberry Library (CC BY-NC-SA 2.5).

@@ -1,0 +1,45 @@
+// Record pages share their styles: see "Record pages" in src/styles.scss.
+
+// the boundary's caveat: set off with a rubric rule, before the map, so no one
+// reads the area as the period's own
+.anachronism {
+    margin: 0 0 var(--space-5);
+    padding: var(--space-3) var(--space-4);
+    border-left: 3px solid var(--rubric);
+    background: var(--sunk);
+
+    h2 {
+        margin: 0 0 var(--space-1);
+        font-family: var(--font-display);
+        font-style: italic;
+        font-weight: 400;
+        font-size: var(--text-lg);
+    }
+
+    p {
+        margin: 0;
+        max-width: 72ch;
+        color: var(--ink-2);
+        font-size: var(--text-sm);
+        line-height: 1.55;
+    }
+}
+
+.metro-map {
+    margin-bottom: var(--space-5);
+}
+
+.map-note {
+    margin: var(--space-2) 0 0;
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}
+
+.pops dd {
+    font-variant-numeric: tabular-nums;
+}
+
+.others {
+    columns: 2;
+    column-gap: var(--space-4);
+}

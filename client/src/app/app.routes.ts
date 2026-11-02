@@ -18,6 +18,7 @@ export const routes: Routes = [
     // One Browse page for both lists; filters, sort and page live in the query string.
     { path: 'institutions', data: { entity: 'institutions' }, loadComponent: () => import('./components/browse/browse.component').then(m => m.BrowseComponent) },
     { path: 'places/county/:id', loadComponent: () => import('./components/places/county/county.component').then(m => m.CountyComponent) },
+    { path: 'places/metro/:id', loadComponent: () => import('./components/places/metro/metro.component').then(m => m.MetroComponent) },
     { path: 'institutions/:id', loadComponent: () => import('./components/insitutions/institution-details/institution-details.component').then(m => m.InstitutionDetailsComponent) },
     { path: 'people', data: { entity: 'people' }, loadComponent: () => import('./components/browse/browse.component').then(m => m.BrowseComponent) },
     { path: 'people/:id', loadComponent: () => import('./components/people/person-details/person-details.component').then(m => m.PersonDetailsComponent) },

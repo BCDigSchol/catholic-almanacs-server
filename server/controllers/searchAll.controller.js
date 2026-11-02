@@ -148,7 +148,9 @@ exports.findAllInfo = async (req, res) => {
         // historical counties by name (from the tile build's placements), so
         // "Kane" finds Kane County as well as the Kanes
         const counties = name ? await require('../utils/places').findCounties(name).catch(() => []) : [];
-        allData = instResults.slice(0, 30).concat(persResults.slice(0, 30), counties);
+        // and metro areas ("Boston", "Greater Boston", "Brooklyn")
+        const metros = name ? require('../utils/metros').findMetros(name) : [];
+        allData = instResults.slice(0, 30).concat(persResults.slice(0, 30), metros, counties);
         res.send(allData);
     } catch (error) {
         return res.status(500).json({ message: error.message });

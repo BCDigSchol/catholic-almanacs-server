@@ -102,6 +102,10 @@
                                 <dt>County{{ year === null ? ' in ' + land!.year : ' that year' }}</dt>
                                 <dd><a class="record-link place" [routerLink]="['/places/county', county.id]">{{ county.name }} County, {{ county.state }}</a></dd>
                             }
+                            @if (land?.metro; as metro) {
+                                <dt>Metro area</dt>
+                                <dd><a class="record-link place" [routerLink]="['/places/metro', metro.id]">Greater {{ metro.name }}</a>{{ ' ' }}<span class="muted">(a boundary drawn for this site)</span></dd>
+                            }
                             @if (land?.mexico) {
                                 <dt>From Mexico</dt>
                                 <dd>{{ land!.mexico }}</dd>

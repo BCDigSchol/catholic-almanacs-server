@@ -105,8 +105,8 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   record: any = null;
   timeline: TimelineYear[] = [];
   /** County and ceded land by year (GET institution/:id/land), and for the year shown. */
-  private landYears: { year: number; county: { id: string; name: string; state: string } | null; cessions: any[]; mexico?: { how: string; since: number } | null }[] = [];
-  land: { year: number; county: { id: string; name: string; state: string } | null; mexico: string;
+  private landYears: { year: number; county: { id: string; name: string; state: string } | null; metro?: { id: string; name: string } | null; cessions: any[]; mexico?: { how: string; since: number } | null }[] = [];
+  land: { year: number; county: { id: string; name: string; state: string } | null; metro: { id: string; name: string } | null; mexico: string;
     cessions: { number: string; tribes: string; date: string; before: number; treaty: string; schedule: string }[] } | null = null;
   dioceseInfo: any[] = [];
   /** Where it is today, once a reviewer has confirmed it (GET institution/:id/links). */
@@ -335,6 +335,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     this.land = {
       year: at.year,
       county: at.county,
+      metro: at.metro ?? null,
       mexico: at.mexico ? `${how[at.mexico.how] ?? at.mexico.how}, ${date(at.mexico.since)} (${at.year - Math.floor(at.mexico.since / 10000)} years before ${at.year})` : '',
       // the latest cession of this ground first: the one that made it United States land
       cessions: [...at.cessions].reverse().map(c => ({ ...c, date: date(c.ceded), before: at.year - Math.floor(c.ceded / 10000) })),

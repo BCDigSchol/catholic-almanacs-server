@@ -23,9 +23,9 @@ const SHOWN = 6;
 
 /**
  * Site-wide quick search in the header. Searches institution and person
- * names and historical counties (GET /api/all) as you type, scoped by the
+ * names, metro areas and historical counties (GET /api/all) as you type, scoped by the
  * selector beside the input; Enter or "See all" opens the matching Browse page
- * pre-filtered by name. A county opens its county page.
+ * pre-filtered by name. A metro area or county opens its place page.
  */
 @Component({
   selector: 'app-header-search',
@@ -118,12 +118,18 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
         detail: r.yearStart === r.yearEnd ? `${r.yearStart}` : `${r.yearStart}–${r.yearEnd}`,
         link: '/people/' + r.persID,
       }));
-      this.places = (rows as any[]).filter(r => r.type === 'county').map(r => ({
+      const metros = (rows as any[]).filter(r => r.type === 'metro').map(r => ({
+        kind: 'place' as const,
+        label: `Greater ${r.name}`,
+        detail: 'metro area',
+        link: '/places/metro/' + r.metroID,
+      }));
+      this.places = [...metros, ...(rows as any[]).filter(r => r.type === 'county').map(r => ({
         kind: 'place' as const,
         label: `${r.name} County, ${r.state}`,
         detail: `${r.institutions} ${r.institutions === 1 ? 'institution' : 'institutions'}`,
         link: '/places/county/' + r.countyID,
-      }));
+      }))];
     });
     if (this.autofocus) {
       setTimeout(() => this.input.nativeElement.focus());

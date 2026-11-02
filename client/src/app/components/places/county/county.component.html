@@ -12,6 +12,7 @@
                     <span>{{ institutions.length | number }} {{ institutions.length === 1 ? 'institution' : 'institutions' }}</span>
                     <span>{{ people.length | number }} clergy and religious</span>
                     <span>listed {{ yearsLabel }}</span>
+                    @if (data.metro) { <span>part of <a class="record-link place" [routerLink]="['/places/metro', data.metro.id]">Greater {{ data.metro.name }}</a></span> }
                 </p>
             </div>
         </app-page-header>
