@@ -972,6 +972,23 @@
       }
     },
     {
+      "id": "cession-hit",
+      "metadata": {
+        "almanac:dated": "cessions",
+        "almanac:cession": "hit"
+      },
+      "type": "fill",
+      "source": "cessions",
+      "source-layer": "cessions",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "fill-color": "#c08a2e",
+        "fill-opacity": 0
+      }
+    },
+    {
       "id": "cession-lines",
       "metadata": {
         "almanac:dated": "cessions",

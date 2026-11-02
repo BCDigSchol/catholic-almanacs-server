@@ -859,6 +859,25 @@ $dark-theme: (
     }
 }
 
+// a cession's tooltip: each cession under the pointer, its number and links small
+.cession-tip {
+    p {
+        margin: 0 0 var(--space-1);
+    }
+
+    .cession-num,
+    .cession-more {
+        display: block;
+        color: var(--ink-3);
+        font-size: var(--text-xs);
+    }
+}
+
+.map-vis-cession .maplibregl-popup-close-button {
+    color: var(--ink-2);
+    font-size: var(--text-lg);
+}
+
 /* The few Material controls left (year slider, checkboxes, radios) draw in ink,
    not the generated navy primary. */
 .mat-mdc-slider, .mat-mdc-checkbox, .mat-mdc-radio-button {

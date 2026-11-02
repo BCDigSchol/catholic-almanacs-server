@@ -230,6 +230,10 @@ def layers(c):
         {"id": "cession-recent", "metadata": cessions("recent"), "type": "fill", "source": "cessions", "source-layer": "cessions",
          "layout": {"visibility": "none"},
          "paint": {"fill-color": c["recent"], "fill-opacity": 0.12}},
+        # invisible, over every cession: what the pointer hovers for its tooltip
+        {"id": "cession-hit", "metadata": cessions("hit"), "type": "fill", "source": "cessions", "source-layer": "cessions",
+         "layout": {"visibility": "none"},
+         "paint": {"fill-color": c["held"], "fill-opacity": 0}},
         {"id": "cession-lines", "metadata": cessions("lines"), "type": "line", "source": "cessions", "source-layer": "cessions",
          "layout": {"visibility": "none", "line-join": "round"},
          "paint": {"line-color": c["cession_line"], "line-opacity": 0.6, "line-width": zoom(3, 0.4, 8, 1)}},

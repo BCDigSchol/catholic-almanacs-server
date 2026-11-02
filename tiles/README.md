@@ -291,7 +291,10 @@ A map that asks for them (map-vis `[cessions]`, the Missions and Ceded Lands
 dashboard) draws Royce's cessions for its year: land still held by a nation on
 1 January (a cession signed later) in ochre, land ceded in the ten years
 before in sepia, and every cession's bounds as a faint line. Without a year,
-only the bounds.
+only the bounds. An invisible `cession-hit` fill over every cession is
+what the pointer hovers: map-vis shows the cessions under it (nations, treaty
+date, and what that meant in the map's year), and a click pins them with links
+to the treaty and Royce's schedule.
 
 | Layer | Contents |
 |---|---|
@@ -381,7 +384,7 @@ set, then filtered to that day; its filter must start
 and street names), an opacity to fade to (today's streets and rail), or
 `"dioceses"` (dated like `"show"`, but drawn only when the map asks for them),
 `"cessions"` (drawn only when the map asks; `metadata["almanac:cession"]` says
-which part: `held`, `recent` or `lines`),
+which part: `held`, `recent`, `lines` or `hit`),
 or `"latest"` (dated like `"show"`, but with no year drawn as of the latest
 almanac year rather than hidden: the counties).
 The client's map-vis applies whatever the style says, so new dated layers need

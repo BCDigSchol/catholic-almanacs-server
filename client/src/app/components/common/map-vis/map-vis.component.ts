@@ -127,6 +127,8 @@ export class MapVisComponent {
   private renderRetries = 0;
   private dark = false;
   private hoverPopup?: any;
+  /** A cession tooltip pinned by a click (it has links). */
+  private cessionPin?: any;
 
   /** Modes shown in the Display control, minus any the host excluded. */
   get displayModes() {
@@ -290,7 +292,7 @@ export class MapVisComponent {
         // ceded is the treaty's date (yyyymmdd): held = ceded after the map's
         // day; recent = ceded within the ten years before it
         const part = layer.metadata?.['almanac:cession'];
-        const show = this.cessions && (part === 'lines' || dated);
+        const show = this.cessions && (part === 'lines' || part === 'hit' || dated);
         if (show && part === 'held') this.map.setFilter(layer.id, ['>', ['get', 'ceded'], day]);
         if (show && part === 'recent') this.map.setFilter(layer.id, ['all', ['<=', ['get', 'ceded'], day], ['>', ['get', 'ceded'], day - 100000]]);
         this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
@@ -394,6 +396,7 @@ export class MapVisComponent {
     // defaults, so set the year's boundaries again
     this.map.on('style.load', () => this.applyYear());
     this.bindUnderlayEvents();
+    this.bindCessionEvents();
     this.map.on('load', () => {
       this.applyFit();
       this.renderMapFeatures();
@@ -616,6 +619,59 @@ export class MapVisComponent {
    * once: MapLibre keeps layer-scoped handlers across the layers being
    * re-added and across style swaps.
    */
+  /**
+   * Indian land cessions: hovering shows every cession under the pointer (the
+   * nations, the treaty's date, and what it meant in the map's year); a click
+   * pins it, with links to the treaty and Royce's schedule. Dots win: over a
+   * data point its own title shows instead.
+   */
+  private bindCessionEvents(): void {
+    const overData = (point: any) => this.map.getLayer('data-point-layer')
+      && this.map.queryRenderedFeatures(point, { layers: ['data-point-layer'] }).length > 0;
+    this.map.on('mousemove', 'cession-hit', (e: any) => {
+      if (this.cessionPin || overData(e.point)) return;
+      const html = this.cessionHtml(e.features ?? [], false);
+      if (!html) return;
+      this.hoverPopup ??= new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: 'map-vis-hover', offset: 8 });
+      this.hoverPopup.setLngLat(e.lngLat).setHTML(html).addTo(this.map);
+    });
+    this.map.on('mouseleave', 'cession-hit', () => { if (!this.cessionPin) this.hoverPopup?.remove(); });
+    this.map.on('click', 'cession-hit', (e: any) => {
+      if (overData(e.point)) return;
+      const html = this.cessionHtml(e.features ?? [], true);
+      if (!html) return;
+      this.hoverPopup?.remove();
+      this.cessionPin?.remove();
+      this.cessionPin = new maplibregl.Popup({ closeButton: true, closeOnClick: true, className: 'map-vis-cession', offset: 8, maxWidth: '320px' })
+        .setLngLat(e.lngLat).setHTML(html).addTo(this.map);
+      this.cessionPin.on('close', () => this.cessionPin = undefined);
+    });
+  }
+
+  /** The cessions under a point, oldest first, as the tooltip's HTML (with links when pinned). */
+  private cessionHtml(features: any[], pinned: boolean): string {
+    const esc = (s: unknown) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+    const seen = new Set<string>();
+    const rows = features.map(f => f.properties)
+      .filter(p => p?.cession && !seen.has(p.cession) && seen.add(p.cession))
+      .sort((a, b) => a.ceded - b.ceded);
+    if (!rows.length) return '';
+    const date = (n: number) => new Date(Date.UTC(Math.floor(n / 10000), Math.floor(n / 100) % 100 - 1, n % 100))
+      .toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    const day = this.year != null ? this.year * 10000 + 101 : null;
+    const shown = rows.slice(0, 4).map(p => {
+      const when = day == null ? '' : p.ceded > day ? ` · <em>still held in ${this.year}</em>`
+        : ` · ${this.year! - Math.floor(p.ceded / 10000)} years before ${this.year}`;
+      const links = pinned ? [p.treaty && `<a href="${esc(p.treaty)}" target="_blank" rel="noopener">Treaty</a>`,
+        p.schedule && `<a href="${esc(p.schedule)}" target="_blank" rel="noopener">Royce's schedule</a>`].filter(Boolean).join(' · ') : '';
+      return `<p><strong>${esc(p.tribes)}</strong><br>ceded ${esc(date(p.ceded))}${when}`
+        + `<span class="cession-num">Royce cession ${esc(p.cession)}${links ? ' · ' + links : ''}</span></p>`;
+    });
+    const more = rows.length > 4 ? `<p class="cession-more">and ${rows.length - 4} more cessions of this ground</p>` : '';
+    const hint = pinned ? '' : '<p class="cession-more">Click for the treaties</p>';
+    return `<div class="cession-tip">${shown.join('')}${more}${hint}</div>`;
+  }
+
   private bindUnderlayEvents(): void {
     for (const layer of ['context-points', 'links-line', 'links-dashed']) {
       this.map.on('mousemove', layer, (e: any) => {
