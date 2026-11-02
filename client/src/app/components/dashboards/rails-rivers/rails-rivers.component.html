@@ -1,10 +1,13 @@
 <app-dashboard-shell
-    title="Rails and Rivers"
-    purpose="How near the church's institutions stood to the railroads, and to the canals and steamboat rivers, of each year: did the church follow the water, then the rails?"
+    title="Rails, Rivers and Trails"
+    purpose="How near the church's institutions stood to the railroads, the canals and steamboat rivers, and the overland trails and wagon roads of each year: did the church follow the trails and the water, then the rails?"
     [takeaway]="takeaway"
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        @if (hasTrails) {
+            <app-segmented primary label="Distance to" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
+        }
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>
@@ -41,6 +44,12 @@
                 <dt class="stat-label">within {{ nearMiles }} mi of a canal or steamboat river</dt>
                 <dd class="stat-value">{{ share(current.nearWater, current.n) | percent }}</dd>
             </div>
+            @if (hasTrails) {
+                <div class="stat">
+                    <dt class="stat-label">within {{ nearMiles }} mi of a trail or wagon road in use</dt>
+                    <dd class="stat-value">{{ share(current.nearTrail, current.n) | percent }}</dd>
+                </div>
+            }
             @if (current.medianRail !== null) {
                 <div class="stat">
                     <dt class="stat-label">median distance to a railroad</dt>
@@ -55,14 +64,14 @@
     }
 
     <app-viz-panel
-        [heading]="'Distance to the railroad' + (year ? ', ' + year : '')"
-        note="Each institution coloured by how far it stood from a working railroad; the map draws that year's railroads, canals and steamboat rivers"
+        [heading]="(state.by === 'trail' && hasTrails ? 'Distance to a trail or road' : 'Distance to the railroad') + (year ? ', ' + year : '')"
+        [note]="'Each institution coloured by how far it stood from ' + (state.by === 'trail' && hasTrails ? 'a historic trail or wagon road in use' : 'a working railroad') + '; the map draws that year\'s railroads, canals, steamboat rivers and trails'"
         [state]="vizState"
         [emptyText]="notBuilt ? 'The railroad distances are not built on this server.' : 'Nothing to show for these filters.'"
         [hasKey]="true"
         (retry)="fetchData()">
         <div key>
-            <ul class="legend" aria-label="Distance to a railroad">
+            <ul class="legend" [attr.aria-label]="'Distance to ' + (state.by === 'trail' && hasTrails ? 'a trail or road' : 'a railroad')">
                 @for (b of bands; track b.label) {
                     <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
                 }
@@ -75,14 +84,14 @@
             [simple]="true"
             [autoCenter]="false"
             [year]="year"
-            label="Distance to the railroad"
+            [label]="state.by === 'trail' && hasTrails ? 'Distance to a trail or road' : 'Distance to the railroad'"
             [options]="mapOptions">
         </app-map-vis>
     </app-viz-panel>
 
     <div class="rails-lower">
         <app-viz-panel
-            heading="Near the railroad, near the water"
+            [heading]="hasTrails ? 'Near the rails, the water, the trails' : 'Near the railroad, near the water'"
             [note]="'Share of the institutions recorded within ' + nearMiles + ' miles of each, by year'"
             [state]="vizState"
             [hasKey]="true"
@@ -96,8 +105,8 @@
         </app-viz-panel>
 
         <app-viz-panel
-            [heading]="'How far from a railroad' + (year ? ', ' + year : '')"
-            note="Institutions by straight-line distance to the nearest working railroad"
+            [heading]="'How far from ' + (state.by === 'trail' && hasTrails ? 'a trail or road' : 'a railroad') + (year ? ', ' + year : '')"
+            [note]="'Institutions by straight-line distance to the nearest ' + (state.by === 'trail' && hasTrails ? 'historic trail or wagon road in use' : 'working railroad')"
             [state]="vizState"
             (retry)="fetchData()">
             <div class="chart bands" #bandChart></div>
@@ -107,7 +116,7 @@
     <div notes>
         <p>For every institution the almanac recorded with a location, the tile build measures the straight-line distance to the nearest <strong>railroad in operation</strong> on 1 January of that year, and to the nearest <strong>canal or steamboat river</strong> in use, from Jeremy Atack's historical transportation GIS (Vanderbilt University). "Near" means within {{ nearMiles }} miles, about a morning's travel by road.</p>
         <p>Atack dates railroads by the survey maps that first show them (1830, 1835, 1840 … 1861, 1863, 1868 …), so a line can count a few years after it opened. Many institutions are placed at their town rather than their street, which matters little at these distances.</p>
-        <p>The map also draws the <strong>historic trails and roads</strong> in use that year (the Santa Fe, Oregon, California and Mormon trails, the caminos reales, the Butterfield mail and Pony Express routes, the Trail of Tears), from the National Park Service's National Trails office; they are drawn for context and are not part of the distances.</p>
+        <p>The <strong>historic trails and wagon roads</strong> are the national historic trails as the National Park Service's National Trails office maps them (the Santa Fe, Oregon, California and Mormon trails, the two caminos reales, the Old Spanish Trail, the Butterfield mail and Pony Express routes, the Trail of Tears), each counted only in the years it was in use as a through route, so the Oregon, California and Mormon trails drop out after 1869 and the Pony Express after 1861. Distance to a trail is measured the same way as to a railroad. Ten routes cannot stand for every road: a church far from all of them may have sat on a county road the data does not know.</p>
         <p>Nearness is not cause: towns, railroads and churches grew together, and the almanacs of the 1860s record many more small places than those of the 1830s. Read the change over time alongside Coverage.</p>
         <p>Click a point to open that institution's record for the year.</p>
     </div>

@@ -699,13 +699,29 @@ async function circuitsData() {
 // use that year. The distances are measured by the tile build
 // (tiles/transport-distances.py) into the shared tiles volume; without that
 // file this answers 404 and the dashboard says the data isn't built.
-//   years   [{year, n, nearRail, nearWater, nearEither, medianRail, bands}]
+//   years   [{year, n, nearRail, nearWater, nearEither, nearTrail, medianRail, bands, trailBands}]
 //           near = within NEAR_MILES; bands = counts by distance to a railroad
-//   points  for ?year=: [[lat, lng, railMiles|null, instID]]
+//           (trailBands: to a historic trail, from tiles-build trails' trail-distances.json)
+//   points  for ?year=: [[lat, lng, railMiles|null, instID, trailMiles|null]]
+//   meta.trails  whether the trail distances are built here
 //   dioceses  {id: name} with any measured institution, for the filter
 const NEAR_MILES = 5;
 const RAIL_BANDS = [1, 5, 15, 50];   // ≤1, ≤5, ≤15, ≤50, farther or none
 let _transport = null;
+// each record's distance to the historic trails of its year (tiles-build
+// trails); optional: without it the trail figures are left out
+let _trails = null;
+function loadTrailDistances() {
+    if (_trails) return _trails;
+    const file = process.env.TRAIL_DISTANCES || '/tiles-data/trail-distances.json';
+    try {
+        _trails = JSON.parse(require('fs').readFileSync(file, 'utf8')).records;
+    } catch {
+        return null;
+    }
+    return _trails;
+}
+
 function loadTransportDistances() {
     if (_transport) return _transport;
     const file = process.env.TRANSPORT_DISTANCES || '/tiles-data/transport-distances.json';
@@ -733,6 +749,7 @@ exports.getRailroads = async (req, res) => {
     if (cached) return res.send(cached);
 
     const facts = await loadFacts();
+    const trails = loadTrailDistances();
     const names = dioceseNameMap();
     const dioceseNames = {};
     const byYear = new Map();
@@ -740,21 +757,25 @@ exports.getRailroads = async (req, res) => {
     for (const f of facts) {
         const d = distances[f.rec];
         if (!d) continue;
+        const trail = trails ? trails[f.rec] ?? null : null;
         dioceseNames[f._dio] = names[f._dio] || f.d;
         if (diocese && f._dio !== diocese) continue;
         if (fn && f.f !== fn) continue;
         let y = byYear.get(f.y);
-        if (!y) byYear.set(f.y, y = { year: f.y, n: 0, nearRail: 0, nearWater: 0, nearEither: 0, rail: [], bands: [0, 0, 0, 0, 0] });
+        if (!y) byYear.set(f.y, y = { year: f.y, n: 0, nearRail: 0, nearWater: 0, nearEither: 0, nearTrail: 0, rail: [], bands: [0, 0, 0, 0, 0], trailBands: [0, 0, 0, 0, 0] });
         const [rail, water] = d;
         const nr = rail != null && rail <= NEAR_MILES, nw = water != null && water <= NEAR_MILES;
         y.n++;
         if (nr) y.nearRail++;
         if (nw) y.nearWater++;
         if (nr || nw) y.nearEither++;
+        if (trail != null && trail <= NEAR_MILES) y.nearTrail++;
+        const tband = trail == null ? RAIL_BANDS.length : RAIL_BANDS.findIndex(b => trail <= b);
+        y.trailBands[tband === -1 ? RAIL_BANDS.length : tband]++;
         if (rail != null) y.rail.push(rail);
         const band = rail == null ? RAIL_BANDS.length : RAIL_BANDS.findIndex(b => rail <= b);
         y.bands[band === -1 ? RAIL_BANDS.length : band]++;
-        if (year && f.y === year && f.lat != null && f.lng != null) points.push([f.lat, f.lng, rail, f.i]);
+        if (year && f.y === year && f.lat != null && f.lng != null) points.push([f.lat, f.lng, rail, f.i, trail]);
     }
     const years = [...byYear.values()].sort((a, b) => a.year - b.year).map(y => {
         const sorted = y.rail.sort((a, b) => a - b);
@@ -766,7 +787,7 @@ exports.getRailroads = async (req, res) => {
         years,
         points,
         dioceses: dioceseNames,
-        meta: { nearMiles: NEAR_MILES, bands: RAIL_BANDS },
+        meta: { nearMiles: NEAR_MILES, bands: RAIL_BANDS, trails: !!trails },
     };
     networkCache.set(key, result);
     res.send(result);

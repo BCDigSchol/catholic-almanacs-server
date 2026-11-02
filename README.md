@@ -32,7 +32,7 @@ collection as maps, networks and charts.
   - an overview where every panel filters the others
   - coverage of the data, and a Data Issues page
   - the Church's spread west, diocese by diocese
-  - mission circuits, and distance to railroads and rivers
+  - mission circuits, and distance to railroads, rivers and trails
   - missions and the Native land cessions
   - the Southwest: land taken from Mexico, and Spanish-surnamed clergy
   - languages and congregations
@@ -245,10 +245,12 @@ pages link to their metro, and the header search finds metros by city name.
 - **Mission Circuits:** churches and stations with no priest of their own,
   each drawn as an arc from the church that served it. It also shows the share
   of the Church served from afar each year and the largest circuits.
-- **Rails and Rivers:** how near each year's institutions stood to the
-  railroads, canals and steamboat rivers of that year, mapped and charted over
-  time. This tests whether the Church followed the water, then the railroad.
-
+- **Rails, Rivers and Trails:** how near each year's institutions stood to
+  the railroads in operation, the canals and steamboat rivers in use, and the
+  overland trails and wagon roads in use that year (the Santa Fe, Oregon,
+  California and Mormon trails, the caminos reales, the Butterfield mail and
+  Pony Express routes), with the map coloured by distance to either a
+  railroad or a trail, the shares near each over time, and distance bands.
 - **Languages and Congregations:** where the almanacs marked a church,
   school or mission as German, French, Polish, Bohemian, Dutch, Italian,
   Spanish or Irish, or as serving Native American or Black Catholics. It has

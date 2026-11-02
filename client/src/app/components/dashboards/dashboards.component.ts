@@ -81,8 +81,8 @@ export class DashboardsComponent {
         {
           link: "/dashboards/rails-rivers",
           icon: "train",
-          title: "Rails and Rivers",
-          description: "Did the church follow the water, then the railroad? How near each year's institutions stood to the railroads, canals and steamboat rivers of that year, mapped and charted over time."
+          title: "Rails, Rivers and Trails",
+          description: "Did the church follow the trails and the water, then the railroad? How near each year's institutions stood to the railroads, canals, steamboat rivers and overland trails of that year, mapped and charted over time."
         },
         {
           link: "/dashboards/languages",

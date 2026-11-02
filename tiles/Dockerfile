@@ -38,7 +38,7 @@ RUN git clone --depth 1 --branch "${TIPPECANOE_VERSION}" https://github.com/felt
 COPY build.sh build-tiles.sh build-detail.sh build-history.sh build-ohm.sh build-transport.sh build-dioceses.sh build-counties.sh build-cessions.sh build-links.sh filter-places.sh build-terrain.sh build-trails.sh \
      make-area.py pick-regions.py history-features.py ohm-features.py transport-distances.py \
      dioceses-features.py diocese-territories.py counties-features.py record-counties.py unzip-lenient.py \
-     cessions-features.py record-cessions.py record-mexican-lands.py record-links.py terrain-tiles.py trails-features.py /tiles/
+     cessions-features.py record-cessions.py record-mexican-lands.py record-links.py terrain-tiles.py trails-features.py trail-distances.py /tiles/
 # the diocese shapes and their ids (see build-dioceses.sh)
 COPY dioceses/ /tiles/dioceses/
 COPY trails.csv /tiles/trails.csv

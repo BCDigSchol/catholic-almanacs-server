@@ -9,6 +9,7 @@ import { ApiService } from '../../../services/api.service';
 import { MapVisComponent } from '../../common/map-vis/map-vis.component';
 import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
 import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
+import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { YearPlayerComponent } from '../../common/year-player/year-player.component';
 import { UrlState } from '../../../utils/url-state';
@@ -17,11 +18,12 @@ import { INKS } from '../../../utils/palette';
 
 /** GET /api/stats/railroads */
 interface RailroadsResponse {
-  years: { year: number; n: number; nearRail: number; nearWater: number; nearEither: number; medianRail: number | null; bands: number[] }[];
-  /** for the requested year: [lat, lng, railMiles|null, instID] */
-  points: [number, number, number | null, string][];
+  years: { year: number; n: number; nearRail: number; nearWater: number; nearEither: number; nearTrail: number; medianRail: number | null; bands: number[]; trailBands: number[] }[];
+  /** for the requested year: [lat, lng, railMiles|null, instID, trailMiles|null] */
+  points: [number, number, number | null, string, number | null][];
   dioceses: Record<string, string>;
-  meta: { nearMiles: number; bands: number[] };
+  /** trails: whether the trail distances are built on this server */
+  meta: { nearMiles: number; bands: number[]; trails: boolean };
 }
 type YearRow = RailroadsResponse['years'][number];
 
@@ -34,7 +36,7 @@ const FUNCTIONS = [
   { id: 'other', key: 'other', label: 'Other' },
 ];
 
-/** Distance to a railroad, near to far: slate on the line, ochre far from any. */
+/** Distance to a railroad (or a trail), near to far: slate on the line, ochre far from any. */
 const BANDS = [
   { label: 'Within 1 mile', color: INKS[0] },
   { label: '1–5 miles', color: '#6f88a8' },
@@ -45,11 +47,12 @@ const BANDS = [
 const RAIL_INK = INKS[0];
 const WATER_INK = INKS[7];
 
-const DEFAULTS = { year: 0, diocese: '', fn: '' };
+/** by: what the map and the bands measure the distance to. */
+const DEFAULTS = { year: 0, diocese: '', fn: '', by: 'rail' };
 
 @Component({
   selector: 'app-rails-rivers',
-  imports: [DecimalPipe, PercentPipe, MapVisComponent, DashboardShellComponent, ControlBarComponent,
+  imports: [DecimalPipe, PercentPipe, MapVisComponent, DashboardShellComponent, ControlBarComponent, SegmentedComponent,
     VizPanelComponent, YearPlayerComponent],
   templateUrl: './rails-rivers.component.html',
   styleUrl: './rails-rivers.component.scss'
@@ -64,6 +67,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
     { label: 'Coverage — the Shape of the Data', link: '/dashboards/coverage' },
   ];
   readonly functions = FUNCTIONS;
+  readonly byOptions = [{ value: 'rail', label: 'A railroad' }, { value: 'trail', label: 'A trail or road' }];
   readonly bands = BANDS;
   readonly railInk = RAIL_INK;
   /** The historic trails the map draws beside the railroads (the style's trail ink). */
@@ -83,6 +87,8 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   rows: YearRow[] = [];
   current: YearRow | null = null;
   nearMiles = 5;
+  /** The trail distances are built here (tiles-build trails with the database). */
+  hasTrails = false;
 
   mapData: any[] = [];
   readonly mapOptions = {
@@ -105,7 +111,11 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.subs.push(this.url.changes().subscribe(state => {
+      // the measure switch is page-only: no new data, just recolour and redraw
+      const byOnly = !!this.data && state.by !== this.state.by && state.year === this.state.year
+        && state.diocese === this.state.diocese && state.fn === this.state.fn;
       this.state = state;
+      if (byOnly) { this.update(this.year ?? 0); this.renderCharts(); return; }
       this.chips = [
         ...(state.diocese ? [{ label: `Diocese: ${this.data?.dioceses[state.diocese] ?? state.diocese}`, clear: () => this.url.set({ diocese: '' }) }] : []),
         ...(state.fn ? [{ label: `Function: ${FUNCTIONS.find(f => f.key === state.fn)?.label ?? state.fn}`, clear: () => this.url.set({ fn: '' }) }] : []),
@@ -133,6 +143,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   setYear(year: number): void { this.url.set({ year }); }
   setDiocese(diocese: string): void { this.url.set({ diocese }); }
   setFunction(fn: string): void { this.url.set({ fn }); }
+  setBy(by: string): void { this.url.set({ by }); }
   clearAll = (): void => this.url.set({ diocese: '', fn: '' });
 
   // ---- data -----------------------------------------------------------------
@@ -155,6 +166,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
       }
       this.data = res as RailroadsResponse;
       this.nearMiles = this.data.meta.nearMiles;
+      this.hasTrails = !!this.data.meta.trails;
       this.dioceseOptions = Object.entries(this.data.dioceses)
         .filter(([id]) => id !== 'unknown')
         .map(([id, name]) => ({ id, name }))
@@ -176,12 +188,17 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
     this.year = this.years.includes(year) ? year : this.years[this.years.length - 1] ?? null;
     this.current = this.rows.find(r => r.year === this.year) ?? null;
     const bandOf = (miles: number | null) => miles == null ? 4 : miles <= 1 ? 0 : miles <= 5 ? 1 : miles <= 15 ? 2 : miles <= 50 ? 3 : 4;
-    this.mapData = (this.data?.points ?? []).map(([lat, lng, miles, id]) => ({
-      latitude: lat, longitude: lng,
-      title: miles == null ? 'No railroad yet within 500 miles' : `${miles} mi from a railroad`,
-      internalLink: `/institutions/${id}?year=${this.year}`,
-      options: { color: BANDS[bandOf(miles)].color, radius: 4 },
-    }));
+    const byTrail = this.state.by === 'trail' && this.hasTrails;
+    const what = byTrail ? 'a trail or road' : 'a railroad';
+    this.mapData = (this.data?.points ?? []).map(([lat, lng, rail, id, trail]) => {
+      const miles = byTrail ? trail : rail;
+      return {
+        latitude: lat, longitude: lng,
+        title: miles == null ? `No ${what} in use within 500 miles` : `${miles} mi from ${what}`,
+        internalLink: `/institutions/${id}?year=${this.year}`,
+        options: { color: BANDS[bandOf(miles)].color, radius: 4 },
+      };
+    });
     this.takeaway = this.computeTakeaway();
     this.renderCharts();
   }
@@ -194,11 +211,12 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
     const cur = this.current;
     const first = this.rows[0];
     if (!cur || !first) return '';
-    const pct = (r: YearRow, k: 'nearRail' | 'nearWater') => Math.round(100 * r[k] / (r.n || 1));
+    const pct = (r: YearRow, k: 'nearRail' | 'nearWater' | 'nearTrail') => Math.round(100 * r[k] / (r.n || 1));
     const scope = this.state.diocese ? ` in the Diocese of ${this.data!.dioceses[this.state.diocese]}` : '';
     const lead = `In ${cur.year}, ${pct(cur, 'nearRail')}% of the institutions recorded${scope} stood within ${this.nearMiles} miles of a working railroad`;
-    if (cur === first) return `${lead}, and ${pct(cur, 'nearWater')}% within ${this.nearMiles} miles of a canal or steamboat river.`;
-    return `${lead}, against ${pct(first, 'nearRail')}% in ${first.year}; near a canal or steamboat river: ${pct(cur, 'nearWater')}%, against ${pct(first, 'nearWater')}%.`;
+    const trails = this.hasTrails ? ` Within ${this.nearMiles} miles of a historic trail or wagon road: ${pct(cur, 'nearTrail')}%.` : '';
+    if (cur === first) return `${lead}, and ${pct(cur, 'nearWater')}% within ${this.nearMiles} miles of a canal or steamboat river.${trails}`;
+    return `${lead}, against ${pct(first, 'nearRail')}% in ${first.year}; near a canal or steamboat river: ${pct(cur, 'nearWater')}%, against ${pct(first, 'nearWater')}%.${trails}`;
   }
 
   // ---- charts -----------------------------------------------------------------
@@ -239,6 +257,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
       { key: 'nearRail' as const, color: RAIL_INK, label: 'railroad', dash: null },
       // dashed as well as teal: slate and teal are close in hue
       { key: 'nearWater' as const, color: WATER_INK, label: 'canal or steamboat river', dash: '5 3' },
+      ...(this.hasTrails ? [{ key: 'nearTrail' as const, color: this.trailInk, label: 'historic trail or wagon road', dash: '1 3' }] : []),
     ];
     for (const s of series) {
       const pts = this.rows.map(r => ({ year: r.year, v: r[s.key] / (r.n || 1) }));
@@ -271,10 +290,12 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
     const rowH = 26;
     const labelW = Math.min(150, width * 0.38);
     const height = BANDS.length * rowH + 6;
+    const byTrail = this.state.by === 'trail' && this.hasTrails;
+    const counts = byTrail ? cur.trailBands : cur.bands;
     const svg = d3.select(host).append('svg').attr('width', width).attr('height', height)
-      .attr('role', 'img').attr('aria-label', `Institutions in ${cur.year} by distance to a railroad`);
-    const x = d3.scaleLinear().domain([0, Math.max(1, d3.max(cur.bands) ?? 1)]).range([0, width - labelW - 70]);
-    const rows = svg.selectAll('g').data(BANDS.map((b, i) => ({ ...b, n: cur.bands[i] }))).join('g')
+      .attr('role', 'img').attr('aria-label', `Institutions in ${cur.year} by distance to ${byTrail ? 'a trail or road' : 'a railroad'}`);
+    const x = d3.scaleLinear().domain([0, Math.max(1, d3.max(counts) ?? 1)]).range([0, width - labelW - 70]);
+    const rows = svg.selectAll('g').data(BANDS.map((b, i) => ({ ...b, n: counts[i] }))).join('g')
       .attr('transform', (_d, i) => `translate(0,${i * rowH})`);
     rows.append('text').attr('x', 0).attr('y', rowH / 2).attr('dy', '0.35em')
       .attr('class', 'band-label').text(d => d.label);

@@ -59,7 +59,7 @@ export class MeansComponent implements OnInit, AfterViewInit, OnDestroy {
 
   readonly related = [
     { label: 'Who Ran It, Whom It Served', link: '/dashboards/gender' },
-    { label: 'Rails and Rivers', link: '/dashboards/rails-rivers' },
+    { label: 'Rails, Rivers and Trails', link: '/dashboards/rails-rivers' },
     { label: 'Languages and Congregations', link: '/dashboards/languages' },
   ];
   readonly showOptions = [{ value: 'count', label: 'Count' }, { value: 'share', label: 'Share' }];

@@ -12,7 +12,8 @@
 # them again.
 #
 # Usage: build-trails.sh <out.pmtiles> [work-dir]
-# Needs: curl, python3, tippecanoe.
+# Needs: curl, python3 + shapely + pyproj, tippecanoe; the mysql client for the
+# distances. Database: DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME.
 set -euo pipefail
 
 OUT=${1:?usage: build-trails.sh <out.pmtiles> [work-dir]}
@@ -52,6 +53,20 @@ done
 
 echo "[trails] preparing features"
 python3 "$HERE/trails-features.py" "$HERE/trails.csv" "$D/src" > "$D/features.geojsonl"
+# each record's distance to the trails of its year, for the Rails, Rivers and
+# Trails dashboard (trail-distances.json beside the tiles, read by the API)
+DIST="$(dirname "$OUT")/trail-distances.json"
+if [ -n "${DB_HOST:-}" ]; then
+  echo "[trails] measuring each record's distance to the trails of its year"
+  mysql -h "$DB_HOST" -P "${DB_PORT:-3306}" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" -N -B -e \
+    "SELECT ID, year, latitude, longitude FROM almanacRecords WHERE latitude IS NOT NULL AND longitude IS NOT NULL" 2>/dev/null \
+    | python3 "$HERE/trail-distances.py" "$D/features.geojsonl" > "$DIST.tmp"
+  mv "$DIST.tmp" "$DIST"
+  echo "[trails] wrote $DIST ($(du -h "$DIST" | cut -f1))"
+else
+  echo "[trails] no database configured: skipping the distances"
+fi
+
 echo "[trails] $(wc -l < "$D/features.geojsonl" | tr -d ' ') features → $OUT (z2–12)"
 mkdir -p "$(dirname "$OUT")"
 tippecanoe \
