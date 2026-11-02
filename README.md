@@ -34,6 +34,7 @@ collection as maps, networks and charts.
   - the Church's spread west, diocese by diocese
   - mission circuits, and distance to railroads, rivers and trails
   - the frontier: the Church against the settled country, by its post offices
+  - center and periphery: sees and cities against their hinterlands
   - missions and the Native land cessions
   - the Southwest: land taken from Mexico, and Spanish-surnamed clergy
   - languages and congregations
@@ -258,6 +259,12 @@ pages link to their metro, and the header search finds metros by city name.
   share listed before that office opened ("the church first"), the
   institutions farthest from any office, and the settled places with no
   Catholic institution within 25 miles.
+- **Center and Periphery:** where institutions sat between a center and its
+  hinterland, read three ways: from the see of each diocese, from the nearest
+  metro area, or by the circuit ties between hubs and the stations their
+  clergy rode to. Rings of 5, 25 and 100 miles over time; what kinds of
+  institution stood in each ring; whether clergy moved toward the center or
+  away; and each see's or city's primacy, with its hinterland shown alone.
 - **Languages and Congregations:** where the almanacs marked a church,
   school or mission as German, French, Polish, Bohemian, Dutch, Italian,
   Spanish or Irish, or as serving Native American or Black Catholics. It has

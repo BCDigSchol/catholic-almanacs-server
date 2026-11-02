@@ -1325,6 +1325,127 @@ exports.getFrontier = async (req, res) => {
 };
 
 /**
+ * GET /api/stats/center-periphery?by=diocese|metro|ties&year=&focus= — where
+ * the Church's institutions sat between a center and its hinterland
+ * (utils/center-periphery.js): the see of each record's diocese, the nearest
+ * metro area, or the circuit ties (hub / station). focus narrows to one
+ * see's or metro's own hinterland. Records, one per institution-year.
+ *   years     [{year, n, rings: {id: n}}]
+ *   moves     [{year, toward, away, same}]  resident clergy moves arriving
+ *             that year, by whether they went toward the center or away
+ *   kinds     for the year: {ring: {kind: n}}
+ *   points    for the year: [lat, lng, instID, ring, kind]
+ *   centers   for the year (diocese/metro): [{id, name, lat, lng, n, rings: {id: n}}]
+ *             (ties): the year's hubs [{inst, name, type, place, stations}]
+ *   meta      {rings|ties, kinds, bands, by}
+ */
+exports.getCenterPeriphery = async (req, res) => {
+    const cp = require('../utils/center-periphery');
+    const { loadMetros } = require('../utils/metros');
+    const { loadMoves } = require('../utils/careers');
+    const by = ['diocese', 'metro', 'ties'].includes(req.query.by) ? req.query.by : 'diocese';
+    const focus = typeof req.query.focus === 'string' ? req.query.focus : '';
+    const yearParam = parseIntParam(req.query.year, 'year');
+    if (yearParam.error) return res.status(400).json({ message: yearParam.error });
+    const facts = await loadFacts();
+    const allYears = [...new Set(facts.map(f => f.y))].sort((a, b) => a - b);
+    const year = allYears.includes(yearParam.value) ? yearParam.value : allYears[allYears.length - 1];
+    const key = cacheKey('stats/center-periphery', { by, year, focus });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    const names = dioceseNameMap();
+    let centers, centerList = [];
+    if (by === 'diocese') {
+        const at = await seeLocations();
+        centers = new Map([...at].map(([id, [lat, lng]]) => [id, { id, lat, lng }]));
+        centerList = [...centers.values()].map(c => ({ ...c, name: names[c.id] || c.id }));
+    } else if (by === 'metro') {
+        centerList = loadMetros().list.map(m => ({ id: m.id, name: `Greater ${m.name}`, lat: m.lat, lng: m.lng }));
+        centers = centerList;
+    }
+    // the circuit ties of each year: hubs and stations
+    const hubsByYear = new Map(), stationsByYear = new Map();
+    if (by === 'ties') {
+        const { links } = await circuitsData();
+        for (const [y, hub, st] of links) {
+            if (!hubsByYear.has(y)) { hubsByYear.set(y, new Map()); stationsByYear.set(y, new Set()); }
+            hubsByYear.get(y).set(hub, (hubsByYear.get(y).get(hub) || 0) + 1);
+            stationsByYear.get(y).add(st);
+        }
+    }
+    const placeOf = f => {
+        if (by !== 'ties') return cp.place(f, by, centers);
+        const hub = hubsByYear.get(f.y)?.has(f.i), st = stationsByYear.get(f.y)?.has(f.i);
+        return { center: null, ring: hub && st ? 'both' : hub ? 'hub' : st ? 'station' : 'alone' };
+    };
+    const ringIds = (by === 'ties' ? cp.TIES : cp.RINGS).map(r => r.id);
+    const zero = () => Object.fromEntries(ringIds.map(r => [r, 0]));
+    const byYear = new Map(), points = [];
+    const kinds = Object.fromEntries(ringIds.map(r => [r, Object.fromEntries(cp.KINDS.map(k => [k.id, 0]))]));
+    const perCenter = new Map();
+    const seen = new Set();
+    for (const f of facts) {
+        const dup = f.i + '|' + f.y;
+        if (seen.has(dup)) continue;
+        seen.add(dup);
+        const p = placeOf(f);
+        if (focus && p.center !== focus) continue;
+        let y = byYear.get(f.y);
+        if (!y) byYear.set(f.y, y = { year: f.y, n: 0, rings: zero() });
+        y.n++; y.rings[p.ring]++;
+        if (f.y === year) {
+            const kind = cp.kindOfType(f.t);
+            kinds[p.ring][kind]++;
+            if (f.lat != null && f.lng != null) points.push([f.lat, f.lng, f.i, p.ring, kind]);
+            if (p.center) {
+                let c = perCenter.get(p.center);
+                if (!c) perCenter.set(p.center, c = { n: 0, rings: zero() });
+                c.n++; c.rings[p.ring]++;
+            }
+        }
+    }
+    // clergy moves, by direction under this reading (arrivals counted in y2)
+    const movesByYear = new Map();
+    for (const m of await loadMoves()) {
+        const a = placeOf({ ...m.from, i: m.from.inst, y: m.y1, _dio: dioceses.dioceseIdAsListed(m.from.inst, m.from.dio) || 'unknown' });
+        const b = placeOf({ ...m.to, i: m.to.inst, y: m.y2, _dio: dioceses.dioceseIdAsListed(m.to.inst, m.to.dio) || 'unknown' });
+        if (focus && a.center !== focus && b.center !== focus) continue;
+        if (by !== 'ties' && (a.ring === 'remote' && !a.center || b.ring === 'remote' && !b.center)) continue;
+        let row = movesByYear.get(m.y2);
+        if (!row) movesByYear.set(m.y2, row = { year: m.y2, toward: 0, away: 0, same: 0 });
+        const d = cp.RANK[b.ring] - cp.RANK[a.ring];
+        row[d < 0 ? 'toward' : d > 0 ? 'away' : 'same']++;
+    }
+    let centersOut;
+    if (by === 'ties') {
+        const hubs = [...(hubsByYear.get(year) || new Map())].sort((a, b) => b[1] - a[1]).slice(0, 30);
+        const named = new Map();
+        if (hubs.length) {
+            const rows = await db.sequelize.query(
+                `SELECT instID, instName, instType, cityReg, stateReg FROM almanacRecords WHERE year = :year AND instID IN (:ids)`,
+                { replacements: { year, ids: hubs.map(h => h[0]) }, type: db.Sequelize.QueryTypes.SELECT });
+            for (const r of rows) named.set(r.instID, r);
+        }
+        centersOut = hubs.map(([inst, stations]) => {
+            const n = named.get(inst) || {};
+            return { inst, name: n.instName || '', type: n.instType || '', place: [n.cityReg, n.stateReg].filter(Boolean).join(', '), stations };
+        });
+    } else {
+        centersOut = centerList.filter(c => perCenter.has(c.id)).map(c => ({ ...c, ...perCenter.get(c.id) })).sort((a, b) => b.n - a.n);
+    }
+    const result = {
+        by, year,
+        years: [...byYear.values()].sort((a, b) => a.year - b.year),
+        moves: [...movesByYear.values()].sort((a, b) => a.year - b.year),
+        kinds, points, centers: centersOut,
+        meta: { rings: by === 'ties' ? cp.TIES : cp.RINGS, kinds: cp.KINDS, bands: cp.BANDS },
+    };
+    networkCache.set(key, result);
+    res.json(result);
+};
+
+/**
  * GET /api/stats/data-issues?check= — things in the data to check or correct,
  * for the Data Issues page:
  *   summary      how many of each

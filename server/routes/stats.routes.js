@@ -21,6 +21,7 @@ module.exports = app => {
     router.get('/gender', wrap(controller.getGender));
     router.get('/means', wrap(controller.getMeans));
     router.get('/frontier', wrap(controller.getFrontier));
+    router.get('/center-periphery', wrap(controller.getCenterPeriphery));
     router.get('/orders', wrap(controller.getOrders));
     app.use('/api/stats', router);
 }

@@ -91,6 +91,12 @@ export class DashboardsComponent {
           description: "The Church against the settled country, with the post office as the measure of settlement: institutions by distance to the nearest post office then open, the church before the post office or after it, and settled places with no church near."
         },
         {
+          link: "/dashboards/center-periphery",
+          icon: "adjust",
+          title: "Center and Periphery",
+          description: "Where the Church's institutions sat between a center and its hinterland, from the see of each diocese, from the nearest city, or by the circuit ties: what stood at the center, what at the edge, and which way the clergy moved."
+        },
+        {
           link: "/dashboards/languages",
           icon: "translate",
           title: "Languages and Congregations",

@@ -1,0 +1,130 @@
+<app-dashboard-shell
+    title="Center and Periphery"
+    purpose="Where the Church's institutions sat between a center and its hinterland, read three ways: from the see of each diocese, from the nearest city, or by the circuit ties between a hub and the stations its clergy rode to. What stood at the center, what at the edge, and which way the clergy moved."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <div primary class="switches">
+            <app-segmented label="The center is" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
+            <app-segmented label="Charts show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+        </div>
+    </app-control-bar>
+
+    @if (current) {
+        <dl class="stat-strip">
+            @for (r of rings; track r.id) {
+                <div class="stat">
+                    <dt class="stat-label">{{ r.label }}{{ $first ? ', ' + current.year : '' }}</dt>
+                    <dd class="stat-value">{{ share(current.rings[r.id] || 0, current.n) | percent }}</dd>
+                </div>
+            }
+        </dl>
+    }
+
+    <app-viz-panel [heading]="'The rings in ' + (year ?? '')"
+        [note]="isTies ? 'Each institution as a hub, a station, both or neither, from that year\'s circuits' : 'Each institution coloured by its ring around ' + (state.by === 'metro' ? 'the nearest metro area' : 'the see of its diocese') + (state.focus ? ', ' + focusName + ' only' : '')"
+        [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+        <ul key class="legend">
+            @for (r of rings; track r.id) {
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="ringInk[r.id]"></span>{{ r.label }}</li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="cp-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [labels]="mapLabels"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [fitTo]="mapFit"
+            [year]="year"
+            [dioceses]="state.by === 'diocese' && !!state.focus"
+            [dioceseFocus]="state.by === 'diocese' ? (state.focus || null) : null"
+            label="Center and periphery"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="two-up">
+        <app-viz-panel heading="The rings over time" [note]="'Institutions each year by ring' + (state.show === 'share' ? ', as shares' : '') + '; click a year to show it'"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+            <ul key class="legend">
+                @for (r of rings; track r.id) {
+                    <li class="legend-item"><span class="legend-swatch" [style.background]="ringInk[r.id]"></span>{{ r.label }}</li>
+                }
+            </ul>
+            <div class="chart" #ringChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel heading="Which way the clergy moved" note="Resident clergy who moved between posts, by whether the new post was nearer the center, farther from it, or in the same ring; counted in the year they arrived"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item"><span class="legend-swatch" [style.background]="moveInk['toward']"></span>Toward the center</li>
+                <li class="legend-item"><span class="legend-swatch" [style.background]="moveInk['same']"></span>Within the same ring</li>
+                <li class="legend-item"><span class="legend-swatch" [style.background]="moveInk['away']"></span>Away from the center</li>
+            </ul>
+            <div class="chart" #moveChart></div>
+        </app-viz-panel>
+    </div>
+
+    <app-viz-panel [heading]="'What stood where, ' + (year ?? '')" note="Each ring's institutions by kind: churches and stations at the edge, academies, asylums and religious houses at the center"
+        [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+        <ul key class="legend">
+            @for (k of kinds; track k.id) {
+                <li class="legend-item"><span class="legend-swatch kind" [attr.data-kind]="k.id"></span>{{ k.label }}</li>
+            }
+        </ul>
+        <ul class="kind-bars">
+            @for (row of kindRows; track row.ring.id) {
+                <li>
+                    <span class="kind-label">{{ row.ring.label }} <span class="muted">{{ row.total | number }}</span></span>
+                    <span class="kind-bar" role="img" [attr.aria-label]="row.ring.label + ': ' + row.total + ' institutions'">
+                        @for (p of row.parts; track p.id) {
+                            <span class="seg" [style.width.%]="p.pct" [attr.data-kind]="p.id" [title]="p.label + ': ' + p.n + ' (' + (p.pct | number: '1.0-0') + '%)'"></span>
+                        }
+                    </span>
+                </li>
+            }
+        </ul>
+    </app-viz-panel>
+
+    @if (!isTies) {
+        <app-viz-panel [heading]="(state.by === 'metro' ? 'The metro areas' : 'The sees') + ', ' + (year ?? '')"
+            note="Each center's institutions by ring, and its primacy: the share of them within 5 miles of it; click one to see its hinterland alone"
+            [state]="vizState" (retry)="fetchData()">
+            <table class="data-table centers">
+                <thead><tr><th>Center</th><th class="num">Institutions</th><th class="num">At the center</th><th class="num">Near</th><th class="num">Hinterland</th><th class="num">Remote</th><th class="num">Primacy</th></tr></thead>
+                <tbody>
+                    @for (c of centers; track c.id) {
+                        <tr [class.current]="c.id === state.focus">
+                            <td data-label="Center"><button type="button" class="record-link-btn" (click)="setFocus(c.id)">{{ c.name }}</button></td>
+                            <td data-label="Institutions" class="num">{{ c.n | number }}</td>
+                            <td data-label="At the center" class="num">{{ c.rings['center'] | number }}</td>
+                            <td data-label="Near" class="num">{{ c.rings['near'] | number }}</td>
+                            <td data-label="Hinterland" class="num">{{ c.rings['hinterland'] | number }}</td>
+                            <td data-label="Remote" class="num">{{ c.rings['remote'] | number }}</td>
+                            <td data-label="Primacy" class="num">{{ c.primacy | percent }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </app-viz-panel>
+    } @else {
+        <app-viz-panel [heading]="'The largest hubs, ' + (year ?? '')" note="The churches whose clergy served the most other places that year" [state]="vizState" (retry)="fetchData()">
+            <ol class="entries two-col">
+                @for (h of hubs; track h.inst) {
+                    <li><a class="record-link inst" [routerLink]="['/institutions', h.inst]" [queryParams]="{ year: year }">{{ h.label }}</a>{{ h.place ? ', ' + h.place : '' }}.{{ ' ' }}<span class="muted">{{ h.stations }} {{ h.stations === 1 ? 'station' : 'stations' }}</span></li>
+                }
+            </ol>
+        </app-viz-panel>
+    }
+
+    <div notes>
+        <p><strong>Three readings of the center.</strong> <em>The see of its diocese</em> measures each institution from the cathedral of the diocese it was listed under (where no cathedral is placed, the middle of the diocese's institutions): the Church's own map of center and edge. <em>The nearest metro area</em> measures from the nearest of the 22 cities of 50,000 or more in 1870 (a boundary drawn for this site, not the period's; see any metro page). <em>The circuit ties</em> use no distance at all: a hub is a church whose clergy are recorded serving other places that year, a station a place served from elsewhere.</p>
+        <p><strong>The rings</strong> are straight-line miles: within 5 (the city and its edge), 5–25 (a day's ride), 25–100 (the hinterland), and beyond. Institutions with no location are counted as remote. Each institution counts once a year.</p>
+        <p><strong>Which way the clergy moved</strong> uses the resident posts: a priest who left one post for another is counted in the year he arrived, by whether the new post's ring is nearer the center than the old one's. Moves across the 1838–1864 gap in the almanacs are included and counted in 1864.</p>
+        <p><strong>Primacy</strong> is the share of a center's institutions within 5 miles of it: high where a diocese was a city and little else, low where the see sat in a wide settled country. The 1830s almanacs record far fewer country places than those of the 1860s, so the early rings describe the almanac's reach as much as the Church's.</p>
+    </div>
+</app-dashboard-shell>
