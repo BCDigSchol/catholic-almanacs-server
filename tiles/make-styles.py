@@ -26,6 +26,7 @@ PALETTES = {
         "foreign": "#ebe8e0", "old_road": "#5f5a50",
         "diocese": "#7a4a6a",
         "held": "#c08a2e", "recent": "#8a5a3a", "cession_line": "#a88a62",
+        "shade": "#4a4036", "relief_light": "#ffffff", "trail": "#8a5a3a",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
@@ -37,6 +38,7 @@ PALETTES = {
         "foreign": "#22211c", "old_road": "#b5ae9f",
         "diocese": "#c49ab5",
         "held": "#d2a457", "recent": "#b98c6c", "cession_line": "#7d6a52",
+        "shade": "#000000", "relief_light": "#4a463c", "trail": "#c9a06a",
     },
 }
 
@@ -108,6 +110,17 @@ TRANSPORT_ATTRIBUTION = (
 
 DIOCESE_ATTRIBUTION = 'Diocese territories: Catholic Almanacs project, Boston College (in progress)'
 
+TERRAIN_ATTRIBUTION = (
+    'Terrain: United States 3DEP, SRTM and GMTED2010 data courtesy of the '
+    '<a href="https://www.usgs.gov/3d-elevation-program" target="_blank" rel="noopener">U.S. Geological Survey</a>;'
+    ' tiles by <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener">Mapzen</a>'
+)
+
+TRAILS_ATTRIBUTION = (
+    'Historic trails: <a href="https://www.nps.gov/orgs/1453/gis-data.htm" target="_blank" rel="noopener">'
+    'National Park Service, National Trails office</a>'
+)
+
 OHM_ATTRIBUTION = (
     'Streets by year: <a href="https://www.openhistoricalmap.org/copyright" target="_blank" rel="noopener">'
     '© OpenHistoricalMap contributors</a> (CC0)'
@@ -136,6 +149,14 @@ def layers(c):
          "filter": [*NO_DATE, ["match", ["get", "kind"], ["state", "territory", "district"], True, False]],
          "paint": {"fill-color": c["land"], "fill-antialias": False}},
         # an engraved coastline: one fine ink line around the land
+        # ── the relief (terrain.pmtiles, elevation the map shades itself):
+        # faint, under the water and everything drawn; eased off where the
+        # streets take over
+        {"id": "hillshade", "type": "hillshade", "source": "terrain", "maxzoom": 14,
+         "paint": {"hillshade-exaggeration": zoom(3, 0.45, 9, 0.35, 12, 0.2, 14, 0.08),
+                   # on the dark page the land is near black, so the relief is in the lit slopes
+                   "hillshade-shadow-color": c["shade"], "hillshade-highlight-color": c["relief_light"],
+                   "hillshade-accent-color": c["shade"], "hillshade-illumination-direction": 335}},
         {"id": "coast", "type": "line", "source": "base", "source-layer": "land",
          "paint": {"line-color": c["coast"], "line-width": zoom(2, 0.3, 8, 0.7)}},
         {"id": "lakes", "type": "fill", "source": "base", "source-layer": "lakes",
@@ -208,6 +229,24 @@ def layers(c):
                     "text-allow-overlap": True, "text-ignore-placement": True, "text-padding": 0},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],
          "paint": {"text-color": c["ink2"]}},
+        # ── the historic trails and roads of one year (trails.pmtiles): wagon
+        # roads as long dashes, horse and mail routes and the removal routes
+        # dotted; with no year, the latest almanac year's
+        {"id": "trails-roads", "metadata": LATEST, "type": "line", "source": "trails", "source-layer": "trails",
+         "maxzoom": 13, "layout": {"visibility": "none", "line-join": "round"},
+         "filter": [*NO_DATE, ["==", ["get", "kind"], "road"]],
+         "paint": {"line-color": c["trail"], "line-width": zoom(3, 0.9, 8, 1.8, 12, 2.6), "line-dasharray": [4, 2.5]}},
+        {"id": "trails-routes", "metadata": LATEST, "type": "line", "source": "trails", "source-layer": "trails",
+         "maxzoom": 13, "layout": {"visibility": "none", "line-cap": "round", "line-join": "round"},
+         "filter": [*NO_DATE, ["!=", ["get", "kind"], "road"]],
+         "paint": {"line-color": c["trail"], "line-width": zoom(3, 1, 8, 2, 12, 2.8), "line-dasharray": [0.1, 2.2]}},
+        {"id": "trails-labels", "metadata": LATEST, "type": "symbol", "source": "trails", "source-layer": "trails",
+         "minzoom": 4.5, "maxzoom": 13,
+         "layout": {"visibility": "none", "symbol-placement": "line", "symbol-spacing": 400,
+                    "text-field": ["get", "short"], "text-font": ITALIC, "text-size": zoom(4.5, 10, 9, 12),
+                    "text-letter-spacing": 0.08, "text-max-angle": 25, "text-padding": 8},
+         "filter": NO_DATE,
+         "paint": {"text-color": c["trail"], "text-halo-color": halo, "text-halo-width": 1.4}},
         {"id": "state-boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
         # ── the counties of one date (counties.pmtiles), from zoom 6 ──
@@ -372,6 +411,11 @@ def style(name, c):
             "counties": {"type": "vector", "url": "${TILES_PUBLIC_URL}/counties", "attribution": COUNTY_ATTRIBUTION},
             # built by `tiles-build dioceses`
             "dioceses": {"type": "vector", "url": "${TILES_PUBLIC_URL}/dioceses", "attribution": DIOCESE_ATTRIBUTION},
+            # built by `tiles-build trails`
+            "trails": {"type": "vector", "url": "${TILES_PUBLIC_URL}/trails", "attribution": TRAILS_ATTRIBUTION},
+            # built by `tiles-build terrain`: elevation, which the hillshade layer shades
+            "terrain": {"type": "raster-dem", "url": "${TILES_PUBLIC_URL}/terrain", "encoding": "terrarium",
+                        "tileSize": 256, "attribution": TERRAIN_ATTRIBUTION},
             # built by `tiles-build ohm`
             "ohm": {"type": "vector", "url": "${TILES_PUBLIC_URL}/ohm", "attribution": OHM_ATTRIBUTION},
         },

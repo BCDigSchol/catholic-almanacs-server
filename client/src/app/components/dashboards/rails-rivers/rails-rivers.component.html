@@ -90,6 +90,7 @@
             <ul key class="legend">
                 <li class="legend-item"><span class="legend-swatch line" [style.background]="railInk"></span>A working railroad</li>
                 <li class="legend-item"><span class="legend-swatch dashed" [style.background]="waterInk"></span>A canal or steamboat river</li>
+                <li class="legend-item"><span class="legend-swatch dashed" [style.background]="trailInk"></span>A historic trail or wagon road in use</li>
             </ul>
             <div class="chart" #trend></div>
         </app-viz-panel>
@@ -106,6 +107,7 @@
     <div notes>
         <p>For every institution the almanac recorded with a location, the tile build measures the straight-line distance to the nearest <strong>railroad in operation</strong> on 1 January of that year, and to the nearest <strong>canal or steamboat river</strong> in use, from Jeremy Atack's historical transportation GIS (Vanderbilt University). "Near" means within {{ nearMiles }} miles, about a morning's travel by road.</p>
         <p>Atack dates railroads by the survey maps that first show them (1830, 1835, 1840 … 1861, 1863, 1868 …), so a line can count a few years after it opened. Many institutions are placed at their town rather than their street, which matters little at these distances.</p>
+        <p>The map also draws the <strong>historic trails and roads</strong> in use that year (the Santa Fe, Oregon, California and Mormon trails, the caminos reales, the Butterfield mail and Pony Express routes, the Trail of Tears), from the National Park Service's National Trails office; they are drawn for context and are not part of the distances.</p>
         <p>Nearness is not cause: towns, railroads and churches grew together, and the almanacs of the 1860s record many more small places than those of the 1830s. Read the change over time alongside Coverage.</p>
         <p>Click a point to open that institution's record for the year.</p>
     </div>

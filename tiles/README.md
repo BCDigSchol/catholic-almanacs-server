@@ -10,7 +10,10 @@ Two containers share one volume of tiles:
   `cessions.pmtiles` (Indian land cessions with their dates, zoom 2–10),
   `transport.pmtiles` (railroads, canals and steamboat rivers by year, zoom 3–12),
   `dioceses.pmtiles` (diocese territories by year, zoom 0–10),
-  `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15)
+  `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15),
+  `trails.pmtiles` (the historic trails and roads with their years in use, zoom 2–12),
+  `terrain.pmtiles` (elevation over the lower 48, terrarium-encoded PNG, zoom 0–10,
+  which the map shades itself as relief)
   and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
   Five JSON files for the API go beside them: `transport-distances.json`,
   `diocese-territories.json`, `record-counties.json`, `record-cessions.json`
@@ -37,6 +40,8 @@ docker compose run --rm tiles-build dioceses   # diocese territories by year: a 
 docker compose run --rm tiles-build counties   # county lines by year: a minute and a half (places records if the DB is up)
 docker compose run --rm tiles-build cessions   # Indian land cessions: seconds (places records if the DB is up)
 docker compose run --rm tiles-build links      # present-day places to link institutions to: needs the DB; the first run downloads the states (as detail does)
+docker compose run --rm tiles-build trails     # historic trails and roads with their years: a minute
+docker compose run --rm tiles-build terrain    # elevation for the relief: about 1 GB of tiles the first time (10–20 minutes), kept for reruns
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```

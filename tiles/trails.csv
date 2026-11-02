@@ -1,0 +1,20 @@
+# The historic trails and roads drawn on dated maps (build-trails.sh), from
+# the National Park Service's National Trails office (IRMA DataStore; works of
+# the U.S. government, public domain). Each is its congressionally designated
+# alignment unless noted. from/to: the years the route was in use as a
+# through route, from the NPS trail histories; a map set to a year shows the
+# trails in use on 1 January of that year (to = the last year, inclusive).
+# layer: the ArcGIS feature service (services1.arcgis.com/fBc8EJBxQRMcHlei);
+# kind: road (a wagon or cart road), trail (a horse or foot route), mail
+# (a mail or express route), removal (a forced march).
+id,name,short,kind,from,to,layer,note
+camino-real-tierra-adentro,El Camino Real de Tierra Adentro,Camino Real,road,1598,1882,ELCA_NHT/FeatureServer/0,"Mexico City to Santa Fe; the road the New Mexican church lived on"
+camino-real-tejas,El Camino Real de los Tejas,Camino Real de los Tejas,road,1690,1860,ELTE_NHT/FeatureServer/0,"the Rio Grande to the Texas missions and Natchitoches"
+santa-fe,Santa Fe Trail,Santa Fe Trail,road,1821,1880,SAFE_NHT/FeatureServer/0,"Missouri to Santa Fe, until the railroad reached it"
+old-spanish,Old Spanish Trail,Old Spanish Trail,trail,1829,1848,OLSP_CAS_Line_201801/FeatureServer/0,"Santa Fe to Los Angeles, the mule-train years"
+trail-of-tears,Trail of Tears,Trail of Tears,removal,1838,1839,TRTE_NHT/FeatureServer/0,"the Cherokee removal routes"
+oregon,Oregon Trail,Oregon Trail,road,1841,1869,OREG_NHT/FeatureServer/0,"the Missouri to the Willamette; the railroad ended the wagon years"
+california,California Trail,California Trail,road,1841,1869,CALI_NHT/FeatureServer/0,"the Missouri to the goldfields"
+mormon-pioneer,Mormon Pioneer Trail,Mormon Trail,road,1846,1869,MOPI_NHT/FeatureServer/0,"Nauvoo to the Salt Lake valley"
+butterfield,Butterfield Overland Mail,Butterfield Mail,mail,1858,1861,NTIR_OTHER_ButterfieldOverlandTrailSRS_ln/FeatureServer/0,"St. Louis and Memphis to San Francisco by stagecoach; the special resource study route"
+pony-express,Pony Express,Pony Express,mail,1860,1861,POEX_NHT/FeatureServer/0,"St. Joseph to Sacramento, April 1860 to October 1861"

@@ -49,6 +49,8 @@ collection as maps, networks and charts.
   - a path finder ("how are these two connected?")
   - each node's ranks by links and as a go-between
   - GEXF and CSV downloads
+- **Relief:** every map shades the land by its elevation, so the mountains the
+  missionaries crossed, and the plains the railroads ran on, read as such.
 - **Maps as of the year shown:** that year's states, counties and borders, railroads,
   canals and steamboat rivers, historical streets and diocese territories, on
   a self-hosted base map in the almanacs' printed style.
@@ -497,6 +499,15 @@ summarises them.
 - **City populations:** U.S. Census Bureau, Campbell Gibson, *Population of
   the 100 Largest Cities and Other Urban Places in the United States: 1790 to
   1990* (Working Paper 27, 1998; public domain).
+- **Terrain:** United States 3DEP, SRTM and GMTED2010 elevation data courtesy
+  of the U.S. Geological Survey (public domain), as Mapzen's Terrain Tiles on
+  AWS Open Data; the map shades the relief from them.
+- **Historic trails:** the congressionally designated alignments of the
+  national historic trails (Santa Fe, Oregon, California, Mormon Pioneer, Old
+  Spanish, Pony Express, Trail of Tears, the caminos reales) and the
+  Butterfield Overland Mail study route, from the National Park Service's
+  National Trails office (works of the U.S. government, public domain), with
+  the years each was in use from the NPS trail histories (`tiles/trails.csv`).
 - **Historical boundaries:** *U.S. Historical States and Territories* and
   *U.S. Historical Counties*, Atlas of Historical County Boundaries, Dr. William M. Scholl Center for American
   History and Culture, The Newberry Library (CC BY-NC-SA 2.5).

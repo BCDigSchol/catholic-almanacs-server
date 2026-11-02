@@ -1,7 +1,7 @@
 # Catholic Almanacs map tiles: two images from one Dockerfile.
 #
 #   builder  downloads the open data and builds the tiles into /data
-#            (docker compose run --rm tiles-build [base|detail|history|ohm|transport|dioceses|counties|cessions|links])
+#            (docker compose run --rm tiles-build [base|detail|history|ohm|transport|dioceses|counties|cessions|links|terrain|trails])
 #   server   Martin, serving whatever .pmtiles files are in /data, the label
 #            fonts and the map styles (docker compose up -d tiles)
 #
@@ -24,17 +24,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       osmium-tool python3 python3-shapely python3-pyproj python3-numpy default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
+# go-pmtiles packs raster tiles (the terrain) into PMTiles; tippecanoe only does vectors
+ARG PMTILES_VERSION=1.31.2
+RUN arch=$(uname -m | sed 's/aarch64/arm64/') \
+    && curl -fsSL "https://github.com/protomaps/go-pmtiles/releases/download/v${PMTILES_VERSION}/go-pmtiles_${PMTILES_VERSION}_Linux_${arch}.tar.gz" \
+       | tar -xz -C /usr/local/bin pmtiles
+
 RUN git clone --depth 1 --branch "${TIPPECANOE_VERSION}" https://github.com/felt/tippecanoe.git /tmp/tippecanoe \
     && make -C /tmp/tippecanoe -j"$(nproc)" \
     && make -C /tmp/tippecanoe install \
     && rm -rf /tmp/tippecanoe
 
-COPY build.sh build-tiles.sh build-detail.sh build-history.sh build-ohm.sh build-transport.sh build-dioceses.sh build-counties.sh build-cessions.sh build-links.sh filter-places.sh \
+COPY build.sh build-tiles.sh build-detail.sh build-history.sh build-ohm.sh build-transport.sh build-dioceses.sh build-counties.sh build-cessions.sh build-links.sh filter-places.sh build-terrain.sh build-trails.sh \
      make-area.py pick-regions.py history-features.py ohm-features.py transport-distances.py \
      dioceses-features.py diocese-territories.py counties-features.py record-counties.py unzip-lenient.py \
-     cessions-features.py record-cessions.py record-mexican-lands.py record-links.py /tiles/
+     cessions-features.py record-cessions.py record-mexican-lands.py record-links.py terrain-tiles.py trails-features.py /tiles/
 # the diocese shapes and their ids (see build-dioceses.sh)
 COPY dioceses/ /tiles/dioceses/
+COPY trails.csv /tiles/trails.csv
 # /work keeps the downloads between runs (mount a volume there to reuse them)
 ENV MAX_ZOOM=10 DETAIL_ZOOM=7
 ENTRYPOINT ["bash", "/tiles/build.sh"]

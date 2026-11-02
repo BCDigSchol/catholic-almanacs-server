@@ -66,6 +66,8 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly functions = FUNCTIONS;
   readonly bands = BANDS;
   readonly railInk = RAIL_INK;
+  /** The historic trails the map draws beside the railroads (the style's trail ink). */
+  readonly trailInk = INKS[6];
   readonly waterInk = WATER_INK;
 
   state = { ...DEFAULTS };

@@ -40,6 +40,18 @@
       "url": "${TILES_PUBLIC_URL}/dioceses",
       "attribution": "Diocese territories: Catholic Almanacs project, Boston College (in progress)"
     },
+    "trails": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/trails",
+      "attribution": "Historic trails: <a href=\"https://www.nps.gov/orgs/1453/gis-data.htm\" target=\"_blank\" rel=\"noopener\">National Park Service, National Trails office</a>"
+    },
+    "terrain": {
+      "type": "raster-dem",
+      "url": "${TILES_PUBLIC_URL}/terrain",
+      "encoding": "terrarium",
+      "tileSize": 256,
+      "attribution": "Terrain: United States 3DEP, SRTM and GMTED2010 data courtesy of the <a href=\"https://www.usgs.gov/3d-elevation-program\" target=\"_blank\" rel=\"noopener\">U.S. Geological Survey</a>; tiles by <a href=\"https://registry.opendata.aws/terrain-tiles/\" target=\"_blank\" rel=\"noopener\">Mapzen</a>"
+    },
     "ohm": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/ohm",
@@ -128,6 +140,35 @@
       "paint": {
         "fill-color": "#ffffff",
         "fill-antialias": false
+      }
+    },
+    {
+      "id": "hillshade",
+      "type": "hillshade",
+      "source": "terrain",
+      "maxzoom": 14,
+      "paint": {
+        "hillshade-exaggeration": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.45,
+          9,
+          0.35,
+          12,
+          0.2,
+          14,
+          0.08
+        ],
+        "hillshade-shadow-color": "#4a4036",
+        "hillshade-highlight-color": "#ffffff",
+        "hillshade-accent-color": "#4a4036",
+        "hillshade-illumination-direction": 335
       }
     },
     {
@@ -809,6 +850,196 @@
       ],
       "paint": {
         "text-color": "#3d3a33"
+      }
+    },
+    {
+      "id": "trails-roads",
+      "metadata": {
+        "almanac:dated": "latest"
+      },
+      "type": "line",
+      "source": "trails",
+      "source-layer": "trails",
+      "maxzoom": 13,
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "==",
+          [
+            "get",
+            "kind"
+          ],
+          "road"
+        ]
+      ],
+      "paint": {
+        "line-color": "#8a5a3a",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.9,
+          8,
+          1.8,
+          12,
+          2.6
+        ],
+        "line-dasharray": [
+          4,
+          2.5
+        ]
+      }
+    },
+    {
+      "id": "trails-routes",
+      "metadata": {
+        "almanac:dated": "latest"
+      },
+      "type": "line",
+      "source": "trails",
+      "source-layer": "trails",
+      "maxzoom": 13,
+      "layout": {
+        "visibility": "none",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ],
+        [
+          "!=",
+          [
+            "get",
+            "kind"
+          ],
+          "road"
+        ]
+      ],
+      "paint": {
+        "line-color": "#8a5a3a",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          1,
+          8,
+          2,
+          12,
+          2.8
+        ],
+        "line-dasharray": [
+          0.1,
+          2.2
+        ]
+      }
+    },
+    {
+      "id": "trails-labels",
+      "metadata": {
+        "almanac:dated": "latest"
+      },
+      "type": "symbol",
+      "source": "trails",
+      "source-layer": "trails",
+      "minzoom": 4.5,
+      "maxzoom": 13,
+      "layout": {
+        "visibility": "none",
+        "symbol-placement": "line",
+        "symbol-spacing": 400,
+        "text-field": [
+          "get",
+          "short"
+        ],
+        "text-font": [
+          "Old Standard TT Italic"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          4.5,
+          10,
+          9,
+          12
+        ],
+        "text-letter-spacing": 0.08,
+        "text-max-angle": 25,
+        "text-padding": 8
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "text-color": "#8a5a3a",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.4
       }
     },
     {

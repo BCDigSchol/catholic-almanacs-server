@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Entry point of the tile build job: builds the base map, the street detail,
 # the historical boundaries and counties, streets, transport, diocese
-# territories, Indian land cessions and present-day places to link to, or all of them (the default), into /data.
+# territories, Indian land cessions, present-day places to link to, the terrain
+# and the historic trails, or all of them (the default), into /data.
 # Downloads are kept in /work.
 #
 #   docker compose run --rm tiles-build            # all of them
@@ -14,6 +15,8 @@
 #   docker compose run --rm tiles-build counties   # county lines by year (a few minutes; places records if the DB is up)
 #   docker compose run --rm tiles-build cessions   # Indian land cessions with their dates (a minute; places records if the DB is up)
 #   docker compose run --rm tiles-build links      # present-day places to link records to, from OpenStreetMap (needs the DB; ~10 minutes the first time)
+#   docker compose run --rm tiles-build terrain    # elevation for hillshading (about 1 GB of tiles the first time; 10-20 minutes)
+#   docker compose run --rm tiles-build trails     # the historic trails and roads with their years in use (a minute)
 set -euo pipefail
 
 what=${1:-all}
@@ -27,6 +30,8 @@ case "$what" in
   counties) bash /tiles/build-counties.sh /data/counties.pmtiles /work ;;
   cessions) bash /tiles/build-cessions.sh /data/cessions.pmtiles /work ;;
   links)  bash /tiles/build-links.sh /data/link-candidates.json /work ;;
+  terrain) bash /tiles/build-terrain.sh /data/terrain.pmtiles /work ;;
+  trails) bash /tiles/build-trails.sh /data/trails.pmtiles /work ;;
   all)    bash /tiles/build-tiles.sh /data/base.pmtiles /work
           bash /tiles/build-history.sh /data/history.pmtiles /work
           bash /tiles/build-ohm.sh /data/ohm.pmtiles /work
@@ -34,7 +39,9 @@ case "$what" in
           bash /tiles/build-dioceses.sh /data/dioceses.pmtiles /work
           bash /tiles/build-counties.sh /data/counties.pmtiles /work
           bash /tiles/build-cessions.sh /data/cessions.pmtiles /work
+          bash /tiles/build-trails.sh /data/trails.pmtiles /work
+          bash /tiles/build-terrain.sh /data/terrain.pmtiles /work
           bash /tiles/build-detail.sh /data/detail.pmtiles /work
           if [ -n "${DB_HOST:-}" ]; then bash /tiles/build-links.sh /data/link-candidates.json /work; fi ;;
-  *)      echo "usage: build.sh [base|detail|history|ohm|transport|dioceses|counties|cessions|links|all]" >&2; exit 2 ;;
+  *)      echo "usage: build.sh [base|detail|history|ohm|transport|dioceses|counties|cessions|links|terrain|trails|all]" >&2; exit 2 ;;
 esac
