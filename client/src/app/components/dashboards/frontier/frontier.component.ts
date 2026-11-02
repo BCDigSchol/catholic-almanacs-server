@@ -16,7 +16,6 @@ import { drawStackedYears } from '../../../utils/stacked-years';
 import { institutionLabel } from '../../../utils/record-labels';
 import { INKS } from '../../../utils/palette';
 import { MapContextPoint } from '../../common/map-vis/map-overlays';
-import { shadeByValue, ShadeStep } from '../../../utils/choropleth';
 import { downloadTable, citation } from '../../../utils/network-export';
 
 /** GET /api/stats/frontier */
@@ -29,8 +28,6 @@ interface FrontierResponse {
   /** [lat, lng, name, state] */
   unchurched: [number, number, string, string][];
   farthest: { inst: string; name: string; type: string; place: string; miles: number | null; dio: string }[];
-  /** post offices per 100 sq mi by county of the year, where built */
-  counties: Record<string, number> | null;
   dioceses: Record<string, string>;
   meta: { bands: number[]; far: number };
 }
@@ -46,7 +43,7 @@ const BANDS = [
 const FIRST_INK: Record<string, string> = { first: INKS[4], after: INKS[0] };
 const UNCHURCHED_INK = INKS[6];
 
-const DEFAULTS = { year: 0, diocese: '', mark: 'none', show: 'beyond', shade: 'density' };
+const DEFAULTS = { year: 0, diocese: '', mark: 'none', show: 'beyond' };
 
 /**
  * The Frontier: the Church against the settled country, with post offices as
@@ -77,11 +74,6 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly markOptions = [{ value: 'none', label: 'Institutions' }, { value: 'unchurched', label: 'Settled places with no church' }];
   /** The map's institutions: those beyond 5 miles of any post office (the exceptions), or all. */
   readonly showOptions = [{ value: 'beyond', label: 'Beyond the settled country' }, { value: 'all', label: 'All institutions' }];
-  /** Shade each county of the year by its post offices per 100 square miles. */
-  readonly shadeOptions = [{ value: 'density', label: 'Counties by density' }, { value: 'none', label: 'A wash' }];
-  countyShades: Record<string, string> | null = null;
-  shadeSteps: ShadeStep[] = [];
-  hasCounties = false;
 
   state = { ...DEFAULTS };
   vizState: VizState = 'loading';
@@ -117,7 +109,7 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.subs.push(this.url.changes().subscribe(state => {
-      const markOnly = !!this.data && (state.mark !== this.state.mark || state.show !== this.state.show || state.shade !== this.state.shade) && state.year === this.state.year && state.diocese === this.state.diocese;
+      const markOnly = !!this.data && (state.mark !== this.state.mark || state.show !== this.state.show) && state.year === this.state.year && state.diocese === this.state.diocese;
       this.state = state;
       this.chips = [
         ...(state.diocese ? [{ label: `Diocese: ${this.data?.dioceses[state.diocese] ?? state.diocese}`, clear: () => this.url.set({ diocese: '' }) }] : []),
@@ -145,8 +137,7 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
   setDiocese(diocese: string): void { this.url.set({ diocese }); }
   setMark(mark: string): void { this.url.set({ mark }); }
   setShow(show: string): void { this.url.set({ show }); }
-  setShade(shade: string): void { this.url.set({ shade }); }
-  clearAll = (): void => this.url.set({ diocese: '', mark: 'none', show: 'beyond', shade: DEFAULTS.shade });
+  clearAll = (): void => this.url.set({ diocese: '', mark: 'none', show: 'beyond' });
   share(n: number, of: number): number { return of ? n / of : 0; }
 
   fetchData(): void {
@@ -184,18 +175,6 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
     this.year = year || this.data.year;
     this.current = this.rows.find(r => r.year === this.year) ?? null;
     const bandOf = (miles: number | null) => miles == null ? 4 : miles <= 1 ? 0 : miles <= 5 ? 1 : miles <= 15 ? 2 : miles <= 50 ? 3 : 4;
-    // the counties shaded by settlement density, the ramp topped at the 95th percentile so cities don't flatten the rest
-    this.hasCounties = !!this.data.counties;
-    if (this.state.shade === 'density' && this.data.counties) {
-      const sorted = Object.values(this.data.counties).filter(v => v > 0).sort((a, b) => a - b);
-      const top = sorted.length ? sorted[Math.floor(sorted.length * 0.95)] : 1;
-      const shading = shadeByValue(this.data.counties, { max: Math.max(1, Math.round(top)), format: v => `${Math.round(v)}` });
-      this.countyShades = shading.colors;
-      this.shadeSteps = shading.steps;
-    } else {
-      this.countyShades = null;
-      this.shadeSteps = [];
-    }
     const shown = this.state.show === 'all' ? this.data.points : this.data.points.filter(p => p[3] == null || p[3] > 5);
     this.mapData = shown.map(([lat, lng, id, miles, first]) => ({
       latitude: lat, longitude: lng,

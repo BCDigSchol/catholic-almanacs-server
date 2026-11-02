@@ -37,8 +37,3 @@ app-year-player {
     flex-wrap: wrap;
     gap: var(--space-3) var(--space-5);
 }
-
-.legend-swatch.unshaded {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-}

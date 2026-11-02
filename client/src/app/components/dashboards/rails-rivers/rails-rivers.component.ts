@@ -15,7 +15,6 @@ import { YearPlayerComponent } from '../../common/year-player/year-player.compon
 import { UrlState } from '../../../utils/url-state';
 import { yearScale, drawYearAxis } from '../../../utils/year-scale';
 import { INKS } from '../../../utils/palette';
-import { shadeByValue, percentFormat, ShadeStep } from '../../../utils/choropleth';
 
 /** GET /api/stats/railroads */
 interface RailroadsResponse {
@@ -23,10 +22,6 @@ interface RailroadsResponse {
   /** for the requested year: [lat, lng, railMiles|null, instID, trailMiles|null] */
   points: [number, number, number | null, string, number | null][];
   dioceses: Record<string, string>;
-  /** for the year: each diocese's institutions and how many were near each network */
-  byDiocese: Record<string, { n: number; nearRail: number; nearWater: number; nearTrail: number }>;
-  /** for the year: railroad miles per 100 sq mi by county, where built */
-  counties: Record<string, number> | null;
   /** trails: whether the trail distances are built on this server */
   meta: { nearMiles: number; bands: number[]; trails: boolean };
 }
@@ -53,8 +48,7 @@ const RAIL_INK = INKS[0];
 const WATER_INK = INKS[7];
 
 /** by: what the map and the bands measure the distance to. */
-/** shade: county (railroad miles per 100 sq mi by county, the default where built), rail|water|trail (dioceses by share near), none */
-const DEFAULTS = { year: 0, diocese: '', fn: '', by: 'rail', shade: 'county' };
+const DEFAULTS = { year: 0, diocese: '', fn: '', by: 'rail' };
 
 @Component({
   selector: 'app-rails-rivers',
@@ -74,12 +68,6 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   readonly functions = FUNCTIONS;
   readonly byOptions = [{ value: 'rail', label: 'A railroad' }, { value: 'trail', label: 'A trail or road' }];
-  /** Shade each diocese's territory by the share of its institutions near a network. */
-  shadeOptions = [{ value: 'county', label: 'Counties by railroad' }, { value: 'none', label: 'None' }];
-  dioceseShades: Record<string, string> | null = null;
-  countyShades: Record<string, string> | null = null;
-  shadeSteps: ShadeStep[] = [];
-  shadeLabel = '';
   readonly bands = BANDS;
   readonly railInk = RAIL_INK;
   /** The historic trails the map draws beside the railroads (the style's trail ink). */
@@ -124,7 +112,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.subs.push(this.url.changes().subscribe(state => {
       // the measure switch is page-only: no new data, just recolour and redraw
-      const byOnly = !!this.data && (state.by !== this.state.by || state.shade !== this.state.shade) && state.year === this.state.year
+      const byOnly = !!this.data && state.by !== this.state.by && state.year === this.state.year
         && state.diocese === this.state.diocese && state.fn === this.state.fn;
       this.state = state;
       if (byOnly) { this.update(this.year ?? 0); this.renderCharts(); return; }
@@ -156,8 +144,7 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
   setDiocese(diocese: string): void { this.url.set({ diocese }); }
   setFunction(fn: string): void { this.url.set({ fn }); }
   setBy(by: string): void { this.url.set({ by }); }
-  setShade(shade: string): void { this.url.set({ shade }); }
-  clearAll = (): void => this.url.set({ diocese: '', fn: '', shade: DEFAULTS.shade });
+  clearAll = (): void => this.url.set({ diocese: '', fn: '' });
 
   // ---- data -----------------------------------------------------------------
 
@@ -180,9 +167,6 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
       this.data = res as RailroadsResponse;
       this.nearMiles = this.data.meta.nearMiles;
       this.hasTrails = !!this.data.meta.trails;
-      this.shadeOptions = [...(this.data.counties ? [{ value: 'county', label: 'Counties by railroad' }] : []),
-        { value: 'rail', label: 'Dioceses near a railroad' }, { value: 'water', label: 'Dioceses near the water' },
-        ...(this.hasTrails ? [{ value: 'trail', label: 'Dioceses near a trail' }] : []), { value: 'none', label: 'None' }];
       this.dioceseOptions = Object.entries(this.data.dioceses)
         .filter(([id]) => id !== 'unknown')
         .map(([id, name]) => ({ id, name }))
@@ -204,42 +188,15 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
     this.year = this.years.includes(year) ? year : this.years[this.years.length - 1] ?? null;
     this.current = this.rows.find(r => r.year === this.year) ?? null;
     const bandOf = (miles: number | null) => miles == null ? 4 : miles <= 1 ? 0 : miles <= 5 ? 1 : miles <= 15 ? 2 : miles <= 50 ? 3 : 4;
-    // the dioceses shaded by the share of their institutions near the chosen network
-    // counties shaded by their railroad miles per 100 square miles (the ramp topped at the 95th percentile)
-    if (this.state.shade === 'county' && this.data?.counties) {
-      const sorted = Object.values(this.data.counties).filter(v => v > 0).sort((a, b) => a - b);
-      const top = sorted.length ? sorted[Math.floor(sorted.length * 0.95)] : 1;
-      // counties with no railroad at all stay unshaded, so absence reads as white
-      const withRail = Object.fromEntries(Object.entries(this.data.counties).filter(([, v]) => v > 0));
-      const shading = shadeByValue(withRail, { max: Math.max(1, Math.round(top)), format: v => `${Math.round(v)}` });
-      this.countyShades = shading.colors;
-      this.shadeSteps = shading.steps;
-      this.shadeLabel = 'miles of railroad per 100 sq mi';
-    } else {
-      this.countyShades = null;
-    }
-    const key = ({ rail: 'nearRail', water: 'nearWater', trail: 'nearTrail' } as Record<string, 'nearRail' | 'nearWater' | 'nearTrail'>)[this.state.shade];
-    if (key && this.data?.byDiocese) {
-      const values = Object.fromEntries(Object.entries(this.data.byDiocese).filter(([id, b]) => id !== 'unknown' && b.n >= 5).map(([id, b]) => [id, b[key] / b.n]));
-      const shading = shadeByValue(values, { max: 1, format: percentFormat });
-      this.dioceseShades = shading.colors;
-      this.shadeSteps = shading.steps;
-      this.shadeLabel = this.shadeOptions.find(o => o.value === this.state.shade)?.label.toLowerCase() ?? '';
-    } else {
-      this.dioceseShades = null;
-      if (!this.countyShades) this.shadeSteps = [];
-    }
     const byTrail = this.state.by === 'trail' && this.hasTrails;
     const what = byTrail ? 'a trail or road' : 'a railroad';
-    // with the counties carrying the railroad story, the institutions are small neutral marks
-    const quiet = !!this.countyShades;
     this.mapData = (this.data?.points ?? []).map(([lat, lng, rail, id, trail]) => {
       const miles = byTrail ? trail : rail;
       return {
         latitude: lat, longitude: lng,
         title: miles == null ? `No ${what} in use within 500 miles` : `${miles} mi from ${what}`,
         internalLink: `/institutions/${id}?year=${this.year}`,
-        options: quiet ? { color: '#3d3a33', radius: 2.5 } : { color: BANDS[bandOf(miles)].color, radius: 4 },
+        options: { color: BANDS[bandOf(miles)].color, radius: 4 },
       };
     });
     this.takeaway = this.computeTakeaway();

@@ -9,7 +9,6 @@
             @if (hasTrails) {
                 <app-segmented label="Distance to" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
             }
-            <app-segmented label="Shade dioceses by" [showLabel]="true" [options]="shadeOptions" [value]="state.shade" (valueChange)="setShade($event)"></app-segmented>
         </div>
         <ng-template #filters>
             <label class="ctl">
@@ -75,18 +74,8 @@
         (retry)="fetchData()">
         <div key>
             <ul class="legend" [attr.aria-label]="'Distance to ' + (state.by === 'trail' && hasTrails ? 'a trail or road' : 'a railroad')">
-                @if (countyShades) {
-                    <li class="legend-item"><span class="legend-swatch dot" style="background: #3d3a33"></span>An institution</li>
-                } @else {
-                    @for (b of bands; track b.label) {
-                        <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
-                    }
-                }
-                @if (countyShades) {
-                    <li class="legend-item"><span class="legend-swatch area unshaded"></span>No railroad in the county</li>
-                }
-                @for (s of shadeSteps; track s.from) {
-                    <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>{{ countyShades ? '' : 'Diocese: ' }}{{ s.label }} {{ shadeLabel }}</li>
+                @for (b of bands; track b.label) {
+                    <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
                 }
             </ul>
         </div>
@@ -97,9 +86,6 @@
             [simple]="true"
             [autoCenter]="false"
             [year]="year"
-            [dioceses]="!!dioceseShades"
-            [dioceseShades]="dioceseShades"
-            [countyShades]="countyShades"
             [label]="state.by === 'trail' && hasTrails ? 'Distance to a trail or road' : 'Distance to the railroad'"
             [options]="mapOptions">
         </app-map-vis>

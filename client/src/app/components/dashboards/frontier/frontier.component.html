@@ -8,9 +8,6 @@
         <div primary class="switches">
             <app-segmented label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
             <app-segmented label="Mark" [showLabel]="true" [options]="markOptions" [value]="state.mark" (valueChange)="setMark($event)"></app-segmented>
-            @if (hasCounties) {
-                <app-segmented label="Settlement as" [showLabel]="true" [options]="shadeOptions" [value]="state.shade" (valueChange)="setShade($event)"></app-segmented>
-            }
         </div>
         <ng-template #filters>
             <label class="ctl">
@@ -58,13 +55,7 @@
         [hasKey]="true"
         (retry)="fetchData()">
         <ul key class="legend" aria-label="Distance to the nearest post office">
-            @if (state.shade === 'density' && countyShades) {
-                @for (s of shadeSteps; track s.from) {
-                    <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>{{ s.label }} post offices per 100 sq mi</li>
-                }
-            } @else {
-                <li class="legend-item"><span class="legend-swatch area wash"></span>The settled country: where post offices were open</li>
-            }
+            <li class="legend-item"><span class="legend-swatch area wash"></span>The settled country: where post offices were open</li>
             @for (b of bands; track b.id) {
                 <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
             }
@@ -80,8 +71,7 @@
             [simple]="true"
             [autoCenter]="false"
             [year]="year"
-            [postOffices]="state.shade !== 'density'"
-            [countyShades]="countyShades"
+            [postOffices]="true"
             [dioceses]="!!state.diocese"
             [dioceseFocus]="state.diocese || null"
             label="The settled country"
