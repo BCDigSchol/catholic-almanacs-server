@@ -107,6 +107,12 @@ export class DashboardsComponent {
           icon: "trending_up",
           title: "A Part Against the Whole",
           description: "Track one order, diocese, or state against the national total of the same kind — institutions or the people serving them — to see who grew faster."
+        },
+        {
+          link: "/dashboards/turnover",
+          icon: "hourglass_empty",
+          title: "Lifespans and Turnover",
+          description: "How long institutions lasted once the almanacs listed them — churches against schools and charities — how many came and went each year, and how often clergy left their posts."
         }
       ]
     },

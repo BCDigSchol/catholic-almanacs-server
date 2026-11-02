@@ -1,0 +1,104 @@
+<app-dashboard-shell
+    title="Lifespans and Turnover"
+    purpose="How long institutions lasted once the almanacs listed them, how many came and went each year, and how often clergy left their posts."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setDiocese($any($event.target).value)">
+                    <option value="" [selected]="!state.diocese">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Institutions</span>
+                <select class="control" (change)="setFn($any($event.target).value)">
+                    <option value="" [selected]="!state.fn">All</option>
+                    @for (f of functions; track f) {
+                        <option [value]="f" [selected]="f === state.fn">{{ fnLabel(f) }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (data) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">still listed five years on</dt>
+                <dd class="stat-value">{{ fiveYear == null ? '—' : (fiveYear | percent) }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">of resident clergy left their post each year, 1865–70</dt>
+                <dd class="stat-value">{{ departures == null ? '—' : (departures | percent) }}</dd>
+            </div>
+            @if (data.bridge && data.bridge.listed) {
+                <div class="stat">
+                    <dt class="stat-label">of {{ data.bridge.from }}'s institutions listed again in {{ data.bridge.to }}</dt>
+                    <dd class="stat-value">{{ data.bridge.again / data.bridge.listed | percent }}</dd>
+                </div>
+            }
+        </dl>
+    }
+
+    <app-viz-panel heading="Coming and going" note="Each year against the year before: newly listed above the line, no longer listed below"
+        [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+        <ul key class="legend">
+            <li class="legend-item"><span class="legend-swatch" [style.background]="addedInk"></span>newly listed</li>
+            <li class="legend-item"><span class="legend-swatch" [style.background]="goneInk"></span>no longer listed</li>
+        </ul>
+        <div class="chart" #flowsChart></div>
+    </app-viz-panel>
+
+    <div class="two-up">
+        <app-viz-panel heading="How long new institutions lasted" note="Of those first listed from 1865, the share still listed each year after"
+            [state]="vizState" (retry)="fetchData()">
+            <div class="chart" #survivalChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel heading="Clergy leaving their posts" note="Resident clergy no longer at last year's post"
+            [state]="vizState" (retry)="fetchData()">
+            <div class="chart" #clergyChart></div>
+            @if (data?.stays?.completed) {
+                <p class="stays">
+                    Of {{ data!.stays.completed | number }} stays seen to begin and end, 1865–69:
+                    @for (b of data!.stays.histogram; track b.years; let last = $last) {
+                        {{ b.n | number }} lasted {{ b.years }} {{ b.years === 1 ? 'year' : 'years' }}{{ last ? '.' : ',' }}
+                    }
+                </p>
+            }
+        </app-viz-panel>
+    </div>
+
+    @if (!state.diocese && dioceseRows.length) {
+        <app-viz-panel heading="By diocese" note="Every year compared; dioceses with fewer than 50 priest-years at posts left out. Click one to show it" [state]="vizState" (retry)="fetchData()">
+            <table class="data-table">
+                <thead>
+                    <tr><th>Diocese</th><th class="num">Newly listed</th><th class="num">No longer listed</th><th class="num">Clergy leaving a post</th><th class="num">Average stay</th></tr>
+                </thead>
+                <tbody>
+                    @for (d of dioceseRows; track d.id) {
+                        <tr>
+                            <td data-label="Diocese"><button type="button" class="link-btn" (click)="setDiocese(d.id)">{{ d.name }}</button></td>
+                            <td data-label="Newly listed" class="num">{{ d.added | number }}</td>
+                            <td data-label="No longer listed" class="num">{{ d.gone | number }}</td>
+                            <td data-label="Clergy leaving a post" class="num">{{ d.departures == null ? '—' : (d.departures | percent) }}</td>
+                            <td data-label="Average stay" class="num">{{ d.meanStay == null ? '—' : (d.meanStay | number: '1.1-1') + ' years' }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </app-viz-panel>
+    }
+
+    <div notes>
+        <p>An institution is "newly listed" in a year when the almanac lists it and did not the year before, and "no longer listed" the other way round. A record can be missing only because its diocese wasn't transcribed that year, so each comparison counts only dioceses with records in both years, and only within a run of consecutive almanacs (1833–38, 1864–70). Newly listed is not the same as newly founded: the almanacs also added places as their reporting improved.</p>
+        <p>"How long new institutions lasted" follows those first listed in 1865 or later (so not merely the first almanac of a run), and asks whether each is listed again one, two … five years on, counting only years its diocese was transcribed. Points resting on fewer than 20 institutions, or fewer than 15 priests at posts, are left out of the charts, so a single small diocese may show only part of a line. "Listed again in 1864" matches institution ids across the 1838–1864 gap.</p>
+        <p>A priest "left his post" when the almanac listed him as resident at an institution one year and not the next. Some apparent departures are one person recorded under two ids; the Data Issues page lists those to review. A stay counts as complete only when its first and last years both fall inside a run with the years around them transcribed; the table gives each diocese's average, since most stays seen whole last a single year.</p>
+    </div>
+</app-dashboard-shell>

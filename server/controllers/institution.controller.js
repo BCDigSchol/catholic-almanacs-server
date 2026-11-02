@@ -456,7 +456,7 @@ exports.findAll = async (req, res) => {
             size = 3;
         };
         let {limit, offset} = getPagination(page, size);
-        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder, sort } = req.query;
+        let { instName, countyOrig, cityOrig, stateOrig, diocese, instStartYear, instEndYear, language, instType, instFunction, persName, instID, religiousOrder, instNote, sort } = req.query;
 
         // Same filters as before, as raw SQL conditions on almanacRecords (ar),
         // personInAlmanacRecords (pia) and orderInAlmanacRecords (oia).
@@ -477,6 +477,10 @@ exports.findAll = async (req, res) => {
         like('ar.instFunction', 'instFunction', instFunction);
         like('ar.instID', 'instID', instID);
         like('pia.name', 'persName', persName);
+        // notes: every word must appear, in any order (the column collation
+        // makes it case- and accent-insensitive, like the other filters)
+        const noteWords = noteTerms(instNote);
+        noteWords.forEach((w, i) => like('ar.instNote', `note${i}`, w));
         if (religiousOrder) {
             const order = orderCondition('oia.`order`', religiousOrder);
             conditions.push(order.sql);
@@ -507,15 +511,61 @@ exports.findAll = async (req, res) => {
             ids = ids.filter(id => matchedIds.has(id));
         }
         // Rows summarise each institution as of its latest year, whatever the filters.
+        let rows = ids.slice(offset, offset + limit).map(id => index.byId.get(id));
+        if (noteWords.length && rows.length) rows = await withNoteSnippets(rows, noteWords);
         res.send({
             count: ids.length,
-            rows: ids.slice(offset, offset + limit).map(id => index.byId.get(id)),
+            rows,
             meta: { years: index.years },
         });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
 };
+
+/** The words of a note search: quoted phrases kept whole, at most eight. */
+function noteTerms(q) {
+    if (!q || !String(q).trim()) return [];
+    const terms = String(q).match(/"[^"]+"|\S+/g) || [];
+    return terms.map(t => t.replace(/"/g, '').trim()).filter(t => t.length > 1).slice(0, 8);
+}
+
+/** A string folded for matching, one character for each of the original's (so offsets carry over). */
+const fold = s => [...String(s)].map(c => c.normalize('NFD')[0].toLowerCase()).join('');
+
+/**
+ * Adds `note` to each row: the latest year's note that matches, cut to a
+ * snippet around the first match, with [start, end] of every match in it.
+ */
+async function withNoteSnippets(rows, words) {
+    const conds = words.map((w, i) => `instNote LIKE :w${i}`).join(' AND ');
+    const replacements = Object.fromEntries(words.map((w, i) => [`w${i}`, `%${w}%`]));
+    replacements.ids = rows.map(r => r.ID);
+    const notes = await db.sequelize.query(
+        `SELECT instID, year, instNote FROM almanacRecords WHERE instID IN (:ids) AND ${conds} ORDER BY year DESC`,
+        { replacements, type: db.Sequelize.QueryTypes.SELECT });
+    const latest = new Map();
+    for (const n of notes) if (!latest.has(n.instID)) latest.set(n.instID, n);
+    const folded = words.map(fold);
+    const WIDTH = 220;
+    return rows.map(row => {
+        const n = latest.get(row.ID);
+        if (!n) return row;
+        const text = String(n.instNote).replace(/\s+/g, ' ').trim();
+        const f = fold(text);
+        const first = Math.min(...folded.map(w => f.indexOf(w)).filter(i => i >= 0));
+        const start = text.length <= WIDTH ? 0 : Math.max(0, Math.min(first - 60, text.length - WIDTH));
+        const end = Math.min(text.length, start + WIDTH);
+        const marks = [];
+        for (const w of folded) {
+            for (let i = f.indexOf(w, start); i >= 0 && i + w.length <= end; i = f.indexOf(w, i + w.length)) {
+                marks.push([i - start, i - start + w.length]);
+            }
+        }
+        marks.sort((a, b) => a[0] - b[0]);
+        return { ...row, note: { year: Number(n.year), text: text.slice(start, end), before: start > 0, after: end < text.length, marks } };
+    });
+}
 
 function uniqueBy(arr, keyFn) {
     const seen = new Set();

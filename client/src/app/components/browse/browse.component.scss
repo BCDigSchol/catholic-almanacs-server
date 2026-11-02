@@ -408,3 +408,20 @@ app-page-header {
         }
     }
 }
+
+// a note search: the passage that matched, under the row
+.note-match {
+    margin: var(--space-1) 0 0;
+    color: var(--ink-2);
+    font-size: var(--text-sm);
+
+    .note-year {
+        color: var(--ink-3);
+    }
+
+    mark {
+        background: none;
+        color: var(--rubric);
+        font-weight: 600;
+    }
+}

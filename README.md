@@ -34,7 +34,7 @@ collection as maps, networks and charts.
   - the Church's spread west, diocese by diocese
   - mission circuits, and distance to railroads and rivers
   - languages and congregations
-  - the changing mix of institutions and clergy
+  - the changing mix of institutions and clergy, lifespans and turnover
   - clergy flows between dioceses, and religious orders
 - **Networks** of institutions and people:
   - ties by serving together or by moving from post to post
@@ -92,6 +92,10 @@ year's listing of it is kept separately.
 ## Browsing and search
 
 - **Header search** finds institutions and people by name from any page.
+- **Note search:** the institution browser's "Notes mention" filter searches
+  the almanacs' notes. Every word must appear, and "quoted phrases" stay
+  together. Each result shows the passage that matched, with the words
+  highlighted.
   Search ignores case and accents.
 - **Browse institutions** (`/institutions`) and **browse people** (`/people`)
   list every record, as of its latest year. You can filter by name, diocese,
@@ -192,6 +196,11 @@ Every institution and person has a record page (`/institutions/:id`,
   hospitals, charities) and of the people serving them, down to their titles,
   shifted across the years.
 - **Comparing Places:** dioceses, states or years side by side.
+- **Lifespans and Turnover:** institutions newly listed and no longer listed
+  each year; how long new ones lasted (churches outlast schools and
+  charities); and how often resident clergy left their posts, by year and by
+  diocese. Each year is compared with the one before only where both have
+  that diocese's records.
 - **A Part Against the Whole:** one order, diocese or state against the
   national total, to see which grew faster.
 

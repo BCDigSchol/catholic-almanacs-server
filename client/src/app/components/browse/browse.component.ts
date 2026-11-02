@@ -62,6 +62,7 @@ const CONFIG: Record<BrowseEntity, EntityConfig> = {
         { param: 'function', api: 'instFunction', label: 'Function', kind: 'select', optionsFile: 'functions.csv' },
         { param: 'language', api: 'language', label: 'Language', kind: 'text' },
         ORDER,
+        { param: 'note', api: 'instNote', label: 'Notes mention', kind: 'text' },
       ] },
       { label: 'People', filters: [
         { param: 'person', api: 'persName', label: 'Served by (name)', kind: 'text' },
@@ -165,7 +166,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
     ).subscribe((res: any) => {
       this.loading = false;
       if (!res) return;
-      this.rows = res.rows;
+      this.rows = (res.rows as any[]).map(r => r.note ? { ...r, noteParts: noteParts(r.note) } : r);
       this.total = res.count;
     }));
   }
@@ -361,4 +362,20 @@ export class BrowseComponent implements OnInit, OnDestroy {
   private capitalised(s: string): string {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
+}
+
+/** A note snippet split into plain and matched runs, for highlighting the search words. */
+function noteParts(note: { text: string; before: boolean; after: boolean; marks: [number, number][] }): { text: string; mark: boolean }[] {
+  const parts: { text: string; mark: boolean }[] = [];
+  let at = 0;
+  for (const [a, b] of note.marks) {
+    if (a < at) continue;   // overlapping matches: the first wins
+    if (a > at) parts.push({ text: note.text.slice(at, a), mark: false });
+    parts.push({ text: note.text.slice(a, b), mark: true });
+    at = b;
+  }
+  if (at < note.text.length) parts.push({ text: note.text.slice(at), mark: false });
+  if (note.before) parts.unshift({ text: '… ', mark: false });
+  if (note.after) parts.push({ text: ' …', mark: false });
+  return parts;
 }

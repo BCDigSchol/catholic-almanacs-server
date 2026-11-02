@@ -97,6 +97,9 @@
                                 @for (part of rowSub(row); track part) { <span>{{ part }}</span> }
                                 <span class="id">{{ row.ID }}</span>
                             </div>
+                            @if (row.noteParts) {
+                                <p class="note-match"><span class="note-year">{{ row.note.year }}:</span>{{ ' ' }}@for (part of row.noteParts; track $index) {@if (part.mark) {<mark>{{ part.text }}</mark>} @else {{{ part.text }}}}</p>
+                            }
                         </li>
                     }
                 </ol>

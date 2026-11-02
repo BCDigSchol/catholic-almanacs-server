@@ -1162,3 +1162,48 @@ exports.getDataIssues = async (req, res) => {
     networkCache.set(key, result);
     res.json(result);
 };
+
+
+/**
+ * GET /api/stats/turnover?diocese=&fn= — institutions coming and going, how
+ * long new ones lasted, and clergy leaving their posts (utils/turnover.js),
+ * plus a row per diocese for the table. Cached per filter.
+ */
+let _residents = null;
+exports.getTurnover = async (req, res) => {
+    const { buildTurnover, FUNCTIONS } = require('../utils/turnover');
+    const diocese = String(req.query.diocese || '');
+    const fn = FUNCTIONS.includes(req.query.fn) ? req.query.fn : '';
+    const key = cacheKey('stats/turnover', { diocese, fn });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    const facts = await loadFacts();
+    if (!_residents) {
+        const rows = await db.sequelize.query(
+            `SELECT p.persID AS pers, a.instID AS inst, a.year, a.diocese_reg AS diocese
+               FROM personInAlmanacRecords p JOIN almanacRecords a ON a.ID = p.almanacRecordID
+              WHERE p.isAttending = 0 AND p.persID IS NOT NULL AND a.year IS NOT NULL`,
+            { type: db.Sequelize.QueryTypes.SELECT });
+        _residents = rows.map(r => ({ pers: r.pers, inst: r.inst, year: Number(r.year),
+            dio: dioceses.resolveDioceseId(r.inst, r.diocese) || 'unknown' }));
+    }
+    const result = buildTurnover(facts, _residents, { diocese, fn });
+
+    // one row per diocese (for the whole collection only): totals over all compared years
+    if (!diocese) {
+        const names = dioceseNameMap();
+        const ids = [...new Set(facts.map(f => f._dio))].filter(id => id !== 'unknown');
+        result.dioceses = ids.map(id => {
+            const t = buildTurnover(facts, _residents, { diocese: id, fn });
+            const sum = (rows, k) => rows.reduce((n, r) => n + r[k], 0);
+            const stayed = sum(t.clergy, 'stayed'), left = sum(t.clergy, 'left');
+            return { id, name: names[id] || id, added: sum(t.flows, 'added'), gone: sum(t.flows, 'gone'), kept: sum(t.flows, 'kept'),
+                departures: stayed + left ? left / (stayed + left) : null, posts: stayed + left, meanStay: t.stays.mean };
+        }).filter(d => d.kept + d.added + d.gone > 0).sort((a, b) => a.name.localeCompare(b.name));
+        result.dioceseNames = Object.fromEntries(result.dioceses.map(d => [d.id, d.name]));
+    }
+    result.functions = FUNCTIONS;
+    networkCache.set(key, result);
+    res.json(result);
+};

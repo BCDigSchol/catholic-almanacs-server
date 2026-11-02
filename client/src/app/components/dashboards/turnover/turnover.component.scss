@@ -1,0 +1,54 @@
+// Shared dashboard styles (.ctl, .control, .legend, .chart, .stat-strip, .data-table) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+}
+
+.two-up {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.chart ::ng-deep {
+    .end-label {
+        font-size: var(--text-xs);
+    }
+
+    .axis-note {
+        font-size: var(--text-xs);
+        fill: var(--ink-3);
+        font-style: italic;
+    }
+}
+
+.stays {
+    margin: var(--space-3) 0 0;
+    color: var(--ink-2);
+    font-size: var(--text-sm);
+}
+
+.data-table {
+    .num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+.link-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--link);
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
