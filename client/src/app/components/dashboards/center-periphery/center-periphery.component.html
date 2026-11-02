@@ -7,6 +7,7 @@
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
         <div primary class="switches">
             <app-segmented label="The center is" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
+            <app-segmented label="The map shows" [showLabel]="true" [options]="viewOptions" [value]="state.view" (valueChange)="setView($event)"></app-segmented>
             <app-segmented label="Charts show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
         </div>
     </app-control-bar>
@@ -23,7 +24,7 @@
     }
 
     <app-viz-panel [heading]="'The rings in ' + (year ?? '')"
-        [note]="isTies ? 'Each institution as a hub, a station, both or neither, from that year\'s circuits' : 'Each institution coloured by its ring around ' + (state.by === 'metro' ? 'the nearest metro area' : 'the see of its diocese') + (state.focus ? ', ' + focusName + ' only' : '')"
+        [note]="(isTies ? 'Each institution as a hub, a station, both or neither, from that year\'s circuits' : 'The centers sized by their primacy, with rings of 25 and 100 miles; each institution coloured by its ring around ' + (state.by === 'metro' ? 'the nearest metro area' : 'the see of its diocese') + (state.focus ? ', ' + focusName + ' only' : '')) + (state.view === 'periphery' ? ' — the center ring\'s own institutions left out' : '')"
         [state]="vizState" [hasKey]="true" (retry)="fetchData()">
         <ul key class="legend">
             @for (r of rings; track r.id) {
@@ -34,6 +35,8 @@
         <app-map-vis
             [data]="mapData"
             [labels]="mapLabels"
+            [overlayMarkers]="mapCenters"
+            [rings]="mapRings"
             [isOpen]="true"
             [simple]="true"
             [autoCenter]="false"

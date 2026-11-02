@@ -1,5 +1,11 @@
 // Shared dashboard styles (.legend, .chart, .stat-strip, .data-table) live in src/styles.scss.
 
+.switches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+}
+
 app-year-player {
     margin-bottom: var(--space-3);
 }

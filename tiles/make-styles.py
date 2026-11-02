@@ -27,6 +27,7 @@ PALETTES = {
         "diocese": "#7a4a6a",
         "held": "#c08a2e", "recent": "#8a5a3a", "cession_line": "#a88a62",
         "shade": "#4a4036", "relief_light": "#ffffff", "trail": "#8a5a3a",
+        "wash_light": "#e9e4d6", "wash": "#cfc6b0", "wash_dark": "#b3a98f",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
@@ -39,6 +40,7 @@ PALETTES = {
         "diocese": "#c49ab5",
         "held": "#d2a457", "recent": "#b98c6c", "cession_line": "#7d6a52",
         "shade": "#000000", "relief_light": "#4a463c", "trail": "#c9a06a",
+        "wash_light": "#2a2820", "wash": "#3d3a2e", "wash_dark": "#55503e",
     },
 }
 
@@ -239,11 +241,21 @@ def layers(c):
          "paint": {"text-color": c["ink2"]}},
         # ── the post offices open in one year (postoffices.pmtiles), on maps
         # that ask for them: small quiet dots, the settled country of that day
-        {"id": "postoffices-dots", "metadata": POST_OFFICES, "type": "circle", "source": "postoffices", "source-layer": "postoffices",
-         "minzoom": 3, "layout": {"visibility": "none"},
+        # at country and regional zoom, a wash of settlement rather than
+        # thousands of dots; the dots take over from zoom 7
+        {"id": "postoffices-wash", "metadata": POST_OFFICES, "type": "heatmap", "source": "postoffices", "source-layer": "postoffices",
+         "minzoom": 3, "maxzoom": 8, "layout": {"visibility": "none"},
          "filter": NO_DATE,
-         "paint": {"circle-color": c["ink3"], "circle-opacity": zoom(3, 0.35, 8, 0.5, 12, 0.6),
-                   "circle-radius": zoom(3, 0.8, 6, 1.4, 9, 2.2, 12, 3.5)}},
+         "paint": {"heatmap-weight": 1, "heatmap-intensity": zoom(3, 0.08, 7, 0.25),
+                   "heatmap-radius": zoom(3, 6, 7, 14),
+                   "heatmap-opacity": zoom(3, 0.5, 7, 0.4, 8, 0),
+                   "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"],
+                                     0, "rgba(0,0,0,0)", 0.15, c["wash_light"], 0.6, c["wash"], 1, c["wash_dark"]]}},
+        {"id": "postoffices-dots", "metadata": POST_OFFICES, "type": "circle", "source": "postoffices", "source-layer": "postoffices",
+         "minzoom": 6.5, "layout": {"visibility": "none"},
+         "filter": NO_DATE,
+         "paint": {"circle-color": c["ink3"], "circle-opacity": zoom(6.5, 0, 7.5, 0.5, 12, 0.6),
+                   "circle-radius": zoom(6.5, 1.2, 9, 2.2, 12, 3.5)}},
         {"id": "postoffices-labels", "metadata": POST_OFFICES, "type": "symbol", "source": "postoffices", "source-layer": "postoffices",
          "minzoom": 9, "layout": {"visibility": "none", "text-field": ["get", "name"], "text-font": REGULAR,
                                   "text-size": zoom(9, 9, 12, 11), "text-offset": [0, 0.9], "text-anchor": "top", "text-padding": 6},

@@ -40,7 +40,7 @@ const RING_INK: Record<string, string> = {
 };
 const MOVE_INK: Record<string, string> = { toward: INKS[4], same: '#b9b3a7', away: INKS[0] };
 
-const DEFAULTS = { by: 'diocese', year: 0, focus: '', show: 'share' };
+const DEFAULTS = { by: 'diocese', year: 0, focus: '', show: 'share', view: 'periphery' };
 
 /**
  * Center and Periphery: where the Church's institutions sat between a center
@@ -71,6 +71,8 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
     { value: 'ties', label: 'The circuit ties' },
   ];
   readonly showOptions = [{ value: 'share', label: 'Share' }, { value: 'count', label: 'Count' }];
+  /** The map's institutions: the periphery (all but the center ring), everything, or one ring. */
+  viewOptions: { value: string; label: string }[] = [];
   readonly ringInk = RING_INK;
   readonly moveInk = MOVE_INK;
 
@@ -90,6 +92,8 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
   kindRows: { ring: Option; total: number; parts: { id: string; label: string; n: number; pct: number }[] }[] = [];
   mapData: any[] = [];
   mapLabels: { lat: number; lng: number; text: string }[] = [];
+  mapCenters: { lat: number; lng: number; color: string; title: string; radius: number }[] = [];
+  mapRings: { lat: number; lng: number; miles: number[]; color: string }[] = [];
   mapFit: [number, number, number, number] | null = null;
   readonly mapOptions = {
     mode: 'point' as const,
@@ -111,9 +115,9 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
 
   ngOnInit(): void {
     this.subs.push(this.url.changes().subscribe(state => {
-      const showOnly = !!this.data && state.show !== this.state.show && state.by === this.state.by && state.year === this.state.year && state.focus === this.state.focus;
+      const pageOnly = !!this.data && (state.show !== this.state.show || state.view !== this.state.view) && state.by === this.state.by && state.year === this.state.year && state.focus === this.state.focus;
       this.state = state;
-      if (showOnly) { this.renderCharts(); return; }
+      if (pageOnly) { this.show(this.data!); return; }
       this.fetchData();
     }));
   }
@@ -135,8 +139,9 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
   setBy(by: string): void { this.url.set({ by, focus: '' }); }
   setYear(year: number): void { this.url.set({ year }); }
   setShow(show: string): void { this.url.set({ show }); }
+  setView(view: string): void { this.url.set({ view }); }
   setFocus(focus: string): void { this.url.set({ focus: focus === this.state.focus ? '' : focus }); }
-  clearAll = (): void => this.url.set({ focus: '', show: DEFAULTS.show });
+  clearAll = (): void => this.url.set({ focus: '', show: DEFAULTS.show, view: DEFAULTS.view });
   share(n: number, of: number): number { return of ? n / of : 0; }
   nameOf(list: Option[], id: string): string { return list.find(o => o.id === id)?.label ?? id; }
   get isTies(): boolean { return this.state.by === 'ties'; }
@@ -181,18 +186,33 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
       const total = Object.values(counts).reduce((a, b) => a + b, 0);
       return { ring, total, parts: this.kinds.map(k => ({ id: k.id, label: k.label, n: counts[k.id] || 0, pct: total ? 100 * (counts[k.id] || 0) / total : 0 })).filter(p => p.n) };
     });
-    this.mapData = d.points.map(([lat, lng, id, ring, kind]) => ({
+    const inner = d.by === 'ties' ? 'hub' : 'center';
+    this.viewOptions = [{ value: 'periphery', label: d.by === 'ties' ? 'Stations and the rest' : 'The periphery' }, { value: 'all', label: 'All' },
+      ...this.rings.map(r => ({ value: r.id, label: r.label.replace(/\s*\(.*\)$/, '').replace(/:.*$/, '') }))];
+    const view = this.state.view;
+    const shown = view === 'all' ? d.points : view === 'periphery' ? d.points.filter(p => p[3] !== inner) : d.points.filter(p => p[3] === view);
+    this.mapData = shown.map(([lat, lng, id, ring, kind]) => ({
       latitude: lat, longitude: lng,
       title: `${this.nameOf(this.rings, ring)}; ${this.nameOf(this.kinds, kind).toLowerCase()}`,
       internalLink: `/institutions/${id}?year=${d.year}`,
       options: { color: RING_INK[ring] ?? '#b9b3a7', radius: ring === 'remote' || ring === 'alone' ? 3 : 4.5 },
     }));
     // the centers themselves, named on the map
-    this.mapLabels = d.by === 'ties' ? [] : this.centers.filter(c => c.n >= 10).map(c => ({ lat: c.lat, lng: c.lng, text: c.name.replace(/^Greater /, '') }));
+    const named = d.by === 'ties' ? [] : this.centers.filter(c => c.n >= 10);
+    this.mapLabels = named.map(c => ({ lat: c.lat, lng: c.lng, text: c.name.replace(/^Greater /, '') }));
+    // the centers themselves, sized by their primacy, with their rings of 5, 25 and 100 miles
+    this.mapCenters = named.map(c => ({ lat: c.lat, lng: c.lng, color: RING_INK['center'], radius: 3 + 9 * c.primacy,
+      title: `${c.name}: ${c.n} institutions, ${Math.round(100 * c.primacy)}% within 5 miles` }));
+    const ringed = this.state.focus ? named.filter(c => c.id === this.state.focus) : named;
+    this.mapRings = ringed.map(c => ({ lat: c.lat, lng: c.lng, miles: this.state.focus ? [5, 25, 100] : [25, 100], color: RING_INK['hinterland'] }));
     if (this.state.focus !== this.fittedFocus) {
       this.fittedFocus = this.state.focus;
       const pts = d.points;
-      if (this.state.focus && pts.length) {
+      const c = this.centers.find(x => x.id === this.state.focus);
+      if (c) {
+        // the center's 100-mile ring, with a little room
+        this.mapFit = [c.lng - 2.2, c.lat - 1.7, c.lng + 2.2, c.lat + 1.7];
+      } else if (this.state.focus && pts.length) {
         const lats = pts.map(p => p[0]), lngs = pts.map(p => p[1]);
         this.mapFit = [Math.min(...lngs) - 0.5, Math.min(...lats) - 0.5, Math.max(...lngs) + 0.5, Math.max(...lats) + 0.5];
       } else if (!this.state.focus) {

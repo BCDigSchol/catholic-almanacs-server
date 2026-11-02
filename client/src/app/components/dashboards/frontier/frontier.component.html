@@ -5,7 +5,10 @@
     [related]="related">
 
     <app-control-bar [chips]="chips" [clearAll]="clearAll">
-        <app-segmented primary label="Mark" [showLabel]="true" [options]="markOptions" [value]="state.mark" (valueChange)="setMark($event)"></app-segmented>
+        <div primary class="switches">
+            <app-segmented label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+            <app-segmented label="Mark" [showLabel]="true" [options]="markOptions" [value]="state.mark" (valueChange)="setMark($event)"></app-segmented>
+        </div>
         <ng-template #filters>
             <label class="ctl">
                 <span>Diocese</span>
@@ -46,7 +49,7 @@
 
     <app-viz-panel
         [heading]="'The settled country in ' + (year ?? '')"
-        [note]="'Every post office open that year as a grey dot; each institution coloured by its distance to the nearest' + (state.mark === 'unchurched' ? '; settled places with no Catholic institution within 25 miles marked' : '')"
+        [note]="'The settled country as a wash of that year\'s post offices (the offices themselves from a regional zoom); ' + (state.show === 'all' ? 'every institution' : 'the institutions more than 5 miles from any post office') + ' coloured by distance to the nearest' + (state.mark === 'unchurched' ? '; settled places with no Catholic institution within 25 miles marked' : '')"
         [state]="vizState"
         [emptyText]="notBuilt ? 'The post offices are not built on this server.' : 'Nothing to show for these filters.'"
         [hasKey]="true"

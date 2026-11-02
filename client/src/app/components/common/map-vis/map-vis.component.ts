@@ -41,6 +41,11 @@ function keepViewInside(lngLat: maplibregl.LngLat, zoom: number, width: number, 
   return new maplibregl.MercatorCoordinate(axis(c.x, sw.x, ne.x, half(width)), axis(c.y, ne.y, sw.y, half(height))).toLngLat();
 }
 
+/** A circle radius expression scaled by zoom: half at country zoom (3), as given at 8, larger from 12. */
+function zoomRadius(r: any): any {
+  return ['interpolate', ['linear'], ['zoom'], 3, ['*', r, 0.5], 6, ['*', r, 0.75], 8, r, 12, ['*', r, 1.4]];
+}
+
 /** The last almanac year in the data: what county lines show on a map with no year. */
 const LATEST_ALMANAC_YEAR = 1870;
 
@@ -95,7 +100,9 @@ export class MapVisComponent {
   /** Historical county id(s) to shade (e.g. 'ohs_noble', or a metro's counties), as they stood in the map's year (or 1870). */
   @Input() countyFocus: string | string[] | null = null;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
-  @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
+  @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string; radius?: number }[] = [];
+  /** Faint circles of the given radii in miles around points (e.g. a see's rings), drawn under the data. */
+  @Input() rings: { lat: number; lng: number; miles: number[]; color?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
   @Input() overlayTrack: [number, number][] = [];
   /** Lines between places, drawn as arcs under the data (circuits, careers). */
@@ -619,7 +626,7 @@ export class MapVisComponent {
         },
       });
       this.map.addLayer({ id: 'context-points', type: 'circle', source: 'context-src', paint: {
-        'circle-radius': ['get', 'radius'], 'circle-color': ['get', 'color'], 'circle-opacity': 0.7,
+        'circle-radius': zoomRadius(['get', 'radius']), 'circle-color': ['get', 'color'], 'circle-opacity': 0.7,
         'circle-stroke-width': 1, 'circle-stroke-color': paper,
       } });
     }
@@ -757,6 +764,33 @@ export class MapVisComponent {
     if (!this.map) return;
     this.removeOverlay();
 
+    const rings = (this.rings || []).filter(r => r && Number.isFinite(r.lat) && Number.isFinite(r.lng) && r.miles?.length);
+    if (rings.length) {
+      // each ring as a 72-point circle on the sphere, a faint dotted line
+      const circle = (lat: number, lng: number, miles: number) => {
+        const d = miles / 3958.8, la = lat * Math.PI / 180, lo = lng * Math.PI / 180, out: [number, number][] = [];
+        for (let i = 0; i <= 72; i++) {
+          const b = i / 72 * 2 * Math.PI;
+          const la2 = Math.asin(Math.sin(la) * Math.cos(d) + Math.cos(la) * Math.sin(d) * Math.cos(b));
+          const lo2 = lo + Math.atan2(Math.sin(b) * Math.sin(d) * Math.cos(la), Math.cos(d) - Math.sin(la) * Math.sin(la2));
+          out.push([lo2 * 180 / Math.PI, la2 * 180 / Math.PI]);
+        }
+        return out;
+      };
+      this.map.addSource('overlay-rings-src', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: rings.flatMap(r => r.miles.map(m => ({
+          type: 'Feature' as const, geometry: { type: 'LineString' as const, coordinates: circle(r.lat, r.lng, m) },
+          properties: { color: r.color || '#8f897d' },
+        }))) },
+      });
+      const below = this.map.getLayer('context-points') ? 'context-points' : undefined;
+      this.map.addLayer({
+        id: 'overlay-rings', type: 'line', source: 'overlay-rings-src',
+        paint: { 'line-color': ['get', 'color'], 'line-width': 0.8, 'line-opacity': 0.55, 'line-dasharray': [1, 2] },
+      }, below);
+    }
+
     if (Array.isArray(this.overlayTrack) && this.overlayTrack.length > 1) {
       const coords = this.overlayTrack.filter(c => Array.isArray(c) && Number.isFinite(c[0]) && Number.isFinite(c[1]));
       if (coords.length > 1) {
@@ -781,18 +815,18 @@ export class MapVisComponent {
           features: pts.map(m => ({
             type: 'Feature',
             geometry: { type: 'Point', coordinates: [m.lng, m.lat] },
-            properties: { color: m.color || HIGHLIGHT_INK, title: m.title || '' }
+            properties: { color: m.color || HIGHLIGHT_INK, title: m.title || '', radius: m.radius ?? 8 }
           }))
         }
       });
       this.map.addLayer({
         id: 'overlay-markers-halo', type: 'circle', source: 'overlay-markers-src',
-        paint: { 'circle-radius': 16, 'circle-color': ['get', 'color'], 'circle-opacity': 0.22 }
+        paint: { 'circle-radius': ['*', ['get', 'radius'], 2], 'circle-color': ['get', 'color'], 'circle-opacity': 0.22 }
       });
       this.map.addLayer({
         id: 'overlay-markers', type: 'circle', source: 'overlay-markers-src',
         paint: {
-          'circle-radius': 8, 'circle-color': ['get', 'color'],
+          'circle-radius': ['get', 'radius'], 'circle-color': ['get', 'color'],
           'circle-stroke-width': 2.5, 'circle-stroke-color': '#ffffff'
         }
       });
@@ -824,10 +858,10 @@ export class MapVisComponent {
 
   private removeOverlay(): void {
     if (!this.map) return;
-    ['overlay-labels', 'overlay-markers', 'overlay-markers-halo', 'overlay-track'].forEach(id => {
+    ['overlay-labels', 'overlay-markers', 'overlay-markers-halo', 'overlay-track', 'overlay-rings'].forEach(id => {
       if (this.map.getLayer(id)) this.map.removeLayer(id);
     });
-    ['overlay-labels-src', 'overlay-markers-src', 'overlay-track-src'].forEach(id => {
+    ['overlay-labels-src', 'overlay-markers-src', 'overlay-track-src', 'overlay-rings-src'].forEach(id => {
       if (this.map.getSource(id)) this.map.removeSource(id);
     });
   }
@@ -844,7 +878,9 @@ export class MapVisComponent {
    */
   private addPointLayer(geojson: any): void {
     let pointPaint = this.options.modeOptions?.point?.paint || {
-      'circle-radius': ['coalesce', ['get', 'radius'], 8],
+      // scaled by zoom: half size at country zoom, so a thousand dots read as
+      // a texture, and larger than asked once a region fills the view
+      'circle-radius': zoomRadius(['coalesce', ['get', 'radius'], 8]),
       'circle-color': ['coalesce', ['get', 'color'], INKS[0]],
       'circle-stroke-width': 1,
       'circle-stroke-color': '#fff',
