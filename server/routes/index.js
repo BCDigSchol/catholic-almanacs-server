@@ -10,4 +10,5 @@ module.exports = app => {
     require('./getFileDate.routes.js')(app);
     require('./stats.routes.js')(app);
     require('./place.routes.js')(app);
+    require('./auth.routes.js')(app);
 };

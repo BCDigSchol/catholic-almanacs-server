@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef, inject } from '@angular/core';
 import { DecimalPipe, PercentPipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as d3 from 'd3';
 
 import { ApiService } from '../../../services/api.service';
+import { ReviewAuthService } from '../../../services/review-auth.service';
 import { DashboardShellComponent } from '../../common/dashboard-shell/dashboard-shell.component';
 import { ControlBarComponent, ControlChip } from '../../common/control-bar/control-bar.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
@@ -49,7 +50,8 @@ export class TurnoverComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly related = [
     { label: 'Clergy Flows', link: '/dashboards/clergy-flows' },
     { label: 'Coverage — the Shape of the Data', link: '/dashboards/coverage' },
-    { label: 'Data Issues', link: '/dashboards/data-issues' },
+    // editors only
+    ...(inject(ReviewAuthService).isSignedIn ? [{ label: 'Data Issues', link: '/dashboards/data-issues' }] : []),
   ];
   readonly addedInk = ADDED_INK;
   readonly goneInk = GONE_INK;

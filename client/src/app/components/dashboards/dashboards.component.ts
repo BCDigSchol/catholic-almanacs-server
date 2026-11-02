@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 
 import { PageHeaderComponent } from '../common/page-header/page-header.component';
+import { ReviewAuthService } from '../../services/review-auth.service';
+
+/** Shown only to signed-in editors (the server closes its data to everyone else). */
+const EDITORS_ONLY = new Set(['/dashboards/data-issues']);
 
 interface DashboardCard {
   link: string;
@@ -17,7 +21,8 @@ interface DashboardGroup {
   cards: DashboardCard[];
 }
 
-// "Explore on the Map" (/dashboards/explore) is deliberately not listed here.
+// "Explore on the Map" (/dashboards/explore) is deliberately not listed here;
+// Data Issues only for signed-in editors.
 @Component({
   selector: 'app-dashboards',
   imports: [RouterLink, MatIconModule, PageHeaderComponent],
@@ -25,7 +30,8 @@ interface DashboardGroup {
   styleUrl: './dashboards.component.scss'
 })
 export class DashboardsComponent {
-  readonly groups: DashboardGroup[] = [
+  private readonly signedIn = inject(ReviewAuthService).isSignedIn;
+  readonly groups: DashboardGroup[] = ([
     {
       title: "Start here",
       subtitle: "One interactive board over the whole collection — click anything to filter everything.",
@@ -164,5 +170,5 @@ export class DashboardsComponent {
         }
       ]
     }
-  ];
+  ] as DashboardGroup[]).map(g => ({ ...g, cards: g.cards.filter(c => this.signedIn || !EDITORS_ONLY.has(c.link)) }));
 }

@@ -64,3 +64,5 @@ tmp/
 # e2e
 /e2e/*.js
 /e2e/*.map
+# === Local settings and secrets (docker-compose reads .env) ===
+.env

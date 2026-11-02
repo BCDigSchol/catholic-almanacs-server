@@ -13,7 +13,8 @@ module.exports = app => {
     router.get('/path', wrap(controller.getPath));
     router.get('/diocese-check', wrap(controller.getDioceseCheck));
     router.get('/languages', wrap(controller.getLanguages));
-    router.get('/data-issues', wrap(controller.getDataIssues));
+    // editors only: sign in with DATA_ISSUES_PASSWORD (utils/review-auth.js)
+    router.get('/data-issues', require('../utils/review-auth').requireReviewer, wrap(controller.getDataIssues));
     router.get('/turnover', wrap(controller.getTurnover));
     router.get('/cessions', wrap(controller.getCessions));
     router.get('/southwest', wrap(controller.getSouthwest));

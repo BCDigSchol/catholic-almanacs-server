@@ -226,6 +226,11 @@ pages link to their metro, and the header search finds metros by city name.
   or `server/data/institution-links.csv`, the decided items leave the queue
   for everyone, and confirmed links show on record pages.
 
+  Data Issues is for the project's editors. It opens with a shared password
+  (the lock at the top right of every page, or `/sign-in`), and signing in
+  lasts 30 days in that browser. The server checks it too, so the data stays
+  closed to everyone else, and the page and its links are hidden until then.
+
 **Geography**
 
 - **The Spread of the Church:** an animated map of institutions spreading west
@@ -440,6 +445,11 @@ so it can run beside other projects.
 ```bash
 docker compose up -d mysqldb-prod nodejs-prod
 ```
+
+The editors' password for the Data Issues page goes in a `.env` file beside
+`docker-compose.yml`, which git ignores (copy `.env.example`). Without it the
+page stays closed. Changing it signs everyone out; recreate the API container
+to apply it (`docker compose up -d nodejs-prod`).
 
 The API image is built from `server/` without a source mount. After changing
 server code, rebuild it:

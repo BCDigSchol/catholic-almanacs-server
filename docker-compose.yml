@@ -47,6 +47,9 @@ services:
       - OWNER_USERNAME=catholic-almanacs-owner
       - OWNER_PASSWORD=123456
       - OWNER_EMAIL=sample@email.com
+      # the editors' password for the Data Issues page, from the untracked .env
+      # file beside this one (see .env.example); unset, the page stays closed
+      - DATA_ISSUES_PASSWORD=${DATA_ISSUES_PASSWORD:-}
     stdin_open: true
     tty: true
     networks:
@@ -75,6 +78,9 @@ services:
       - OWNER_USERNAME=catholic-almanacs-owner
       - OWNER_PASSWORD=password
       - OWNER_EMAIL=sample@email.com
+      # the editors' password for the Data Issues page, from the untracked .env
+      # file beside this one (see .env.example); unset, the page stays closed
+      - DATA_ISSUES_PASSWORD=${DATA_ISSUES_PASSWORD:-}
     stdin_open: true
     tty: true
     networks:

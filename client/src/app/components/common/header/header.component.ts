@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { Settings } from '../../../app.settings';
 import { ThemeService } from '../../../services/theme.service';
+import { ReviewAuthService } from '../../../services/review-auth.service';
 import { HeaderSearchComponent } from '../header-search/header-search.component';
 
 interface NavItem {
@@ -32,7 +33,10 @@ export class HeaderComponent implements OnInit {
     { name: 'About', route: '/pages/about' },
   ];
 
-  constructor(private _route: ActivatedRoute, private router: Router, private themeService: ThemeService) {}
+  /** The editors' sign-in (for the Data Issues page). */
+  signedIn = false;
+
+  constructor(private _route: ActivatedRoute, private router: Router, private themeService: ThemeService, private reviewAuth: ReviewAuthService) {}
 
   ngOnInit(): void {
     if (Settings.exportEnabled) {
@@ -44,6 +48,7 @@ export class HeaderComponent implements OnInit {
       }
     });
     this.themeService.isDarkTheme$.subscribe(value => this.isDarkTheme = value);
+    this.reviewAuth.signedIn$.subscribe(value => this.signedIn = value);
     this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => this.closePanels());
   }
 

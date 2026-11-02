@@ -17,6 +17,12 @@
             <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
         </button>
 
+        <a class="icon-btn sign-in" routerLink="/sign-in" routerLinkActive="active"
+            [attr.aria-label]="signedIn ? 'Editors: signed in' : 'Editors’ sign in'"
+            [attr.title]="signedIn ? 'Editors: signed in' : 'Editors’ sign in'">
+            <mat-icon>{{ signedIn ? 'lock_open' : 'lock' }}</mat-icon>
+        </a>
+
         <button type="button" class="icon-btn compact-only push" (click)="toggleSearch()"
             aria-label="Search" [attr.aria-expanded]="searchOpen" aria-controls="compact-search">
             <mat-icon>{{ searchOpen ? 'close' : 'search' }}</mat-icon>
@@ -43,6 +49,10 @@
                 <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
                 {{ isDarkTheme ? 'Light theme' : 'Dark theme' }}
             </button>
+            <a class="menu-theme" routerLink="/sign-in">
+                <mat-icon>{{ signedIn ? 'lock_open' : 'lock' }}</mat-icon>
+                {{ signedIn ? 'Editors: signed in' : 'Editors’ sign in' }}
+            </a>
         </nav>
     }
 </header>

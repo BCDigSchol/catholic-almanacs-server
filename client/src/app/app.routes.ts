@@ -3,6 +3,7 @@ import { RedirectFunction, Router, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/common/not-found/not-found.component';
+import { ReviewAuthService } from './services/review-auth.service';
 
 /** Redirects to `path` with extra query params, keeping any the old link carried. */
 function redirectWith(path: string, params: Record<string, string>): RedirectFunction {
@@ -36,7 +37,11 @@ export const routes: Routes = [
     { path: 'dashboards/turnover', loadComponent: () => import('./components/dashboards/turnover/turnover.component').then(m => m.TurnoverComponent) },
     { path: 'dashboards/gender', loadComponent: () => import('./components/dashboards/gender/gender.component').then(m => m.GenderComponent) },
     { path: 'dashboards/means', loadComponent: () => import('./components/dashboards/means/means.component').then(m => m.MeansComponent) },
-    { path: 'dashboards/data-issues', loadComponent: () => import('./components/dashboards/data-issues/data-issues.component').then(m => m.DataIssuesComponent) },
+    // editors only: signed out, it sends you to sign in (the server checks the token too)
+    { path: 'dashboards/data-issues', canActivate: [(_r: unknown, state: { url: string }) => inject(ReviewAuthService).isSignedIn
+        || inject(Router).createUrlTree(['/sign-in'], { queryParams: { next: state.url } })],
+      loadComponent: () => import('./components/dashboards/data-issues/data-issues.component').then(m => m.DataIssuesComponent) },
+    { path: 'sign-in', loadComponent: () => import('./components/sign-in/sign-in.component').then(m => m.SignInComponent) },
     { path: 'dashboards/languages', loadComponent: () => import('./components/dashboards/languages/languages.component').then(m => m.LanguagesComponent) },
     { path: 'dashboards/orders', loadComponent: () => import('./components/dashboards/religious-orders/religious-orders.component').then(m => m.ReligiousOrdersComponent) },
     { path: 'dashboards/clergy-flows', loadComponent: () => import('./components/dashboards/clergy-flows/clergy-flows.component').then(m => m.ClergyFlowsComponent) },

@@ -97,6 +97,15 @@ $compact: 960px;
     padding: var(--space-3) var(--gutter);
 }
 
+// the editors' sign-in: a quiet lock beside the theme toggle
+.sign-in {
+    color: var(--nav-fg-muted);
+
+    &.active {
+        color: var(--rubric);
+    }
+}
+
 .menu {
     display: flex;
     flex-direction: column;
@@ -128,7 +137,7 @@ $compact: 960px;
 }
 
 @media (max-width: $compact) {
-    .primary, .inline-search, .theme-toggle {
+    .primary, .inline-search, .theme-toggle, .sign-in {
         display: none;
     }
 

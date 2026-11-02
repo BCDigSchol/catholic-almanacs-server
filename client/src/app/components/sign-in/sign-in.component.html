@@ -1,0 +1,24 @@
+<div class="page">
+    <app-page-header title="Editors’ sign in" eyebrow="Editors"
+        subtitle="The Data Issues page, for the people correcting the transcriptions, opens with the editors’ password.">
+    </app-page-header>
+
+    @if (auth.isSignedIn) {
+        <p class="signed-in">This browser is signed in.</p>
+        <p class="actions">
+            <a class="btn btn-primary" routerLink="/dashboards/data-issues">Open Data Issues</a>
+            <button type="button" class="btn" (click)="signOut()">Sign out</button>
+        </p>
+    } @else {
+        <form class="sign-in" (ngSubmit)="submit()">
+            <label class="ctl">
+                <span>Password</span>
+                <input class="control" type="password" name="password" autocomplete="current-password" required
+                    [(ngModel)]="password" [attr.aria-invalid]="error ? 'true' : null" aria-describedby="sign-in-error">
+            </label>
+            <button type="submit" class="btn btn-primary" [disabled]="!password || busy">{{ busy ? 'Signing in…' : 'Sign in' }}</button>
+            <p id="sign-in-error" class="error" role="alert">{{ error }}</p>
+        </form>
+        <p class="note">Signing in lasts 30 days in this browser. Ask the project team for the password.</p>
+    }
+</div>

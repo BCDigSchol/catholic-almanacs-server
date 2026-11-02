@@ -1,0 +1,39 @@
+.sign-in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: var(--space-3) var(--space-4);
+    max-width: 32rem;
+
+    .ctl {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        flex: 1 1 14rem;
+
+        span {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--ink-2);
+        }
+    }
+
+    .error {
+        flex-basis: 100%;
+        margin: 0;
+        min-height: 1.4em;
+        color: var(--rubric);
+        font-size: var(--text-sm);
+    }
+}
+
+.note,
+.signed-in {
+    color: var(--ink-2);
+    font-size: var(--text-sm);
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-3);
+}
