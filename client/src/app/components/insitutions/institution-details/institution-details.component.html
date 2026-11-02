@@ -92,7 +92,7 @@
             <div class="main">
                 <section class="record-section" aria-labelledby="facts-heading">
                     <h2 id="facts-heading">Facts</h2>
-                    @if (facts.length || land) {
+                    @if (facts.length || land || searchUrl) {
                         <dl class="fact-list">
                             @for (f of facts; track f.label) {
                                 <dt>{{ f.label }}</dt>
@@ -111,6 +111,23 @@
                                 <dd class="long">
                                     @for (c of land!.cessions; track c.number; let first = $first) {
                                         <span class="cession">{{ first ? 'Ceded' : 'Earlier ceded' }} by the {{ c.tribes }} on {{ c.date }}{{ c.before < 0 ? ', after ' + land!.year : '' }}{{ ' ' }}<span class="muted">(Royce {{ c.number }}@if (c.treaty) {; <a [href]="c.treaty" target="_blank" rel="noopener">treaty</a>})</span></span>
+                                    }
+                                </dd>
+                            }
+                            @if (todayLinks.length || searchUrl) {
+                                <dt>Today</dt>
+                                <dd class="long">
+                                    @for (l of todayLinks; track l.osm ?? l.website) {
+                                        <span class="today">
+                                            @if (l.name) { {{ l.name }}: }
+                                            @if (l.website) { <a [href]="l.website" target="_blank" rel="noopener">website</a> }
+                                            @if (l.osm) { {{ l.website ? ' · ' : '' }}<a [href]="l.osm" target="_blank" rel="noopener">on the map today</a> }
+                                            @if (l.wikipedia) { {{ ' · ' }}<a [href]="l.wikipedia" target="_blank" rel="noopener">Wikipedia</a> }
+                                            @if (l.checked) { {{ ' ' }}<span class="muted">(checked {{ l.checked }})</span> }
+                                        </span>
+                                    }
+                                    @if (searchUrl) {
+                                        <span class="today muted">{{ todayLinks.length ? '' : 'Not yet linked. ' }}<a [href]="searchUrl" target="_blank" rel="noopener">Search the web for it today</a></span>
                                     }
                                 </dd>
                             }

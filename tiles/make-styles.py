@@ -56,7 +56,8 @@ SHOW, HIDE = {"almanac:dated": "show"}, {"almanac:dated": "hide"}
 # them (map-vis [dioceses]); the fill only for the diocese a map picks out.
 DIOCESES = {"almanac:dated": "dioceses"}
 # Dated, but on a map with no year (a record's "All years") drawn as of the
-# latest almanac year rather than hidden: there are no county lines for today.
+# latest almanac year rather than hidden: county lines, railroads, canals and
+# steamboat rivers, which have no "today" layer to fall back on.
 LATEST = {"almanac:dated": "latest"}
 # Indian land cessions, on maps that ask for them (map-vis [cessions]): which
 # part of the cession (held, recent, lines) a layer draws for the map's year.
@@ -181,22 +182,23 @@ def layers(c):
                                       13, ["match", ["get", "kind"], "major", 1.6, "secondary", 1.2, "alley", 0.5, 0.9],
                                       15, ["match", ["get", "kind"], "major", 3, "secondary", 2.4, "alley", 1, 1.8])}},
         # ── the railroads, canals and steamboat rivers of one year
-        # (transport.pmtiles); to zoom 12, where they would sit off the streets
-        {"id": "transport-steamboat", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
+        # (transport.pmtiles; with no year, the latest almanac year's); to
+        # zoom 12, where they would sit off the streets
+        {"id": "transport-steamboat", "metadata": LATEST, "type": "line", "source": "transport", "source-layer": "transport",
          "maxzoom": 12, "layout": {"visibility": "none", "line-cap": "round", "line-join": "round"},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "steamboat"]],
          "paint": {"line-color": c["water_label"], "line-width": zoom(3, 1, 8, 2.2), "line-dasharray": [0.2, 2]}},
-        {"id": "transport-canals", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
+        {"id": "transport-canals", "metadata": LATEST, "type": "line", "source": "transport", "source-layer": "transport",
          "maxzoom": 12, "layout": {"visibility": "none", "line-join": "round"},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "canal"]],
          "paint": {"line-color": c["water_label"], "line-width": zoom(4, 0.8, 10, 2)}},
-        {"id": "transport-rail", "metadata": SHOW, "type": "line", "source": "transport", "source-layer": "transport",
+        {"id": "transport-rail", "metadata": LATEST, "type": "line", "source": "transport", "source-layer": "transport",
          "maxzoom": 12, "layout": {"visibility": "none", "line-join": "round"},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],
          "paint": {"line-color": c["ink2"], "line-width": zoom(3, 0.5, 6, 0.9, 10, 1.4)}},
         # the map railway: short ties across the line, a "|" set every few
         # pixels along it (placed along a line, each glyph turns to cross it)
-        {"id": "transport-rail-ties", "metadata": SHOW, "type": "symbol", "source": "transport", "source-layer": "transport",
+        {"id": "transport-rail-ties", "metadata": LATEST, "type": "symbol", "source": "transport", "source-layer": "transport",
          "minzoom": 3.5, "maxzoom": 12,
          "layout": {"visibility": "none", "symbol-placement": "line",
                     # small and close at country zoom, so a line still reads as track

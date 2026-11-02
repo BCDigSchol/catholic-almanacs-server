@@ -125,6 +125,18 @@ export class DashboardsComponent {
           icon: "hourglass_empty",
           title: "Lifespans and Turnover",
           description: "How long institutions lasted once the almanacs listed them — churches against schools and charities — how many came and went each year, and how often clergy left their posts."
+        },
+        {
+          link: "/dashboards/gender",
+          icon: "diversity_3",
+          title: "Who Ran It, Whom It Served",
+          description: "The schools, academies, asylums, hospitals and religious houses by who ran them, women's congregations, men religious, clergy or lay teachers, and whether they took girls, boys or both."
+        },
+        {
+          link: "/dashboards/means",
+          icon: "balance",
+          title: "Paying and Charity",
+          description: "Class without a census: academies and select schools that took paying pupils, free schools, the charities and whom they took in, what churches were built of, and the few fees the almanacs print."
         }
       ]
     },

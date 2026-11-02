@@ -33,6 +33,8 @@ export const routes: Routes = [
     { path: 'dashboards/cessions', loadComponent: () => import('./components/dashboards/cessions/cessions.component').then(m => m.CessionsComponent) },
     { path: 'dashboards/southwest', loadComponent: () => import('./components/dashboards/southwest/southwest.component').then(m => m.SouthwestComponent) },
     { path: 'dashboards/turnover', loadComponent: () => import('./components/dashboards/turnover/turnover.component').then(m => m.TurnoverComponent) },
+    { path: 'dashboards/gender', loadComponent: () => import('./components/dashboards/gender/gender.component').then(m => m.GenderComponent) },
+    { path: 'dashboards/means', loadComponent: () => import('./components/dashboards/means/means.component').then(m => m.MeansComponent) },
     { path: 'dashboards/data-issues', loadComponent: () => import('./components/dashboards/data-issues/data-issues.component').then(m => m.DataIssuesComponent) },
     { path: 'dashboards/languages', loadComponent: () => import('./components/dashboards/languages/languages.component').then(m => m.LanguagesComponent) },
     { path: 'dashboards/orders', loadComponent: () => import('./components/dashboards/religious-orders/religious-orders.component').then(m => m.ReligiousOrdersComponent) },

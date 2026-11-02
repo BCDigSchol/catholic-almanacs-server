@@ -41,8 +41,8 @@ const LISTED = [
 // a whole word (never "Indiana"); nations by name, but not ones that are also
 // common place names (Ottawa, Sioux, Osage)
 const NOTED = [
-    [/^\(?german\)?\.?$|\bgerman (church|ch\.|congregation|catholics?|children|orphans?|parish|settlement|people|population|parochial)/i, 'german'],
-    [/^\(?french\)?\.?$|\bfrench (church|ch\.|congregation|catholics?|canadians?|parish|settlement|people|population)/i, 'french'],
+    [/^\(?german\)?\.?$|\(german\)|\bgerman (church|ch\.|congregation|catholics?|children|orphans?|parish|settlement|people|population|parochial)/i, 'german'],
+    [/^\(?french\)?\.?$|\(french\)|\bfrench (church|ch\.|congregation|catholics?|canadians?|parish|settlement|people|population)/i, 'french'],
     [/\bpolish (church|congregation|catholics?|parish|settlement|people)/i, 'polish'],
     [/(sermon|service|instruction|preaching|confessions|mass)[^.;]{0,30}\bspanish\b|\bspanish[- ]speaking|\bmexican (population|congregation|people|catholics?|church)|\bmexicans\b/i, 'spanish'],
     [/\bbohemian (church|congregation|catholics?|parish|settlement|people)/i, 'bohemian'],

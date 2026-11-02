@@ -37,6 +37,10 @@ collection as maps, networks and charts.
   - the Southwest: land taken from Mexico, and Spanish-surnamed clergy
   - languages and congregations
   - the changing mix of institutions and clergy, lifespans and turnover
+  - who ran the schools and charities (women's congregations above all), and
+    whether they took girls or boys
+  - paying and charity: fee-paying and free schools, the charities and whom
+    they took in, and what churches were built of
   - clergy flows between dioceses, and religious orders
 - **Networks** of institutions and people:
   - ties by serving together or by moving from post to post
@@ -138,6 +142,8 @@ Every institution and person has a record page (`/institutions/:id`,
   that year (linked to its county page) and, where Royce mapped it, the Indian
   land cession(s) it stood on, with the nation, date and treaty. Land taken
   from Mexico says how and when (annexed with Texas, the Mexican Cession).
+- **Today** (institution pages): where the institution is today, with its
+  website, once a reviewer has confirmed it, and always a web search for it.
 - **Cite** gives a copyable citation of the record as viewed.
 
 ## County pages
@@ -175,7 +181,7 @@ Record pages link to it.
   records yet, where it did not exist yet, and known gaps such as the Civil
   War years. Beside it is a map of where records concentrate.
 
-- **Data Issues:** what to check or correct in the data. It has seven checks:
+- **Data Issues:** what to check or correct in the data. It has nine checks:
   - **people who may be one person:** a review queue of about 1,300 pairs of
     person ids, with the two careers side by side, scored by whether one
     career picks up where the other ends, the post and diocese at the
@@ -186,11 +192,21 @@ Record pages link to it.
   - records whose county isn't the county the place lay in that year
   - circuits over 500 miles
   - institution ids with an unknown diocese prefix
+  - **wording the markers miss:** notes that name a language, sisters,
+    brothers or nuns, girls and boys, or fees, free schools and the poor in
+    words the patterns don't read.
+    The markers run over every record each time the server starts, so records
+    added later are read the same way; this list shows the new wording to add.
+  - **where they are today:** a review queue of institutions beside the
+    Catholic churches, schools and hospitals on OpenStreetMap near them that
+    share their dedication. The reviewer picks the one that is the institution
+    today (its website comes with it), gives a link they found, or says none
+    is.
 
-  Each list downloads as a CSV. Decisions on duplicate people are kept in the
-  reviewer's browser and downloaded as a CSV. Added to
-  `server/data/person-decisions.csv`, the decided pairs leave the queue for
-  everyone.
+  Each list downloads as a CSV. Review decisions are kept in the reviewer's
+  browser and downloaded as a CSV. Added to `server/data/person-decisions.csv`
+  or `server/data/institution-links.csv`, the decided items leave the queue
+  for everyone, and confirmed links show on record pages.
 
 **Geography**
 
@@ -239,6 +255,20 @@ Record pages link to it.
   charities); and how often resident clergy left their posts, by year and by
   diocese. Each year is compared with the one before only where both have
   that diocese's records.
+- **Who Ran It, Whom It Served:** the schools, academies, colleges, asylums,
+  hospitals and religious houses by who the almanacs say ran them (a women's
+  congregation, named where the almanac names it; men religious; diocesan
+  clergy; lay teachers) and whether they took girls, boys or both: a map by
+  year, both over time, the kinds of work, and every congregation's
+  institutions year by year. The clergy lists name almost no women, so this
+  page reads women through the institutions they ran.
+- **Paying and Charity:** class without a census. The same works by whom
+  they served by means: academies, colleges, boarding and select schools that
+  took paying pupils; free schools; charities, by whom they took in (orphans,
+  reform and industrial schools, Good Shepherd refuges, the aged, foundlings,
+  servants, the poor); hospitals; and plain parish schools. Also what churches
+  were built of (stone, brick, frame, log), and every fee and building cost
+  the notes print, as examples.
 - **A Part Against the Whole:** one order, diocese or state against the
   national total, to see which grew faster.
 
@@ -313,7 +343,8 @@ A map that is given a year shows the country **as it was on 1 January of that
 year**:
 
 - **County lines and very light county names** of that date from zoom 6.
-  With no year chosen (a record's "All years"), the 1870 counties are shown.
+  With no year chosen (a record's "All years"), the 1870 counties, railroads,
+  canals and steamboat rivers are shown.
 - **States, territories and the national border** of that date. Land outside
   the United States of the time is tinted, so the Mexican Cession or the
   Oregon Country read as foreign before they were annexed.
@@ -432,7 +463,8 @@ summarises them.
   [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](LICENSE).
 - **Base map:** [Natural Earth](https://www.naturalearthdata.com/) (public
   domain), [OpenStreetMap](https://www.openstreetmap.org/copyright) land
-  polygons and street detail (ODbL, © OpenStreetMap contributors), and
+  polygons, street detail and the present-day places institutions are linked
+  to (ODbL, © OpenStreetMap contributors), and
   [GeoNames](https://www.geonames.org/) towns (CC BY 4.0).
 - **Historical boundaries:** *U.S. Historical States and Territories* and
   *U.S. Historical Counties*, Atlas of Historical County Boundaries, Dr. William M. Scholl Center for American

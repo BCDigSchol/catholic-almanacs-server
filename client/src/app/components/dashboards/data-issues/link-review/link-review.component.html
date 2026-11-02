@@ -1,0 +1,65 @@
+<div class="review-bar">
+    <label class="ctl">
+        <span>Your name, for the download</span>
+        <input class="control" type="text" [value]="reviewer" (change)="setReviewer($any($event.target).value)" placeholder="Initials or name">
+    </label>
+    <p class="review-count">
+        {{ matching | number }} {{ matching === 1 ? 'institution' : 'institutions' }} here · {{ decidedHere }} decided in this browser
+    </p>
+    <button type="button" class="btn" [disabled]="!decidedHere" (click)="download()">Download decisions</button>
+</div>
+
+<ol class="items">
+    @for (i of shown; track i.inst) {
+        <li class="item" [class.decided]="i.mine || i.decision">
+            <div class="then">
+                <h3 class="item-name">
+                    <a class="record-link inst" [routerLink]="['/institutions', i.inst]" [queryParams]="{ year: i.years[i.years.length - 1] }" target="_blank">{{ label(i.name, i.type) }}</a>
+                </h3>
+                <p class="item-meta">{{ i.place || 'no place given' }} · {{ span(i.years) }} · <span class="mono">{{ i.inst }}</span></p>
+                @if (i.others.length) { <p class="item-meta">Also listed as {{ i.others.join('; ') }}</p> }
+                @if (i.decision) { <p class="item-meta"><span class="tag">decided: {{ i.decision.decision }}</span></p> }
+            </div>
+
+            <ul class="candidates" [attr.aria-label]="'Places today that may be ' + label(i.name, i.type)">
+                @for (c of i.candidates; track c.osm) {
+                    <li class="candidate" [class.chosen]="i.mine?.decision === 'linked' && i.mine?.osm === c.osm">
+                        <button type="button" class="btn pick" [class.btn-primary]="i.mine?.decision === 'linked' && i.mine?.osm === c.osm"
+                            [attr.aria-pressed]="i.mine?.decision === 'linked' && i.mine?.osm === c.osm" (click)="pick(i, c)">This one</button>
+                        <div class="candidate-body">
+                            <p class="candidate-name">
+                                {{ c.name }}{{ ' ' }}<span class="tag strength" [attr.data-strength]="c.strength">{{ c.strength }}</span>
+                            </p>
+                            <p class="candidate-meta">
+                                {{ kinds[c.kind] }}, {{ c.km < 1 ? (c.km * 1000 | number: '1.0-0') + ' m' : (c.km | number: '1.0-1') + ' km' }} from the recorded place
+                                @if (c.start) { · founded {{ c.start }} }
+                                @if (c.denomination) { · <em>denomination not given</em> }
+                            </p>
+                            <p class="candidate-links">
+                                @if (c.website) { <a [href]="c.website" target="_blank" rel="noopener">{{ host(c.website) }}</a>{{ ' · ' }} }
+                                <a [href]="c.osmUrl" target="_blank" rel="noopener">OpenStreetMap</a>
+                                @if (c.wikipediaUrl) { {{ ' · ' }}<a [href]="c.wikipediaUrl" target="_blank" rel="noopener">Wikipedia</a> }
+                            </p>
+                        </div>
+                    </li>
+                }
+            </ul>
+
+            <div class="item-decide">
+                <label class="ctl other">
+                    <span>Or a link you found</span>
+                    <input class="control" type="url" placeholder="https://" [value]="ownUrl(i)"
+                        (change)="addUrl(i, $any($event.target).value)">
+                </label>
+                <button type="button" class="btn" [class.btn-primary]="i.mine?.decision === 'none'" [attr.aria-pressed]="i.mine?.decision === 'none'" (click)="mark(i, 'none')">None of these</button>
+                <button type="button" class="btn" [class.btn-primary]="i.mine?.decision === 'unsure'" [attr.aria-pressed]="i.mine?.decision === 'unsure'" (click)="mark(i, 'unsure')">Unsure</button>
+            </div>
+        </li>
+    } @empty {
+        <li class="item-empty">Nothing to review here.</li>
+    }
+</ol>
+
+@if (shown.length < matching) {
+    <button type="button" class="btn" (click)="more()">Show {{ matching - shown.length < 20 ? matching - shown.length : 20 }} more</button>
+}

@@ -549,7 +549,7 @@
     {
       "id": "transport-steamboat",
       "metadata": {
-        "almanac:dated": "show"
+        "almanac:dated": "latest"
       },
       "type": "line",
       "source": "transport",
@@ -611,7 +611,7 @@
     {
       "id": "transport-canals",
       "metadata": {
-        "almanac:dated": "show"
+        "almanac:dated": "latest"
       },
       "type": "line",
       "source": "transport",
@@ -668,7 +668,7 @@
     {
       "id": "transport-rail",
       "metadata": {
-        "almanac:dated": "show"
+        "almanac:dated": "latest"
       },
       "type": "line",
       "source": "transport",
@@ -727,7 +727,7 @@
     {
       "id": "transport-rail-ties",
       "metadata": {
-        "almanac:dated": "show"
+        "almanac:dated": "latest"
       },
       "type": "symbol",
       "source": "transport",

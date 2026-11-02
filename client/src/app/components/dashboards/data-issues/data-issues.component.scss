@@ -72,3 +72,10 @@
 .more {
     margin-top: var(--space-3);
 }
+
+// the word a marker looked for, as in browse's note matches
+.data-table mark {
+    background: none;
+    color: var(--rubric);
+    font-weight: 600;
+}

@@ -1062,6 +1062,151 @@ exports.getLanguages = async (req, res) => {
 
 
 /**
+ * GET /api/stats/gender?year=&diocese=&kind= — who ran the Church's works
+ * (schools, academies, colleges, asylums, hospitals, religious houses) and whom
+ * they served, from utils/gender.js. Institutions are counted once a year.
+ *   years          [{year, total, run: {women, mixed, men, clergy, lay, unstated},
+ *                    served: {girls, boys, both, unstated}}]  (diocese and kind)
+ *   kinds          the year's works by kind, each with its run counts (diocese)
+ *   congregations  [{id, label, sex, total, years: {year: institutions}}] (diocese and kind)
+ *   points         the year's works [lat, lng, instID, name, type, run, served, congregations]
+ *   meta           {kinds, run, served, dioceses}, each [{id, label}]
+ */
+exports.getGender = async (req, res) => {
+    const { loadGender, WOMEN, MEN } = require('../utils/gender');
+    const { ORDERS } = require('../utils/orders');
+    const g = await loadGender();
+    const diocese = String(req.query.diocese || '');
+    const kind = String(req.query.kind || '');
+    const years = [...new Set(g.works.map(w => w.year))].sort((a, b) => a - b);
+    const year = years.includes(Number(req.query.year)) ? Number(req.query.year) : years[years.length - 1];
+    const key = cacheKey('stats/gender', { year, diocese, kind });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    const inDio = g.works.filter(w => !diocese || w.dio === diocese);
+    const sel = inDio.filter(w => !kind || w.kind === kind);
+    const zero = list => Object.fromEntries(list.map(x => [x.id, 0]));
+    // one row per institution and year (a record listed twice counts once)
+    const once = list => {
+        const seen = new Set();
+        return list.filter(w => !seen.has(w.inst + '|' + w.year) && seen.add(w.inst + '|' + w.year));
+    };
+    const byYear = new Map(years.map(y => [y, { year: y, total: 0, run: zero(g.run), served: zero(g.served) }]));
+    for (const w of once(sel)) {
+        const row = byYear.get(w.year);
+        row.total++; row.run[w.run]++; row.served[w.served]++;
+    }
+    const kinds = g.kinds.map(k => ({ ...k, total: 0, run: zero(g.run) }));
+    for (const w of once(inDio.filter(w => w.year === year))) {
+        const k = kinds.find(k => k.id === w.kind);
+        k.total++; k.run[w.run]++;
+    }
+    const labels = new Map([...WOMEN.map(c => [c.id, { label: c.label, sex: 'women' }]),
+        ['unnamed', { label: 'Sisters, not named', sex: 'women' }],
+        ...MEN.map(c => [c.id, { label: c.label, sex: 'men' }]),
+        ...ORDERS.map(o => [o.id, { label: o.common, sex: 'men' }])]);
+    const congs = new Map();
+    for (const w of once(sel)) {
+        for (const [sex, ids] of [['women', w.women], ['men', w.men]]) {
+            for (const id of ids) {
+                const k = sex + ':' + id;
+                let c = congs.get(k);
+                if (!c) {
+                    const l = id === 'unnamed' ? { label: sex === 'women' ? 'Sisters, not named' : 'Brothers or fathers, not named' } : labels.get(id) || { label: id };
+                    congs.set(k, c = { id, label: l.label, sex, total: 0, years: {} });
+                }
+                c.total++;
+                c.years[w.year] = (c.years[w.year] || 0) + 1;
+            }
+        }
+    }
+    const label = (sex, id) => congs.get(sex + ':' + id)?.label || id;
+    const points = once(sel.filter(w => w.year === year && w.lat != null)).map(w => [w.lat, w.lng, w.inst, w.name, w.type, w.run, w.served,
+        [...w.women.map(id => label('women', id)), ...w.men.map(id => label('men', id))]]);
+    const dioIds = [...new Set(g.works.map(w => w.dio))].filter(d => d !== 'unknown');
+    const result = {
+        year, years: [...byYear.values()], kinds,
+        congregations: [...congs.values()].sort((a, b) => (a.sex === b.sex ? 0 : a.sex === 'women' ? -1 : 1) || b.total - a.total),
+        points,
+        meta: { kinds: g.kinds, run: g.run, served: g.served,
+            dioceses: dioIds.map(id => ({ id, label: dioceses.meta(id)?.displayName || id })).sort((a, b) => a.label.localeCompare(b.label)) },
+    };
+    networkCache.set(key, result);
+    res.json(result);
+};
+
+/**
+ * GET /api/stats/means?year=&diocese= — paying and charity (utils/means.js):
+ * the works by whom they served by means, charities by whom they took, what
+ * churches were built of, and every fee and building cost the notes give.
+ * Institutions are counted once a year.
+ *   years     [{year, works, access: {paying, both, free, parish, charity,
+ *              hospital, unstated}, charity: {orphans, …, other}, churches,
+ *              material: {stone, brick, frame, log}}]
+ *   points    the year's works [lat, lng, instID, name, type, access, charity]
+ *   dollars   [{inst, name, type, place, kind: fee|cost|other, amount, perYear, text, years}]
+ *   meta      {access, charity, material, dioceses}, each [{id, label}]
+ */
+exports.getMeans = async (req, res) => {
+    const { loadMeans } = require('../utils/means');
+    const m = await loadMeans();
+    const diocese = String(req.query.diocese || '');
+    const years = [...new Set(m.records.map(r => r.year))].sort((a, b) => a - b);
+    const year = years.includes(Number(req.query.year)) ? Number(req.query.year) : years[years.length - 1];
+    const key = cacheKey('stats/means', { year, diocese });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    const sel = m.records.filter(r => !diocese || r.dio === diocese);
+    const zero = list => Object.fromEntries(list.map(x => [x.id, 0]));
+    const byYear = new Map(years.map(y => [y, { year: y, works: 0, access: zero(m.access), charity: { ...zero(m.charity), other: 0 },
+        churches: 0, material: zero(m.material) }]));
+    const seen = new Set();
+    for (const r of sel) {
+        const k = r.inst + '|' + r.year;
+        if (seen.has(k)) continue;
+        seen.add(k);
+        const row = byYear.get(r.year);
+        if (r.access) {
+            row.works++; row.access[r.access]++;
+            if (r.access === 'charity') {
+                if (!r.charity.length) row.charity.other++;
+                for (const c of r.charity) row.charity[c]++;
+            }
+        }
+        if (r.material) { row.churches++; row.material[r.material]++; }
+    }
+    const points = [];
+    const shown = new Set();
+    for (const r of sel) {
+        if (r.year !== year || !r.access || r.lat == null || shown.has(r.inst)) continue;
+        shown.add(r.inst);
+        points.push([r.lat, r.lng, r.inst, r.name, r.type, r.access, r.charity]);
+    }
+    // each amount once per institution and wording, with the years it was printed
+    const dollars = new Map();
+    for (const r of sel) {
+        for (const d of r.dollars) {
+            const k = `${r.inst}|${d.amount}|${d.kind}`;
+            let x = dollars.get(k);
+            if (!x) dollars.set(k, x = { inst: r.inst, name: r.name, type: r.type, place: r.place, kind: d.kind, amount: d.amount,
+                perYear: d.perYear, text: d.text, years: [] });
+            if (!x.years.includes(r.year)) x.years.push(r.year);
+        }
+    }
+    const dioIds = [...new Set(m.records.map(r => r.dio))].filter(d => d !== 'unknown');
+    const result = {
+        year, years: [...byYear.values()], points,
+        dollars: [...dollars.values()].sort((a, b) => (a.kind === b.kind ? 0 : a.kind === 'fee' ? -1 : 1) || (b.perYear ?? b.amount) - (a.perYear ?? a.amount)),
+        meta: { access: m.access, charity: [...m.charity, { id: 'other', label: 'Asylums that do not say' }], material: m.material,
+            dioceses: dioIds.map(id => ({ id, label: dioceses.meta(id)?.displayName || id })).sort((a, b) => a.label.localeCompare(b.label)) },
+    };
+    networkCache.set(key, result);
+    res.json(result);
+};
+
+/**
  * GET /api/stats/data-issues?check= — things in the data to check or correct,
  * for the Data Issues page:
  *   summary      how many of each
@@ -1072,6 +1217,10 @@ exports.getLanguages = async (req, res) => {
  *   circuits     circuit links over MAX_CIRCUIT_MILES (a misplaced end)
  *   counties     institutions whose recorded county is not the county
  *                their point lies in that year (utils/county-check.js)
+ *   wording      notes using words the language, gender or means classifiers
+ *                look for that they did not read (new wording to add)
+ *   links        institutions with suggested present-day places to review
+ *                (utils/links.js)
  * Records outside their diocese's territory come from /stats/diocese-check.
  */
 exports.getDataIssues = async (req, res) => {
@@ -1123,6 +1272,38 @@ exports.getDataIssues = async (req, res) => {
             if (!check) return { available: false };
             return { available: true, ...check };
         },
+        // notes that use the words a classifier looks for but were not read by it:
+        // new wording to add to utils/languages.js or utils/gender.js
+        wording: async () => {
+            const { classify } = require('../utils/languages');
+            const { unreadGender } = require('../utils/gender');
+            const { unreadMeans } = require('../utils/means');
+            const LANG_WORD = /\b(german|french|spanish|mexican|polish|italian|bohemian|dutch|irish|indians?|colou?red|negro(es)?|african)\b/i;
+            const rows = await q(`SELECT instID, instName, instType, year, language, instNote FROM almanacRecords
+                                   WHERE year IS NOT NULL AND instNote IS NOT NULL AND instNote <> '' ORDER BY instID, year`);
+            const out = new Map();
+            const add = (r, marker, word) => {
+                const k = `${r.instID}|${marker}|${String(r.instNote).toLowerCase()}`;
+                let x = out.get(k);
+                if (!x) {
+                    const at = Math.max(0, String(r.instNote).toLowerCase().indexOf(word.toLowerCase()));
+                    out.set(k, x = { inst: r.instID, name: r.instName || '', type: r.instType || '', marker, word: word.toLowerCase(),
+                        note: String(r.instNote), at, years: [] });
+                }
+                x.years.push(Number(r.year));
+            };
+            for (const r of rows) {
+                const lw = LANG_WORD.exec(r.instNote);
+                if (lw && !classify(r.language, r.instName, r.instNote)) add(r, 'language', lw[1]);
+                for (const u of unreadGender(r.instName, r.instType, r.instNote) || []) add(r, u.marker, u.word);
+                for (const u of unreadMeans(r.instName, r.instType, r.instNote) || []) add(r, u.marker, u.word);
+            }
+            return { notes: [...out.values()] };
+        },
+        links: async () => {
+            const links = await require('../utils/links').loadLinks();
+            return { available: links.available, osmBase: links.osmBase, institutions: links.review };
+        },
         circuits: async () => {
             const { misplaced } = await circuitsData();
             const ids = [...new Set(misplaced.flatMap(m => [m[1], m[2]]))];
@@ -1147,7 +1328,7 @@ exports.getDataIssues = async (req, res) => {
     if (check === 'summary') {
         const review = await loadReview();
         const strength = s => review.pairs.filter(p => p.strength === s && !p.decision).length;
-        const [places, prefixes, circuits] = await Promise.all([builders.places(), builders.prefixes(), builders.circuits()]);
+        const [places, prefixes, circuits, wording] = await Promise.all([builders.places(), builders.prefixes(), builders.circuits(), builders.wording()]);
         result = {
             people: { strong: strength('strong'), likely: strength('likely'), possible: strength('possible'),
                 decided: review.pairs.filter(p => p.decision).length, people: review.people },
@@ -1155,10 +1336,19 @@ exports.getDataIssues = async (req, res) => {
             places: { records: places.records, institutions: places.institutions.length },
             prefixes: prefixes.prefixes.reduce((n, p) => n + p.records, 0),
             circuits: circuits.links.length,
+            wording: wording.notes.length,
             // null where the counties aren't built here
             counties: await (async () => {
                 const check = await require('../utils/county-check').loadCountyCheck();
                 return check ? check.mismatches.length : null;
+            })(),
+            // institutions with present-day places to review; null where not built here
+            links: await (async () => {
+                const links = await require('../utils/links').loadLinks();
+                if (!links.available) return null;
+                const open = links.review.filter(i => !i.decision);
+                return { open: open.length, strong: open.filter(i => i.strength === 'strong').length,
+                    linked: links.confirmed.size };
             })(),
             // null where the diocese territories aren't built here
             territories: await (async () => {

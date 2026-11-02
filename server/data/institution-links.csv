@@ -1,0 +1,7 @@
+# Present-day places for institutions, from the Data Issues page's link review
+# ("Download decisions"). decision: linked | none | unsure. osm: the
+# OpenStreetMap place chosen ("way/123"), or empty; url: its website, or a link
+# the reviewer gave. Only "linked" rows show on record pages, and a decided
+# institution leaves the review queue. Rebuild the API after editing
+# (docker compose up -d --build nodejs-prod).
+inst,decision,osm,url,reviewer,date,note

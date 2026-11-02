@@ -14,7 +14,7 @@
         }
     </nav>
 
-    @if (state.check === 'people') {
+    @if (state.check === 'people' || state.check === 'links') {
         <app-control-bar [chips]="chips" [clearAll]="clearAll">
             <app-segmented primary label="Strength" [showLabel]="true" [options]="strengthOptions" [value]="state.strength" (valueChange)="setStrength($event)"></app-segmented>
             <app-segmented primary label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
@@ -25,6 +25,31 @@
         @case ('people') {
             <app-viz-panel heading="People who may be one person" note="Two careers side by side, strongest evidence first" [state]="vizState" (retry)="retry()">
                 <app-people-review [pairs]="pairs" [strength]="state.strength" [show]="state.show"></app-people-review>
+            </app-viz-panel>
+        }
+        @case ('links') {
+            <app-viz-panel heading="Where they are today" [note]="'Catholic churches, schools and hospitals on OpenStreetMap near each institution that share its dedication' + (osmBase ? ', as of ' + osmBase : '')"
+                [state]="vizState" emptyText="The present-day places haven't been built on this server." (retry)="retry()">
+                <app-link-review [items]="linkItems" [strength]="state.strength" [show]="state.show"></app-link-review>
+            </app-viz-panel>
+        }
+        @case ('wording') {
+            <app-viz-panel heading="Wording the markers miss" note="Notes that name a language, sisters or brothers, or girls and boys, in words the patterns did not read" [state]="vizState" (retry)="retry()">
+                <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                <table class="data-table">
+                    <thead><tr><th>Institution</th><th>Marker</th><th>Note</th><th>Years</th></tr></thead>
+                    <tbody>
+                        @for (u of unread.slice(0, limit); track u.inst + u.marker + u.note) {
+                            <tr>
+                                <td data-label="Institution"><a class="record-link inst" [routerLink]="['/institutions', u.inst]" [queryParams]="{ year: u.years[u.years.length - 1] }">{{ label(u.name, u.type) }}</a></td>
+                                <td data-label="Marker">{{ u.marker }}</td>
+                                <td data-label="Note">{{ u.before }}<mark>{{ u.match }}</mark>{{ u.after }}</td>
+                                <td data-label="Years">{{ spans(u.years) }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (unread.length > limit) { <button type="button" class="btn more" (click)="more()">Show more ({{ unread.length - limit | number }} left)</button> }
             </app-viz-panel>
         }
         @case ('names') {
@@ -164,6 +189,8 @@
     <div notes>
         <p><strong>People who may be one person.</strong> Two person ids with the same surname whose given names fit (the same, or initials that agree: "E. J." and "Elisha J.") are scored on their careers. For: one picks up the year after the other ends, the same post or diocese at the handover, the same religious order. Against: both listed at different places in the same year, or in different orders. Pairs scoring below "possible" are not shown. Common surnames with more than 80 ids are left out, since pairing them blindly would bury the reviewer.</p>
         <p>Decisions are kept in your browser only. "Download decisions" gives a CSV; added to <span class="mono">server/data/person-decisions.csv</span> in the code, its pairs leave the queue for everyone, and the "same person" rows are the merges to make in the data.</p>
+        <p><strong>Wording the markers miss.</strong> The language, Spanish and Mexican, and who-ran-it and whom-it-served markers read every record each time the server starts, so records added later are read the same way. A note that names a language, sisters, brothers or nuns, or girls and boys in words the patterns don't know is listed here, so the wording can be added to <span class="mono">server/utils/languages.js</span> or <span class="mono">server/utils/gender.js</span>. Some are not markers at all ("a Spanish professor"): those can be left.</p>
+        <p><strong>Where they are today.</strong> For each institution, the Catholic churches, schools, colleges, hospitals and convents in OpenStreetMap (© OpenStreetMap contributors, ODbL) within about 25 km of its recorded place whose names share its dedication: "St. Mary's Church" and "Saint Mary Catholic Church". Strong suggestions are close, share the whole dedication, and have no rival nearby. A dedication is common, parishes moved, merged and were renamed, and many records are placed at their town rather than their street, so every link is confirmed by a person: choose the place that is the institution today (its website comes with it), give a link you found, or say none of them is. Decisions download as a CSV for <span class="mono">server/data/institution-links.csv</span>; linked institutions show their present-day place and website on their record pages.</p>
         <p><strong>Other checks.</strong> A person id listed under surnames that are not spellings of one another; institutions with years that have no coordinates (so they are missing from every map); records placed in the territory of a diocese other than the one they were listed under (the territories are themselves a work in progress); the county the almanac gave against the county the place lay in that year (from the Newberry's historical counties); circuit links over 500 miles; and institution ids whose prefix names no diocese in the diocese timeline.</p>
     </div>
 </app-dashboard-shell>

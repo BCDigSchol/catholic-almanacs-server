@@ -32,6 +32,18 @@ exports.getInstitutionLand = async (req, res) => {
 };
 
 /**
+ * GET /api/institution/:id/links — where the institution is today, if a
+ * reviewer has confirmed it (utils/links.js): {links: [{name, website, osm,
+ * wikipedia, checked}]}. Empty until reviewed.
+ */
+exports.getInstitutionLinks = async (req, res) => {
+    const { confirmed } = await require('../utils/links').loadLinks();
+    const id = String(req.params.id);
+    const ids = [...new Set([id, ...id.split(/[&=]/)].filter(Boolean))];
+    res.json({ links: ids.map(i => confirmed.get(i)).filter(Boolean) });
+};
+
+/**
  * GET /api/place/county/:id — a historical county (the Newberry atlas's id,
  * e.g. "ohs_noble") and everything the almanacs recorded in it:
  *   county       {id, name, state}

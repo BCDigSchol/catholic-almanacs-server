@@ -15,7 +15,9 @@ Two containers share one volume of tiles:
   Five JSON files for the API go beside them: `transport-distances.json`,
   `diocese-territories.json`, `record-counties.json`, `record-cessions.json`
   and `mexican-lands.json` (written by the `history` build when the DB is up:
-  which records stand on land taken from Mexico, and how).
+  which records stand on land taken from Mexico, and how), plus
+  `link-candidates.json` (the `links` build: present-day OpenStreetMap places
+  that may be each institution, for the Data Issues review).
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
@@ -34,6 +36,7 @@ docker compose run --rm tiles-build transport  # railroads, canals, steamboat ri
 docker compose run --rm tiles-build dioceses   # diocese territories by year: a minute (places records if the DB is up)
 docker compose run --rm tiles-build counties   # county lines by year: a minute and a half (places records if the DB is up)
 docker compose run --rm tiles-build cessions   # Indian land cessions: seconds (places records if the DB is up)
+docker compose run --rm tiles-build links      # present-day places to link institutions to: needs the DB; the first run downloads the states (as detail does)
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```

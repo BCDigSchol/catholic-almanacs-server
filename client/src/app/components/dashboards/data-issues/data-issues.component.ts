@@ -9,6 +9,7 @@ import { ControlBarComponent, ControlChip } from '../../common/control-bar/contr
 import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { PeopleReviewComponent, ReviewPair } from './people-review/people-review.component';
+import { LinkReviewComponent, LinkItem } from './link-review/link-review.component';
 import { UrlState } from '../../../utils/url-state';
 import { institutionLabel } from '../../../utils/record-labels';
 import { citation, downloadTable } from '../../../utils/network-export';
@@ -22,6 +23,8 @@ interface Summary {
   circuits: number;
   territories: number | null;
   counties: number | null;
+  links: { open: number; strong: number; linked: number } | null;
+  wording: number;
 }
 interface NameConflict { id: string; name: string; names: { name: string; n: number }[]; years: string; }
 interface Unplaced { inst: string; name: string; type: string; place: string; diocese: string; years: number[]; }
@@ -29,6 +32,7 @@ interface Prefix { prefix: string; records: number; listedAs: string[]; examples
 interface LongLink { year: number; miles: number; from: LinkEnd; to: LinkEnd; }
 interface LinkEnd { inst: string; name: string; type: string; place: string; lat: number | null; lng: number | null; }
 interface TerritoryYear { year: number; placed: number; agree: number; }
+interface Unread { inst: string; name: string; type: string; marker: string; word: string; note: string; at: number; years: number[]; }
 interface CountyMismatch { inst: string; name: string; type: string; place: string; years: number[]; recorded: string; county: string; state: string; }
 
 const DEFAULTS = { check: 'people', strength: 'strong', show: 'open' };
@@ -38,11 +42,12 @@ const PAGE = 50;
  * Data Issues: what in the data to check or correct, one check at a time.
  * People who may be one person (reviewed in app-people-review), ids listed
  * under several surnames, institutions without a place, records outside their
- * diocese's territory, circuits too long to ride, and unknown id prefixes.
+ * diocese's territory, circuits too long to ride, unknown id prefixes, and
+ * present-day places for institutions (reviewed in app-link-review).
  */
 @Component({
   selector: 'app-data-issues',
-  imports: [DecimalPipe, RouterLink, DashboardShellComponent, ControlBarComponent, SegmentedComponent, VizPanelComponent, PeopleReviewComponent],
+  imports: [DecimalPipe, RouterLink, DashboardShellComponent, ControlBarComponent, SegmentedComponent, VizPanelComponent, PeopleReviewComponent, LinkReviewComponent],
   templateUrl: './data-issues.component.html',
   styleUrl: './data-issues.component.scss'
 })
@@ -69,6 +74,8 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   limit = PAGE;
 
   pairs: ReviewPair[] = [];
+  linkItems: LinkItem[] = [];
+  osmBase = '';
   names: NameConflict[] = [];
   unplaced: Unplaced[] = [];
   prefixes: Prefix[] = [];
@@ -76,6 +83,7 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   territoryYears: TerritoryYear[] = [];
   countyCheck: { placed: number; agree: number; unrecorded: number } | null = null;
   countyMismatches: CountyMismatch[] = [];
+  unread: (Unread & { before: string; match: string; after: string })[] = [];
 
   private loaded = new Set<string>();
   private url: UrlState<typeof DEFAULTS>;
@@ -93,7 +101,7 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
     this.subs.push(this.url.changes().subscribe(state => {
       if (state.check !== this.state.check) this.limit = PAGE;
       this.state = state;
-      this.chips = state.check === 'people' && state.strength !== DEFAULTS.strength
+      this.chips = (state.check === 'people' || state.check === 'links') && state.strength !== DEFAULTS.strength
         ? [{ label: `Strength: ${this.strengthOptions.find(o => o.value === state.strength)?.label}`, clear: () => this.url.set({ strength: DEFAULTS.strength }) }]
         : [];
       this.load(state.check);
@@ -136,6 +144,10 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
       { id: 'territories', label: 'Outside their diocese’s territory', count: s?.territories ?? null, note: 'records, all years, against the territories drawn' },
       { id: 'counties', label: 'In another county', count: s?.counties ?? null, note: 'the county given is not the county the place lay in that year' },
       { id: 'circuits', label: 'Circuits too long to ride', count: s?.circuits ?? null, note: 'over 500 miles: an end is misplaced' },
+      { id: 'wording', label: 'Wording the markers miss', count: s?.wording ?? null,
+        note: 'notes about a language, who ran a work or whom it served that the patterns did not read' },
+      { id: 'links', label: 'Where they are today', count: s?.links?.open ?? null,
+        note: s?.links ? `places to confirm, ${s.links.strong} strong; ${s.links.linked} linked so far` : 'present-day places and websites to confirm' },
       { id: 'prefixes', label: 'Unknown diocese prefixes', count: s?.prefixes ?? null, note: 'records whose id names no diocese in the timeline' },
     ];
     if (s) {
@@ -159,10 +171,19 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
     this.subs.push(this.api.getTypeRequest(`stats/data-issues?check=${check}`).subscribe({
       next: (res: any) => {
         if (check === 'people') this.pairs = res.pairs;
+        if (check === 'links') {
+          if (!res.available) { this.vizState = 'empty'; return; }
+          this.linkItems = res.institutions;
+          this.osmBase = res.osmBase ? String(res.osmBase).slice(0, 10) : '';
+        }
         if (check === 'names') this.names = res.ids;
         if (check === 'places') this.unplaced = res.institutions;
         if (check === 'prefixes') this.prefixes = res.prefixes;
         if (check === 'circuits') this.longLinks = res.links;
+        if (check === 'wording') this.unread = (res.notes as Unread[]).map(n => ({ ...n,
+          before: (n.at > 60 ? '…' : '') + n.note.slice(Math.max(0, n.at - 60), n.at),
+          match: n.note.slice(n.at, n.at + n.word.length),
+          after: n.note.slice(n.at + n.word.length, n.at + n.word.length + 90) + (n.note.length > n.at + n.word.length + 90 ? '…' : '') }));
         if (check === 'counties') {
           if (!res.available) { this.vizState = 'empty'; return; }
           this.countyCheck = { placed: res.placed, agree: res.agree, unrecorded: res.unrecorded };
@@ -194,6 +215,9 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
       case 'counties':
         return downloadTable(name, this.countyMismatches.map(c => ({ institution: c.inst, name: this.label(c.name, c.type), place: c.place,
           county_given: c.recorded, county_that_year: c.county, state: c.state, years: this.spans(c.years) })), note);
+      case 'wording':
+        return downloadTable(name, this.unread.map(u => ({ institution: u.inst, name: this.label(u.name, u.type), marker: u.marker, word: u.word,
+          note: u.note, years: this.spans(u.years) })), note);
       case 'prefixes':
         return downloadTable(name, this.prefixes.map(p => ({ prefix: p.prefix, records: p.records, listed_as: p.listedAs, examples: p.examples.map(e => `${e.inst} (${e.year})`) })), note);
     }

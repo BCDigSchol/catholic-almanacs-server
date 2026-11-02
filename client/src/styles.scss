@@ -229,8 +229,10 @@ body {
 
 /* Label / value pairs, set as a directory sets them: an italic label, a
    dotted leader running to the value. */
-// a record's land: each cession on its own line, the number and treaty quiet
-.fact-list .cession {
+// a record's land: each cession on its own line, the number and treaty quiet;
+// likewise its present-day places
+.fact-list .cession,
+.fact-list .today {
     display: block;
 
     .muted {

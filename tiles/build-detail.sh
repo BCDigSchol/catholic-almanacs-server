@@ -64,6 +64,8 @@ while read -r state url; do
       nwr/natural=water \
       wr/leisure=park \
       wr/landuse=cemetery wr/amenity=grave_yard
+    # the same download's churches, schools and hospitals, for build-links.sh
+    bash "$HERE/filter-places.sh" "$WORK/src/states/$state.osm.pbf" "$WORK/src/states/$state.places.osm.pbf"
     rm -f "$WORK/src/states/$state.osm.pbf"
   fi
   filtered+=("$out")

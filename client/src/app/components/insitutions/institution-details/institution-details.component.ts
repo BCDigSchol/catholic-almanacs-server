@@ -109,6 +109,10 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   land: { year: number; county: { id: string; name: string; state: string } | null; mexico: string;
     cessions: { number: string; tribes: string; date: string; before: number; treaty: string; schedule: string }[] } | null = null;
   dioceseInfo: any[] = [];
+  /** Where it is today, once a reviewer has confirmed it (GET institution/:id/links). */
+  todayLinks: { name: string; website: string | null; osm: string | null; wikipedia: string | null; checked: string | null }[] = [];
+  /** A web search for it today, from its latest name and place. */
+  searchUrl = '';
 
   network: any = { nodes: [], edges: [] };
   networkLoading = false;
@@ -156,6 +160,10 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     this.subs.push(id$.pipe(
       switchMap(id => this.api.getTypeRequest(`institution/${id}/land`).pipe(catchError(() => of(null)))),
     ).subscribe((res: any) => { this.landYears = res?.years ?? []; this.updateLand(); }));
+    // its present-day place and website, if reviewed (utils/links.js)
+    this.subs.push(id$.pipe(
+      switchMap(id => this.api.getTypeRequest(`institution/${id}/links`).pipe(catchError(() => of(null)))),
+    ).subscribe((res: any) => this.todayLinks = res?.links ?? []));
     // who served here over the years, and where they came from and went to
     this.subs.push(id$.pipe(
       switchMap(id => this.api.getTypeRequest(`institution/${id}/succession`).pipe(catchError(() => of(null)))),
@@ -344,6 +352,9 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     this.unnamed = !!current && isUnnamed(current.name);
     this.kind = current?.type || 'Institution';
     this.place = current ? placeLabel(current.city, current.state) : '';
+    const last = this.timeline[this.timeline.length - 1];
+    const words = last && [isUnnamed(last.name) ? `Catholic ${last.type || 'church'}` : last.name, last.city, last.state].filter(Boolean).join(' ');
+    this.searchUrl = words ? `https://duckduckgo.com/?q=${encodeURIComponent(words)}` : '';
     // Latest spelling first; variants that differ only in spacing or
     // punctuation ("St. Louis" / "StLouis") count as one diocese.
     const seen = new Set<string>();

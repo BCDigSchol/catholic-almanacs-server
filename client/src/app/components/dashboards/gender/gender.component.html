@@ -1,0 +1,140 @@
+<app-dashboard-shell
+    title="Who Ran It, Whom It Served"
+    purpose="The Church's schools, academies, asylums, hospitals and religious houses by who the almanacs say ran them, women's congregations, men religious, clergy or lay teachers, and whether they served girls, boys or both."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Charts show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Kind of work</span>
+                <select class="control" (change)="setKind($any($event.target).value)">
+                    <option value="" [selected]="!state.kind">All works</option>
+                    @for (k of kindOptions; track k.id) {
+                        <option [value]="k.id" [selected]="k.id === state.kind">{{ k.label }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setDiocese($any($event.target).value)">
+                    <option value="" [selected]="!state.diocese">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.label }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">works listed, {{ year }}</dt>
+                <dd class="stat-value">{{ current.total | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">run by women religious</dt>
+                <dd class="stat-value">{{ current.run['women'] + current.run['mixed'] | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">by men religious</dt>
+                <dd class="stat-value">{{ current.run['men'] + current.run['mixed'] | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">for girls · for boys · both</dt>
+                <dd class="stat-value">{{ current.served['girls'] }} · {{ current.served['boys'] }} · {{ current.served['both'] }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel [heading]="'The works in ' + (year ?? '')" note="Each work coloured by who ran it; click one to open its record"
+        [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+        <ul key class="legend">
+            @for (r of run; track r.id) {
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="runInk[r.id]"></span>{{ r.label }}</li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="gender-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            [dioceses]="!!state.diocese"
+            [dioceseFocus]="state.diocese || null"
+            label="Works by who ran them"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="two-up">
+        <app-viz-panel heading="Who ran the works" [note]="'Each year' + (state.show === 'share' ? ', as a share of the works listed' : '') + '; click a year to show it'"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+            <ul key class="legend">
+                @for (r of run; track r.id) {
+                    <li class="legend-item"><span class="legend-swatch" [style.background]="runInk[r.id]"></span>{{ r.label }}</li>
+                }
+            </ul>
+            <div class="chart" #runChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel heading="Whom they served" [note]="'Works that say whether they took girls, boys or both' + (current ? ' (' + (current.served['unstated'] | number) + ' in ' + year + ' do not say)' : '')"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item"><span class="legend-swatch" [style.background]="servedInk['girls']"></span>Girls</li>
+                <li class="legend-item"><span class="legend-swatch" [style.background]="servedInk['both']"></span>Girls and boys</li>
+                <li class="legend-item"><span class="legend-swatch" [style.background]="servedInk['boys']"></span>Boys</li>
+            </ul>
+            <div class="chart" #servedChart></div>
+        </app-viz-panel>
+    </div>
+
+    <app-viz-panel [heading]="'Kinds of work, ' + (year ?? '')" [note]="'Who ran each kind' + (state.diocese ? ' in the Diocese of ' + nameOf(dioceseOptions, state.diocese) : '')" [state]="vizState" (retry)="fetchData()">
+        <ul class="kind-bars">
+            @for (k of kindRows; track k.id) {
+                <li>
+                    <span class="kind-label">{{ k.label }} <span class="muted">{{ k.total | number }}</span></span>
+                    <span class="kind-bar" role="img" [attr.aria-label]="k.label + ': ' + k.total + ' works'">
+                        @for (p of k.parts; track p.id) {
+                            <span class="seg" [style.width.%]="p.pct" [style.background]="runInk[p.id]" [title]="nameOf(run, p.id) + ': ' + p.n"></span>
+                        }
+                    </span>
+                </li>
+            }
+        </ul>
+    </app-viz-panel>
+
+    <app-viz-panel heading="The congregations" [note]="'Institutions each named congregation ran, each year' + (state.kind ? ' (' + nameOf(kindOptions, state.kind).toLowerCase() + ')' : '')" [state]="vizState" (retry)="fetchData()">
+        <div class="grid-wrap">
+            <table class="cong-grid">
+                <thead>
+                    <tr><th scope="col">Congregation</th>@for (y of years; track y) { <th scope="col" class="yr" [class.current]="y === year">{{ y }}</th> }</tr>
+                </thead>
+                <tbody>
+                    @for (c of grid; track c.label + c.sex) {
+                        <tr [class.men]="c.sex === 'men'">
+                            <th scope="row">{{ c.label }}</th>
+                            @for (cell of c.cells; track cell.year) {
+                                <td [style.background]="cell.bg" [style.color]="cell.fg" [class.current]="cell.year === year" [title]="c.label + ', ' + cell.year + ': ' + cell.n">{{ cell.n || '' }}</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @if (gridCount > 16) {
+            <button type="button" class="btn more" (click)="toggleGrid()">{{ gridAll ? 'Show the largest 16' : 'Show all ' + gridCount }}</button>
+        }
+    </app-viz-panel>
+
+    <div notes>
+        <p><strong>The works.</strong> Every record whose type is a school, academy, college, seminary, asylum, home, hospital, infirmary, convent or other religious house; parishes, chapels and stations are left out. Each institution counts once a year.</p>
+        <p><strong>Who ran it.</strong> Read from the record's name, type and note: a women's congregation named ("under the charge of the Sisters of Charity", "Ursuline Convent"), men religious ("the Christian Brothers", "Jesuits"), or lay teachers. A convent with no men named is counted as a women's house. Where the almanac says nothing, the clergy listed there stand in: men religious if their names carry an order (S.J., C.SS.R.), else diocesan clergy. "Women and men religious" are schools split between them, "boys under the Christian Brothers, girls under the Sisters of St. Joseph". "Sisters, not named" are works the almanac gives to sisters, nuns or a convent without naming the congregation.</p>
+        <p><strong>Whom it served.</strong> Girls ("Female Orphan Asylum", "for young ladies"), boys ("Male Parish School", "for boys") or both. Most records don't say, and the 1830s almanacs say least of all.</p>
+        <p><strong>What this cannot show.</strong> The almanacs list clergy by name, and almost never women: sisters appear as congregations running institutions, not as people. The counts are of institutions, not of the sisters, brothers or pupils in them, and a work the almanac listed without a note counts as "not stated" however it was run. These markers are read from every record each time the data is loaded, so records added later are read the same way; notes in wording the patterns don't know are listed on the Data Issues page.</p>
+    </div>
+</app-dashboard-shell>

@@ -1,0 +1,127 @@
+<app-dashboard-shell
+    title="Paying and Charity"
+    purpose="Class in the almanacs without a census: which schools took paying pupils and which were free, the charities and whom they took in, what churches were built of, and the few fees and building costs the notes give."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Charts show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setDiocese($any($event.target).value)">
+                    <option value="" [selected]="!state.diocese">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.label }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">took paying pupils, {{ year }}</dt>
+                <dd class="stat-value">{{ current.access['paying'] + current.access['both'] | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">kept free schools</dt>
+                <dd class="stat-value">{{ current.access['free'] + current.access['both'] | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">charities</dt>
+                <dd class="stat-value">{{ current.access['charity'] | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">hospitals</dt>
+                <dd class="stat-value">{{ current.access['hospital'] | number }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel [heading]="'The works in ' + (year ?? '')" note="Each school, academy, college, asylum and hospital coloured by whom it served by means; click one to open its record"
+        [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+        <ul key class="legend">
+            @for (a of access; track a.id) {
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="accessInk[a.id]"></span>{{ a.label }}</li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="means-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            [dioceses]="!!state.diocese"
+            [dioceseFocus]="state.diocese || null"
+            label="Works by whom they served by means"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="two-up">
+        <app-viz-panel heading="Paying, free and charity" [note]="'Each year' + (state.show === 'share' ? ', as a share of the works listed' : '') + '; click a year to show it'"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+            <ul key class="legend">
+                @for (a of access; track a.id) {
+                    <li class="legend-item"><span class="legend-swatch" [style.background]="accessInk[a.id]"></span>{{ a.label }}</li>
+                }
+            </ul>
+            <div class="chart" #accessChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel heading="Whom the charities took" note="Asylums, homes and refuges by whom their name or note says they took in"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <ul key class="legend">
+                @for (c of charity; track c.id) {
+                    <li class="legend-item"><span class="legend-swatch" [style.background]="charityInk[c.id]"></span>{{ c.label }}</li>
+                }
+            </ul>
+            <div class="chart" #charityChart></div>
+        </app-viz-panel>
+    </div>
+
+    <div class="two-up">
+        <app-viz-panel heading="What churches were built of" [note]="'Churches whose note says' + (current ? ' (' + current.churches + ' in ' + year + ')' : '') + '; a rough mark of a parish’s means'"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <ul key class="legend">
+                @for (m of material; track m.id) {
+                    <li class="legend-item"><span class="legend-swatch" [style.background]="materialInk[m.id]"></span>{{ m.label }}</li>
+                }
+            </ul>
+            <div class="chart" #materialChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel heading="What it cost" note="Every fee and building cost the notes give, all years: examples, too few to count" [state]="vizState" (retry)="fetchData()">
+            <h3 class="sub">Fees</h3>
+            <ul class="entries dollars">
+                @for (f of fees; track f.inst + f.amount) {
+                    <li>
+                        <span class="amount">{{ f.perYear ? '$' + (f.perYear | number) + ' a year' : '$' + (f.amount | number) }}</span>{{ ' ' }}
+                        <a class="record-link inst" [routerLink]="['/institutions', f.inst]" [queryParams]="{ year: f.years[f.years.length - 1] }">{{ label(f.name, f.type) }}</a>{{ f.place ? ', ' + f.place : '' }}{{ ' ' }}<span class="muted">({{ f.when }}): “…{{ f.text }}…”</span>
+                    </li>
+                } @empty { <li class="muted">None stated.</li> }
+            </ul>
+            <h3 class="sub">Buildings and endowments</h3>
+            <ul class="entries dollars">
+                @for (c of costs; track c.inst + c.amount) {
+                    <li>
+                        <span class="amount">${{ c.amount | number }}</span>{{ ' ' }}
+                        <a class="record-link inst" [routerLink]="['/institutions', c.inst]" [queryParams]="{ year: c.years[c.years.length - 1] }">{{ label(c.name, c.type) }}</a>{{ c.place ? ', ' + c.place : '' }}{{ ' ' }}<span class="muted">({{ c.when }}): “…{{ c.text }}…”</span>
+                    </li>
+                } @empty { <li class="muted">None stated.</li> }
+            </ul>
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p><strong>The works.</strong> Every record whose type is a school, academy, college, asylum, home, hospital or infirmary, once an institution a year; parishes and religious houses alone are left out.</p>
+        <p><strong>Paying and free.</strong> Paying: academies, colleges and boarding schools by their type, and any work whose note speaks of select or pay schools, boarders, board and tuition, or terms by the year, session or quarter. Free: free schools ("free school", "gratuitous", "without charge"). Some kept both ("select and free schools"). Most parish schools say neither; many charged small fees and excused the poor, which the almanacs don't record.</p>
+        <p><strong>Charity.</strong> Asylums, homes and refuges, by whom their name or note says they took in: orphans, boys sent to reform or industrial schools, women in Good Shepherd and Magdalen refuges, the aged, infants and foundlings, servants and working girls, the poor. Hospitals are counted apart: they took paying and charity patients alike.</p>
+        <p><strong>Churches.</strong> What a church's note says it was built of (stone, brick, frame or wood, log). Few notes say, so this follows the parishes the almanac chose to describe, not every parish.</p>
+        <p><strong>What this cannot show.</strong> There is no census here: these are the institutions' own descriptions, not the incomes of the people in them. Fees and costs are printed for a handful of institutions only and are shown as examples. A fee by the month is counted as ten months, by the session as two, by the quarter as four. These markers are read from every record each time the data is loaded, so records added later are read the same way; notes in wording the patterns don't know are listed on the Data Issues page.</p>
+    </div>
+</app-dashboard-shell>
