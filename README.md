@@ -131,6 +131,14 @@ Every institution and person has a record page (`/institutions/:id`,
   railroads, canals and steamboat rivers of that year, mapped and charted over
   time. This tests whether the Church followed the water, then the railroad.
 
+- **Languages and Congregations:** where the almanacs marked a church,
+  school or mission as German, French, Polish, Bohemian, Dutch, Italian,
+  Spanish or Irish, or as serving Native American or Black Catholics. It has
+  a map by year, a small chart for each category over time, a table of
+  dioceses, and a CSV. Marks come from the almanac's language column, where
+  English is the default, and from narrowly matched phrases in names and
+  notes ("German Church", "Indian Mission", "for colored children").
+
 **Change over time**
 
 - **The Shape of the Church:** how the mix of institutions (parishes, schools,

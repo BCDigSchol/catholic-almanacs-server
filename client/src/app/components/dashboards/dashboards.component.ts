@@ -71,6 +71,12 @@ export class DashboardsComponent {
           icon: "train",
           title: "Rails and Rivers",
           description: "Did the church follow the water, then the railroad? How near each year's institutions stood to the railroads, canals and steamboat rivers of that year, mapped and charted over time."
+        },
+        {
+          link: "/dashboards/languages",
+          icon: "translate",
+          title: "Languages and Congregations",
+          description: "Where the almanacs marked German, French, Polish and Bohemian parishes, Native American missions and Black congregations — mapped year by year, each traced over time."
         }
       ]
     },

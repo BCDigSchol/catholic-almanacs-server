@@ -1,0 +1,107 @@
+<app-dashboard-shell
+    title="Languages and Congregations"
+    purpose="Where the almanacs marked a church, school or mission as German, French, Polish or another language, or as serving Native American or Black Catholics, year by year."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <label primary class="ctl">
+            <span>Marked</span>
+            <select class="control" (change)="setLang($any($event.target).value)">
+                <option value="" [selected]="!state.lang">Any language or people</option>
+                @for (c of categories; track c.id) {
+                    <option [value]="c.id" [selected]="c.id === state.lang">{{ c.label }}</option>
+                }
+            </select>
+        </label>
+    </app-control-bar>
+
+    @if (year) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">institutions marked{{ state.lang ? ' ' + labelFor(state.lang) : '' }}, {{ year }}</dt>
+                <dd class="stat-value">{{ marked | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">of all {{ total | number }} recorded</dt>
+                <dd class="stat-value">{{ total ? (100 * marked / total | number: '1.0-1') : 0 }}%</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">dioceses</dt>
+                <dd class="stat-value">{{ dioceseRows.length | number }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="(state.lang ? labelFor(state.lang) : 'Languages and congregations') + (year ? ', ' + year : '')"
+        [note]="unplaced ? unplaced + ' without a place are not mapped' : 'Click a place to open it for the year'"
+        [state]="vizState"
+        [hasKey]="true"
+        [emptyText]="'The almanac marked none ' + (state.lang ? labelFor(state.lang) : 'this way') + ' in ' + year + '.'"
+        (retry)="fetchData()">
+        <div panel-actions>
+            <button type="button" class="btn" (click)="downloadCsv()">CSV</button>
+        </div>
+        <ul key class="legend lang-key" aria-label="Languages and peoples (click to show one)">
+            @for (k of key; track k.id) {
+                <li>
+                    <button type="button" class="legend-item" [class.off]="(state.lang && k.id !== state.lang) || !k.count"
+                        [attr.aria-pressed]="k.id === state.lang" (click)="toggleLang(k.id)">
+                        <span class="legend-swatch dot" [style.background]="ink[k.id]"></span>{{ k.label }}
+                        <span class="count">{{ k.count | number }}</span>
+                    </button>
+                </li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1300" idPrefix="lang-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            label="Languages and congregations"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="lang-lower">
+        <app-viz-panel
+            heading="Each over the years"
+            note="Institutions marked each year, each on its own scale; click one to show it"
+            [state]="categories.length ? 'ready' : vizState"
+            (retry)="fetchData()">
+            <div class="chart multiples" #multiples></div>
+        </app-viz-panel>
+
+        <app-viz-panel
+            [heading]="'Dioceses' + (year ? ', ' + year : '')"
+            [note]="'Where institutions marked ' + (state.lang ? labelFor(state.lang) : 'any way') + ' were listed'"
+            [state]="vizState"
+            [emptyText]="'None in ' + year + '.'"
+            (retry)="fetchData()">
+            <table class="data-table">
+                <thead><tr><th>Diocese</th><th class="num">Institutions</th></tr></thead>
+                <tbody>
+                    @for (d of allDioceses ? dioceseRows : dioceseRows.slice(0, 15); track d.id) {
+                        <tr>
+                            <td data-label="Diocese">{{ d.name }}</td>
+                            <td data-label="Institutions" class="num">{{ d.count | number }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @if (!allDioceses && dioceseRows.length > 15) {
+                <button type="button" class="btn show-all" (click)="showAllDioceses()">Show all {{ dioceseRows.length }}</button>
+            }
+        </app-viz-panel>
+    </div>
+
+    <div notes>
+        <p>Every record carries a language, "English" unless the almanac said otherwise, so English is the background here, not a finding. The almanac's own words in that column ("German", "French and Menomony", "Sermon in French and occasionally English") are split into each language they name; a church marked "German and English" counts as German.</p>
+        <p>Some congregations are marked only in their name or note: "German Church", "a large German congregation", "Indian Mission", "for colored children". Those are read with narrow phrases (never "Indiana", nor nations whose names are also places, such as Ottawa or Sioux), and the map says when a mark came from a note. In all, {{ sources.listed | number }} records are marked in the language column and {{ sources.note | number }} in a name or note.</p>
+        <p>"Native American" gathers missions the almanac called Indian and those it named by nation (Chippewa, Potawatomi, Menominee, Winnebago, Penobscot, Passamaquoddy, Papago, Navajo). "Black congregations" gathers the almanac's "African" and its churches, chapels and schools "for colored people" or "children". These are the almanac's words, kept so the records can be found; they mark who a place served, not a language.</p>
+        <p>The almanac marked a language unevenly: some dioceses noted every German parish, others none, and the 1830s volumes say little. Counts are a floor. The CSV lists the year's records with where each mark was found.</p>
+    </div>
+</app-dashboard-shell>

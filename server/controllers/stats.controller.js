@@ -1007,3 +1007,50 @@ exports.getDioceseCheck = async (req, res) => {
     networkCache.set(key, result);
     res.json(result);
 };
+
+/**
+ * GET /api/stats/languages — institutions the almanacs marked as serving a
+ * language other than English, or a particular people (utils/languages.js).
+ * One cached response:
+ *   categories  [{id, label, kind, records}]
+ *   years       [{year, total, counts: {category: institutions}}]; total is
+ *               every institution recorded that year (for shares)
+ *   points      [[lat, lng, instID, name, type, year, categories, source, dioceseId]]
+ *               (lat/lng null where the record has no place)
+ *   dioceses    {id: display name}
+ */
+let _languages = null;
+exports.getLanguages = async (req, res) => {
+    if (!_languages) {
+        const { CATEGORIES, classify } = require('../utils/languages');
+        const rows = await db.sequelize.query(
+            `SELECT instID, instName, instType, year, language, instNote, diocese, latitude, longitude
+               FROM almanacRecords WHERE year IS NOT NULL`,
+            { type: db.Sequelize.QueryTypes.SELECT }
+        );
+        const byYear = new Map(), totals = Object.fromEntries(CATEGORIES.map(c => [c.id, 0]));
+        const points = [], dioNames = {};
+        for (const r of rows) {
+            const y = Number(r.year);
+            const row = byYear.get(y) || { year: y, total: 0, counts: Object.fromEntries(CATEGORIES.map(c => [c.id, 0])) };
+            row.total++;
+            byYear.set(y, row);
+            const c = classify(r.language, r.instName, r.instNote);
+            if (!c) continue;
+            for (const id of c.cats) { row.counts[id]++; totals[id]++; }
+            const dio = dioceses.dioceseIdAsListed(r.instID, r.diocese) || 'unknown';
+            if (!dioNames[dio]) dioNames[dio] = dioceses.meta(dio)?.displayName || dio;
+            const lat = Number(r.latitude), lng = Number(r.longitude);
+            const placed = r.latitude != null && Number.isFinite(lat) && Number.isFinite(lng);
+            points.push([placed ? Math.round(lat * 1e4) / 1e4 : null, placed ? Math.round(lng * 1e4) / 1e4 : null,
+                r.instID, r.instName || '', r.instType || '', y, c.cats, c.source, dio]);
+        }
+        _languages = {
+            categories: CATEGORIES.map(c => ({ ...c, records: totals[c.id] })),
+            years: [...byYear.values()].sort((a, b) => a.year - b.year),
+            points,
+            dioceses: dioNames,
+        };
+    }
+    res.json(_languages);
+};

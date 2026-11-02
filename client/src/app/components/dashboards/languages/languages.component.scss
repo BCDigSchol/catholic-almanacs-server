@@ -1,0 +1,70 @@
+// Shared dashboard styles (.ctl, .control, .legend, .chart, .stat-strip, .data-table) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}
+
+.lang-key .count {
+    margin-left: var(--space-1);
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+}
+
+// the small multiples and the dioceses side by side on wide screens
+.lang-lower {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1.2fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.multiples {
+    ::ng-deep {
+        .m-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: var(--text-sm);
+            fill: var(--ink);
+        }
+
+        .m-total,
+        .m-year,
+        .tick text {
+            font-size: var(--text-xs);
+            fill: var(--ink-3);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .tick line {
+            stroke: var(--rule);
+        }
+
+        .multiple.selected .m-title {
+            fill: var(--rubric);
+        }
+
+        .multiple.dim {
+            opacity: 0.45;
+        }
+
+        .multiple:hover .m-title {
+            text-decoration: underline;
+        }
+    }
+}
+
+.show-all {
+    margin-top: var(--space-3);
+}
+
+.data-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
