@@ -864,7 +864,7 @@
       },
       "type": "heatmap",
       "source": "postoffices",
-      "source-layer": "postoffices",
+      "source-layer": "wash",
       "minzoom": 3,
       "maxzoom": 8,
       "layout": {
@@ -900,9 +900,9 @@
             "zoom"
           ],
           3,
-          0.08,
+          0.05,
           7,
-          0.25
+          0.2
         ],
         "heatmap-radius": [
           "interpolate",
@@ -913,9 +913,9 @@
             "zoom"
           ],
           3,
-          6,
+          4,
           7,
-          14
+          12
         ],
         "heatmap-opacity": [
           "interpolate",
@@ -926,9 +926,9 @@
             "zoom"
           ],
           3,
-          0.5,
+          0.7,
           7,
-          0.4,
+          0.55,
           8,
           0
         ],
@@ -943,11 +943,11 @@
           0,
           "rgba(0,0,0,0)",
           0.15,
-          "#2a2820",
+          "#3a3729",
           0.6,
-          "#3d3a2e",
+          "#5a5440",
           1,
-          "#55503e"
+          "#7d7558"
         ]
       }
     },

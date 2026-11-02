@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Builds the post offices (one PMTiles file of points, zooms 3–12, each with
-# the years it was open) and, with the database, each record's measures
+# Builds the post offices (one PMTiles file: layer `postoffices`, points with
+# names and the years each was open, thinned at low zooms, z3–12; and layer
+# `wash`, every office with only its dates and none dropped, z3–8, which the
+# style draws as the settled country's wash) and, with the database, each record's measures
 # against the post offices open in its year (frontier.json beside the tiles,
 # read by the API for the Frontier dashboard): the distance to the nearest
 # one, when that one opened, and how many stood within 25 miles; and, per
@@ -47,18 +49,46 @@ else
   echo "[frontier] no database configured: skipping the measures"
 fi
 
-echo "[frontier] $(wc -l < "$D/features.geojsonl" | tr -d ' ') post offices → $OUT (z3–12)"
+echo "[frontier] $(wc -l < "$D/features.geojsonl" | tr -d ' ') post offices → $OUT (z3–12, and the wash z3–8)"
 mkdir -p "$(dirname "$OUT")"
 tippecanoe \
-  --force --output="$OUT.tmp.pmtiles" \
-  --name="Catholic Almanacs post offices" \
-  --description="US post offices with the years each was open (Blevins and Helbock, CC0), zoom 3-12" \
-  --attribution="Post offices: Cameron Blevins and Richard W. Helbock, US Post Offices (CC0)" \
+  --force --output="$D/offices.pmtiles" \
   --layer=postoffices \
   --minimum-zoom=3 --maximum-zoom=12 \
   --drop-densest-as-needed --extend-zooms-if-still-dropping \
   --quiet \
   "$D/features.geojsonl"
+# the wash needs every office at every zoom (tippecanoe otherwise thins points
+# by 2.5 per zoom below the top, leaving ~1 in 4,000 at z3): dates only, and
+# only the offices open at some time in the almanac years (1830-1900), so the
+# low-zoom tiles stay small
+python3 -c '
+import json, sys
+for line in sys.stdin:
+    f = json.loads(line)
+    p = f["properties"]
+    if p["from"] > 19001231 or p["to"] < 18300101:
+        continue
+    f["properties"] = {"from": p["from"], "to": p["to"]}
+    sys.stdout.write(json.dumps(f, separators=(",", ":")) + "\n")
+' < "$D/features.geojsonl" > "$D/wash.geojsonl"
+echo "[frontier] $(wc -l < "$D/wash.geojsonl" | tr -d ' ') offices open 1830-1900 for the wash"
+tippecanoe \
+  --force --output="$D/wash.pmtiles" \
+  --layer=wash \
+  --minimum-zoom=3 --maximum-zoom=8 \
+  --drop-rate=1 --drop-densest-as-needed \
+  --quiet \
+  "$D/wash.geojsonl"
+tile-join \
+  --force --output="$OUT.tmp.pmtiles" \
+  --name="Catholic Almanacs post offices" \
+  --description="US post offices with the years each was open (Blevins and Helbock, CC0): points z3-12, and every office for the settlement wash z3-8" \
+  --attribution="Post offices: Cameron Blevins and Richard W. Helbock, US Post Offices (CC0)" \
+  --no-tile-size-limit \
+  --quiet \
+  "$D/offices.pmtiles" "$D/wash.pmtiles"
 mv "$OUT.tmp.pmtiles" "$OUT"
+rm -f "$D/wash.geojsonl" "$D/offices.pmtiles" "$D/wash.pmtiles"
 rm -f "$D/features.geojsonl"
 ls -l "$OUT"

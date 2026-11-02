@@ -13,6 +13,9 @@
     "pages:index": "node scripts/pages-index.mjs",
     "prestart": "node scripts/pages-index.mjs",
     "prebuild": "node scripts/pages-index.mjs",
+    "prebuild:prod": "node scripts/pages-index.mjs",
+    "prebuild:dev": "node scripts/pages-index.mjs",
+    "prebuild:local": "node scripts/pages-index.mjs",
     "pages:import": "node scripts/pages-import.mjs"
   },
   "private": true,

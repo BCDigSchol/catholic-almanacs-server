@@ -40,7 +40,7 @@ PALETTES = {
         "diocese": "#c49ab5",
         "held": "#d2a457", "recent": "#b98c6c", "cession_line": "#7d6a52",
         "shade": "#000000", "relief_light": "#4a463c", "trail": "#c9a06a",
-        "wash_light": "#2a2820", "wash": "#3d3a2e", "wash_dark": "#55503e",
+        "wash_light": "#3a3729", "wash": "#5a5440", "wash_dark": "#7d7558",
     },
 }
 
@@ -243,12 +243,12 @@ def layers(c):
         # that ask for them: small quiet dots, the settled country of that day
         # at country and regional zoom, a wash of settlement rather than
         # thousands of dots; the dots take over from zoom 7
-        {"id": "postoffices-wash", "metadata": POST_OFFICES, "type": "heatmap", "source": "postoffices", "source-layer": "postoffices",
+        {"id": "postoffices-wash", "metadata": POST_OFFICES, "type": "heatmap", "source": "postoffices", "source-layer": "wash",
          "minzoom": 3, "maxzoom": 8, "layout": {"visibility": "none"},
          "filter": NO_DATE,
-         "paint": {"heatmap-weight": 1, "heatmap-intensity": zoom(3, 0.08, 7, 0.25),
-                   "heatmap-radius": zoom(3, 6, 7, 14),
-                   "heatmap-opacity": zoom(3, 0.5, 7, 0.4, 8, 0),
+         "paint": {"heatmap-weight": 1, "heatmap-intensity": zoom(3, 0.05, 7, 0.2),
+                   "heatmap-radius": zoom(3, 4, 7, 12),
+                   "heatmap-opacity": zoom(3, 0.7, 7, 0.55, 8, 0),
                    "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"],
                                      0, "rgba(0,0,0,0)", 0.15, c["wash_light"], 0.6, c["wash"], 1, c["wash_dark"]]}},
         {"id": "postoffices-dots", "metadata": POST_OFFICES, "type": "circle", "source": "postoffices", "source-layer": "postoffices",
