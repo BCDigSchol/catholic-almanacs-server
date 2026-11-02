@@ -33,6 +33,7 @@ collection as maps, networks and charts.
   - coverage of the data, and a Data Issues page
   - the Church's spread west, diocese by diocese
   - mission circuits, and distance to railroads and rivers
+  - missions and the Native land cessions
   - languages and congregations
   - the changing mix of institutions and clergy, lifespans and turnover
   - clergy flows between dioceses, and religious orders
@@ -191,6 +192,12 @@ Every institution and person has a record page (`/institutions/:id`,
   English is the default, and from narrowly matched phrases in names and
   notes ("German Church", "Indian Mission", "for colored children").
 
+- **Missions and Ceded Lands:** the Church set against Royce's Indian land
+  cessions. For any year it shows land a Native nation still held and land
+  ceded in the ten years before, how much of the Church stood on each, and
+  every Native American mission with the nation, date and treaty of the land
+  it stood on.
+
 **Change over time**
 
 - **The Shape of the Church:** how the mix of institutions (parishes, schools,
@@ -283,6 +290,9 @@ year**:
 - **Railroads, canals and steamboat rivers** in operation that year. Railroads
   are drawn with the engraved cross-tie symbol of period maps, canals in blue,
   and steamboat rivers as dotted blue lines.
+- **Indian land cessions** on maps that ask for them (Missions and Ceded
+  Lands): land still held by a nation that year, and land ceded in the ten
+  years before.
 - **Diocese territories** of that year, on maps that ask for them (Diocese by
   Diocese). These are a work in progress, fuller in the east.
 - **Streets** that existed that year, where OpenHistoricalMap has mapped them.
@@ -396,13 +406,21 @@ summarises them.
   History and Culture, The Newberry Library (CC BY-NC-SA 2.5).
 - **Diocese territories:** drawn at Boston College for this project (in
   progress).
+- **Indian land cessions:** *Tribal Lands Ceded to the United States*, U.S.
+  Forest Service, Office of Tribal Relations
+  ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)), digitised from
+  Charles C. Royce, *Indian Land Cessions in the United States* (Bureau of
+  American Ethnology, 1899; public domain). For information only: it is not a
+  source of title or legal boundaries, and it has not been reviewed by the
+  National NAGPRA Program.
 - **Historical streets:**
   [OpenHistoricalMap](https://www.openhistoricalmap.org/copyright) (CC0).
 - **Railroads, canals and steamboat rivers:** Jeremy Atack's historical
   transportation GIS databases, Vanderbilt University
   ([downloads](https://my.vanderbilt.edu/jeremyatack/data-downloads/)).
 
-Full citations, dates and caveats for each map dataset are in
+Every map shows the credit and licence of each layer it draws in its (i)
+credits. Full citations, dates and caveats for each map dataset are in
 [`tiles/README.md`](tiles/README.md), and the maps credit them in their
 attribution line.
 

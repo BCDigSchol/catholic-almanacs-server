@@ -3,16 +3,17 @@
 Self-hosted base map for the site's maps, in place of OpenStreetMap / Carto.
 Two containers share one volume of tiles:
 
-- **`tiles-build`** is a one-off job. It writes seven files into the
+- **`tiles-build`** is a one-off job. It writes eight files into the
   `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10),
   `history.pmtiles` (US states and territories by date, zoom 0–10),
   `counties.pmtiles` (US counties by date, 1830–1875, zoom 4–10),
+  `cessions.pmtiles` (Indian land cessions with their dates, zoom 2–10),
   `transport.pmtiles` (railroads, canals and steamboat rivers by year, zoom 3–12),
   `dioceses.pmtiles` (diocese territories by year, zoom 0–10),
   `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15)
   and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
-  Three JSON files for the API go beside them: `transport-distances.json`,
-  `diocese-territories.json` and `record-counties.json`.
+  Four JSON files for the API go beside them: `transport-distances.json`,
+  `diocese-territories.json`, `record-counties.json` and `record-cessions.json`.
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
@@ -30,6 +31,7 @@ docker compose run --rm tiles-build ohm      # streets by year only: a few minut
 docker compose run --rm tiles-build transport  # railroads, canals, steamboat rivers by year: a few minutes
 docker compose run --rm tiles-build dioceses   # diocese territories by year: a minute (places records if the DB is up)
 docker compose run --rm tiles-build counties   # county lines by year: a minute and a half (places records if the DB is up)
+docker compose run --rm tiles-build cessions   # Indian land cessions: seconds (places records if the DB is up)
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
@@ -42,7 +44,7 @@ Until the first build has run, the server waits and logs a reminder.
 | URL | What |
 |---|---|
 | `/style/almanac-light`, `/style/almanac-dark` | the map styles the client loads (one per site theme) |
-| `/base/{z}/{x}/{y}`, `/history/…`, `/counties/…`, `/transport/…`, `/dioceses/…`, `/ohm/…`, `/detail/…` | vector tiles; each name alone is its TileJSON |
+| `/base/{z}/{x}/{y}`, `/history/…`, `/counties/…`, `/cessions/…`, `/transport/…`, `/dioceses/…`, `/ohm/…`, `/detail/…` | vector tiles; each name alone is its TileJSON |
 | `/font/Old Standard TT Regular/0-255` | label glyphs (`Regular`, `Italic`, `Bold`) |
 | `/catalog`, `/health` | what the server has; liveness |
 
@@ -283,6 +285,43 @@ since the atlas has no counties for today.
   another county"). This is also the key for joining county statistics such
   as the census.
 
+## Indian land cessions
+
+A map that asks for them (map-vis `[cessions]`, the Missions and Ceded Lands
+dashboard) draws Royce's cessions for its year: land still held by a nation on
+1 January (a cession signed later) in ochre, land ceded in the ten years
+before in sepia, and every cession's bounds as a faint line. Without a year,
+only the bounds.
+
+| Layer | Contents |
+|---|---|
+| `cessions` | one cession area: `cession` (Royce's number), `ceded` (the first treaty's signing date, `yyyymmdd`), `dates` (all), `tribes` (as Royce's schedule names them), `present` (present-day tribes), `treaty` (Kappler's text, or the act or order), `schedule` (Royce's entry) |
+
+- **Source:** *Tribal Lands Ceded to the United States*, U.S. Forest Service,
+  Office of Tribal Relations
+  ([data.gov](https://catalog.data.gov/dataset/tribal-lands-ceded-to-the-united-states-feature-layer)),
+  licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It is
+  digitised from the 67 maps of Charles C. Royce, *Indian Land Cessions in
+  the United States*, 18th Annual Report of the Bureau of American Ethnology
+  (1899), which is public domain. Present-day tribal names come from the
+  National NAGPRA Program.
+- **Caveats, from the Forest Service:**
+  - for information only: not to be used to decide title, ownership, legal
+    descriptions or boundaries
+  - the revisions have not been reviewed or approved by the National NAGPRA
+    Program
+  - seven cessions have no mapped area yet
+  - errors should be reported to the Office of Tribal Relations
+
+  The dashboard says so too.
+- **Changes made here:** self-crossing outlines repaired; fields renamed; the
+  first treaty date kept as `ceded`.
+- **Records:** with the database up, every record with a place is put in the
+  cession(s) it lies in (`record-cessions.py` → `record-cessions.json`:
+  `{"cessions": {…}, "records": {"<almanacRecordID>": ["<number>", …]}}`).
+  Royce's areas overlap where land was ceded more than once or by more than one
+  nation, so a record can lie in several.
+
 ## Diocese territories by year
 
 A map that asks for them (map-vis `[dioceses]`) draws the dioceses as they
@@ -341,6 +380,8 @@ set, then filtered to that day; its filter must start
 `["all", <from test>, <to test>, …]`), `"hide"` (today's borders, state names
 and street names), an opacity to fade to (today's streets and rail), or
 `"dioceses"` (dated like `"show"`, but drawn only when the map asks for them),
+`"cessions"` (drawn only when the map asks; `metadata["almanac:cession"]` says
+which part: `held`, `recent` or `lines`),
 or `"latest"` (dated like `"show"`, but with no year drawn as of the latest
 almanac year rather than hidden: the counties).
 The client's map-vis applies whatever the style says, so new dated layers need
@@ -355,7 +396,7 @@ is only published as a variable font.
 ```
 tiles/
   Dockerfile        builder target (tippecanoe + gdal + the script) and server target (Martin + fonts + styles)
-  build.sh          the build job's entry point: base | detail | history | ohm | transport | dioceses | counties | all
+  build.sh          the build job's entry point: base | detail | history | ohm | transport | dioceses | counties | cessions | all
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
   build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
   build-history.sh  Newberry AHCB states and territories → ogr2ogr → history-features.py → tippecanoe → history.pmtiles
@@ -366,6 +407,7 @@ tiles/
   transport-distances.py  each record's miles to the railroads and waterways of its year → transport-distances.json
   build-counties.sh  Newberry AHCB counties → unzip-lenient.py → ogr2ogr (1830–75) → counties-features.py → tippecanoe → counties.pmtiles
   counties-features.py  dated county outlines + label points; record-counties.py places each record in its county of that year
+  build-cessions.sh  Forest Service land cessions (GeoJSON) → cessions-features.py → tippecanoe → cessions.pmtiles; record-cessions.py places records
   unzip-lenient.py  extracts a zip whose directory offsets are wrong (the counties download), checking every CRC
   build-dioceses.sh  Boston College diocese shapes + dioceses/names.csv → dioceses-features.py → tippecanoe → dioceses.pmtiles
   dioceses-features.py  dated territories: shapes by diocese id, newer cut out of older, named per year

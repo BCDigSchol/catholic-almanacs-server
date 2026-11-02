@@ -1,0 +1,56 @@
+// Shared dashboard styles (.legend, .chart, .stat-strip, .entries) live in src/styles.scss.
+
+.stat-strip dd {
+    margin: 0;
+}
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}
+
+// the map's cession areas: their inks come from the palette, pale as on the map
+.legend-swatch.area {
+    opacity: 0.45;
+}
+
+.legend-swatch.line {
+    height: 0;
+    border-top: 1px solid var(--ink-3);
+    background: none;
+}
+
+.missions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 2 22rem;
+    column-gap: var(--space-6);
+}
+
+.mission {
+    break-inside: avoid;
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--rule);
+
+    .where {
+        display: block;
+        color: var(--ink-3);
+        font-size: var(--text-sm);
+    }
+}
+
+.land {
+    margin: var(--space-1) 0 0;
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+
+    &.held {
+        color: var(--ink);
+    }
+}
+
+.present {
+    margin: 2px 0 0;
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+}

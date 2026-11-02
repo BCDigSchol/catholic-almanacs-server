@@ -1,0 +1,99 @@
+<app-dashboard-shell
+    title="Missions and Ceded Lands"
+    purpose="The Church set against the land cessions of the Native nations it lived among: which missions and parishes stood on land a nation still held, and which on land ceded only years before."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+    </app-control-bar>
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">institutions on land still held, {{ year }}</dt>
+                <dd class="stat-value">{{ current.held | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">on land ceded in the ten years before</dt>
+                <dd class="stat-value">{{ current.within10 | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">Native American missions</dt>
+                <dd class="stat-value">{{ missions.length | number }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'The land in ' + (year ?? '')"
+        [note]="'Shaded: land still held by a nation on 1 January ' + (year ?? '') + ', and land ceded in the ten years before'"
+        [state]="vizState" [hasKey]="true"
+        emptyText="The land cessions haven't been built on this server."
+        (retry)="fetchData()">
+        <ul key class="legend">
+            <li class="legend-item"><span class="legend-swatch area" [style.background]="status[0].ink"></span>still held by a nation</li>
+            <li class="legend-item"><span class="legend-swatch area" [style.background]="status[1].ink"></span>ceded in the ten years before</li>
+            <li class="legend-item"><span class="legend-swatch line"></span>a cession's bounds</li>
+            <li class="legend-item"><span class="legend-swatch dot" [style.background]="pointInk['held']"></span>{{ state.show === 'all' ? 'an institution' : 'a mission' }} on land still held</li>
+            <li class="legend-item"><span class="legend-swatch dot" [style.background]="pointInk['recent']"></span>on land ceded within ten years</li>
+            <li class="legend-item"><span class="legend-swatch dot" [style.background]="pointInk['older']"></span>on land ceded earlier</li>
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="cession-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            [cessions]="true"
+            label="Missions and ceded lands"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <app-viz-panel heading="How new was the ground?" note="Institutions on land Royce mapped, by the status of their land each year; click a year to show it"
+        [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+        <ul key class="legend">
+            @for (s of status; track s.key) {
+                <li class="legend-item"><span class="legend-swatch" [style.background]="s.ink"></span>{{ s.label }}</li>
+            }
+        </ul>
+        <div class="chart" #statusChart></div>
+    </app-viz-panel>
+
+    <app-viz-panel [heading]="'Native American missions, ' + (year ?? '')" note="The land each stood on: the nations of its cession as Royce's schedule names them, and the treaty"
+        [state]="missions.length ? 'ready' : (vizState === 'ready' ? 'empty' : vizState)"
+        [emptyText]="'No Native American mission in ' + (year ?? '') + ' stood on land Royce mapped.'"
+        (retry)="fetchData()">
+        <ol class="missions">
+            @for (m of missions; track m.inst) {
+                <li class="mission">
+                    <a class="record-link inst" [routerLink]="['/institutions', m.inst]" [queryParams]="{ year: year }">{{ m.label }}</a>
+                    <span class="where">{{ m.place }}{{ m.place && m.diocese ? ' · ' : '' }}{{ m.diocese ? 'Diocese of ' + m.diocese : '' }}</span>
+                    @if (m.land) {
+                        <p class="land" [class.held]="m.held">
+                            @if (m.held) {
+                                On land still held by the {{ m.land.tribes }}, who ceded it on {{ day(m.land.ceded) }}.
+                            } @else {
+                                On land ceded {{ m.since === 0 ? 'that year' : m.since + (m.since === 1 ? ' year' : ' years') + ' before' }} by the {{ m.land.tribes }}, on {{ day(m.land.ceded) }}.
+                            }
+                            @if (m.land.treaty) { <a [href]="m.land.treaty" target="_blank" rel="noopener">Treaty text</a> }
+                            @if (m.land.schedule) { · <a [href]="m.land.schedule" target="_blank" rel="noopener">Royce's schedule</a> }
+                        </p>
+                        @if (m.land.present) { <p class="present">Present-day: {{ m.land.present }}</p> }
+                        @if (m.others.length) {
+                            <p class="present">Other cessions of this ground: @for (o of m.others; track o.ceded + o.tribes; let last = $last) {{{ o.tribes }} ({{ yearOf(o.ceded) }}){{ last ? '' : '; ' }}}</p>
+                        }
+                    }
+                </li>
+            }
+        </ol>
+    </app-viz-panel>
+
+    <div notes>
+        <p>The cessions are Charles C. Royce's <em>Indian Land Cessions in the United States</em> (Bureau of American Ethnology, 1899), as digitised and revised by the U.S. Forest Service, Office of Tribal Relations: <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer" target="_blank" rel="noopener">Tribal Lands Ceded to the United States</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. It maps land the United States took by treaty, act or executive order from 1784 to 1894, so the original states of the east, settled before then, fall outside it.</p>
+        <p>A cession's date is the day its treaty was signed. Land "still held" in a year is land whose cession was signed after 1 January of that year. Royce's areas often overlap, where several nations ceded the same land or one nation ceded it more than once; a place counts as still held while any of its cessions was yet to come, and otherwise by its latest. Nations are named as Royce's schedule names them; the present-day tribes are the Forest Service's, from the National NAGPRA Program.</p>
+        <p>The data is for information only and cannot be used to decide title, ownership or legal boundaries. The Forest Service's revisions have not been reviewed by the National NAGPRA Program, and a few cessions have no mapped area yet. "Native American missions" are those the almanacs marked as Indian missions or by nation (see Languages and Congregations).</p>
+    </div>
+</app-dashboard-shell>

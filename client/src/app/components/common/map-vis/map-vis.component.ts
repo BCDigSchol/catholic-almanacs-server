@@ -70,6 +70,9 @@ export class MapVisComponent {
   @Input() dioceses = false;
   /** A diocese id (e.g. 'bal.md') whose territory is shaded, when dioceses are drawn. */
   @Input() dioceseFocus: string | null = null;
+  /** Draw the Indian land cessions (Royce): with a year, land still held then
+   *  apart from land ceded in the ten years before; without, their outlines. */
+  @Input() cessions = false;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
   @Input() overlayMarkers: { lat: number; lng: number; color?: string; title?: string }[] = [];
   /** A polyline [lng,lat][] drawn under the markers (e.g. a centroid's path). */
@@ -224,7 +227,7 @@ export class MapVisComponent {
     if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter && !this.fitTo) {
       this.updateMapCenter();
     }
-    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus']) this.applyYear();
+    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions']) this.applyYear();
     // Honour a user-selected mode over options.mode so it survives data updates.
     this.currentMode = this.userMode ?? (this.options.mode || 'normal');
     this.renderMapFeatures();
@@ -283,6 +286,14 @@ export class MapVisComponent {
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], at], ['>=', ['get', 'to'], at], ...f.slice(3)]);
         }
         this.map.setLayoutProperty(layer.id, 'visibility', 'visible');
+      } else if (rule === 'cessions') {
+        // ceded is the treaty's date (yyyymmdd): held = ceded after the map's
+        // day; recent = ceded within the ten years before it
+        const part = layer.metadata?.['almanac:cession'];
+        const show = this.cessions && (part === 'lines' || dated);
+        if (show && part === 'held') this.map.setFilter(layer.id, ['>', ['get', 'ceded'], day]);
+        if (show && part === 'recent') this.map.setFilter(layer.id, ['all', ['<=', ['get', 'ceded'], day], ['>', ['get', 'ceded'], day - 100000]]);
+        this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
       } else if (rule === 'dioceses') {
         const f = layer.filter;
         const show = dated && this.dioceses && (layer.id !== 'diocese-focus' || !!this.dioceseFocus);

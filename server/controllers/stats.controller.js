@@ -1219,3 +1219,87 @@ exports.getTurnover = async (req, res) => {
     networkCache.set(key, result);
     res.json(result);
 };
+
+/**
+ * GET /api/stats/cessions?year= — the Church against the Indian land cessions
+ * (Royce, via the Forest Service; placed by tiles-build cessions into
+ * /tiles-data/record-cessions.json). For each record in a cession area: was
+ * its land still held by a nation on 1 January of its year (a cession signed
+ * later), or how many years since its latest cession?
+ *   years     [{year, placed, held, within10, within30, older}] institutions by
+ *             the status of their land
+ *   missions  for ?year=: the Native American missions (utils/languages.js),
+ *             each with its cessions and status
+ *   points    for ?year=: [lat, lng, instID, name, type, status, native]
+ *   cessions  the cessions those missions stand on {number: {tribes, ceded, dates, present, treaty, schedule}}
+ * 404 where the cessions haven't been built.
+ */
+let _cessionRecords = null;
+exports.getCessions = async (req, res) => {
+    const year = parseInt(req.query.year, 10) || 0;
+    const key = cacheKey('stats/cessions', { year });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    if (!_cessionRecords) {
+        let placed;
+        try {
+            placed = JSON.parse(require('fs').readFileSync(process.env.RECORD_CESSIONS || '/tiles-data/record-cessions.json', 'utf8'));
+        } catch {
+            return res.status(404).json({ message: 'The land cessions have not been built (tiles-build cessions).' });
+        }
+        const { classify } = require('../utils/languages');
+        const rows = await db.sequelize.query(
+            `SELECT ID, instID, instName, instType, year, language, instNote, diocese, cityReg, stateReg, latitude, longitude
+               FROM almanacRecords WHERE year IS NOT NULL AND latitude IS NOT NULL`,
+            { type: db.Sequelize.QueryTypes.SELECT });
+        const records = [];
+        for (const r of rows) {
+            const hits = placed.records[r.ID];
+            if (!hits) continue;
+            const c = classify(r.language, r.instName, r.instNote);
+            records.push({ inst: r.instID, name: r.instName || '', type: r.instType || '', year: Number(r.year),
+                place: [r.cityReg, r.stateReg].filter(Boolean).join(', '), lat: Number(r.latitude), lng: Number(r.longitude),
+                dio: dioceses.dioceseIdAsListed(r.instID, r.diocese) || 'unknown',
+                native: !!c && c.cats.includes('native'), cessions: hits });
+        }
+        _cessionRecords = { cessions: placed.cessions, records };
+    }
+    const { cessions, records } = _cessionRecords;
+    // still held on 1 January (a cession signed later), else years since the latest cession
+    const status = r => {
+        const day = r.year * 10000 + 101;
+        const dates = r.cessions.map(n => cessions[n]?.ceded).filter(Boolean);
+        if (dates.some(d => d > day)) return { held: true, since: null };
+        const latest = Math.max(...dates);
+        return { held: false, since: r.year - Math.floor(latest / 10000) };
+    };
+    const byYear = new Map();
+    for (const r of records) {
+        const y = byYear.get(r.year) || { year: r.year, placed: 0, held: 0, within10: 0, within30: 0, older: 0 };
+        const s = status(r);
+        y.placed++;
+        if (s.held) y.held++; else if (s.since <= 10) y.within10++; else if (s.since <= 30) y.within30++; else y.older++;
+        byYear.set(r.year, y);
+    }
+    const years = [...byYear.values()].sort((a, b) => a.year - b.year);
+    const shown = year || (years.length ? years[years.length - 1].year : 0);
+    const names = dioceseNameMap();
+    const thisYear = records.filter(r => r.year === shown);
+    const missions = thisYear.filter(r => r.native).map(r => ({
+        inst: r.inst, name: r.name, type: r.type, place: r.place, diocese: names[r.dio] || r.dio, ...status(r),
+        cessions: [...r.cessions].sort((a, b) => (cessions[b]?.ceded || 0) - (cessions[a]?.ceded || 0)),
+    })).sort((a, b) => (a.held === b.held ? (a.since ?? 0) - (b.since ?? 0) : a.held ? -1 : 1) || a.name.localeCompare(b.name));
+    const used = {};
+    for (const m of missions) for (const n of m.cessions) used[n] = cessions[n];
+    const result = {
+        year: shown, years, missions, cessions: used,
+        points: thisYear.map(r => {
+            const s = status(r);
+            return [Math.round(r.lat * 1e4) / 1e4, Math.round(r.lng * 1e4) / 1e4, r.inst, r.name, r.type,
+                s.held ? 'held' : s.since <= 10 ? 'recent' : 'older', r.native ? 1 : 0];
+        }),
+    };
+    networkCache.set(key, result);
+    res.json(result);
+};

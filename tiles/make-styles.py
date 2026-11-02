@@ -25,6 +25,7 @@ PALETTES = {
         "rail": "#8a8478", "green": "#f3f1ea", "cemetery": "#ebe9e0",
         "foreign": "#ebe8e0", "old_road": "#5f5a50",
         "diocese": "#7a4a6a",
+        "held": "#c08a2e", "recent": "#8a5a3a", "cession_line": "#a88a62",
     },
     "dark": {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
@@ -35,6 +36,7 @@ PALETTES = {
         "rail": "#7a7466", "green": "#1a1915", "cemetery": "#1e1d19",
         "foreign": "#22211c", "old_road": "#b5ae9f",
         "diocese": "#c49ab5",
+        "held": "#d2a457", "recent": "#b98c6c", "cession_line": "#7d6a52",
     },
 }
 
@@ -42,6 +44,7 @@ ATTRIBUTION = (
     '<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a>'
     ' · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>'
     ' · <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a>'
+    ' (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>)'
 )
 
 
@@ -55,6 +58,10 @@ DIOCESES = {"almanac:dated": "dioceses"}
 # Dated, but on a map with no year (a record's "All years") drawn as of the
 # latest almanac year rather than hidden: there are no county lines for today.
 LATEST = {"almanac:dated": "latest"}
+# Indian land cessions, on maps that ask for them (map-vis [cessions]): which
+# part of the cession (held, recent, lines) a layer draws for the map's year.
+def cessions(part):
+    return {"almanac:dated": "cessions", "almanac:cession": part}
 
 
 def fade(opacity):
@@ -65,6 +72,18 @@ def fade(opacity):
 # always ["all", <from test>, <to test>, ...more]: map-vis replaces the two
 # date tests with the year's day and keeps the rest.
 NO_DATE = ["all", ["<=", ["get", "from"], 0], [">=", ["get", "to"], 0]]
+
+# the street detail around recorded places is today's OpenStreetMap (ODbL)
+DETAIL_ATTRIBUTION = (
+    'Street detail: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">'
+    '© OpenStreetMap contributors</a> (ODbL)'
+)
+
+CESSION_ATTRIBUTION = (
+    'Indian land cessions: <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer"'
+    ' target="_blank" rel="noopener">Tribal Lands Ceded to the United States</a>, U.S. Forest Service'
+    ' (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>), after C. C. Royce (1899)'
+)
 
 COUNTY_ATTRIBUTION = (
     'Counties by year: <a href="https://publications.newberry.org/ahcb/" target="_blank" rel="noopener">'
@@ -202,6 +221,18 @@ def layers(c):
          "layout": {"visibility": "none", "line-join": "round"},
          "filter": NO_DATE,
          "paint": {"line-color": c["border"], "line-width": zoom(3, 0.5, 8, 1.1)}},
+        # ── Indian land cessions (cessions.pmtiles), when a map asks: land still
+        #    held on the map's day, land ceded in the ten years before it, and
+        #    every cession's outline ──
+        {"id": "cession-held", "metadata": cessions("held"), "type": "fill", "source": "cessions", "source-layer": "cessions",
+         "layout": {"visibility": "none"},
+         "paint": {"fill-color": c["held"], "fill-opacity": 0.16}},
+        {"id": "cession-recent", "metadata": cessions("recent"), "type": "fill", "source": "cessions", "source-layer": "cessions",
+         "layout": {"visibility": "none"},
+         "paint": {"fill-color": c["recent"], "fill-opacity": 0.12}},
+        {"id": "cession-lines", "metadata": cessions("lines"), "type": "line", "source": "cessions", "source-layer": "cessions",
+         "layout": {"visibility": "none", "line-join": "round"},
+         "paint": {"line-color": c["cession_line"], "line-opacity": 0.6, "line-width": zoom(3, 0.4, 8, 1)}},
         # ── diocese territories of one date (dioceses.pmtiles), when a map asks ──
         {"id": "diocese-focus", "metadata": DIOCESES, "type": "fill", "source": "dioceses", "source-layer": "dioceses",
          "layout": {"visibility": "none"},
@@ -313,12 +344,14 @@ def style(name, c):
         "sources": {
             "base": {"type": "vector", "url": "${TILES_PUBLIC_URL}/base", "attribution": ATTRIBUTION},
             # built by `tiles-build detail`; until then its layers simply draw nothing
-            "detail": {"type": "vector", "url": "${TILES_PUBLIC_URL}/detail"},
+            "detail": {"type": "vector", "url": "${TILES_PUBLIC_URL}/detail", "attribution": DETAIL_ATTRIBUTION},
             # built by `tiles-build history`
             "history": {"type": "vector", "url": "${TILES_PUBLIC_URL}/history",
                         "attribution": HISTORY_ATTRIBUTION},
             # built by `tiles-build transport`
             "transport": {"type": "vector", "url": "${TILES_PUBLIC_URL}/transport", "attribution": TRANSPORT_ATTRIBUTION},
+            # built by `tiles-build cessions`
+            "cessions": {"type": "vector", "url": "${TILES_PUBLIC_URL}/cessions", "attribution": CESSION_ATTRIBUTION},
             # built by `tiles-build counties`
             "counties": {"type": "vector", "url": "${TILES_PUBLIC_URL}/counties", "attribution": COUNTY_ATTRIBUTION},
             # built by `tiles-build dioceses`

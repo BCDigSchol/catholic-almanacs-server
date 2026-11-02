@@ -83,6 +83,12 @@ export class DashboardsComponent {
           icon: "translate",
           title: "Languages and Congregations",
           description: "Where the almanacs marked German, French, Polish and Bohemian parishes, Native American missions and Black congregations — mapped year by year, each traced over time."
+        },
+        {
+          link: "/dashboards/cessions",
+          icon: "landscape",
+          title: "Missions and Ceded Lands",
+          description: "The Church set against the land cessions of the Native nations it lived among: missions on land a nation still held, parishes on land ceded only years before — year by year, with the treaties."
         }
       ]
     },

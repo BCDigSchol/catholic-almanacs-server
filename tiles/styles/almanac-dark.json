@@ -8,11 +8,12 @@
     "base": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/base",
-      "attribution": "<a href=\"https://www.naturalearthdata.com/\" target=\"_blank\" rel=\"noopener\">Natural Earth</a> · <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">© OpenStreetMap contributors</a> · <a href=\"https://www.geonames.org/\" target=\"_blank\" rel=\"noopener\">GeoNames</a>"
+      "attribution": "<a href=\"https://www.naturalearthdata.com/\" target=\"_blank\" rel=\"noopener\">Natural Earth</a> · <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">© OpenStreetMap contributors</a> · <a href=\"https://www.geonames.org/\" target=\"_blank\" rel=\"noopener\">GeoNames</a> (<a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>)"
     },
     "detail": {
       "type": "vector",
-      "url": "${TILES_PUBLIC_URL}/detail"
+      "url": "${TILES_PUBLIC_URL}/detail",
+      "attribution": "Street detail: <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">© OpenStreetMap contributors</a> (ODbL)"
     },
     "history": {
       "type": "vector",
@@ -23,6 +24,11 @@
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/transport",
       "attribution": "Railroads, canals and steamboat rivers by year: <a href=\"https://my.vanderbilt.edu/jeremyatack/data-downloads/\" target=\"_blank\" rel=\"noopener\">historical transportation GIS, Jeremy Atack, Vanderbilt University</a>"
+    },
+    "cessions": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/cessions",
+      "attribution": "Indian land cessions: <a href=\"https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer\" target=\"_blank\" rel=\"noopener\">Tribal Lands Ceded to the United States</a>, U.S. Forest Service (<a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>), after C. C. Royce (1899)"
     },
     "counties": {
       "type": "vector",
@@ -928,6 +934,71 @@
           0.5,
           8,
           1.1
+        ]
+      }
+    },
+    {
+      "id": "cession-held",
+      "metadata": {
+        "almanac:dated": "cessions",
+        "almanac:cession": "held"
+      },
+      "type": "fill",
+      "source": "cessions",
+      "source-layer": "cessions",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "fill-color": "#d2a457",
+        "fill-opacity": 0.16
+      }
+    },
+    {
+      "id": "cession-recent",
+      "metadata": {
+        "almanac:dated": "cessions",
+        "almanac:cession": "recent"
+      },
+      "type": "fill",
+      "source": "cessions",
+      "source-layer": "cessions",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "fill-color": "#b98c6c",
+        "fill-opacity": 0.12
+      }
+    },
+    {
+      "id": "cession-lines",
+      "metadata": {
+        "almanac:dated": "cessions",
+        "almanac:cession": "lines"
+      },
+      "type": "line",
+      "source": "cessions",
+      "source-layer": "cessions",
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#7d6a52",
+        "line-opacity": 0.6,
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.4,
+          8,
+          1
         ]
       }
     },
