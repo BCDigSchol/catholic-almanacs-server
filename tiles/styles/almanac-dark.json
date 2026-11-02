@@ -24,6 +24,11 @@
       "url": "${TILES_PUBLIC_URL}/transport",
       "attribution": "Railroads, canals and steamboat rivers by year: <a href=\"https://my.vanderbilt.edu/jeremyatack/data-downloads/\" target=\"_blank\" rel=\"noopener\">historical transportation GIS, Jeremy Atack, Vanderbilt University</a>"
     },
+    "counties": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/counties",
+      "attribution": "Counties by year: <a href=\"https://publications.newberry.org/ahcb/\" target=\"_blank\" rel=\"noopener\">Atlas of Historical County Boundaries</a>, The Newberry Library (<a href=\"https://creativecommons.org/licenses/by-nc-sa/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY-NC-SA 2.5</a>)"
+    },
     "dioceses": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/dioceses",
@@ -826,6 +831,59 @@
       }
     },
     {
+      "id": "county-lines",
+      "metadata": {
+        "almanac:dated": "latest"
+      },
+      "type": "line",
+      "source": "counties",
+      "source-layer": "counties",
+      "minzoom": 6,
+      "layout": {
+        "visibility": "none",
+        "line-join": "round"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "line-color": "#4a463c",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          0.4,
+          10,
+          0.9
+        ],
+        "line-dasharray": [
+          1,
+          1.5
+        ]
+      }
+    },
+    {
       "id": "history-lines",
       "metadata": {
         "almanac:dated": "show"
@@ -1436,6 +1494,75 @@
         "text-color": "#c49ab5",
         "text-halo-color": "#14130f",
         "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "county-labels",
+      "metadata": {
+        "almanac:dated": "latest"
+      },
+      "type": "symbol",
+      "source": "counties",
+      "source-layer": "county_labels",
+      "minzoom": 6,
+      "layout": {
+        "visibility": "none",
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Old Standard TT Italic"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          9,
+          8,
+          10.5,
+          11,
+          12
+        ],
+        "text-letter-spacing": 0.08,
+        "text-max-width": 7,
+        "symbol-sort-key": [
+          "-",
+          0,
+          [
+            "get",
+            "area"
+          ]
+        ]
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "text-color": "#4a463c",
+        "text-halo-color": "#14130f",
+        "text-halo-width": 1
       }
     },
     {

@@ -1070,6 +1070,8 @@ exports.getLanguages = async (req, res) => {
  *   places       institutions with years that have no coordinates
  *   prefixes     institution ids whose diocese prefix is not in the timeline
  *   circuits     circuit links over MAX_CIRCUIT_MILES (a misplaced end)
+ *   counties     institutions whose recorded county is not the county
+ *                their point lies in that year (utils/county-check.js)
  * Records outside their diocese's territory come from /stats/diocese-check.
  */
 exports.getDataIssues = async (req, res) => {
@@ -1116,6 +1118,11 @@ exports.getDataIssues = async (req, res) => {
             }
             return { prefixes: [...out.values()].map(p => ({ ...p, listedAs: [...p.listedAs] })).sort((a, b) => b.records - a.records) };
         },
+        counties: async () => {
+            const check = await require('../utils/county-check').loadCountyCheck();
+            if (!check) return { available: false };
+            return { available: true, ...check };
+        },
         circuits: async () => {
             const { misplaced } = await circuitsData();
             const ids = [...new Set(misplaced.flatMap(m => [m[1], m[2]]))];
@@ -1148,6 +1155,11 @@ exports.getDataIssues = async (req, res) => {
             places: { records: places.records, institutions: places.institutions.length },
             prefixes: prefixes.prefixes.reduce((n, p) => n + p.records, 0),
             circuits: circuits.links.length,
+            // null where the counties aren't built here
+            counties: await (async () => {
+                const check = await require('../utils/county-check').loadCountyCheck();
+                return check ? check.mismatches.length : null;
+            })(),
             // null where the diocese territories aren't built here
             territories: await (async () => {
                 const check = await require('../utils/diocese-check').loadCheck();

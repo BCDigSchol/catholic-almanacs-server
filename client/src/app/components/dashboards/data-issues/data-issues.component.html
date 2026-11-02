@@ -83,6 +83,36 @@
                 </table>
             </app-viz-panel>
         }
+        @case ('counties') {
+            <app-viz-panel heading="In another county" note="The county the almanac gave, against the county the place lay in that year" [state]="vizState"
+                emptyText="The historical counties haven't been built on this server." (retry)="retry()">
+                <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                @if (countyCheck) {
+                    <p class="check-summary">
+                        Of {{ countyCheck.placed | number }} records placed in a county of their year,
+                        {{ countyCheck.agree | number }} give that county (spellings allowed) and {{ countyCheck.unrecorded | number }} give none.
+                        The rest, by institution: the place's coordinates may be wrong, or the county given may be a town or a later county.
+                    </p>
+                }
+                <table class="data-table">
+                    <thead><tr><th>Institution</th><th>County given</th><th>County that year</th><th>Years</th></tr></thead>
+                    <tbody>
+                        @for (c of countyMismatches.slice(0, limit); track c.inst + c.recorded + c.county) {
+                            <tr>
+                                <td data-label="Institution">
+                                    <a class="record-link inst" [routerLink]="['/institutions', c.inst]" [queryParams]="{ year: c.years[c.years.length - 1] }">{{ label(c.name, c.type) }}</a>
+                                    @if (c.place) { <span class="where">{{ c.place }}</span> }
+                                </td>
+                                <td data-label="County given">{{ c.recorded }}</td>
+                                <td data-label="County that year">{{ c.county }}, {{ c.state }}</td>
+                                <td data-label="Years">{{ spans(c.years) }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (countyMismatches.length > limit) { <button type="button" class="btn more" (click)="more()">Show more ({{ countyMismatches.length - limit | number }} left)</button> }
+            </app-viz-panel>
+        }
         @case ('circuits') {
             <app-viz-panel heading="Circuits too long to ride" note="A station attended from more than 500 miles away: one end's coordinates are wrong" [state]="vizState" (retry)="retry()">
                 <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
@@ -134,6 +164,6 @@
     <div notes>
         <p><strong>People who may be one person.</strong> Two person ids with the same surname whose given names fit (the same, or initials that agree: "E. J." and "Elisha J.") are scored on their careers. For: one picks up the year after the other ends, the same post or diocese at the handover, the same religious order. Against: both listed at different places in the same year, or in different orders. Pairs scoring below "possible" are not shown. Common surnames with more than 80 ids are left out, since pairing them blindly would bury the reviewer.</p>
         <p>Decisions are kept in your browser only. "Download decisions" gives a CSV; added to <span class="mono">server/data/person-decisions.csv</span> in the code, its pairs leave the queue for everyone, and the "same person" rows are the merges to make in the data.</p>
-        <p><strong>Other checks.</strong> A person id listed under surnames that are not spellings of one another; institutions with years that have no coordinates (so they are missing from every map); records placed in the territory of a diocese other than the one they were listed under (the territories are themselves a work in progress); circuit links over 500 miles; and institution ids whose prefix names no diocese in the diocese timeline.</p>
+        <p><strong>Other checks.</strong> A person id listed under surnames that are not spellings of one another; institutions with years that have no coordinates (so they are missing from every map); records placed in the territory of a diocese other than the one they were listed under (the territories are themselves a work in progress); the county the almanac gave against the county the place lay in that year (from the Newberry's historical counties); circuit links over 500 miles; and institution ids whose prefix names no diocese in the diocese timeline.</p>
     </div>
 </app-dashboard-shell>

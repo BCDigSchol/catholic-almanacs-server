@@ -3,15 +3,16 @@
 Self-hosted base map for the site's maps, in place of OpenStreetMap / Carto.
 Two containers share one volume of tiles:
 
-- **`tiles-build`** is a one-off job. It writes six files into the
+- **`tiles-build`** is a one-off job. It writes seven files into the
   `tiles-data` volume: `base.pmtiles` (North America, zoom 0–10),
   `history.pmtiles` (US states and territories by date, zoom 0–10),
+  `counties.pmtiles` (US counties by date, 1830–1875, zoom 4–10),
   `transport.pmtiles` (railroads, canals and steamboat rivers by year, zoom 3–12),
   `dioceses.pmtiles` (diocese territories by year, zoom 0–10),
   `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15)
   and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
-  Two JSON files for the API go beside them: `transport-distances.json` and
-  `diocese-territories.json`.
+  Three JSON files for the API go beside them: `transport-distances.json`,
+  `diocese-territories.json` and `record-counties.json`.
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
   `.pmtiles` file in that volume as vector tiles, the label fonts and the two
   map styles.
@@ -28,6 +29,7 @@ docker compose run --rm tiles-build history  # boundaries by year only: a minute
 docker compose run --rm tiles-build ohm      # streets by year only: a few minutes (fetches the newest planet)
 docker compose run --rm tiles-build transport  # railroads, canals, steamboat rivers by year: a few minutes
 docker compose run --rm tiles-build dioceses   # diocese territories by year: a minute (places records if the DB is up)
+docker compose run --rm tiles-build counties   # county lines by year: a minute and a half (places records if the DB is up)
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092
 ```
@@ -40,7 +42,7 @@ Until the first build has run, the server waits and logs a reminder.
 | URL | What |
 |---|---|
 | `/style/almanac-light`, `/style/almanac-dark` | the map styles the client loads (one per site theme) |
-| `/base/{z}/{x}/{y}`, `/history/…`, `/transport/…`, `/dioceses/…`, `/ohm/…`, `/detail/…` | vector tiles; each name alone is its TileJSON |
+| `/base/{z}/{x}/{y}`, `/history/…`, `/counties/…`, `/transport/…`, `/dioceses/…`, `/ohm/…`, `/detail/…` | vector tiles; each name alone is its TileJSON |
 | `/font/Old Standard TT Regular/0-255` | label glyphs (`Regular`, `Italic`, `Bold`) |
 | `/catalog`, `/health` | what the server has; liveness |
 
@@ -248,6 +250,39 @@ after a reseed.
   suggested citation, which the maps' credit line and this README give. Atack
   asks to be told of corrections.
 
+## Counties by year
+
+A map given a year draws that day's county lines (thin dotted, under the
+state lines) and very light county names, both from zoom 6. A map with no
+year (a record's "All years") draws them as of 1870, the latest almanac year,
+since the atlas has no counties for today.
+
+| Layer | Contents |
+|---|---|
+| `counties` | one version of a county: `id` (the atlas's, e.g. `ars_desha`), `name` ("Desha"), `state`, `kind` (County, Parish …), `from`, `to` (`yyyymmdd`) |
+| `county_labels` | one point inside each, with the same properties and `area` |
+
+- **Source:** *U.S. Historical Counties* (Generalized .001 deg), Atlas of
+  Historical County Boundaries, Dr. William M. Scholl Center for American
+  History and Culture, The Newberry Library, ed. John H. Long (2011), from
+  [publications.newberry.org/ahcb](https://publications.newberry.org/ahcb/).
+  Licence: [CC BY-NC-SA 2.5](https://creativecommons.org/licenses/by-nc-sa/2.5/),
+  as the states.
+- **Changes made here:**
+  - kept only the versions in force between 1830 and 1875
+  - names set in title case
+  - a few self-crossing outlines repaired
+  - Hawaii dropped
+- **The download:** the zip's directory points to the wrong offsets (by 12,104
+  bytes), so unzip, Python's zipfile and GDAL all refuse it. `unzip-lenient.py`
+  finds each file by its own header and checks every checksum.
+- **Records:** with the database up, every record with a place is put in its
+  county of that year (`record-counties.py` → `record-counties.json`:
+  `{"records": {"<almanacRecordID>": ["<county id>", "<name>", "<state>"]}}`).
+  The API compares it with the county the almanac gave (Data Issues, "In
+  another county"). This is also the key for joining county statistics such
+  as the census.
+
 ## Diocese territories by year
 
 A map that asks for them (map-vis `[dioceses]`) draws the dioceses as they
@@ -305,7 +340,9 @@ What a layer does on a map set to a year is in its
 set, then filtered to that day; its filter must start
 `["all", <from test>, <to test>, …]`), `"hide"` (today's borders, state names
 and street names), an opacity to fade to (today's streets and rail), or
-`"dioceses"` (dated like `"show"`, but drawn only when the map asks for them).
+`"dioceses"` (dated like `"show"`, but drawn only when the map asks for them),
+or `"latest"` (dated like `"show"`, but with no year drawn as of the latest
+almanac year rather than hidden: the counties).
 The client's map-vis applies whatever the style says, so new dated layers need
 no client change.
 
@@ -318,7 +355,7 @@ is only published as a variable font.
 ```
 tiles/
   Dockerfile        builder target (tippecanoe + gdal + the script) and server target (Martin + fonts + styles)
-  build.sh          the build job's entry point: base | detail | history | ohm | transport | dioceses | all
+  build.sh          the build job's entry point: base | detail | history | ohm | transport | dioceses | counties | all
   build-tiles.sh    Natural Earth / OSM / GeoNames → clip (ogr2ogr) → jq → tippecanoe → base.pmtiles
   build-detail.sh   recorded places → area → Geofabrik states → osmium → jq → tippecanoe → detail.pmtiles
   build-history.sh  Newberry AHCB states and territories → ogr2ogr → history-features.py → tippecanoe → history.pmtiles
@@ -327,6 +364,9 @@ tiles/
   ohm-features.py   OHM dates → from/to days; road and rail kinds; undated ways dropped
   build-transport.sh  Atack railroads, canals, steamboat rivers → ogr2ogr (dates as from/to) → tippecanoe → transport.pmtiles
   transport-distances.py  each record's miles to the railroads and waterways of its year → transport-distances.json
+  build-counties.sh  Newberry AHCB counties → unzip-lenient.py → ogr2ogr (1830–75) → counties-features.py → tippecanoe → counties.pmtiles
+  counties-features.py  dated county outlines + label points; record-counties.py places each record in its county of that year
+  unzip-lenient.py  extracts a zip whose directory offsets are wrong (the counties download), checking every CRC
   build-dioceses.sh  Boston College diocese shapes + dioceses/names.csv → dioceses-features.py → tippecanoe → dioceses.pmtiles
   dioceses-features.py  dated territories: shapes by diocese id, newer cut out of older, named per year
   diocese-territories.py  each record's diocese territory of its year → diocese-territories.json

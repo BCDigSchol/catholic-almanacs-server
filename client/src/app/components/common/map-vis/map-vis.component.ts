@@ -24,6 +24,9 @@ function clampToUs(lngLat: maplibregl.LngLat): maplibregl.LngLat {
   return new maplibregl.LngLat(Math.min(e, Math.max(w, lngLat.lng)), Math.min(n, Math.max(s, lngLat.lat)));
 }
 
+/** The last almanac year in the data: what county lines show on a map with no year. */
+const LATEST_ALMANAC_YEAR = 1870;
+
 @Component({
   selector: 'app-map-vis',
     imports: [
@@ -254,9 +257,10 @@ export class MapVisComponent {
    * year, today's. Each layer's `metadata['almanac:dated']` in the style
    * (tiles/make-styles.py) says what it does on a dated map: 'show' (a dated
    * layer, filtered to the day), 'hide' (today's lines and names), or an
-   * opacity to fade to, or 'dioceses' (a dated layer drawn only when the
-   * host sets [dioceses]; diocese-focus only for [dioceseFocus]). Styles
-   * without it (the Carto fallback) are untouched.
+   * opacity to fade to, 'dioceses' (a dated layer drawn only when the host
+   * sets [dioceses]; diocese-focus only for [dioceseFocus]), or 'latest' (a
+   * dated layer that, with no year, shows the latest almanac year instead of
+   * hiding: county lines). Styles without it (the Carto fallback) are untouched.
    */
   private applyYear(): void {
     const layers: any[] = this.map?.getStyle?.()?.layers ?? [];
@@ -272,6 +276,13 @@ export class MapVisComponent {
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...f.slice(3)]);
         }
         this.map.setLayoutProperty(layer.id, 'visibility', dated ? 'visible' : 'none');
+      } else if (rule === 'latest') {
+        const f = layer.filter;
+        const at = (this.year ?? LATEST_ALMANAC_YEAR) * 10000 + 101;
+        if (Array.isArray(f) && f[0] === 'all') {
+          this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], at], ['>=', ['get', 'to'], at], ...f.slice(3)]);
+        }
+        this.map.setLayoutProperty(layer.id, 'visibility', 'visible');
       } else if (rule === 'dioceses') {
         const f = layer.filter;
         const show = dated && this.dioceses && (layer.id !== 'diocese-focus' || !!this.dioceseFocus);

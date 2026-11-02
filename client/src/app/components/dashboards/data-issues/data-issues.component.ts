@@ -21,6 +21,7 @@ interface Summary {
   prefixes: number;
   circuits: number;
   territories: number | null;
+  counties: number | null;
 }
 interface NameConflict { id: string; name: string; names: { name: string; n: number }[]; years: string; }
 interface Unplaced { inst: string; name: string; type: string; place: string; diocese: string; years: number[]; }
@@ -28,6 +29,7 @@ interface Prefix { prefix: string; records: number; listedAs: string[]; examples
 interface LongLink { year: number; miles: number; from: LinkEnd; to: LinkEnd; }
 interface LinkEnd { inst: string; name: string; type: string; place: string; lat: number | null; lng: number | null; }
 interface TerritoryYear { year: number; placed: number; agree: number; }
+interface CountyMismatch { inst: string; name: string; type: string; place: string; years: number[]; recorded: string; county: string; state: string; }
 
 const DEFAULTS = { check: 'people', strength: 'strong', show: 'open' };
 const PAGE = 50;
@@ -72,6 +74,8 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   prefixes: Prefix[] = [];
   longLinks: LongLink[] = [];
   territoryYears: TerritoryYear[] = [];
+  countyCheck: { placed: number; agree: number; unrecorded: number } | null = null;
+  countyMismatches: CountyMismatch[] = [];
 
   private loaded = new Set<string>();
   private url: UrlState<typeof DEFAULTS>;
@@ -130,6 +134,7 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
       { id: 'places', label: 'Institutions without a place', count: s?.places.institutions ?? null,
         note: s ? `${s.places.records.toLocaleString()} records without coordinates` : '' },
       { id: 'territories', label: 'Outside their diocese’s territory', count: s?.territories ?? null, note: 'records, all years, against the territories drawn' },
+      { id: 'counties', label: 'In another county', count: s?.counties ?? null, note: 'the county given is not the county the place lay in that year' },
       { id: 'circuits', label: 'Circuits too long to ride', count: s?.circuits ?? null, note: 'over 500 miles: an end is misplaced' },
       { id: 'prefixes', label: 'Unknown diocese prefixes', count: s?.prefixes ?? null, note: 'records whose id names no diocese in the timeline' },
     ];
@@ -158,6 +163,11 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
         if (check === 'places') this.unplaced = res.institutions;
         if (check === 'prefixes') this.prefixes = res.prefixes;
         if (check === 'circuits') this.longLinks = res.links;
+        if (check === 'counties') {
+          if (!res.available) { this.vizState = 'empty'; return; }
+          this.countyCheck = { placed: res.placed, agree: res.agree, unrecorded: res.unrecorded };
+          this.countyMismatches = res.mismatches;
+        }
         done();
       },
       error: fail,
@@ -181,6 +191,9 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
         return downloadTable(name, this.longLinks.map(l => ({ year: l.year, miles: l.miles,
           from: l.from.inst, from_name: this.label(l.from.name, l.from.type), from_place: l.from.place, from_lat: l.from.lat, from_lng: l.from.lng,
           to: l.to.inst, to_name: this.label(l.to.name, l.to.type), to_place: l.to.place, to_lat: l.to.lat, to_lng: l.to.lng })), note);
+      case 'counties':
+        return downloadTable(name, this.countyMismatches.map(c => ({ institution: c.inst, name: this.label(c.name, c.type), place: c.place,
+          county_given: c.recorded, county_that_year: c.county, state: c.state, years: this.spans(c.years) })), note);
       case 'prefixes':
         return downloadTable(name, this.prefixes.map(p => ({ prefix: p.prefix, records: p.records, listed_as: p.listedAs, examples: p.examples.map(e => `${e.inst} (${e.year})`) })), note);
     }

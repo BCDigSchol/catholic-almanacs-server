@@ -52,6 +52,9 @@ SHOW, HIDE = {"almanac:dated": "show"}, {"almanac:dated": "hide"}
 # Diocese territories: dated like SHOW, but drawn only on maps that ask for
 # them (map-vis [dioceses]); the fill only for the diocese a map picks out.
 DIOCESES = {"almanac:dated": "dioceses"}
+# Dated, but on a map with no year (a record's "All years") drawn as of the
+# latest almanac year rather than hidden: there are no county lines for today.
+LATEST = {"almanac:dated": "latest"}
 
 
 def fade(opacity):
@@ -62,6 +65,12 @@ def fade(opacity):
 # always ["all", <from test>, <to test>, ...more]: map-vis replaces the two
 # date tests with the year's day and keeps the rest.
 NO_DATE = ["all", ["<=", ["get", "from"], 0], [">=", ["get", "to"], 0]]
+
+COUNTY_ATTRIBUTION = (
+    'Counties by year: <a href="https://publications.newberry.org/ahcb/" target="_blank" rel="noopener">'
+    'Atlas of Historical County Boundaries</a>, The Newberry Library'
+    ' (<a href="https://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank" rel="noopener">CC BY-NC-SA 2.5</a>)'
+)
 
 # the historical boundaries' provenance, shown in the map's (i) credit line
 # whenever a map is set to a year (see README "Boundaries by year")
@@ -180,6 +189,12 @@ def layers(c):
          "paint": {"text-color": c["ink2"]}},
         {"id": "state-boundaries", "metadata": HIDE, "type": "line", "source": "base", "source-layer": "state_boundaries",
          "paint": {"line-color": c["state"], "line-width": zoom(3, 0.4, 8, 1)}},
+        # ── the counties of one date (counties.pmtiles), from zoom 6 ──
+        {"id": "county-lines", "metadata": LATEST, "type": "line", "source": "counties", "source-layer": "counties",
+         "minzoom": 6,
+         "layout": {"visibility": "none", "line-join": "round"},
+         "filter": NO_DATE,
+         "paint": {"line-color": c["state"], "line-width": zoom(6, 0.4, 10, 0.9), "line-dasharray": [1, 1.5]}},
         # ── the states and territories of one date (history.pmtiles) ──
         # Hidden here: a map given a year shows these in place of today's state
         # lines, borders and names, filtered to that year (map-vis, HISTORY_LAYERS).
@@ -259,6 +274,16 @@ def layers(c):
                     "symbol-sort-key": ["-", 0, ["get", "area"]]},
          "filter": NO_DATE,
          "paint": {"text-color": c["diocese"], "text-halo-color": halo, "text-halo-width": 1.5}},
+        # county names: very light italic, with the lines from zoom 6, in the
+        # lines' own pale ink so they stay in the background
+        {"id": "county-labels", "metadata": LATEST, "type": "symbol", "source": "counties", "source-layer": "county_labels",
+         "minzoom": 6,
+         "layout": {"visibility": "none",
+                    "text-field": ["get", "name"], "text-font": ITALIC,
+                    "text-size": zoom(6, 9, 8, 10.5, 11, 12), "text-letter-spacing": 0.08, "text-max-width": 7,
+                    "symbol-sort-key": ["-", 0, ["get", "area"]]},
+         "filter": NO_DATE,
+         "paint": {"text-color": c["state"], "text-halo-color": halo, "text-halo-width": 1}},
         # state names: italic capitals, spaced, as the almanacs set them
         {"id": "state-labels", "metadata": HIDE, "type": "symbol", "source": "base", "source-layer": "state_labels",
          "maxzoom": 8,
@@ -294,6 +319,8 @@ def style(name, c):
                         "attribution": HISTORY_ATTRIBUTION},
             # built by `tiles-build transport`
             "transport": {"type": "vector", "url": "${TILES_PUBLIC_URL}/transport", "attribution": TRANSPORT_ATTRIBUTION},
+            # built by `tiles-build counties`
+            "counties": {"type": "vector", "url": "${TILES_PUBLIC_URL}/counties", "attribution": COUNTY_ATTRIBUTION},
             # built by `tiles-build dioceses`
             "dioceses": {"type": "vector", "url": "${TILES_PUBLIC_URL}/dioceses", "attribution": DIOCESE_ATTRIBUTION},
             # built by `tiles-build ohm`

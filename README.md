@@ -43,7 +43,7 @@ collection as maps, networks and charts.
   - a path finder ("how are these two connected?")
   - each node's ranks by links and as a go-between
   - GEXF and CSV downloads
-- **Maps as of the year shown:** that year's states and borders, railroads,
+- **Maps as of the year shown:** that year's states, counties and borders, railroads,
   canals and steamboat rivers, historical streets and diocese territories, on
   a self-hosted base map in the almanacs' printed style.
 - **Data quality tools:**
@@ -150,7 +150,7 @@ Every institution and person has a record page (`/institutions/:id`,
   records yet, where it did not exist yet, and known gaps such as the Civil
   War years. Beside it is a map of where records concentrate.
 
-- **Data Issues:** what to check or correct in the data. It has six checks:
+- **Data Issues:** what to check or correct in the data. It has seven checks:
   - **people who may be one person:** a review queue of about 1,300 pairs of
     person ids, with the two careers side by side, scored by whether one
     career picks up where the other ends, the post and diocese at the
@@ -158,6 +158,7 @@ Every institution and person has a record page (`/institutions/:id`,
   - one person id listed under several surnames
   - institutions with years that have no place
   - records outside their diocese's territory
+  - records whose county isn't the county the place lay in that year
   - circuits over 500 miles
   - institution ids with an unknown diocese prefix
 
@@ -274,6 +275,8 @@ printed style. Maps stay over the contiguous United States.
 A map that is given a year shows the country **as it was on 1 January of that
 year**:
 
+- **County lines and very light county names** of that date from zoom 6.
+  With no year chosen (a record's "All years"), the 1870 counties are shown.
 - **States, territories and the national border** of that date. Land outside
   the United States of the time is tinted, so the Mexican Cession or the
   Oregon Country read as foreign before they were annexed.
@@ -388,8 +391,8 @@ summarises them.
   domain), [OpenStreetMap](https://www.openstreetmap.org/copyright) land
   polygons and street detail (ODbL, © OpenStreetMap contributors), and
   [GeoNames](https://www.geonames.org/) towns (CC BY 4.0).
-- **Historical boundaries:** *U.S. Historical States and Territories*, Atlas
-  of Historical County Boundaries, Dr. William M. Scholl Center for American
+- **Historical boundaries:** *U.S. Historical States and Territories* and
+  *U.S. Historical Counties*, Atlas of Historical County Boundaries, Dr. William M. Scholl Center for American
   History and Culture, The Newberry Library (CC BY-NC-SA 2.5).
 - **Diocese territories:** drawn at Boston College for this project (in
   progress).
