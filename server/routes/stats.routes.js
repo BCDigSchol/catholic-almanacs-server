@@ -13,6 +13,7 @@ module.exports = app => {
     router.get('/path', wrap(controller.getPath));
     router.get('/diocese-check', wrap(controller.getDioceseCheck));
     router.get('/languages', wrap(controller.getLanguages));
+    router.get('/data-issues', wrap(controller.getDataIssues));
     router.get('/orders', wrap(controller.getOrders));
     app.use('/api/stats', router);
 }

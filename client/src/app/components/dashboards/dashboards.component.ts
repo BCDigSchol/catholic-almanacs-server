@@ -41,6 +41,12 @@ export class DashboardsComponent {
           icon: "grid_on",
           title: "Coverage — the Shape of the Data",
           description: "A GitHub-style grid of which dioceses were recorded in which years, beside a binned map of where records concentrate — so you can see how thoroughly the almanacs documented the church across time and space."
+        },
+        {
+          link: "/dashboards/data-issues",
+          icon: "rule",
+          title: "Data Issues",
+          description: "What to check or correct: people recorded under two ids, institutions without a place, records outside their diocese's territory — with a review queue for likely duplicate people and downloads for the editors."
         }
       ]
     },

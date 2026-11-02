@@ -1,0 +1,53 @@
+<div class="review-bar">
+    <label class="ctl">
+        <span>Your name, for the download</span>
+        <input class="control" type="text" [value]="reviewer" (change)="setReviewer($any($event.target).value)" placeholder="Initials or name">
+    </label>
+    <p class="review-count">
+        {{ matching }} {{ matching === 1 ? 'pair' : 'pairs' }} here · {{ decidedHere }} decided in this browser
+    </p>
+    <button type="button" class="btn" [disabled]="!decidedHere" (click)="download()">Download decisions</button>
+</div>
+
+<ol class="pairs">
+    @for (p of shown; track p.key) {
+        <li class="pair" [class.decided]="p.mine || p.decision">
+            <p class="pair-why">
+                <span class="tag strength" [attr.data-strength]="p.strength">{{ p.strength }}</span>
+                {{ p.reasons.join('; ') }}
+                @if (p.decision) { <span class="tag">decided: {{ p.decision }}</span> }
+            </p>
+            <div class="pair-sides">
+                @for (person of [p.a, p.b]; track person.id) {
+                    <section class="side">
+                        <h3 class="side-name">
+                            <a class="record-link pers" [routerLink]="['/people', person.id]">{{ person.titles[0] ? person.titles[0] + ' ' : '' }}{{ person.name }}</a>
+                        </h3>
+                        <p class="side-meta mono">{{ person.id }} · {{ person.years }}@if (person.orders.length) { · {{ person.orders.join(', ').toUpperCase() }} }</p>
+                        <ul class="entries side-career">
+                            @for (s of person.career; track s.inst + s.from) {
+                                <li>
+                                    <span class="years">{{ span(s.from, s.to) }}</span>{{ ' ' }}
+                                    <a class="record-link inst" [routerLink]="['/institutions', s.inst]" [queryParams]="{ year: s.from }">{{ label(s.name, s.type) }}</a>
+                                    @if (s.dio) { <span class="dio">{{ ' ' }}{{ s.dio }}</span> }
+                                    @if (s.visiting) { <span class="dio">{{ ' ' }}(visiting)</span> }
+                                </li>
+                            }
+                        </ul>
+                    </section>
+                }
+            </div>
+            <div class="pair-decide" role="group" [attr.aria-label]="'Are ' + p.a.name + ' and ' + p.b.name + ' one person?'">
+                <button type="button" class="btn" [class.btn-primary]="p.mine === 'same'" [attr.aria-pressed]="p.mine === 'same'" (click)="decide(p, 'same')">Same person</button>
+                <button type="button" class="btn" [class.btn-primary]="p.mine === 'different'" [attr.aria-pressed]="p.mine === 'different'" (click)="decide(p, 'different')">Different people</button>
+                <button type="button" class="btn" [class.btn-primary]="p.mine === 'unsure'" [attr.aria-pressed]="p.mine === 'unsure'" (click)="decide(p, 'unsure')">Unsure</button>
+            </div>
+        </li>
+    } @empty {
+        <li class="pair-empty">Nothing to review here.</li>
+    }
+</ol>
+
+@if (shown.length < matching) {
+    <button type="button" class="btn" (click)="more()">Show {{ matching - shown.length < 20 ? matching - shown.length : 20 }} more</button>
+}

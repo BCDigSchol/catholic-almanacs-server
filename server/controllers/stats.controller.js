@@ -599,9 +599,14 @@ const milesBetween = (lat1, lng1, lat2, lng2) => {
 };
 
 exports.getCircuits = async (req, res) => {
+    res.send(await circuitsData());
+};
+
+/** The circuits response, built once and cached (also read by the data-issues check). */
+async function circuitsData() {
     const key = cacheKey('stats/circuits', {});
     const cached = networkCache.get(key);
-    if (cached) return res.send(cached);
+    if (cached) return cached;
 
     const q = (sql) => db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT });
     const [table, visits, records] = await Promise.all([
@@ -686,8 +691,8 @@ exports.getCircuits = async (req, res) => {
         note: 'A circuit link is a station recorded as attended from another institution, or a priest listed at a place as visiting from his own. The almanacs of the 1830s printed few such links; from 1864 they list most stations, so much of the rise reflects fuller reporting.',
     };
     networkCache.set(key, result);
-    res.send(result);
-};
+    return result;
+}
 
 // GET /api/stats/railroads?diocese=&fn=&year= — how near the institutions of
 // each year stood to the railroads, and to the canals and steamboat rivers, in
@@ -1053,4 +1058,107 @@ exports.getLanguages = async (req, res) => {
         };
     }
     res.json(_languages);
+};
+
+
+/**
+ * GET /api/stats/data-issues?check= — things in the data to check or correct,
+ * for the Data Issues page:
+ *   summary      how many of each
+ *   people       person ids that may be one person (utils/people-review.js)
+ *   names        person ids listed under more than one surname
+ *   places       institutions with years that have no coordinates
+ *   prefixes     institution ids whose diocese prefix is not in the timeline
+ *   circuits     circuit links over MAX_CIRCUIT_MILES (a misplaced end)
+ * Records outside their diocese's territory come from /stats/diocese-check.
+ */
+exports.getDataIssues = async (req, res) => {
+    const check = String(req.query.check || 'summary');
+    const key = cacheKey('stats/data-issues', { check });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+    const q = sql => db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT });
+    const { loadReview } = require('../utils/people-review');
+
+    const builders = {
+        people: async () => ({ pairs: (await loadReview()).pairs }),
+        names: async () => ({ ids: (await loadReview()).nameConflicts }),
+        places: async () => {
+            const rows = await q(`SELECT instID, instName, instType, year, cityReg, countyReg, stateReg, placeName, diocese
+                                    FROM almanacRecords
+                                   WHERE (latitude IS NULL OR longitude IS NULL OR latitude = 0) AND year IS NOT NULL
+                                   ORDER BY instID, year`);
+            const byInst = new Map();
+            for (const r of rows) {
+                let i = byInst.get(r.instID);
+                if (!i) byInst.set(r.instID, i = { inst: r.instID, years: [] });
+                // the latest year's details
+                Object.assign(i, { name: r.instName || '', type: r.instType || '', diocese: r.diocese || '',
+                    place: [r.placeName || r.cityReg, r.countyReg && `${r.countyReg} County`, r.stateReg].filter(Boolean).join(', ') });
+                i.years.push(Number(r.year));
+            }
+            return { records: rows.length, institutions: [...byInst.values()] };
+        },
+        prefixes: async () => {
+            const rows = await q(`SELECT instID, instName, instType, year, diocese FROM almanacRecords WHERE year IS NOT NULL`);
+            const out = new Map();
+            for (const r of rows) {
+                const id = dioceses.canonicalDioceseId(r.instID);
+                if (id && dioceses.meta(id)) continue;
+                const prefix = id || String(r.instID).split('.').slice(0, 2).join('.');
+                let p = out.get(prefix);
+                if (!p) out.set(prefix, p = { prefix, records: 0, listedAs: new Set(), examples: [] });
+                p.records++;
+                if (r.diocese) p.listedAs.add(r.diocese);
+                if (p.examples.length < 5 && !p.examples.some(e => e.inst === r.instID)) {
+                    p.examples.push({ inst: r.instID, name: r.instName || '', type: r.instType || '', year: Number(r.year) });
+                }
+            }
+            return { prefixes: [...out.values()].map(p => ({ ...p, listedAs: [...p.listedAs] })).sort((a, b) => b.records - a.records) };
+        },
+        circuits: async () => {
+            const { misplaced } = await circuitsData();
+            const ids = [...new Set(misplaced.flatMap(m => [m[1], m[2]]))];
+            const names = new Map();
+            if (ids.length) {
+                const rows = await db.sequelize.query(
+                    `SELECT instID, year, instName, instType, cityReg, stateReg, latitude, longitude FROM almanacRecords WHERE instID IN (:ids)`,
+                    { replacements: { ids }, type: db.Sequelize.QueryTypes.SELECT });
+                for (const r of rows) names.set(`${r.instID}|${r.year}`, r);
+            }
+            const side = (id, year) => {
+                const r = names.get(`${id}|${year}`) || {};
+                return { inst: id, name: r.instName || '', type: r.instType || '', place: [r.cityReg, r.stateReg].filter(Boolean).join(', '),
+                    lat: r.latitude ?? null, lng: r.longitude ?? null };
+            };
+            return { links: misplaced.map(([year, hub, st, miles]) => ({ year, miles, from: side(hub, year), to: side(st, year) }))
+                .sort((a, b) => b.miles - a.miles) };
+        },
+    };
+
+    let result;
+    if (check === 'summary') {
+        const review = await loadReview();
+        const strength = s => review.pairs.filter(p => p.strength === s && !p.decision).length;
+        const [places, prefixes, circuits] = await Promise.all([builders.places(), builders.prefixes(), builders.circuits()]);
+        result = {
+            people: { strong: strength('strong'), likely: strength('likely'), possible: strength('possible'),
+                decided: review.pairs.filter(p => p.decision).length, people: review.people },
+            names: review.nameConflicts.length,
+            places: { records: places.records, institutions: places.institutions.length },
+            prefixes: prefixes.prefixes.reduce((n, p) => n + p.records, 0),
+            circuits: circuits.links.length,
+            // null where the diocese territories aren't built here
+            territories: await (async () => {
+                const check = await require('../utils/diocese-check').loadCheck();
+                return check ? check.filter(c => c.territory && c.territory !== c.listed).length : null;
+            })(),
+        };
+    } else if (builders[check]) {
+        result = await builders[check]();
+    } else {
+        return res.status(400).json({ message: `Unknown check: ${check}` });
+    }
+    networkCache.set(key, result);
+    res.json(result);
 };

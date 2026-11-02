@@ -1,0 +1,5 @@
+# Decisions on possible duplicate people, from the Data Issues page's
+# "Download decisions" (a and b are person ids; decision: same | different | unsure).
+# A pair decided here leaves the review queue for everyone; "same" pairs are the
+# merges to apply. Rebuild the API after editing (docker compose up -d --build nodejs-prod).
+a,b,decision,reviewer,date,note

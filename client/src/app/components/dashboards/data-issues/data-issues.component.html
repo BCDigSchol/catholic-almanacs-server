@@ -1,0 +1,139 @@
+<app-dashboard-shell
+    title="Data Issues"
+    purpose="What in the data to check or correct: people recorded under two ids, records without a place or outside their diocese, and ids that don't add up. Each list downloads for the people correcting the transcriptions."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <nav class="check-index" aria-label="Checks">
+        @for (c of checks; track c.id) {
+            <button type="button" class="check" [class.current]="c.id === state.check" [attr.aria-current]="c.id === state.check ? 'true' : null" (click)="setCheck(c.id)">
+                <span class="check-count">{{ c.count == null ? '—' : (c.count | number) }}</span>
+                <span class="check-label">{{ c.label }}</span>
+                <span class="check-note">{{ c.note }}</span>
+            </button>
+        }
+    </nav>
+
+    @if (state.check === 'people') {
+        <app-control-bar [chips]="chips" [clearAll]="clearAll">
+            <app-segmented primary label="Strength" [showLabel]="true" [options]="strengthOptions" [value]="state.strength" (valueChange)="setStrength($event)"></app-segmented>
+            <app-segmented primary label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
+        </app-control-bar>
+    }
+
+    @switch (state.check) {
+        @case ('people') {
+            <app-viz-panel heading="People who may be one person" note="Two careers side by side, strongest evidence first" [state]="vizState" (retry)="retry()">
+                <app-people-review [pairs]="pairs" [strength]="state.strength" [show]="state.show"></app-people-review>
+            </app-viz-panel>
+        }
+        @case ('names') {
+            <app-viz-panel heading="One person id, several surnames" note="Each name as listed, with how many listings" [state]="vizState" (retry)="retry()">
+                <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                <table class="data-table">
+                    <thead><tr><th>Person</th><th>Years</th><th>Listed as</th></tr></thead>
+                    <tbody>
+                        @for (n of names.slice(0, limit); track n.id) {
+                            <tr>
+                                <td data-label="Person"><a class="record-link pers" [routerLink]="['/people', n.id]">{{ n.name }}</a> <span class="mono id">{{ n.id }}</span></td>
+                                <td data-label="Years">{{ n.years }}</td>
+                                <td data-label="Listed as">@for (x of n.names; track x.name; let last = $last) {{{ x.name }} ({{ x.n }}){{ last ? '' : '; ' }}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (names.length > limit) { <button type="button" class="btn more" (click)="more()">Show more</button> }
+            </app-viz-panel>
+        }
+        @case ('places') {
+            <app-viz-panel heading="Institutions without a place" note="Years with no coordinates, and what the almanac gave as the place" [state]="vizState" (retry)="retry()">
+                <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                <table class="data-table">
+                    <thead><tr><th>Institution</th><th>Place as recorded</th><th>Diocese</th><th>Years</th></tr></thead>
+                    <tbody>
+                        @for (u of unplaced.slice(0, limit); track u.inst) {
+                            <tr>
+                                <td data-label="Institution"><a class="record-link inst" [routerLink]="['/institutions', u.inst]" [queryParams]="{ year: u.years[u.years.length - 1] }">{{ label(u.name, u.type) }}</a></td>
+                                <td data-label="Place as recorded">{{ u.place || '—' }}</td>
+                                <td data-label="Diocese">{{ u.diocese }}</td>
+                                <td data-label="Years">{{ spans(u.years) }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (unplaced.length > limit) { <button type="button" class="btn more" (click)="more()">Show more ({{ unplaced.length - limit | number }} left)</button> }
+            </app-viz-panel>
+        }
+        @case ('territories') {
+            <app-viz-panel heading="Outside their diocese’s territory" note="Records placed in a drawn territory, and how many lie in their own diocese’s" [state]="vizState"
+                emptyText="The diocese territories haven't been built on this server." (retry)="retry()">
+                <table class="data-table">
+                    <thead><tr><th>Year</th><th class="num">Placed</th><th class="num">In their diocese</th><th class="num">Outside</th><th></th></tr></thead>
+                    <tbody>
+                        @for (t of territoryYears; track t.year) {
+                            <tr>
+                                <td data-label="Year">{{ t.year }}</td>
+                                <td data-label="Placed" class="num">{{ t.placed | number }}</td>
+                                <td data-label="In their diocese" class="num">{{ t.placed ? (100 * t.agree / t.placed | number: '1.1-1') + '%' : '—' }}</td>
+                                <td data-label="Outside" class="num">{{ t.placed - t.agree | number }}</td>
+                                <td data-label=""><a class="record-link" routerLink="/dashboards/diocese-tracker" [queryParams]="{ year: t.year }">Review {{ t.year }}</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </app-viz-panel>
+        }
+        @case ('circuits') {
+            <app-viz-panel heading="Circuits too long to ride" note="A station attended from more than 500 miles away: one end's coordinates are wrong" [state]="vizState" (retry)="retry()">
+                <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                <table class="data-table">
+                    <thead><tr><th>Year</th><th>Attended from</th><th>Station</th><th class="num">Miles</th></tr></thead>
+                    <tbody>
+                        @for (l of longLinks; track l.year + l.from.inst + l.to.inst) {
+                            <tr>
+                                <td data-label="Year">{{ l.year }}</td>
+                                <td data-label="Attended from">
+                                    <a class="record-link inst" [routerLink]="['/institutions', l.from.inst]" [queryParams]="{ year: l.year }">{{ label(l.from.name, l.from.type) }}</a>
+                                    <span class="where">{{ l.from.place }} · {{ coords(l.from) }}</span>
+                                </td>
+                                <td data-label="Station">
+                                    <a class="record-link inst" [routerLink]="['/institutions', l.to.inst]" [queryParams]="{ year: l.year }">{{ label(l.to.name, l.to.type) }}</a>
+                                    <span class="where">{{ l.to.place }} · {{ coords(l.to) }}</span>
+                                </td>
+                                <td data-label="Miles" class="num">{{ l.miles | number }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </app-viz-panel>
+        }
+        @case ('prefixes') {
+            <app-viz-panel heading="Unknown diocese prefixes" note="Institution ids that begin with no diocese in the timeline" [state]="vizState" (retry)="retry()">
+                <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                <table class="data-table">
+                    <thead><tr><th>Prefix</th><th class="num">Records</th><th>Listed under</th><th>For example</th></tr></thead>
+                    <tbody>
+                        @for (p of prefixes; track p.prefix) {
+                            <tr>
+                                <td data-label="Prefix" class="mono">{{ p.prefix }}</td>
+                                <td data-label="Records" class="num">{{ p.records | number }}</td>
+                                <td data-label="Listed under">{{ p.listedAs.join(', ') }}</td>
+                                <td data-label="For example">
+                                    @for (e of p.examples; track e.inst; let last = $last) {
+                                        <a class="record-link inst" [routerLink]="['/institutions', e.inst]" [queryParams]="{ year: e.year }">{{ label(e.name, e.type) }}</a>{{ last ? '' : ', ' }}
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </app-viz-panel>
+        }
+    }
+
+    <div notes>
+        <p><strong>People who may be one person.</strong> Two person ids with the same surname whose given names fit (the same, or initials that agree: "E. J." and "Elisha J.") are scored on their careers. For: one picks up the year after the other ends, the same post or diocese at the handover, the same religious order. Against: both listed at different places in the same year, or in different orders. Pairs scoring below "possible" are not shown. Common surnames with more than 80 ids are left out, since pairing them blindly would bury the reviewer.</p>
+        <p>Decisions are kept in your browser only. "Download decisions" gives a CSV; added to <span class="mono">server/data/person-decisions.csv</span> in the code, its pairs leave the queue for everyone, and the "same person" rows are the merges to make in the data.</p>
+        <p><strong>Other checks.</strong> A person id listed under surnames that are not spellings of one another; institutions with years that have no coordinates (so they are missing from every map); records placed in the territory of a diocese other than the one they were listed under (the territories are themselves a work in progress); circuit links over 500 miles; and institution ids whose prefix names no diocese in the diocese timeline.</p>
+    </div>
+</app-dashboard-shell>

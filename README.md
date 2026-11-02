@@ -115,6 +115,22 @@ Every institution and person has a record page (`/institutions/:id`,
   records yet, where it did not exist yet, and known gaps such as the Civil
   War years. Beside it is a map of where records concentrate.
 
+- **Data Issues:** what to check or correct in the data. It has six checks:
+  - **people who may be one person:** a review queue of about 1,300 pairs of
+    person ids, with the two careers side by side, scored by whether one
+    career picks up where the other ends, the post and diocese at the
+    handover, and the religious order
+  - one person id listed under several surnames
+  - institutions with years that have no place
+  - records outside their diocese's territory
+  - circuits over 500 miles
+  - institution ids with an unknown diocese prefix
+
+  Each list downloads as a CSV. Decisions on duplicate people are kept in the
+  reviewer's browser and downloaded as a CSV. Added to
+  `server/data/person-decisions.csv`, the decided pairs leave the queue for
+  everyone.
+
 **Geography**
 
 - **The Spread of the Church:** an animated map of institutions spreading west
