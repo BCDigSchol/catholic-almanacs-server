@@ -1228,6 +1228,103 @@ exports.getMeans = async (req, res) => {
 };
 
 /**
+ * GET /api/stats/frontier?year=&diocese= — the Church against the settled
+ * country: each year's institutions by distance to the nearest post office
+ * then open (utils/frontier.js, from tiles-build frontier), whether the church
+ * was listed before that office opened, and the settled places with no
+ * institution near them. Counts are of records (one per institution-year).
+ *   years     [{year, n, offices, unchurched, bands[5] (≤1, ≤5, ≤15, ≤50 mi,
+ *              farther or none), beyond15, measured, churchFirst, medianMiles}]
+ *   points    for the year: [lat, lng, instID, miles|null, churchFirst 0|1]
+ *   unchurched  the year's sample of open offices with no institution within
+ *              25 miles: [[lat, lng, name, state]]
+ *   farthest  the year's institutions farthest from any office:
+ *              [{inst, name, type, place, miles|null, dio}]
+ *   dioceses  {id: name}; meta {bands, far}
+ */
+const FRONTIER_BANDS = [1, 5, 15, 50];
+exports.getFrontier = async (req, res) => {
+    const { loadFrontier } = require('../utils/frontier');
+    const data = loadFrontier();
+    if (!data) return res.status(404).json({ message: 'The post offices are not built on this server (tiles-build frontier).' });
+    const diocese = typeof req.query.diocese === 'string' ? req.query.diocese : '';
+    const yearParam = parseIntParam(req.query.year, 'year');
+    if (yearParam.error) return res.status(400).json({ message: yearParam.error });
+    const facts = await loadFacts();
+    const allYears = [...new Set(facts.map(f => f.y))].sort((a, b) => a - b);
+    const year = allYears.includes(yearParam.value) ? yearParam.value : allYears[allYears.length - 1];
+    const key = cacheKey('stats/frontier', { year, diocese });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+
+    // when each institution was first listed (branching ids by their child id)
+    const firstYear = new Map();
+    for (const f of facts) {
+        for (const id of String(f.i).split(/[&=]/)) {
+            if (!firstYear.has(id) || f.y < firstYear.get(id)) firstYear.set(id, f.y);
+        }
+    }
+    const names = dioceseNameMap();
+    const dioceseNames = {};
+    const byYear = new Map();
+    const points = [], yearRecs = [];
+    for (const f of facts) {
+        const m = data.records[f.rec];
+        if (!m) continue;
+        dioceseNames[f._dio] = names[f._dio] || f.d;
+        if (diocese && f._dio !== diocese) continue;
+        const [miles, est] = m;
+        let y = byYear.get(f.y);
+        if (!y) {
+            const info = data.years[f.y] || { offices: 0, unchurched: 0 };
+            byYear.set(f.y, y = { year: f.y, n: 0, offices: info.offices, unchurched: info.unchurched,
+                bands: [0, 0, 0, 0, 0], beyond15: 0, measured: 0, churchFirst: 0, miles: [] });
+        }
+        y.n++;
+        const band = miles == null ? 4 : FRONTIER_BANDS.findIndex(b => miles <= b);
+        y.bands[band === -1 ? 4 : band]++;
+        if (miles == null || miles > 15) y.beyond15++;
+        if (miles != null) y.miles.push(miles);
+        const first = Math.min(...String(f.i).split(/[&=]/).map(id => firstYear.get(id) ?? f.y));
+        const churchFirst = est != null && first <= est;
+        if (est != null) { y.measured++; if (churchFirst) y.churchFirst++; }
+        if (f.y === year) {
+            if (f.lat != null && f.lng != null) points.push([f.lat, f.lng, f.i, miles, churchFirst ? 1 : 0]);
+            yearRecs.push({ inst: f.i, miles, dio: f._dio });
+        }
+    }
+    const years = [...byYear.values()].sort((a, b) => a.year - b.year).map(y => {
+        const sorted = y.miles.sort((a, b) => a - b);
+        const { miles, ...rest } = y;
+        return { ...rest, medianMiles: sorted.length ? sorted[Math.floor(sorted.length / 2)] : null };
+    });
+    // the year's farthest institutions, named
+    const far = yearRecs.sort((a, b) => (b.miles ?? 9999) - (a.miles ?? 9999)).slice(0, 40);
+    const named = new Map();
+    if (far.length) {
+        const rows = await db.sequelize.query(
+            `SELECT instID, instName, instType, cityReg, stateReg FROM almanacRecords WHERE year = :year AND instID IN (:ids)`,
+            { replacements: { year, ids: far.map(r => r.inst) }, type: db.Sequelize.QueryTypes.SELECT });
+        for (const r of rows) named.set(r.instID, r);
+    }
+    const result = {
+        year,
+        years,
+        points,
+        unchurched: (data.years[year] || {}).sample || [],
+        farthest: far.map(r => {
+            const n = named.get(r.inst) || {};
+            return { inst: r.inst, name: n.instName || '', type: n.instType || '', place: [n.cityReg, n.stateReg].filter(Boolean).join(', '),
+                miles: r.miles, dio: dioceseNames[r.dio] || r.dio };
+        }),
+        dioceses: dioceseNames,
+        meta: { bands: FRONTIER_BANDS, far: 500 },
+    };
+    networkCache.set(key, result);
+    res.json(result);
+};
+
+/**
  * GET /api/stats/data-issues?check= — things in the data to check or correct,
  * for the Data Issues page:
  *   summary      how many of each

@@ -1,0 +1,21 @@
+// Shared dashboard styles (.legend, .chart, .stat-strip, .data-table) live in src/styles.scss.
+
+app-year-player {
+    margin-bottom: var(--space-3);
+}
+
+.caution {
+    margin: 0 0 var(--space-4);
+    color: var(--ink-2);
+    font-size: var(--text-sm);
+}
+
+.two-up {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-5);
+
+    @media (max-width: 900px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

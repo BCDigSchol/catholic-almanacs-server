@@ -12,6 +12,7 @@ Two containers share one volume of tiles:
   `dioceses.pmtiles` (diocese territories by year, zoom 0–10),
   `ohm.pmtiles` (OpenHistoricalMap streets and railways by date, zoom 10–15),
   `trails.pmtiles` (the historic trails and roads with their years in use, zoom 2–12),
+  `postoffices.pmtiles` (the post offices with the years each was open, zoom 3–12),
   `terrain.pmtiles` (elevation over the lower 48, terrarium-encoded PNG, zoom 0–10,
   which the map shades itself as relief)
   and `detail.pmtiles` (today's streets around every recorded place, zoom 10–15).
@@ -19,7 +20,9 @@ Two containers share one volume of tiles:
   `diocese-territories.json`, `record-counties.json`, `record-cessions.json`
   and `mexican-lands.json` (written by the `history` build when the DB is up:
   which records stand on land taken from Mexico, and how), `trail-distances.json`
-  (the `trails` build: each record's miles to the nearest trail in use), plus
+  (the `trails` build: each record's miles to the nearest trail in use),
+  `frontier.json` (the `frontier` build: each record against the post offices
+  open in its year, and the offices with no institution near), plus
   `link-candidates.json` (the `links` build: present-day OpenStreetMap places
   that may be each institution, for the Data Issues review).
 - **`tiles`** is [Martin](https://github.com/maplibre/martin): it serves every
@@ -42,6 +45,7 @@ docker compose run --rm tiles-build counties   # county lines by year: a minute 
 docker compose run --rm tiles-build cessions   # Indian land cessions: seconds (places records if the DB is up)
 docker compose run --rm tiles-build links      # present-day places to link institutions to: needs the DB; the first run downloads the states (as detail does)
 docker compose run --rm tiles-build trails     # historic trails and roads with their years: a minute (measures records' distances if the DB is up)
+docker compose run --rm tiles-build frontier   # the post offices by year, and each record against them: a few minutes (measures if the DB is up)
 docker compose run --rm tiles-build terrain    # elevation for the relief: about 2.5 GB of tiles the first time (20–30 minutes), kept for reruns
 docker compose run --rm tiles-build detail   # street detail only: reads the database
 docker compose up -d --build tiles           # serve them on http://localhost:8092

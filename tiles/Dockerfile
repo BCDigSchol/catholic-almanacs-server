@@ -1,7 +1,7 @@
 # Catholic Almanacs map tiles: two images from one Dockerfile.
 #
 #   builder  downloads the open data and builds the tiles into /data
-#            (docker compose run --rm tiles-build [base|detail|history|ohm|transport|dioceses|counties|cessions|links|terrain|trails])
+#            (docker compose run --rm tiles-build [base|detail|history|ohm|transport|dioceses|counties|cessions|links|terrain|trails|frontier])
 #   server   Martin, serving whatever .pmtiles files are in /data, the label
 #            fonts and the map styles (docker compose up -d tiles)
 #
@@ -35,10 +35,10 @@ RUN git clone --depth 1 --branch "${TIPPECANOE_VERSION}" https://github.com/felt
     && make -C /tmp/tippecanoe install \
     && rm -rf /tmp/tippecanoe
 
-COPY build.sh build-tiles.sh build-detail.sh build-history.sh build-ohm.sh build-transport.sh build-dioceses.sh build-counties.sh build-cessions.sh build-links.sh filter-places.sh build-terrain.sh build-trails.sh \
+COPY build.sh build-tiles.sh build-detail.sh build-history.sh build-ohm.sh build-transport.sh build-dioceses.sh build-counties.sh build-cessions.sh build-links.sh filter-places.sh build-terrain.sh build-trails.sh build-frontier.sh \
      make-area.py pick-regions.py history-features.py ohm-features.py transport-distances.py \
      dioceses-features.py diocese-territories.py counties-features.py record-counties.py unzip-lenient.py \
-     cessions-features.py record-cessions.py record-mexican-lands.py record-links.py terrain-tiles.py trails-features.py trail-distances.py /tiles/
+     cessions-features.py record-cessions.py record-mexican-lands.py record-links.py terrain-tiles.py trails-features.py trail-distances.py frontier-features.py frontier-measures.py /tiles/
 # the diocese shapes and their ids (see build-dioceses.sh)
 COPY dioceses/ /tiles/dioceses/
 COPY trails.csv /tiles/trails.csv

@@ -57,6 +57,9 @@ SHOW, HIDE = {"almanac:dated": "show"}, {"almanac:dated": "hide"}
 # Diocese territories: dated like SHOW, but drawn only on maps that ask for
 # them (map-vis [dioceses]); the fill only for the diocese a map picks out.
 DIOCESES = {"almanac:dated": "dioceses"}
+# Post offices (postoffices.pmtiles): dated, drawn only on maps that ask
+# (map-vis [postOffices]), the Frontier dashboard's settled country.
+POST_OFFICES = {"almanac:dated": "postoffices"}
 # Dated, but on a map with no year (a record's "All years") drawn as of the
 # latest almanac year rather than hidden: county lines, railroads, canals and
 # steamboat rivers, which have no "today" layer to fall back on.
@@ -114,6 +117,11 @@ TERRAIN_ATTRIBUTION = (
     'Terrain: United States 3DEP, SRTM and GMTED2010 data courtesy of the '
     '<a href="https://www.usgs.gov/3d-elevation-program" target="_blank" rel="noopener">U.S. Geological Survey</a>;'
     ' tiles by <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener">Mapzen</a>'
+)
+
+POST_OFFICE_ATTRIBUTION = (
+    'Post offices by year: <a href="https://doi.org/10.7910/DVN/NUKCNA" target="_blank" rel="noopener">'
+    'Cameron Blevins and Richard W. Helbock, US Post Offices</a> (CC0)'
 )
 
 TRAILS_ATTRIBUTION = (
@@ -229,6 +237,18 @@ def layers(c):
                     "text-allow-overlap": True, "text-ignore-placement": True, "text-padding": 0},
          "filter": [*NO_DATE, ["==", ["get", "kind"], "rail"]],
          "paint": {"text-color": c["ink2"]}},
+        # ── the post offices open in one year (postoffices.pmtiles), on maps
+        # that ask for them: small quiet dots, the settled country of that day
+        {"id": "postoffices-dots", "metadata": POST_OFFICES, "type": "circle", "source": "postoffices", "source-layer": "postoffices",
+         "minzoom": 3, "layout": {"visibility": "none"},
+         "filter": NO_DATE,
+         "paint": {"circle-color": c["ink3"], "circle-opacity": zoom(3, 0.35, 8, 0.5, 12, 0.6),
+                   "circle-radius": zoom(3, 0.8, 6, 1.4, 9, 2.2, 12, 3.5)}},
+        {"id": "postoffices-labels", "metadata": POST_OFFICES, "type": "symbol", "source": "postoffices", "source-layer": "postoffices",
+         "minzoom": 9, "layout": {"visibility": "none", "text-field": ["get", "name"], "text-font": REGULAR,
+                                  "text-size": zoom(9, 9, 12, 11), "text-offset": [0, 0.9], "text-anchor": "top", "text-padding": 6},
+         "filter": NO_DATE,
+         "paint": {"text-color": c["ink3"], "text-halo-color": halo, "text-halo-width": 1.2}},
         # ── the historic trails and roads of one year (trails.pmtiles): wagon
         # roads as long dashes, horse and mail routes and the removal routes
         # dotted; with no year, the latest almanac year's
@@ -411,6 +431,8 @@ def style(name, c):
             "counties": {"type": "vector", "url": "${TILES_PUBLIC_URL}/counties", "attribution": COUNTY_ATTRIBUTION},
             # built by `tiles-build dioceses`
             "dioceses": {"type": "vector", "url": "${TILES_PUBLIC_URL}/dioceses", "attribution": DIOCESE_ATTRIBUTION},
+            # built by `tiles-build frontier`
+            "postoffices": {"type": "vector", "url": "${TILES_PUBLIC_URL}/postoffices", "attribution": POST_OFFICE_ATTRIBUTION},
             # built by `tiles-build trails`
             "trails": {"type": "vector", "url": "${TILES_PUBLIC_URL}/trails", "attribution": TRAILS_ATTRIBUTION},
             # built by `tiles-build terrain`: elevation, which the hillshade layer shades

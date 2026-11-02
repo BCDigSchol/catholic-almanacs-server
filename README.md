@@ -33,6 +33,7 @@ collection as maps, networks and charts.
   - coverage of the data, and a Data Issues page
   - the Church's spread west, diocese by diocese
   - mission circuits, and distance to railroads, rivers and trails
+  - the frontier: the Church against the settled country, by its post offices
   - missions and the Native land cessions
   - the Southwest: land taken from Mexico, and Spanish-surnamed clergy
   - languages and congregations
@@ -251,6 +252,12 @@ pages link to their metro, and the header search finds metros by city name.
   California and Mormon trails, the caminos reales, the Butterfield mail and
   Pony Express routes), with the map coloured by distance to either a
   railroad or a trail, the shares near each over time, and distance bands.
+- **The Frontier:** the Church against the settled country, with the post
+  office as the measure of settlement. Every post office open in a year on
+  the map, each institution coloured by its distance to the nearest, the
+  share listed before that office opened ("the church first"), the
+  institutions farthest from any office, and the settled places with no
+  Catholic institution within 25 miles.
 - **Languages and Congregations:** where the almanacs marked a church,
   school or mission as German, French, Polish, Bohemian, Dutch, Italian,
   Spanish or Irish, or as serving Native American or Black Catholics. It has
@@ -504,6 +511,10 @@ summarises them.
 - **Terrain:** United States 3DEP, SRTM and GMTED2010 elevation data courtesy
   of the U.S. Geological Survey (public domain), as Mapzen's Terrain Tiles on
   AWS Open Data; the map shades the relief from them.
+- **Post offices:** Cameron Blevins and Richard W. Helbock, *US Post
+  Offices* (Harvard Dataverse, 2021, doi:10.7910/DVN/NUKCNA, CC0): 166,140
+  post offices, 1639–2000, with the years each opened and closed and, for
+  most, a location.
 - **Historic trails:** the congressionally designated alignments of the
   national historic trails (Santa Fe, Oregon, California, Mormon Pioneer, Old
   Spanish, Pony Express, Trail of Tears, the caminos reales) and the

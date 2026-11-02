@@ -40,6 +40,11 @@
       "url": "${TILES_PUBLIC_URL}/dioceses",
       "attribution": "Diocese territories: Catholic Almanacs project, Boston College (in progress)"
     },
+    "postoffices": {
+      "type": "vector",
+      "url": "${TILES_PUBLIC_URL}/postoffices",
+      "attribution": "Post offices by year: <a href=\"https://doi.org/10.7910/DVN/NUKCNA\" target=\"_blank\" rel=\"noopener\">Cameron Blevins and Richard W. Helbock, US Post Offices</a> (CC0)"
+    },
     "trails": {
       "type": "vector",
       "url": "${TILES_PUBLIC_URL}/trails",
@@ -850,6 +855,136 @@
       ],
       "paint": {
         "text-color": "#cfc8b9"
+      }
+    },
+    {
+      "id": "postoffices-dots",
+      "metadata": {
+        "almanac:dated": "postoffices"
+      },
+      "type": "circle",
+      "source": "postoffices",
+      "source-layer": "postoffices",
+      "minzoom": 3,
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "circle-color": "#a39c8d",
+        "circle-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.35,
+          8,
+          0.5,
+          12,
+          0.6
+        ],
+        "circle-radius": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          3,
+          0.8,
+          6,
+          1.4,
+          9,
+          2.2,
+          12,
+          3.5
+        ]
+      }
+    },
+    {
+      "id": "postoffices-labels",
+      "metadata": {
+        "almanac:dated": "postoffices"
+      },
+      "type": "symbol",
+      "source": "postoffices",
+      "source-layer": "postoffices",
+      "minzoom": 9,
+      "layout": {
+        "visibility": "none",
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Old Standard TT Regular"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          9,
+          12,
+          11
+        ],
+        "text-offset": [
+          0,
+          0.9
+        ],
+        "text-anchor": "top",
+        "text-padding": 6
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          [
+            "get",
+            "from"
+          ],
+          0
+        ],
+        [
+          ">=",
+          [
+            "get",
+            "to"
+          ],
+          0
+        ]
+      ],
+      "paint": {
+        "text-color": "#a39c8d",
+        "text-halo-color": "#14130f",
+        "text-halo-width": 1.2
       }
     },
     {

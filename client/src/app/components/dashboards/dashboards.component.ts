@@ -85,6 +85,12 @@ export class DashboardsComponent {
           description: "Did the church follow the trails and the water, then the railroad? How near each year's institutions stood to the railroads, canals, steamboat rivers and overland trails of that year, mapped and charted over time."
         },
         {
+          link: "/dashboards/frontier",
+          icon: "explore",
+          title: "The Frontier",
+          description: "The Church against the settled country, with the post office as the measure of settlement: institutions by distance to the nearest post office then open, the church before the post office or after it, and settled places with no church near."
+        },
+        {
           link: "/dashboards/languages",
           icon: "translate",
           title: "Languages and Congregations",

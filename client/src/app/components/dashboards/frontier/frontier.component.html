@@ -1,0 +1,121 @@
+<app-dashboard-shell
+    title="The Frontier"
+    purpose="The Church against the settled country, with the post office as the measure of settlement: how far each year's institutions stood from the nearest post office then open, whether the church came before the post office or after it, and where people had settled with no Catholic institution near."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Mark" [showLabel]="true" [options]="markOptions" [value]="state.mark" (valueChange)="setMark($event)"></app-segmented>
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setDiocese($any($event.target).value)">
+                    <option value="" [selected]="!state.diocese">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.name }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (notBuilt) {
+        <p class="caution">The post offices haven't been built on this server yet (<code>tiles-build frontier</code>).</p>
+    }
+
+    @if (current) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">beyond 15 mi of any post office, {{ current.year }}</dt>
+                <dd class="stat-value">{{ share(current.beyond15, current.n) | percent }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">listed before the nearest post office opened</dt>
+                <dd class="stat-value">{{ share(current.churchFirst, current.measured) | percent }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">post offices open</dt>
+                <dd class="stat-value">{{ current.offices | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">with no Catholic institution within 25 mi</dt>
+                <dd class="stat-value">{{ current.unchurched | number }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'The settled country in ' + (year ?? '')"
+        [note]="'Every post office open that year as a grey dot; each institution coloured by its distance to the nearest' + (state.mark === 'unchurched' ? '; settled places with no Catholic institution within 25 miles marked' : '')"
+        [state]="vizState"
+        [emptyText]="notBuilt ? 'The post offices are not built on this server.' : 'Nothing to show for these filters.'"
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <ul key class="legend" aria-label="Distance to the nearest post office">
+            @for (b of bands; track b.id) {
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
+            }
+            @if (state.mark === 'unchurched') {
+                <li class="legend-item"><span class="legend-swatch dot" [style.background]="unchurchedInk"></span>A post office with no Catholic institution within 25 miles (a sample)</li>
+            }
+        </ul>
+        <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="frontier-year" (yearChange)="setYear($event)"></app-year-player>
+        <app-map-vis
+            [data]="mapData"
+            [context]="unchurched"
+            [isOpen]="true"
+            [simple]="true"
+            [autoCenter]="false"
+            [year]="year"
+            [postOffices]="true"
+            [dioceses]="!!state.diocese"
+            [dioceseFocus]="state.diocese || null"
+            label="The settled country"
+            [options]="mapOptions">
+        </app-map-vis>
+    </app-viz-panel>
+
+    <div class="two-up">
+        <app-viz-panel heading="How far from the settled country" note="Each year's institutions by distance to the nearest post office then open; click a year to show it"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+            <ul key class="legend">
+                @for (b of bands; track b.id) {
+                    <li class="legend-item"><span class="legend-swatch" [style.background]="b.color"></span>{{ b.label }}</li>
+                }
+            </ul>
+            <div class="chart" #bandChart></div>
+        </app-viz-panel>
+
+        <app-viz-panel heading="The church first, or the post office" note="Institutions with a post office within 500 miles: listed in the almanac before that nearest office opened, or after"
+            [state]="vizState" [hasKey]="true" (retry)="fetchData()">
+            <ul key class="legend">
+                <li class="legend-item"><span class="legend-swatch" [style.background]="firstInk['first']"></span>Listed before the nearest post office opened</li>
+                <li class="legend-item"><span class="legend-swatch" [style.background]="firstInk['after']"></span>Listed after it</li>
+            </ul>
+            <div class="chart" #firstChart></div>
+        </app-viz-panel>
+    </div>
+
+    <app-viz-panel [heading]="'Farthest from any post office, ' + (year ?? '')" note="The year's institutions farthest from the settled country" [state]="vizState" (retry)="fetchData()">
+        <table class="data-table">
+            <thead><tr><th>Institution</th><th>Place</th><th>Diocese</th><th class="num">Miles to a post office</th></tr></thead>
+            <tbody>
+                @for (f of farthest; track f.inst) {
+                    <tr>
+                        <td data-label="Institution"><a class="record-link inst" [routerLink]="['/institutions', f.inst]" [queryParams]="{ year: year }">{{ f.label }}</a></td>
+                        <td data-label="Place">{{ f.place || '—' }}</td>
+                        <td data-label="Diocese">{{ f.dio }}</td>
+                        <td data-label="Miles" class="num">{{ f.miles == null ? 'none within 500' : (f.miles | number: '1.0-0') }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </app-viz-panel>
+
+    <div notes>
+        <p><strong>Post offices as settlement.</strong> A post office opened where there were people to write letters, and closed when they left, so the post offices open in a year are the closest thing to a map of where Americans had settled by then. They come from Cameron Blevins and Richard W. Helbock's <em>US Post Offices</em> (Harvard Dataverse, 2021, CC0): 166,140 offices from 1639 to 2000 with the year each opened and closed. Two in three have a location (matched to the national place names); the rest, mostly short-lived country offices, are not on the map and not in the distances, so the settled country shown is a little thinner than it was. An office counts as open from 1 January of the year after it opened until the end of the year it closed.</p>
+        <p><strong>The measures.</strong> For every institution the almanac placed, the tile build takes the straight-line distance to the nearest post office open on 1 January of that year, and whether the institution's first almanac listing comes before the year that office opened: "the church first". The almanacs begin in 1833 and skip 1839–1863, so a church founded earlier than its first listing can count as "after" when it was not, and the 1864 almanac lists many institutions for the first time that were founded in the gap; read the first-or-after shares as a floor. "Settled places with no church" are the open post offices with no almanac institution of that year within 25 miles, a sample of 500 of them on the map.</p>
+        <p><strong>What it cannot show.</strong> Nearness is not cause: a mission far from any post office may have served a people the post never reached, and a post office with no church within 25 miles may have had a station the almanac did not print. The 1830s almanacs list far fewer places than those of the 1860s, so the early shares describe the almanac's reach as much as the Church's.</p>
+    </div>
+</app-dashboard-shell>

@@ -90,6 +90,8 @@ export class MapVisComponent {
   /** Draw the Indian land cessions (Royce): with a year, land still held then
    *  apart from land ceded in the ten years before; without, their outlines. */
   @Input() cessions = false;
+  /** Draw the post offices open in the map's year (the Frontier dashboard). */
+  @Input() postOffices = false;
   /** Historical county id(s) to shade (e.g. 'ohs_noble', or a metro's counties), as they stood in the map's year (or 1870). */
   @Input() countyFocus: string | string[] | null = null;
   /** Emphasised marker(s) drawn on top of the data layer (e.g. a centroid). */
@@ -248,7 +250,7 @@ export class MapVisComponent {
     if (changes['data'] && Array.isArray(this.data) && this.data.length > 0 && this.autoCenter && !this.fitTo) {
       this.updateMapCenter();
     }
-    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions'] || changes['countyFocus']) this.applyYear();
+    if (changes['year'] || changes['dioceses'] || changes['dioceseFocus'] || changes['cessions'] || changes['countyFocus'] || changes['postOffices']) this.applyYear();
     // Honour a user-selected mode over options.mode so it survives data updates.
     this.currentMode = this.userMode ?? (this.options.mode || 'normal');
     this.renderMapFeatures();
@@ -324,6 +326,13 @@ export class MapVisComponent {
         if (show && Array.isArray(f) && f[0] === 'all') {
           const rest = layer.id === 'diocese-focus' ? [['==', ['get', 'id'], this.dioceseFocus]] : f.slice(3);
           this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...rest]);
+        }
+        this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
+      } else if (rule === 'postoffices') {
+        const f = layer.filter;
+        const show = dated && this.postOffices;
+        if (show && Array.isArray(f) && f[0] === 'all') {
+          this.map.setFilter(layer.id, ['all', ['<=', ['get', 'from'], day], ['>=', ['get', 'to'], day], ...f.slice(3)]);
         }
         this.map.setLayoutProperty(layer.id, 'visibility', show ? 'visible' : 'none');
       } else if (rule === 'hide') {
