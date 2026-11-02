@@ -23,8 +23,39 @@ collection as maps, networks and charts.
 
 ---
 
+## Features at a glance
+
+- **Records you can follow through time:** every institution and person has a
+  page with a year-by-year view, a map of its circuit or career, a ladder of
+  who served when, and a citation.
+- **Dashboards** for the whole collection:
+  - an overview where every panel filters the others
+  - coverage of the data, and a Data Issues page
+  - the Church's spread west, diocese by diocese
+  - mission circuits, and distance to railroads and rivers
+  - languages and congregations
+  - the changing mix of institutions and clergy
+  - clergy flows between dioceses, and religious orders
+- **Networks** of institutions and people:
+  - ties by serving together or by moving from post to post
+  - focus on any record, and the largest groups
+  - the network drawn on the map
+  - a path finder ("how are these two connected?")
+  - each node's ranks by links and as a go-between
+  - GEXF and CSV downloads
+- **Maps as of the year shown:** that year's states and borders, railroads,
+  canals and steamboat rivers, historical streets and diocese territories, on
+  a self-hosted base map in the almanacs' printed style.
+- **Data quality tools:**
+  - a review queue for people recorded under two ids
+  - checks for places, diocese territories, circuits and ids, with downloads
+    for the people correcting the transcriptions
+
+---
+
 ## Contents
 
+- [Features at a glance](#features-at-a-glance)
 - [How the records work](#how-the-records-work)
 - [Browsing and search](#browsing-and-search)
 - [Record pages](#record-pages)
@@ -259,6 +290,14 @@ record for that year.
 
 - Network views download as GEXF or CSV with their method and citation (see
   above).
+- Several dashboards download what they show as CSV, each file starting with a
+  comment line that gives the method, the filters and a citation:
+  - Languages and Congregations: the year's marked institutions, and where
+    each mark was found
+  - Diocese by Diocese: records outside their diocese's territory
+  - Data Issues: every check
+- Duplicate-people decisions download as a CSV for
+  `server/data/person-decisions.csv`.
 - Record pages have a copyable citation.
 - The Export page (where enabled) offers bulk downloads of the data.
 
@@ -273,8 +312,12 @@ record for that year.
 
 - Every API route is under `/api`. Heavy aggregate endpoints use raw SQL with
   in-process caches.
-- The overview, network, path, career and order data are built once per
-  process from the database and answered from memory.
+- The overview, network, path, career, order, language and people-review data
+  are built once per process from the database and answered from memory.
+  Restart the API after a reseed.
+- The tile build also writes two JSON files the API reads from the shared
+  tiles volume: each record's distance to that year's railroads and
+  waterways, and the diocese territory each record falls in.
 - Responses are gzipped.
 - `tiles/README.md` documents the tile build, each layer, and its provenance.
 
