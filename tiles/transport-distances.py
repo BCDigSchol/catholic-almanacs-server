@@ -13,7 +13,11 @@ Distances are straight-line miles to the nearest line in use on 1 January of
 the record's year (a railroad in operation by then; a canal or river open
 then), rounded to 0.1; null when none was in use within 500 miles.
 
-Usage: transport-distances.py <rail.geojsonl> <canals.geojsonl> <rivers.geojsonl> < points.tsv > out.json
+With a fourth argument, the dated county outlines (the counties build's
+counties.geojsonl), also each year's miles of working railroad per 100 square
+miles by county, under "counties": {"<year>": {"<county id>": miles}}.
+
+Usage: transport-distances.py <rail.geojsonl> <canals.geojsonl> <rivers.geojsonl> [counties.geojsonl] < points.tsv > out.json
 """
 import json
 import sys
@@ -47,6 +51,17 @@ def lines(path):
 rail = lines(sys.argv[1])
 water = lines(sys.argv[2]) + lines(sys.argv[3])
 
+# the counties, projected, with their area in square miles
+counties = []
+if len(sys.argv) > 4:
+    with open(sys.argv[4]) as f:
+        for row in f:
+            feat = json.loads(row)
+            p = feat["properties"]
+            geom = shapely.transform(shape(feat["geometry"]), lambda xy: np.column_stack(to_albers.transform(xy[:, 0], xy[:, 1])))
+            counties.append((p["id"], p["from"], p["to"], geom, geom.area / MILE ** 2))
+    print(f"[transport] {len(counties)} county outlines", file=sys.stderr)
+
 points = defaultdict(list)   # year -> [(id, x, y)]
 for row in sys.stdin:
     parts = row.rstrip("\n").split("\t")
@@ -75,7 +90,7 @@ def nearest(network, year, pts):
     return out
 
 
-records = {}
+records, by_county = {}, {}
 for year in sorted(points):
     pts = points[year]
     r, w = nearest(rail, year, pts), nearest(water, year, pts)
@@ -83,7 +98,21 @@ for year in sorted(points):
         records[rid] = [dr, dw]
     near = sum(1 for d in r if d is not None and d <= 5)
     print(f"[transport] {year}: {len(pts)} records, {near} within 5 mi of a railroad", file=sys.stderr)
+    # the year's railroad miles in each county of that year, per 100 square miles
+    if counties:
+        day = year * 10000 + 101
+        in_use = [g for g, a, b in rail if a <= day <= b]
+        tree = STRtree(in_use)
+        dens = {}
+        for cid, a, b, poly, area in counties:
+            if not (a <= day <= b) or area <= 0:
+                continue
+            total = 0.0
+            for i in tree.query(poly, predicate="intersects"):
+                total += in_use[i].intersection(poly).length
+            dens[cid] = round(100 * total / MILE / area, 2)
+        by_county[year] = dens
 
 json.dump({"meta": {"unit": "miles", "fields": ["rail", "water"],
                     "source": "Jeremy Atack, historical transportation GIS (Vanderbilt)"},
-           "records": records}, sys.stdout, separators=(",", ":"))
+           "records": records, "counties": by_county}, sys.stdout, separators=(",", ":"))

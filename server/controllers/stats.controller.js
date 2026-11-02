@@ -704,11 +704,12 @@ async function circuitsData() {
 //           (trailBands: to a historic trail, from tiles-build trails' trail-distances.json)
 //   points  for ?year=: [[lat, lng, railMiles|null, instID, trailMiles|null]]
 //   byDiocese  for ?year=: {dioceseId: {n, nearRail, nearWater, nearTrail}}
+//   counties   for ?year=: {countyId: railroad miles per 100 sq mi}, or null
 //   meta.trails  whether the trail distances are built here
 //   dioceses  {id: name} with any measured institution, for the filter
 const NEAR_MILES = 5;
 const RAIL_BANDS = [1, 5, 15, 50];   // ≤1, ≤5, ≤15, ≤50, farther or none
-let _transport = null;
+let _transport = null, _transportCounties = null;
 // each record's distance to the historic trails of its year (tiles-build
 // trails); optional: without it the trail figures are left out
 let _trails = null;
@@ -727,7 +728,10 @@ function loadTransportDistances() {
     if (_transport) return _transport;
     const file = process.env.TRANSPORT_DISTANCES || '/tiles-data/transport-distances.json';
     try {
-        _transport = JSON.parse(require('fs').readFileSync(file, 'utf8')).records;
+        const parsed = JSON.parse(require('fs').readFileSync(file, 'utf8'));
+        _transport = parsed.records;
+        // {year: {countyId: railroad miles per 100 sq mi}}, where the build had the county outlines
+        _transportCounties = parsed.counties || null;
     } catch {
         return null;   // not built here: try again next time
     }
@@ -800,6 +804,8 @@ exports.getRailroads = async (req, res) => {
         dioceses: dioceseNames,
         // for ?year=: {dioceseId: {n, nearRail, nearWater, nearTrail}}
         byDiocese: Object.fromEntries(byDio),
+        // for ?year=: {countyId: railroad miles per 100 sq mi} of that year's counties, or null
+        counties: (year && _transportCounties && _transportCounties[year]) || null,
         meta: { nearMiles: NEAR_MILES, bands: RAIL_BANDS, trails: !!trails },
     };
     networkCache.set(key, result);

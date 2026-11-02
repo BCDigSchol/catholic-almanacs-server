@@ -37,9 +37,9 @@ case "$what" in
   all)    bash /tiles/build-tiles.sh /data/base.pmtiles /work
           bash /tiles/build-history.sh /data/history.pmtiles /work
           bash /tiles/build-ohm.sh /data/ohm.pmtiles /work
+          bash /tiles/build-counties.sh /data/counties.pmtiles /work
           bash /tiles/build-transport.sh /data/transport.pmtiles /work
           bash /tiles/build-dioceses.sh /data/dioceses.pmtiles /work
-          bash /tiles/build-counties.sh /data/counties.pmtiles /work
           bash /tiles/build-cessions.sh /data/cessions.pmtiles /work
           bash /tiles/build-trails.sh /data/trails.pmtiles /work
           bash /tiles/build-frontier.sh /data/postoffices.pmtiles /work

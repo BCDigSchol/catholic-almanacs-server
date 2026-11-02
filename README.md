@@ -253,7 +253,9 @@ pages link to their metro, and the header search finds metros by city name.
   California and Mormon trails, the caminos reales, the Butterfield mail and
   Pony Express routes), with the map coloured by distance to either a
   railroad or a trail, the shares near each over time, distance bands, and
-  the dioceses shaded by the share of their institutions near each network.
+  the map shaded by county with the miles of working railroad per hundred
+  square miles (or by diocese with the share of institutions near each
+  network).
 - **The Frontier:** the Church against the settled country, with the post
   office as the measure of settlement. Every post office open in a year on
   the map, each institution coloured by its distance to the nearest, the
@@ -267,7 +269,7 @@ pages link to their metro, and the header search finds metros by city name.
   clergy rode to. Rings of 5, 25 and 100 miles over time; what kinds of
   institution stood in each ring; whether clergy moved toward the center or
   away; and each see's or city's primacy, with its hinterland shown alone
-  or the dioceses shaded by it.
+  or, as an option, the dioceses shaded by it.
 - **Languages and Congregations:** where the almanacs marked a church,
   school or mission as German, French, Polish, Bohemian, Dutch, Italian,
   Spanish or Irish, or as serving Native American or Black Catholics. It has

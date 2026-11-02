@@ -39,7 +39,7 @@ docker compose run --rm tiles-build          # build them all (base, history, oh
 docker compose run --rm tiles-build base     # base map only: a few minutes
 docker compose run --rm tiles-build history  # boundaries by year only: a minute
 docker compose run --rm tiles-build ohm      # streets by year only: a few minutes (fetches the newest planet)
-docker compose run --rm tiles-build transport  # railroads, canals, steamboat rivers by year: a few minutes
+docker compose run --rm tiles-build transport  # railroads, canals, steamboat rivers by year: a few minutes (county railroad density too, after counties)
 docker compose run --rm tiles-build dioceses   # diocese territories by year: a minute (places records if the DB is up)
 docker compose run --rm tiles-build counties   # county lines by year: a minute and a half (places records if the DB is up)
 docker compose run --rm tiles-build cessions   # Indian land cessions: seconds (places records if the DB is up)

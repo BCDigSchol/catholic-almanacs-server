@@ -41,7 +41,7 @@ const RING_INK: Record<string, string> = {
 };
 const MOVE_INK: Record<string, string> = { toward: INKS[4], same: '#b9b3a7', away: INKS[0] };
 
-const DEFAULTS = { by: 'diocese', year: 0, focus: '', show: 'share', view: 'periphery', shade: 'primacy' };
+const DEFAULTS = { by: 'diocese', year: 0, focus: '', show: 'share', view: 'periphery', shade: 'none' };
 
 /**
  * Center and Periphery: where the Church's institutions sat between a center
@@ -75,7 +75,7 @@ export class CenterPeripheryComponent implements OnInit, AfterViewInit, OnDestro
   /** The map's institutions: the periphery (all but the center ring), everything, or one ring. */
   viewOptions: { value: string; label: string }[] = [];
   /** Shade each diocese's territory by its primacy (the see reading only). */
-  readonly shadeOptions = [{ value: 'primacy', label: 'Primacy' }, { value: 'none', label: 'None' }];
+  readonly shadeOptions = [{ value: 'none', label: 'None' }, { value: 'primacy', label: 'Primacy' }];
   dioceseShades: Record<string, string> | null = null;
   shadeSteps: ShadeStep[] = [];
   readonly ringInk = RING_INK;

@@ -13,6 +13,8 @@
 #
 # It also measures how far each almanac record lay from the railroads, and
 # from the canals and steamboat rivers, of its year (transport-distances.py),
+# and, where the counties build has left its outlines in the work dir, each
+# county's railroad miles per 100 square miles (run `tiles-build counties` first),
 # into transport-distances.json beside the tiles; the API reads it from the
 # shared volume for its railroad statistics. Skipped without a database.
 #
@@ -75,6 +77,7 @@ if [ -n "${DB_HOST:-}" ]; then
   mysql -h "$DB_HOST" -P "${DB_PORT:-3306}" -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" -N -B -e \
     "SELECT ID, year, latitude, longitude FROM almanacRecords WHERE latitude IS NOT NULL AND longitude IS NOT NULL" 2>/dev/null \
     | python3 /tiles/transport-distances.py "$D/rail.geojsonl" "$D/canals.geojsonl" "$D/rivers.geojsonl" \
+        $( [ -s "$WORK/counties/counties.geojsonl" ] && echo "$WORK/counties/counties.geojsonl" ) \
     > "$DIST.tmp"
   mv "$DIST.tmp" "$DIST"
   echo "[transport] wrote $DIST ($(du -h "$DIST" | cut -f1))"

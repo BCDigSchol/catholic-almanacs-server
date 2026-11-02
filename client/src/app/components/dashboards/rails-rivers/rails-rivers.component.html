@@ -75,11 +75,18 @@
         (retry)="fetchData()">
         <div key>
             <ul class="legend" [attr.aria-label]="'Distance to ' + (state.by === 'trail' && hasTrails ? 'a trail or road' : 'a railroad')">
-                @for (b of bands; track b.label) {
-                    <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
+                @if (countyShades) {
+                    <li class="legend-item"><span class="legend-swatch dot" style="background: #3d3a33"></span>An institution</li>
+                } @else {
+                    @for (b of bands; track b.label) {
+                        <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
+                    }
+                }
+                @if (countyShades) {
+                    <li class="legend-item"><span class="legend-swatch area unshaded"></span>No railroad in the county</li>
                 }
                 @for (s of shadeSteps; track s.from) {
-                    <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>Diocese: {{ s.label }} {{ shadeLabel }}</li>
+                    <li class="legend-item"><span class="legend-swatch area" [style.background]="s.color"></span>{{ countyShades ? '' : 'Diocese: ' }}{{ s.label }} {{ shadeLabel }}</li>
                 }
             </ul>
         </div>
@@ -92,6 +99,7 @@
             [year]="year"
             [dioceses]="!!dioceseShades"
             [dioceseShades]="dioceseShades"
+            [countyShades]="countyShades"
             [label]="state.by === 'trail' && hasTrails ? 'Distance to a trail or road' : 'Distance to the railroad'"
             [options]="mapOptions">
         </app-map-vis>
@@ -124,7 +132,7 @@
     <div notes>
         <p>For every institution the almanac recorded with a location, the tile build measures the straight-line distance to the nearest <strong>railroad in operation</strong> on 1 January of that year, and to the nearest <strong>canal or steamboat river</strong> in use, from Jeremy Atack's historical transportation GIS (Vanderbilt University). "Near" means within {{ nearMiles }} miles, about a morning's travel by road.</p>
         <p>Atack dates railroads by the survey maps that first show them (1830, 1835, 1840 … 1861, 1863, 1868 …), so a line can count a few years after it opened. Many institutions are placed at their town rather than their street, which matters little at these distances.</p>
-        <p>The <strong>historic trails and wagon roads</strong> are the national historic trails as the National Park Service's National Trails office maps them (the Santa Fe, Oregon, California and Mormon trails, the two caminos reales, the Old Spanish Trail, the Butterfield mail and Pony Express routes, the Trail of Tears), each counted only in the years it was in use as a through route, so the Oregon, California and Mormon trails drop out after 1869 and the Pony Express after 1861. Distance to a trail is measured the same way as to a railroad. Ten routes cannot stand for every road: a church far from all of them may have sat on a county road the data does not know.</p>
+        <p>The <strong>historic trails and wagon roads</strong> are the national historic trails as the National Park Service's National Trails office maps them (the Santa Fe, Oregon, California and Mormon trails, the two caminos reales, the Old Spanish Trail, the Butterfield mail and Pony Express routes, the Trail of Tears), each counted only in the years it was in use, so the Pony Express drops out after 1861 and the Butterfield mail after 1861, while the overland wagon roads stay, their traffic much reduced after the railroad of 1869. Distance to a trail is measured the same way as to a railroad. Ten routes cannot stand for every road: a church far from all of them may have sat on a county road the data does not know.</p>
         <p>Nearness is not cause: towns, railroads and churches grew together, and the almanacs of the 1860s record many more small places than those of the 1830s. Read the change over time alongside Coverage.</p>
         <p>Click a point to open that institution's record for the year.</p>
     </div>
