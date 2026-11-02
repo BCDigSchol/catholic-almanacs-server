@@ -30,6 +30,9 @@ function clampToUs(lngLat: maplibregl.LngLat): maplibregl.LngLat {
  * for. Along an axis where the view is larger than the box, it is centred on
  * the box instead. MapLibre's world is 512 px at zoom 0.
  */
+/** Degrees of tilt from which the land is raised as 3D terrain. */
+const TERRAIN_FROM_PITCH = 5;
+
 function keepViewInside(lngLat: maplibregl.LngLat, zoom: number, width: number, height: number): maplibregl.LngLat {
   const [[w, s], [e, n]] = Settings.mapViewBounds;
   const world = 512 * Math.pow(2, zoom);
@@ -301,6 +304,32 @@ export class MapVisComponent {
    * dated layer that, with no year, shows the latest almanac year instead of
    * hiding: county lines). Styles without it (the Carto fallback) are untouched.
    */
+  /**
+   * 3D terrain while the map is tilted, from the style's `terrain` source (the
+   * elevation the hillshade already shades): on from a few degrees of tilt,
+   * off again when the map is flat, since terrain costs a little on every
+   * frame. The exaggeration falls as the reader zooms in, so the mountains
+   * read at country scale without towering over a county. Maps on a style
+   * without the source (the Carto fallback) stay flat.
+   */
+  private terrainOn = false;
+  private terrainExaggeration = 0;
+  private applyTerrain(force = false): void {
+    if (!this.map) return;
+    const tilted = this.map.getPitch() >= TERRAIN_FROM_PITCH;
+    const hasSource = !!this.map.getSource?.('terrain');
+    if (!tilted || !hasSource) {
+      if (this.terrainOn || force) { this.map.setTerrain(null); this.terrainOn = false; }
+      return;
+    }
+    const z = this.map.getZoom();
+    const exaggeration = z < 5 ? 4 : z < 7 ? 2.5 : z < 10 ? 1.6 : 1.2;
+    if (this.terrainOn && !force && exaggeration === this.terrainExaggeration) return;
+    this.map.setTerrain({ source: 'terrain', exaggeration });
+    this.terrainOn = true;
+    this.terrainExaggeration = exaggeration;
+  }
+
   private applyYear(): void {
     const layers: any[] = this.map?.getStyle?.()?.layers ?? [];
     const dated = this.year != null;
@@ -427,7 +456,8 @@ export class MapVisComponent {
         return { center: el ? keepViewInside(lngLat, z, el.clientWidth, el.clientHeight) : clampToUs(lngLat), zoom: z };
       },
     })
-      .addControl(new maplibregl.NavigationControl())
+      // the compass tilts with the map, so a tilted view shows it can be reset
+      .addControl(new maplibregl.NavigationControl({ visualizePitch: true }))
       .addControl(new maplibregl.FullscreenControl())
       .addControl(new maplibregl.ScaleControl({ maxWidth: 80, unit: 'metric' }))
       // Compact: an (i) button that expands, instead of a long caption over the map.
@@ -444,7 +474,10 @@ export class MapVisComponent {
     this.map.on('resize', fitUs);
     // every style load (the first, and each theme swap) starts from the style's
     // defaults, so set the year's boundaries again
-    this.map.on('style.load', () => this.applyYear());
+    this.map.on('style.load', () => { this.applyYear(); this.applyTerrain(true); });
+    // tilting the map raises the land: the relief's elevation as 3D terrain
+    this.map.on('pitch', () => this.applyTerrain());
+    this.map.on('zoomend', () => this.applyTerrain());
     this.bindUnderlayEvents();
     this.bindCessionEvents();
     this.bindDioceseEvents();

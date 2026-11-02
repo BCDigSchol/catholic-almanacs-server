@@ -53,6 +53,8 @@ collection as maps, networks and charts.
   - GEXF and CSV downloads
 - **Relief:** every map shades the land by its elevation, so the mountains the
   missionaries crossed, and the plains the railroads ran on, read as such.
+  Tilt a map (right-drag or Ctrl-drag, or two fingers on a phone) and the land
+  rises in 3D; flatten it again with the compass button.
 - **Maps as of the year shown:** that year's states, counties and borders, railroads,
   canals and steamboat rivers, historical streets and diocese territories, on
   a self-hosted base map in the almanacs' printed style.
@@ -409,6 +411,10 @@ The historical layers come from the self-hosted tiles. Builds configured
 without a tile server (`tilesUrl: null` in `client/src/environments/`, which
 is currently the case for production) fall back to Carto's public base maps
 and show today's geography.
+
+Tilting any map raises the terrain in 3D (exaggerated at country scale so
+the Rockies and the Appalachians read, less so as you zoom in); the compass
+button sets the map flat again, which turns the 3D off.
 
 Data maps can switch between points, clusters, a heatmap and a binned grid that
 refines as you zoom. Maps can also draw arcs between places (circuits, moves,
