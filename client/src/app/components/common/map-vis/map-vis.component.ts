@@ -247,6 +247,8 @@ export class MapVisComponent {
   }
 
   ngOnDestroy(): void {
+    cancelAnimationFrame(this.flashFrame);
+    clearTimeout(this.flashFrame);
     this.themeSub?.unsubscribe();
     this.resizeObserver?.disconnect();
     this.resizeObserver = undefined;
@@ -595,7 +597,8 @@ export class MapVisComponent {
             title: item.title || '',
             color: item.options?.color || this.options.modeOptions?.color || INKS[0],
             radius: item.options?.radius || this.options.modeOptions?.radius || 8,
-            internalLink: item.internalLink || null
+            internalLink: item.internalLink || null,
+            isNew: !!item.options?.isNew
           }
         }));
       const geojson = { type: 'FeatureCollection', features };
@@ -612,6 +615,7 @@ export class MapVisComponent {
         this.addMarkerLayer();
       }
       this.renderOverlay();   // emphasised markers + track, always on top
+      this.flashNew(features.filter(f => f.properties.isNew));
       this.renderRetries = 0;
     } catch (e) {
       if (this.renderRetries < 40) {
@@ -870,7 +874,7 @@ export class MapVisComponent {
         id: 'overlay-markers', type: 'circle', source: 'overlay-markers-src',
         paint: {
           'circle-radius': ['get', 'radius'], 'circle-color': ['get', 'color'],
-          'circle-stroke-width': 2.5, 'circle-stroke-color': '#ffffff'
+          'circle-stroke-width': 2.5, 'circle-stroke-color': this.ringColor()
         }
       });
     }
@@ -940,6 +944,53 @@ export class MapVisComponent {
    * }
    * @param geojson geojson with datapoints to be added to the heatmap
    */
+  private flashFrame = 0;
+
+  /**
+   * "New this year": rings in the rubric red pulse out from the points whose
+   * data item has `options.isNew` (hosts set it for institutions first listed
+   * in the year shown), twice, then go. Works over any display mode. With
+   * reduced motion the rings show still for a moment instead.
+   */
+  private flashNew(features: any[]): void {
+    cancelAnimationFrame(this.flashFrame);
+    clearTimeout(this.flashFrame);
+    if (!this.map) return;
+    if (this.map.getLayer('new-flash')) this.map.removeLayer('new-flash');
+    if (this.map.getSource('new-flash-src')) this.map.removeSource('new-flash-src');
+    if (!features.length) return;
+    const ink = getComputedStyle(document.documentElement).getPropertyValue('--rubric').trim() || '#a1121f';
+    this.map.addSource('new-flash-src', { type: 'geojson', data: { type: 'FeatureCollection', features } });
+    this.map.addLayer({
+      id: 'new-flash', type: 'circle', source: 'new-flash-src',
+      paint: { 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-color': ink, 'circle-stroke-width': 2, 'circle-radius': 7, 'circle-stroke-opacity': 0.9 }
+    });
+    const done = () => {
+      if (this.map?.getLayer('new-flash')) this.map.removeLayer('new-flash');
+      if (this.map?.getSource('new-flash-src')) this.map.removeSource('new-flash-src');
+    };
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      this.flashFrame = window.setTimeout(done, 1600) as unknown as number;
+      return;
+    }
+    const start = performance.now(), PULSE = 700, PULSES = 2;
+    const step = (now: number) => {
+      if (!this.map?.getLayer('new-flash')) return;
+      const t = (now - start) / PULSE;
+      if (t >= PULSES) { done(); return; }
+      const p = t % 1;
+      this.map.setPaintProperty('new-flash', 'circle-radius', 4 + p * 14);
+      this.map.setPaintProperty('new-flash', 'circle-stroke-opacity', 0.9 * (1 - p));
+      this.flashFrame = requestAnimationFrame(step);
+    };
+    this.flashFrame = requestAnimationFrame(step);
+  }
+
+  /** The paper's colour, for the thin ring that lifts a dot off the map (white rings glare on the dark map). */
+  private ringColor(): string {
+    return this.dark ? '#14130f' : '#ffffff';
+  }
+
   private addPointLayer(geojson: any): void {
     let pointPaint = this.options.modeOptions?.point?.paint || {
       // scaled by zoom: half size at country zoom, so a thousand dots read as
@@ -947,7 +998,7 @@ export class MapVisComponent {
       'circle-radius': zoomRadius(['coalesce', ['get', 'radius'], 8]),
       'circle-color': ['coalesce', ['get', 'color'], INKS[0]],
       'circle-stroke-width': 1,
-      'circle-stroke-color': '#fff',
+      'circle-stroke-color': this.ringColor(),
       'circle-opacity': 0.8
     };
     this.map.addSource('data-point-src', { type: 'geojson', data: geojson });
@@ -1172,7 +1223,7 @@ export class MapVisComponent {
       'circle-radius': 6,
       'circle-color': ['get', 'color'],
       'circle-stroke-width': 1,
-      'circle-stroke-color': '#fff',
+      'circle-stroke-color': this.ringColor(),
       'circle-opacity': 0.8
     };
     this.map.addSource('data-heatmap-src', { type: 'geojson', data: geojson });
@@ -1276,7 +1327,7 @@ export class MapVisComponent {
       'circle-color': ['get', 'color'],
       'circle-radius': 8,
       'circle-stroke-width': 1,
-      'circle-stroke-color': '#fff'
+      'circle-stroke-color': this.ringColor()
     };
     this.map.addSource('data-cluster-src', {
       type: 'geojson',

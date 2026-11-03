@@ -91,7 +91,7 @@
 
             @if (panel === 'link') {
                 <div class="panel-box inline">
-                    <label class="ctl grow"><span>Link address (a path like /institution/alb.ny.0001, or a full URL)</span>
+                    <label class="ctl grow"><span>Link address (a path like /institutions/alb.ny.0001, or a full URL)</span>
                         <input class="control" type="text" [(ngModel)]="linkHref" (keydown.enter)="setLink()"></label>
                     <button type="button" class="btn btn-primary" (click)="setLink()">{{ linkHref ? 'Set link' : 'Remove link' }}</button>
                     <button type="button" class="btn" (click)="panel = null">Cancel</button>

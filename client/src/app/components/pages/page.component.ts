@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 
 import { PageViewComponent } from './page-view/page-view.component';
 import { ReviewAuthService } from '../../services/review-auth.service';
-import { firstHeading, PageMeta, parsePage, resolveAssets } from '../../utils/page-render';
+import { firstHeading, PageMeta, parsePage, resolveAssets, sameTitle } from '../../utils/page-render';
 
 /** The files a slug may stand for, in the order they are tried. */
 const CANDIDATES = (slug: string) => {
@@ -102,16 +102,17 @@ export class PageComponent implements OnInit {
     // The page header shows the title, so a body that opens with it loses that heading.
     const heading = firstHeading(html);
     if (!page.meta.title && heading) page.meta.title = heading;
-    if (heading && heading === page.meta.title) html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>/i, '');
+    if (heading && sameTitle(heading, page.meta.title)) html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>/i, '');
 
     this.meta = page.meta;
     this.html = resolveAssets(html, dir);
-    this.title.setTitle(page.meta.title ?? 'Catholic Almanacs');
+    this.title.setTitle(page.meta.title ? `${page.meta.title} · Catholic Almanacs` : 'Catholic Almanacs');
     this.fetch(cssFile).subscribe(css => this.css = css && !this.isFallbackDocument(css) ? css : '');
   }
 
-  // Only allow simple relative paths like "history/jesuits-in-maine"
+  // Only allow simple relative paths like "history/jesuits-in-maine", and not
+  // the folder's README (the contributor guide, not a page of the site)
   private isSafeSlug(slug: string): boolean {
-    return /^[\w\-/]+$/.test(slug) && !slug.includes('..');
+    return /^[\w\-/]+$/.test(slug) && !slug.includes('..') && !/(^|\/)readme$/i.test(slug);
   }
 }

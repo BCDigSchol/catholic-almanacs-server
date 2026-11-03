@@ -6,7 +6,7 @@
             </select>
         </label>
         <label class="ctl grow"><span>Or any address on this site</span>
-            <input class="control" type="text" [(ngModel)]="path" (change)="open(path)" placeholder="/institution/alb.ny.0001?year=1850">
+            <input class="control" type="text" [(ngModel)]="path" (change)="open(path)" placeholder="/institutions/alb.ny.0001?year=1850">
         </label>
         <button type="button" class="btn" (click)="open(path)">Show</button>
         <button type="button" class="btn" (click)="closed.emit()">Close</button>

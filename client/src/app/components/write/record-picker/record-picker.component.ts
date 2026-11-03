@@ -53,11 +53,11 @@ export class RecordPickerComponent {
 
   private pick(r: any): RecordPick | null {
     if (r.type === 'institution') {
-      return { kind: 'institution', id: r.instID, name: r.instName || 'Unnamed institution', link: `/institution/${r.instID}`,
+      return { kind: 'institution', id: r.instID, name: r.instName || 'Unnamed institution', link: `/institutions/${r.instID}`,
         detail: [r.instType, r.diocese && `Diocese of ${r.diocese}`].filter(Boolean).join(' · ') };
     }
     if (r.type === 'person') {
-      return { kind: 'person', id: r.persID, name: [r.title, r.name, r.suffix].filter(Boolean).join(' '), link: `/person/${r.persID}`,
+      return { kind: 'person', id: r.persID, name: [r.title, r.name, r.suffix].filter(Boolean).join(' '), link: `/people/${r.persID}`,
         detail: [r.diocese && `Diocese of ${r.diocese}`, r.yearStart && (r.yearStart === r.yearEnd ? r.yearStart : `${r.yearStart}–${r.yearEnd}`)].filter(Boolean).join(' · ') };
     }
     if (r.type === 'county') {

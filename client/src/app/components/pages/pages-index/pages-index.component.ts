@@ -23,7 +23,7 @@ export class PagesIndexComponent implements OnInit {
   constructor(private nav: NavService, private title: Title) {}
 
   ngOnInit(): void {
-    this.title.setTitle('Pages — Catholic Almanacs');
+    this.title.setTitle('Essays and Pages · Catholic Almanacs');
     this.nav.pages$.subscribe(pages => {
       const byKind = new Map<string, PageEntry[]>();
       for (const page of pages) {

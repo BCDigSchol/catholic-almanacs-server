@@ -14,7 +14,7 @@ import { RecordPickerComponent, RecordPick } from './record-picker/record-picker
 import { EmbedPickerComponent, EmbedPick } from './embed-picker/embed-picker.component';
 import { NavService, PageEntry } from '../../services/nav.service';
 import { assetResolver, bodyToEditorHtml, docToMarkdown, LAYOUT_KINDS, LAYOUT_LABELS, LayoutKind, pageExtensions } from '../../utils/page-doc';
-import { firstHeading, metaFromFields, PageAuthor, PageMeta, parsePage, resolveAssets, splitFrontMatter, writeFrontMatter } from '../../utils/page-render';
+import { firstHeading, metaFromFields, sameTitle, PageAuthor, PageMeta, parsePage, resolveAssets, splitFrontMatter, writeFrontMatter } from '../../utils/page-render';
 
 const DRAFT_KEY = 'almanacs.writeDraft';
 const IMAGE = /\.(png|jpe?g|gif|svg|webp|avif)$/i;
@@ -85,7 +85,7 @@ export class WriteComponent implements AfterViewInit, OnDestroy {
 
   constructor(private http: HttpClient, private nav: NavService, private title: Title, private zone: NgZone,
               private cd: ChangeDetectorRef) {
-    this.title.setTitle('Write a page — Catholic Almanacs');
+    this.title.setTitle('Write a page · Catholic Almanacs');
     this.nav.pages$.subscribe(pages => this.pages = pages);
     assetResolver.resolve = src => this.images.get(src)?.url ?? (this.slug && !/^([a-z]+:|\/)/i.test(src) ? `page-content/${this.slug}/${src}` : src);
   }
@@ -423,7 +423,7 @@ export class WriteComponent implements AfterViewInit, OnDestroy {
     let html = bodyToEditorHtml(body, isMarkdown);
     const heading = firstHeading(html);
     if (!meta.title && heading) meta.title = heading;
-    if (heading && heading === meta.title) html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>/i, '');
+    if (heading && sameTitle(heading, meta.title)) html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>/i, '');
     this.meta = meta;
     this.slug = slug;
     this.slugEdited = !!slug;

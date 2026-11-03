@@ -663,6 +663,14 @@ body {
     &.dashed {
         mask: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 8px);
     }
+
+    // "new this year": the ring that pulses round a point on the map
+    &.ring {
+        width: 10px;
+        border: 2px solid var(--rubric);
+        border-radius: 50%;
+        background: none;
+    }
 }
 
 /* d3 charts: text and lines follow the theme. */

@@ -23,8 +23,8 @@ interface YearRow { year: number; n: number; offices: number; unchurched: number
 interface FrontierResponse {
   year: number;
   years: YearRow[];
-  /** [lat, lng, instID, miles|null, churchFirst] */
-  points: [number, number, string, number | null, number][];
+  /** [lat, lng, instID, miles|null, churchFirst, isNew 0|1 (first listed that year)] */
+  points: [number, number, string, number | null, number, number?][];
   /** [lat, lng, name, state] */
   unchurched: [number, number, string, string][];
   farthest: { inst: string; name: string; type: string; place: string; miles: number | null; dio: string }[];
@@ -176,11 +176,11 @@ export class FrontierComponent implements OnInit, AfterViewInit, OnDestroy {
     this.current = this.rows.find(r => r.year === this.year) ?? null;
     const bandOf = (miles: number | null) => miles == null ? 4 : miles <= 1 ? 0 : miles <= 5 ? 1 : miles <= 15 ? 2 : miles <= 50 ? 3 : 4;
     const shown = this.state.show === 'all' ? this.data.points : this.data.points.filter(p => p[3] == null || p[3] > 5);
-    this.mapData = shown.map(([lat, lng, id, miles, first]) => ({
+    this.mapData = shown.map(([lat, lng, id, miles, first, isNew]) => ({
       latitude: lat, longitude: lng,
       title: (miles == null ? 'No post office yet within 500 miles' : `${miles} mi from the nearest post office`) + (first ? '; listed before it opened' : ''),
       internalLink: `/institutions/${id}?year=${this.year}`,
-      options: { color: BANDS[bandOf(miles)].color, radius: 4 },
+      options: { color: BANDS[bandOf(miles)].color, radius: 4, isNew: !!isNew },
     }));
     this.unchurched = this.state.mark === 'unchurched'
       ? this.data.unchurched.map(([lat, lng, name, st]) => ({ lat, lng, color: UNCHURCHED_INK, radius: 3.5, title: `${name}, ${st}: a post office with no Catholic institution within 25 miles` }))

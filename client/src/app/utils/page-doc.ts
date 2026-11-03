@@ -38,9 +38,16 @@ export const Figure = Image.extend({
       const dom = document.createElement('figure');
       const img = document.createElement('img');
       const caption = document.createElement('figcaption');
-      dom.append(img, caption);
+      // a picture the editor doesn't have (a restored draft keeps no pictures): say which to add back
+      const missing = document.createElement('div');
+      missing.className = 'figure-missing';
+      missing.hidden = true;
+      img.onerror = () => { missing.hidden = false; img.hidden = true; };
+      img.onload = () => { missing.hidden = true; img.hidden = false; };
+      dom.append(img, missing, caption);
       const render = (n: typeof node) => {
         dom.className = n.attrs['layout'] || '';
+        missing.textContent = `Picture missing: ${n.attrs['src']}. Add it again with Picture, then delete this one.`;
         img.src = assetResolver.resolve(n.attrs['src'] || '');
         img.alt = n.attrs['alt'] || '';
         caption.textContent = n.attrs['caption'] || '';

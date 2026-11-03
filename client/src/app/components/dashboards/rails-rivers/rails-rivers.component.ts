@@ -19,8 +19,8 @@ import { INKS } from '../../../utils/palette';
 /** GET /api/stats/railroads */
 interface RailroadsResponse {
   years: { year: number; n: number; nearRail: number; nearWater: number; nearEither: number; nearTrail: number; medianRail: number | null; bands: number[]; trailBands: number[] }[];
-  /** for the requested year: [lat, lng, railMiles|null, instID, trailMiles|null] */
-  points: [number, number, number | null, string, number | null][];
+  /** for the requested year: [lat, lng, railMiles|null, instID, trailMiles|null, isNew 0|1 (first listed that year)] */
+  points: [number, number, number | null, string, number | null, number?][];
   dioceses: Record<string, string>;
   /** trails: whether the trail distances are built on this server */
   meta: { nearMiles: number; bands: number[]; trails: boolean };
@@ -190,13 +190,13 @@ export class RailsRiversComponent implements OnInit, AfterViewInit, OnDestroy {
     const bandOf = (miles: number | null) => miles == null ? 4 : miles <= 1 ? 0 : miles <= 5 ? 1 : miles <= 15 ? 2 : miles <= 50 ? 3 : 4;
     const byTrail = this.state.by === 'trail' && this.hasTrails;
     const what = byTrail ? 'a trail or road' : 'a railroad';
-    this.mapData = (this.data?.points ?? []).map(([lat, lng, rail, id, trail]) => {
+    this.mapData = (this.data?.points ?? []).map(([lat, lng, rail, id, trail, isNew]) => {
       const miles = byTrail ? trail : rail;
       return {
         latitude: lat, longitude: lng,
         title: miles == null ? `No ${what} in use within 500 miles` : `${miles} mi from ${what}`,
         internalLink: `/institutions/${id}?year=${this.year}`,
-        options: { color: BANDS[bandOf(miles)].color, radius: 4 },
+        options: { color: BANDS[bandOf(miles)].color, radius: 4, isNew: !!isNew },
       };
     });
     this.takeaway = this.computeTakeaway();

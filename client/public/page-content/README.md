@@ -79,7 +79,7 @@ Without a `title`, the body's first heading is used (and not shown twice).
 Markdown, as the writing tool exports it (and as you may write by hand):
 
 - Headings `##` and `###`, **bold**, *italics*, lists, quotes, tables, links.
-  Links that start with `/` stay inside the site (`/institution/alb.ny.0001`,
+  Links that start with `/` stay inside the site (`/institutions/alb.ny.0001`,
   `/people?name=Fenwick`, `/dashboards/overview?years=1850`).
 - **Footnotes:** `text[^1]` in the body and `[^1]: The note.` at the end;
   numbered in order and gathered under *Notes*. Write the bibliography as a

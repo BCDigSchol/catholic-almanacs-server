@@ -78,7 +78,7 @@ export class RecordCardComponent implements OnChanges {
       detail: [d.instType, placeLabel(d.cityReg || d.cityOrig, d.stateOrig || d.stateReg), dioceses.length ? `Diocese of ${dioceses[dioceses.length - 1]}` : '']
         .filter(Boolean).join(' · '),
       years: yearRuns(years),
-      link: `/institution/${id}${this.yearNumber ? `?year=${this.yearNumber}` : ''}`,
+      link: `/institutions/${id}${this.yearNumber ? `?year=${this.yearNumber}` : ''}`,
     };
   }
 
@@ -93,7 +93,7 @@ export class RecordCardComponent implements OnChanges {
       name: personLabel({ title: d.title, name: names[0], suffix: d.suffix }),
       detail: post ? [post.instName, placeLabel(post.cityReg, ''), post.diocese ? `Diocese of ${post.diocese}` : ''].filter(Boolean).join(' · ') : '',
       years: yearRuns(posts.map(p => p.year)),
-      link: `/person/${id}${this.yearNumber ? `?year=${this.yearNumber}` : ''}`,
+      link: `/people/${id}${this.yearNumber ? `?year=${this.yearNumber}` : ''}`,
     };
   }
 

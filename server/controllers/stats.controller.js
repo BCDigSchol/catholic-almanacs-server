@@ -456,6 +456,28 @@ function loadFacts() {
     return _factsPromise;
 }
 
+// The year each institution was first listed, by child id (branching ids
+// like "a&b" split), from the facts; built once.
+let _firstListed = null;
+function firstListed(facts) {
+    if (_firstListed) return _firstListed;
+    const byId = new Map();
+    const years = new Set();
+    for (const f of facts) {
+        years.add(f.y);
+        for (const id of String(f.i).split(/[&=]/)) {
+            if (!byId.has(id) || f.y < byId.get(id)) byId.set(id, f.y);
+        }
+    }
+    const of = inst => Math.min(...String(inst).split(/[&=]/).map(id => byId.get(id) ?? Infinity));
+    // "new" in a year: first listed that year, and only where the year before
+    // is in the data (not the first almanac year, nor 1864 after the
+    // untranscribed 1839-63, when nearly every institution is "first listed")
+    const isNew = (inst, year) => years.has(year - 1) && of(inst) === year;
+    _firstListed = { of, isNew, byId };
+    return _firstListed;
+}
+
 async function buildFactArray() {
     // GROUP BY ar.ID (the PK) lets MySQL treat the other ar.* columns as
     // functionally dependent. orders fan-out is collapsed by GROUP_CONCAT.
@@ -702,7 +724,8 @@ async function circuitsData() {
 //   years   [{year, n, nearRail, nearWater, nearEither, nearTrail, medianRail, bands, trailBands}]
 //           near = within NEAR_MILES; bands = counts by distance to a railroad
 //           (trailBands: to a historic trail, from tiles-build trails' trail-distances.json)
-//   points  for ?year=: [[lat, lng, railMiles|null, instID, trailMiles|null]]
+//   points  for ?year=: [[lat, lng, railMiles|null, instID, trailMiles|null, isNew 0|1]]
+//           (isNew: first listed that year)
 //   meta.trails  whether the trail distances are built here
 //   dioceses  {id: name} with any measured institution, for the filter
 const NEAR_MILES = 5;
@@ -754,7 +777,7 @@ exports.getRailroads = async (req, res) => {
     const dioceseNames = {};
     const byYear = new Map();
     const points = [];
-    // the year's institutions by diocese, for shading the territories
+    const listed = firstListed(facts);
     for (const f of facts) {
         const d = distances[f.rec];
         if (!d) continue;
@@ -776,7 +799,7 @@ exports.getRailroads = async (req, res) => {
         if (rail != null) y.rail.push(rail);
         const band = rail == null ? RAIL_BANDS.length : RAIL_BANDS.findIndex(b => rail <= b);
         y.bands[band === -1 ? RAIL_BANDS.length : band]++;
-        if (year && f.y === year && f.lat != null && f.lng != null) points.push([f.lat, f.lng, rail, f.i, trail]);
+        if (year && f.y === year && f.lat != null && f.lng != null) points.push([f.lat, f.lng, rail, f.i, trail, listed.isNew(f.i, f.y) ? 1 : 0]);
     }
     const years = [...byYear.values()].sort((a, b) => a.year - b.year).map(y => {
         const sorted = y.rail.sort((a, b) => a - b);
@@ -1236,7 +1259,8 @@ exports.getMeans = async (req, res) => {
  * institution near them. Counts are of records (one per institution-year).
  *   years     [{year, n, offices, unchurched, bands[5] (≤1, ≤5, ≤15, ≤50 mi,
  *              farther or none), beyond15, measured, churchFirst, medianMiles}]
- *   points    for the year: [lat, lng, instID, miles|null, churchFirst 0|1]
+ *   points    for the year: [lat, lng, instID, miles|null, churchFirst 0|1, isNew 0|1]
+ *              (isNew: first listed that year)
  *   unchurched  the year's sample of open offices with no institution within
  *              25 miles: [[lat, lng, name, state]]
  *   farthest  the year's institutions farthest from any office:
@@ -1259,12 +1283,7 @@ exports.getFrontier = async (req, res) => {
     if (cached) return res.json(cached);
 
     // when each institution was first listed (branching ids by their child id)
-    const firstYear = new Map();
-    for (const f of facts) {
-        for (const id of String(f.i).split(/[&=]/)) {
-            if (!firstYear.has(id) || f.y < firstYear.get(id)) firstYear.set(id, f.y);
-        }
-    }
+    const listed = firstListed(facts);
     const names = dioceseNameMap();
     const dioceseNames = {};
     const byYear = new Map();
@@ -1286,11 +1305,11 @@ exports.getFrontier = async (req, res) => {
         y.bands[band === -1 ? 4 : band]++;
         if (miles == null || miles > 15) y.beyond15++;
         if (miles != null) y.miles.push(miles);
-        const first = Math.min(...String(f.i).split(/[&=]/).map(id => firstYear.get(id) ?? f.y));
+        const first = Math.min(listed.of(f.i), f.y);
         const churchFirst = est != null && first <= est;
         if (est != null) { y.measured++; if (churchFirst) y.churchFirst++; }
         if (f.y === year) {
-            if (f.lat != null && f.lng != null) points.push([f.lat, f.lng, f.i, miles, churchFirst ? 1 : 0]);
+            if (f.lat != null && f.lng != null) points.push([f.lat, f.lng, f.i, miles, churchFirst ? 1 : 0, listed.isNew(f.i, f.y) ? 1 : 0]);
             yearRecs.push({ inst: f.i, miles, dio: f._dio });
         }
     }

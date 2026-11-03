@@ -77,6 +77,7 @@
                 @for (b of bands; track b.label) {
                     <li class="legend-item"><span class="legend-swatch dot" [style.background]="b.color"></span>{{ b.label }}</li>
                 }
+                <li class="legend-item"><span class="legend-swatch ring"></span>A ring pulses round each first listed this year</li>
             </ul>
         </div>
         <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="rails-year" (yearChange)="setYear($event)"></app-year-player>

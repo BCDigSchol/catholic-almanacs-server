@@ -245,6 +245,12 @@ $column: 72ch;
         .btn mat-icon { font-size: 18px; width: 18px; height: 18px; }
     }
 
+    // the permanent link is one long word: let it break, so a phone doesn't widen the page
+    .permalink {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
     .permalink a {
         color: var(--link);
         overflow-wrap: anywhere;

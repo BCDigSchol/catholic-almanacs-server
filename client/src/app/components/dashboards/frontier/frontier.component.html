@@ -62,6 +62,7 @@
             @if (state.mark === 'unchurched') {
                 <li class="legend-item"><span class="legend-swatch dot" [style.background]="unchurchedInk"></span>A post office with no Catholic institution within 25 miles (a sample)</li>
             }
+            <li class="legend-item"><span class="legend-swatch ring"></span>A ring pulses round each first listed this year</li>
         </ul>
         <app-year-player [years]="years" [year]="year" [interval]="1400" idPrefix="frontier-year" (yearChange)="setYear($event)"></app-year-player>
         <app-map-vis

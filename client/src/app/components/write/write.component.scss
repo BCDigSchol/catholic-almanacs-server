@@ -86,7 +86,7 @@
 .ctl.grow { flex: 1; min-width: 200px; }
 .ctl.block { display: block; margin-bottom: var(--space-3); }
 .ctl.block .control { width: 100%; }
-.ctl.check { display: flex; align-items: center; gap: var(--space-1); font-size: var(--text-sm); }
+.ctl.check { display: flex; flex-direction: row; align-items: center; gap: var(--space-2); font-size: var(--text-sm); }
 .control.bad { border-bottom-color: var(--rubric); color: var(--rubric); }
 textarea.control { width: 100%; resize: vertical; }
 
@@ -109,6 +109,7 @@ textarea.control { width: 100%; resize: vertical; }
 
     .group {
         display: inline-flex;
+        flex-wrap: wrap;
         gap: 2px;
 
         &.right { margin-left: auto; }
@@ -204,6 +205,13 @@ textarea.control { width: 100%; resize: vertical; }
             font: italic 400 var(--text-xs) var(--font-display);
             color: var(--ink-3);
         }
+    }
+
+    .figure-missing {
+        padding: var(--space-3);
+        border: 1px dashed var(--rubric);
+        color: var(--rubric);
+        font-size: var(--text-sm);
     }
 
     figure {

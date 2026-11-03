@@ -17,8 +17,8 @@ site draws the byline, the "How to cite" block and the footnotes for you.
 
 ## Links into the database
 
-Link to any record by its address on the site: [St. Mary's, Albany](/institution/alb.ny.0001)
-is an institution and [Bishop Fenwick](/people) is a person. Links that
+Link to any record by its address on the site: [the Cathedral of the Immaculate Conception, Albany](/institutions/alb.ny.0001)
+is an institution and [Bishop Benedict Fenwick](/people/ben_j_fenwick_901) is a person. Links that
 start with `/` stay inside the site; links that start with `http` open
 elsewhere.
 

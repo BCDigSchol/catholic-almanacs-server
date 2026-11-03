@@ -33,7 +33,7 @@ PALETTES = {
         "land": "#14130f", "water": "#1c2227", "river": "#3b4b55", "coast": "#5a5548",
         "state": "#4a463c", "border": "#a39c8d",
         "ink": "#ece7dc", "ink2": "#cfc8b9", "ink3": "#a39c8d", "water_label": "#7f97a4",
-        "dot": "#cfc8b9",
+        "dot": "#8a8476",
         "road_minor": "#2e2c26", "road_secondary": "#403d35", "road_major": "#625d52",
         "rail": "#7a7466", "green": "#1a1915", "cemetery": "#1e1d19",
         "foreign": "#22211c", "old_road": "#b5ae9f",

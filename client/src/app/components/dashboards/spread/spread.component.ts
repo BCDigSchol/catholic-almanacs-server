@@ -93,6 +93,8 @@ export class SpreadDashboardComponent implements OnInit, AfterViewInit, OnDestro
 
   private centroids: Centroid[] = [];
   private pointsByYear = new Map<number, GeoPoint[]>();
+  /** The year each institution first appears among the points (detail mode only), for "new this year". */
+  private firstYear = new Map<string, number>();
   private url: UrlState<typeof DEFAULTS>;
   private subs: Subscription[] = [];
   private fetchSub?: Subscription;
@@ -165,9 +167,11 @@ export class SpreadDashboardComponent implements OnInit, AfterViewInit, OnDestro
         this.years = (res.years ?? []).map((y: any) => y.year);
         this.note = res.meta?.note ?? '';
         this.pointsByYear = new Map();
+        this.firstYear = new Map();
         for (const p of (res.points ?? []) as GeoPoint[]) {
           const list = this.pointsByYear.get(p.year);
           if (list) list.push(p); else this.pointsByYear.set(p.year, [p]);
+          if (p.i && !(this.firstYear.get(p.i)! <= p.year)) this.firstYear.set(p.i, p.year);
         }
         this.vizState = this.years.length ? 'ready' : 'empty';
         this.update();
@@ -209,6 +213,11 @@ export class SpreadDashboardComponent implements OnInit, AfterViewInit, OnDestro
       this.driftDirection = direction;
     }
 
+    // first listed this year, and only where the year before is in the data
+    // (not the first almanac year, nor 1864 after the untranscribed 1839-63)
+    const year = this.year;
+    const followsOn = this.years.includes(year - 1);
+    const isNew = (p: GeoPoint) => followsOn && !!p.i && this.firstYear.get(p.i) === year;
     this.mapData = this.shownPoints(this.year).map(p => ({
       latitude: p.lat,
       longitude: p.lng,
@@ -218,7 +227,8 @@ export class SpreadDashboardComponent implements OnInit, AfterViewInit, OnDestro
       options: {
         color: FUNCTION_COLORS[p.fn] ?? OTHER_COLOR,
         value: p.weight,
-        radius: Math.min(4 + Math.sqrt(p.weight) * 2, 14)
+        radius: Math.min(4 + Math.sqrt(p.weight) * 2, 14),
+        isNew: isNew(p)
       }
     }));
     this.centroidMarker = this.current

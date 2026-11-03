@@ -416,6 +416,13 @@ Tilting any map raises the terrain in 3D (exaggerated at country scale so
 the Rockies and the Appalachians read, less so as you zoom in); the compass
 button sets the map flat again, which turns the 3D off.
 
+On The Spread of the Church, Rails, Rivers and Trails and The Frontier, a
+red ring pulses round each institution first listed in the year shown, so
+stepping through the years shows where the Church was new. It isn't shown
+for 1833 or 1864, the first year after the untranscribed 1839–63, when nearly
+everything is "first listed"; a diocese whose records begin in a year also
+shows as new that year.
+
 Data maps can switch between points, clusters, a heatmap and a binned grid that
 refines as you zoom. Maps can also draw arcs between places (circuits, moves,
 network ties), labels and highlighted markers. Clicking a point opens its

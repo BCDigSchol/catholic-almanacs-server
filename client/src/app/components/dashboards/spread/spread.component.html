@@ -52,6 +52,9 @@
                     </li>
                 }
                 <li class="legend-item"><span class="cog-dot" aria-hidden="true"></span>Centre of gravity</li>
+                @if (state.entity === 'institutions') {
+                    <li class="legend-item"><span class="legend-swatch ring"></span>A ring pulses round each first listed this year</li>
+                }
             </ul>
             <p class="key-hint">Click a function to show or hide it.</p>
         </div>

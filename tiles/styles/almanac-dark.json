@@ -1692,7 +1692,7 @@
       "source-layer": "places",
       "minzoom": 4,
       "paint": {
-        "circle-color": "#cfc8b9",
+        "circle-color": "#8a8476",
         "circle-radius": [
           "interpolate",
           [

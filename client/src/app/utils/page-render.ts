@@ -131,6 +131,12 @@ export function resolveAssets(html: string, dir: string, lookup?: (name: string)
         }).join(', ')}${quote}`);
 }
 
+/** The same title, whatever the capitals or punctuation ("What the Data Holds" / "What the data holds."). */
+export function sameTitle(a: string, b?: string): boolean {
+  const norm = (t: string) => t.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
+  return !!b && norm(a) === norm(b);
+}
+
 /** The first h1's text, when a page has no title in its front matter. */
 export function firstHeading(html: string): string | null {
   const match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
