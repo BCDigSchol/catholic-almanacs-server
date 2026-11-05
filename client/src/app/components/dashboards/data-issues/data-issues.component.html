@@ -71,22 +71,39 @@
             </app-viz-panel>
         }
         @case ('places') {
-            <app-viz-panel heading="Institutions without a place" note="Years with no coordinates, and what the almanac gave as the place" [state]="vizState" (retry)="retry()">
+            <app-viz-panel heading="Institutions without a place"
+                [note]="state.places === 'partly'
+                    ? 'Placed in some years but not in others: the years without coordinates, and where another year at the same town has them (' + (fillable | number) + ' years could be copied)'
+                    : 'No coordinates in any year, and what the almanac gave as the place'"
+                [state]="vizState" (retry)="retry()">
                 <div panel-actions><button type="button" class="btn" (click)="download()">CSV</button></div>
+                <app-segmented label="Show" [showLabel]="true" [options]="placesOptions" [value]="state.places" (valueChange)="setPlaces($event)"></app-segmented>
                 <table class="data-table">
-                    <thead><tr><th>Institution</th><th>Place as recorded</th><th>Diocese</th><th>Years</th></tr></thead>
+                    <thead><tr>
+                        <th>Institution</th><th>Place as recorded</th><th>Diocese</th>
+                        <th>{{ state.places === 'partly' ? 'Years without' : 'Years' }}</th>
+                        @if (state.places === 'partly') { <th>Placed in</th><th>Copy from</th> }
+                    </tr></thead>
                     <tbody>
-                        @for (u of unplaced.slice(0, limit); track u.inst) {
+                        @for (u of shownUnplaced.slice(0, limit); track u.inst) {
                             <tr>
                                 <td data-label="Institution"><a class="record-link inst" [routerLink]="['/institutions', u.inst]" [queryParams]="{ year: u.years[u.years.length - 1] }">{{ label(u.name, u.type) }}</a></td>
                                 <td data-label="Place as recorded">{{ u.place || '—' }}</td>
                                 <td data-label="Diocese">{{ u.diocese }}</td>
-                                <td data-label="Years">{{ spans(u.years) }}</td>
+                                <td data-label="Years without">{{ spans(u.years) }}</td>
+                                @if (state.places === 'partly') {
+                                    <td data-label="Placed in">{{ spans(u.placedYears) }}</td>
+                                    <td data-label="Copy from">
+                                        @for (f of u.fills; track f.year) {
+                                            <span class="fill">{{ f.year }} ← {{ f.from }}</span>{{ $last ? '' : ', ' }}
+                                        } @empty { <span class="muted">a different town in each year</span> }
+                                    </td>
+                                }
                             </tr>
                         }
                     </tbody>
                 </table>
-                @if (unplaced.length > limit) { <button type="button" class="btn more" (click)="more()">Show more ({{ unplaced.length - limit | number }} left)</button> }
+                @if (shownUnplaced.length > limit) { <button type="button" class="btn more" (click)="more()">Show more ({{ shownUnplaced.length - limit | number }} left)</button> }
             </app-viz-panel>
         }
         @case ('territories') {

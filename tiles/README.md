@@ -34,8 +34,24 @@ tiles, and new layers are just more files in the same volume.
 
 ## Running
 
+One command does it all: starts the database, rebuilds the build image,
+downloads what's missing, builds, and restarts the tile server and the API so
+they serve the new files.
+
 ```sh
-docker compose run --rm tiles-build          # build them all (base, history, ohm, transport, dioceses, detail)
+tiles/rebuild.sh                    # everything
+tiles/rebuild.sh data               # only the builds that read the database (after a reseed): history, counties, transport, dioceses, cessions, trails, frontier, links
+tiles/rebuild.sh counties transport # any parts by name
+```
+
+To serve the tiles from another machine (built here, copied there; Docker or
+Podman), see "Deploying the map tiles to a server" in the main README.
+
+The parts can also be run one at a time in the build container (then restart
+`tiles` and `nodejs-prod` yourself):
+
+```sh
+docker compose run --rm tiles-build          # build them all
 docker compose run --rm tiles-build base     # base map only: a few minutes
 docker compose run --rm tiles-build history  # boundaries by year only: a minute
 docker compose run --rm tiles-build ohm      # streets by year only: a few minutes (fetches the newest planet)

@@ -79,3 +79,19 @@
     color: var(--rubric);
     font-weight: 600;
 }
+
+// the places check: the switch above the table, and the years to copy coordinates from
+app-viz-panel app-segmented {
+    display: block;
+    margin-bottom: var(--space-3);
+}
+
+.fill {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.muted {
+    color: var(--ink-3);
+    font-style: italic;
+}

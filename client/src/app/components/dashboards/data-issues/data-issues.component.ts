@@ -18,7 +18,7 @@ import { citation, downloadTable } from '../../../utils/network-export';
 interface Summary {
   people: { strong: number; likely: number; possible: number; decided: number; people: number };
   names: number;
-  places: { records: number; institutions: number };
+  places: { records: number; institutions: number; never: number; partly: number; fillable: number };
   prefixes: number;
   circuits: number;
   territories: number | null;
@@ -27,7 +27,9 @@ interface Summary {
   wording: number;
 }
 interface NameConflict { id: string; name: string; names: { name: string; n: number }[]; years: string; }
-interface Unplaced { inst: string; name: string; type: string; place: string; diocese: string; years: number[]; }
+/** years: without coordinates; placedYears: with them; fills: per unplaced year, the nearest placed year at the same town */
+interface Unplaced { inst: string; name: string; type: string; place: string; diocese: string; years: number[]; placedYears: number[];
+  fills: { year: number; from: number; lat: number; lng: number }[]; }
 interface Prefix { prefix: string; records: number; listedAs: string[]; examples: { inst: string; name: string; type: string; year: number }[]; }
 interface LongLink { year: number; miles: number; from: LinkEnd; to: LinkEnd; }
 interface LinkEnd { inst: string; name: string; type: string; place: string; lat: number | null; lng: number | null; }
@@ -35,7 +37,8 @@ interface TerritoryYear { year: number; placed: number; agree: number; }
 interface Unread { inst: string; name: string; type: string; marker: string; word: string; note: string; at: number; years: number[]; }
 interface CountyMismatch { inst: string; name: string; type: string; place: string; years: number[]; recorded: string; county: string; state: string; }
 
-const DEFAULTS = { check: 'people', strength: 'strong', show: 'open' };
+/** places: which unplaced institutions to list, those never placed or those placed in other years */
+const DEFAULTS = { check: 'people', strength: 'strong', show: 'open', places: 'never' };
 const PAGE = 50;
 
 /**
@@ -78,6 +81,14 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   osmBase = '';
   names: NameConflict[] = [];
   unplaced: Unplaced[] = [];
+  placesOptions = [{ value: 'never', label: 'Never placed' }, { value: 'partly', label: 'Placed in other years' }];
+  /** unplaced years that another year of the same institution, at the same town, could fill */
+  fillable = 0;
+
+  /** The institutions the places switch shows. */
+  get shownUnplaced(): Unplaced[] {
+    return this.unplaced.filter(u => (this.state.places === 'partly') === u.placedYears.length > 0);
+  }
   prefixes: Prefix[] = [];
   longLinks: LongLink[] = [];
   territoryYears: TerritoryYear[] = [];
@@ -115,6 +126,7 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   setCheck(check: string): void { this.url.set({ check }); }
   setStrength(strength: string): void { this.url.set({ strength }); }
   setShow(show: string): void { this.url.set({ show }); }
+  setPlaces(places: string): void { this.limit = PAGE; this.url.set({ places }); }
   clearAll = (): void => this.url.set({ strength: DEFAULTS.strength, show: DEFAULTS.show });
   more(): void { this.limit += PAGE; }
 
@@ -139,8 +151,8 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
       { id: 'people', label: 'People who may be one person', count: s ? s.people.strong + s.people.likely + s.people.possible : null,
         note: s ? `${s.people.strong} strong, ${s.people.likely} likely, ${s.people.possible} possible` : '' },
       { id: 'names', label: 'One person id, several surnames', count: s?.names ?? null, note: 'a mistyped id or name' },
-      { id: 'places', label: 'Institutions without a place', count: s?.places.institutions ?? null,
-        note: s ? `${s.places.records.toLocaleString()} records without coordinates` : '' },
+      { id: 'places', label: 'Institutions without a place', count: s?.places.never ?? null,
+        note: s ? `never placed; ${s.places.partly.toLocaleString()} more are placed in some years only` : '' },
       { id: 'territories', label: 'Outside their diocese’s territory', count: s?.territories ?? null, note: 'records, all years, against the territories drawn' },
       { id: 'counties', label: 'In another county', count: s?.counties ?? null, note: 'the county given is not the county the place lay in that year' },
       { id: 'circuits', label: 'Circuits too long to ride', count: s?.circuits ?? null, note: 'over 500 miles: an end is misplaced' },
@@ -152,7 +164,7 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
     ];
     if (s) {
       const open = s.people.strong + s.people.likely + s.people.possible;
-      this.takeaway = `${open.toLocaleString()} pairs of person ids may each be one person, ${s.places.institutions.toLocaleString()} institutions have years with no place, and ${s.names} person ids carry more than one surname.`;
+      this.takeaway = `${open.toLocaleString()} pairs of person ids may each be one person, ${s.places.never.toLocaleString()} institutions have no place in any year (and ${s.places.partly.toLocaleString()} more lack one in some years), and ${s.names} person ids carry more than one surname.`;
     }
   }
 
@@ -177,7 +189,14 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
           this.osmBase = res.osmBase ? String(res.osmBase).slice(0, 10) : '';
         }
         if (check === 'names') this.names = res.ids;
-        if (check === 'places') this.unplaced = res.institutions;
+        if (check === 'places') {
+          this.unplaced = res.institutions;
+          this.placesOptions = [
+            { value: 'never', label: `Never placed (${res.never.toLocaleString()})` },
+            { value: 'partly', label: `Placed in other years (${res.partly.toLocaleString()})` },
+          ];
+          this.fillable = res.fillable;
+        }
         if (check === 'prefixes') this.prefixes = res.prefixes;
         if (check === 'circuits') this.longLinks = res.links;
         if (check === 'wording') this.unread = (res.notes as Unread[]).map(n => ({ ...n,
@@ -207,7 +226,9 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
       case 'names':
         return downloadTable(name, this.names.map(n => ({ person: n.id, name: n.name, years: n.years, listed_as: n.names.map(x => `${x.name} (${x.n})`) })), note);
       case 'places':
-        return downloadTable(name, this.unplaced.map(u => ({ institution: u.inst, name: this.label(u.name, u.type), place: u.place, diocese: u.diocese, years: this.spans(u.years) })), note);
+        return downloadTable(`data-issues-places-${this.state.places}.csv`, this.shownUnplaced.map(u => ({ institution: u.inst, name: this.label(u.name, u.type),
+          place: u.place, diocese: u.diocese, years_without: this.spans(u.years), years_placed: this.spans(u.placedYears),
+          copy_from: u.fills.map(f => `${f.year} from ${f.from} (${f.lat}, ${f.lng})`).join('; ') })), note);
       case 'circuits':
         return downloadTable(name, this.longLinks.map(l => ({ year: l.year, miles: l.miles,
           from: l.from.inst, from_name: this.label(l.from.name, l.from.type), from_place: l.from.place, from_lat: l.from.lat, from_lng: l.from.lng,

@@ -80,6 +80,7 @@ collection as maps, networks and charts.
 - [Pages and the writing tool](#pages-and-the-writing-tool)
 - [Architecture](#architecture)
 - [Running locally](#running-locally)
+- [Deploying the map tiles to a server](#deploying-the-map-tiles-to-a-server)
 - [Data sources and licences](#data-sources-and-licences)
 
 ---
@@ -530,22 +531,25 @@ server code, rebuild it:
 docker compose up -d --build nodejs-prod
 ```
 
-Build the map tiles once. The street-detail and transport-distance steps read
-the database, so start it first:
+Build the map tiles with one command. It starts the database if needed,
+downloads whatever isn't downloaded yet, builds every tile set and the data
+files the API reads, then restarts the tile server and the API:
 
 ```bash
-docker compose run --rm tiles-build
+tiles/rebuild.sh
 ```
 
-Then serve them:
+The first run takes an hour or more, mostly downloads; they're kept, so later
+runs fetch nothing again. After reseeding the database, rebuild only what reads
+it:
 
 ```bash
-docker compose up -d --build tiles
+tiles/rebuild.sh data
 ```
 
-`tiles-build` also takes `base`, `history`, `transport`, `ohm` or `detail` to
-rebuild one part. Map styles are generated: edit `tiles/make-styles.py`, not
-the JSON.
+Any single part can be rebuilt by name too (`tiles/rebuild.sh frontier`, or
+several: `tiles/rebuild.sh counties transport`); `tiles/build.sh` lists them.
+Map styles are generated: edit `tiles/make-styles.py`, not the JSON.
 
 Run the client against the local API:
 
@@ -556,6 +560,85 @@ cd client && npm install && npm start
 Migrations and seeders run with `npm run migrate` in `server/`. Seeding errors
 are logged to `server/logs/seed-errors.log`, and `npm run seed:errors`
 summarises them.
+
+## Deploying the map tiles to a server
+
+Building the tiles is the heavy part; serving them is light. So build them on
+a workstation with Docker and copy only the finished files to the server,
+which can run Docker or Podman.
+
+| | Building (workstation) | Serving (server) |
+|---|---|---|
+| Memory | about 6 GB free (the street detail peaks at 5 GB) | about 2.5 GB in all, mostly MySQL |
+| Disk | about 24 GB at the peak of a full build, 11 GB between builds | about 4.2 GB of tiles, plus about 1.4 GB of images and the database |
+
+The finished files are the `tiles-data` volume: about 4.2 GB, most of it the
+terrain (2.6 GB) and the street detail (1.4 GB). They're plain files
+(`.pmtiles` and `.json`) that work on any machine. Don't copy Docker images:
+a Mac with Apple silicon builds ARM images, which won't run on an Intel/AMD
+server. Let the server build its own small images from this repository.
+
+**1. Build on the workstation:**
+
+```bash
+tiles/rebuild.sh
+```
+
+**2. Copy the finished files out of the Docker volume** into a folder:
+
+```bash
+mkdir -p ~/almanacs-tiles && docker run --rm -v catholic-almanacs_tiles-data:/d -v ~/almanacs-tiles:/out alpine cp -a /d/. /out/
+```
+
+**3. On the server, the first time only: create the volume** the tile server
+and API read, and find where it lives on disk. With `podman-compose` (or
+`podman compose`) the volume is named after the project folder plus
+`_tiles-data`; `podman volume ls` lists the names in use.
+
+```bash
+podman volume create catholic-almanacs_tiles-data
+```
+
+```bash
+podman volume inspect catholic-almanacs_tiles-data --format '{{.Mountpoint}}'
+```
+
+**4. Send the files from the workstation** into that directory. Run this as
+the user who runs Podman: a rootless Podman keeps its volumes under that
+user's home. With a root-run Podman, send them to a folder the login can write
+and then, on the server, `sudo rsync -a` them into the mountpoint.
+
+```bash
+rsync -av --delete --progress ~/almanacs-tiles/ you@server:/path/printed/in/step/3/
+```
+
+**5. On the server, start or restart the tile server and the API.** It never
+runs `tiles-build`, so it needs neither the build image, the downloads nor the
+build's memory.
+
+```bash
+podman-compose up -d --build tiles nodejs-prod
+```
+
+**Updating:** after new data, rebuild on the workstation (`tiles/rebuild.sh
+data` after a reseed, or `tiles/rebuild.sh` for everything), then repeat steps
+2, 4 and 5. `rsync` sends only the files that changed: after a `data` rebuild
+that's a few megabytes of JSON, so it takes seconds.
+
+**Notes:**
+- The server's API reads the same data files, so build them from a database
+  loaded from the same data files as the server's. Otherwise the tile data and
+  the records won't match: places or years can go missing.
+- Podman with SELinux (RHEL, Rocky, Alma) labels its own volumes, so the
+  containers can read them with no extra options.
+- Two settings tell browsers where the tiles are, and both point at the
+  workstation now:
+  - `TILES_PUBLIC_URL=http://localhost:8092` under the `tiles` service in
+    `docker-compose.yml` (see `tiles/entrypoint.sh`)
+  - the client build's `tilesUrl` in `client/src/environments/`, which is
+    `null` in the dev and prod builds, so they fall back to Carto's base maps
+
+  Set both to the tile server's public address.
 
 ## Data sources and licences
 

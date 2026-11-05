@@ -35,12 +35,13 @@ echo "[terrain] listing the tiles over $BOX to zoom $MAX_ZOOM"
 python3 "$HERE/terrain-tiles.py" list "$BOX" "$MAX_ZOOM" > "$D/tiles.txt"
 total=$(wc -l < "$D/tiles.txt" | tr -d ' ')
 
-# fetch what is missing, a few at a time, into z/x/y.png
+# fetch what is missing, a few at a time, into z/x/y.png (-r: when nothing is
+# missing, run nothing; without it xargs fetches one empty path and fails)
 echo "[terrain] fetching up to $total tiles from $SRC (those already here are kept)"
 grep -v '^$' "$D/tiles.txt" | while read -r z x y; do
   f="$D/tiles/$z/$x/$y.png"
   [ -s "$f" ] || echo "$z $x $y"
-done | xargs -P 16 -n 3 sh -c '
+done | xargs -r -P 16 -n 3 sh -c '
   z=$1; x=$2; y=$3; f="'"$D"'/tiles/$z/$x/$y.png"
   mkdir -p "$(dirname "$f")"
   for try in 1 2 3 4; do

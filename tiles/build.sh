@@ -18,6 +18,10 @@
 #   docker compose run --rm tiles-build terrain    # elevation for hillshading (about 1 GB of tiles the first time; 10-20 minutes)
 #   docker compose run --rm tiles-build trails     # the historic trails and roads with their years in use (a minute)
 #   docker compose run --rm tiles-build frontier   # the post offices by year, and each record against them (a few minutes; needs the DB for the measures)
+#   docker compose run --rm tiles-build data       # every build that reads the database, in order: after a reseed
+#
+# tiles/rebuild.sh (on the host) wraps this: starts the database, rebuilds this
+# image, runs the builds, and restarts the tile server and the API.
 set -euo pipefail
 
 what=${1:-all}
@@ -34,6 +38,16 @@ case "$what" in
   terrain) bash /tiles/build-terrain.sh /data/terrain.pmtiles /work ;;
   trails) bash /tiles/build-trails.sh /data/trails.pmtiles /work ;;
   frontier) bash /tiles/build-frontier.sh /data/postoffices.pmtiles /work ;;
+  # the builds that read the database, in order (counties before transport
+  # and frontier, which use its outlines): rerun these after a reseed
+  data)   bash /tiles/build-history.sh /data/history.pmtiles /work
+          bash /tiles/build-counties.sh /data/counties.pmtiles /work
+          bash /tiles/build-transport.sh /data/transport.pmtiles /work
+          bash /tiles/build-dioceses.sh /data/dioceses.pmtiles /work
+          bash /tiles/build-cessions.sh /data/cessions.pmtiles /work
+          bash /tiles/build-trails.sh /data/trails.pmtiles /work
+          bash /tiles/build-frontier.sh /data/postoffices.pmtiles /work
+          bash /tiles/build-links.sh /data/link-candidates.json /work ;;
   all)    bash /tiles/build-tiles.sh /data/base.pmtiles /work
           bash /tiles/build-history.sh /data/history.pmtiles /work
           bash /tiles/build-ohm.sh /data/ohm.pmtiles /work
@@ -46,5 +60,5 @@ case "$what" in
           bash /tiles/build-terrain.sh /data/terrain.pmtiles /work
           bash /tiles/build-detail.sh /data/detail.pmtiles /work
           if [ -n "${DB_HOST:-}" ]; then bash /tiles/build-links.sh /data/link-candidates.json /work; fi ;;
-  *)      echo "usage: build.sh [base|detail|history|ohm|transport|dioceses|counties|cessions|links|terrain|trails|frontier|all]" >&2; exit 2 ;;
+  *)      echo "usage: build.sh [base|detail|history|ohm|transport|dioceses|counties|cessions|links|terrain|trails|frontier|data|all]" >&2; exit 2 ;;
 esac

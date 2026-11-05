@@ -72,7 +72,13 @@ while read -r state url; do
 done < "$D/states.txt"
 
 echo "[detail] merging ${#filtered[@]} filtered states"
-osmium merge --overwrite -o "$D/us-filtered.osm.pbf" "${filtered[@]}"
+# The states' extracts may be from different days (a state downloaded later,
+# when records first appear in it), so an object on a border can come in two
+# versions. Merge them as versions, then keep the newest of each; a plain
+# merge keeps both and the extract below fails ("Node ID twice in input").
+osmium merge --overwrite --with-history -o "$D/us-filtered.osh.pbf" "${filtered[@]}"
+osmium time-filter --overwrite -o "$D/us-filtered.osm.pbf" "$D/us-filtered.osh.pbf"
+rm -f "$D/us-filtered.osh.pbf"
 
 echo "[detail] cutting out the recorded places' area"
 # smart: keeps multipolygons whole (a river bank cut at the area edge would

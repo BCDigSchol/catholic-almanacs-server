@@ -1471,7 +1471,9 @@ exports.getCenterPeriphery = async (req, res) => {
  *   summary      how many of each
  *   people       person ids that may be one person (utils/people-review.js)
  *   names        person ids listed under more than one surname
- *   places       institutions with years that have no coordinates
+ *   places       institutions with years that have no coordinates: never placed
+ *                in any year, or placed in some years only (with, per unplaced
+ *                year, the nearest placed year at the same town to copy from)
  *   prefixes     institution ids whose diocese prefix is not in the timeline
  *   circuits     circuit links over MAX_CIRCUIT_MILES (a misplaced end)
  *   counties     institutions whose recorded county is not the county
@@ -1494,20 +1496,50 @@ exports.getDataIssues = async (req, res) => {
         people: async () => ({ pairs: (await loadReview()).pairs }),
         names: async () => ({ ids: (await loadReview()).nameConflicts }),
         places: async () => {
-            const rows = await q(`SELECT instID, instName, instType, year, cityReg, countyReg, stateReg, placeName, diocese
+            // every year of each institution that lacks coordinates in any year:
+            // some were never placed; others are placed in some years and not
+            // others, and can usually take the coordinates of another year at
+            // the same town
+            const rows = await q(`SELECT instID, instName, instType, year, cityReg, cityOrig, countyReg, stateReg, stateOrig,
+                                         placeName, diocese, latitude, longitude
                                     FROM almanacRecords
-                                   WHERE (latitude IS NULL OR longitude IS NULL OR latitude = 0) AND year IS NOT NULL
+                                   WHERE year IS NOT NULL AND instID IN (
+                                         SELECT instID FROM almanacRecords
+                                          WHERE (latitude IS NULL OR longitude IS NULL OR latitude = 0) AND year IS NOT NULL)
                                    ORDER BY instID, year`);
+            const placed = r => r.latitude != null && r.longitude != null && Number(r.latitude) !== 0;
+            const town = r => `${(r.cityReg || r.cityOrig || '').trim().toLowerCase()}|${(r.stateReg || r.stateOrig || '').trim().toLowerCase()}`;
             const byInst = new Map();
             for (const r of rows) {
                 let i = byInst.get(r.instID);
-                if (!i) byInst.set(r.instID, i = { inst: r.instID, years: [] });
-                // the latest year's details
+                if (!i) byInst.set(r.instID, i = { inst: r.instID, years: [], placedYears: [], rows: [] });
+                i.rows.push(r);
+                if (placed(r)) { i.placedYears.push(Number(r.year)); continue; }
+                // the latest unplaced year's details
                 Object.assign(i, { name: r.instName || '', type: r.instType || '', diocese: r.diocese || '',
-                    place: [r.placeName || r.cityReg, r.countyReg && `${r.countyReg} County`, r.stateReg].filter(Boolean).join(', ') });
+                    place: [r.placeName || r.cityReg || r.cityOrig, r.countyReg && `${r.countyReg} County`, r.stateReg || r.stateOrig].filter(Boolean).join(', ') });
                 i.years.push(Number(r.year));
             }
-            return { records: rows.length, institutions: [...byInst.values()] };
+            let records = 0, fillable = 0;
+            const institutions = [...byInst.values()].map(({ rows: rs, ...i }) => {
+                records += i.years.length;
+                // for each unplaced year, the nearest placed year at the same town
+                const fills = [];
+                for (const r of rs.filter(x => !placed(x))) {
+                    const same = rs.filter(x => placed(x) && town(x) === town(r))
+                        .sort((a, b) => Math.abs(a.year - r.year) - Math.abs(b.year - r.year))[0];
+                    if (same) fills.push({ year: Number(r.year), from: Number(same.year), lat: Number(same.latitude), lng: Number(same.longitude) });
+                }
+                fillable += fills.length;
+                return { ...i, fills };
+            });
+            return {
+                records, fillable,
+                // never placed in any year, and placed in some years only
+                never: institutions.filter(i => !i.placedYears.length).length,
+                partly: institutions.filter(i => i.placedYears.length).length,
+                institutions,
+            };
         },
         prefixes: async () => {
             const rows = await q(`SELECT instID, instName, instType, year, diocese FROM almanacRecords WHERE year IS NOT NULL`);
@@ -1592,7 +1624,7 @@ exports.getDataIssues = async (req, res) => {
             people: { strong: strength('strong'), likely: strength('likely'), possible: strength('possible'),
                 decided: review.pairs.filter(p => p.decision).length, people: review.people },
             names: review.nameConflicts.length,
-            places: { records: places.records, institutions: places.institutions.length },
+            places: { records: places.records, institutions: places.institutions.length, never: places.never, partly: places.partly, fillable: places.fillable },
             prefixes: prefixes.prefixes.reduce((n, p) => n + p.records, 0),
             circuits: circuits.links.length,
             wording: wording.notes.length,
