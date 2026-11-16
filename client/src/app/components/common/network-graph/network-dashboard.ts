@@ -17,6 +17,8 @@ import { HIGHLIGHT_INK, MANY_INKS, OTHER_INK } from '../../../utils/palette';
 import { citation, downloadCsv, downloadGexf, ExportGraph } from '../../../utils/network-export';
 import { computeMeasures } from '../../../utils/network-measures';
 import { FocusPick } from '../network-focus/network-focus.component';
+import { Mixing, computeMixing } from '../../../utils/network-mixing';
+import { Communities, SMALLER, describeCommunities, detectCommunities } from '../../../utils/network-communities';
 
 /** Almanac years the network endpoints can filter on. */
 export const NETWORK_MIN_YEAR = 1833;
@@ -76,6 +78,7 @@ export const NETWORK_VIEWS = [
   { value: 'institutions', label: 'Institutions' },
   { value: 'people', label: 'People' },
   { value: 'service', label: 'Both' },
+  { value: 'lineage', label: 'Served under' },
   { value: 'path', label: 'Path' },
 ];
 
@@ -146,6 +149,20 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
   network: { nodes: any[]; edges: any[] } = { nodes: [], edges: [] };
   networkOptions: any = {};
   key: KeyEntry[] = [];
+  /** Pages whose nodes carry attributes offer "Colour by" (a `colour` key in their state, page-only). */
+  protected readonly colourable: boolean = false;
+  /** Diocese, then whatever attributes the server sent for these nodes. */
+  colourOptions: { value: string; label: string }[] = [{ value: 'diocese', label: 'Diocese' }];
+  /** How far ties stay within the colour's categories. */
+  mixing: Mixing | null = null;
+  /** The nodes as fetched, before a colour is applied. */
+  private rawNodes: any[] = [];
+  /** Each node's community, found from the ties drawn (utils/network-communities). */
+  private communityOf = new Map<string, string>();
+  /** The communities against their members' dioceses, while coloured by community. */
+  communities: Communities | null = null;
+  /** The years ties first appear in, for the year player. */
+  playerYears: number[] = [];
   panelNote = '';
   takeaway = '';
   truncated = false;
@@ -169,6 +186,8 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
     this.subs.push(loadOptions(this.http, 'functions.csv').subscribe(o => this.functionOptions = o));
     this.subs.push(loadOptions(this.http, 'order.csv').subscribe(o => this.orderOptions = o));
     let last: string | null = null;
+    let lastColour = '';
+    let lastThrough: number | null = null;
     this.subs.push(this.url.changes().subscribe(state => {
       this.state = state;
       for (const f of this.allFields) if (f.text) this.draft[f.key] = String(state[f.key] ?? '');
@@ -176,9 +195,18 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
       this.moreCount = this.moreKeys.filter(k => this.isSet(k)).length;
       if (this.moreCount) this.moreOpen = true;
       const query = this.query(state);
+      if (this.through !== lastThrough) {
+        lastThrough = this.through;
+        this.afterThrough();
+      }
       if (query !== last) {
         last = query;
+        lastColour = this.colour;
         this.fetchData();
+      } else if (this.colour !== lastColour) {
+        // a page-only switch: the same network, coloured anew
+        lastColour = this.colour;
+        this.recolour();
       }
     }));
   }
@@ -215,7 +243,60 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
 
   /** The value that means "no filter" (a page may default a filter to something else). */
   protected clearedValue(key: string): string {
-    return key === 'hops' ? '1' : '';
+    return key === 'hops' ? '1' : key === 'colour' ? 'diocese' : '';
+  }
+
+  // ---- through a year -------------------------------------------------------
+
+  /** The year player: only what had been listed by this year (page-only, `through` in the URL; null = everything). */
+  get through(): number | null {
+    const y = Number(this.state?.['through']);
+    return y > 0 ? y : null;
+  }
+
+  /** The last year shows everything, which is the same as no year. */
+  setThrough(year: number): void {
+    this.set('through', year >= this.playerYears[this.playerYears.length - 1] ? 0 : year);
+  }
+
+  /** A page with more than the graph to redraw (a map) does it here. */
+  protected afterThrough(): void { /* the graph follows its [through] input */ }
+
+  // ---- colour ---------------------------------------------------------------
+
+  /** What the nodes are coloured by: 'diocese' or one of the server's attributes. */
+  get colour(): string {
+    return this.colourable ? String(this.state?.['colour'] || 'diocese') : 'diocese';
+  }
+
+  /** "kind of institution", for the key and the mixing table. */
+  get colourLabel(): string {
+    if (this.colour === 'community') return 'community';
+    return (this.colourOptions.find(o => o.value === this.colour)?.label ?? 'Diocese').toLowerCase();
+  }
+
+  /** The node with its colour's category as its group (vis colours by group). */
+  private coloured(n: any): any {
+    if (!this.colourable) return n;
+    const diocese = n.diocese ?? n.group;
+    const group = this.colour === 'diocese' ? diocese
+      : this.colour === 'community' ? this.communityOf.get(String(n.id)) ?? 'Unknown'
+      : n.attrs?.[this.colour] ?? 'Unknown';
+    return { ...n, diocese, group };
+  }
+
+  /** The mixing table, or (coloured by community) the communities against the dioceses. */
+  private describe(nodes: any[]): void {
+    const byCommunity = this.colour === 'community';
+    this.mixing = this.colourable && !byCommunity ? computeMixing(nodes, this.network.edges, this.key) : null;
+    this.communities = byCommunity ? describeCommunities(nodes, n => n.diocese, this.key) : null;
+  }
+
+  private recolour(): void {
+    const nodes = this.rawNodes.map(n => this.coloured(n));
+    this.network = { nodes, edges: this.network.edges };
+    this.networkOptions = this.buildOptions(nodes);
+    this.describe(nodes);
   }
 
   // ---- focus ----------------------------------------------------------------
@@ -296,14 +377,22 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
     this.fetchSub?.unsubscribe();
     this.fetchSub = this.api.getTypeRequest(this.endpoint + (q ? '?' + q : '')).subscribe({
       next: (res: any) => {
-        const nodes = (res.nodes ?? []).map((n: any) => this.prepareNode(n));
+        this.colourOptions = [{ value: 'diocese', label: 'Diocese' },
+          ...(res.attributes ?? []).map((a: any) => ({ value: a.id, label: a.label })),
+          ...(this.colourable ? [{ value: 'community', label: 'Community (found from the ties)' }] : [])];
+        this.rawNodes = (res.nodes ?? []).map((n: any) => this.prepareNode(n));
+        this.communityOf = this.colourable ? detectCommunities(this.rawNodes, res.edges ?? []) : new Map();
+        this.playerYears = [...new Set<number>((res.edges ?? []).map((e: any) => e.firstYear).filter((y: any) => y != null))].sort((a, b) => a - b);
+        const nodes = this.rawNodes.map(n => this.coloured(n));
         this.network = { nodes, edges: res.edges ?? [] };
         this.truncated = !!res.truncated;
         this.totalNodes = res.totalNodes ?? nodes.length;
         this.groups = (res.groups ?? []).map((g: NetworkGroup) => isUnnamed(g.label) ? { ...g, label: institutionLabel(g.label) } : g);
         this.focusInfo = res.focus ?? null;
+        this.onResponse(res);
         this.chips = this.buildChips(this.state);   // the focus chip now has its name
         this.networkOptions = this.buildOptions(nodes);
+        this.describe(nodes);
         this.panelNote = this.buildNote();
         this.takeaway = !nodes.length ? ''
           : this.focusInfo?.found ? this.focusTakeaway(nodes)
@@ -312,11 +401,16 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
       },
       error: () => {
         this.network = { nodes: [], edges: [] };
+        this.mixing = null;
+        this.communities = null;
         this.takeaway = '';
         this.vizState = 'error';
       },
     });
   }
+
+  /** A page that reads more from the response than the graph (lists, a tree). */
+  protected onResponse(_res: any): void { /* nothing more by default */ }
 
   /** While focused: who is linked directly, and further out. */
   private focusTakeaway(nodes: any[]): string {
@@ -337,16 +431,19 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
     return n;
   }
 
-  /** Colour nodes by diocese; the key lists dioceses by node count. */
+  /** Colour nodes by their group (the diocese, or the chosen attribute); the key lists the groups by node count. */
   protected buildOptions(nodes: any[]): any {
     const counts = new Map<string, number>();
     for (const n of nodes) counts.set(n.group || 'Unknown', (counts.get(n.group || 'Unknown') ?? 0) + 1);
     const ordered = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
     const groups: any = {};
     this.key = ordered.map(([group, count], i) => {
-      const color = group === 'Unknown' ? OTHER_INK : PALETTE[i % PALETTE.length];
+      const color = group === 'Unknown' || group === SMALLER ? OTHER_INK : PALETTE[i % PALETTE.length];
       groups[group] = { color: { background: color, border: color }, borderWidth: 1, shape: 'dot' };
-      return { group, label: group === 'Unknown' ? 'Diocese not recorded' : spaceName(group), color, count, hidden: false };
+      // communities keep their size order ("Community 1" is the largest)
+      const label = this.colour !== 'diocese' ? (group === 'Unknown' ? 'Not recorded' : group)
+        : group === 'Unknown' ? 'Diocese not recorded' : spaceName(group);
+      return { group, label, color, count, hidden: false };
     });
     return { groups };
   }
@@ -404,6 +501,7 @@ export abstract class NetworkDashboard<T extends NetworkFilters> implements OnIn
       nodes: this.network.nodes.map(n => ({
         id: n.id, label: n.label, kind: kind(n),
         diocese: n.diocese ?? (['people', 'institutions'].includes(n.group) ? undefined : n.group),
+        ...(n.attrs ?? {}),
         pageRank: typeof n.pageRank === 'number' ? Number(n.pageRank.toFixed(6)) : undefined,
         // over the graph exported, ties taken as undirected
         links: measures.get(String(n.id))?.links,

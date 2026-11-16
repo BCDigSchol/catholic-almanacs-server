@@ -8,6 +8,16 @@
         <app-segmented primary label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
         <ng-template #filters>
             <app-network-focus [kinds]="focusKinds" [idPrefix]="'pnet-focus'" (pick)="setFocus($event)"></app-network-focus>
+            @if (colourOptions.length > 1) {
+                <label class="ctl">
+                    <span>Colour by</span>
+                    <select class="control" (change)="set('colour', $any($event.target).value)">
+                        @for (o of colourOptions; track o.value) {
+                            <option [value]="o.value" [selected]="o.value === colour">{{ o.label }}</option>
+                        }
+                    </select>
+                </label>
+            }
             @if (state.focus) {
                 <app-segmented label="Steps out" [showLabel]="true" [options]="hopOptions" [value]="state.hops" (valueChange)="set('hops', $event)"></app-segmented>
             }
@@ -76,7 +86,7 @@
         <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="This network as a GEXF file for Gephi">GEXF</button>
         <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="This network's nodes and edges as two CSV files">CSV</button>
         <div key>
-            <p class="key-hint">Colour shows each person's diocese. Click a diocese to hide or show its people.</p>
+            <p class="key-hint">Colour shows each person's {{ colourLabel }}. Click one to hide or show its people.</p>
             <ul class="legend">
                 @for (entry of key; track entry.group) {
                     <li><button type="button" class="legend-item" [class.off]="entry.hidden" [attr.aria-pressed]="!entry.hidden" (click)="setKeyHidden(entry)">
@@ -85,8 +95,13 @@
                 }
             </ul>
         </div>
+        @if (playerYears.length > 2) {
+            <app-year-player idPrefix="pnet-through" [years]="playerYears" [year]="through ?? playerYears[playerYears.length - 1]" (yearChange)="setThrough($event)"></app-year-player>
+            <p class="key-hint">@if (through) { Only ties first listed by {{ through }}; the layout stays where it is. } @else { Step or play through the years to watch the network grow in place. }</p>
+        }
         <app-network-graph
             [focusable]="true"
+            [through]="through"
             (focusNode)="setFocus($event)"
             [framed]="false"
             [showLegend]="false"
@@ -96,6 +111,22 @@
             [options]="networkOptions">
         </app-network-graph>
     </app-viz-panel>
+
+    @if (mixing) {
+        <app-viz-panel
+            [heading]="'Do ties keep to one ' + colourLabel + '?'"
+            note="For each, the share of its ties that stay inside it; the tick marks where chance would put it"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <app-network-mixing [mixing]="mixing" [attribute]="colourLabel" nodes="people"></app-network-mixing>
+        </app-viz-panel>
+    }
+
+    @if (communities) {
+        <app-viz-panel heading="Do the communities follow diocese lines?" note="Groups found from the ties alone, with the dioceses of their members" [state]="vizState" (retry)="fetchData()">
+            <app-network-communities [communities]="communities" nodes="people"></app-network-communities>
+        </app-viz-panel>
+    }
 
     @if (!state.focus && groups.length > 1) {
         <app-viz-panel
@@ -118,6 +149,9 @@
     <div notes>
         <p><strong>Focus on</strong> any person (search above, or <em>Focus here</em> in a node's details) to see its neighbourhood from the whole network, not just the most central nodes: one step out, two, or its whole connected group. The network falls apart into separate groups; the list under the graph opens the largest of them.</p>
         <p>Each dot is a person. Two people are linked when both are listed at the same institution within the selected years; the line's number and thickness count the institutions they shared. Dot size reflects PageRank, a measure of how central a person is to the whole web. A person's colour is the diocese of their latest listing.</p>
+        <p><strong>Community</strong> (under Colour by) groups the nodes by the ties alone: the Louvain method looks for sets with more ties among themselves than chance would give, knowing nothing of dioceses. The table then shows each community's dioceses. Where a community is one diocese, clergy kept to its lines; where it spans several, or a diocese falls into two, they did not. Communities are found in the network as drawn, so they shift with the filters.</p>
+        <p><strong>The year player</strong> keeps the layout fixed and shows only the ties first listed by the chosen year, so the network grows in place. The almanacs skip 1841–1859 and 1862–63, and the 1830s volumes list far fewer people, so the jump at 1860 is largely fuller reporting.</p>
+        <p><strong>Colour by</strong> recolours the same network by religious order (a suffix on any of the person's listings: S.J., O.S.B., C.SS.R.…; most diocesan priests carry none) or by rank (from the title of their latest listing). The table under the graph asks whether ties keep to those categories: for each, the share of its ties whose other end is in the same category, against the share chance would give, which is that category's share of all tie ends. It counts only the people drawn. Women religious are mostly unnamed in the almanacs, so this is largely a network of priests.</p>
         <p>The full network is too large to draw at once, so the server keeps the most central people (by PageRank, up to 500) and drops any left without a link. The panel note says how many of the matching people are shown; narrow the filters to see the rest.</p>
         <p>Role and title match any part of the recorded text (“pastor” also finds “assistant pastor”). Click a person for details and a link to their record; double-click to open it.</p>
     </div>

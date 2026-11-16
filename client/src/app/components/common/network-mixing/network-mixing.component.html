@@ -1,0 +1,35 @@
+@if (mixing; as m) {
+    <p class="mixing-lead">
+        {{ m.within | percent: '1.0-0' }} of the {{ m.ties | number }} ties shown stay within one {{ attribute }}.
+        If ties took no notice of it, {{ m.expected | percent: '1.0-0' }} would.
+    </p>
+    <table class="data-table mixing">
+        <thead>
+            <tr>
+                <th>{{ attribute.charAt(0).toUpperCase() + attribute.slice(1) }}</th>
+                <th class="num">{{ nodes.charAt(0).toUpperCase() + nodes.slice(1) }}</th>
+                <th>Ties that stay within it</th>
+                <th class="num">By chance</th>
+                <th class="num">Against chance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (r of m.rows; track r.group) {
+                <tr>
+                    <td data-label="Category"><span class="legend-swatch" [style.background]="r.color"></span>{{ r.label }}</td>
+                    <td [attr.data-label]="nodes" class="num">{{ r.nodes | number }}</td>
+                    <td data-label="Ties that stay within it">
+                        <span class="bar" aria-hidden="true">
+                            <span class="fill" [style.width.%]="r.within * 100" [style.background]="r.color"></span>
+                            <span class="chance" [style.left.%]="r.expected * 100"></span>
+                        </span>
+                        <span class="share">{{ r.within | percent: '1.0-0' }}</span>
+                    </td>
+                    <td data-label="By chance" class="num">{{ r.expected | percent: '1.0-0' }}</td>
+                    <td data-label="Against chance" class="num">{{ times(r.within, r.expected) }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (m.more) { <p class="mixing-more">{{ m.more }} smaller {{ m.more === 1 ? 'category' : 'categories' }} not listed.</p> }
+}

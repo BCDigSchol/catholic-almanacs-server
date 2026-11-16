@@ -84,6 +84,7 @@ exports.getAllPersonNetwork = async (req, res) => {
             `SELECT
                 piar1.persID AS persID1,
                 piar2.persID AS persID2,
+                MIN(ar1.year) AS firstYear,
                 COUNT(DISTINCT ar1.instID) AS weight
              FROM personInAlmanacRecords piar1
              JOIN almanacRecords ar1 ON piar1.almanacRecordID = ar1.ID
@@ -138,14 +139,24 @@ exports.getAllPersonNetwork = async (req, res) => {
             to: row.persID2,
             weight: Number(row.weight),
             value: Number(row.weight),
-            label: String(row.weight)
+            label: String(row.weight),
+            // the first year the two are listed together, for growing the network year by year
+            firstYear: row.firstYear != null ? Number(row.firstYear) : null
         }));
+        // a person joins the network with their first tie
+        const joined = new Map();
+        for (const e of edgeList) {
+            if (e.firstYear == null) continue;
+            for (const id of [e.from, e.to]) if (!joined.has(id) || e.firstYear < joined.get(id)) joined.set(id, e.firstYear);
+        }
 
         // Weighted PageRank (using shared-institution counts as edge weights)
         const nodeIDs = Array.from(connectedIDs);
         const pr = computePageRank(nodeIDs, edgeList);
 
         // Build nodes, include diocese as group and pageRank for sizing
+        const { personAttributes, PERSON_ATTRIBUTES } = require('../utils/node-attributes');
+        const attrs = await personAttributes();
         const allNodes = nodeIDs.map(id => {
             let diocese = personMeta[id].diocese;
             if (!diocese || typeof diocese !== 'string' || !diocese.trim()) {
@@ -155,23 +166,85 @@ exports.getAllPersonNetwork = async (req, res) => {
             }
             return {
                 id,
+                // order and rank, for "Colour by"
+                attrs: attrs.get(id) || {},
                 label: personMeta[id].name,
                 group: diocese,
                 diocese,
                 routeSegment: 'people',
                 pageRank: pr[id],
-                value: pr[id]
+                value: pr[id],
+                firstYear: joined.get(id) ?? null
             };
         });
 
         // Cap the response at the most central nodes so huge unfiltered
         // queries stay renderable; truncated/totalNodes let the UI say so
         const result = shapeNetwork(allNodes, edgeList, req.query, limit);
+        result.attributes = PERSON_ATTRIBUTES;
         networkCache.set(key, result);
         res.send(result);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
+};
+
+/**
+ * GET /api/person/lineage?tie=under|assistant&diocese=&startYear=&endYear=&focus=&hops=
+ * Who served under whom (utils/lineage.js): people as nodes, a directed tie
+ * from each junior to the head they were listed under (weight = years). With
+ * the usual network shaping (focus, hops, groups), plus `lines` (whose line
+ * runs longest), `chains` (the longest chains, junior first), `totals`, and,
+ * when focused, `tree`: everyone above and below that person, nested.
+ */
+exports.getLineage = async (req, res) => {
+    const { loadLineage, lineageTree, lineCounts, longestChains } = require('../utils/lineage');
+    const { personAttributes, PERSON_ATTRIBUTES } = require('../utils/node-attributes');
+    const tie = req.query.tie === 'assistant' ? 'assistant' : 'under';
+    const params = parseNetworkParams(req.query);
+    if (params.error) return res.status(400).json({ message: params.error });
+    const { startYear, endYear, limit } = params;
+    const diocese = String(req.query.diocese || '').trim().toLowerCase();
+    const key = cacheKey('person/lineage', req.query);
+    const cached = networkCache.get(key);
+    if (cached) return res.send(cached);
+
+    const [{ ties, people }, attrs] = await Promise.all([loadLineage(), personAttributes()]);
+    const inYears = y => (startYear == null || y >= startYear) && (endYear == null || y <= endYear);
+    const inDiocese = id => (people.get(id)?.diocese || '').toLowerCase().includes(diocese);
+    const list = ties[tie]
+        .map(t => ({ ...t, years: t.years.filter(inYears) }))
+        .filter(t => t.years.length && (!diocese || inDiocese(t.junior) || inDiocese(t.senior)));
+    if (!list.length) return res.send({ nodes: [], edges: [], attributes: PERSON_ATTRIBUTES });
+
+    const name = id => people.get(id)?.name || id;
+    const span = ys => { const s = [...ys].sort((a, b) => a - b); return s.length > 1 ? `${s[0]}–${s[s.length - 1]}` : String(s[0]); };
+    const edgeList = list.map(t => ({
+        from: t.junior, to: t.senior, arrows: 'to', weight: t.years.length, value: t.years.length, firstYear: Math.min(...t.years),
+        title: `${name(t.junior)} under ${name(t.senior)}${t.places[0]?.name ? ` at ${t.places[0].name}` : ''}, ${span(t.years)}`,
+    }));
+    const ids = [...new Set(list.flatMap(t => [t.junior, t.senior]))];
+    const pr = computePageRank(ids, edgeList);
+    const counts = lineCounts(list);
+    const joined = new Map();
+    for (const e of edgeList) for (const id of [e.from, e.to]) if (!joined.has(id) || e.firstYear < joined.get(id)) joined.set(id, e.firstYear);
+    const nodes = ids.map(id => {
+        const d = people.get(id)?.diocese || 'Unknown';
+        const c = counts.get(id) || { under: 0, line: 0 };
+        return { id, attrs: attrs.get(id) || {}, label: name(id), group: d, diocese: d, routeSegment: 'people',
+            pageRank: pr[id], value: pr[id], under: c.under, line: c.line, firstYear: joined.get(id) ?? null };
+    });
+
+    const result = shapeNetwork(nodes, edgeList, req.query, limit);
+    result.attributes = PERSON_ATTRIBUTES;
+    const juniors = new Set(list.map(t => t.junior));
+    result.totals = { ties: list.length, people: ids.length, both: [...counts.keys()].filter(id => juniors.has(id)).length };
+    result.lines = nodes.filter(n => n.line > 0).sort((a, b) => b.line - a.line || b.under - a.under).slice(0, 12)
+        .map(n => ({ id: n.id, label: n.label, diocese: n.diocese, under: n.under, line: n.line }));
+    result.chains = longestChains(list).map(c => c.map(id => ({ id, label: name(id) })));
+    if (result.focus?.found) result.tree = lineageTree(list, people, result.focus.id);
+    networkCache.set(key, result);
+    res.send(result);
 };
 const { where } = require("sequelize");
 const db = require("../models");

@@ -5,6 +5,7 @@ module.exports = app => {
     //router.post('/', controller.create);
     router.get('/', wrap(controller.findAll));
     router.get('/network', wrap(controller.getAllPersonNetwork));
+    router.get('/lineage', wrap(controller.getLineage));
     router.get('/:id', wrap(controller.findByID));
     router.get('/:id/network', wrap(controller.getPersonNetwork));
     router.get('/:id/timeline', wrap(controller.getTimeline));

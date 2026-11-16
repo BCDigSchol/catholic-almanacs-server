@@ -1683,6 +1683,42 @@ exports.getDataIssues = async (req, res) => {
 
 
 /**
+ * GET /api/stats/careers?by=kind|ring&diocese=&order= — careers in aggregate
+ * (utils/career-paths.js): each person's resident posts in order, by the
+ * kind of place or its distance from the cathedral, counted from the first
+ * post to the fourth, with the commonest paths. Cached per filter.
+ */
+let _careerMeta = null;
+exports.getCareers = async (req, res) => {
+    const { buildCareerPaths, loadCareers } = require('../utils/career-paths');
+    const { personAttributes } = require('../utils/node-attributes');
+    const by = req.query.by === 'ring' ? 'ring' : 'kind';
+    const diocese = String(req.query.diocese || '');
+    const order = String(req.query.order || '');
+    const key = cacheKey('stats/careers', { by, diocese, order });
+    const cached = networkCache.get(key);
+    if (cached) return res.json(cached);
+    if (!_careerMeta) {
+        const [careers, people] = await Promise.all([loadCareers(), personAttributes()]);
+        const names = dioceseNameMap();
+        const dios = new Set(), orders = new Map();
+        for (const [pers, career] of careers) {
+            if (career.length < 2) continue;
+            for (const p of career) dios.add(p.dio);
+            const o = people.get(pers)?.order;
+            if (o && o !== 'No order marked') orders.set(o, (orders.get(o) || 0) + 1);
+        }
+        _careerMeta = {
+            dioceses: [...dios].filter(id => id !== 'unknown').map(id => ({ id, label: names[id] || id })).sort((a, b) => a.label.localeCompare(b.label)),
+            orders: [...orders.entries()].sort((a, b) => b[1] - a[1]).map(([id]) => ({ id, label: id })),
+        };
+    }
+    const result = { ...(await buildCareerPaths({ by, diocese, order })), meta: _careerMeta };
+    networkCache.set(key, result);
+    res.json(result);
+};
+
+/**
  * GET /api/stats/turnover?diocese=&fn= — institutions coming and going, how
  * long new ones lasted, and clergy leaving their posts (utils/turnover.js),
  * plus a row per diocese for the table. Cached per filter.

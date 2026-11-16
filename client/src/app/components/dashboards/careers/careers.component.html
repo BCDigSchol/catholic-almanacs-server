@@ -1,0 +1,94 @@
+<app-dashboard-shell
+    title="Career Paths"
+    purpose="Where clergy went from one post to the next: from a station to a parish, from a college to the cathedral, out to the edge of a diocese or in toward its center."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <app-segmented primary label="Posts by" [showLabel]="true" [options]="byOptions" [value]="state.by" (valueChange)="setBy($event)"></app-segmented>
+        <ng-template #filters>
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="setDiocese($any($event.target).value)">
+                    <option value="" [selected]="!state.diocese">All dioceses</option>
+                    @for (d of dioceseOptions; track d.id) {
+                        <option [value]="d.id" [selected]="d.id === state.diocese">{{ d.label }}</option>
+                    }
+                </select>
+            </label>
+            <label class="ctl">
+                <span>Religious order</span>
+                <select class="control" (change)="setOrder($any($event.target).value)">
+                    <option value="" [selected]="!state.order">Everyone</option>
+                    @for (o of orderOptions; track o.id) {
+                        <option [value]="o.id" [selected]="o.id === state.order">{{ o.label }}</option>
+                    }
+                </select>
+            </label>
+        </ng-template>
+    </app-control-bar>
+
+    @if (data; as d) {
+        <dl class="stat-strip">
+            <div class="stat">
+                <dt class="stat-label">people with a resident post</dt>
+                <dd class="stat-value">{{ d.totals.people | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">listed at a second post</dt>
+                <dd class="stat-value">{{ d.totals.movers | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">at a third</dt>
+                <dd class="stat-value">{{ d.totals.posts[2] + d.totals.posts[3] | number }}</dd>
+            </div>
+            <div class="stat">
+                <dt class="stat-label">moves that kept to the same {{ what }}</dt>
+                <dd class="stat-value">{{ d.totals.moves ? (d.totals.same / d.totals.moves | percent: '1.0-0') : '—' }}</dd>
+            </div>
+        </dl>
+    }
+
+    <app-viz-panel
+        [heading]="'From the first post to the fourth, by ' + what + scope"
+        note="People with at least two posts; each band is the people who made that move"
+        [state]="vizState"
+        emptyText="No one here is listed at a second post. Try clearing a filter."
+        [hasKey]="true"
+        (retry)="fetchData()">
+        <button panel-actions type="button" class="btn" (click)="download()">CSV</button>
+        <ul key class="legend">
+            @for (k of key; track k.id) {
+                <li class="legend-item"><span class="legend-swatch" [style.background]="k.color"></span>{{ k.label }}</li>
+            }
+        </ul>
+        <div #flow class="chart flow"></div>
+    </app-viz-panel>
+
+    <app-viz-panel heading="The commonest paths" note="The first three posts, for people with at least two" [state]="vizState" (retry)="fetchData()">
+        @if (data; as d) {
+            <table class="data-table paths">
+                <thead><tr><th>Path</th><th class="num">People</th><th class="num">Of those who moved</th></tr></thead>
+                <tbody>
+                    @for (p of d.paths; track $index) {
+                        <tr>
+                            <td data-label="Path">
+                                @for (s of p.path; track $index; let last = $last) {
+                                    <span class="stop"><span class="legend-swatch" [style.background]="colorOf(s.id)"></span>{{ s.label }}</span>@if (!last) {<span class="arrow" aria-label="then"> → </span>}
+                                }
+                            </td>
+                            <td data-label="People" class="num">{{ p.n | number }}</td>
+                            <td data-label="Of those who moved" class="num">{{ p.n / d.totals.movers | percent: '1.0-1' }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </app-viz-panel>
+
+    <div notes>
+        <p>A post is a run of years in which a person is listed as resident at one institution; visiting (attending) listings are not posts. Where someone is listed at several places in one year, the post they already held carries on. Each person's posts are taken in order and sorted either by the <strong>kind of place</strong> (cathedral, parish church, station or mission, academy, college or seminary, school, religious house, asylum or hospital) or by its <strong>distance from the cathedral</strong> of its diocese (the Center and Periphery bands, at the institution's latest placed year).</p>
+        <p>The chart draws only people with a second post, since a single post has nowhere to flow, and stops at the fourth. Each column is the people at that post, each category keeping its colour and its place in the stack, so a level band is people who stayed in the same category and a band that climbs or falls is a change. The columns shrink because most careers in the almanacs are short: the volumes cover 1833–1840 and 1860–1870, so a post held in the 1840s or 1850s is not seen, and a move across that gap may hide several.</p>
+        <p>Two cautions. An institution given a new id, or a person listed under two, breaks or invents a move; the Data Issues queues bear on both. And women religious are mostly unnamed in the almanacs, so these are largely the careers of priests.</p>
+    </div>
+</app-dashboard-shell>

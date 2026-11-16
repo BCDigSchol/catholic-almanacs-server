@@ -169,6 +169,12 @@ export class DashboardsComponent {
           description: "Explore how institutions connect through the people they shared or the clergy who moved between them, how people connect through the places they served together, and both together in one web — filter, cluster, and search by place, type, and year."
         },
         {
+          link: "/dashboards/careers",
+          icon: "alt_route",
+          title: "Career Paths",
+          description: "Where clergy went from one post to the next: the flows from first post to fourth by the kind of place or its distance from the cathedral, and the commonest paths."
+        },
+        {
           link: "/dashboards/clergy-flows",
           icon: "swap_horiz",
           title: "Clergy Flows",

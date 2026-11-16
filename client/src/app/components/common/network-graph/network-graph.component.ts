@@ -68,6 +68,8 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   @Output() timeWindowChange = new EventEmitter<{ startYear: number; endYear: number }>();
   /** Offer "Focus here" in a node's details card (network dashboards re-centre the graph on it). */
   @Input() focusable = false;
+  /** Show only nodes and ties first listed by this year (their `firstYear`); null shows all. The layout stays put. */
+  @Input() through: number | null = null;
   @Output() focusNode = new EventEmitter<{ id: string; label: string }>();
 
   network: any;
@@ -411,6 +413,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes['through'] && !changes['data']) this.applyClientFilters();
     if (changes['data']?.currentValue) {
       this.protectedData = {
         nodes: changes['data'].currentValue.nodes ?? [],
@@ -660,6 +663,7 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     this.searchText = '';
     this.searchMatches = [];
     this.hiddenGroups.clear();
+    if (this.through != null) queueMicrotask(() => this.applyClientFilters());
     this.maxEdgeWeight = edges.reduce((max: number, e: any) => Math.max(max, Number(e.weight) || 1), 1);
     this.minEdgeWeight = 1;
     this.legendEntries = this.buildLegend(nodes);
@@ -833,15 +837,18 @@ export class NetworkGraphComponent implements OnInit, AfterViewInit, OnChanges, 
     const nodes = this.nodesDataSet.get();
     const edges = this.edgesDataSet.get();
     const groupVisible = (node: any) => !this.hiddenGroups.has(node.group ?? 'Unknown');
+    // the year player: only what had been listed by then
+    const born = (x: any) => this.through == null || x.firstYear == null || x.firstYear <= this.through;
 
     const nodeVisibility = new Map<string, boolean>();
     for (const node of nodes) {
-      nodeVisibility.set(node.id, groupVisible(node));
+      nodeVisibility.set(node.id, groupVisible(node) && born(node));
     }
 
     const visibleDegree = new Map<string, number>();
     const edgeUpdates = edges.map((edge: any) => {
       const visible = (Number(edge.weight) || 1) >= this.minEdgeWeight
+        && born(edge)
         && nodeVisibility.get(edge.from) === true
         && nodeVisibility.get(edge.to) === true;
       if (visible) {

@@ -5,7 +5,9 @@
 // by the year they arrived.
 exports.getAllInstitutionNetwork = async (req, res) => {
     const { diocese, state, city, instType, instFunction, language, order } = req.query;
-    const tie = req.query.tie === 'moved' ? 'moved' : 'together';
+    // what links two institutions: people listed at both in one year, clergy who
+    // left one for the other, or a station attended from another church
+    const tie = ['moved', 'circuit'].includes(req.query.tie) ? req.query.tie : 'together';
     const params = parseNetworkParams(req.query);
     if (params.error) {
         return res.status(400).json({ message: params.error });
@@ -85,10 +87,13 @@ exports.getAllInstitutionNetwork = async (req, res) => {
             edgeWhere.push(...arWhere);
         }
         const edgeWhereClause = edgeWhere.length ? 'WHERE ' + edgeWhere.join(' AND ') : '';
-        const edges = tie === 'moved' ? await movedEdges(new Set(instIDs), startYear, endYear) : await db.sequelize.query(
+        const edges = tie === 'moved' ? await movedEdges(new Set(instIDs), startYear, endYear)
+            : tie === 'circuit' ? await circuitEdges(new Set(instIDs), startYear, endYear)
+            : await db.sequelize.query(
             `SELECT
                 ar1.instID AS instID1,
                 ar2.instID AS instID2,
+                MIN(ar1.year) AS firstYear,
                 COUNT(DISTINCT piar1.persID) AS weight
              FROM personInAlmanacRecords piar1
              JOIN almanacRecords ar1 ON piar1.almanacRecordID = ar1.ID
@@ -139,23 +144,38 @@ exports.getAllInstitutionNetwork = async (req, res) => {
             weight: Number(row.weight),
             value: Number(row.weight),
             label: String(row.weight),
+            // the first year the tie is listed, for growing the network year by year
+            firstYear: row.firstYear != null ? Number(row.firstYear) : null,
             // curved, so moves both ways between two institutions draw as two lines
-            ...(tie === 'moved' ? { arrows: 'to', tie, smooth: { enabled: true, type: 'curvedCW', roundness: 0.15 } } : {})
+            ...(tie === 'moved' ? { arrows: 'to', tie, smooth: { enabled: true, type: 'curvedCW', roundness: 0.15 } } : {}),
+            // a circuit runs from the church that attends to the station attended
+            ...(tie === 'circuit' ? { arrows: 'to', tie } : {})
         }));
+        // an institution joins the network with its first tie
+        const joined = new Map();
+        for (const e of edgeList) {
+            if (e.firstYear == null) continue;
+            for (const id of [e.from, e.to]) if (!joined.has(id) || e.firstYear < joined.get(id)) joined.set(id, e.firstYear);
+        }
 
         // Weighted PageRank (using shared-person counts as edge weights)
         const nodeIDs = Array.from(connectedIDs);
         const pr = computePageRank(nodeIDs, edgeList);
 
         // Build nodes and edges, include diocese as group and pageRank for sizing
+        const { institutionAttributes, INSTITUTION_ATTRIBUTES } = require('../utils/node-attributes');
+        const attrs = await institutionAttributes();
         const allNodes = nodeIDs.map(id => ({
             id,
+            // what the site knows of it (kind, congregation, ring), for "Colour by"
+            attrs: attrs.get(id) || {},
             label: metaMap[id].instName,
             group: metaMap[id].diocese || 'Unknown',
             diocese: metaMap[id].diocese || 'Unknown',
             routeSegment: 'institutions',
             pageRank: pr[id],
             value: pr[id],
+            firstYear: joined.get(id) ?? null,
             // where it stood (latest year in the window), for the map layout
             lat: metaMap[id].lat ?? null,
             lng: metaMap[id].lng ?? null
@@ -164,6 +184,7 @@ exports.getAllInstitutionNetwork = async (req, res) => {
         // Cap the response at the most central nodes so huge unfiltered
         // queries stay renderable; truncated/totalNodes let the UI say so
         const result = shapeNetwork(allNodes, edgeList, req.query, limit);
+        result.attributes = INSTITUTION_ATTRIBUTES;
         networkCache.set(key, result);
         res.send(result);
     } catch (error) {
@@ -334,10 +355,27 @@ async function movedEdges(inSet, startYear, endYear) {
         if (m.from.inst === m.to.inst || !inSet.has(m.from.inst) || !inSet.has(m.to.inst)) continue;
         const k = `${m.from.inst}|${m.to.inst}`;
         let p = pairs.get(k);
-        if (!p) pairs.set(k, p = { instID1: m.from.inst, instID2: m.to.inst, people: new Set() });
+        if (!p) pairs.set(k, p = { instID1: m.from.inst, instID2: m.to.inst, people: new Set(), firstYear: m.y2 });
         p.people.add(m.pers);
+        if (m.y2 < p.firstYear) p.firstYear = m.y2;
     }
-    return [...pairs.values()].map(p => ({ instID1: p.instID1, instID2: p.instID2, weight: p.people.size }));
+    return [...pairs.values()].map(p => ({ instID1: p.instID1, instID2: p.instID2, weight: p.people.size, firstYear: p.firstYear }));
+}
+
+/* Mission circuits as ties: from the church that attends (instID1) to the
+   station it attends (instID2), weight = the years listed, among `inSet`. */
+async function circuitEdges(inSet, startYear, endYear) {
+    const rows = await db.sequelize.query(
+        `SELECT h.instID AS instID1, d.instID AS instID2, COUNT(DISTINCT d.year) AS weight, MIN(d.year) AS firstYear
+           FROM attendingInstitutions t
+           JOIN almanacRecords d ON d.ID = t.attendedInstRecordID
+           JOIN almanacRecords h ON h.ID = t.attendingInstRecordID
+          WHERE d.instID <> h.instID
+            ${startYear != null ? 'AND d.year >= :startYear' : ''}
+            ${endYear != null ? 'AND d.year <= :endYear' : ''}
+          GROUP BY h.instID, d.instID`,
+        { replacements: { startYear, endYear }, type: db.Sequelize.QueryTypes.SELECT });
+    return rows.filter(r => inSet.has(r.instID1) && inSet.has(r.instID2));
 }
 const Op = db.Sequelize.Op;
 const { where } = require("sequelize");

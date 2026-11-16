@@ -1,0 +1,58 @@
+// Shared dashboard styles (.legend, .chart, .stat-strip, .data-table) live in src/styles.scss.
+
+.flow {
+    ::ng-deep .alluvial-head {
+        fill: var(--ink-3);
+        font-family: var(--font-display);
+        font-size: var(--text-sm);
+        font-style: italic;
+    }
+
+    ::ng-deep .alluvial-label {
+        fill: var(--ink-2);
+        font-size: var(--text-sm);
+    }
+
+    ::ng-deep .alluvial-count {
+        fill: var(--ink-3);
+        font-size: var(--text-xs);
+        font-variant-numeric: tabular-nums;
+    }
+
+    ::ng-deep path:hover {
+        fill-opacity: 0.8;
+    }
+}
+
+.paths {
+    .num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .stop {
+        white-space: nowrap;
+
+        // long names wrap on a phone, where the row is the screen's width
+        @media (max-width: 700px) {
+            white-space: normal;
+        }
+    }
+
+    @media (max-width: 700px) {
+        td[data-label='Path'] {
+            display: block;
+        }
+    }
+
+    .legend-swatch {
+        display: inline-block;
+        width: 0.7em;
+        height: 0.7em;
+        margin-right: 0.4em;
+    }
+
+    .arrow {
+        color: var(--ink-3);
+    }
+}

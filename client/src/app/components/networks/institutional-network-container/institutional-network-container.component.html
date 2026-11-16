@@ -12,6 +12,16 @@
         </div>
         <ng-template #filters>
             <app-network-focus [kinds]="focusKinds" [idPrefix]="'inet-focus'" (pick)="setFocus($event)"></app-network-focus>
+            @if (colourOptions.length > 1) {
+                <label class="ctl">
+                    <span>Colour by</span>
+                    <select class="control" (change)="set('colour', $any($event.target).value)">
+                        @for (o of colourOptions; track o.value) {
+                            <option [value]="o.value" [selected]="o.value === colour">{{ o.label }}</option>
+                        }
+                    </select>
+                </label>
+            }
             @if (state.focus) {
                 <app-segmented label="Steps out" [showLabel]="true" [options]="hopOptions" [value]="state.hops" (valueChange)="set('hops', $event)"></app-segmented>
             }
@@ -83,17 +93,17 @@
     </app-control-bar>
 
     <app-viz-panel
-        [heading]="(moved ? 'Clergy moving between institutions, ' : 'Institutions sharing people, ') + scopeLabel"
+        [heading]="heading"
         [note]="panelNote"
         [state]="vizState"
-        [emptyText]="moved ? 'No one moved between these institutions under these filters. Try widening the years or clearing a filter.' : 'No institutions shared people under these filters. Try widening the years or clearing a filter.'"
+        [emptyText]="emptyText"
         [hasKey]="key.length > 1"
         [keyOpen]="keyOpen"
         (retry)="fetchData()">
         <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="This network as a GEXF file for Gephi">GEXF</button>
         <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="This network's nodes and edges as two CSV files">CSV</button>
         <div key>
-            <p class="key-hint">Colour shows the diocese. Click a diocese to hide or show its institutions.</p>
+            <p class="key-hint">Colour shows the {{ colourLabel }}. Click one to hide or show its institutions.</p>
             <ul class="legend">
                 @for (entry of key; track entry.group) {
                     <li><button type="button" class="legend-item" [class.off]="entry.hidden" [attr.aria-pressed]="!entry.hidden" (click)="setKeyHidden(entry)">
@@ -102,6 +112,10 @@
                 }
             </ul>
         </div>
+        @if (playerYears.length > 2) {
+            <app-year-player idPrefix="inet-through" [years]="playerYears" [year]="through ?? playerYears[playerYears.length - 1]" (yearChange)="setThrough($event)"></app-year-player>
+            <p class="key-hint">@if (through) { Only ties first listed by {{ through }}; the layout stays where it is. } @else { Step or play through the years to watch the network grow in place. }</p>
+        }
         @if (state.layout === 'map') {
             @if (unplaced) { <p class="key-hint">{{ unplaced }} {{ unplaced === 1 ? 'institution has' : 'institutions have' }} no recorded place and {{ unplaced === 1 ? 'is' : 'are' }} left off the map.</p> }
             <app-map-vis
@@ -119,6 +133,7 @@
         } @else {
             <app-network-graph
                 [focusable]="true"
+                [through]="through"
                 (focusNode)="setFocus($event)"
                 [framed]="false"
                 [showLegend]="false"
@@ -129,6 +144,22 @@
             </app-network-graph>
         }
     </app-viz-panel>
+
+    @if (mixing) {
+        <app-viz-panel
+            [heading]="'Do ties keep to one ' + colourLabel + '?'"
+            note="For each, the share of its ties that stay inside it; the tick marks where chance would put it"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <app-network-mixing [mixing]="mixing" [attribute]="colourLabel" nodes="institutions"></app-network-mixing>
+        </app-viz-panel>
+    }
+
+    @if (communities) {
+        <app-viz-panel heading="Do the communities follow diocese lines?" note="Groups found from the ties alone, with the dioceses of their members" [state]="vizState" (retry)="fetchData()">
+            <app-network-communities [communities]="communities" nodes="institutions"></app-network-communities>
+        </app-viz-panel>
+    }
 
     @if (!state.focus && groups.length > 1) {
         <app-viz-panel
@@ -150,7 +181,10 @@
 
     <div notes>
         <p><strong>Focus on</strong> any institution (search above, or <em>Focus here</em> in a node's details) to see its neighbourhood from the whole network, not just the most central nodes: one step out, two, or its whole connected group. The network falls apart into separate groups; the list under the graph opens the largest of them.</p>
-        <p>Each dot is an institution. <strong>Ties</strong> sets what links two of them. <em>Served together</em>: the same person listed at both in the same year, as a priest covering a parish and its stations, or a pastor who also taught at a college. <em>Moved between</em>: people who left one for the other from one almanac year to the next they appear in, with the arrow pointing to where they went; the year range counts a move by the year they arrived. A move across the 1838–1864 gap happened somewhere in those years. The line's number and thickness count the people. Dot size reflects PageRank, a measure of how central an institution is to the whole web.</p>
+        <p><strong>Community</strong> (under Colour by) groups the nodes by the ties alone: the Louvain method looks for sets with more ties among themselves than chance would give, knowing nothing of dioceses. The table then shows each community's dioceses. Where a community is one diocese, clergy kept to its lines; where it spans several, or a diocese falls into two, they did not. Communities are found in the network as drawn, so they shift with the filters.</p>
+        <p><strong>The year player</strong> keeps the layout fixed and shows only the ties first listed by the chosen year, so the network grows in place. The almanacs skip 1841–1859 and 1862–63, and the 1830s volumes list far fewer people, so the jump at 1860 is largely fuller reporting.</p>
+        <p><strong>Colour by</strong> recolours the same network by what else is known of each institution: its kind (church, station, school, academy or college, asylum or hospital, religious house), the language or people the almanac marked its congregation as (unmarked counts as English), or how far it lay from its diocese's cathedral. The table under the graph then asks whether ties keep to those categories: for each, the share of its ties whose other end is in the same category, against the share chance would give, which is simply that category's share of all tie ends. A category far above chance keeps to itself; one near chance mixes freely. It counts only the institutions drawn, so narrow the filters or focus on a group before reading much into it.</p>
+        <p>Each dot is an institution. <strong>Ties</strong> sets what links two of them. <em>Served together</em>: the same person listed at both in the same year, as a priest covering a parish and its stations, or a pastor who also taught at a college. <em>Moved between</em>: people who left one for the other from one almanac year to the next they appear in, with the arrow pointing to where they went; the year range counts a move by the year they arrived. A move across the 1838–1864 gap happened somewhere in those years. <em>Mission circuits</em>: a station attended from another church, the arrow pointing from the church to the station it attends and the number counting the years listed; this is the diocese's working structure, the churches the rest depended on. The 1830s almanacs list few stations. Otherwise the line's number and thickness count the people. Dot size reflects PageRank, a measure of how central an institution is to the whole web.</p>
         <p>The full network is too large to draw at once, so the server keeps the most central institutions (by PageRank, up to 500) and drops any left without a link. The panel note says how many of the matching institutions are shown; narrow the filters to see the rest.</p>
         <p>Click an institution for its details and a link to its record; double-click to open the record. Use “Min. shared” to keep only stronger ties, and “Cluster groups” to fold each diocese into one bubble.</p>
     </div>

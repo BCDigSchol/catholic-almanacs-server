@@ -1,0 +1,163 @@
+<app-dashboard-shell
+    title="Served Under"
+    purpose="Who served under whom: assistants and their pastors, communities and their superiors, and the lines that run from one head to the next."
+    [takeaway]="takeaway"
+    [related]="related">
+
+    <app-control-bar [chips]="chips" [clearAll]="clearAll">
+        <div primary class="switches">
+            <app-segmented label="Network" [showLabel]="true" [options]="networkViews" [value]="networkView" (valueChange)="switchNetwork($event)"></app-segmented>
+            <app-segmented label="Ties" [showLabel]="true" [options]="ties" [value]="state.tie" (valueChange)="set('tie', $event)"></app-segmented>
+        </div>
+        <ng-template #filters>
+            <app-network-focus [kinds]="focusKinds" [idPrefix]="'lnet-focus'" (pick)="setFocus($event)"></app-network-focus>
+            @if (state.focus) {
+                <app-segmented label="Steps out" [showLabel]="true" [options]="hopOptions" [value]="state.hops" (valueChange)="set('hops', $event)"></app-segmented>
+            }
+            @if (colourOptions.length > 1) {
+                <label class="ctl">
+                    <span>Colour by</span>
+                    <select class="control" (change)="set('colour', $any($event.target).value)">
+                        @for (o of colourOptions; track o.value) {
+                            <option [value]="o.value" [selected]="o.value === colour">{{ o.label }}</option>
+                        }
+                    </select>
+                </label>
+            }
+            <label class="ctl">
+                <span>Diocese</span>
+                <select class="control" (change)="set('diocese', $any($event.target).value)">
+                    <option value="">All dioceses</option>
+                    @for (d of dioceseOptions; track d) {
+                        <option [value]="d" [selected]="d === state.diocese">{{ d | spaceName }}</option>
+                    }
+                </select>
+            </label>
+            <div class="ctl">
+                <span>Years</span>
+                <app-year-range idPrefix="lnet-years" [min]="minYear" [max]="maxYear"
+                    [from]="state.from || minYear" [to]="state.to || maxYear" (rangeChange)="setYears($event)"></app-year-range>
+            </div>
+        </ng-template>
+    </app-control-bar>
+
+    @if (state.focus && tree && (tree.up.length || tree.down.length)) {
+        <app-viz-panel [heading]="'The line of ' + focusLabel" note="Above, those they served under; below, those who served under them, and who later served under those" [state]="vizState" (retry)="fetchData()">
+            <div class="line-sides">
+                <section>
+                    <h3 class="line-head">Served under</h3>
+                    @if (tree.up.length) {
+                        <ng-container [ngTemplateOutlet]="branch" [ngTemplateOutletContext]="{ $implicit: tree.up, word: 'under' }"></ng-container>
+                    } @else { <p class="muted">No head is named for any place they were listed at.</p> }
+                </section>
+                <section>
+                    <h3 class="line-head">Served under them</h3>
+                    @if (tree.down.length) {
+                        <ng-container [ngTemplateOutlet]="branch" [ngTemplateOutletContext]="{ $implicit: tree.down, word: 'had' }"></ng-container>
+                    } @else { <p class="muted">No one is listed under them.</p> }
+                </section>
+            </div>
+        </app-viz-panel>
+    }
+
+    <ng-template #branch let-nodes let-word="word">
+        <ul class="line">
+            @for (n of nodes; track n.id) {
+                <li>
+                    <button type="button" class="link-btn" (click)="setFocus({ id: n.id, label: n.label })" [title]="'Centre the line on ' + n.label">{{ n.label }}</button>
+                    <span class="when">{{ ' ' }}{{ n.years }}@if (n.place) {, {{ place(n.place) }}}@if (n.morePlaces) { and {{ n.morePlaces }} more}</span>
+                    <a class="open" [routerLink]="['/people', n.id]" [attr.aria-label]="'Open the record of ' + n.label">record</a>
+                    @if (n.children.length) {
+                        <ng-container [ngTemplateOutlet]="branch" [ngTemplateOutletContext]="{ $implicit: n.children, word: word }"></ng-container>
+                    }
+                </li>
+            }
+        </ul>
+    </ng-template>
+
+    <app-viz-panel
+        [heading]="(state.tie === 'assistant' ? 'Assistants and the heads they served under, ' : 'Who served under whom, ') + scopeLabel"
+        [note]="panelNote"
+        [state]="vizState"
+        emptyText="No one is listed under a named head with these filters. Try widening the years or clearing a filter."
+        [hasKey]="key.length > 1"
+        [keyOpen]="keyOpen"
+        (retry)="fetchData()">
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadGexf()" title="This network as a GEXF file for Gephi">GEXF</button>
+        <button panel-actions type="button" class="btn export-btn" (click)="downloadCsv()" title="This network's nodes and edges as two CSV files">CSV</button>
+        <div key>
+            <p class="key-hint">An arrow points from a person to the head they served under. Colour shows each person's {{ colourLabel }}; click one to hide or show its people.</p>
+            <ul class="legend">
+                @for (entry of key; track entry.group) {
+                    <li><button type="button" class="legend-item" [class.off]="entry.hidden" [attr.aria-pressed]="!entry.hidden" (click)="setKeyHidden(entry)">
+                        <span class="legend-swatch" [style.background]="entry.color"></span>{{ entry.label }} ({{ entry.count }})
+                    </button></li>
+                }
+            </ul>
+        </div>
+        @if (playerYears.length > 2) {
+            <app-year-player idPrefix="lnet-through" [years]="playerYears" [year]="through ?? playerYears[playerYears.length - 1]" (yearChange)="setThrough($event)"></app-year-player>
+            <p class="key-hint">@if (through) { Only ties first listed by {{ through }}; the layout stays where it is. } @else { Step or play through the years to watch the network grow in place. }</p>
+        }
+        <app-network-graph
+            [focusable]="true"
+            [through]="through"
+            (focusNode)="setFocus($event)"
+            [framed]="false"
+            [showLegend]="false"
+            emptyText=""
+            label="People linked to the heads they served under"
+            [data]="network"
+            [options]="networkOptions">
+        </app-network-graph>
+    </app-viz-panel>
+
+    @if (!state.focus && lines.length) {
+        <app-viz-panel heading="The longest lines" note="Those who had people serve under them who went on to head places of their own; open one to see the line" [state]="vizState" (retry)="fetchData()">
+            <ol class="group-list">
+                @for (l of lines; track l.id) {
+                    <li>
+                        <button type="button" class="link-btn" (click)="setFocus({ id: l.id, label: l.label })">{{ l.label }}</button>:
+                        {{ l.under }} directly, {{ l.line }} down the line
+                        @if (dioceseName(l.diocese)) { <span class="muted">· {{ dioceseName(l.diocese) }}</span> }
+                    </li>
+                }
+            </ol>
+            @if (chains.length) {
+                <h3 class="line-head chains-head">The longest chains, head first</h3>
+                <ul class="chains">
+                    @for (c of chains; track c[0].id) {
+                        <li>
+                            @for (p of c; track p.id; let last = $last) {
+                                <button type="button" class="link-btn" (click)="setFocus({ id: p.id, label: p.label })">{{ p.label }}</button>@if (!last) {<span class="arrow" aria-label="then, under them,"> › </span>}
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </app-viz-panel>
+    }
+
+    @if (communities) {
+        <app-viz-panel heading="Do the communities follow diocese lines?" note="Groups found from the ties alone, with the dioceses of their members" [state]="vizState" (retry)="fetchData()">
+            <app-network-communities [communities]="communities" nodes="people"></app-network-communities>
+        </app-viz-panel>
+    }
+
+    @if (mixing) {
+        <app-viz-panel
+            [heading]="'Do ties keep to one ' + colourLabel + '?'"
+            note="For each, the share of its ties that stay inside it; the tick marks where chance would put it"
+            [state]="vizState"
+            (retry)="fetchData()">
+            <app-network-mixing [mixing]="mixing" [attribute]="colourLabel" nodes="people"></app-network-mixing>
+        </app-viz-panel>
+    }
+
+    <div notes>
+        <p>A tie runs from a person to the head of an institution where both were resident in the same almanac year. <em>All under a head</em> reads every record that names exactly one head (pastor, rector, superior, president, prior, abbot, director and the like, and their women's forms; never an "assistant" or "vice-"): everyone else resident there that year served under them. <em>Assistants only</em> is stricter: only people whose own role says assistant, curate or vice-, under that one head, or under the one other resident where no head is named.</p>
+        <p>Most listings give no role at all (about 25,000 of 33,000), and a record with no named head, or with two, gives no tie. So this is a part of who served under whom, not the whole, and it leans toward colleges and religious communities, whose almanac entries name their officers. Women religious are mostly unnamed, so their lines are nearly absent.</p>
+        <p><strong>Lines run forward in time.</strong> Someone's line is those who served under them, then those who later served under those, and so on; a step up the line must have begun before the step below it. That also keeps communities that rotated their superiors from looping back on themselves. A chain is the longest such run. Two people sharing a name under two ids will break a line, and one id covering two people will join lines that were separate: the Data Issues queues bear on this.</p>
+        <p><strong>Focus on</strong> anyone (search above, a name in a list, or <em>Focus here</em> in a node's details) to see their line as a tree and their neighbourhood in the graph. Dot size reflects PageRank over the arrows, so a head many served under draws large.</p>
+    </div>
+</app-dashboard-shell>

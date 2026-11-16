@@ -1,0 +1,24 @@
+@if (communities; as c) {
+    <p class="lead">
+        The ties alone sort these {{ nodes }} into {{ c.count }} larger communities@if (c.smaller) { (and {{ c.smaller | number }} {{ nodes }} in groups too small to name)}.
+        {{ c.agreement | percent: '1.0-0' }} of the {{ nodes }} in them sit in a community where their own diocese is the largest;
+        {{ c.mixed }} of the {{ c.count }} {{ c.mixed === 1 ? 'community has' : 'communities have' }} no diocese holding four in five of {{ c.mixed === 1 ? 'its' : 'their' }} members.
+    </p>
+    <table class="data-table communities">
+        <thead><tr><th>Community</th><th class="num">{{ nodes.charAt(0).toUpperCase() + nodes.slice(1) }}</th><th>Their dioceses</th></tr></thead>
+        <tbody>
+            @for (r of c.rows; track r.group) {
+                <tr>
+                    <td data-label="Community"><span class="legend-swatch" [style.background]="r.color"></span>{{ r.label }}</td>
+                    <td [attr.data-label]="nodes" class="num">{{ r.size | number }}</td>
+                    <td data-label="Their dioceses">
+                        @for (p of r.parts; track p.name; let last = $last) {
+                            <span [class.lead-part]="$first">{{ diocese(p.name) }} {{ p.share | percent: '1.0-0' }}</span>{{ last ? '' : ' · ' }}
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (c.more) { <p class="more">{{ c.more }} smaller {{ c.more === 1 ? 'community' : 'communities' }} not listed.</p> }
+}

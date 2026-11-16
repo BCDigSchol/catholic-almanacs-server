@@ -36,6 +36,7 @@ export const routes: Routes = [
     { path: 'dashboards/southwest', loadComponent: () => import('./components/dashboards/southwest/southwest.component').then(m => m.SouthwestComponent) },
     { path: 'dashboards/frontier', loadComponent: () => import('./components/dashboards/frontier/frontier.component').then(m => m.FrontierComponent) },
     { path: 'dashboards/center-periphery', loadComponent: () => import('./components/dashboards/center-periphery/center-periphery.component').then(m => m.CenterPeripheryComponent) },
+    { path: 'dashboards/careers', loadComponent: () => import('./components/dashboards/careers/careers.component').then(m => m.CareersComponent) },
     { path: 'dashboards/turnover', loadComponent: () => import('./components/dashboards/turnover/turnover.component').then(m => m.TurnoverComponent) },
     { path: 'dashboards/gender', loadComponent: () => import('./components/dashboards/gender/gender.component').then(m => m.GenderComponent) },
     { path: 'dashboards/means', loadComponent: () => import('./components/dashboards/means/means.component').then(m => m.MeansComponent) },

@@ -1,0 +1,118 @@
+// Network dashboard extras; shared dashboard styles live in src/styles.scss.
+
+.switches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+}
+
+.key-hint {
+    margin: 0 0 var(--space-2);
+    color: var(--ink-3);
+    font-size: var(--text-xs);
+}
+
+.export-btn {
+    height: 30px;
+    padding-block: 0;
+    font-size: var(--text-xs);
+}
+
+// a person's line: those above and those below, side by side
+.line-sides {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-6);
+
+    @media (max-width: 760px) {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-4);
+    }
+}
+
+.line-head {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-style: italic;
+    font-weight: 400;
+}
+
+// nested: each step in, a rule down the left
+.line {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+
+    .line {
+        margin: 2px 0 2px 0.45em;
+        padding-left: 1em;
+        border-left: 1px solid var(--rule);
+    }
+
+    li {
+        padding: 2px 0;
+    }
+
+    .when {
+        color: var(--ink-2);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .open {
+        margin-left: 0.5em;
+        color: var(--ink-3);
+        font-size: var(--text-xs);
+    }
+}
+
+.muted {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}
+
+.group-list {
+    margin: 0;
+    padding-left: 1.6em;
+    columns: 2 22rem;
+    column-gap: var(--space-6);
+    font-size: var(--text-sm);
+
+    li {
+        break-inside: avoid;
+        padding: 3px 0;
+    }
+}
+
+.chains-head {
+    margin-top: var(--space-4);
+}
+
+.chains {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+
+    li {
+        padding: 3px 0;
+    }
+
+    .arrow {
+        color: var(--ink-3);
+    }
+}
+
+.link-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: var(--rule-strong);
+    text-underline-offset: 3px;
+    cursor: pointer;
+}

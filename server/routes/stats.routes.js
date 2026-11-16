@@ -16,6 +16,7 @@ module.exports = app => {
     // editors only: sign in with DATA_ISSUES_PASSWORD (utils/review-auth.js)
     router.get('/data-issues', require('../utils/review-auth').requireReviewer, wrap(controller.getDataIssues));
     router.get('/turnover', wrap(controller.getTurnover));
+    router.get('/careers', wrap(controller.getCareers));
     router.get('/cessions', wrap(controller.getCessions));
     router.get('/southwest', wrap(controller.getSouthwest));
     router.get('/gender', wrap(controller.getGender));
