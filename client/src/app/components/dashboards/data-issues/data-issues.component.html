@@ -14,9 +14,11 @@
         }
     </nav>
 
-    @if (state.check === 'people' || state.check === 'links') {
+    @if (hasShow(state.check)) {
         <app-control-bar [chips]="chips" [clearAll]="clearAll">
-            <app-segmented primary label="Strength" [showLabel]="true" [options]="strengthOptions" [value]="state.strength" (valueChange)="setStrength($event)"></app-segmented>
+            @if (hasStrength(state.check)) {
+                <app-segmented primary label="Strength" [showLabel]="true" [options]="strengthOptions" [value]="state.strength" (valueChange)="setStrength($event)"></app-segmented>
+            }
             <app-segmented primary label="Show" [showLabel]="true" [options]="showOptions" [value]="state.show" (valueChange)="setShow($event)"></app-segmented>
         </app-control-bar>
     }
@@ -25,6 +27,21 @@
         @case ('people') {
             <app-viz-panel heading="People who may be one person" note="Two careers side by side, strongest evidence first" [state]="vizState" (retry)="retry()">
                 <app-people-review [pairs]="pairs" [strength]="state.strength" [show]="state.show"></app-people-review>
+            </app-viz-panel>
+        }
+        @case ('same-places') {
+            <app-viz-panel heading="Places that may be one place" note="Two institution ids never listed in the same year, at one town: the evidence, the coordinates each could take from the other, and their years beside the town's other institutions" [state]="vizState" (retry)="retry()">
+                <app-place-review [pairs]="placePairs" [institutions]="placeIndex" [years]="placeYears" [strength]="state.strength" [show]="state.show"></app-place-review>
+            </app-viz-panel>
+        }
+        @case ('renamed-places') {
+            <app-viz-panel heading="Same place, different names" note="Two institution ids named for different saints, at one town, where something carried over at the change: the priest, being the town's only church, the mission church, the point" [state]="vizState" (retry)="retry()">
+                <app-place-review [pairs]="renamedPairs" [institutions]="placeIndex" [years]="placeYears" strength="" [show]="state.show" [renamed]="true"></app-place-review>
+            </app-viz-panel>
+        }
+        @case ('spellings') {
+            <app-viz-panel heading="Town and county spellings" note="Two spellings of the standardised town or county in one state, in the same county or a few miles apart; the more common spelling first" [state]="vizState" (retry)="retry()">
+                <app-spelling-review [spellings]="spellings" [show]="state.show"></app-spelling-review>
             </app-viz-panel>
         }
         @case ('links') {
@@ -206,6 +223,10 @@
     <div notes>
         <p><strong>People who may be one person.</strong> Two person ids with the same surname whose given names fit (the same, or initials that agree: "E. J." and "Elisha J.") are scored on their careers. For: one picks up the year after the other ends, the same post or diocese at the handover, the same religious order. Against: both listed at different places in the same year, or in different orders. Pairs scoring below "possible" are not shown. Common surnames with more than 80 ids are left out, since pairing them blindly would bury the reviewer.</p>
         <p>Decisions are kept in your browser only. "Download decisions" gives a CSV; added to <span class="mono">server/data/person-decisions.csv</span> in the code, its pairs leave the queue for everyone, and the "same person" rows are the merges to make in the data.</p>
+        <p><strong>Places that may be one place.</strong> Ids of one family are never paired: a root and its children (<span class="mono">stl.mo.0209_02</span>, <span class="mono">stl.mo.0209_02.01</span>), ids joined by "&amp;", and institutions linked as parent, child or sibling in the data, since those are already known to belong together. What's left is two institution ids of different families that are never listed in the same year and lie at the same town (allowing a misspelling in either the printed or the standardised town) or, where no town is given, the same county; a different state rules a pair out. Scored for: the same dedication ("St. Mary's Female Academy" and "St. Mary's Academy"; Blessed Virgin and Our Lady count as Mary), the same kind of institution, one id picking up the year after the other ends (or across the 1840–1860 gap, the usual case of an 1830s <span class="mono">.9xxx</span> id), points close together. Against: different saints, different kinds (a parish and its school), years that interleave, points far apart. Each id keeps its best three candidates, and pairs below "possible" are not shown. Every pair is drawn over its town's other institutions year by year (or its dioceses'), each family together with its children indented as on record pages, the two ids in red, so a handover or a gap shows; "Could take" lists, for each year an id has no coordinates, the other id's nearest placed year.</p>
+        <p><strong>Same place, different names.</strong> A parish renamed when its id changed shares no saint with its old self, so pairs named differently are found by what carried over instead: the same resident priest listed at both at the change, the only church (or school, academy…) of its kind in the town the year before and the year after, served from the same mission church, the same point, or the same number under a new diocese prefix. Of the renames already joined under one id, four in five show at least one of the first three. These pairs are a check of their own, not ranked: a new name may be the same institution renamed, or a new one in its place (often so for schools and religious houses), and only a reviewer can say which. Nothing is merged unless a reviewer marks it "Same place" and the team applies it.</p>
+        <p><strong>Town and county spellings.</strong> Values of the standardised <span class="mono">city_reg</span> and <span class="mono">county_reg</span> columns in one state that differ by a letter or two and lie together: in the same county, or placed within 12 miles (40 for counties). The printed columns are left as the almanac printed them. Genesee and Geneseo, Illinois are two towns, so nearness or a shared county is required.</p>
+        <p>Nothing here changes the data. Decisions on both are kept in your browser and download as one fix list (the ids to merge and which to keep, the coordinates to copy into each unplaced year, the spelling to use and the institutions that need it) for the data pipeline. Added to <span class="mono">server/data/place-decisions.csv</span>, they leave the queue for everyone.</p>
         <p><strong>Wording the markers miss.</strong> The language, Spanish and Mexican, and who-ran-it and whom-it-served markers read every record each time the server starts, so records added later are read the same way. A note that names a language, sisters, brothers or nuns, or girls and boys in words the patterns don't know is listed here, so the wording can be added to <span class="mono">server/utils/languages.js</span> or <span class="mono">server/utils/gender.js</span>. Some are not markers at all ("a Spanish professor"): those can be left.</p>
         <p><strong>Where they are today.</strong> For each institution, the Catholic churches, schools, colleges, hospitals and convents in OpenStreetMap (© OpenStreetMap contributors, ODbL) within about 25 km of its recorded place whose names share its dedication: "St. Mary's Church" and "Saint Mary Catholic Church". Strong suggestions are close, share the whole dedication, and have no rival nearby. A dedication is common, parishes moved, merged and were renamed, and many records are placed at their town rather than their street, so every link is confirmed by a person: choose the place that is the institution today (its website comes with it), give a link you found, or say none of them is. Decisions download as a CSV for <span class="mono">server/data/institution-links.csv</span>; linked institutions show their present-day place and website on their record pages.</p>
         <p><strong>Other checks.</strong> A person id listed under surnames that are not spellings of one another; institutions with years that have no coordinates (so they are missing from every map); records placed in the territory of a diocese other than the one they were listed under (the territories are themselves a work in progress); the county the almanac gave against the county the place lay in that year (from the Newberry's historical counties); circuit links over 500 miles; and institution ids whose prefix names no diocese in the diocese timeline.</p>

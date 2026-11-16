@@ -1,0 +1,87 @@
+<div class="review-bar">
+    <label class="ctl">
+        <span>Your name, for the download</span>
+        <input class="control" type="text" [value]="decisions.reviewer" (change)="setReviewer($any($event.target).value)" placeholder="Initials or name">
+    </label>
+    <p class="review-count">
+        {{ matching }} {{ matching === 1 ? 'pair' : 'pairs' }} here · {{ decidedHere }} decided in this browser
+    </p>
+    <button type="button" class="btn" [disabled]="!decisions.size" (click)="download()">Download fix list{{ decisions.size ? ' (' + decisions.size + ')' : '' }}</button>
+</div>
+
+@if (renamed) {
+    <p class="judge">Named differently, but something carried over. Whether each is one institution renamed or a new one in its place is for you to judge: the record pages, their clergy and their notes are a click away.</p>
+}
+
+<ol class="pairs">
+    @for (p of shown; track p.key) {
+        <li class="pair" [class.decided]="p.mine || p.decision">
+            <p class="pair-why">
+                <span class="tag strength" [attr.data-strength]="p.strength">{{ p.strength === 'renamed' ? 'different names' : p.strength }}</span>
+                {{ p.reasons.join('; ') }}
+                @if (p.decision) { <span class="tag">decided: {{ p.decision }}</span> }
+            </p>
+            <div class="pair-sides">
+                @for (s of [p.a, p.b]; track s.id; let i = $index) {
+                    <section class="side">
+                        <h3 class="side-name">
+                            <a class="record-link inst" [routerLink]="['/institutions', s.id]" [queryParams]="{ year: s.years[s.years.length - 1] }">{{ label(s.name, s.type) }}</a>
+                        </h3>
+                        <p class="side-meta"><span class="mono">{{ s.id }}</span> · {{ spans(s.years) }}</p>
+                        <dl class="side-facts">
+                            <dt>Place</dt><dd>{{ s.place || 'not given' }}</dd>
+                            @if (s.names.length) { <dt>Also listed as</dt><dd>{{ s.names.join('; ') }}</dd> }
+                            <dt>Coordinates</dt>
+                            <dd>
+                                @if (!s.unplaced.length) { every year }
+                                @else if (!s.placedYears.length) { <span class="none">none</span> }
+                                @else { {{ spans(s.placedYears) }}; <span class="none">not {{ spans(s.unplaced) }}</span> }
+                            </dd>
+                            @if (s.fills.length) {
+                                <dt>Could take</dt>
+                                <dd class="fills">
+                                    @for (f of s.fills; track f.year) {
+                                        <span class="fill">{{ f.year }} ← {{ (i === 0 ? p.b : p.a).id }} {{ f.from }}</span>{{ $last ? '' : ', ' }}
+                                    }
+                                </dd>
+                            }
+                        </dl>
+                    </section>
+                }
+            </div>
+
+            <div class="pair-years">
+                <div class="years-switch" role="group" aria-label="Institutions shown with the pair">
+                    <button type="button" class="link-btn" [class.current]="p.view === 'town'" [attr.aria-pressed]="p.view === 'town'" (click)="setView(p, 'town')">Their town</button>
+                    <button type="button" class="link-btn" [class.current]="p.view === 'diocese'" [attr.aria-pressed]="p.view === 'diocese'" (click)="setView(p, 'diocese')">Their dioceses</button>
+                </div>
+                <div class="ladder-box" [class.tall]="p.view === 'diocese'">
+                    <app-service-ladder [rows]="p.ladder" [years]="years"
+                        [caption]="'Years listed: ' + p.a.id + ' and ' + p.b.id + (p.view === 'town' ? ' and their town' : ' and their dioceses')"></app-service-ladder>
+                </div>
+                @if (p.hidden) {
+                    <p class="hidden-note">{{ p.hidden }} more {{ p.view === 'town' ? 'in the town' : 'in the dioceses' }} not shown</p>
+                }
+            </div>
+
+            <div class="pair-decide" role="group" [attr.aria-label]="'Are ' + p.a.id + ' and ' + p.b.id + ' one place?'">
+                <button type="button" class="btn" [class.btn-primary]="p.mine === 'same'" [attr.aria-pressed]="p.mine === 'same'" (click)="decide(p, 'same')">Same place</button>
+                <button type="button" class="btn" [class.btn-primary]="p.mine === 'different'" [attr.aria-pressed]="p.mine === 'different'" (click)="decide(p, 'different')">Different places</button>
+                <button type="button" class="btn" [class.btn-primary]="p.mine === 'unsure'" [attr.aria-pressed]="p.mine === 'unsure'" (click)="decide(p, 'unsure')">Unsure</button>
+                <label class="ctl keep">
+                    <span>Keep</span>
+                    <select class="control" (change)="setKeep(p, $any($event.target).value)">
+                        <option [value]="p.a.id" [selected]="p.keep === p.a.id">{{ p.a.id }}</option>
+                        <option [value]="p.b.id" [selected]="p.keep === p.b.id">{{ p.b.id }}</option>
+                    </select>
+                </label>
+            </div>
+        </li>
+    } @empty {
+        <li class="pair-empty">Nothing to review here.</li>
+    }
+</ol>
+
+@if (shown.length < matching) {
+    <button type="button" class="btn" (click)="more()">Show {{ matching - shown.length < 20 ? matching - shown.length : 20 }} more</button>
+}

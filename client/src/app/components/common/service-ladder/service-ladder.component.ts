@@ -20,6 +20,10 @@ export interface LadderRow {
   years: number[];
   before?: LadderPost | null;
   after?: LadderPost | null;
+  /** Picked out in rubric (e.g. the two ids of a possible duplicate). */
+  mark?: boolean;
+  /** Indented under the row before it: a child institution under its parent. */
+  depth?: number;
 }
 
 /**

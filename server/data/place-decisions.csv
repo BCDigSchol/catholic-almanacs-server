@@ -1,0 +1,9 @@
+# Decisions on places that may be one place, from the Data Issues page's
+# "Download decisions". kind: pair (a and b are institution ids; decision:
+# same | different | unsure; keep is the id to keep, the other merged into it)
+# or spelling (a and b are two spellings of city_reg or county_reg, column
+# city|county, in state; decision: a | b | both, the spelling to use, or both
+# are right; keep is that spelling).
+# A row decided here leaves the review queue for everyone. Rebuild the API
+# after editing (docker compose up -d --build nodejs-prod).
+kind,a,b,column,state,decision,keep,copy_coordinates,reviewer,date,note

@@ -7,8 +7,8 @@
         }
     </div>
     @for (r of view; track r.key) {
-        <div class="row" role="row">
-            <span class="name" role="rowheader">
+        <div class="row" role="row" [class.mark]="r.mark">
+            <span class="name" role="rowheader" [class.child]="r.depth" [style.padding-left.rem]="(r.depth || 0) * 1.1">
                 @if (r.link) {
                     <a class="record-link" [class.pers]="r.kind === 'pers'" [class.inst]="r.kind === 'inst'"
                         [routerLink]="r.link" [queryParams]="linkQuery">{{ r.label }}</a>

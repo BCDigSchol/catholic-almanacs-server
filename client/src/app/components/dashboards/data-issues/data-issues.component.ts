@@ -10,6 +10,8 @@ import { SegmentedComponent } from '../../common/segmented/segmented.component';
 import { VizPanelComponent, VizState } from '../../common/viz-panel/viz-panel.component';
 import { PeopleReviewComponent, ReviewPair } from './people-review/people-review.component';
 import { LinkReviewComponent, LinkItem } from './link-review/link-review.component';
+import { PlaceReviewComponent, PlacePair, PlaceIndex } from './place-review/place-review.component';
+import { SpellingReviewComponent, Spelling } from './spelling-review/spelling-review.component';
 import { UrlState } from '../../../utils/url-state';
 import { institutionLabel } from '../../../utils/record-labels';
 import { citation, downloadTable } from '../../../utils/network-export';
@@ -18,6 +20,9 @@ import { citation, downloadTable } from '../../../utils/network-export';
 interface Summary {
   people: { strong: number; likely: number; possible: number; decided: number; people: number };
   names: number;
+  samePlaces: { strong: number; likely: number; possible: number; decided: number; fillable: number };
+  renamedPlaces: number;
+  spellings: number;
   places: { records: number; institutions: number; never: number; partly: number; fillable: number };
   prefixes: number;
   circuits: number;
@@ -50,7 +55,7 @@ const PAGE = 50;
  */
 @Component({
   selector: 'app-data-issues',
-  imports: [DecimalPipe, RouterLink, DashboardShellComponent, ControlBarComponent, SegmentedComponent, VizPanelComponent, PeopleReviewComponent, LinkReviewComponent],
+  imports: [DecimalPipe, RouterLink, DashboardShellComponent, ControlBarComponent, SegmentedComponent, VizPanelComponent, PeopleReviewComponent, LinkReviewComponent, PlaceReviewComponent, SpellingReviewComponent],
   templateUrl: './data-issues.component.html',
   styleUrl: './data-issues.component.scss'
 })
@@ -77,6 +82,11 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   limit = PAGE;
 
   pairs: ReviewPair[] = [];
+  placePairs: PlacePair[] = [];
+  renamedPairs: PlacePair[] = [];
+  placeIndex: PlaceIndex | null = null;
+  placeYears: number[] = [];
+  spellings: Spelling[] = [];
   linkItems: LinkItem[] = [];
   osmBase = '';
   names: NameConflict[] = [];
@@ -112,7 +122,7 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
     this.subs.push(this.url.changes().subscribe(state => {
       if (state.check !== this.state.check) this.limit = PAGE;
       this.state = state;
-      this.chips = (state.check === 'people' || state.check === 'links') && state.strength !== DEFAULTS.strength
+      this.chips = this.hasStrength(state.check) && state.strength !== DEFAULTS.strength
         ? [{ label: `Strength: ${this.strengthOptions.find(o => o.value === state.strength)?.label}`, clear: () => this.url.set({ strength: DEFAULTS.strength }) }]
         : [];
       this.load(state.check);
@@ -124,6 +134,9 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
   }
 
   setCheck(check: string): void { this.url.set({ check }); }
+  /** The checks reviewed pair by pair: a strength switch and a show switch. */
+  hasStrength(check: string): boolean { return check === 'people' || check === 'links' || check === 'same-places'; }
+  hasShow(check: string): boolean { return this.hasStrength(check) || check === 'spellings' || check === 'renamed-places'; }
   setStrength(strength: string): void { this.url.set({ strength }); }
   setShow(show: string): void { this.url.set({ show }); }
   setPlaces(places: string): void { this.limit = PAGE; this.url.set({ places }); }
@@ -151,6 +164,11 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
       { id: 'people', label: 'People who may be one person', count: s ? s.people.strong + s.people.likely + s.people.possible : null,
         note: s ? `${s.people.strong} strong, ${s.people.likely} likely, ${s.people.possible} possible` : '' },
       { id: 'names', label: 'One person id, several surnames', count: s?.names ?? null, note: 'a mistyped id or name' },
+      { id: 'same-places', label: 'Places that may be one place', count: s ? s.samePlaces.strong + s.samePlaces.likely + s.samePlaces.possible : null,
+        note: s ? `${s.samePlaces.strong} strong, ${s.samePlaces.likely} likely; ${s.samePlaces.fillable.toLocaleString()} unplaced years could take coordinates` : 'two institution ids for one institution' },
+      { id: 'renamed-places', label: 'Same place, different names', count: s?.renamedPlaces ?? null,
+        note: 'found by the priest, the town, the mission church or the point, not the name' },
+      { id: 'spellings', label: 'Town and county spellings', count: s?.spellings ?? null, note: 'one place spelt two ways in the standardised columns' },
       { id: 'places', label: 'Institutions without a place', count: s?.places.never ?? null,
         note: s ? `never placed; ${s.places.partly.toLocaleString()} more are placed in some years only` : '' },
       { id: 'territories', label: 'Outside their diocese’s territory', count: s?.territories ?? null, note: 'records, all years, against the territories drawn' },
@@ -164,7 +182,8 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
     ];
     if (s) {
       const open = s.people.strong + s.people.likely + s.people.possible;
-      this.takeaway = `${open.toLocaleString()} pairs of person ids may each be one person, ${s.places.never.toLocaleString()} institutions have no place in any year (and ${s.places.partly.toLocaleString()} more lack one in some years), and ${s.names} person ids carry more than one surname.`;
+      const places = s.samePlaces.strong + s.samePlaces.likely + s.samePlaces.possible + s.renamedPlaces;
+      this.takeaway = `${open.toLocaleString()} pairs of person ids may each be one person, ${places.toLocaleString()} pairs of institution ids may each be one place, ${s.places.never.toLocaleString()} institutions have no place in any year (and ${s.places.partly.toLocaleString()} more lack one in some years), and ${s.names} person ids carry more than one surname.`;
     }
   }
 
@@ -183,6 +202,9 @@ export class DataIssuesComponent implements OnInit, OnDestroy {
     this.subs.push(this.api.getTypeRequest(`stats/data-issues?check=${check}`).subscribe({
       next: (res: any) => {
         if (check === 'people') this.pairs = res.pairs;
+        if (check === 'same-places') { this.placePairs = res.pairs; this.placeIndex = res.institutions; this.placeYears = res.years; }
+        if (check === 'renamed-places') { this.renamedPairs = res.pairs; this.placeIndex = res.institutions; this.placeYears = res.years; }
+        if (check === 'spellings') this.spellings = res.spellings;
         if (check === 'links') {
           if (!res.available) { this.vizState = 'empty'; return; }
           this.linkItems = res.institutions;

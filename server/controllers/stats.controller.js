@@ -1471,6 +1471,11 @@ exports.getCenterPeriphery = async (req, res) => {
  *   summary      how many of each
  *   people       person ids that may be one person (utils/people-review.js)
  *   names        person ids listed under more than one surname
+ *   same-places  institution ids that may be one institution, with the
+ *                coordinates one could give the other (utils/place-review.js)
+ *   renamed-places  the same, for pairs named differently: found by the priest,
+ *                the town, the mission church or the point, not the name
+ *   spellings    town and county names spelt two ways (utils/place-review.js)
  *   places       institutions with years that have no coordinates: never placed
  *                in any year, or placed in some years only (with, per unplaced
  *                year, the nearest placed year at the same town to copy from)
@@ -1491,10 +1496,20 @@ exports.getDataIssues = async (req, res) => {
     if (cached) return res.json(cached);
     const q = sql => db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT });
     const { loadReview } = require('../utils/people-review');
+    const { loadPlaceReview } = require('../utils/place-review');
 
     const builders = {
         people: async () => ({ pairs: (await loadReview()).pairs }),
         names: async () => ({ ids: (await loadReview()).nameConflicts }),
+        'same-places': async () => {
+            const { pairs, institutions, years } = await loadPlaceReview();
+            return { pairs: pairs.filter(p => !p.rename), institutions, years };
+        },
+        'renamed-places': async () => {
+            const { pairs, institutions, years } = await loadPlaceReview();
+            return { pairs: pairs.filter(p => p.rename), institutions, years };
+        },
+        spellings: async () => ({ spellings: (await loadPlaceReview()).spellings }),
         places: async () => {
             // every year of each institution that lacks coordinates in any year:
             // some were never placed; others are placed in some years and not
@@ -1619,11 +1634,21 @@ exports.getDataIssues = async (req, res) => {
     if (check === 'summary') {
         const review = await loadReview();
         const strength = s => review.pairs.filter(p => p.strength === s && !p.decision).length;
+        const placeReview = await loadPlaceReview();
+        const placeStrength = s => placeReview.pairs.filter(p => p.strength === s && !p.decision).length;
+        const named = placeReview.pairs.filter(p => !p.rename && !p.decision);
         const [places, prefixes, circuits, wording] = await Promise.all([builders.places(), builders.prefixes(), builders.circuits(), builders.wording()]);
         result = {
             people: { strong: strength('strong'), likely: strength('likely'), possible: strength('possible'),
                 decided: review.pairs.filter(p => p.decision).length, people: review.people },
             names: review.nameConflicts.length,
+            samePlaces: { strong: placeStrength('strong'), likely: placeStrength('likely'), possible: placeStrength('possible'),
+                decided: placeReview.pairs.filter(p => p.decision).length,
+                // unplaced years a pair could fill from the other id
+                fillable: named.reduce((n, p) => n + p.a.fills.length + p.b.fills.length, 0) },
+            // pairs named differently, found by what carried over
+            renamedPlaces: placeStrength('renamed'),
+            spellings: placeReview.spellings.filter(x => !x.decision).length,
             places: { records: places.records, institutions: places.institutions.length, never: places.never, partly: places.partly, fillable: places.fillable },
             prefixes: prefixes.prefixes.reduce((n, p) => n + p.records, 0),
             circuits: circuits.links.length,

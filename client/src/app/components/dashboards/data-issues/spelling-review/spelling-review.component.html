@@ -1,0 +1,42 @@
+<div class="review-bar">
+    <label class="ctl">
+        <span>Your name, for the download</span>
+        <input class="control" type="text" [value]="decisions.reviewer" (change)="setReviewer($any($event.target).value)" placeholder="Initials or name">
+    </label>
+    <p class="review-count">{{ shown.length }} here · {{ decidedHere }} decided in this browser</p>
+    <button type="button" class="btn" [disabled]="!decisions.size" (click)="download()">Download fix list{{ decisions.size ? ' (' + decisions.size + ')' : '' }}</button>
+</div>
+
+<ol class="spellings">
+    @for (s of shown; track s.key) {
+        <li class="spelling" [class.decided]="s.mine || s.decision">
+            <p class="spelling-why">
+                <span class="tag">{{ s.column === 'city' ? 'Town' : 'County' }}, {{ s.state }}</span>
+                {{ where(s) }}
+                @if (s.decision) { <span class="tag">decided: {{ s.decision }}</span> }
+            </p>
+            <div class="spelling-sides">
+                @for (side of [s.a, s.b]; track side.value) {
+                    <div class="side">
+                        <p class="value">{{ side.value }}</p>
+                        <p class="count">{{ side.records }} {{ side.records === 1 ? 'record' : 'records' }} ·
+                            @for (id of (s.open ? side.institutions : side.institutions.slice(0, instsShown)); track id; let last = $last) {
+                                <a class="record-link inst mono" [routerLink]="['/institutions', id]">{{ id }}</a>{{ last ? '' : ' ' }}
+                            }
+                            @if (!s.open && side.institutions.length > instsShown) {
+                                <button type="button" class="link-btn" (click)="s.open = true">and {{ side.institutions.length - instsShown }} more</button>
+                            }
+                        </p>
+                    </div>
+                }
+            </div>
+            <div class="decide" role="group" [attr.aria-label]="'Which spelling: ' + s.a.value + ' or ' + s.b.value + '?'">
+                <button type="button" class="btn" [class.btn-primary]="s.mine === 'a'" [attr.aria-pressed]="s.mine === 'a'" (click)="decide(s, 'a')">Use “{{ s.a.value }}”</button>
+                <button type="button" class="btn" [class.btn-primary]="s.mine === 'b'" [attr.aria-pressed]="s.mine === 'b'" (click)="decide(s, 'b')">Use “{{ s.b.value }}”</button>
+                <button type="button" class="btn" [class.btn-primary]="s.mine === 'both'" [attr.aria-pressed]="s.mine === 'both'" (click)="decide(s, 'both')">Both are right</button>
+            </div>
+        </li>
+    } @empty {
+        <li class="spelling-empty">Nothing to review here.</li>
+    }
+</ol>

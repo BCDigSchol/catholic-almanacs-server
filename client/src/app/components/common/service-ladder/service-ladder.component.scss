@@ -17,6 +17,12 @@
     padding: var(--space-1) var(--space-2) var(--space-1) 0;
     line-height: 1.35;
 
+    // a child under its parent: a short rule leads in
+    &.child::before {
+        content: '└ ';
+        color: var(--ink-3);
+    }
+
     .detail {
         margin-left: 0.4em;
         color: var(--ink-3);
@@ -77,6 +83,11 @@
 
     &.run-start::after { left: 3px; }
     &.run-end::after { right: 3px; }
+}
+
+// a marked row: its bars in rubric
+.row.mark .cell.on::after {
+    background: var(--rubric);
 }
 
 // the header's name cell
