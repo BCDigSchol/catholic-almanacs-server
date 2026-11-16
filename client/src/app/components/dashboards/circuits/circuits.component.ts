@@ -25,6 +25,8 @@ interface CircuitsResponse {
   /** [year, hub, station, hubLat, hubLng, stLat, stLng, via] */
   links: [number, string, string, number, number, number, number, number][];
   dioceseNames: Record<string, string>;
+  /** Attended at some frequency, the almanac naming no church: [year, instID, dioceseId] */
+  unnamed?: [number, string, string][];
   /** Links left out as impossibly long (a misplaced record): [year, hub, station, miles] */
   misplaced: [number, string, string, number][];
   note: string;
@@ -39,6 +41,9 @@ interface YearFigures {
   stations: number;
   hubs: number;
   share: number;
+  /** Attended at some frequency with no church named, and their share of the institutions. */
+  unnamed: number;
+  shareUnnamed: number;
 }
 
 /** A hub of the selected year: the places it served and how far they lay. */
@@ -174,12 +179,18 @@ export class CircuitsComponent implements OnInit, AfterViewInit, OnDestroy {
   private update(reframe: boolean): void {
     const data = this.data!;
     const dio = this.state.diocese;
+    const unnamedByYear = new Map<number, number>();
+    for (const [year, , d] of data.unnamed ?? []) {
+      if (!dio || d === dio) unnamedByYear.set(year, (unnamedByYear.get(year) ?? 0) + 1);
+    }
     this.figures = data.years.map(y => {
       const links = (this.linksByYear.get(y.year) ?? []).filter(this.inDiocese);
       const stations = new Set(links.map(l => l[2])).size;
       const institutions = dio ? (y.byDiocese[dio] ?? 0) : y.institutions;
+      const unnamed = unnamedByYear.get(y.year) ?? 0;
       return { year: y.year, institutions, stations, hubs: new Set(links.map(l => l[1])).size,
-        share: institutions ? stations / institutions : 0 };
+        share: institutions ? stations / institutions : 0,
+        unnamed, shareUnnamed: institutions ? unnamed / institutions : 0 };
     });
     // the player steps through years that had circuits (the 1833 almanac has none)
     this.years = this.figures.filter(f => f.stations > 0).map(f => f.year);
@@ -264,9 +275,11 @@ export class CircuitsComponent implements OnInit, AfterViewInit, OnDestroy {
     const top = this.hubs[0];
     const lead = `In ${cur.year}, ${cur.stations.toLocaleString()} places${where}, ${pct}% of the institutions recorded, `
       + `were attended from another church: ${cur.hubs.toLocaleString()} ${cur.hubs === 1 ? 'church or institution served' : 'churches and institutions served'} them.`;
+    const more = cur.unnamed
+      ? ` Another ${cur.unnamed.toLocaleString()} ${cur.unnamed === 1 ? 'was' : 'were'} attended at some frequency with no church named.` : '';
     return top && top.stations > 1
-      ? `${lead} The largest circuit, ${top.label}${top.town && !top.label.includes(top.town) ? ' in ' + top.town : ''}, reached ${top.stations} places, the farthest ${top.farthest} miles away.`
-      : lead;
+      ? `${lead}${more} The largest circuit, ${top.label}${top.town && !top.label.includes(top.town) ? ' in ' + top.town : ''}, reached ${top.stations} places, the farthest ${top.farthest} miles away.`
+      : lead + more;
   }
 
   // ---- chart: share of institutions served from elsewhere, by year ----------
@@ -290,7 +303,7 @@ export class CircuitsComponent implements OnInit, AfterViewInit, OnDestroy {
       .attr('role', 'img').attr('aria-label', 'Share of recorded institutions served from another place, by year');
     const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
     const x = yearScale(allYears, [0, innerW]);
-    const max = Math.max(0.05, d3.max(this.figures, f => f.share) ?? 0);
+    const max = Math.max(0.05, d3.max(this.figures, f => f.share + f.shareUnnamed) ?? 0);
     const y = d3.scaleLinear().domain([0, max]).nice(4).range([innerH, 0]);
 
     const yTicks = y.ticks(4);
@@ -302,6 +315,12 @@ export class CircuitsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const bw = Math.max(4, Math.min(28, innerW / allYears.length * 0.6));
     const tooltip = d3.select(host).append('div').attr('class', 'chart-tooltip');
+    // on top, lighter: attended at some frequency, the almanac naming no church
+    g.append('g').selectAll('rect').data(this.figures.filter(f => f.unnamed)).join('rect')
+      .attr('x', d => x(d.year) - bw / 2).attr('width', bw)
+      .attr('y', d => y(d.share + d.shareUnnamed)).attr('height', d => y(d.share) - y(d.share + d.shareUnnamed))
+      .attr('fill', this.ink.out).attr('fill-opacity', 0.35)
+      .append('title').text(d => `${d.year}: ${d.unnamed.toLocaleString()} attended at some frequency, no church named (${Math.round(d.shareUnnamed * 100)}%)`);
     g.append('g').selectAll('rect').data(this.figures).join('rect')
       .attr('x', d => x(d.year) - bw / 2).attr('width', bw)
       .attr('y', d => y(d.share)).attr('height', d => innerH - y(d.share))
@@ -313,7 +332,8 @@ export class CircuitsComponent implements OnInit, AfterViewInit, OnDestroy {
         tooltip.style('opacity', '1')
           .style('left', `${Math.min(mx + 12, width - 220)}px`).style('top', `${my + 12}px`)
           .html(`<strong>${d.year}</strong><br>${d.stations.toLocaleString()} of ${d.institutions.toLocaleString()} institutions `
-            + `(${Math.round(d.share * 100)}%)<br>served from ${d.hubs.toLocaleString()} others`);
+            + `(${Math.round(d.share * 100)}%)<br>served from ${d.hubs.toLocaleString()} others`
+            + (d.unnamed ? `<br>${d.unnamed.toLocaleString()} more attended, no church named` : ''));
       })
       .on('mouseleave', () => tooltip.style('opacity', '0'));
   }

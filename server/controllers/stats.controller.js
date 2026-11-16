@@ -643,7 +643,7 @@ async function circuitsData() {
              JOIN almanacRecords ar ON ar.ID = pia.almanacRecordID
              JOIN almanacRecords home ON home.instID = pia.attendingInstID AND home.year = ar.year
             WHERE pia.isAttending = 1`),
-        q(`SELECT instID, year, instName, instType, cityReg, placeName, diocese FROM almanacRecords`),
+        q(`SELECT instID, year, instName, instType, cityReg, placeName, diocese, attendingFrequency FROM almanacRecords`),
     ]);
 
     const round = v => Math.round(v * 1e4) / 1e4;
@@ -704,13 +704,28 @@ async function circuitsData() {
             links: y ? y.links : 0, byDiocese: perYearDio.get(year) };
     });
 
+    // Attended at some frequency ("once a month") with no church named: stations all the
+    // same, but with no line to draw. Not those already tied to a church that year by a
+    // visiting priest, and not "vacant", which says the opposite.
+    const tied = new Set([...links.values()].map(l => `${l[0]}|${l[2]}`));
+    const unnamed = new Map();
+    for (const r of records) {
+        const freq = String(r.attendingFrequency || '').trim();
+        if (!freq || /^(vacant|not attended|unattended)\.?$/i.test(freq)) continue;
+        const k = `${r.year}|${r.instID}`;
+        if (tied.has(k) || unnamed.has(k)) continue;
+        unnamed.set(k, [Number(r.year), r.instID, dioceses.resolveDioceseId(r.instID, r.diocese) || 'unknown']);
+    }
+
     const result = {
         years,
         places,
+        // [year, instID, dioceseId]: attended, the almanac naming no church
+        unnamed: [...unnamed.values()].sort((a, b) => a[0] - b[0]),
         links: [...links.values()].sort((a, b) => a[0] - b[0]),
         dioceseNames,
         misplaced: [...misplaced.values()],
-        note: 'A circuit link is a station recorded as attended from another institution, or a priest listed at a place as visiting from his own. The almanacs of the 1830s printed few such links; from 1864 they list most stations, so much of the rise reflects fuller reporting.',
+        note: 'A circuit link is a station recorded as attended from another institution, or a priest listed at a place as visiting from his own. The almanacs of the 1830s printed few such links, and often said only how often a place was attended, not from where; from 1864 they list most stations, so much of the rise reflects fuller reporting.',
     };
     networkCache.set(key, result);
     return result;

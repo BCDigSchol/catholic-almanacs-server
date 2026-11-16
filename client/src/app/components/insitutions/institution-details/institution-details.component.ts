@@ -412,7 +412,17 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     if (!this.place) this.place = printed;
     const county = r.countyReg && (/\bcounty$/i.test(r.countyReg) ? r.countyReg : `${r.countyReg} County`);
     const standard = [county, r.cityReg, r.stateReg].filter(Boolean).join(', ');
-    const frequencies = (r.attendedFrequencies ?? []).map((f: any) => f.year ? `${f.frequency} (${f.year})` : f.frequency);
+    // Attended at some cadence, the almanac naming no church: the wording as printed. Over all
+    // years, each wording once with the years it was printed.
+    const said = new Map<string, number[]>();
+    for (const f of r.attendedFrequencies ?? []) {
+      if (!f?.frequency) continue;
+      (said.get(f.frequency) ?? said.set(f.frequency, []).get(f.frequency)!).push(Number(f.year));
+    }
+    const frequencies = [...said].sort((a, b) => Math.min(...a[1]) - Math.min(...b[1])).map(([text, years]) => {
+      const when = years.filter(Boolean);
+      return this.year === null && when.length ? `${text} (${yearRuns(when)})` : text;
+    });
     this.facts = [
       { label: 'Type', value: r.instType },
       { label: 'Language', value: r.language && r.language !== 'English' ? r.language : '' },
@@ -422,7 +432,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
       { label: 'Region', value: r.region },
       { label: 'Member', value: [r.member, r.memberType && `(${r.memberType})`].filter(Boolean).join(' ') },
       { label: 'Affiliated with', value: r.affiliated },
-      { label: 'Attended', value: frequencies.join('; ') },
+      { label: (r.attendedBy ?? []).length ? 'Attendance, as printed' : 'Attended (no church named)', value: frequencies.join('; ') },
       { label: 'Notes', value: r.instNote },
     ].filter(f => f.value && String(f.value).trim());
 

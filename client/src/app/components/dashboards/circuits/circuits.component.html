@@ -72,7 +72,7 @@
     <div class="circuits-lower">
         <app-viz-panel
             heading="Served from afar"
-            note="Share of the institutions recorded each year that were attended from another place"
+            note="Share of the institutions recorded each year that were attended from another place; lighter, those attended at some frequency with no church named"
             [state]="vizState"
             (retry)="fetchData()">
             <div class="chart" #share></div>
@@ -101,6 +101,7 @@
     <div notes>
         <p>A <strong>circuit</strong> is what the almanacs record when a church or mission is "attended from" another: it had no resident priest, and one rode out from the larger church, often monthly or less. Two kinds of entry are joined: stations listed as attended from an institution, and priests listed at a place as visiting from their own. Each line runs from the serving church to the place it served; distances are straight-line miles.</p>
         <p>The share compares the places attended from elsewhere with all the institutions recorded that year (in the chosen diocese, by the serving church's diocese).</p>
+        <p>Often the almanac says only how often a place was attended ("once a month", "visited occasionally") and not from where. Those places are stations too, but there is no line to draw for them: the chart adds them as the lighter top of each bar (counted in the place's own diocese), and their record pages show the wording as printed. Most are in the 1830s volumes. A place the almanac calls "vacant" is not counted.</p>
         @if (note) { <p>{{ note }}</p> }
         @if (misplaced) {
             <p>{{ misplaced }} links are left out because their two ends lie more than 500 miles apart: one of the places has wrong coordinates in the data (Viota, Wisconsin placed in Colombia, for one), not a real circuit.</p>

@@ -921,7 +921,7 @@ exports.findOne = async (req, res) => {
             as: 'almanacRecord',
             where: { year: req.params.year },
             attributes: ['instName', 'year', 'language', 'instType', 'instNote', 'diocese', 'placeName', 'region', 'countyOrig', 'countyReg', 'cityOrig', 'cityReg', 'stateOrig', 'stateReg', 'latitude', 'longitude',
-                'member', 'memberType', 'affiliated'
+                'member', 'memberType', 'affiliated', 'attendingFrequency'
             ],
             include: [{
                 model: almanacRecord,
@@ -985,6 +985,10 @@ exports.findOne = async (req, res) => {
             affiliated: data.dataValues.almanacRecord[0].affiliated,
             year: data.dataValues.almanacRecord[0].year,
             order: data.dataValues.almanacRecord[0].orders.map(order => order.order).join(', '),
+            // attended at some cadence, the almanac naming no church: the same shape findByID gives
+            attendedFrequencies: data.dataValues.almanacRecord[0].attendingFrequency
+                ? [{ year: data.dataValues.almanacRecord[0].year, frequency: data.dataValues.almanacRecord[0].attendingFrequency }]
+                : [],
             attendingInstitutions: [],
             attendedBy: [],
             parentInstitutions: [],
