@@ -1,0 +1,5 @@
+@for (l of links; track l.url; let last = $last) {
+    <a [href]="l.url" target="_blank" rel="noopener">{{ l.library }}</a>
+    @if (l.note) {{{ ' ' }}<span class="muted">({{ l.note }})</span>}
+    @if (!last) {{{ ' · ' }}}
+}

@@ -1,0 +1,57 @@
+<div class="page">
+    <app-page-header title="The Almanacs Online" eyebrow="The Almanacs"
+        subtitle="Scans of the printed volumes, year by year, at the libraries that hold them.">
+    </app-page-header>
+
+    <p class="lead">
+        The records on this site were transcribed from the annual Catholic almanacs and directories.
+        Each volume below can be read page by page at the library named; the links open the
+        libraries' own sites. No almanac was published in 1862 or 1863, during the Civil War.
+    </p>
+    @if (series.length) {
+        <p class="series">The whole run:{{ ' ' }}<app-scan-links [links]="series"></app-scan-links></p>
+    }
+
+    @if (heldYears.length) {
+        <app-segmented class="switch" label="Volumes shown" [options]="shows" [value]="show" (valueChange)="setShow($event)"></app-segmented>
+    }
+
+    @if (rows.length) {
+        <div class="table-wrap">
+            <table class="data-table volumes">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Volume</th>
+                        <th>Read it at</th>
+                        @if (heldYears.length) { <th>On this site</th> }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (v of rows; track $index) {
+                        <tr>
+                            <td data-label="Year" class="num year">{{ v.year }}</td>
+                            <td data-label="Volume" class="title"><i>{{ v.title || 'Title not given' }}</i></td>
+                            <td data-label="Read it at">
+                                @if (v.links.length) {
+                                    <app-scan-links [links]="v.links"></app-scan-links>
+                                } @else {
+                                    <span class="none">No scan found yet</span>
+                                }
+                            </td>
+                            @if (heldYears.length) {
+                                <td data-label="On this site" class="held">
+                                    @if (v.held) {
+                                        <span><a class="record-link inst" routerLink="/institutions" [queryParams]="{ from: v.year, to: v.year }">Institutions</a>{{ ' · ' }}<a class="record-link pers" routerLink="/people" [queryParams]="{ from: v.year, to: v.year }">People</a></span>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    } @else if (loaded) {
+        <p class="empty">The list of scanned volumes could not be loaded.</p>
+    }
+</div>

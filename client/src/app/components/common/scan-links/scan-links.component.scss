@@ -1,0 +1,22 @@
+:host {
+    display: inline;
+}
+
+.muted {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+}
+
+// a link out to a library: underlined in the leader colour, rubric on hover
+a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-color: var(--leader);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+
+    &:hover,
+    &:focus-visible {
+        text-decoration-color: var(--rubric);
+    }
+}

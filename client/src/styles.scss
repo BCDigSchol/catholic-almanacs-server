@@ -232,7 +232,8 @@ body {
 // a record's land: each cession on its own line, the number and treaty quiet;
 // likewise its present-day places
 .fact-list .cession,
-.fact-list .today {
+.fact-list .today,
+.fact-list .scan {
     display: block;
 
     .muted {

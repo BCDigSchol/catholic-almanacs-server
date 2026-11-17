@@ -66,6 +66,7 @@ export const routes: Routes = [
     { path: 'dashboards/network-service', redirectTo: redirectWith('/dashboards/networks', { view: 'service' }) },
     { path: 'dashboards/explore-institutions', redirectTo: redirectWith('/dashboards/explore', {}) },
     { path: 'dashboards/explore-people', redirectTo: redirectWith('/dashboards/explore', { entity: 'people' }) },
+    { path: 'volumes', loadComponent: () => import('./components/volumes/volumes.component').then(m => m.VolumesComponent) },
     { path: 'export', loadComponent: () => import('./components/export/export.component').then(m => m.ExportComponent) },
     // Static content pages: drop .md or .html files into client/public/page-content/
     // and they are served at /pages/<file path without extension>

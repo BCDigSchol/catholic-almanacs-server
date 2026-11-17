@@ -18,6 +18,9 @@ import { institutionLabel, isUnnamed, personLabel, placeLabel, yearRuns } from '
 import { MapContextPoint, MapLink } from '../../common/map-vis/map-overlays';
 import { MapKeyItem, RECORD_MAP_INKS } from '../../../utils/record-map';
 import { LadderRow, ServiceLadderComponent } from '../../common/service-ladder/service-ladder.component';
+import { ScanLinksComponent } from '../../common/scan-links/scan-links.component';
+import { AlmanacScansService } from '../../../services/almanac-scans.service';
+import { AlmanacScans, NO_SCANS, ScanVolume, volumesOf } from '../../../utils/almanac-scans';
 
 type RecordView = 'map' | 'network' | 'tree';
 
@@ -90,7 +93,7 @@ interface MapAround {
 @Component({
   selector: 'app-institution-details',
   imports: [RouterLink, MapVisComponent, NetworkGraphComponent, TreeGraphComponent,
-    PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent, ServiceLadderComponent],
+    PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent, ServiceLadderComponent, ScanLinksComponent],
   templateUrl: './institution-details.component.html',
   styleUrl: './institution-details.component.scss'
 })
@@ -138,9 +141,11 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
     private api: ApiService,
     private title: Title,
     private dialog: MatDialog,
+    private scanList: AlmanacScansService,
   ) {}
 
   ngOnInit(): void {
+    this.subs.push(this.scanList.scans$.subscribe(s => { this.allScans = s; this.updateScans(); }));
     const id$ = this.route.paramMap.pipe(map(p => p.get('id') ?? ''), distinctUntilChanged());
     const year$ = this.route.queryParamMap.pipe(map(p => Number(p.get('year')) || null), distinctUntilChanged());
 
@@ -174,6 +179,7 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
         this.timeline = (res as any)?.years ?? [];
         this.notFound = !res;
         this.year = year;
+        this.updateScans();
         this.recomputeTimeline();
         this.title.setTitle(res ? `${this.heading} · Catholic Almanacs` : 'Institution not found · Catholic Almanacs');
         if (res) this.loadConnections(year);
@@ -187,6 +193,11 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
       this.loading = false;
       this.loadDioceseInfo();
     }));
+  }
+
+  private updateScans(): void {
+    this.scansListed = this.allScans.volumes.length > 0;
+    this.scans = volumesOf(this.allScans, this.year);
   }
 
   ngOnDestroy(): void {
@@ -289,6 +300,11 @@ export class InstitutionDetailsComponent implements OnInit, OnDestroy {
   namesRecorded: { name: string; years: string }[] = [];
   people: PersonRow[] = [];
   facts: Fact[] = [];
+  /** The scanned volume(s) of the selected year's almanac; `scansListed` once any are known. */
+  scans: ScanVolume[] = [];
+  scansListed = false;
+  private allScans: AlmanacScans = NO_SCANS;
+
   related: Related[] = [];
   /** Clergy over time: one row per resident person. */
   ladder: LadderRow[] = [];

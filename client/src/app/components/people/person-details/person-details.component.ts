@@ -15,6 +15,9 @@ import { institutionLabel, isUnnamed, placeLabel, yearRuns } from '../../../util
 import { MapContextPoint, MapLabel, MapLink } from '../../common/map-vis/map-overlays';
 import { MapKeyItem, RECORD_MAP_INKS } from '../../../utils/record-map';
 import { LadderRow, ServiceLadderComponent } from '../../common/service-ladder/service-ladder.component';
+import { ScanLinksComponent } from '../../common/scan-links/scan-links.component';
+import { AlmanacScansService } from '../../../services/almanac-scans.service';
+import { AlmanacScans, NO_SCANS, ScanVolume, volumesOf } from '../../../utils/almanac-scans';
 
 /** One (year, institution) listing from GET /person/:id/timeline. */
 type RecordView = 'map' | 'network';
@@ -68,7 +71,7 @@ interface Fact {
 
 @Component({
   selector: 'app-person-details',
-  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent, ServiceLadderComponent],
+  imports: [RouterLink, MapVisComponent, NetworkGraphComponent, PageHeaderComponent, YearTabsComponent, CiteComponent, VizPanelComponent, ServiceLadderComponent, ScanLinksComponent],
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
 })
@@ -97,9 +100,11 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
     private router: Router,
     private api: ApiService,
     private title: Title,
+    private scanList: AlmanacScansService,
   ) {}
 
   ngOnInit(): void {
+    this.subs.push(this.scanList.scans$.subscribe(s => { this.allScans = s; this.updateScans(); }));
     const id$ = this.route.paramMap.pipe(map(p => p.get('id') ?? ''), distinctUntilChanged());
     const year$ = this.route.queryParamMap.pipe(map(p => Number(p.get('year')) || null), distinctUntilChanged());
     const timeline$ = id$.pipe(
@@ -115,6 +120,7 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
       this.listings = (res as any)?.rows ?? [];
       this.notFound = !res;
       this.year = year;
+      this.updateScans();
       this.recompute();
       this.title.setTitle(res ? `${this.heading} · Catholic Almanacs` : 'Person not found · Catholic Almanacs');
       if (res) {
@@ -122,6 +128,11 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
         this.fetchNetwork(start, end);
       }
     }));
+  }
+
+  private updateScans(): void {
+    this.scansListed = this.allScans.volumes.length > 0;
+    this.scans = volumesOf(this.allScans, this.year);
   }
 
   ngOnDestroy(): void {
@@ -178,6 +189,11 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
   /** Every spelling of the name, with the years each was printed (only if it varied). */
   namesRecorded: { name: string; years: string }[] = [];
   facts: Fact[] = [];
+  /** The scanned volume(s) of the selected year's almanac; `scansListed` once any are known. */
+  scans: ScanVolume[] = [];
+  scansListed = false;
+  private allScans: AlmanacScans = NO_SCANS;
+
   service: ServiceRow[] = [];
   /** The career: one row per post, across all years. */
   career: LadderRow[] = [];

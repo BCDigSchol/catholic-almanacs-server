@@ -13,6 +13,7 @@
             { "label": "How to search", "link": "/pages/almanacs/how-to-search" }
           ]
         },
+        { "label": "The volumes online", "link": "/volumes" },
         { "label": "Project staff", "link": "/pages/almanacs/project-staff" },
         { "label": "Contact", "link": "/pages/almanacs/contact" }
       ]

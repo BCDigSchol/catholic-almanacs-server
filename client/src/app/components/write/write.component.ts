@@ -48,7 +48,7 @@ function emptyMeta(): PageMeta {
   selector: 'app-write',
   imports: [DatePipe, FormsModule, MatIconModule, PageViewComponent, RecordPickerComponent, EmbedPickerComponent],
   templateUrl: './write.component.html',
-  styleUrl: './write.component.scss'
+  styleUrls: ['./write.component.scss', './write-editor.scss']
 })
 export class WriteComponent implements AfterViewInit, OnDestroy {
   @ViewChild('editorHost', { static: true }) editorHost!: ElementRef<HTMLDivElement>;

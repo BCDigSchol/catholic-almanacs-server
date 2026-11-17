@@ -111,13 +111,24 @@
             </div>
 
             <aside class="rail">
-                @if (facts.length) {
+                @if (facts.length || scans.length || (year === null && scansListed)) {
                     <section class="record-section" aria-labelledby="facts-heading">
                         <h2 id="facts-heading">Facts</h2>
                         <dl class="fact-list">
                             @for (f of facts; track f.label) {
                                 <dt>{{ f.label }}</dt>
                                 <dd>{{ f.value }}</dd>
+                            }
+                            @if (scans.length) {
+                                <dt>{{ scans.length > 1 ? 'Scanned almanacs' : 'Scanned almanac' }}</dt>
+                                <dd class="long">
+                                    @for (v of scans; track $index) {
+                                        <span class="scan"><i>{{ v.title }}</i>{{ ' ' }}Read it at{{ ' ' }}<app-scan-links [links]="v.links"></app-scan-links></span>
+                                    }
+                                </dd>
+                            } @else if (year === null && scansListed) {
+                                <dt>Scanned almanacs</dt>
+                                <dd><a routerLink="/volumes">Read the printed volumes online</a></dd>
                             }
                         </dl>
                     </section>

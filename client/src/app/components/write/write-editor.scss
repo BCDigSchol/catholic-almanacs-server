@@ -1,0 +1,110 @@
+// The document inside the editor (TipTap renders it, so the rules reach in with
+// ::ng-deep). Kept apart from write.component.scss so each sheet stays inside the
+// component style budget.
+.editor ::ng-deep .tiptap {
+    min-height: 56vh;
+    counter-reset: footnote; // footnote marks are numbered in the editor by a counter
+    outline: none;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--ink-2);
+
+    > * + * { margin-top: 0.9em; }
+
+    h2, h3, h4 { font-family: var(--font-display); color: var(--ink); margin-top: 1.4em; }
+    h2 { font-size: var(--text-2xl); }
+    h3 { font-size: var(--text-xl); }
+    h4 { font-size: var(--text-lg); }
+    p { margin: 0; }
+    a { color: var(--link); }
+    blockquote { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--rule-strong); font-style: italic; }
+    ul, ol { padding-left: 1.5em; }
+    hr { border: 0; border-top: 1px solid var(--rule-strong); }
+    code { font-family: var(--font-mono); font-size: 0.9em; }
+    pre { padding: var(--space-3); background: var(--surface); font-family: var(--font-mono); font-size: var(--text-sm); }
+
+    p.is-editor-empty:first-child::before {
+        content: attr(data-placeholder);
+        float: left;
+        height: 0;
+        color: var(--ink-3);
+        font-style: italic;
+        pointer-events: none;
+    }
+
+    // the named layouts, hinted at in the editor; the preview shows them properly
+    .layout {
+        position: relative;
+        padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+        border-left: 3px solid var(--rule-strong);
+        background: var(--surface);
+
+        &::before {
+            content: attr(data-layout);
+            display: block;
+            margin-bottom: var(--space-1);
+            font: italic 400 var(--text-xs) var(--font-display);
+            color: var(--ink-3);
+        }
+    }
+
+    .figure-missing {
+        padding: var(--space-3);
+        border: 1px dashed var(--rubric);
+        color: var(--rubric);
+        font-size: var(--text-sm);
+    }
+
+    figure {
+        margin: 0;
+        padding: var(--space-2);
+        border: 1px solid transparent;
+
+        img { display: block; max-width: 100%; }
+        figcaption { margin-top: var(--space-1); font: italic 400 var(--text-sm) var(--font-display); color: var(--ink-3); }
+        &.wide, &.full { border-color: var(--rule); }
+    }
+
+    .doc-widget {
+        padding: var(--space-2);
+        border: 1px dashed var(--rule-strong);
+    }
+
+    .doc-embed {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--space-1);
+        text-align: center;
+        background: var(--surface);
+
+        .doc-embed-label { font: italic 400 var(--text-lg) var(--font-display); color: var(--ink-2); }
+        code { color: var(--ink-3); }
+        .doc-embed-caption { font-size: var(--text-sm); color: var(--ink-2); }
+        .doc-embed-hint { font-size: var(--text-xs); color: var(--ink-3); }
+    }
+
+    .ProseMirror-selectednode, .doc-widget.ProseMirror-selectednode, figure.ProseMirror-selectednode {
+        outline: 2px solid var(--rubric);
+    }
+
+    .footnote-ref {
+        counter-increment: footnote;
+        padding: 0 2px;
+        color: var(--rubric);
+        font-weight: 600;
+        cursor: pointer;
+
+        &::before { content: counter(footnote); }
+        &.ProseMirror-selectednode { outline: 2px solid var(--rubric); }
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+
+        td, th { border: 1px solid var(--rule); padding: 4px 8px; vertical-align: top; }
+        th { background: var(--surface); text-align: left; }
+        .selectedCell { background: color-mix(in srgb, var(--rubric) 12%, transparent); }
+    }
+}

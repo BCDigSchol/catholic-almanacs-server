@@ -1,0 +1,36 @@
+.lead {
+    max-width: 68ch;
+    margin: 0 0 var(--space-3);
+    color: var(--ink-2);
+}
+
+.series {
+    margin: 0 0 var(--space-5);
+}
+
+.switch {
+    display: block;
+    margin: 0 0 var(--space-4);
+}
+
+.volumes {
+    .year {
+        color: var(--c-year);
+    }
+
+    .title {
+        max-width: 52ch;
+    }
+
+    .held {
+        white-space: nowrap;
+    }
+
+    .none {
+        color: var(--ink-3);
+    }
+}
+
+.empty {
+    color: var(--ink-3);
+}
